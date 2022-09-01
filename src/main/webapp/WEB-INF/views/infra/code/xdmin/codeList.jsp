@@ -5,8 +5,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-codegroup
-
 <html>
 <head>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
@@ -222,41 +220,41 @@ codegroup
                     </div>
                     <!-- 중앙 메인 영역 -->
                     <div class="col-md-8 col-lg-9 vstack gap-4">
-                        <h1 style="font-weight: 800; margin-top: 20px;">코드그룹 관리</h1>
+                        <h1 style="font-weight: 800; margin-top: 20px;">코드 관리</h1>
                         <!-- 검색 -->
                         <div class="card p-3 shadow">
                             <div class="row align-items-center pb-2">
                                 <div class="col-2">
                                     <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" selected>선택</option>
-                                        <option value="createdAt">등록일</option>
-                                        <option value="modifiedAt">수정일</option>
+                                        <option value="">선택</option>
+                                        <option value="1" selected>N</option>
+                                        <option value="2">Y</option>
                                     </select>
                                 </div>
                                 <div class="col-2">
                                     <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" selected>선택</option>
+                                        <option value="">선택</option>
                                         <option value="createdAt">등록일</option>
-                                        <option value="modifiedAt">수정일</option>
+                                        <option value="modifiedAt" selected>수정일</option>
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-01-01" required>
+                                    <input type="text" class="form-control" id="validationCustom01" placeholder="시작일" required>
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-12-31" required>
+                                    <input type="text" class="form-control" id="validationCustom01" placeholder="종료일" required>
                                 </div>
                             </div>
                             <div class="row align-items-center">
                                 <div class="col-2">
                                     <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" selected>선택</option>
+                                        <option value="" selected>검색구분</option>
                                         <option value="name">이름</option>
                                         <option value="id">아이디</option>
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control" id="validationCustom01" value="" required>
+                                    <input type="text" class="form-control" id="validationCustom01" value="" placeholder="검색어" required>
                                 </div>
                                 <div class="col-2">
                                     <button class="btn btn-warning fw-bold btn-sm shadow" type="submit">
@@ -269,6 +267,7 @@ codegroup
                             </div>
                         </div>
                         <!-- 리스트 -->
+                        <span style="margin: 0; padding: 0; font-weight: 800;">Total : 106</span>
                         <div class="card ps-3 pt-3 pe-3 shadow">
                             <table class="table text-center align-middle">
                                 <thead>
@@ -278,25 +277,35 @@ codegroup
                                         <th>#</th>
                                         <th>코드그룹 코드</th>
                                         <th>코드그룹 이름(한글)</th>
-                                        <th>코드그룹 이름(영문)</th>
-                                        <th>코드갯수</th>
+                                        <th>코드</th>
+                                        <th>대체 코드</th>
+                                        <th>코드 이름(한글)</th>
+                                        <th>코드 이름(영문)</th>
+                                        <th>사용</th>
+                                        <th>순서</th>
                                         <th>등록일</th>
                                         <th>수정일</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody onclick="newPage()">
                                     <c:forEach items="${list}" var="list" varStatus="status">
 										<tr>
 	                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
 	                                                id="flexCheckDefault">
 	                                        </td>
 	                                        <td>${list.seq}</td>
-	                                        <td>${list.seqAnother}</td>
-	                                        <td><a href="./codeGroupModForm.html">${list.groupName}</a></td>
+	                                        <td>${list.ccgSeq}</td>
+	                                        <td>${list.groupName}</td>
+	                                        <td></td>
+	                                        <td></td>
+	                                        <td>
+	                                            <a href="./codeModForm.html">${list.CCName}</a>
+	                                        </td>
+	                                        <td></td>
 	                                        <td>${list.useNY}</td>
-	                                        <td>${list.ccgOrder}</td>
-	                                        <td>${list.referenceV1}</td>
-	                                        <td>${list.referenceV2}</td>
+	                                        <td>${list.ccOrder}</td>
+	                                        <td></td>
+	                                        <td></td>
 	                                    </tr>		
 									</c:forEach>
                                 </tbody>
@@ -354,7 +363,7 @@ codegroup
                                     data-bs-target="#deleteModal">
                                     <i class="fa-regular fa-file-excel" style="color: white;"></i>
                                 </button>
-                                <a class="border-0 btn btn-sm shadow bg-primary" role="button" href="../article/articleRegForm.html">
+                                <a class="border-0 btn btn-sm shadow bg-primary" role="button" href="./codeForm.html">
                                     <i class="fa-regular fa-plus fa-1x" style="color: white;"></i>
                                 </a>
                             </div>

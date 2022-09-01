@@ -1,17 +1,31 @@
-package com.spopia.infra.modules.codegroup;
+package com.spopia.infra.modules.code;
 
-public class CodeGroup {
+public class Code {
 
 	private Integer seq;
 	private String seqAnother;
-	private String groupName;
+	private String CCName;
 	private Integer useNY;
-	private Integer ccgOrder;
+	private Integer ccOrder;
 	private String referenceV1;
 	private String referenceV2;
 	private Integer referenceI1;
 	private Integer referenceI2;
+	private String groupName;
+	private Integer ccgSeq;
 	
+	public Integer getCcgSeq() {
+		return ccgSeq;
+	}
+	public void setCcgSeq(Integer ccgSeq) {
+		this.ccgSeq = ccgSeq;
+	}
+	public String getGroupName() {
+		return groupName;
+	}
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
+	}
 	public Integer getSeq() {
 		return seq;
 	}
@@ -24,11 +38,11 @@ public class CodeGroup {
 	public void setSeqAnother(String seqAnother) {
 		this.seqAnother = seqAnother;
 	}
-	public String getGroupName() {
-		return groupName;
+	public String getCCName() {
+		return CCName;
 	}
-	public void setGroupName(String groupName) {
-		this.groupName = groupName;
+	public void setCCName(String cCName) {
+		CCName = cCName;
 	}
 	public Integer getUseNY() {
 		return useNY;
@@ -36,11 +50,11 @@ public class CodeGroup {
 	public void setUseNY(Integer useNY) {
 		this.useNY = useNY;
 	}
-	public Integer getCcgOrder() {
-		return ccgOrder;
+	public Integer getCcOrder() {
+		return ccOrder;
 	}
-	public void setCcgOrder(Integer ccgOrder) {
-		this.ccgOrder = ccgOrder;
+	public void setCcOrder(Integer ccOrder) {
+		this.ccOrder = ccOrder;
 	}
 	public String getReferenceV1() {
 		return referenceV1;
@@ -66,4 +80,5 @@ public class CodeGroup {
 	public void setReferenceI2(Integer referenceI2) {
 		this.referenceI2 = referenceI2;
 	}
+	
 }

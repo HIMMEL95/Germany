@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value = "/codeGroup/")
 public class CodeGroupController {
-
+	
 	@Autowired
 	CodeGroupServiceImpl service;
 

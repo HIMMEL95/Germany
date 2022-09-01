@@ -11,7 +11,14 @@ public class CodeGroup {
 	private String referenceV2;
 	private Integer referenceI1;
 	private Integer referenceI2;
+	private Integer count;
 	
+	public Integer getCount() {
+		return count;
+	}
+	public void setCount(Integer count) {
+		this.count = count;
+	}
 	public Integer getSeq() {
 		return seq;
 	}

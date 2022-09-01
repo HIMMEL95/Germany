@@ -9,11 +9,18 @@
     <resultMap id="resultMapObj" type="com.spopia.infra.modules.codegroup.CodeGroup"></resultMap>
 	
 	<select id="selectList" resultMap="resultMapObj">
-		SELECT
-			a.*
-		FROM CC a
-		WHERE 1=1
-			AND useNY = 1
+		<!-- select 
+			cg.*
+		    ,count(c.CCG_seq)
+		from CCG cg
+		inner join CC c on c.CCG_seq = cg.seq
+		group by
+			c.CCG_seq -->
+		
+		select
+			cg.*
+		    ,(select count(c.CCG_seq) from CC c where 1=1 and c.CCG_seq = cg.seq) as count
+		from CCG cg
 	</select>
 
 </mapper>	

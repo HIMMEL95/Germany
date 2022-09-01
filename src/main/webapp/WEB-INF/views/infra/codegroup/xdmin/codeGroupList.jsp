@@ -294,7 +294,7 @@ codegroup
 	                                        <td>${list.seqAnother}</td>
 	                                        <td><a href="./codeGroupModForm.html">${list.groupName}</a></td>
 	                                        <td>${list.useNY}</td>
-	                                        <td>${list.ccgOrder}</td>
+	                                        <td>${list.count}</td>
 	                                        <td>${list.referenceV1}</td>
 	                                        <td>${list.referenceV2}</td>
 	                                    </tr>		

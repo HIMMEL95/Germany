@@ -10,14 +10,14 @@
 	
 	<select id="selectList" resultMap="resultMapObj">
 		select 
-			c.seq as ccgSeq
-			,c.groupName as groupName
-			,cc.seq as seq
-			,cc.ccOrder as ccOrder
-			,cc.ccName as CCName
+			c.*
+		   <!--  ,cg.seq as ccgseq
+		    ,cg.groupName as groupName -->
 		from 
-			CCG c
-		inner join CC cc on cc.CCG_seq = c.seq
+			CC c
+			<!-- inner join CCG cg on cg.seq = c.CCG_seq -->
+		where 1=1
+			and useNY = 0
 	</select>
 
 </mapper>	

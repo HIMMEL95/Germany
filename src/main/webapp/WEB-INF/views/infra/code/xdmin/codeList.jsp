@@ -288,26 +288,35 @@
                                     </tr>
                                 </thead>
                                 <tbody onclick="newPage()">
-                                    <c:forEach items="${list}" var="list" varStatus="status">
-										<tr>
-	                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
-	                                                id="flexCheckDefault">
-	                                        </td>
-	                                        <td>${list.seq}</td>
-	                                        <td>${list.ccgSeq}</td>
-	                                        <td>${list.groupName}</td>
-	                                        <td></td>
-	                                        <td></td>
-	                                        <td>
-	                                            <a href="./codeModForm.html">${list.CCName}</a>
-	                                        </td>
-	                                        <td></td>
-	                                        <td>${list.useNY}</td>
-	                                        <td>${list.ccOrder}</td>
-	                                        <td></td>
-	                                        <td></td>
-	                                    </tr>		
-									</c:forEach>
+                                	<c:choose>
+                                		<c:when test="${fn:length(list) eq 0}">
+                                			<tr>
+                                				<td class="text-center" colspan="12">There is no data!</td>
+                                			</tr>
+                                		</c:when>
+                                		<c:otherwise>
+                                			<c:forEach items="${list}" var="list" varStatus="status">
+												<tr>
+			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
+			                                                id="flexCheckDefault">
+			                                        </td>
+			                                        <td>${list.seq}</td>
+			                                        <td>${list.ccgSeq}</td>
+			                                        <td>${list.groupName}</td>
+			                                        <td></td>
+			                                        <td></td>
+			                                        <td>
+			                                            <a href="./codeModForm.html">${list.CCName}</a>
+			                                        </td>
+			                                        <td></td>
+			                                        <td>${list.useNY}</td>
+			                                        <td>${list.ccOrder}</td>
+			                                        <td></td>
+			                                        <td></td>
+			                                    </tr>		
+											</c:forEach>
+                                		</c:otherwise>
+                                	</c:choose>
                                 </tbody>
                             </table>
                             <nav aria-label="Page navigation">

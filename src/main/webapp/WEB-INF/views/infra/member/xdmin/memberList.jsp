@@ -5,8 +5,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-codegroup
-
 <html>
 <head>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
@@ -23,7 +21,7 @@ codegroup
 	<title>Home</title>
 </head>
 <body>
-	 <header class="navbar-light fixed-top header-static bg-mode align-items-center">
+	<header class="navbar-light fixed-top header-static bg-mode align-items-center">
         <!-- 상단 -->
         <nav class="navbar navbar-expand-lg">
             <div class="container px-3 px-xl-5 pt-1">
@@ -47,7 +45,7 @@ codegroup
                                 <li class="px-3">
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
-                                        <div class="avatar1 me-3">
+                                        <div class="avatar ps-1 pt-2">
                                             <img class="avatar-img rounded-circle shadow" src="../../resources/images/diano.jpg"
                                                 alt="avatar" style="width: 30px;">
                                         </div>
@@ -91,37 +89,10 @@ codegroup
                 <!-- Profile START -->
             </div>
         </nav>
-        <div class="nav-scroller py-1 mb-2 bg-info">
-            <div class="container bg-info">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Navbar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">회원관리</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">서비스관리</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">사이트관리</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">로그관리</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">시스템관리</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">시스템관리</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
     </header>
 
     <main>
-        <div style="height: 150px;"></div>
+        <div style="height: 100px;"></div>
         <div class="container">
             <form method="get">
                 <div class="row g-4">
@@ -147,7 +118,7 @@ codegroup
                 
                                     <div class="offcanvas-body d-block px-2 px-lg-0">
                                         <div class="card overflow-hidden">
-                                            <img src="../../resources/images//mountains.png" class="card-img-top" alt="background"
+                                            <img src="../../resources/images/mountains.png" class="card-img-top" alt="background"
                                                 style="height: 50px; background-position: center; background-size: cover; background-repeat: no-repeat;">
                                             <div class="card-body pt-0">
                                                 <div class="text-center">
@@ -165,26 +136,31 @@ codegroup
                                                         <li class="nav-item">
                                                             <a class="nav-link" href="../Dashboard/Dashboard.html">
                                                                 <i class="fa-solid fa-chart-line pe-3"></i>
-                                                                <span>Home</span>
+                                                                <span>Dashboard</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
                                                             <a class="nav-link" href="../user/userList.html">
                                                                 <i class="fa-solid fa-users pe-3"></i>
-                                                                <span>Dashboard</span>
+                                                                <span>회원관리</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
                                                             <a class="nav-link" href="../article/articleList.html">
                                                                 <i class="fas fa-light fa-newspaper pe-3"></i>
-                                                                <span>Orders</span>
+                                                                <span>게시물 관리</span>
                                                             </a>
                                                         </li>
-                                                        <hr>
                                                         <li class="nav-item">
                                                             <a class="nav-link" href="../articleComment/articleCommentList.html">
                                                                 <i class="fas fa-light fa-comments pe-3"></i>
-                                                                <span>Account</span>
+                                                                <span>댓글 리스트</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="../game/gameList.html">
+                                                                <i class="fas fa-duotone fa-trophy pe-3"></i>
+                                                                <span>경기 기록 관리</span>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -213,8 +189,7 @@ codegroup
                                             </li>
                                         </ul>
                                         <p class="small text-center mt-1">©2022 <a class="text-body" target="_blank" href="#"> SPOPIA
-                                            </a>
-                                        </p>
+                                            </a></p>
                                     </div>
                                 </div>
                             </nav>
@@ -222,7 +197,18 @@ codegroup
                     </div>
                     <!-- 중앙 메인 영역 -->
                     <div class="col-md-8 col-lg-9 vstack gap-4">
-                        <h1 style="font-weight: 800; margin-top: 20px;">코드그룹 관리</h1>
+                        <!-- 게시물 사진 -->
+                        <div class="row">
+                            <div class="col-12 ">
+                                <div class="card text-white position-relative shadow-lg">
+                                    <img src="../../resources/images/back.jpg" class="card-img" style="height: 200px;"
+                                        alt="...">
+                                    <div class="card-img-overlay text-center p-4 position-absoulte top-50 start-50 translate-middle">
+                                        <span class="card-title align-middle fw-bold fs-3">회원 관리</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- 검색 -->
                         <div class="card p-3 shadow">
                             <div class="row align-items-center pb-2">
@@ -233,18 +219,18 @@ codegroup
                                         <option value="modifiedAt">수정일</option>
                                     </select>
                                 </div>
+                                <div class="col-3">
+                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-01-01" required>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-12-31" required>
+                                </div>
                                 <div class="col-2">
                                     <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
                                         <option value="" selected>선택</option>
-                                        <option value="createdAt">등록일</option>
-                                        <option value="modifiedAt">수정일</option>
+                                        <option value="1">남성</option>
+                                        <option value="2">여성</option>
                                     </select>
-                                </div>
-                                <div class="col-2">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-01-01" required>
-                                </div>
-                                <div class="col-2">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-12-31" required>
                                 </div>
                             </div>
                             <div class="row align-items-center">
@@ -255,16 +241,11 @@ codegroup
                                         <option value="id">아이디</option>
                                     </select>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-3">
                                     <input type="text" class="form-control" id="validationCustom01" value="" required>
                                 </div>
-                                <div class="col-2">
-                                    <button class="btn btn-warning fw-bold btn-sm shadow" type="submit">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </button>
-                                    <button class="btn btn-danger fw-bold btn-sm shadow" type="submit">
-                                        <i class="fa-solid fa-arrow-rotate-right"></i>
-                                    </button>
+                                <div class="col-3">
+                                    <button class="btn btn-primary fw-bold btn-sm shadow" type="submit">검색</button>
                                 </div>
                             </div>
                         </div>
@@ -275,11 +256,14 @@ codegroup
                                     <tr>
                                         <th style="font-size: small;"><input class="form-check-input" type="checkbox" value=""
                                                 id="flexCheckDefault"></th>
-                                        <th>#</th>
-                                        <th>코드그룹 코드</th>
-                                        <th>코드그룹 이름(한글)</th>
-                                        <th>코드그룹 이름(영문)</th>
-                                        <th>코드갯수</th>
+                                        <th>번호</th>
+                                        <th>등급</th>
+                                        <th>이름</th>
+                                        <th>성별</th>
+                                        <th>아이디</th>
+                                        <th>이메일</th>
+                                        <th>생년월일</th>
+                                        <th>좋아하는 팀</th>
                                         <th>등록일</th>
                                         <th>수정일</th>
                                     </tr>
@@ -288,22 +272,25 @@ codegroup
                                 	<c:choose>
                                 		<c:when test="${fn:length(list) eq 0}">
                                 			<tr>
-                                				<td class="text-center" colspan="8">There is no data!</td>
+                                				<td class="text-center" colspan="11">There is no data!</td>
                                 			</tr>
                                 		</c:when>
                                 		<c:otherwise>
 	                                		<c:forEach items="${list}" var="list" varStatus="status">
-												<tr>
+												<tr onclick="newPage()">
 			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
 			                                                id="flexCheckDefault">
 			                                        </td>
-			                                        <td>${list.seq}</td>
-			                                        <td>${list.seqAnother}</td>
-			                                        <td><a href="./codeGroupModForm.html">${list.groupName}</a></td>
-			                                        <td>${list.useNY}</td>
-			                                        <td>${list.count}</td>
-			                                        <td>${list.referenceV1}</td>
-			                                        <td>${list.referenceV2}</td>
+			                                        <td>${list.seq }</td>
+			                                        <td>${list.user_div }</td>
+			                                        <td>${list.name }</td>
+			                                        <td>${list.gender }</td>
+			                                        <td>${list.id }</td>
+			                                        <td>${list.email }</td>
+			                                        <td>${list.dob }</td>
+			                                        <td>두산</td>
+			                                        <td>${list.createdAt }</td>
+			                                        <td>${list.modifiedAt }</td>
 			                                    </tr>		
 											</c:forEach>
                                 		</c:otherwise>
@@ -311,7 +298,7 @@ codegroup
                                 </tbody>
                             </table>
                             <nav aria-label="Page navigation">
-                                <ul class=" pagination pagination-sm col-3 offset-5">
+                                <ul class="pagination pagination-sm col-3 offset-5">
                                     <li class="page-item">
                                         <a class="page-link" href="#" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
@@ -329,7 +316,7 @@ codegroup
                             </nav>
                         </div>
                         <div class="row align-items-center">
-                            <div class="col-2">
+                            <div class="col-1">
                                 <button class="border-0 btn btn-sm shadow" type="button" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal">
                                     <i class="fa-solid fa-trash fa-lg text-danger"></i>
@@ -353,19 +340,6 @@ codegroup
                                         </div>
                                     </div>
                                 </div>
-                                <button class="border-0 btn btn-sm shadow" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">
-                                    <i class="fa-solid fa-xmark"></i>
-                                </button>
-                            </div>
-                            <div class="col-2 offset-8" align="right">
-                                <button class="border-0 btn btn-sm bg-success shadow" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">
-                                    <i class="fa-regular fa-file-excel" style="color: white;"></i>
-                                </button>
-                                <a class="border-0 btn btn-sm shadow bg-primary" role="button" href="../article/articleRegForm.html">
-                                    <i class="fa-regular fa-plus fa-1x" style="color: white;"></i>
-                                </a>
                             </div>
                         </div>
                     </div>

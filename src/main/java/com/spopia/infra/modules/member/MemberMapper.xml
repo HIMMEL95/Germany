@@ -9,9 +9,14 @@
     <resultMap id="resultMapObj" type="com.spopia.infra.modules.member.Member"></resultMap>
 	
 	<select id="selectList" resultMap="resultMapObj">
-		select
+		select 
 			u.*
+			,t.teamName as team
 		from user u
+		inner join teamUser tu on tu.user_seq = u.seq
+		inner join team t on t.seq = tu.team_seq
+		where
+			tu.defaultNY = 0
 	</select>
 
 </mapper>	

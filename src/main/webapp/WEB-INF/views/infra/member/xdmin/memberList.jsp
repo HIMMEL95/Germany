@@ -281,14 +281,14 @@
 			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
 			                                                id="flexCheckDefault">
 			                                        </td>
-			                                        <td>${list.seq }</td>
+			                                        <td><c:out value="${list.seq }"/></td>
 			                                        <td>${list.user_div }</td>
 			                                        <td>${list.name }</td>
 			                                        <td>${list.gender }</td>
 			                                        <td>${list.id }</td>
 			                                        <td>${list.email }</td>
 			                                        <td>${list.dob }</td>
-			                                        <td>두산</td>
+			                                        <td>${list.team }</td>
 			                                        <td>${list.createdAt }</td>
 			                                        <td>${list.modifiedAt }</td>
 			                                    </tr>		

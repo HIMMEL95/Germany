@@ -123,7 +123,7 @@ codegroup
     <main>
         <div style="height: 150px;"></div>
         <div class="container">
-            <form method="get">
+            <form method="get" action="/codeGroup/codeGroupList">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -241,22 +241,22 @@ codegroup
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-01-01" required>
+                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-01-01">
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-12-31" required>
+                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-12-31">
                                 </div>
                             </div>
                             <div class="row align-items-center">
                                 <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" selected>선택</option>
-                                        <option value="name">이름</option>
-                                        <option value="id">아이디</option>
+                                    <select class="form-select form-select-sm fw-bold" name="shOption" aria-label=".form-select-sm example">
+                                        <option value="" <c:if test="${empty vo.shOption }">selected</c:if>>선택</option>
+                                        <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>이름</option>
+                                        <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>아이디</option>
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control" id="validationCustom01" value="" required>
+                                    <input type="text" class="form-control" name="shValue" id="validationCustom01" value="<c:out value="${vo.shValue }"/>" required>
                                 </div>
                                 <div class="col-2">
                                     <button class="btn btn-warning fw-bold btn-sm shadow" type="submit">

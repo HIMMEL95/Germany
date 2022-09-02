@@ -8,6 +8,17 @@
 
     <resultMap id="resultMapObj" type="com.spopia.infra.modules.codegroup.CodeGroup"></resultMap>
 	
+	<sql id ='selectCommon'>
+		FROM CCG cg
+		WHERE 1=1
+			<!-- <if test="groupName != null and !groupName.eqauls('')">AND groupName = #{shValue}</if> -->
+			<choose>
+				<when test="shOption == 1">AND groupName LIKE CONCAT('%', ${shValue},'%')</when>
+				<when test="shOption == 2">AND seq = #{shValue}</when>
+			</choose>
+	</sql>
+	
+	
 	<select id="selectList" resultMap="resultMapObj">
 		<!-- select 
 			cg.*
@@ -22,7 +33,7 @@
 		    ,(select count(c.CCG_seq) from CC c where 1=1 and c.CCG_seq = cg.seq) as count
 		from CCG cg
 		where 1=1 
-			and useNY = 0
+			and groupName LIKE CONCAT('%', #{shValue}, '%')
 	</select>
 
 </mapper>	

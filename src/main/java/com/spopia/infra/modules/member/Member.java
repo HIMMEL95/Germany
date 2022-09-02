@@ -22,6 +22,13 @@ public class Member {
 	private Date modifiedAt;
 	private Integer modifiedBy;
 	private Integer user_div;
+	private Integer team;
+	public Integer getTeam() {
+		return team;
+	}
+	public void setTeam(Integer team) {
+		this.team = team;
+	}
 	public Integer getSeq() {
 		return seq;
 	}

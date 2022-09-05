@@ -626,3 +626,8 @@ img {
     text-align: center;
     vertical-align: middle;
 }
+
+#date_st, #date_end{
+	cursor:pointer;
+}
+

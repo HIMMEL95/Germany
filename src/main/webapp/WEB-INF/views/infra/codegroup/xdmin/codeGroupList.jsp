@@ -20,6 +20,9 @@ codegroup
     <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">    
     <!-- user css -->
     <link rel="stylesheet" href="/resources/css/cc.css" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<title>Home</title>
 </head>
 <body>
@@ -29,7 +32,7 @@ codegroup
             <div class="container px-3 px-xl-5 pt-1">
                 <!-- Logo START -->
                 <a class="navbar-brand" href="../../user/member/main_page.html">
-                    <img class="light-mode-item navbar-brand-item" src="../../resources/images/SPOPIA1.png" alt="logo"
+                    <img class="light-mode-item navbar-brand-item" src="../../resources/images/SPOPIA_white.png" alt="logo"
                         style="width: 90px;">
                 </a>
                 <!-- Profile START -->
@@ -123,7 +126,7 @@ codegroup
     <main>
         <div style="height: 150px;"></div>
         <div class="container">
-            <form method="get" action="/codeGroup/codeGroupList">
+            <form method="post" action="/codeGroup/codeGroupList">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -227,10 +230,10 @@ codegroup
                         <div class="card p-3 shadow">
                             <div class="row align-items-center pb-2">
                                 <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" selected>선택</option>
-                                        <option value="createdAt">등록일</option>
-                                        <option value="modifiedAt">수정일</option>
+                                    <select class="form-select form-select-sm fw-bold" id="shDelNy" name="shDelNy" aria-label=".form-select-sm example">
+                                       	<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>선택</option>
+                                        <option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
+                                        <option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option>
                                     </select>
                                 </div>
                                 <div class="col-2">
@@ -241,22 +244,22 @@ codegroup
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-01-01">
+                                    <input type="text" class="form-control datepicker" id="date_st" placeholder="2022-01-01">
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-12-31">
+                                    <input type="text" class="form-control datepicker" id="date_end" placeholder="2022-12-31">
                                 </div>
                             </div>
                             <div class="row align-items-center">
                                 <div class="col-2">
                                     <select class="form-select form-select-sm fw-bold" name="shOption" aria-label=".form-select-sm example">
                                         <option value="" <c:if test="${empty vo.shOption }">selected</c:if>>선택</option>
-                                        <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>이름</option>
-                                        <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>아이디</option>
+                                        <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>번호</option>
+                                        <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>이름</option>
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control" name="shValue" id="validationCustom01" value="<c:out value="${vo.shValue }"/>" required>
+                                    <input type="text" class="form-control" name="shValue" id="validationCustom01" value="<c:out value="${vo.shValue }"/>">
                                 </div>
                                 <div class="col-2">
                                     <button class="btn btn-warning fw-bold btn-sm shadow" type="submit">
@@ -405,5 +408,19 @@ codegroup
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    	$(function() {
+    		$("#date_st").datepicker({
+    			dateFormat: "yy-mm-dd"
+    			,showMonthAfterYear: true
+    			,showOtherMonths: true
+    		});
+    		$("#date_end").datepicker({
+    			dateFormat: "yy-mm-dd"
+       			,showMonthAfterYear: true
+       			,showOtherMonths: true
+       		});
+    	})
+    </script>
 </body>
 </html>

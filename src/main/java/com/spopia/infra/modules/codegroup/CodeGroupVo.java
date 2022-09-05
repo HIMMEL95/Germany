@@ -4,6 +4,13 @@ public class CodeGroupVo {
 
 	private Integer shOption;
 	private String shValue;
+	private Integer shDelNy;
+	public Integer getShDelNy() {
+		return shDelNy;
+	}
+	public void setShDelNy(Integer shDelNy) {
+		this.shDelNy = shDelNy;
+	}
 	public Integer getShOption() {
 		return shOption;
 	}

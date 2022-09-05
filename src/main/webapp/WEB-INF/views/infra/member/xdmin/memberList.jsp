@@ -18,6 +18,9 @@
     <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">    
     <!-- user css -->
     <link rel="stylesheet" href="/resources/css/cc.css" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<title>Home</title>
 </head>
 <body>
@@ -94,7 +97,7 @@
     <main>
         <div style="height: 100px;"></div>
         <div class="container">
-            <form method="get">
+            <form method="post">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -213,17 +216,11 @@
                         <div class="card p-3 shadow">
                             <div class="row align-items-center pb-2">
                                 <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" selected>선택</option>
-                                        <option value="createdAt">등록일</option>
-                                        <option value="modifiedAt">수정일</option>
+                                    <select class="form-select form-select-sm fw-bold" id="shDelNy" name="shDelNy" aria-label=".form-select-sm example">
+                                       	<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>선택</option>
+                                        <option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
+                                        <option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option>
                                     </select>
-                                </div>
-                                <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-01-01" required>
-                                </div>
-                                <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-12-31" required>
                                 </div>
                                 <div class="col-2">
                                     <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
@@ -232,17 +229,25 @@
                                         <option value="2">여성</option>
                                     </select>
                                 </div>
+                                <div class="col-3">
+                                    <input type="text" class="form-control datepicker" id="date_st" placeholder="2022-01-01">
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" class="form-control datepicker" id="date_end" placeholder="2022-12-31">
+                                </div>
                             </div>
                             <div class="row align-items-center">
                                 <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" selected>선택</option>
-                                        <option value="name">이름</option>
-                                        <option value="id">아이디</option>
+                                    <select class="form-select form-select-sm fw-bold" id="shOption" name="shOption" aria-label=".form-select-sm example">
+                                        <option value="" <c:if test="${empty vo.shOption }">selected</c:if>>선택</option>
+                                        <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>번호</option>
+                                        <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>이름</option>
+                                        <option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>아이디</option>
+                                        <option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>이메일</option>
                                     </select>
                                 </div>
                                 <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" value="" required>
+                                    <input type="text" class="form-control" name="shValue" id="validationCustom01" value="<c:out value="${vo.shValue }"/>">
                                 </div>
                                 <div class="col-3">
                                     <button class="btn btn-primary fw-bold btn-sm shadow" type="submit">검색</button>
@@ -250,6 +255,7 @@
                             </div>
                         </div>
                         <!-- 리스트 -->
+                        <span style="margin: 0; padding: 0; font-weight: 800;">Total : </span>
                         <div class="card ps-3 pt-3 pe-3 shadow">
                             <table class="table text-center align-middle">
                                 <thead>
@@ -379,5 +385,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    	$(function() {
+    		$("#date_st").datepicker({
+    			dateFormat: "yy-mm-dd"
+    			,showMonthAfterYear: true
+    			,showOtherMonths: true
+    		});
+    		$("#date_end").datepicker({
+    			dateFormat: "yy-mm-dd"
+       			,showMonthAfterYear: true
+       			,showOtherMonths: true
+       		});
+    	})
+    </script>
 </body>
 </html>

@@ -1,15 +1,16 @@
-package com.spopia.infra.modules.codegroup;
+package com.spopia.infra.modules.member;
 
-public class CodeGroupVo {
-
+public class MemberVo {
+	
 	private Integer shOption;
 	private String shValue;
 	private Integer shDelNy;
-	public Integer getShDelNy() {
-		return shDelNy;
+	private Integer total;
+	public Integer getTotal() {
+		return total;
 	}
-	public void setShDelNy(Integer shDelNy) {
-		this.shDelNy = shDelNy;
+	public void setTotal(Integer total) {
+		this.total = total;
 	}
 	public Integer getShOption() {
 		return shOption;
@@ -23,4 +24,11 @@ public class CodeGroupVo {
 	public void setShValue(String shValue) {
 		this.shValue = shValue;
 	}
+	public Integer getShDelNy() {
+		return shDelNy;
+	}
+	public void setShDelNy(Integer shDelNy) {
+		this.shDelNy = shDelNy;
+	}
+
 }

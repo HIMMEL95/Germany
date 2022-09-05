@@ -272,6 +272,7 @@ codegroup
                             </div>
                         </div>
                         <!-- 리스트 -->
+                        <span style="margin: 0; padding: 0; font-weight: 800;">Total : </span>
                         <div class="card ps-3 pt-3 pe-3 shadow">
                             <table class="table text-center align-middle">
                                 <thead>

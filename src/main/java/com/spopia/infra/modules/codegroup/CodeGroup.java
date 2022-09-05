@@ -12,7 +12,14 @@ public class CodeGroup {
 	private Integer referenceI1;
 	private Integer referenceI2;
 	private Integer count;
+	private Integer total;
 	
+	public Integer getTotal() {
+		return total;
+	}
+	public void setTotal(Integer total) {
+		this.total = total;
+	}
 	public Integer getCount() {
 		return count;
 	}

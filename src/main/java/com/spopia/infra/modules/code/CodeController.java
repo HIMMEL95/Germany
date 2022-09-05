@@ -17,9 +17,12 @@ public class CodeController {
 	
 
 	@RequestMapping(value = "codeList")
-	public String codeList(Model model) throws Exception {
+	public String codeList(Model model, CodeVo vo) throws Exception {
+		
+		System.out.println("vo.getShOption() : " + vo.getShOption());
+		System.out.println("vo.getShValue() : " + vo.getShValue());
 
-		List<Code> list = service.selectList();
+		List<Code> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
 		return "infra/code/xdmin/codeList";

@@ -17,7 +17,13 @@
 			CC c
 			<!-- inner join CCG cg on cg.seq = c.CCG_seq -->
 		where 1=1
-			and useNY = 0
+			<if test="shDelNy != null and !shDelNy.equals('')">AND deleteNy = #{shDelNy}</if>
+			<choose>
+				<when test="shOption == 1">AND seq = #{shValue}</when>
+				<when test="shOption == 2">AND CCName LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND CCG_seq = #{shValue}</when>
+				<otherwise></otherwise>
+			</choose>
 	</select>
 
 </mapper>	

@@ -14,9 +14,17 @@
 			,t.teamName as team
 		from user u
 		inner join teamUser tu on tu.user_seq = u.seq
-		inner join team t on t.seq = tu.team_seq
+		inner join team t on t.teamSeq = tu.team_seq
 		where
 			tu.defaultNY = 0
+			
+			<if test="shDelNy != null and !shDelNy.equals('')">AND deleteNy = #{shDelNy}</if>
+			<choose>
+				<when test="shOption == 1">AND seq = #{shValue}</when>
+				<when test="shOption == 2">AND name LIKE CONCAT('%', #{shValue}, '%')</when>
+				<when test="shOption == 3">AND id LIKE CONCAT('%', #{shValue}, '%')</when>
+				<when test="shOption == 4">AND email LIKE CONCAT('%', #{shValue}, '%')</when>
+			</choose>
 	</select>
 
-</mapper>	
+</mapper>

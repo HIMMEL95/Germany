@@ -16,5 +16,15 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 		return dao.selectList(vo);
 	}
 	
+	@Override
+	public int insert(CodeGroup dto) throws Exception {
+		return dao.insert(dto);
+	}
+
+	@Override
+	public List<CodeGroup> selectList() throws Exception {
+		return dao.selectList();
+	}
+	
 	
 }

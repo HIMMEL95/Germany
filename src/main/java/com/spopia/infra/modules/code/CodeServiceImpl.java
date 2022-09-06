@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spopia.infra.modules.codegroup.CodeGroup;
+
 @Service
 public class CodeServiceImpl implements CodeService{
 
@@ -16,5 +18,8 @@ public class CodeServiceImpl implements CodeService{
 		return dao.selectList(vo);
 	}
 	
-	
+	@Override
+	public int insert(Code dto) throws Exception {
+		return dao.insert(dto);
+	}
 }

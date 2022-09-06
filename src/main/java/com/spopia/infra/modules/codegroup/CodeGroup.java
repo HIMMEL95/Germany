@@ -2,10 +2,11 @@ package com.spopia.infra.modules.codegroup;
 
 public class CodeGroup {
 
-	private Integer seq;
+	private String seq;
 	private String seqAnother;
 	private String groupName;
 	private Integer useNY;
+	private Integer deleteNy;
 	private Integer ccgOrder;
 	private String referenceV1;
 	private String referenceV2;
@@ -14,6 +15,12 @@ public class CodeGroup {
 	private Integer count;
 	private Integer total;
 	
+	public Integer getDeleteNy() {
+		return deleteNy;
+	}
+	public void setDeleteNy(Integer deleteNy) {
+		this.deleteNy = deleteNy;
+	}
 	public Integer getTotal() {
 		return total;
 	}
@@ -26,10 +33,10 @@ public class CodeGroup {
 	public void setCount(Integer count) {
 		this.count = count;
 	}
-	public Integer getSeq() {
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(Integer seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
 	}
 	public String getSeqAnother() {

@@ -20,6 +20,10 @@
     padding: auto;
 }
 
+.top_space {
+    height: 150px;
+}
+
 /* header */
 .fixed-top {
     position: fixed;
@@ -630,4 +634,34 @@ img {
 #date_st, #date_end{
 	cursor:pointer;
 }
+
+/* validation input */
+/* validation 용 */
+.input-control {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-control input {
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    font-size: 12px;
+    padding: 10px;
+    width: 100%;
+}
+
+.input-control textarea {
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    font-size: 12px;
+    padding: 10px;
+    width: 100%;
+}
+
+.input-control input:focus {
+    outline: 0;
+}
+
 

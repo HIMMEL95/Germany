@@ -30,7 +30,6 @@
 		select
 			cg.*
 		    ,(select count(c.CCG_seq) from CC c where 1=1 and c.CCG_seq = cg.seq) as count
-		    ,count(cg.seq) as total
 		from CCG cg
 		where 1=1
 			
@@ -43,5 +42,18 @@
 				<otherwise></otherwise>
 			</choose>
 	</select>
+	
+	<insert id="insert">
+		INSERT INTO CCG (
+			groupName
+		)
+		VALUES (
+			#{groupName}
+		)
+		
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
 
 </mapper>	

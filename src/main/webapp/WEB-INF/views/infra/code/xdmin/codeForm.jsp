@@ -5,34 +5,27 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-codegroup
+<!doctype html>
+<html lang="ko">
 
-<html>
 <head>
-	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Article List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-	<!-- Bootstrap CSS -->
-	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap extra CSS -->    
-    <link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
-    <!-- jquery ui CSS -->    
-    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">    
-    <!-- user css -->
     <link rel="stylesheet" href="/resources/css/cc.css" />
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<title>Home</title>
+    <script defer type="text/javascript" src="/resources/js/validation.js"></script>
 </head>
+
 <body>
-	 <header class="navbar-light fixed-top header-static bg-mode align-items-center">
+    <header class="navbar-light fixed-top header-static bg-mode align-items-center">
         <!-- 상단 -->
         <nav class="navbar navbar-expand-lg">
             <div class="container px-3 px-xl-5 pt-1">
                 <!-- Logo START -->
                 <a class="navbar-brand" href="../../user/member/main_page.html">
-                    <img class="light-mode-item navbar-brand-item" src="../../resources/images/SPOPIA_white.png" alt="logo"
+                    <img class="light-mode-item navbar-brand-item" src="../../../image/SPOPIA_white.png" alt="logo"
                         style="width: 90px;">
                 </a>
                 <!-- Profile START -->
@@ -41,7 +34,7 @@ codegroup
                         <li class="me-2">
                             <a class="p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
                                 data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img class="avatar-img rounded-circle" src="../../resources/images/diano.jpg" alt="avatar"
+                                <img class="avatar-img rounded-circle" src="../../../image/diano.jpg" alt="avatar"
                                     style="width: 30px;">
                             </a>
                             <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
@@ -51,7 +44,7 @@ codegroup
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
                                         <div class="avatar1 me-3">
-                                            <img class="avatar-img rounded-circle shadow" src="../../resources/images/diano.jpg"
+                                            <img class="avatar-img rounded-circle shadow" src="../../../image/diano.jpg"
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
@@ -124,9 +117,9 @@ codegroup
     </header>
 
     <main>
-        <div style="height: 150px;"></div>
+        <div class="top_space"></div>
         <div class="container">
-            <form method="post" action="/codeGroup/codeGroupForm">
+            <form method="post" action="/code/codeInst">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -150,13 +143,13 @@ codegroup
                 
                                     <div class="offcanvas-body d-block px-2 px-lg-0">
                                         <div class="card overflow-hidden">
-                                            <img src="../../resources/images//mountains.png" class="card-img-top" alt="background"
+                                            <img src="../../dmin_image/mountains.png" class="card-img-top" alt="background"
                                                 style="height: 50px; background-position: center; background-size: cover; background-repeat: no-repeat;">
                                             <div class="card-body pt-0">
                                                 <div class="text-center">
                                                     <div class="avatar avatar-lg mt-n5 mb-3">
                                                         <a href="#"><img class="avatar-img rounded border border-white border-3"
-                                                                src="../../resources/images/diano.jpg" style="width: 50px;" alt=""></a>
+                                                                src="../../../image/diano.jpg" style="width: 50px;" alt=""></a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
                                                         <span class="mb-0"><a href="#">이하늘</a></span>
@@ -225,118 +218,108 @@ codegroup
                     </div>
                     <!-- 중앙 메인 영역 -->
                     <div class="col-md-8 col-lg-9 vstack gap-4">
-                        <h1 style="font-weight: 800; margin-top: 20px;">코드그룹 관리</h1>
-                        <!-- 검색 -->
-                        <div class="card p-3 shadow">
-                            <div class="row align-items-center pb-2">
-                                <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" id="shDelNy" name="shDelNy" aria-label=".form-select-sm example">
-                                       	<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>선택</option>
-                                        <option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
-                                        <option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option>
-                                    </select>
-                                </div>
-                                <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" selected>선택</option>
-                                        <option value="createdAt">등록일</option>
-                                        <option value="modifiedAt">수정일</option>
-                                    </select>
-                                </div>
-                                <div class="col-2">
-                                    <input type="text" class="form-control datepicker" id="date_st" placeholder="2022-01-01">
-                                </div>
-                                <div class="col-2">
-                                    <input type="text" class="form-control datepicker" id="date_end" placeholder="2022-12-31">
-                                </div>
+                        <h1 style="font-weight: 800;">코드 관리</h1>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for=ccgSeq class="form-label">코드그룹</label>
+                                <select class="form-select" id="ccgSeq" name="ccgSeq">
+                                    <c:forEach items="${list1}" var="list1" varStatus="status">
+	                     				<option value="${list1.seq }">${list1.groupName } </option>
+									</c:forEach>
+                                </select>
                             </div>
-                            <div class="row align-items-center">
-                                <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" name="shOption" aria-label=".form-select-sm example">
-                                        <option value="" <c:if test="${empty vo.shOption }">selected</c:if>>선택</option>
-                                        <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>번호</option>
-                                        <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>이름</option>
-                                    </select>
-                                </div>
-                                <div class="col-2">
-                                    <input type="text" class="form-control" name="shValue" id="validationCustom01" value="<c:out value="${vo.shValue }"/>">
-                                </div>
-                                <div class="col-2">
-                                    <button class="btn btn-warning fw-bold btn-sm shadow" type="submit">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </button>
-                                    <button class="btn btn-danger fw-bold btn-sm shadow" type="submit">
-                                        <i class="fa-solid fa-arrow-rotate-right"></i>
-                                    </button>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="code" class="form-label">코드</label>
+                                <input type="text" class="form-control" id="code" value="자동생성" disabled>
+                            </div>
+                            <div class="col">
+                                <label for="seqAnother" class="form-label">코드 (Another)</label>
+                                <input type="text" class="form-control" id="seqAnother" name="seqAnother" value="" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="CCName" class="form-label">코드 이름 (한글)</label>
+                                <input type="text" class="form-control" id="CCName" name="CCName" value="" placeholder="">
+                            </div>
+                            <div class="col">
+                                <label for=""CCG_seq"" class="form-label">코드 이름 (영문)</label>
+                                <input type="text" class="form-control" id="CCG_seq" name="CCG_seq" value="" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="useNY" class="form-label">사용여부</label>
+                                <select class="form-select" id="useNY" name="useNY">
+                                    <option selected value="">Choose...</option>
+                                    <option value="0">N</option>
+                                    <option value="1">Y</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="ccOrder" class="form-label">순서</label>
+                                <input type="text" class="form-control" id="ccOrder" name="ccOrder" value="" placeholder="숫자">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="useNY" class="form-label">설명</label>
+                                <textarea class="form-control" id="validationTextarea" placeholder=""></textarea>
+                            </div>
+                            <div class="col">
+                                <label for="deleteNY" class="form-label">삭제여부</label>
+                                <select class="form-select" id="usdeleteNYeNY">
+                                    <option selected disabled value="">Choose...</option>
+                                    <option>N</option>
+                                    <option>Y</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="referenceV1" class="form-label">예비1 (varchar type)</label>
+                                <input type="text" class="form-control" id="referenceV1" name="referenceV1" value="" placeholder="영문(대소문자), 숫자">
+                            </div>
+                            <div class="col">
+                                <label for="referenceV2" class="form-label">예비2 (varchar type)</label>
+                                <input type="text" class="form-control" id="referenceV2" name="referenceV2" value="" placeholder="영문(대소문자), 숫자">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="varchar_sub3" class="form-label">예비3 (varchar type)</label>
+                                <input type="text" class="form-control" id="varchar_sub3" value="" placeholder="영문(대소문자), 숫자">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="referenceI1" class="form-label">예비1 (int type)</label>
+                                <input type="text" class="form-control" id="referenceI1" name="referenceI1" value="" placeholder="숫자">
+                            </div>
+                            <div class="col">
+                                <label for="referenceI2" class="form-label">예비2 (int type)</label>
+                                <input type="text" class="form-control" id="referenceI2" name="referenceI2" value="" placeholder="숫자">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="int_sub3" class="form-label">예비3 (int type)</label>
+                                <input type="text" class="form-control" id="int_sub3" value="" placeholder="숫자">
                             </div>
                         </div>
                         <!-- 리스트 -->
-                        <span style="margin: 0; padding: 0; font-weight: 800;">Total : </span>
-                        <div class="card ps-3 pt-3 pe-3 shadow">
-                            <table class="table text-center align-middle">
-                                <thead>
-                                    <tr>
-                                        <th style="font-size: small;"><input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault"></th>
-                                        <th>#</th>
-                                        <th>코드그룹 코드</th>
-                                        <th>코드그룹 이름(한글)</th>
-                                        <th>코드그룹 이름(영문)</th>
-                                        <th>코드갯수</th>
-                                        <th>등록일</th>
-                                        <th>수정일</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                	<c:choose>
-                                		<c:when test="${fn:length(list) eq 0}">
-                                			<tr>
-                                				<td class="text-center" colspan="8">There is no data!</td>
-                                			</tr>
-                                		</c:when>
-                                		<c:otherwise>
-	                                		<c:forEach items="${list}" var="list" varStatus="status">
-												<tr>
-			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
-			                                                id="flexCheckDefault">
-			                                        </td>
-			                                        <td>${list.seq}</td>
-			                                        <td>${list.seqAnother}</td>
-			                                        <td><a href="./codeGroupModForm.html">${list.groupName}</a></td>
-			                                        <td>${list.useNY}</td>
-			                                        <td>${list.count}</td>
-			                                        <td>${list.referenceV1}</td>
-			                                        <td>${list.referenceV2}</td>
-			                                    </tr>		
-											</c:forEach>
-                                		</c:otherwise>
-                                	</c:choose>
-                                </tbody>
-                            </table>
-                            <nav aria-label="Page navigation">
-                                <ul class=" pagination pagination-sm col-3 offset-5">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
                         <div class="row align-items-center">
-                            <div class="col-2">
-                                <button class="border-0 btn btn-sm shadow" type="button" data-bs-toggle="modal"
+                            <div class="col-1">
+                                <a class="border-0 btn btn-sm bg-secondary shadow" role="button" href="./codeList.html">
+                                    <i class="fa-solid fa-bars" style="color: white;"></i>
+                                </a>
+                            </div>
+                            <div class="col-3 offset-8" align="right">
+                                <button class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal">
-                                    <i class="fa-solid fa-trash fa-lg text-danger"></i>
+                                    <i class="fa-solid fa-xmark" style="color: white;"></i>
                                 </button>
                                 <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false"
                                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -347,7 +330,7 @@ codegroup
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body fs-6">
+                                            <div class="modal-body" style="text-align: start;">
                                                 선택하신 게시물을 정말로 삭제하시겠습니까?
                                             </div>
                                             <div class="modal-footer">
@@ -357,18 +340,12 @@ codegroup
                                         </div>
                                     </div>
                                 </div>
-                                <button class="border-0 btn btn-sm shadow" type="button" data-bs-toggle="modal"
+                                <button class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal">
-                                    <i class="fa-solid fa-xmark"></i>
+                                    <i class="fa-solid fa-trash-can" style="color: white;"></i>
                                 </button>
-                            </div>
-                            <div class="col-2 offset-8" align="right">
-                                <button class="border-0 btn btn-sm bg-success shadow" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">
-                                    <i class="fa-regular fa-file-excel" style="color: white;"></i>
-                                </button>
-                                <button class="border-0 btn btn-sm shadow bg-primary" type="submit">
-                                    <i class="fa-regular fa-plus fa-1x" style="color: white;"></i>
+                                <button class="border-0 btn btn-sm bg-success shadow" type="submit">
+                                    <i class="fa-regular fa-bookmark" style="color: white;"></i>
                                 </button>
                             </div>
                         </div>
@@ -397,7 +374,7 @@ codegroup
                 </ul>
                 <div class="footer_copy">
                     <a id="fot.naver" target="_blank" href="https://www.navercorp.com">
-                        <img src="../../resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
+                        <img src="../../../image/SPOPIA1.png" alt="logo" style="width: 45px;">
                     </a>
                     <span class="text">Copyright</span>
                     <span class="corp">© SPOPIA Corp.</span>
@@ -406,22 +383,11 @@ codegroup
             </div>
         </div>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
-    <script type="text/javascript">
-    	$(function() {
-    		$("#date_st").datepicker({
-    			dateFormat: "yy-mm-dd"
-    			,showMonthAfterYear: true
-    			,showOtherMonths: true
-    		});
-    		$("#date_end").datepicker({
-    			dateFormat: "yy-mm-dd"
-       			,showMonthAfterYear: true
-       			,showOtherMonths: true
-       		});
-    	})
-    </script>
+    <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
+    
 </body>
 </html>

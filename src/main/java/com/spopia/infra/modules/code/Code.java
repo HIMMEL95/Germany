@@ -2,7 +2,7 @@ package com.spopia.infra.modules.code;
 
 public class Code {
 
-	private Integer seq;
+	private String seq;
 	private String seqAnother;
 	private String CCName;
 	private Integer useNY;
@@ -26,10 +26,10 @@ public class Code {
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
 	}
-	public Integer getSeq() {
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(Integer seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
 	}
 	public String getSeqAnother() {

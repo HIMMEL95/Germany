@@ -124,7 +124,7 @@
     <main>
         <div style="height: 150px;"></div>
         <div class="container">
-            <form method="post" action="/code/codeList">
+            <form method="post" action="/code/codeForm">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -376,9 +376,9 @@
                                     data-bs-target="#deleteModal">
                                     <i class="fa-regular fa-file-excel" style="color: white;"></i>
                                 </button>
-                                <a class="border-0 btn btn-sm shadow bg-primary" role="button" href="./codeForm.html">
+                                <button class="border-0 btn btn-sm shadow bg-primary" type="submit">
                                     <i class="fa-regular fa-plus fa-1x" style="color: white;"></i>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>

@@ -289,8 +289,8 @@
                             </div>
                             <div class="col">
                                 <div class="input-control">
-                                    <label for="deleteNy">삭제여부<span style="color: red;">*</span></label>
-                                    <select class="form-select" id="deleteNy">
+                                    <label for="deleteNY">삭제여부<span style="color: red;">*</span></label>
+                                    <select class="form-select" id="deleteNY" name="deleteNY">
                                         <option selected value="">Choose...</option>
                                         <option value="0">N</option>
                                         <option value="1">Y</option>

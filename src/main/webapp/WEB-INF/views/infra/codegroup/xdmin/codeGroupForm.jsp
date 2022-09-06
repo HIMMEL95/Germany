@@ -226,7 +226,7 @@
                                     <label for="cg_code">코드그룹 코드<span style="color: red;">*</span></label>
                                     <input type="text" id="cg_code" name="cg_code" value="" placeholder="영문(대문자),숫자">
                                     <!-- <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div> -->
-                                    <div class="valid-feedback" id="cg_code_msg">Looks good!</div>
+                                    <div class="valid-feedback" id="cg_code_msg"></div>
                                 </div>
                             </div>
                             <div class="col">
@@ -234,7 +234,7 @@
                                     <label for="cg_another">코드그룹 코드 (Another)<span style="color: red;">*</span></label>
                                     <input type="text" id="seqAnother" name="seqAnother" value="" placeholder="영문(대문자),숫자">
                                     <!-- <div class="msg" id="another_msg" name="another_msg" style="display: none;"></div> -->
-                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="valid-feedback" id="Anot_msg"></div>
                                 </div>
                             </div>
                         </div>
@@ -244,7 +244,7 @@
                                     <label for="cg_name_ko">코드그룹 이름 (한글)<span style="color: red;">*</span></label>
                                     <input type="text" id="groupName" name="groupName" value="" placeholder="한글,숫자">
                                     <!-- <div class="msg" id="ko_msg" name="ko_msg" style="display: none;"></div> -->
-                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="valid-feedback" id="ko_msg">Looks good!</div>
                                 </div>
                             </div>
                             <div class="col">
@@ -252,7 +252,7 @@
                                     <label for="cg_name_eng">코드그룹 이름 (영문)<span style="color: red;">*</span></label>
                                     <input type="text" id="cg_name_eng" name="cg_name_eng" value="" placeholder="영문(대소문자),숫자">
                                     <!-- <div class="msg" id="eng_msg" name="eng_msg" style="display: none;"></div> -->
-                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="valid-feedback" id="eng_msg">Looks good!</div>
                                 </div>
                             </div>
                         </div>
@@ -266,7 +266,7 @@
                                         <option value="1" >Y</option>
                                     </select>
                                     <!-- <div class="msg" id="use_msg" name="use_msg" style="display: none;"></div> -->
-                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="valid-feedback" id="use_msg">Looks good!</div>
                                 </div>
                             </div>
                             <div class="col">
@@ -274,7 +274,7 @@
                                     <label for="orderBY">순서<span style="color: red;">*</span></label>
                                     <input type="text" id="ccgOrder" name="ccgOrder" value="" placeholder="숫자">
                                     <!-- <div class="msg" id="order_msg" name="order_msg" style="display: none;"></div> -->
-                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="valid-feedback" id="order_msg">Looks good!</div>
                                 </div>
                             </div>
                         </div>
@@ -284,7 +284,7 @@
                                     <label for="explanation">설명<span style="color: red;">*</span></label>
                                     <textarea id="explanation" name="explanation" placeholder=""></textarea>
                                     <!-- <div class="msg" id="ex_msg" name="ex_msg" style="display: none;"></div> -->
-                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="valid-feedback" id="ex_msg">Looks good!</div>
                                 </div>
                             </div>
                             <div class="col">
@@ -296,7 +296,7 @@
                                         <option value="1">Y</option>
                                     </select>
                                     <!-- <div class="msg" id="del_msg" name="del_msg" style="display: none;"></div> -->
-                                    <div class="valid-feedback">Looks good!</div>
+                                    <div class="valid-feedback" id="del_msg">Looks good!</div>
                                 </div>
                             </div>
                         </div>
@@ -429,15 +429,15 @@
         validation = function() {
             if(!cg_code_regex($('input[name=cg_code]'), $('input[name=cg_code]').val(), "영문(대문자),숫자를 입력하세요!", $('#cg_code_msg'))) {
                 return false;
-            } else if (!ano_regex($('input[name=cg_another]'), $('input[name=cg_another]').val(), "영문(대문자),숫자를 입력하세요!", $('#another_msg'))) {
+            } else if (!ano_regex($('input[name=seqAnother]'), $('input[name=seqAnother]').val(), "영문(대문자),숫자를 입력하세요!", $('#Anot_msg'))) {
                 return false;
-            } else if (!ko_regex($('input[name=cg_name_ko]'), $('input[name=cg_name_ko]').val(), "한글,숫자를 입력하세요!", $('#ko_msg'))) {
+            } else if (!ko_regex($('input[name=groupName]'), $('input[name=groupName]').val(), "한글,숫자를 입력하세요!", $('#ko_msg'))) {
                 return false;
             } else if (!eng_regex($('input[name=cg_name_eng]'), $('input[name=cg_name_eng]').val(), "영문(대소문자),숫자를 입력하세요!", $('#eng_msg'))) {
                 return false;
             } else if (!use_regex($('#useNY'), $('#useNY').val(), "사용여부를 선택하세요!", $('#use_msg'))) {
                 return false;
-            } else if (!order_regex($('input[name=orderBY]'), $('input[name=orderBY]').val(), "숫자를 입력하세요!", $('#order_msg'))) {
+            } else if (!order_regex($('input[name=ccgOrder]'), $('input[name=ccgOrder]').val(), "숫자를 입력하세요!", $('#order_msg'))) {
                 return false;
             } else if (!ex_regex($('#explanation'), $('#explanation').val(), "설명을 입력하세요!", $('#ex_msg'))) {
                 return false;

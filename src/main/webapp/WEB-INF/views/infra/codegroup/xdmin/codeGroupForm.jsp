@@ -225,7 +225,7 @@
                                 <div class="input-control">
                                     <label for="cg_code">코드그룹 코드<span style="color: red;">*</span></label>
                                     <input type="text" id="cg_code" name="cg_code" value="" placeholder="영문(대문자),숫자">
-                                    <!-- <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div> -->
+                                    <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
                                     <div class="valid-feedback" id="cg_code_msg"></div>
                                 </div>
                             </div>
@@ -344,6 +344,10 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-check form-check-inline">
+						  <input class="form-check-input" name="check" type="checkbox" id="checkBox" value="option1">
+						  <label class="form-check-label" for="inlineCheckbox1">1</label>
+						</div>
                         <!-- 리스트 -->
                         <div class="row align-items-center">
                             <div class="col-1">
@@ -379,7 +383,7 @@
                                     data-bs-target="#deleteModal">
                                     <i class="fa-solid fa-trash-can" style="color: white;"></i>
                                 </button>
-                                <button class="border-0 btn btn-sm bg-success shadow" type="button" onclick="validation()">
+                                <button class="border-0 btn btn-sm bg-success shadow" type="button" onclick="test()">
                                     <i class="fa-regular fa-bookmark" style="color: white;"></i>
                                 </button>
                             </div>
@@ -425,28 +429,27 @@
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-        $('.error').hide();
         validation = function() {
-            if(!cg_code_regex($('input[name=cg_code]'), $('input[name=cg_code]').val(), "영문(대문자),숫자를 입력하세요!", $('#cg_code_msg'))) {
-                return false;
-            } else if (!ano_regex($('input[name=seqAnother]'), $('input[name=seqAnother]').val(), "영문(대문자),숫자를 입력하세요!", $('#Anot_msg'))) {
-                return false;
-            } else if (!ko_regex($('input[name=groupName]'), $('input[name=groupName]').val(), "한글,숫자를 입력하세요!", $('#ko_msg'))) {
-                return false;
-            } else if (!eng_regex($('input[name=cg_name_eng]'), $('input[name=cg_name_eng]').val(), "영문(대소문자),숫자를 입력하세요!", $('#eng_msg'))) {
-                return false;
-            } else if (!use_regex($('#useNY'), $('#useNY').val(), "사용여부를 선택하세요!", $('#use_msg'))) {
-                return false;
-            } else if (!order_regex($('input[name=ccgOrder]'), $('input[name=ccgOrder]').val(), "숫자를 입력하세요!", $('#order_msg'))) {
-                return false;
-            } else if (!ex_regex($('#explanation'), $('#explanation').val(), "설명을 입력하세요!", $('#ex_msg'))) {
-                return false;
-            } else if (!del_regex($('#deleteNY'), $('#deleteNY').val(), "삭제여부를 선택하세요!", $('#del_msg'))) {
-                return false;
-            } else {
-                return true;
-            }
+            
         };
+        test = function() {
+        	
+        	/* radio */
+        	if($('input:radio[name=codeGroup_Gender]').is(':checked') == false) {
+				alert("성별을 선택하세요");
+			} 
+        	
+        	if (document.querySelector('input[name=codeGroup_Gender]:checked') == null) {
+ 				alert("성별을 선택하세요");
+ 			} else {
+ 				alert(document.querySelector('input[name=codeGroup_Gender]').value);
+ 			}
+        	
+        	/* checkbox */
+        	if (document.querySelector("input[name='check']:checked") == null) {
+        		alert("약관에 동의하십니까?");
+        	}
+		};
     </script>
 </body>
 </html>

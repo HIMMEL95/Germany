@@ -5,8 +5,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-codegroup
-
 <html>
 <head>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>

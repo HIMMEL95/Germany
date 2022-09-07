@@ -4,7 +4,7 @@ checkOnlyKorEngNum = function(objName, pattern, nullNy, message, hide) {
 }
 
 checkOnlyEngNum = function(objName, pattern, nullNy, message, hide) {
-	var reg = /^[a-zA-z0-9]$/g;
+	var reg = /^[a-zA-z0-9]{1,}$/g;
 	return checkLogic(objName, pattern, nullNy, message, hide, reg);
 }
 
@@ -34,21 +34,21 @@ checkOnlyNum = function(objName, pattern, nullNy, min, max, message, hide) {
 		checkLogicExpression(obj, hideFeedback, pattern, message, hide);
 		return false;
 	}
-	
 }
 
 checkLogic = function(objName, pattern, nullNy, message, hide, reg) {
 	var obj = document.getElementById(objName);
 	var objValue = document.getElementById(objName).value.trim();
-	const hideFeedback = document.getElementById(hide + "_msg");
-	
+	const hideFeedback = document.getElementById(objName+"_msg");
+
 	if (nullNy == 0) {
 		if (reg.test(objValue)) {
 			document.getElementById(hide).parentElement.classList.remove('error');
 			document.getElementById(hide).parentElement.classList.add('success');
+			hideFeedback.style.display = 'none';
 			return true;
 		} else {
-			checkLoginExpression(obj, message, pattern, hide);
+			checkLogicExpression(obj, hideFeedback, message, pattern, hide);
 			return false;
 		}
 	} else if (nullNy == 1) {
@@ -56,9 +56,10 @@ checkLogic = function(objName, pattern, nullNy, message, hide, reg) {
 			if (reg.test(objValue)) {
 				document.getElementById(hide).parentElement.classList.remove('error');
 				document.getElementById(hide).parentElement.classList.add('success');
+				hideFeedback.style.display = 'none';
 				return true;
 			} else {
-				checkLogicExpression(obj, message, pattern, hide);
+				checkLogicExpression(obj, hideFeedback, message, pattern, hide);
 				return false;
 			}
 		} else {

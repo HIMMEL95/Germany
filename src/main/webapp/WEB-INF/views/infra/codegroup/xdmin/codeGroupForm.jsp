@@ -120,7 +120,7 @@
     <main>
         <div class="top_space"></div>
         <div class="container">
-            <form method="post" action="/codeGroup/codeGroupInst">
+            <form id="myForm" method="post" action="/codeGroup/codeGroupInst">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -232,8 +232,7 @@
                                 <div class="input-control">
                                     <label for="cg_another">코드그룹 코드 (Another)<span style="color: red;">*</span></label>
                                     <input type="text" id="seqAnother" name="seqAnother" value="" placeholder="영문(대문자),숫자">
-                                    <!-- <div class="msg" id="another_msg" name="another_msg" style="display: none;"></div> -->
-                                    <div class="valid-feedback" id="Anot_msg"></div>
+                                    <div class="msg" id="seqAnother_msg" name="seqAnother_msg" style="display: none;"></div>
                                 </div>
                             </div>
                         </div>
@@ -242,16 +241,14 @@
                                 <div class="input-control">
                                     <label for="cg_name_ko">코드그룹 이름 (한글)<span style="color: red;">*</span></label>
                                     <input type="text" id="groupName" name="groupName" value="" placeholder="한글,숫자">
-                                    <!-- <div class="msg" id="ko_msg" name="ko_msg" style="display: none;"></div> -->
-                                    <div class="valid-feedback" id="ko_msg">Looks good!</div>
+                                    <div class="msg" id="groupName_msg" name="groupName_msg" style="display: none;"></div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input-control">
-                                    <label for="cg_name_eng">코드그룹 이름 (영문)<span style="color: red;">*</span></label>
-                                    <input type="text" id="cg_name_eng" name="cg_name_eng" value="" placeholder="영문(대소문자),숫자">
-                                    <!-- <div class="msg" id="eng_msg" name="eng_msg" style="display: none;"></div> -->
-                                    <div class="valid-feedback" id="eng_msg">Looks good!</div>
+                                    <label for="eng">코드그룹 이름 (영문)<span style="color: red;">*</span></label>
+                                    <input type="text" id="eng" name="eng" value="" placeholder="영문(대소문자),숫자">
+                                    <div class="msg" id="eng_msg" name="eng_msg" style="display: none;"></div>
                                 </div>
                             </div>
                         </div>
@@ -264,26 +261,23 @@
                                         <option value="0">N</option>
                                         <option value="1" >Y</option>
                                     </select>
-                                    <!-- <div class="msg" id="use_msg" name="use_msg" style="display: none;"></div> -->
-                                    <div class="valid-feedback" id="use_msg">Looks good!</div>
+                                    <div class="msg" id="useNY_msg" name="useNY_msg" style="display: none;"></div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input-control">
                                     <label for="orderBY">순서<span style="color: red;">*</span></label>
                                     <input type="text" id="ccgOrder" name="ccgOrder" value="" placeholder="숫자">
-                                    <!-- <div class="msg" id="order_msg" name="order_msg" style="display: none;"></div> -->
-                                    <div class="valid-feedback" id="order_msg">Looks good!</div>
+                                    <div class="msg" id="orderBY_msg" name="orderBY_msg" style="display: none;"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="input-control">
-                                    <label for="explanation">설명<span style="color: red;">*</span></label>
-                                    <textarea id="explanation" name="explanation" placeholder=""></textarea>
-                                    <!-- <div class="msg" id="ex_msg" name="ex_msg" style="display: none;"></div> -->
-                                    <div class="valid-feedback" id="ex_msg">Looks good!</div>
+                                    <label for="ex">설명<span style="color: red;">*</span></label>
+                                    <textarea id="ex" name="ex" placeholder=""></textarea>
+                                    <div class="msg" id="ex_msg" name="ex_msg" style="display: none;"></div>
                                 </div>
                             </div>
                             <div class="col">
@@ -294,8 +288,7 @@
                                         <option value="0">N</option>
                                         <option value="1">Y</option>
                                     </select>
-                                    <!-- <div class="msg" id="del_msg" name="del_msg" style="display: none;"></div> -->
-                                    <div class="valid-feedback" id="del_msg">Looks good!</div>
+                                    <div class="msg" id="del_msg" name="del_msg" style="display: none;"></div>
                                 </div>
                             </div>
                         </div>
@@ -304,6 +297,7 @@
                                 <div class="input-control">
                                     <label for="varchar_sub1">예비1 (varchar type)</label>
                                     <input type="text" id="varchar_sub1" value="" placeholder="영문(대소문자), 숫자">
+                                    
                                 </div>
                             </div>
                             <div class="col">
@@ -429,7 +423,15 @@
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         validation = function() {
-        	if(!checkOnlyKorEngNum('cg_code', 2, 1, "영문(대소문자), 숫자만 입력 가능합니다.", "cg_code_msg"))  return false;         
+        	if(!checkOnlyKorEngNum('cg_code', 2, 0, "한글, 영문(대소문자), 숫자만 입력 가능합니다.", "cg_code_msg")) return false;         
+        	if(!checkOnlyEngNum('seqAnother', 2, 1, "영문(대소문자), 숫자만 입력 가능합니다.", "seqAnother_msg")) return false;         
+        	/* else if(!checkOnlyKorNum('groupName', 2, 1, "한글, 숫자만 입력 가능합니다.", "groupName_msg")) return false;         
+        	else if(!checkOnlyEngNum('eng', 2, 1, "영문(대소문자), 숫자만 입력 가능합니다.", "eng_msg")) return false;         
+        	else if(!checkOnlyNum('orderBY', 2, 1, 0, 255, "순서는 0~255 사이의 숫자만 입력 가능합니다.", "orderBY_msg")) return false;         
+        	else if(!checkOnlyKorEngNum('ex', 2, 1, "설명을 입력 하세요.", "ex_msg")) return false;         
+        	else if(!checkOnlyKorEngNum('deleteNY', 2, 1, "삭제여부를 선택하세요.", "del_msg")) return false; */  
+        	return false;
+        	/* document.getElementById('myForm').submit(); */
         };
         /* test = function() {
         	

@@ -225,8 +225,7 @@
                                 <div class="input-control">
                                     <label for="cg_code">코드그룹 코드<span style="color: red;">*</span></label>
                                     <input type="text" id="cg_code" name="cg_code" value="" placeholder="영문(대문자),숫자">
-                                    <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
-                                    <div class="valid-feedback" id="cg_code_msg"></div>
+                                    <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;">sad</div>
                                 </div>
                             </div>
                             <div class="col">
@@ -383,7 +382,7 @@
                                     data-bs-target="#deleteModal">
                                     <i class="fa-solid fa-trash-can" style="color: white;"></i>
                                 </button>
-                                <button class="border-0 btn btn-sm bg-success shadow" type="button" onclick="test()">
+                                <button class="border-0 btn btn-sm bg-success shadow" type="button" onclick="validation()">
                                     <i class="fa-regular fa-bookmark" style="color: white;"></i>
                                 </button>
                             </div>
@@ -430,11 +429,11 @@
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         validation = function() {
-            
+        	if(!checkOnlyKorEngNum('cg_code', 2, 1, "영문(대소문자), 숫자만 입력 가능합니다.", "cg_code_msg"))  return false;         
         };
-        test = function() {
+        /* test = function() {
         	
-        	/* radio */
+        	// radio
         	if($('input:radio[name=codeGroup_Gender]').is(':checked') == false) {
 				alert("성별을 선택하세요");
 			} 
@@ -445,11 +444,11 @@
  				alert(document.querySelector('input[name=codeGroup_Gender]').value);
  			}
         	
-        	/* checkbox */
+        	// checkbox
         	if (document.querySelector("input[name='check']:checked") == null) {
         		alert("약관에 동의하십니까?");
         	}
-		};
+		}; */
     </script>
 </body>
 </html>

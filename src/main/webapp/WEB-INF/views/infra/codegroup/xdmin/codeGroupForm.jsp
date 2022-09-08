@@ -14,7 +14,7 @@
     <title>Article List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="/resources/css/cc.css" />
+    <link rel="stylesheet" href="/resources/css/admin/cc.css" />
     <script defer type="text/javascript" src="/resources/js/validation.js"></script>
 </head>
 
@@ -231,7 +231,7 @@
                             <div class="col">
                                 <div class="input-control">
                                     <label for="seqAnother">코드그룹 코드 (Another)<span style="color: red;">*</span></label>
-                                    <input type="text" id="seqAnother" name="seqAnother" value="" placeholder="영문(대문자),숫자">
+                                    <input type="text" id="seqAnother" name="seqAnother" value="<c:out value="${item.seqAnother }"/>" placeholder="영문(대문자),숫자">
                                     <div class="msg" id="seqAnother_msg" name="seqAnother_msg" style="display: none;"></div>
                                 </div>
                             </div>
@@ -240,7 +240,7 @@
                             <div class="col">
                                 <div class="input-control">
                                     <label for="groupName">코드그룹 이름 (한글)<span style="color: red;">*</span></label>
-                                    <input type="text" id="groupName" name="groupName" value="" placeholder="한글,숫자">
+                                    <input type="text" id="groupName" name="groupName" value="<c:out value="${item.groupName }"/>" placeholder="한글,숫자">
                                     <div class="msg" id="groupName_msg" name="groupName_msg" style="display: none;"></div>
                                 </div>
                             </div>
@@ -267,7 +267,7 @@
                             <div class="col">
                                 <div class="input-control">
                                     <label for="orderBY">순서<span style="color: red;">*</span></label>
-                                    <input type="text" id="orderBY" name="orderBY" value="" placeholder="숫자">
+                                    <input type="text" id="orderBY" name="orderBY" value="<c:out value="${item.ccgOrder }"/>" placeholder="숫자">
                                     <div class="msg" id="orderBY_msg" name="orderBY_msg" style="display: none;"></div>
                                 </div>
                             </div>

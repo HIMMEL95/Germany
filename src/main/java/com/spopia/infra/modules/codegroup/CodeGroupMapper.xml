@@ -43,6 +43,16 @@
 			</choose>
 	</select>
 	
+	<select id="selectOne" resultMap="resultMapObj">
+		
+		select
+			cg.*
+		from CCG cg
+		where 1=1
+			AND seq = #{seq}
+			
+	</select>
+	
 	<insert id="insert">
 		INSERT INTO CCG (
 			groupName

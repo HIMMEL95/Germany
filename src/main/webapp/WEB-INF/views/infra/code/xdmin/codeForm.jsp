@@ -14,7 +14,7 @@
     <title>Article List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="/resources/css/cc.css" />
+    <link rel="stylesheet" href="/resources/css/admin/cc.css" />
     <script defer type="text/javascript" src="/resources/js/validation.js"></script>
 </head>
 
@@ -236,14 +236,14 @@
                             </div>
                             <div class="col">
                                 <label for="seqAnother" class="form-label">코드 (Another)</label>
-                                <input type="text" class="form-control" id="seqAnother" name="seqAnother" value="" placeholder="">
+                                <input type="text" class="form-control" id="seqAnother" name="seqAnother" value="<c:out value="${item.seqAnother }"/>" placeholder="">
                                 <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label for="CCName" class="form-label">코드 이름 (한글)</label>
-                                <input type="text" class="form-control" id="CCName" name="CCName" value="" placeholder="">
+                                <input type="text" class="form-control" id="CCName" name="CCName" value="<c:out value="${item.CCName }"/>" placeholder="">
                                 <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
                             </div>
                             <div class="col">
@@ -263,7 +263,7 @@
                             </div>
                             <div class="col">
                                 <label for="ccOrder" class="form-label">순서</label>
-                                <input type="text" class="form-control" id="ccOrder" name="ccOrder" value="" placeholder="숫자">
+                                <input type="text" class="form-control" id="ccOrder" name="ccOrder" value="<c:out value="${item.ccOrder }"/>" placeholder="숫자">
                                 <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
                             </div>
                         </div>

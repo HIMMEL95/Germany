@@ -39,7 +39,6 @@ public class CodeController {
 		List<CodeGroup> list1 = cgService.selectList();
 		model.addAttribute("list1", list1);
 		
-		
 		return "infra/code/xdmin/codeForm";
 	}
 	
@@ -50,4 +49,14 @@ public class CodeController {
 		return "redirect:/code/codeList";
 	}
 
+	@RequestMapping(value = "codeView")
+	public String CodeView(CodeVo vo, Model model) throws Exception {
+		Code item = service.selectOne(vo);
+		model.addAttribute("item", item);
+		
+		List<CodeGroup> list1 = cgService.selectList();
+		model.addAttribute("list1", list1);
+		
+		return "infra/code/xdmin/codeForm";
+	}
 }

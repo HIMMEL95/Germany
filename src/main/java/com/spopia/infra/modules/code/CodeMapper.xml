@@ -26,6 +26,15 @@
 			</choose>
 	</select>
 	
+	<select id="selectOne" resultMap="resultMapObj">
+		select
+			c.*
+		from
+			CC c
+		where 1=1
+			AND c.seq = #{seq}
+	</select>
+	
 	<insert id="insert">
 		INSERT INTO CC (
 			CCName

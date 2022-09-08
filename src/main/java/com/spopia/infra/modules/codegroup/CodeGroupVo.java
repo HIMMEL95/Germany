@@ -5,6 +5,13 @@ public class CodeGroupVo {
 	private Integer shOption;
 	private String shValue;
 	private Integer shDelNy;
+	private String seq;
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
 	public Integer getShDelNy() {
 		return shDelNy;
 	}

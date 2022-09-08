@@ -5,6 +5,13 @@ public class CodeVo {
 	private String shOption;
 	private String shValue;
 	private Integer shDelNy;
+	private String seq;
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
 	public String getShOption() {
 		return shOption;
 	}

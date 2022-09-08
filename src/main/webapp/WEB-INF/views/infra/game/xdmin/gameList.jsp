@@ -1,0 +1,411 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Game List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="/resources/css/admin/gameList.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <header class="navbar-light fixed-top header-static bg-mode align-items-center">
+        <!-- 상단 -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container px-3 px-xl-5 pt-1">
+                <!-- Logo START -->
+                <a class="navbar-brand" href="main_page.html">
+                    <img class="light-mode-item navbar-brand-item" src="../../resources/images/SPOPIA_white.png" alt="logo"
+                        style="width: 90px;">
+                </a>
+                <!-- Profile START -->
+                <div class="dropdown">
+                    <ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
+                        <li class="me-2">
+                            <a class="p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
+                                data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img class="avatar-img rounded-circle" src="../../resources/images/diano.jpg" alt="avatar"
+                                    style="width: 30px;">
+                            </a>
+                            <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
+                                aria-labelledby="profileDropdown">
+                                <!-- Profile info -->
+                                <li class="px-3">
+                                    <div class="d-flex align-items-center">
+                                        <!-- Avatar -->
+                                        <div class="avatar mt-2">
+                                            <img class="avatar-img rounded-circle shadow" src="../../resources/images/diano.jpg"
+                                                alt="avatar" style="width: 30px;">
+                                        </div>
+                                        <div>
+                                            <a class="fs-6 fw-bold" href="#">이하늘</a>
+                                            <p class="small m-0">himmel@gmail.com</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </li>
+                                <!-- Links -->
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fa-solid fa-user me-2"></i>
+                                        Edit Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fa-solid fa-gear me-2"></i>
+                                        Account Settings
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fa-solid fa-circle-info me-2"></i>
+                                        Help
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item bg-danger-soft-hover" href="../../seperate/html/seperatePage.html">
+                                        <i class="fa-solid fa-power-off me-2"></i>
+                                        Sign Out
+                                    </a>
+                                </li>
+                                <!-- Dark mode switch START -->
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Profile START -->
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div style="height: 100px;"></div>
+        <div class="container">
+            <form>
+                <div class="row g-4">
+                    <!-- 좌측 목록 탭 -->
+                    <div class="col-lg-3">
+                        <!-- Advanced filter responsive toggler START -->
+                        <nav class="navbar navbar-expand-lg mx-0">
+                            <div class="d-flex align-items-center d-lg-none">
+                                <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
+                                    <i class="btn btn-primary fw-bold fa-solid fa-sliders-h"></i>
+                                    <span class="h6 mb-0 fw-bold d-lg-none ms-2">항목</span>
+                                </button>
+                            </div>
+                
+                            <nav class="navbar navbar-expand-lg mx-0">
+                                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar"
+                                    style="visibility: visible; width:250px;" aria-modal="true" role="dialog">
+                                    <div class="offcanvas-header">
+                                        <button type="button" class="btn-close text-reset ms-auto" data-bs-dismiss="offcanvas"
+                                            aria-label="Close"></button>
+                                    </div>
+                
+                                    <div class="offcanvas-body d-block px-2 px-lg-0">
+                                        <div class="card overflow-hidden">
+                                            <img src="../../resources/images/mountains.png" class="card-img-top" alt="background"
+                                                style="height: 50px; background-position: center; background-size: cover; background-repeat: no-repeat;">
+                                            <div class="card-body pt-0">
+                                                <div class="text-center">
+                                                    <div class="avatar avatar-lg mt-n5 mb-3">
+                                                        <a href="#"><img class="avatar-img rounded border border-white border-3"
+                                                                src="../../resources/images/diano.jpg" style="width: 50px;" alt=""></a>
+                                                    </div>
+                                                    <div class="mt-2 mb-4">
+                                                        <span class="mb-0"><a href="#">이하늘</a></span>
+                                                        <small>Himmel</small><br>
+                                                        <small>himmel@gmail.com</small>
+                                                    </div>
+                                                    <hr>
+                                                    <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="../Dashboard/Dashboard.html">
+                                                                <i class="fa-solid fa-chart-line pe-3"></i>
+                                                                <span>Dashboard</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="../user/userList.html">
+                                                                <i class="fa-solid fa-users pe-3"></i>
+                                                                <span>회원관리</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="../article/articleList.html">
+                                                                <i class="fas fa-light fa-newspaper pe-3"></i>
+                                                                <span>게시물 관리</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="../articleComment/articleCommentList.html">
+                                                                <i class="fas fa-light fa-comments pe-3"></i>
+                                                                <span>댓글 리스트</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="../game/gameList.html">
+                                                                <i class="fas fa-duotone fa-trophy pe-3"></i>
+                                                                <span>경기 기록 관리</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="nav small mt-4 justify-content-center lh-1">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="my-profile-about.html">About</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="settings.html">Settings</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" target="_blank" href="https://support.webestica.com/login">Support
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" target="_blank" href="docs/index.html">Docs </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="help.html">Help</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="privacy-and-terms.html">Privacy &amp; terms</a>
+                                            </li>
+                                        </ul>
+                                        <p class="small text-center mt-1">©2022 <a class="text-body" target="_blank" href="#"> SPOPIA
+                                            </a></p>
+                                    </div>
+                                </div>
+                            </nav>
+                        </nav>
+                    </div>
+                    <!-- 중앙 메인 영역 -->
+                    <div class="col-md-8 col-lg-9 vstack gap-4">
+                        <!-- 게시물 사진 -->
+                        <div class="row">
+                            <div class="col-12 ">
+                                <div class="card text-white position-relative shadow-lg">
+                                    <img src="../../resources/images/xdmin/listBack.jpg" class="card-img" style="height: 200px;"
+                                        alt="...">
+                                    <div class="card-img-overlay text-center p-4 position-absoulte top-50 start-50 translate-middle">
+                                        <span class="card-title align-middle fw-bold fs-3">경기 기록 관리</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 검색 -->
+                        <div class="card p-3 shadow">
+                            <div class="row align-items-center pb-2">
+                                <div class="col-2">
+                                    <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
+                                        <option value="" selected>선택</option>
+                                        <option value="createdAt">등록일</option>
+                                        <option value="modifiedAt">수정일</option>
+                                    </select>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-01-01" required>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-12-31" required>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-2">
+                                    <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
+                                        <option value="" selected>선택</option>
+                                        <option value="name">이름</option>
+                                        <option value="id">아이디</option>
+                                    </select>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" class="form-control" id="validationCustom01" value="" required>
+                                </div>
+                                <div class="col-3">
+                                    <button class="btn btn-primary fw-bold btn-sm shadow" type="submit">검색</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 리스트 -->
+                        <div class="card ps-3 pt-3 pe-3 shadow">
+                            <table class="table text-center align-middle">
+                                <thead>
+                                    <tr>
+                                        <th style="font-size: small;"><input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault"></th>
+                                        <th>번호</th>
+                                        <th>종목</th>
+                                        <th>홈팀</th>
+                                        <th>원정팀</th>
+                                        <th>홈팀 스코어</th>
+                                        <th>원정팀 스코어</th>
+                                        <th>경기장</th>
+                                        <th>경기 일자</th>
+                                        <th>경기 시작 시간</th>
+                                        <th>등록일</th>
+                                        <th>수정일</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr onclick="newPage()">
+                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault">
+                                        </td>
+                                        <td>1</td>
+                                        <td>야구</td>
+                                        <td>두산</td>
+                                        <td>KIA</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>광주</td>
+                                        <td>2022.07.15</td>
+                                        <td>18:30</td>
+                                        <td>2022-07-13 10:02:00</td>
+                                        <td>2022-07-13 10:17:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault">
+                                        </td>
+                                        <td>2</td>
+                                        <td>축구</td>
+                                        <td>울산 현대</td>
+                                        <td>FC 서울</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>울산문수월드컵경기장</td>
+                                        <td>2022.07.16</td>
+                                        <td>18:00</td>
+                                        <td>2022-07-14 10:02:00</td>
+                                        <td>2022-07-14 10:17:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault">
+                                        </td>
+                                        <td>3</td>
+                                        <td>야구</td>
+                                        <td>SSG</td>
+                                        <td>KT</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>인천 SSG랜더스필드</td>
+                                        <td>2022.07.15</td>
+                                        <td>18:30</td>
+                                        <td>2022-07-14 11:02:00</td>
+                                        <td>2022-07-14 11:17:00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination pagination-sm col-3 offset-5">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-1">
+                                <button class="border-0 btn btn-sm shadow" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">
+                                    <i class="fa-solid fa-trash fa-lg text-danger"></i>
+                                </button>
+                                <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title fw-bold" id="staticBackdropLabel">게시물 삭제</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body fs-6">
+                                                선택하신 게시물을 정말로 삭제하시겠습니까?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                                                <button type="button" class="btn btn-primary">삭제</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-1 offset-10 pe-3">
+                                <a class="border-0 btn btn-sm shadow" role="button" href="../game/gameRegForm.html">
+                                    <i class="fa-solid fa-id-card fa-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div style="height: 50px;">
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <div class="footer_inner">
+                <!--[주]고객센터,제휴문의,서비스안내-->
+                <ul class="footer_link" id="footer_link">
+                    <li><a target="_blank" class="footer_item" href="http://www.naver.com/rules/service.html"
+                            id="fot.agreement"><span class="text">이용약관</span></a></li>
+                    <li><a target="_blank" class="footer_item" href="http://www.naver.com/rules/privacy.html"
+                            id="fot.privacy"><span class="text"><strong>개인정보처리방침</strong></span></a></li>
+                    <li><a target="_blank" class="footer_item" href="http://www.naver.com/rules/disclaimer.html"
+                            id="fot.disclaimer"><span class="text">책임의 한계와 법적고지</span></a></li>
+                    <li><a target="_blank" class="footer_item"
+                            href="https://help.naver.com/support/service/main.nhn?serviceNo=532" id="fot.help"><span
+                                class="text">회원정보 고객센터</span></a></li>
+                </ul>
+                <div class="footer_copy">
+                    <a id="fot.naver" target="_blank" href="https://www.navercorp.com">
+                        <img src="../../image/SPOPIA1.png" alt="logo" style="width: 45px;">
+                    </a>
+                    <span class="text">Copyright</span>
+                    <span class="corp">© SPOPIA Corp.</span>
+                    <span class="text">All Rights Reserved.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        // row 클릭시 페이지 이동
+        function newPage() {
+            window.location.href = './gameView.html'
+        }
+    </script>
+</body>
+
+</html>

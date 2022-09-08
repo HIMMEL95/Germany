@@ -11,10 +11,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Game List</title>
+    <title>Article List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="/resources/css/xdmin/gameList.css" rel="stylesheet" type="text/css">
+    <link href="/resources/css/xdmin/articleList.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container px-3 px-xl-5 pt-1">
                 <!-- Logo START -->
-                <a class="navbar-brand" href="main_page.html">
+                <a class="navbar-brand" href="../../user/member/main_page.html">
                     <img class="light-mode-item navbar-brand-item" src="../../resources/images/SPOPIA_white.png" alt="logo"
                         style="width: 90px;">
                 </a>
@@ -43,7 +43,7 @@
                                 <li class="px-3">
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
-                                        <div class="avatar mt-2">
+                                        <div class="avatar1 me-3">
                                             <img class="avatar-img rounded-circle shadow" src="../../resources/images/diano.jpg"
                                                 alt="avatar" style="width: 30px;">
                                         </div>
@@ -92,7 +92,7 @@
     <main>
         <div style="height: 100px;"></div>
         <div class="container">
-            <form>
+            <form method="get">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -187,7 +187,8 @@
                                             </li>
                                         </ul>
                                         <p class="small text-center mt-1">©2022 <a class="text-body" target="_blank" href="#"> SPOPIA
-                                            </a></p>
+                                            </a>
+                                        </p>
                                     </div>
                                 </div>
                             </nav>
@@ -202,7 +203,7 @@
                                     <img src="../../resources/images/xdmin/listBack.jpg" class="card-img" style="height: 200px;"
                                         alt="...">
                                     <div class="card-img-overlay text-center p-4 position-absoulte top-50 start-50 translate-middle">
-                                        <span class="card-title align-middle fw-bold fs-3">경기 기록 관리</span>
+                                        <span class="card-title align-middle fw-bold fs-3">게시물 관리</span>
                                     </div>
                                 </div>
                             </div>
@@ -248,71 +249,55 @@
                                         <th style="font-size: small;"><input class="form-check-input" type="checkbox" value=""
                                                 id="flexCheckDefault"></th>
                                         <th>번호</th>
+                                        <th class="w-25">제목</th>
+                                        <th>기자</th>
                                         <th>종목</th>
-                                        <th>홈팀</th>
-                                        <th>원정팀</th>
-                                        <th>홈팀 스코어</th>
-                                        <th>원정팀 스코어</th>
-                                        <th>경기장</th>
-                                        <th>경기 일자</th>
-                                        <th>경기 시작 시간</th>
+                                        <th>신문사</th>
                                         <th>등록일</th>
                                         <th>수정일</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr onclick="newPage()">
+                                <tbody onclick="newPage()">
+                                    <tr>
                                         <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
                                                 id="flexCheckDefault">
                                         </td>
                                         <td>1</td>
+                                        <td>'123억 마무리' 언제 올지 모른다 압도적 꼴찌 한화 또 다른 비극</td>
+                                        <td>정철우</td>
                                         <td>야구</td>
-                                        <td>두산</td>
-                                        <td>KIA</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>광주</td>
-                                        <td>2022.07.15</td>
-                                        <td>18:30</td>
-                                        <td>2022-07-13 10:02:00</td>
-                                        <td>2022-07-13 10:17:00</td>
+                                        <td>MK스포츠</td>
+                                        <td>2022-07-28 10:02:00</td>
+                                        <td>2022-07-28 10:17:00</td>
                                     </tr>
                                     <tr>
                                         <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
                                                 id="flexCheckDefault">
                                         </td>
                                         <td>2</td>
+                                        <td>호날두는 보는 앞에서...'이적생' 에릭센, 맨유 데뷔골 '쾅'</td>
+                                        <td>강예진</td>
                                         <td>축구</td>
-                                        <td>울산 현대</td>
-                                        <td>FC 서울</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>울산문수월드컵경기장</td>
-                                        <td>2022.07.16</td>
-                                        <td>18:00</td>
-                                        <td>2022-07-14 10:02:00</td>
-                                        <td>2022-07-14 10:17:00</td>
+                                        <td>스포츠서울</td>
+                                        <td>2022-07-28 08:33:00</td>
+                                        <td>2022-07-28 11:43:00</td>
                                     </tr>
                                     <tr>
                                         <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
                                                 id="flexCheckDefault">
                                         </td>
                                         <td>3</td>
-                                        <td>야구</td>
-                                        <td>SSG</td>
-                                        <td>KT</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>인천 SSG랜더스필드</td>
-                                        <td>2022.07.15</td>
-                                        <td>18:30</td>
-                                        <td>2022-07-14 11:02:00</td>
-                                        <td>2022-07-14 11:17:00</td>
+                                        <td>점점 커지는 9월의 중요성… 김민재, 황인범, 손흥민 '필참'</td>
+                                        <td>김정용</td>
+                                        <td>축구</td>
+                                        <td>풋볼리스트</td>
+                                        <td>2022-07-28 07:01:00</td>
+                                        <td>2022-07-28 07:01:00</td>
                                     </tr>
                                 </tbody>
                             </table>
                             <nav aria-label="Page navigation">
-                                <ul class="pagination pagination-sm col-3 offset-5">
+                                <ul class=" pagination pagination-sm col-3 offset-5">
                                     <li class="page-item">
                                         <a class="page-link" href="#" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
@@ -356,7 +341,7 @@
                                 </div>
                             </div>
                             <div class="col-1 offset-10 pe-3">
-                                <a class="border-0 btn btn-sm shadow" role="button" href="/game/gameForm">
+                                <a class="border-0 btn btn-sm shadow role=" button" href="/article/articleForm">
                                     <i class="fa-solid fa-id-card fa-lg"></i>
                                 </a>
                             </div>
@@ -400,12 +385,6 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        // row 클릭시 페이지 이동
-        function newPage() {
-            window.location.href = './gameView.html'
-        }
-    </script>
 </body>
 
 </html>

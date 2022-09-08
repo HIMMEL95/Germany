@@ -12,7 +12,17 @@ public class ArticleController {
 	ArticleServiceImpl service;
 	
 	@RequestMapping(value = "/articleView")
-	public String articleView() {
-		return "infra/article/xdmin/article_view";
+	public String articleView()throws Exception {
+		return "infra/article/xdmin/articleView";
+	}
+	
+	@RequestMapping(value = "/articleForm")
+	public String articleForm() throws Exception {
+		return "infra/article/xdmin/articleForm";
+	}
+	
+	@RequestMapping(value = "/articleList")
+	public String articleList() throws Exception {
+		return "infra/article/xdmin/articleList";
 	}
 }

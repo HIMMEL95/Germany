@@ -11,10 +11,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Game Reg Form</title>
+    <title>Article Reg Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="/resources/css/xdmin/gameForm.css" rel="stylesheet" type="text/css">
+    <link href="/resources/css/xdmin/articleForm.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -90,111 +90,67 @@
     </header>
 
     <main>
-        <div style="height: 80px;"></div>
-        <div class="container">
-            <form class="needs-validation" novalidate method="get" action="../game/gameList.html">
+        <form class="needs-validation" action="/article/articleList" method="get">
+            <div style="height: 80px;"></div>
+            <div class="container" style="max-width: 900px;">
                 <div class="text-center pb-3">
-                    <span class="fs-1 fw-bold">경기 기록 등록</span>
+                    <span class="fs-1 fw-bold">기사 등록</span>
                 </div>
                 <div class="card ps-5 pe-5 pt-4 pb-4 shadow">
-                    <div class="row pt-4">
-                        <div class="col mb-4">
+                    <div class="row mb-4">
+                        <div class="col-5">
+                            <label for="title" class="form-label fw-bold">제목</label>
+                            <input type="text" class="form-control" id="title" value="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            <label for="content" class="form-label fw-bold">본문</label>
+                            <textarea class="form-control" style="height: 200px;" aria-label="content"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col">
+                            <label for="newspaper" class="form-label fw-bold">신문사</label>
+                            <input type="text" class="form-control" id="newspaper" value="">
+                        </div>
+                        <div class="col">
                             <label for="abroadNY" class="form-label fw-bold">해외여부</label>
-                            <select class="form-select" id="abroadNY" aria-label=".form-select example" required>
-                                <option value="" selected>선택</option>
+                            <select id="abroadNY" class="form-select form-select fw-bold" aria-label=".form-select example">
+                                <option value="">선택</option>
                                 <option value="1">국내</option>
-                                <option value="2">해외</option>
+                                <option value="2" selected>해외</option>
                             </select>
                         </div>
-                        <div class="col mb-4">
+                        <div class="col">
                             <label for="event" class="form-label fw-bold">종목</label>
-                            <select class="form-select" id="event" aria-label=".form-select example" required>
+                            <select id="event" class="form-select form-select fw-bold" aria-label=".form-select example">
                                 <option value="" selected>선택</option>
                                 <option value="1">야구</option>
                                 <option value="2">축구</option>
                             </select>
                         </div>
-                        <div class="col mb-4">
-                            <label for="leagueList" class="form-label fw-bold">리그</label>
-                            <input class="form-control" list="league" id="leagueList" placeholder="Type to search..." required>
-                            <datalist class="" id="league">
-                                <option value="KBO">KBO</option>
-                                <option value="메이저리그">메이저리그</option>
-                                <option value="아메리칸리그">아메리칸리그</option>
-                                <option value="센트럴리그">센트럴리그</option>
-                                <option value="퍼시픽리그">퍼시픽리그</option>
-                                <option value="K리그 1">K리그 1</option>
-                                <option value="K리그 2">K리그 2</option>
-                                <option value="프리미어리그">프리미어리그</option>
-                                <option value="라리가">라리가</option>
-                                <option value="분데스리가">분데스리가</option>
-                                <option value="세리에 A">세리에 A</option>
-                                <option value="리그 1">리그 1</option>
-                            </datalist>
-                        </div>
-                    </div>
-                    <div class="row mb-4">
                         <div class="col">
-                            <label for="homeTeam" class="form-label fw-bold">홈팀</label>
-                            <select class="form-select form-select" id="homeTeam" aria-label=".form-select example" required>
+                            <label for="event" class="form-label fw-bold">리그</label>
+                            <select id="event" class="form-select form-select fw-bold" aria-label=".form-select example">
                                 <option value="" selected>선택</option>
-                                <option value="1">두산 베어스</option>
-                                <option value="2">KIA 타이거즈</option>
-                                <option value="3">SSG 랜더스</option>
-                                <option value="4">삼성 라이온즈</option>
+                                <option value="1">KBO</option>
+                                <option value="2">메이저리그</option>
+                                <option value="3">아메리칸리그</option>
+                                <option value="4">센트럴리그</option>
+                                <option value="5">퍼시픽리그</option>
+                                <option value="6">K리그 1</option>
+                                <option value="7">K리그 2</option>
+                                <option value="8">프리미어리그</option>
+                                <option value="9">라리가</option>
+                                <option value="10">분데스리가</option>
+                                <option value="11">세리에 A</option>
+                                <option value="12">리그 1</option>
                             </select>
                         </div>
                         <div class="col">
-                            <label for="awayTeam" class="form-label fw-bold">원정팀</label>
-                            <select class="form-select form-select" id="awayTeam" aria-label=".form-select example" required>
-                                <option value="" selected>선택</option>
-                                <option value="1">두산 베어스</option>
-                                <option value="2">KIA 타이거즈</option>
-                                <option value="3">SSG 랜더스</option>
-                                <option value="4">삼성 라이온즈</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <div class="col">
-                            <label for="homeTeamScore" class="form-label fw-bold">홈팀 선발</label>
-                            <input type="text" class="form-control" id="player_home" value="" required>
-                        </div>
-                        <div class="col">
-                            <label for="awayTeamScore" class="form-label fw-bold">원정팀 선발</label>
-                            <input type="text" class="form-control" id="player_away" value="" required>
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <div class="col">
-                            <label for="homeTeamScore" class="form-label fw-bold">홈팀 스코어</label>
-                            <input type="number" class="form-control" id="homeTeamScore" value="" required>
-                        </div>
-                        <div class="col">
-                            <label for="awayTeamScore" class="form-label fw-bold">원정팀 스코어</label>
-                            <input type="number" class="form-control" id="awayTeamScore" value="" required>
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <div class="col">
-                            <label for="stadium" class="form-label fw-bold">경기장</label>
-                            <select class="form-select form-select" id="stadium" aria-label=".form-select example" required>
-                                <option value="" selected>선택</option>
-                                <option value="1">서울</option>
-                                <option value="2">광주</option>
-                                <option value="3">인천</option>
-                                <option value="4">대구</option>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <label for="gameDuration" class="form-label fw-bold">경기 시간</label>
-                            <input type="time" class="form-control" id="gameDuration" value="" required>
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <div class="col-6">
-                            <label for="gameDates" class="form-label fw-bold">경기 일자</label>
-                            <input type="date" class="form-control" id="gameDate" value="" required>
+                            <label for="reporter" class="form-label fw-bold">기자</label>
+                            <input type="text" class="form-control" id="reporter" value="">
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -206,17 +162,17 @@
                     </div>
                     <div class="row">
                         <div class="col-2">
-                            <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="/game/gameList"
+                            <a class="btn btn-primary btn-sm text-white fw-bold shadow" href="/article/articleList"
                                 role="button">취소</a>
                         </div>
                         <div class="col-2 offset-8" align="right">
-                            <button class="btn btn-primary text-white fw-bold btn-sm shadow" type="submit">등록</button>
+                            <button class="btn btn-primary btn-sm text-white fw-bold shadow" type="submit">등록</button>
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
-        <div style="height: 50px;"></div>
+            </div>
+            <div style="height: 50px;"></div>
+        </form>
     </main>
 
     <footer>
@@ -236,7 +192,7 @@
                 </ul>
                 <div class="footer_copy">
                     <a id="fot.naver" target="_blank" href="https://www.navercorp.com">
-                        <img src="../../resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
+                        <img src="../../image/SPOPIA1.png" alt="logo" style="width: 45px;">
                     </a>
                     <span class="text">Copyright</span>
                     <span class="corp">© SPOPIA Corp.</span>
@@ -252,6 +208,7 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
         (() => {
             'use strict'
 

@@ -15,4 +15,9 @@ public class GameController {
 	public String gameList() throws Exception {
 		return "infra/game/xdmin/gameList";
 	}
+	
+	@RequestMapping(value = "gameForm")
+	public String gameForm() throws Exception {
+		return "infra/game/xdmin/gameForm";
+	}
 }

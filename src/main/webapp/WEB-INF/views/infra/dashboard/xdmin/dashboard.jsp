@@ -11,10 +11,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Article List</title>
+    <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="/resources/css/xdmin/articleList.css" rel="stylesheet" type="text/css">
+    <link href="/resources/css/xdmin/dashboard.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
 </head>
 
 <body>
@@ -43,7 +44,7 @@
                                 <li class="px-3">
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
-                                        <div class="avatar1 me-3">
+                                        <div class="avatar mt-2">
                                             <img class="avatar-img rounded-circle shadow" src="../../resources/images/diano.jpg"
                                                 alt="avatar" style="width: 30px;">
                                         </div>
@@ -187,8 +188,7 @@
                                             </li>
                                         </ul>
                                         <p class="small text-center mt-1">©2022 <a class="text-body" target="_blank" href="#"> SPOPIA
-                                            </a>
-                                        </p>
+                                            </a></p>
                                     </div>
                                 </div>
                             </nav>
@@ -196,154 +196,176 @@
                     </div>
                     <!-- 중앙 메인 영역 -->
                     <div class="col-md-8 col-lg-9 vstack gap-4">
-                        <!-- 게시물 사진 -->
                         <div class="row">
-                            <div class="col-12 ">
-                                <div class="card text-white position-relative shadow-lg">
-                                    <img src="../../resources/images/xdmin/listBack.jpg" class="card-img" style="height: 200px;"
-                                        alt="...">
-                                    <div class="card-img-overlay text-center p-4 position-absoulte top-50 start-50 translate-middle">
-                                        <span class="card-title align-middle fw-bold fs-3">게시물 관리</span>
-                                    </div>
+                            <span class="fs-1 fw-bold">Dashboard</span>
+                            <div class="col card m-2 shadow">
+                                <div class="card-body">
+                                    <p class="card-title fw-bold">일 평균 접속자 수</p>
+                                    <p class="card-subtitle mb-2 text-muted">Card subtitle</p>
+                                </div>
+                            </div>
+                            <div class="col card m-2 shadow">
+                                <div class="card-body">
+                                    <p class="card-title fw-bold">PageViews</p>
+                                    <p class="card-subtitle mb-2 text-muted">Card subtitle</p>
+                                </div>
+                            </div>
+                            <div class="col card m-2 shadow">
+                                <div class="card-body">
+                                    <p class="card-title fw-bold">게시글</p>
+                                    <p class="card-subtitle mb-2 text-muted">Card subtitle</p>
                                 </div>
                             </div>
                         </div>
-                        <!-- 검색 -->
-                        <div class="card p-3 shadow">
-                            <div class="row align-items-center pb-2">
-                                <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" selected>선택</option>
-                                        <option value="createdAt">등록일</option>
-                                        <option value="modifiedAt">수정일</option>
-                                    </select>
-                                </div>
-                                <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-01-01" required>
-                                </div>
-                                <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-12-31" required>
-                                </div>
-                            </div>
-                            <div class="row align-items-center">
-                                <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" selected>선택</option>
-                                        <option value="name">이름</option>
-                                        <option value="id">아이디</option>
-                                    </select>
-                                </div>
-                                <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" value="" required>
-                                </div>
-                                <div class="col-3">
-                                    <button class="btn btn-primary fw-bold btn-sm shadow" type="submit">검색</button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 리스트 -->
-                        <div class="card ps-3 pt-3 pe-3 shadow">
-                            <table class="table text-center align-middle">
-                                <thead>
-                                    <tr>
-                                        <th style="font-size: small;"><input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault"></th>
-                                        <th>번호</th>
-                                        <th class="w-25">제목</th>
-                                        <th>기자</th>
-                                        <th>종목</th>
-                                        <th>신문사</th>
-                                        <th>등록일</th>
-                                        <th>수정일</th>
-                                    </tr>
-                                </thead>
-                                <tbody onclick="newPage()">
-                                    <tr>
-                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-                                        </td>
-                                        <td>1</td>
-                                        <td>'123억 마무리' 언제 올지 모른다 압도적 꼴찌 한화 또 다른 비극</td>
-                                        <td>정철우</td>
-                                        <td>야구</td>
-                                        <td>MK스포츠</td>
-                                        <td>2022-07-28 10:02:00</td>
-                                        <td>2022-07-28 10:17:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-                                        </td>
-                                        <td>2</td>
-                                        <td>호날두는 보는 앞에서...'이적생' 에릭센, 맨유 데뷔골 '쾅'</td>
-                                        <td>강예진</td>
-                                        <td>축구</td>
-                                        <td>스포츠서울</td>
-                                        <td>2022-07-28 08:33:00</td>
-                                        <td>2022-07-28 11:43:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-                                        </td>
-                                        <td>3</td>
-                                        <td>점점 커지는 9월의 중요성… 김민재, 황인범, 손흥민 '필참'</td>
-                                        <td>김정용</td>
-                                        <td>축구</td>
-                                        <td>풋볼리스트</td>
-                                        <td>2022-07-28 07:01:00</td>
-                                        <td>2022-07-28 07:01:00</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <nav aria-label="Page navigation">
-                                <ul class=" pagination pagination-sm col-3 offset-5">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <div class="row align-items-center">
-                            <div class="col-1">
-                                <button class="border-0 btn btn-sm shadow" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">
-                                    <i class="fa-solid fa-trash fa-lg text-danger"></i>
-                                </button>
-                                <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false"
-                                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title fw-bold" id="staticBackdropLabel">게시물 삭제</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body fs-6">
-                                                선택하신 게시물을 정말로 삭제하시겠습니까?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                                                <button type="button" class="btn btn-primary">삭제</button>
-                                            </div>
+                
+                        <!-- 통계 자료 -->
+                        <div class="row">
+                            <div class="card col-12 mb-4 shadow">
+                                <div class="card-header bg-white">
+                                    <div class="row pt-2">
+                                        <div class="col-3">
+                                            <span class="fw-bold fs-5 col-3">
+                                                접속자 수
+                                            </span>
+                                        </div>
+                                        <div class="col-2 offset-7">
+                                            <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
+                                                <option value="" selected>선택</option>
+                                                <option value="Jan">1월</option>
+                                                <option value="Feb">2월</option>
+                                                <option value="Mar">3월</option>
+                                                <option value="Apr">4월</option>
+                                                <option value="May">5월</option>
+                                                <option value="Jun">6월</option>
+                                                <option value="Jul">7월</option>
+                                                <option value="Aug">8월</option>
+                                                <option value="Sep">9월</option>
+                                                <option value="Oct">10월</option>
+                                                <option value="Nov">11월</option>
+                                                <option value="Dec">12월</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="card-body">
+                                    <table class="charts-css line show-4-secondary-axes show-labels" id="my-chart">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td style="--start: 0.0; --size: 0.4"> <span class="data"> $ 40K </span> </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td style="--start: 0.4; --size: 0.2"> <span class="data"> $ 20K </span> </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td style="--start: 0.2; --size: 0.6"> <span class="data"> $ 60K </span> </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">4</th>
+                                                <td style="--start: 0.6; --size: 0.4"> <span class="data"> $ 40K </span> </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">5</th>
+                                                <td style="--start: 0.4; --size: 0.8"> <span class="data"> $ 80K </span> </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">6</th>
+                                                <td style="--start: 0.8; --size: 0.6"> <span class="data"> $ 60K </span> </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">7</th>
+                                                <td style="--start: 0.6; --size: 1.0"> <span class="data"> $ 100K </span> </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">8</th>
+                                                <td style="--start: 1.0; --size: 0.6"> <span class="data"> $ 100K </span> </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">9</th>
+                                                <td style="--start: 0.6; --size: 1.0"> <span class="data"> $ 100K </span> </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">10</th>
+                                                <td style="--start: 1.0; --size: 0.8"> <span class="data"> $ 100K </span> </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">11</th>
+                                                <td style="--start: 0.8; --size: 0.9"> <span class="data"> $ 100K </span> </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">12</th>
+                                                <td style="--start: 0.9; --size: 1.0"> <span class="data"> $ 100K </span> </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="col-1 offset-10 pe-3">
-                                <a class="border-0 btn btn-sm shadow role=" button" href="/article/articleForm">
-                                    <i class="fa-solid fa-id-card fa-lg"></i>
-                                </a>
+                            <div class="card col-12 mb-4 shadow">
+                                <div class="card-header bg-white">
+                                    <div class="row pt-2">
+                                        <div class="col-3">
+                                            <span class="fw-bold fs-5 col-3">
+                                                신규 가입자 수
+                                            </span>
+                                        </div>
+                                        <div class="col-2 offset-7">
+                                            <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
+                                                <option value="" selected>선택</option>
+                                                <option value="Jan">1월</option>
+                                                <option value="Feb">2월</option>
+                                                <option value="Mar">3월</option>
+                                                <option value="Apr">4월</option>
+                                                <option value="May">5월</option>
+                                                <option value="Jun">6월</option>
+                                                <option value="Jul">7월</option>
+                                                <option value="Aug">8월</option>
+                                                <option value="Sep">9월</option>
+                                                <option value="Oct">10월</option>
+                                                <option value="Nov">11월</option>
+                                                <option value="Dec">12월</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="myChart" height="300"></canvas>
+                                </div>
+                            </div>
+                            <div class="card col m-2 shadow">
+                                <span class="card-header fw-bold fs-5 bg-white">연령 별 가입자 수</span>
+                                <div class="card-body">
+                                    <canvas id="myChart1"></canvas>
+                                </div>
+                                <div class="card-footer text-center text-dark bg-white">
+                                    <button class="bg-success border shadow rounded" style="width: 20px; height: 20px;"></button>
+                                    <span class="fw-bold">10 ~ 29세</span>
+                                    <button class="border shadow rounded"
+                                        style="width: 20px; height: 20px; background-color: #638df4;"></button>
+                                    <span class="fw-bold">30세</span>
+                                    <button class=" border shadow rounded"
+                                        style="width: 20px; height: 20px; background-color: #2565d0;"></button>
+                                    <span class="fw-bold">40세</span>
+                                    <button class="border shadow rounded"
+                                        style="width: 20px; height: 20px; background-color: #c9e80a;"></button>
+                                    <span class="fw-bold">50세</span>
+                                    <button class="border shadow rounded"
+                                        style="width: 20px; height: 20px; background-color: #ccf7e5;"></button>
+                                    <span class="fw-bold">60대 이상</span>
+                                </div>
+                            </div>
+                            <div class="card col m-2 shadow">
+                                <span class="card-header fw-bold fs-5 bg-white">성별 가입자 수</span>
+                                <div class="card-body">
+                                    <canvas id="myChart1"></canvas>
+                                </div>
+                                <div class="card-footer text-center text-dark bg-white">
+                                    <button class="bg-primary border shadow rounded" style="width: 20px; height: 20px;"></button>
+                                    <span class="fw-bold">남성</span>
+                                    <button class="bg-danger border shadow rounded" style="width: 20px; height: 20px;"></button>
+                                    <span class="fw-bold">여성</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -371,7 +393,7 @@
                 </ul>
                 <div class="footer_copy">
                     <a id="fot.naver" target="_blank" href="https://www.navercorp.com">
-                        <img src="../../image/SPOPIA1.png" alt="logo" style="width: 45px;">
+                        <img src="../../resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
                     </a>
                     <span class="text">Copyright</span>
                     <span class="corp">© SPOPIA Corp.</span>

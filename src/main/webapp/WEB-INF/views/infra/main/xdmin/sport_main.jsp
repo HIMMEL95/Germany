@@ -71,7 +71,7 @@
                                             </a>
                                         </li>
                                         <li class="pro_li">
-                                            <a class="pro_a" href="../../seperate/html/seperatePage.html">
+                                            <a class="pro_a" href="/">
                                                 <i class="fa-solid fa-power-off me-2"></i>
                                                 Sign Out
                                             </a>
@@ -89,7 +89,7 @@
                         <i class="fas fa-bars"></i>
                     </label>
                     <ul>
-                        <li><a class="menu_link" href="../member/main_page.html">스포츠 홈</a></li>
+                        <li><a class="menu_link" href="/sportMain">스포츠 홈</a></li>
                         <li><a class="menu_link" href="#">야구</a></li>
                         <li><a class="menu_link" href="#">해외야구</a></li>
                         <li><a class="menu_link" href="#">축구</a></li>

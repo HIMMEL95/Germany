@@ -21,7 +21,7 @@
                 <img src="../../resources/images/SPOPIA_white.png" alt="SPOPIA logo">
             </div>
             <div id="content">
-                <a id="user" href="/sportMain">
+                <a id="user" href="/userLogin">
                     <div class="card">
                         <div class="user_img">
                             <img class="card_img" src="../../resources/images/seperate/user_back.jpg" alt="user_page">
@@ -31,7 +31,7 @@
                         </div>
                     </div>
                 </a>
-                <a id="admin" href="../../dmin/login/loginForm.html">
+                <a id="admin" href="/adminLogin">
                     <div class="card">
                         <div class="admin_img">
                             <img class="card_img" src="../../resources/images/seperate/admin_back.jpg" alt="admin_page">

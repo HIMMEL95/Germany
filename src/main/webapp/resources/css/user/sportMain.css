@@ -216,14 +216,14 @@ a {
 #topbar {
   background: #fff;
   grid-area: topbar;
-  padding-top: 5px;
+  padding-top: 10px;
   /* border-radius: var(--main-radius);
   padding-top: var(--main-padding); */
 }
 
 .menuBar ul {
   /* float: left; */
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 .menuBar li {
@@ -259,7 +259,7 @@ a:hover {
 
 main {
   max-width: 1200px;
-  height: 1865px;
+  height: 1850px;
   margin: 0 auto;
   background: #84ffff;
   grid-area: main;
@@ -309,6 +309,7 @@ main {
   grid-area: head;
   font-size: 17px;
   padding: 0;
+  margin-top: 10px;
 }
 
 .head span {
@@ -666,7 +667,7 @@ main {
   cursor: pointer;
   z-index: 10;
   padding: 0 10px;
-  bottom: 5px;
+  bottom: -5px;
 }
 
 .more i {

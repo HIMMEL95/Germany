@@ -79,7 +79,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item bg-danger-soft-hover" href="../../seperate/html/seperatePage.html">
+                                    <a class="dropdown-item bg-danger-soft-hover" href="/">
                                         <i class="fa-solid fa-power-off me-2"></i>
                                         Sign Out
                                     </a>
@@ -137,31 +137,31 @@
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="../Dashboard/Dashboard.html">
+                                                            <a class="nav-link" href="/dashboard">
                                                                 <i class="fa-solid fa-chart-line pe-3"></i>
                                                                 <span>Dashboard</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="../user/userList.html">
+                                                            <a class="nav-link" href="/member/memberList">
                                                                 <i class="fa-solid fa-users pe-3"></i>
                                                                 <span>회원관리</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="../article/articleList.html">
+                                                            <a class="nav-link" href="/article/articleList">
                                                                 <i class="fas fa-light fa-newspaper pe-3"></i>
                                                                 <span>게시물 관리</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="../articleComment/articleCommentList.html">
+                                                            <a class="nav-link" href="/comment">
                                                                 <i class="fas fa-light fa-comments pe-3"></i>
                                                                 <span>댓글 리스트</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="../game/gameList.html">
+                                                            <a class="nav-link" href="/game/gameList">
                                                                 <i class="fas fa-duotone fa-trophy pe-3"></i>
                                                                 <span>경기 기록 관리</span>
                                                             </a>

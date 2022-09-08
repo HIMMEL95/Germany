@@ -17,7 +17,7 @@
     <!-- jquery ui CSS -->    
     <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">    
     <!-- user css -->
-    <link rel="stylesheet" href="/resources/css/admin/cc.css" />
+    <link rel="stylesheet" href="/resources/css/xdmin/cc.css" />
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">

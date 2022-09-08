@@ -1,5 +1,5 @@
 checkOnlyKorEngNum = function(objName, pattern, nullNy, message, hide) {
-	var reg = /^[ㄱ-ㅎ가-힣A-Za-z0-9]$/g;
+	var reg = /^[ㄱ-ㅎ가-힣A-Za-z0-9]{1,}$/g;
 	return checkLogic(objName, pattern, nullNy, message, hide, reg);
 }
 
@@ -9,23 +9,23 @@ checkOnlyEngNum = function(objName, pattern, nullNy, message, hide) {
 }
 
 checkOnlyEng = function(objName, pattern, nullNy, message, hide) {
-	var reg = /^[a-zA-z]$/g;
+	var reg = /^[a-zA-z]{1,}$/g;
 	return checkLogic(objName, pattern, nullNy, message, hide, reg);
 }
 
 checkOnlyKorNum = function(objName, pattern, nullNy, message, hide) {
-	var reg = /^[ㄱ-ㅎ가-힣0-9]$/g;
+	var reg = /^[ㄱ-ㅎ가-힣0-9]{1,}$/g;
 	return checkLogic(objName, pattern, nullNy, message, hide, reg);
 }
 
 checkOnlyKor = function(objName, pattern, nullNy, message, hide) {
-	var reg= /^[ㄱ-ㅎ가-힣]$/g;
+	var reg= /^[ㄱ-ㅎ가-힣]{1,}$/g;
 	return checkLogic(objName, pattern, nullNy, message, hide, reg);
 }
 
 checkOnlyNum = function(objName, pattern, nullNy, min, max, message, hide) {
-	var reg = /^[0-9]$/g;
-	var objValue = document.getElementById(obj).value.trim();
+	var reg = /^[0-9]{1,}$/g;
+	var objValue = document.getElementById(objName).value.trim();
 	const hideFeedback = document.getElementById(hide + "_msg");
 	
 	if(objValue >= min && objValue <= max) {
@@ -63,10 +63,7 @@ checkLogic = function(objName, pattern, nullNy, message, hide, reg) {
 				return false;
 			}
 		} else {
-			document.getElementById(hide).parentElement.classList.add('error');
-			document.getElementById(hide).innerText = message;
-			document.getElementById(hide).style.display = "";
-			document.getElementById(objName).focus();
+			document.getElementById(hide).parentElement.classList.remove('error');
 			return true;
 		}
 	} else {
@@ -75,7 +72,7 @@ checkLogic = function(objName, pattern, nullNy, message, hide, reg) {
 	}
 }
 
-checkLogicExpression = function(obj, hideFeedback, pattern, message, hide) {
+checkLogicExpression = function(obj, hideFeedback, message, pattern, hide) {
 	switch(pattern) {
 		case 1:
 		// alert
@@ -86,6 +83,7 @@ checkLogicExpression = function(obj, hideFeedback, pattern, message, hide) {
 		//bootstrap validation
 			document.getElementById(hide).parentElement.classList.add('error');
 			hideFeedback.innerText = message;
+			hideFeedback.style.display = "";
 			obj.focus();
 			break;
 		case 3:

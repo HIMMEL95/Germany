@@ -225,12 +225,12 @@
                                 <div class="input-control">
                                     <label for="cg_code">코드그룹 코드<span style="color: red;">*</span></label>
                                     <input type="text" id="cg_code" name="cg_code" value="" placeholder="영문(대문자),숫자">
-                                    <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;">sad</div>
+                                    <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input-control">
-                                    <label for="cg_another">코드그룹 코드 (Another)<span style="color: red;">*</span></label>
+                                    <label for="seqAnother">코드그룹 코드 (Another)<span style="color: red;">*</span></label>
                                     <input type="text" id="seqAnother" name="seqAnother" value="" placeholder="영문(대문자),숫자">
                                     <div class="msg" id="seqAnother_msg" name="seqAnother_msg" style="display: none;"></div>
                                 </div>
@@ -239,7 +239,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="input-control">
-                                    <label for="cg_name_ko">코드그룹 이름 (한글)<span style="color: red;">*</span></label>
+                                    <label for="groupName">코드그룹 이름 (한글)<span style="color: red;">*</span></label>
                                     <input type="text" id="groupName" name="groupName" value="" placeholder="한글,숫자">
                                     <div class="msg" id="groupName_msg" name="groupName_msg" style="display: none;"></div>
                                 </div>
@@ -267,7 +267,7 @@
                             <div class="col">
                                 <div class="input-control">
                                     <label for="orderBY">순서<span style="color: red;">*</span></label>
-                                    <input type="text" id="ccgOrder" name="ccgOrder" value="" placeholder="숫자">
+                                    <input type="text" id="orderBY" name="orderBY" value="" placeholder="숫자">
                                     <div class="msg" id="orderBY_msg" name="orderBY_msg" style="display: none;"></div>
                                 </div>
                             </div>
@@ -288,7 +288,7 @@
                                         <option value="0">N</option>
                                         <option value="1">Y</option>
                                     </select>
-                                    <div class="msg" id="del_msg" name="del_msg" style="display: none;"></div>
+                                    <div class="msg" id="del_msg" name="deleteNY_msg" style="display: none;"></div>
                                 </div>
                             </div>
                         </div>
@@ -425,13 +425,12 @@
         validation = function() {
         	if(!checkOnlyKorEngNum('cg_code', 2, 0, "한글, 영문(대소문자), 숫자만 입력 가능합니다.", "cg_code_msg")) return false;         
         	if(!checkOnlyEngNum('seqAnother', 2, 1, "영문(대소문자), 숫자만 입력 가능합니다.", "seqAnother_msg")) return false;         
-        	/* else if(!checkOnlyKorNum('groupName', 2, 1, "한글, 숫자만 입력 가능합니다.", "groupName_msg")) return false;         
-        	else if(!checkOnlyEngNum('eng', 2, 1, "영문(대소문자), 숫자만 입력 가능합니다.", "eng_msg")) return false;         
-        	else if(!checkOnlyNum('orderBY', 2, 1, 0, 255, "순서는 0~255 사이의 숫자만 입력 가능합니다.", "orderBY_msg")) return false;         
-        	else if(!checkOnlyKorEngNum('ex', 2, 1, "설명을 입력 하세요.", "ex_msg")) return false;         
-        	else if(!checkOnlyKorEngNum('deleteNY', 2, 1, "삭제여부를 선택하세요.", "del_msg")) return false; */  
-        	return false;
-        	/* document.getElementById('myForm').submit(); */
+        	if(!checkOnlyKorNum('groupName', 2, 0, "한글, 숫자만 입력 가능합니다.", "groupName_msg")) return false;      
+        	if(!checkOnlyEngNum('eng', 2, 1, "영문(대소문자), 숫자만 입력 가능합니다.", "eng_msg")) return false; 
+        	if(!checkOnlyNum('orderBY', 2, 0, 0, 255, "순서는 0~255 사이의 숫자만 입력 가능합니다.", "orderBY_msg")) return false;
+        	if(!checkOnlyKorEngNum('ex', 2, 1, "설명을 입력 하세요.", "ex_msg")) return false;         
+
+        	document.getElementById('myForm').submit();
         };
         /* test = function() {
         	

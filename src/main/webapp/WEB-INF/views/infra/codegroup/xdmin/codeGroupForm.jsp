@@ -288,59 +288,60 @@
                                         <option value="0">N</option>
                                         <option value="1">Y</option>
                                     </select>
-                                    <div class="msg" id="del_msg" name="deleteNY_msg" style="display: none;"></div>
+                                    <div class="msg" id="deleteNY_msg" name="deleteNY_msg" style="display: none;"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="input-control">
-                                    <label for="varchar_sub1">예비1 (varchar type)</label>
-                                    <input type="text" id="varchar_sub1" value="" placeholder="영문(대소문자), 숫자">
-                                    
+                                    <label for="referenceV1">예비1 (varchar type)</label>
+                                    <input type="text" id="referenceV1" name="referenceV1" value="" placeholder="영문(대소문자), 숫자">
+                                    <div class="msg" id="referenceV1_msg" name="referenceV1_msg" style="display: none;"></div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input-control">
-                                    <label for="varchar_sub2">예비2 (varchar type)</label>
-                                    <input type="text" id="varchar_sub2" value="" placeholder="영문(대소문자), 숫자">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="input-control">
-                                    <label for="varchar_sub3">예비3 (varchar type)</label>
-                                    <input type="text" id="varchar_sub3" value="" placeholder="영문(대소문자), 숫자">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="input-control">
-                                    <label for="int_sub1">예비1 (int type)</label>
-                                    <input type="text" id="int_sub1" value="" placeholder="숫자">
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="input-control">
-                                    <label for="int_sub2">예비2 (int type)</label>
-                                    <input type="text" id="int_sub2" value="" placeholder="숫자">
+                                    <label for="referenceV2">예비2 (varchar type)</label>
+                                    <input type="text" id="referenceV2" name="referenceV2" value="" placeholder="영문(대소문자), 숫자">
+                                    <div class="msg" id="referenceV2_msg" name="referenceV2_msg" style="display: none;"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <div class="input-control">
-                                    <label for="int_sub3">예비3 (int type)</label>
-                                    <input type="text" id="int_sub3" value="" placeholder="숫자">
+                                    <label for="referenceV3">예비3 (varchar type)</label>
+                                    <input type="text" id="referenceV3" name="referenceV3" value="" placeholder="영문(대소문자), 숫자">
+                                    <div class="msg" id="referenceV3_msg" name="referenceV3_msg" style="display: none;"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-check form-check-inline">
-						  <input class="form-check-input" name="check" type="checkbox" id="checkBox" value="option1">
-						  <label class="form-check-label" for="inlineCheckbox1">1</label>
-						</div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-control">
+                                    <label for="referenceI1">예비1 (int type)</label>
+                                    <input type="text" id="referenceI1" name="referenceI1" value="" placeholder="영문(대소문자), 숫자">
+                                    <div class="msg" id="referenceI1_msg" name="referenceI1_msg" style="display: none;"></div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-control">
+                                    <label for="referenceI2">예비2 (int type)</label>
+                                    <input type="text" id="referenceI2" name="referenceI2" value="" placeholder="영문(대소문자), 숫자">
+                                    <div class="msg" id="referenceI2_msg" name="referenceI2_msg" style="display: none;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="input-control">
+                                    <label for="referenceI3">예비3 (int type)</label>
+                                    <input type="text" id="referenceI3" name="referenceI3" value="" placeholder="영문(대소문자), 숫자">
+                                    <div class="msg" id="referenceI3_msg" name="referenceI3_msg" style="display: none;"></div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- 리스트 -->
                         <div class="row align-items-center">
                             <div class="col-1">
@@ -428,7 +429,13 @@
         	if(!checkOnlyKorNum('groupName', 2, 0, "한글, 숫자만 입력 가능합니다.", "groupName_msg")) return false;      
         	if(!checkOnlyEngNum('eng', 2, 1, "영문(대소문자), 숫자만 입력 가능합니다.", "eng_msg")) return false; 
         	if(!checkOnlyNum('orderBY', 2, 0, 0, 255, "순서는 0~255 사이의 숫자만 입력 가능합니다.", "orderBY_msg")) return false;
-        	if(!checkOnlyKorEngNum('ex', 2, 1, "설명을 입력 하세요.", "ex_msg")) return false;         
+        	if(!checkOnlyKorEngNum('ex', 2, 1, "설명을 입력 하세요.", "ex_msg")) return false;     
+        	if(!checkOnlyEng('referenceV1', 2, 1, "영문(대소문자)만 입력 가능합니다.", "referenceV1_msg")) return false;    
+        	if(!checkOnlyEng('referenceV2', 2, 1, "영문(대소문자)만 입력 가능합니다.", "referenceV2_msg")) return false;    
+        	if(!checkOnlyEng('referenceV3', 2, 1, "영문(대소문자만 입력 가능합니다.", "referenceV3_msg")) return false;    
+        	if(!checkOnlyNum('referenceI1', 2, 1, -128, 127, "순서는 -128~127 사이의 숫자만 입력 가능합니다.", "referenceI1_msg")) return false;  
+        	if(!checkOnlyNum('referenceI2', 2, 1, -128, 127, "숫자만 입력 가능합니다.", "referenceI2_msg")) return false;    
+        	if(!checkOnlyNum('referenceI3', 2, 1, -128, 127, "숫자만 입력 가능합니다.", "referenceI3_msg")) return false;    
 
         	document.getElementById('myForm').submit();
         };

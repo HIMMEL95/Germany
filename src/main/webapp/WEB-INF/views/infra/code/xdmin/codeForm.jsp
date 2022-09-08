@@ -237,16 +237,19 @@
                             <div class="col">
                                 <label for="seqAnother" class="form-label">코드 (Another)</label>
                                 <input type="text" class="form-control" id="seqAnother" name="seqAnother" value="" placeholder="">
+                                <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label for="CCName" class="form-label">코드 이름 (한글)</label>
                                 <input type="text" class="form-control" id="CCName" name="CCName" value="" placeholder="">
+                                <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
                             </div>
                             <div class="col">
                                 <label for=""CCG_seq"" class="form-label">코드 이름 (영문)</label>
                                 <input type="text" class="form-control" id="CCG_seq" name="CCG_seq" value="" placeholder="">
+                                <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
                             </div>
                         </div>
                         <div class="row">
@@ -261,12 +264,14 @@
                             <div class="col">
                                 <label for="ccOrder" class="form-label">순서</label>
                                 <input type="text" class="form-control" id="ccOrder" name="ccOrder" value="" placeholder="숫자">
+                                <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label for="useNY" class="form-label">설명</label>
                                 <textarea class="form-control" id="validationTextarea" placeholder=""></textarea>
+                                <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
                             </div>
                             <div class="col">
                                 <label for="deleteNY" class="form-label">삭제여부</label>
@@ -281,6 +286,7 @@
                             <div class="col">
                                 <label for="referenceV1" class="form-label">예비1 (varchar type)</label>
                                 <input type="text" class="form-control" id="referenceV1" name="referenceV1" value="" placeholder="영문(대소문자), 숫자">
+                            	<div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
                             </div>
                             <div class="col">
                                 <label for="referenceV2" class="form-label">예비2 (varchar type)</label>
@@ -291,22 +297,26 @@
                             <div class="col-6">
                                 <label for="varchar_sub3" class="form-label">예비3 (varchar type)</label>
                                 <input type="text" class="form-control" id="varchar_sub3" value="" placeholder="영문(대소문자), 숫자">
+                                <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label for="referenceI1" class="form-label">예비1 (int type)</label>
                                 <input type="text" class="form-control" id="referenceI1" name="referenceI1" value="" placeholder="숫자">
+                                <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
                             </div>
                             <div class="col">
                                 <label for="referenceI2" class="form-label">예비2 (int type)</label>
                                 <input type="text" class="form-control" id="referenceI2" name="referenceI2" value="" placeholder="숫자">
+                                <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <label for="int_sub3" class="form-label">예비3 (int type)</label>
                                 <input type="text" class="form-control" id="int_sub3" value="" placeholder="숫자">
+                                <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
                             </div>
                         </div>
                         <!-- 리스트 -->
@@ -388,6 +398,17 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
-    
+    <script type="text/javascript">
+	    validation = function() {
+	    	if(!checkOnlyKorEngNum('cg_code', 2, 0, "한글, 영문(대소문자), 숫자만 입력 가능합니다.", "cg_code_msg")) return false;         
+	    	if(!checkOnlyEngNum('seqAnother', 2, 1, "영문(대소문자), 숫자만 입력 가능합니다.", "seqAnother_msg")) return false;         
+	    	if(!checkOnlyKorNum('groupName', 2, 0, "한글, 숫자만 입력 가능합니다.", "groupName_msg")) return false;      
+	    	if(!checkOnlyEngNum('eng', 2, 1, "영문(대소문자), 숫자만 입력 가능합니다.", "eng_msg")) return false; 
+	    	if(!checkOnlyNum('orderBY', 2, 0, 0, 255, "순서는 0~255 사이의 숫자만 입력 가능합니다.", "orderBY_msg")) return false;
+	    	if(!checkOnlyKorEngNum('ex', 2, 1, "설명을 입력 하세요.", "ex_msg")) return false;         
+	
+	    	document.getElementById('myForm').submit();
+	    };
+    </script>
 </body>
 </html>

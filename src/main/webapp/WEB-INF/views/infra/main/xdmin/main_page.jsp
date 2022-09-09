@@ -31,7 +31,7 @@
                         </div>
                     </div>
                 </a>
-                <a id="admin" href="/adminLogin">
+                <a id="admin" href="/xdminLogin">
                     <div class="card">
                         <div class="admin_img">
                             <img class="card_img" src="../../resources/images/seperate/admin_back.jpg" alt="admin_page">

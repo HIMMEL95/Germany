@@ -53,13 +53,13 @@
                                     </h3>
                                     <ul class="pro_ul">
                                         <li class="pro_li">
-                                            <a class="pro_a" href="../member/memberView.html">
+                                            <a class="pro_a" href="/">
                                                 <i class="fa-solid fa-user me-2"></i>
                                                 Edit Profile
                                             </a>
                                         </li>
                                         <li class="pro_li">
-                                            <a class="pro_a" href="../../dmin/Dashboard/Dashboard.html">
+                                            <a class="pro_a" href="/dashboard">
                                                 <i class="fa-solid fa-gear me-2"></i>
                                                 Admin Page
                                             </a>

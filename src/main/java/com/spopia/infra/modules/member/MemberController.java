@@ -15,11 +15,16 @@ public class MemberController {
 	MemberServiceImpl service;
 	
 	@RequestMapping(value = "memberList")
-	public String codeList(Model model, MemberVo vo) throws Exception {
+	public String memberList(Model model, MemberVo vo) throws Exception {
 		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
 		return "infra/member/xdmin/memberList";
+	}
+	
+	@RequestMapping(value = "memberXdminView")
+	public String memeberView() throws Exception {
+		return "infra/member/xdmin/memberView";
 	}
 
 }

@@ -29,7 +29,7 @@
     <div id="wrap" class="wrap">
         <div id="container" class="container">
             <div class="header_inner text-center pt-5 mt-5" style="height: 200px;">
-                <a href="../../user/member/main_page.html" class="logo">
+                <a href="/" class="logo">
                     <img src="../../resources/images/SPOPIA1.png" style="width: 150px;">
                 </a>
             </div>
@@ -115,7 +115,7 @@
                                     </div>
                                     <div class="btn_login_wrap text-center">
                                         <a role="submit" class="btn_login" id="log.login"
-                                            href="../Dashboard/Dashboard.html">
+                                            href="/dashboard">
                                             <span class="btn_text">로그인</span>
                                         </a>
                                     </div>

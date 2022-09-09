@@ -11,10 +11,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ArticleComment List</title>
+    <title>memberView</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="/resources/css/xdmin/comment.css" rel="stylesheet" type="text/css">
+    <link href="/resources/css/xdmin/dashboard.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -32,8 +32,9 @@
                 <div class="dropdown">
                     <ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
                         <li class="me-2">
-                            <a class="p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
-                                data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="p-0" href="/member/memberView" id="profileDropdown" role="button"
+                                data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 <img class="avatar-img rounded-circle" src="../../resources/images/diano.jpg" alt="avatar"
                                     style="width: 30px;">
                             </a>
@@ -48,7 +49,7 @@
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="#">이하늘</a>
+                                            <a class="fs-6 fw-bold" href="../member/memberView.html">이하늘</a>
                                             <p class="small m-0">himmel@gmail.com</p>
                                         </div>
                                     </div>
@@ -92,7 +93,7 @@
     <main>
         <div style="height: 100px;"></div>
         <div class="container">
-            <form method="get">
+            <form>
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -132,33 +133,21 @@
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/dashboard">
+                                                            <a class="nav-link" href="/member/memberView">
                                                                 <i class="fa-solid fa-chart-line pe-3"></i>
-                                                                <span>Dashboard</span>
+                                                                <span>계정 정보 상세</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/member/memberList">
+                                                            <a class="nav-link" href="../member/memberCommentView.html">
                                                                 <i class="fa-solid fa-users pe-3"></i>
-                                                                <span>회원관리</span>
+                                                                <span>작성 글</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/article/articleList">
+                                                            <a class="nav-link" href="/">
                                                                 <i class="fas fa-light fa-newspaper pe-3"></i>
-                                                                <span>게시물 관리</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="/comment">
-                                                                <i class="fas fa-light fa-comments pe-3"></i>
-                                                                <span>댓글 리스트</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="/game/gameList">
-                                                                <i class="fas fa-duotone fa-trophy pe-3"></i>
-                                                                <span>경기 기록 관리</span>
+                                                                <span>로그아웃</span>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -187,7 +176,8 @@
                                             </li>
                                         </ul>
                                         <p class="small text-center mt-1">©2022 <a class="text-body" target="_blank" href="#"> SPOPIA
-                                            </a></p>
+                                            </a>
+                                        </p>
                                     </div>
                                 </div>
                             </nav>
@@ -195,146 +185,95 @@
                     </div>
                     <!-- 중앙 메인 영역 -->
                     <div class="col-md-8 col-lg-9 vstack gap-4">
-                        <!-- 게시물 사진 -->
+                        <span class="fs-1 fw-bold text-center">회원 정보</span>
+                        <div class="row mb-4">
+                            <div class="col-12 shadow rounded pt-3 ps-4" style="height: 100px; background-color: #f7f7fc;">
+                                <img src="../../resources/images/diano.jpg" class="rounded-circle avatar-img shadow" style="width: 60px;">
+                                <div class="form-attachment-btn btn btn-primary btn-sm ms-3" hidden>
+                                    <i class="fa-solid fa-arrows-rotate me-2"></i>Upload photo
+                                    <input type="file" class="js-file-attach form-attachment-btn-label" id="avatarUploader">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card ps-5 pe-5 pt-4 pb-4 shadow" style="background-color: #f7f7fc;"">
+                                        <div class=" row mb-4">
+                            <div class="col">
+                                <label for="name" class="form-label fw-bold">이름</label>
+                                <input type="text" class="form-control bg-white" id="name" value="이하늘" required readonly>
+                            </div>
+                            <div class="col">
+                                <label for="id" class="form-label fw-bold">아이디</label>
+                                <input type="text" class="form-control bg-white" id="id" value="Himmel" required readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <label for="dob" class="form-label fw-bold">생년월일</label>
+                                <input type="text" class="form-control bg-white" id="dob" value="1995-10-08" required readonly>
+                            </div>
+                            <div class="col">
+                                <label for="email" class="form-label fw-bold">이메일</label>
+                                <input type="email" class="form-control bg-white" id="email" value="himmel@gmail.com" required readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <label for="tel" class="form-label fw-bold">전화번호</label>
+                                <input type="tel" class="form-control bg-white" id="tel" value="010-1234-1234" required readonly>
+                            </div>
+                            <div class="col">
+                                <label for="gender" class="form-label fw-bold">성별</label>
+                                <select class="form-select form-select-lg fs-6 bg-white" id="gender"
+                                    aria-label=".form-select-lg example" required disabled readonly>
+                                    <option value="">선택</option>
+                                    <option value="남성" selected>남성</option>
+                                    <option value="여성">여성</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <label for="job" class="form-label fw-bold">직업</label>
+                                <input type="text" class="form-control bg-white" id="job" value="학생" required readonly>
+                            </div>
+                            <div class="col">
+                                <label for="team" class="form-label fw-bold">좋아하는 팀</label>
+                                <input type="text" class="form-control bg-white" id="team" value="두산" required readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-4" hidden>
+                            <div class="col">
+                                <label for="password" class="form-label fw-bold">비밀번호</label>
+                                <input type="password" class="form-control bg-white" id="password" value="" required readonly>
+                            </div>
+                            <div class="col">
+                                <label for="password_confirm" class="form-label fw-bold">비밀번호 확인</label>
+                                <input type="password" class="form-control bg-white" id="password_confirm" value="" required readonly>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <label for="zip" class="form-label fw-bold">우편번호</label>
+                                <input type="text" class="form-control bg-white" id="zip" value="12345" required readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <label for="address" class="form-label fw-bold">주소</label>
+                                <input type="text" class="form-control bg-white" id="address" value="경기도 용인시 기흥구" required readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <label for="addressDetail" class="form-label fw-bold">상세주소</label>
+                                <input type="text" class="form-control bg-white" id="addressDetail" value="205동" required readonly>
+                            </div>
+                        </div>
                         <div class="row">
-                            <div class="col-12 ">
-                                <div class="card text-white position-relative shadow-lg">
-                                    <img src="../../resources/images/xdmin/listBack.jpg" class="card-img" style="height: 200px;"
-                                        alt="...">
-                                    <div class="card-img-overlay text-center p-4 position-absoulte top-50 start-50 translate-middle">
-                                        <span class="card-title align-middle fw-bold fs-3">댓글 관리</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 검색 -->
-                        <div class="card p-3 shadow">
-                            <div class="row align-items-center pb-2">
-                                <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" selected>선택</option>
-                                        <option value="createdAt">등록일</option>
-                                        <option value="modifiedAt">수정일</option>
-                                    </select>
-                                </div>
-                                <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-01-01" required>
-                                </div>
-                                <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-12-31" required>
-                                </div>
-                            </div>
-                            <div class="row align-items-center">
-                                <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" selected>선택</option>
-                                        <option value="name">이름</option>
-                                        <option value="id">아이디</option>
-                                    </select>
-                                </div>
-                                <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" value="" required>
-                                </div>
-                                <div class="col-3">
-                                    <button class="btn btn-primary fw-bold btn-sm shadow" type="submit">검색</button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 리스트 -->
-                        <div class="card ps-3 pt-3 pe-3 shadow">
-                            <table class="table text-center align-middle">
-                                <thead>
-                                    <tr>
-                                        <th style="font-size: small;"><input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault"></th>
-                                        <th>번호</th>
-                                        <th>이름</th>
-                                        <th>성별</th>
-                                        <th>아이디</th>
-                                        <th>내용</th>
-                                        <th>등록일</th>
-                                        <th>수정일</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        </td>
-                                        <td>1</td>
-                                        <td>이하늘</td>
-                                        <td>남자</td>
-                                        <td>himmel</td>
-                                        <td>두산이겨라!</td>
-                                        <td>2022-05-16 12:00:00</td>
-                                        <td>2022-05-16 12:15:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        </td>
-                                        <td>2</td>
-                                        <td>박지성</td>
-                                        <td>남자</td>
-                                        <td>Jisung</td>
-                                        <td>LG 이겨라!!</td>
-                                        <td>2022-05-16 12:00:00</td>
-                                        <td>2022-05-16 12:15:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        </td>
-                                        <td>3</td>
-                                        <td>김연경</td>
-                                        <td>여자</td>
-                                        <td>yunkyung</td>
-                                        <td>아무나 이겨라!!!</td>
-                                        <td>2022-05-16 12:00:00</td>
-                                        <td>2022-05-16 12:15:00</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination pagination-sm col-3 offset-5">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <div class="row align-items-center">
-                            <div class="col-1">
-                                <button class="border-0 btn btn-sm shadow" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">
-                                    <i class="fa-solid fa-trash fa-lg text-danger"></i>
-                                </button>
-                                <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false"
-                                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title fw-bold" id="staticBackdropLabel">게시물 삭제</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body fs-6">
-                                                선택하신 게시물을 정말로 삭제하시겠습니까?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                                                <button type="button" class="btn btn-primary">삭제</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-2">
+                                <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="../user/userList.html"
+                                    role="button">뒤로</a>
                             </div>
                         </div>
                     </div>
@@ -362,7 +301,7 @@
                 </ul>
                 <div class="footer_copy">
                     <a id="fot.naver" target="_blank" href="https://www.navercorp.com">
-                        <img src="../../image/SPOPIA1.png" alt="logo" style="width: 45px;">
+                        <img src="../../resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
                     </a>
                     <span class="text">Copyright</span>
                     <span class="corp">© SPOPIA Corp.</span>

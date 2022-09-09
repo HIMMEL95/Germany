@@ -42,7 +42,7 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container px-3 px-xl-5 pt-1">
                 <!-- Logo START -->
-                <a class="navbar-brand" href="./main_page.html">
+                <a class="navbar-brand" href="/sportMain">
                     <img class="light-mode-item navbar-brand-item" src="../../image/SPOPIA_white.png" alt="logo"
                         style="width: 90px;">
                 </a>

@@ -259,7 +259,7 @@ a:hover {
 
 main {
   max-width: 1200px;
-  height: 1850px;
+  height: 1877px;
   margin: 0 auto;
   background: #84ffff;
   grid-area: main;
@@ -667,7 +667,7 @@ main {
   cursor: pointer;
   z-index: 10;
   padding: 0 10px;
-  bottom: -5px;
+  bottom: 5px;
 }
 
 .more i {

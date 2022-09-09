@@ -84,7 +84,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item bg-danger-soft-hover" href="../../seperate/html/seperatePage.html">
+                                    <a class="dropdown-item bg-danger-soft-hover" href="/">
                                         <i class="fa-solid fa-power-off me-2"></i>
                                         Sign Out
                                     </a>

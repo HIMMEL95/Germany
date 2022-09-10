@@ -83,7 +83,6 @@
 			,ifcgReferenceI1
 			,ifcgReferenceI2
 			,ifcgReferenceI3
-			
 		)
 		VALUES (
 			#{ifcgName}

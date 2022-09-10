@@ -14,6 +14,7 @@
 			,a.title
 		    ,a.content
 		    ,a.newspaper
+		    ,a.abroadNy
 		    ,a.event
 		    ,a.league
 		    ,a.reporter
@@ -36,5 +37,35 @@
 				<otherwise></otherwise>
 			</choose>
 	</select>
+	
+	<insert id="insert">
+		INSERT INTO article (
+			title
+			,content
+			,newspaper
+			,abroadNy
+			,event
+			,league
+			,reporter
+			,aDelNy
+			,createdAt
+			,modifiedAt
+		) 
+		VALUES (
+			#{title}
+			,#{content}
+			,#{newspaper}
+			,#{abroadNy}
+			,#{event}
+			,#{league}
+			,#{reporter}
+			,#{aDelNy}
+			,now()
+			,now()
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
 
 </mapper>

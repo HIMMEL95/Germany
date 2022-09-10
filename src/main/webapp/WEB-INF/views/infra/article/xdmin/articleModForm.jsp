@@ -11,10 +11,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Article Reg Form</title>
+    <title>Article Mod Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="/resources/css/xdmin/articleForm.css" rel="stylesheet" type="text/css">
+    <link href="/resources/css/xdmin/articleMod.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -24,8 +24,8 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container px-3 px-xl-5 pt-1">
                 <!-- Logo START -->
-                <a class="navbar-brand" href="/sportMain">
-                    <img class="light-mode-item navbar-brand-item" src="../../resources/images/SPOPIA_white.png" alt="logo"
+                <a class="navbar-brand" href="../../user/member/main_page.html">
+                    <img class="light-mode-item navbar-brand-item" src="../../image/SPOPIA_white.png" alt="logo"
                         style="width: 90px;">
                 </a>
                 <!-- Profile START -->
@@ -34,7 +34,7 @@
                         <li class="me-2">
                             <a class="p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
                                 data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img class="avatar-img rounded-circle" src="../../resources/images/diano.jpg" alt="avatar"
+                                <img class="avatar-img rounded-circle" src="../../image/diano.jpg" alt="avatar"
                                     style="width: 30px;">
                             </a>
                             <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
@@ -43,8 +43,8 @@
                                 <li class="px-3">
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
-                                        <div class="avatar ps-1 pt-2">
-                                            <img class="avatar-img rounded-circle shadow" src="../../resources/images/diano.jpg"
+                                        <div class="avatar me-3">
+                                            <img class="avatar-img rounded-circle shadow" src="../../image/diano.jpg"
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
@@ -74,7 +74,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item bg-danger-soft-hover" href="/">
+                                    <a class="dropdown-item bg-danger-soft-hover" href="../../seperate/html/seperatePage.html">
                                         <i class="fa-solid fa-power-off me-2"></i>
                                         Sign Out
                                     </a>
@@ -90,53 +90,66 @@
     </header>
 
     <main>
-        <form class="needs-validation" action="/article/articleInst" method="post">
-            <div style="height: 80px;"></div>
-            <div class="container" style="max-width: 900px;">
-                <div class="text-center pb-3">
-                    <span class="fs-1 fw-bold">기사 등록</span>
+        <div style="height: 80px;"></div>
+        <div class="container">
+            <form method="get">
+                <div class="col-12 text-center pb-3">
+                    <span class="fs-1 fw-bold">게시물 수정</span>
                 </div>
                 <div class="card ps-5 pe-5 pt-4 pb-4 shadow">
                     <div class="row mb-4">
-                        <div class="col-5">
+                        <div class="col-12">
                             <label for="title" class="form-label fw-bold">제목</label>
-                            <input type="text" class="form-control" id="title" name="title" value="">
+                            <input type="text" class="form-control" id="title" value="최지만 2타수 무안타 후 교체, 탬파베이는 3-2 역전승" required>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 mb-4">
+                    <div class="row mb-4">
+                        <div class="col-12">
                             <label for="content" class="form-label fw-bold">본문</label>
-                            <textarea class="form-control" style="height: 200px;" id="content" name="content" aria-label="content" th:text="${list.title }"></textarea>
+                            <textarea class="form-control" id="content" style="height: 200px;" aria-label="content">
+                                            최지만(31·탬파베이 레이스)이 안타 없이 두 타석만 소화하고 교체됐다. 특히 역전 찬스에서 곧바로 교체돼 아쉬움을 남겼다.
+                
+                                            최지만은 13일 오전(한국시간) 미국 플로리다주 세인트피터즈버그 트로피카나필드에서 열린 미국프로야구 메이저리그 보스턴과 경기에 6번 타자(1루수)로 선발 출전해
+                                            2타수 무안타를 남겼다. 최지만의 타율은 0.283에서 0.280으로 하락했다.
+                
+                                            최지만은 2회 말 1사에서 크리스 세일의 슬라이더에 헛스윙 삼진으로 물러났고, 4회 1사 3루에서는
+                                            세일의 초구를 쳤지만 2루수 땅볼로 아웃됐다. 탬파베이는 0-2로 뒤진 6회 2사 1, 2루에서 최지만 타석 때 보스턴이 좌완 맷 스트람으로 교체하자 곧바로 대타
+                                            프란시스코
+                                            메히아를 투입했다.
+                
+                                            스위치 타자인 메히아는 1타점 중전 적시타를 쳤다. 탬파베이는 이어진 1사 1, 2루에서 테일러 윌스가 투수 강습 타구를 날렸고, 상대 실책이 연거푸 나오면서 2점을
+                                            뽑아 3-2로 역전했다. 탬파베이는 1점 차 리드를 끝까지 지켜 이겼다.
+                                        </textarea>
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col">
                             <label for="newspaper" class="form-label fw-bold">신문사</label>
-                            <input type="text" class="form-control" id="newspaper" name="newspaper" value="">
+                            <input type="text" class="form-control" id="newspaper" value="문화일보" required>
                         </div>
                         <div class="col">
                             <label for="abroadNY" class="form-label fw-bold">해외여부</label>
-                            <select id="abroadNY" class="form-select form-select fw-bold" name="abroadNy" aria-label=".form-select example">
-                                <option value="" selected>선택</option>
+                            <select id="abroadNY" class="form-select form-select fw-bold" aria-label=".form-select example">
+                                <option value="">선택</option>
                                 <option value="1">국내</option>
-                                <option value="2">해외</option>
+                                <option value="2" selected>해외</option>
                             </select>
                         </div>
                         <div class="col">
                             <label for="event" class="form-label fw-bold">종목</label>
-                            <select id="event" class="form-select form-select fw-bold" name="event" aria-label=".form-select example">
-                                <option value="" selected>선택</option>
-                                <option value="1">야구</option>
+                            <select id="event" class="form-select form-select fw-bold" aria-label=".form-select example">
+                                <option value="">선택</option>
+                                <option value="1" selected>야구</option>
                                 <option value="2">축구</option>
                             </select>
                         </div>
                         <div class="col">
-                            <label for="league" class="form-label fw-bold">리그</label>
-                            <select id="league" class="form-select form-select fw-bold" name="league" aria-label=".form-select example">
-                                <option value="" selected>선택</option>
+                            <label for="event" class="form-label fw-bold">리그</label>
+                            <select id="event" class="form-select form-select fw-bold" aria-label=".form-select example">
+                                <option value="">선택</option>
                                 <option value="1">KBO</option>
                                 <option value="2">메이저리그</option>
-                                <option value="3">아메리칸리그</option>
+                                <option value="3" selected>아메리칸리그</option>
                                 <option value="4">센트럴리그</option>
                                 <option value="5">퍼시픽리그</option>
                                 <option value="6">K리그 1</option>
@@ -150,7 +163,7 @@
                         </div>
                         <div class="col">
                             <label for="reporter" class="form-label fw-bold">기자</label>
-                            <input type="text" class="form-control" id="reporter" name="reporter" value="">
+                            <input type="text" class="form-control" id="reporter" value="정세영" required>
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -162,17 +175,18 @@
                     </div>
                     <div class="row">
                         <div class="col-2">
-                            <a class="btn btn-primary btn-sm text-white fw-bold shadow" href="/article/articleList"
+                            <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="../article/articleList.html"
                                 role="button">취소</a>
                         </div>
                         <div class="col-2 offset-8" align="right">
-                            <button class="btn btn-primary btn-sm text-white fw-bold shadow" type="submit">등록</button>
+                            <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="../article/articleList.html"
+                                role="button">등록</a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div style="height: 50px;"></div>
-        </form>
+            </form>
+        </div>
+        <div style="height: 50px;"></div>
     </main>
 
     <footer>
@@ -207,27 +221,7 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (() => {
-            'use strict'
-
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            const forms = document.querySelectorAll('.needs-validation')
-
-            // Loop over them and prevent submission
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-
-                    form.classList.add('was-validated')
-                }, false)
-            })
-        })()
-
+    <script>
         // 이미지 미리보기
 		const reader = new FileReader();
 

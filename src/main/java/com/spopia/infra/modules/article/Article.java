@@ -6,6 +6,7 @@ public class Article {
 	private String title;
 	private String content;
 	private String newspaper;
+	private Integer abroadNy;
 	private Integer event;
 	private Integer league;
 	private String reporter;
@@ -43,6 +44,12 @@ public class Article {
 	}
 	public void setNewspaper(String newspaper) {
 		this.newspaper = newspaper;
+	}
+	public Integer getAbroadNy() {
+		return abroadNy;
+	}
+	public void setAbroadNy(Integer abroadNy) {
+		this.abroadNy = abroadNy;
 	}
 	public Integer getEvent() {
 		return event;

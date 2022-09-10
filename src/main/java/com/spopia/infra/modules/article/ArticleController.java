@@ -8,27 +8,34 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "/article")
+@RequestMapping(value = "/article/")
 public class ArticleController {
 
 	@Autowired
 	ArticleServiceImpl service;
 	
-	@RequestMapping(value = "/articleView")
+	@RequestMapping(value = "articleView")
 	public String articleView()throws Exception {
 		return "infra/article/xdmin/articleView";
 	}
 	
-	@RequestMapping(value = "/articleForm")
+	@RequestMapping(value = "articleForm")
 	public String articleForm() throws Exception {
 		return "infra/article/xdmin/articleForm";
 	}
 	
-	@RequestMapping(value = "/articleList")
+	@RequestMapping(value = "articleList")
 	public String articleList(Model model, ArticleVo vo) throws Exception {
 		
 		List<Article> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		return "infra/article/xdmin/articleList";
+	}
+	
+	@RequestMapping(value = "articleInst")
+	public String articleInst(Article dto) throws Exception {
+		int result = service.insert(dto);
+		System.out.println("Controller result : " + result);
+		return "redirect:/article/articleList";
 	}
 }

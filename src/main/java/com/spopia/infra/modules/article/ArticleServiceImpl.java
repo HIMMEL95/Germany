@@ -15,6 +15,9 @@ public class ArticleServiceImpl  implements ArticleService{
 	public List<Article> selectList(ArticleVo vo) throws Exception {
 		return dao.selectList(vo);
 	}
-	
-	
+
+	@Override
+	public int insert(Article dto) throws Exception {
+		return dao.insert(dto);
+	}
 }

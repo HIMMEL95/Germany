@@ -20,5 +20,9 @@ public class ArticleDao {
 	public List<Article> selectList(ArticleVo vo) {
 		return sqlSession.selectList(namespace + ".selectList", vo);
 	}
+	
+	public int insert(Article dto) {
+		return sqlSession.insert(namespace+".insert", dto);
+	}
 
 }

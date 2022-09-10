@@ -223,32 +223,32 @@
                         <div class="row">
                             <div class="col">
                                 <div class="input-control">
-                                    <label for="cg_code">코드그룹 코드<span style="color: red;">*</span></label>
-                                    <input type="text" id="cg_code" name="cg_code" value="" placeholder="영문(대문자),숫자">
-                                    <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
+                                    <label for="ccgSeq">코드그룹 코드<span style="color: red;">*</span></label>
+                                    <input type="text" id="ccgSeq" name="ccgSeq" value="" placeholder="영문(대문자),숫자">
+                                    <div class="msg" id="ccgSeq_msg" name="ccgSeq_msg" style="display: none;"></div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input-control">
-                                    <label for="seqAnother">코드그룹 코드 (Another)<span style="color: red;">*</span></label>
-                                    <input type="text" id="seqAnother" name="seqAnother" value="<c:out value="${item.ifcgAnother }"/>" placeholder="영문(대문자),숫자">
-                                    <div class="msg" id="seqAnother_msg" name="seqAnother_msg" style="display: none;"></div>
+                                    <label for="ifcgAnother">코드그룹 코드 (Another)<span style="color: red;">*</span></label>
+                                    <input type="text" id="ifcgAnother" name="ifcgAnother" value="<c:out value="${item.ifcgAnother }"/>" placeholder="영문(대문자),숫자">
+                                    <div class="msg" id="ifcgAnother_msg" name="ifcgAnother_msg" style="display: none;"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="input-control">
-                                    <label for="groupName">코드그룹 이름 (한글)<span style="color: red;">*</span></label>
-                                    <input type="text" id="groupName" name="groupName" value="<c:out value="${item.ifcgName }"/>" placeholder="한글,숫자">
-                                    <div class="msg" id="groupName_msg" name="groupName_msg" style="display: none;"></div>
+                                    <label for="ifcgName">코드그룹 이름 (한글)<span style="color: red;">*</span></label>
+                                    <input type="text" id="ifcgName" name="ifcgName" value="<c:out value="${item.ifcgName }"/>" placeholder="한글,숫자">
+                                    <div class="msg" id="ifcgName_msg" name="ifcgName_msg" style="display: none;"></div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input-control">
-                                    <label for="eng">코드그룹 이름 (영문)<span style="color: red;">*</span></label>
-                                    <input type="text" id="eng" name="eng" value="<c:out value="${item.ifcgNameEng }"/>" placeholder="영문(대소문자),숫자">
-                                    <div class="msg" id="eng_msg" name="eng_msg" style="display: none;"></div>
+                                    <label for="ifcgNameEng">코드그룹 이름 (영문)<span style="color: red;">*</span></label>
+                                    <input type="text" id="ifcgNameEng" name="ifcgNameEng" value="<c:out value="${item.ifcgNameEng }"/>" placeholder="영문(대소문자),숫자">
+                                    <div class="msg" id="ifcgNameEng_msg" name="ifcgNameEng_msg" style="display: none;"></div>
                                 </div>
                             </div>
                         </div>
@@ -266,18 +266,18 @@
                             </div>
                             <div class="col">
                                 <div class="input-control">
-                                    <label for="orderBY">순서<span style="color: red;">*</span></label>
-                                    <input type="text" id="orderBY" name="orderBY" value="<c:out value="${item.ifcgOrder }"/>" placeholder="숫자">
-                                    <div class="msg" id="orderBY_msg" name="orderBY_msg" style="display: none;"></div>
+                                    <label for="ifcgOrder">순서<span style="color: red;">*</span></label>
+                                    <input type="text" id="ifcgOrder" name="ifcgOrder" value="<c:out value="${item.ifcgOrder }"/>" placeholder="숫자">
+                                    <div class="msg" id="ifcgOrder_msg" name="ifcgOrder_msg" style="display: none;"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="input-control">
-                                    <label for="ex">설명<span style="color: red;">*</span></label>
-                                    <textarea id="ex" name="ex" placeholder=""></textarea>
-                                    <div class="msg" id="ex_msg" name="ex_msg" style="display: none;"></div>
+                                    <label for="ifcgExplanation">설명<span style="color: red;">*</span></label>
+                                    <textarea id="ifcgExplanation" name="ifcgExplanation" placeholder=""></textarea>
+                                    <div class="msg" id="ifcgExplanation_msg" name="ifcgExplanation_msg" style="display: none;"></div>
                                 </div>
                             </div>
                             <div class="col">
@@ -424,12 +424,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         validation = function() {
-        	if(!checkOnlyKorEngNum('cg_code', 2, 0, "한글, 영문(대소문자), 숫자만 입력 가능합니다.", "cg_code_msg")) return false;         
-        	if(!checkOnlyEngNum('seqAnother', 2, 1, "영문(대소문자), 숫자만 입력 가능합니다.", "seqAnother_msg")) return false;         
-        	if(!checkOnlyKorNum('groupName', 2, 0, "한글, 숫자만 입력 가능합니다.", "groupName_msg")) return false;      
-        	if(!checkOnlyEngNum('eng', 2, 1, "영문(대소문자), 숫자만 입력 가능합니다.", "eng_msg")) return false; 
-        	if(!checkOnlyNum('orderBY', 2, 0, 0, 255, "순서는 0~255 사이의 숫자만 입력 가능합니다.", "orderBY_msg")) return false;
-        	if(!checkOnlyKorEngNum('ex', 2, 1, "설명을 입력 하세요.", "ex_msg")) return false;     
+        	if(!checkOnlyKorEngNum('ccgSeq', 2, 0, "한글, 영문(대소문자), 숫자만 입력 가능합니다.", "ccgSeq_msg")) return false;         
+        	if(!checkOnlyEngNum('ifcgAnother', 2, 1, "영문(대소문자), 숫자만 입력 가능합니다.", "ifcgAnother_msg")) return false;         
+        	if(!checkOnlyKorNum('ifcgName', 2, 0, "한글, 숫자만 입력 가능합니다.", "ifcgName_msg")) return false;      
+        	if(!checkOnlyEngNum('ifcgNameEng', 2, 1, "영문(대소문자), 숫자만 입력 가능합니다.", "ifcgNameEng_msg")) return false; 
+        	if(!checkOnlyNum('ifcgOrder', 2, 0, 0, 255, "순서는 0~255 사이의 숫자만 입력 가능합니다.", "ifcgOrder_msg")) return false;
+        	if(!checkOnlyKorEngNum('ifcgExplanation', 2, 1, "설명을 입력 하세요.", "ifcgExplanation_msg")) return false;     
         	if(!checkOnlyEng('referenceV1', 2, 1, "영문(대소문자)만 입력 가능합니다.", "referenceV1_msg")) return false;    
         	if(!checkOnlyEng('referenceV2', 2, 1, "영문(대소문자)만 입력 가능합니다.", "referenceV2_msg")) return false;    
         	if(!checkOnlyEng('referenceV3', 2, 1, "영문(대소문자만 입력 가능합니다.", "referenceV3_msg")) return false;    

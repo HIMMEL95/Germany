@@ -5,13 +5,6 @@ public class MemberVo {
 	private Integer shOption;
 	private String shValue;
 	private Integer shDelNy;
-	private Integer total;
-	public Integer getTotal() {
-		return total;
-	}
-	public void setTotal(Integer total) {
-		this.total = total;
-	}
 	public Integer getShOption() {
 		return shOption;
 	}

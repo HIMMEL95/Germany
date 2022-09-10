@@ -17,8 +17,8 @@ public class ArticleDao {
 	
 	private static String namespace = "com.spopia.infra.modules.article.ArticleMapper";
 	
-	public List<Article> selectList() {
-		return sqlSession.selectList(namespace + ".selectList", "");
+	public List<Article> selectList(ArticleVo vo) {
+		return sqlSession.selectList(namespace + ".selectList", vo);
 	}
 
 }

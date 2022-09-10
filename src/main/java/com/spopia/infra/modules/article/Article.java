@@ -13,6 +13,13 @@ public class Article {
 	private Integer createdBy;
 	private String modifiedAt;
 	private Integer modifiedBy;
+	private Integer aDelNy;
+	public Integer getaDelNy() {
+		return aDelNy;
+	}
+	public void setaDelNy(Integer aDelNy) {
+		this.aDelNy = aDelNy;
+	}
 	public String getSeq() {
 		return seq;
 	}

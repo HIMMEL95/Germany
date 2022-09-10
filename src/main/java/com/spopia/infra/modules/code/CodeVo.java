@@ -5,12 +5,12 @@ public class CodeVo {
 	private String shOption;
 	private String shValue;
 	private Integer shDelNy;
-	private String seq;
-	public String getSeq() {
-		return seq;
+	private String ccSeq;
+	public String getCcSeq() {
+		return ccSeq;
 	}
-	public void setSeq(String seq) {
-		this.seq = seq;
+	public void setCcSeq(String ccSeq) {
+		this.ccSeq = ccSeq;
 	}
 	public String getShOption() {
 		return shOption;

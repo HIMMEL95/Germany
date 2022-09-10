@@ -10,13 +10,27 @@
 	
 	<select id="selectList" resultMap="resultMapObj">
 		select 
-			u.*
+			u.seq
+		    ,u.name
+		    ,u.id
+		    ,u.email
+		    ,u.gender
+		    ,u.dob
+		    ,u.radio_operator
+		    ,u.phone
+		    ,u.zip
+		    ,u.address
+		    ,u.address_detail
+		    ,u.job
+		    ,date_format(u.createdAt, '%Y.%m.%d %H:%i:%s') as createdAt
+		    ,date_format(u.modifiedAt, '%Y.%m.%d %H:%i:%s') as modifiedAt
+		    ,u.user_div
 			,t.teamName as team
 		from user u
 		inner join teamUser tu on tu.user_seq = u.seq
 		inner join team t on t.teamSeq = tu.team_seq
-		where
-			tu.defaultNY = 0
+		where 1=1
+			and tu.defaultNY = 0
 			
 			<if test="shDelNy != null and !shDelNy.equals('')">AND deleteNy = #{shDelNy}</if>
 			<choose>

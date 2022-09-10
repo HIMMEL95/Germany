@@ -11,6 +11,20 @@ public class Comment {
 	private Integer modifiedBy;
 	private Integer game_seq;
 	private Integer article_seq;
+	private Integer gcDelNy;
+	private Integer acDelNy;
+	public Integer getGcDelNy() {
+		return gcDelNy;
+	}
+	public void setGcDelNy(Integer gcDelNy) {
+		this.gcDelNy = gcDelNy;
+	}
+	public Integer getAcDelNy() {
+		return acDelNy;
+	}
+	public void setAcDelNy(Integer acDelNy) {
+		this.acDelNy = acDelNy;
+	}
 	public String getSeq() {
 		return seq;
 	}

@@ -17,12 +17,19 @@ public class Member {
 	private String address;
 	private String address_detail;
 	private String job;
-	private Date createdAt;
+	private String createdAt;
 	private Integer createdBy;
-	private Date modifiedAt;
+	private String modifiedAt;
 	private Integer modifiedBy;
 	private Integer user_div;
 	private Integer team;
+	private Integer uDelNy;
+	public Integer getuDelNy() {
+		return uDelNy;
+	}
+	public void setuDelNy(Integer uDelNy) {
+		this.uDelNy = uDelNy;
+	}
 	public Integer getTeam() {
 		return team;
 	}
@@ -107,10 +114,10 @@ public class Member {
 	public void setJob(String job) {
 		this.job = job;
 	}
-	public Date getCreatedAt() {
+	public String getCreatedAt() {
 		return createdAt;
 	}
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
 	public Integer getCreatedBy() {
@@ -119,10 +126,10 @@ public class Member {
 	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
-	public Date getModifiedAt() {
+	public String getModifiedAt() {
 		return modifiedAt;
 	}
-	public void setModifiedAt(Date modifiedAt) {
+	public void setModifiedAt(String modifiedAt) {
 		this.modifiedAt = modifiedAt;
 	}
 	public Integer getModifiedBy() {

@@ -17,7 +17,7 @@
     <!-- jquery ui CSS -->    
     <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">    
     <!-- user css -->
-    <link rel="stylesheet" href="/resources/css/cc.css" />
+    <link rel="stylesheet" href="/resources/css/xdmin/memberList.css" />
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -255,7 +255,9 @@
                             </div>
                         </div>
                         <!-- 리스트 -->
-                        <span style="margin: 0; padding: 0; font-weight: 800;">Total : </span>
+                        <div style="margin: 0; padding: 0; font-weight: 800;">
+                        	<span>Total :</span>
+                       	</div>
                         <div class="card ps-3 pt-3 pe-3 shadow">
                             <table class="table text-center align-middle">
                                 <thead>

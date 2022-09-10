@@ -28,7 +28,22 @@
 			c.CCG_seq -->
 		
 		select
-			cg.*
+			cg.ccgSeq
+			,cg.ifcgAnother
+			,cg.ifcgName
+			,cg.ifcgNameEng
+			,cg.ifcgUseNy
+			,cg.ifcgOrder
+			,cg.ifcgExplanation
+			,cg.ifcgDelNy
+			,cg.ifcgReferencev1
+			,cg.ifcgReferencev2
+			,cg.ifcgReferencev3
+			,cg.ifcgReferenceI1
+			,cg.ifcgReferenceI2
+			,cg.ifcgReferenceI3
+			,cg.createdAt
+			,cg.modifiedAt
 		    ,(select count(c.codeGroup_ccgSeq) from code c where 1=1 and c.codeGroup_ccgSeq = cg.ccgSeq) as count
 		from codeGroup cg
 		where 1=1

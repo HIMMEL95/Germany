@@ -10,7 +10,23 @@
 	
 	<select id="selectList" resultMap="resultMapObj">
 		select 
-			c.*
+			c.ccSeq
+			,c.ifccAnother
+			,c.ifccName
+			,c.ifccNameEng
+			,c.ifccUseNy
+			,c.ifccOrder
+			,c.ifccExplanation
+			,c.ifccDelNy
+			,c.ifccReferencev1
+			,c.ifccReferencev2
+			,c.ifccReferencev3
+			,c.ifccReferenceI1
+			,c.ifccReferenceI2
+			,c.ifccReferenceI3
+			,c.createdAt
+			,c.modifiedAt
+			,c.codeGroup_ccgSeq
 		   <!--  ,cg.seq as ccgseq
 		    ,cg.groupName as groupName -->
 		from 

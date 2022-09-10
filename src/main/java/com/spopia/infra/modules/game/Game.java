@@ -23,6 +23,13 @@ public class Game {
 	private Integer createdBy;
 	private LocalDateTime modifiedAt;
 	private Integer modifiedBy;
+	private Integer gDelNy;
+	public Integer getgDelNy() {
+		return gDelNy;
+	}
+	public void setgDelNy(Integer gDelNy) {
+		this.gDelNy = gDelNy;
+	}
 	public String getSeq() {
 		return seq;
 	}

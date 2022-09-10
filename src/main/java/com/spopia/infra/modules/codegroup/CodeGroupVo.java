@@ -5,12 +5,12 @@ public class CodeGroupVo {
 	private Integer shOption;
 	private String shValue;
 	private Integer shDelNy;
-	private String seq;
-	public String getSeq() {
-		return seq;
+	private String ccgSeq;
+	public String getCcgSeq() {
+		return ccgSeq;
 	}
-	public void setSeq(String seq) {
-		this.seq = seq;
+	public void setCcgSeq(String ccgSeq) {
+		this.ccgSeq = ccgSeq;
 	}
 	public Integer getShDelNy() {
 		return shDelNy;

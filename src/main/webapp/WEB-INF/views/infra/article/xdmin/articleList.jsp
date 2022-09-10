@@ -92,7 +92,7 @@
     <main>
         <div style="height: 100px;"></div>
         <div class="container">
-            <form method="get">
+            <form method="get" action="/article/articleList">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -212,29 +212,37 @@
                         <div class="card p-3 shadow">
                             <div class="row align-items-center pb-2">
                                 <div class="col-2">
+                                    <select class="form-select form-select-sm fw-bold" id="shDelNy" name="shDelNy" aria-label=".form-select-sm example">
+                                       	<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>선택</option>
+                                        <option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
+                                        <option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option>
+                                    </select>
+                                </div>
+                                <div class="col-2">
                                     <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" selected>선택</option>
-                                        <option value="createdAt">등록일</option>
-                                        <option value="modifiedAt">수정일</option>
+                                        <option value="" <c:if test="${empty vo.shDate }">selected</c:if> selected>선택</option>
+                                        <option value="1" <c:if test="${vo.shDate eq 1 }">selected</c:if>>등록일</option>
+                                        <option value="2" <c:if test="${vo.shDate eq 2 }">selected</c:if>>수정일</option>
                                     </select>
                                 </div>
                                 <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-01-01" required>
+                                    <input type="text" class="form-control" id="validationCustom01" name="startDate" placeholder="2022-01-01">
                                 </div>
                                 <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-12-31" required>
+                                    <input type="text" class="form-control" id="validationCustom01" name="endDate" placeholder="2022-12-31">
                                 </div>
                             </div>
                             <div class="row align-items-center">
                                 <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" selected>선택</option>
-                                        <option value="name">이름</option>
-                                        <option value="id">아이디</option>
+                                    <select class="form-select form-select-sm fw-bold" name="shOption" aria-label=".form-select-sm example">
+                                        <option value="" <c:if test="${empty vo.shOption }"> selected</c:if>>선택</option>
+                                        <option value="1" <c:if test="${vo.shOption eq 1}"> selected</c:if>>기자</option>
+                                        <option value="2" <c:if test="${vo.shOption eq 2}"> selected</c:if>>신문사</option>
+                                        <option value="3" <c:if test="${vo.shOption eq 3}"> selected</c:if>>종목</option>
                                     </select>
                                 </div>
                                 <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" value="" required>
+                                    <input type="text" class="form-control" id="validationCustom01" value="">
                                 </div>
                                 <div class="col-3">
                                     <button class="btn btn-primary fw-bold btn-sm shadow" type="submit">검색</button>
@@ -257,43 +265,30 @@
                                         <th>수정일</th>
                                     </tr>
                                 </thead>
-                                <tbody onclick="newPage()">
-                                    <tr>
-                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
+                                <tbody>
+                                	<c:choose>
+                                		<c:when test="${fn:length(list) eq 0}">
+                                			<tr>
+                                				<td class="text-center" colspan="8">There is no data!</td>
+                                			</tr>
+                                		</c:when>
+                                		<c:otherwise>
+	                                		<c:forEach items="${list}" var="list" varStatus="status">
+												<tr>
+			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
                                                 id="flexCheckDefault">
-                                        </td>
-                                        <td>1</td>
-                                        <td>'123억 마무리' 언제 올지 모른다 압도적 꼴찌 한화 또 다른 비극</td>
-                                        <td>정철우</td>
-                                        <td>야구</td>
-                                        <td>MK스포츠</td>
-                                        <td>2022-07-28 10:02:00</td>
-                                        <td>2022-07-28 10:17:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-                                        </td>
-                                        <td>2</td>
-                                        <td>호날두는 보는 앞에서...'이적생' 에릭센, 맨유 데뷔골 '쾅'</td>
-                                        <td>강예진</td>
-                                        <td>축구</td>
-                                        <td>스포츠서울</td>
-                                        <td>2022-07-28 08:33:00</td>
-                                        <td>2022-07-28 11:43:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-                                        </td>
-                                        <td>3</td>
-                                        <td>점점 커지는 9월의 중요성… 김민재, 황인범, 손흥민 '필참'</td>
-                                        <td>김정용</td>
-                                        <td>축구</td>
-                                        <td>풋볼리스트</td>
-                                        <td>2022-07-28 07:01:00</td>
-                                        <td>2022-07-28 07:01:00</td>
-                                    </tr>
+			                                        </td>
+			                                        <td>${list.seq }</td>
+			                                        <td>${list.title }</td>
+			                                        <td>${list.reporter }</td>
+			                                        <td>${list.event }</td>
+			                                        <td>${list.newspaper }</td>
+			                                        <td>${list.createdAt }</td>
+			                                        <td>${list.modifiedAt }</td>
+			                                    </tr>		
+											</c:forEach>
+                                		</c:otherwise>
+                                	</c:choose>
                                 </tbody>
                             </table>
                             <nav aria-label="Page navigation">

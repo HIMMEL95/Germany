@@ -124,7 +124,7 @@
     <main>
         <div style="height: 150px;"></div>
         <div class="container">
-            <form method="post" action="/code/codeForm">
+            <form method="post" action="/code/codeList">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -304,19 +304,19 @@
 			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
 			                                                id="flexCheckDefault">
 			                                        </td>
-			                                        <td>${list.seq}</td>
+			                                        <td>${list.ccSeq}</td>
 			                                        <td>${list.ccgSeq}</td>
-			                                        <td>${list.groupName}</td>
+			                                        <td>${list.ifcgName}</td>
 			                                        <td></td>
-			                                        <td></td>
+			                                        <td>${list.ifccAnother }</td>
 			                                        <td>
-			                                            <a href="/code/codeView?seq=<c:out value="${list.seq }"/>">${list.CCName}</a>
+			                                            <a href="/code/codeView?seq=<c:out value="${list.ccSeq }"/>">${list.ifccName}</a>
 			                                        </td>
-			                                        <td></td>
-			                                        <td>${list.useNY}</td>
-			                                        <td>${list.ccOrder}</td>
-			                                        <td></td>
-			                                        <td></td>
+			                                        <td>${list.ifccNameEng }</td>
+			                                        <td>${list.ifccUseNy}</td>
+			                                        <td>${list.ifccOrder}</td>
+			                                        <td>${list.createdAt }</td>
+			                                        <td>${list.modifiedAt }</td>
 			                                    </tr>		
 											</c:forEach>
                                 		</c:otherwise>
@@ -376,9 +376,9 @@
                                     data-bs-target="#deleteModal">
                                     <i class="fa-regular fa-file-excel" style="color: white;"></i>
                                 </button>
-                                <button class="border-0 btn btn-sm shadow bg-primary" type="submit">
+                                <a class="border-0 btn btn-sm shadow bg-primary" role="button" href="/code/codeForm">
                                     <i class="fa-regular fa-plus fa-1x" style="color: white;"></i>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>

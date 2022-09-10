@@ -224,7 +224,7 @@
                                 <label for=ccgSeq class="form-label">코드그룹</label>
                                 <select class="form-select" id="ccgSeq" name="ccgSeq">
                                     <c:forEach items="${list1}" var="list1" varStatus="status">
-	                     				<option value="${list1.seq }">${list1.groupName } </option>
+	                     				<option value="${list1.ccgSeq }">${list1.ifcgName } </option>
 									</c:forEach>
                                 </select>
                             </div>
@@ -235,21 +235,21 @@
                                 <input type="text" class="form-control" id="code" value="자동생성" disabled>
                             </div>
                             <div class="col">
-                                <label for="seqAnother" class="form-label">코드 (Another)</label>
-                                <input type="text" class="form-control" id="seqAnother" name="seqAnother" value="<c:out value="${item.seqAnother }"/>" placeholder="">
-                                <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
+                                <label for="ifccAnother" class="form-label">코드 (Another)</label>
+                                <input type="text" class="form-control" id="ifccAnother" name="ifccAnother" value="<c:out value="${item.ifccAnother }"/>" placeholder="">
+                                <div class="msg" id="ifccAnother_msg" name="ifccAnother_msg" style="display: none;"></div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <label for="CCName" class="form-label">코드 이름 (한글)</label>
-                                <input type="text" class="form-control" id="CCName" name="CCName" value="<c:out value="${item.CCName }"/>" placeholder="">
-                                <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
+                                <label for="ifccName" class="form-label">코드 이름 (한글)</label>
+                                <input type="text" class="form-control" id="ifccName" name="ifccName" value="<c:out value="${item.ifccName }"/>" placeholder="">
+                                <div class="msg" id="ifccName_msg" name="ifccName_msg" style="display: none;"></div>
                             </div>
                             <div class="col">
-                                <label for=""CCG_seq"" class="form-label">코드 이름 (영문)</label>
-                                <input type="text" class="form-control" id="CCG_seq" name="CCG_seq" value="" placeholder="">
-                                <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
+                                <label for=""ifccNameEng"" class="form-label">코드 이름 (영문)</label>
+                                <input type="text" class="form-control" id="ifccNameEng" name="ifccNameEng" value="<c:out value="${item.ifccNameEng }"/>" placeholder="">
+                                <div class="msg" id="ifccNameEng_msg" name="ifccNameEng_msg" style="display: none;"></div>
                             </div>
                         </div>
                         <div class="row">
@@ -262,9 +262,9 @@
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="ccOrder" class="form-label">순서</label>
-                                <input type="text" class="form-control" id="ccOrder" name="ccOrder" value="<c:out value="${item.ccOrder }"/>" placeholder="숫자">
-                                <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
+                                <label for="ifccOrder" class="form-label">순서</label>
+                                <input type="text" class="form-control" id="ifccOrder" name="ifccOrder" value="<c:out value="${item.ifccOrder }"/>" placeholder="숫자">
+                                <div class="msg" id="ifccOrder_msg" name="ifccOrder_msg" style="display: none;"></div>
                             </div>
                         </div>
                         <div class="row">
@@ -285,38 +285,39 @@
                         <div class="row">
                             <div class="col">
                                 <label for="referenceV1" class="form-label">예비1 (varchar type)</label>
-                                <input type="text" class="form-control" id="referenceV1" name="referenceV1" value="" placeholder="영문(대소문자), 숫자">
-                            	<div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
+                                <input type="text" class="form-control" id="referenceV1" name="referenceV1" value="<c:out value="${item.ReferenceV1 }"/>" placeholder="영문(대소문자), 숫자">
+                            	<div class="msg" id="referenceV1_msg" name="referenceV1_msg" style="display: none;"></div>
                             </div>
                             <div class="col">
                                 <label for="referenceV2" class="form-label">예비2 (varchar type)</label>
-                                <input type="text" class="form-control" id="referenceV2" name="referenceV2" value="" placeholder="영문(대소문자), 숫자">
+                                <input type="text" class="form-control" id="referenceV2" name="referenceV2" value="<c:out value="${item.ReferenceV2 }"/>" placeholder="영문(대소문자), 숫자">
+                                <div class="msg" id="referenceV2_msg" name="referenceV2_msg" style="display: none;"></div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6">
-                                <label for="varchar_sub3" class="form-label">예비3 (varchar type)</label>
-                                <input type="text" class="form-control" id="varchar_sub3" value="" placeholder="영문(대소문자), 숫자">
-                                <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
+                                <label for="referenceV3" class="form-label">예비3 (varchar type)</label>
+                                <input type="text" class="form-control" id="referenceV3" name="referenceV3"  value="<c:out value="${item.ReferenceV3 }"/>" placeholder="영문(대소문자), 숫자">
+                                <div class="msg" id="referenceV3_msg" name="referenceV3_msg" style="display: none;"></div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label for="referenceI1" class="form-label">예비1 (int type)</label>
-                                <input type="text" class="form-control" id="referenceI1" name="referenceI1" value="" placeholder="숫자">
-                                <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
+                                <input type="text" class="form-control" id="referenceI1" name="referenceI1" value="<c:out value="${item.ReferenceI1 }"/>" placeholder="숫자">
+                                <div class="msg" id="referenceI1_msg" name="referenceI1_msg" style="display: none;"></div>
                             </div>
                             <div class="col">
                                 <label for="referenceI2" class="form-label">예비2 (int type)</label>
-                                <input type="text" class="form-control" id="referenceI2" name="referenceI2" value="" placeholder="숫자">
-                                <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
+                                <input type="text" class="form-control" id="referenceI2" name="referenceI2" value="<c:out value="${item.ReferenceI2 }"/>" placeholder="숫자">
+                                <div class="msg" id="referenceI2_msg" name="referenceI2_msg" style="display: none;"></div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6">
-                                <label for="int_sub3" class="form-label">예비3 (int type)</label>
-                                <input type="text" class="form-control" id="int_sub3" value="" placeholder="숫자">
-                                <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
+                                <label for="referenceI3" class="form-label">예비3 (int type)</label>
+                                <input type="text" class="form-control" id="referenceI3" name="referenceI3" value="<c:out value="${item.ReferenceI3 }"/>" placeholder="숫자">
+                                <div class="msg" id="referenceI3_msg" name="referenceI3_msg" style="display: none;"></div>
                             </div>
                         </div>
                         <!-- 리스트 -->

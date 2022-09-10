@@ -29,16 +29,16 @@
 		
 		select
 			cg.*
-		    ,(select count(c.CCG_seq) from CC c where 1=1 and c.CCG_seq = cg.seq) as count
-		from CCG cg
+		    ,(select count(c.codeGroup_ccgSeq) from code c where 1=1 and c.codeGroup_ccgSeq = cg.ccgSeq) as count
+		from codeGroup cg
 		where 1=1
 			
 			<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if> -->
 			
-			<if test="shDelNy != null and !shDelNy.equals('')">AND deleteNy = #{shDelNy}</if>
+			<if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if>
 			<choose>
-				<when test="shOption == 1">AND seq = #{shValue}</when>
-				<when test="shOption == 2">AND groupName LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 1">AND ccgSeq = #{shValue}</when>
+				<when test="shOption == 2">AND ifcgName LIKE CONCAT('%',#{shValue},'%')</when>
 				<otherwise></otherwise>
 			</choose>
 	</select>
@@ -47,21 +47,46 @@
 		
 		select
 			cg.*
-		from CCG cg
+		from codeGroup cg
 		where 1=1
-			AND seq = #{seq}
+			AND ccgSeq = #{ccgSeq}
 			
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO CCG (
-			groupName
+		INSERT INTO codeGroup (
+			ifcgName
+			,ifcgAnother
+			,ifcgNameEng
+			,ifcgUseNy
+			,ifcgOrder
+			,ifcgExplanation
+			,ifcgDelNy
+			,ifcgReferencev1
+			,ifcgReferencev2
+			,ifcgReferencev3
+			,ifcgReferenceI1
+			,ifcgReferenceI2
+			,ifcgReferenceI3
+			
 		)
 		VALUES (
-			#{groupName}
+			#{ifcgName}
+			,#{ifcgAnother}
+			,#{ifcgNameEng}
+			,#{ifcgUseNy}
+			,#{ifcgOrder}
+			,#{ifcgExplanation}
+			,#{ifcgDelNy}
+			,#{referenceV1}
+			,#{referenceV2}
+			,#{referenceV3}
+			,#{referenceI1}
+			,#{referenceI2}
+			,#{referenceI3}
 		)
 		
-		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+		<selectKey resultType="String" keyProperty="ccgSeq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>

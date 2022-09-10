@@ -2,66 +2,70 @@ package com.spopia.infra.modules.codegroup;
 
 public class CodeGroup {
 
-	private String seq;
-	private String seqAnother;
-	private String groupName;
-	private Integer useNY;
-	private Integer deleteNy;
-	private Integer ccgOrder;
+	private String ccgSeq;
+	private String ifcgAnother;
+	private String ifcgName;
+	private String ifcgNameEng;
+	private Integer ifcgUseNy;
+	private Integer ifcgOrder;
+	private String ifcgExplanation;
+	private Integer ifcgDelNy;
 	private String referenceV1;
 	private String referenceV2;
+	private String referenceV3;
 	private Integer referenceI1;
 	private Integer referenceI2;
+	private Integer referenceI3;
+	private String createdAt;
+	private String modifiedAt;
 	private Integer count;
-	private Integer total;
-	
-	public Integer getDeleteNy() {
-		return deleteNy;
+	public String getCcgSeq() {
+		return ccgSeq;
 	}
-	public void setDeleteNy(Integer deleteNy) {
-		this.deleteNy = deleteNy;
+	public void setCcgSeq(String ccgSeq) {
+		this.ccgSeq = ccgSeq;
 	}
-	public Integer getTotal() {
-		return total;
+	public String getIfcgAnother() {
+		return ifcgAnother;
 	}
-	public void setTotal(Integer total) {
-		this.total = total;
+	public void setIfcgAnother(String ifcgAnother) {
+		this.ifcgAnother = ifcgAnother;
 	}
-	public Integer getCount() {
-		return count;
+	public String getIfcgName() {
+		return ifcgName;
 	}
-	public void setCount(Integer count) {
-		this.count = count;
+	public void setIfcgName(String ifcgName) {
+		this.ifcgName = ifcgName;
 	}
-	public String getSeq() {
-		return seq;
+	public String getIfcgNameEng() {
+		return ifcgNameEng;
 	}
-	public void setSeq(String seq) {
-		this.seq = seq;
+	public void setIfcgNameEng(String ifcgNameEng) {
+		this.ifcgNameEng = ifcgNameEng;
 	}
-	public String getSeqAnother() {
-		return seqAnother;
+	public Integer getIfcgUseNy() {
+		return ifcgUseNy;
 	}
-	public void setSeqAnother(String seqAnother) {
-		this.seqAnother = seqAnother;
+	public void setIfcgUseNy(Integer ifcgUseNy) {
+		this.ifcgUseNy = ifcgUseNy;
 	}
-	public String getGroupName() {
-		return groupName;
+	public Integer getIfcgOrder() {
+		return ifcgOrder;
 	}
-	public void setGroupName(String groupName) {
-		this.groupName = groupName;
+	public void setIfcgOrder(Integer ifcgOrder) {
+		this.ifcgOrder = ifcgOrder;
 	}
-	public Integer getUseNY() {
-		return useNY;
+	public String getIfcgExplanation() {
+		return ifcgExplanation;
 	}
-	public void setUseNY(Integer useNY) {
-		this.useNY = useNY;
+	public void setIfcgExplanation(String ifcgExplanation) {
+		this.ifcgExplanation = ifcgExplanation;
 	}
-	public Integer getCcgOrder() {
-		return ccgOrder;
+	public Integer getIfcgDelNy() {
+		return ifcgDelNy;
 	}
-	public void setCcgOrder(Integer ccgOrder) {
-		this.ccgOrder = ccgOrder;
+	public void setIfcgDelNy(Integer ifcgDelNy) {
+		this.ifcgDelNy = ifcgDelNy;
 	}
 	public String getReferenceV1() {
 		return referenceV1;
@@ -75,6 +79,12 @@ public class CodeGroup {
 	public void setReferenceV2(String referenceV2) {
 		this.referenceV2 = referenceV2;
 	}
+	public String getReferenceV3() {
+		return referenceV3;
+	}
+	public void setReferenceV3(String referenceV3) {
+		this.referenceV3 = referenceV3;
+	}
 	public Integer getReferenceI1() {
 		return referenceI1;
 	}
@@ -87,4 +97,29 @@ public class CodeGroup {
 	public void setReferenceI2(Integer referenceI2) {
 		this.referenceI2 = referenceI2;
 	}
+	public Integer getReferenceI3() {
+		return referenceI3;
+	}
+	public void setReferenceI3(Integer referenceI3) {
+		this.referenceI3 = referenceI3;
+	}
+	public String getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
+	}
+	public String getModifiedAt() {
+		return modifiedAt;
+	}
+	public void setModifiedAt(String modifiedAt) {
+		this.modifiedAt = modifiedAt;
+	}
+	public Integer getCount() {
+		return count;
+	}
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+	
 }

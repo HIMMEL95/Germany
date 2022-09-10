@@ -14,14 +14,14 @@
 		   <!--  ,cg.seq as ccgseq
 		    ,cg.groupName as groupName -->
 		from 
-			CC c
+			code c
 			<!-- inner join CCG cg on cg.seq = c.CCG_seq -->
 		where 1=1
-			<if test="shDelNy != null and !shDelNy.equals('')">AND deleteNy = #{shDelNy}</if>
+			<if test="shDelNy != null and !shDelNy.equals('')">AND ifccDelNy = #{shDelNy}</if>
 			<choose>
-				<when test="shOption == 1">AND seq = #{shValue}</when>
-				<when test="shOption == 2">AND CCName LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 3">AND CCG_seq = #{shValue}</when>
+				<when test="shOption == 1">AND ccSeq = #{shValue}</when>
+				<when test="shOption == 2">AND ifccName LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND ccgSeq = #{shValue}</when>
 				<otherwise></otherwise>
 			</choose>
 	</select>
@@ -30,36 +30,46 @@
 		select
 			c.*
 		from
-			CC c
+			code c
 		where 1=1
-			AND c.seq = #{seq}
+			AND c.ccSeq = #{ccSeq}
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO CC (
-			CCName
-			,seqAnother
-			,useNY
-			,ccOrder
-			,ReferenceV1
-			,ReferenceV2
-			,ReferenceI1
-			,ReferenceI2
-			,CCG_seq
+		INSERT INTO code (
+			ifccName
+			,ifccAnother
+			,ifccNameEng
+			,ifccUseNy
+			,ifccOrder
+			,ifccExplanation
+			,ifccDelNy
+			,ifccReferencev1
+			,ifccReferencev2
+			,ifccReferencev3
+			,ifccReferenceI1
+			,ifccReferenceI2
+			,ifccReferenceI3
+			,codeGroup_ccgSeq
 		)
 		VALUES (
-			#{CCName}
-			,#{seqAnother}
-			,#{useNY}
-			,#{ccOrder}
+			#{ifccName}
+			,#{ifccAnother}
+			,#{ifccNameEng}
+			,#{ifccUseNy}
+			,#{ifccOrder}
+			,#{ifccExplanation}
+			,#{ifccDelNy}
 			,#{referenceV1}
 			,#{referenceV2}
+			,#{referenceV3}
 			,#{referenceI1}
 			,#{referenceI2}
+			,#{referenceI3}
 			,#{ccgSeq}
 		)
 		
-		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+		<selectKey resultType="String" keyProperty="ccSeq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>

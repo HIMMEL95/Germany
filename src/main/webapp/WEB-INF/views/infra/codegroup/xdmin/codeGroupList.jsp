@@ -124,7 +124,7 @@
     <main>
         <div style="height: 150px;"></div>
         <div class="container">
-            <form method="post" action="/codeGroup/codeGroupForm">
+            <form method="post" action="/codeGroup/codeGroupList">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -299,13 +299,13 @@
 			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
 			                                                id="flexCheckDefault">
 			                                        </td>
-			                                        <td>${list.seq}</td>
-			                                        <td>${list.seqAnother}</td>
-			                                        <td><a href="/codeGroup/codeGroupView?seq=<c:out value="${list.seq }"/>">${list.groupName}</a></td>
-			                                        <td>${list.useNY}</td>
+			                                        <td>${list.ccgSeq}</td>
+			                                        <td>${list.ifcgAnother}</td>
+			                                        <td><a href="/codeGroup/codeGroupView?seq=<c:out value="${list.ccgSeq }"/>">${list.ifcgName}</a></td>
+			                                        <td>${list.ifcgNameEng}</td>
 			                                        <td>${list.count}</td>
-			                                        <td>${list.referenceV1}</td>
-			                                        <td>${list.referenceV2}</td>
+			                                        <td>${list.createdAt}</td>
+			                                        <td>${list.modifiedAt}</td>
 			                                    </tr>		
 											</c:forEach>
                                 		</c:otherwise>
@@ -365,9 +365,9 @@
                                     data-bs-target="#deleteModal">
                                     <i class="fa-regular fa-file-excel" style="color: white;"></i>
                                 </button>
-                                <button class="border-0 btn btn-sm shadow bg-primary" type="submit">
+                                <a class="border-0 btn btn-sm shadow bg-primary" role="button" href="/codeGroup/codeGroupForm">
                                     <i class="fa-regular fa-plus fa-1x" style="color: white;"></i>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>

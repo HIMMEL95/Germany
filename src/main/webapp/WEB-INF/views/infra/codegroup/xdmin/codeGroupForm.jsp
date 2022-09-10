@@ -231,7 +231,7 @@
                             <div class="col">
                                 <div class="input-control">
                                     <label for="seqAnother">코드그룹 코드 (Another)<span style="color: red;">*</span></label>
-                                    <input type="text" id="seqAnother" name="seqAnother" value="<c:out value="${item.seqAnother }"/>" placeholder="영문(대문자),숫자">
+                                    <input type="text" id="seqAnother" name="seqAnother" value="<c:out value="${item.ifcgAnother }"/>" placeholder="영문(대문자),숫자">
                                     <div class="msg" id="seqAnother_msg" name="seqAnother_msg" style="display: none;"></div>
                                 </div>
                             </div>
@@ -240,14 +240,14 @@
                             <div class="col">
                                 <div class="input-control">
                                     <label for="groupName">코드그룹 이름 (한글)<span style="color: red;">*</span></label>
-                                    <input type="text" id="groupName" name="groupName" value="<c:out value="${item.groupName }"/>" placeholder="한글,숫자">
+                                    <input type="text" id="groupName" name="groupName" value="<c:out value="${item.ifcgName }"/>" placeholder="한글,숫자">
                                     <div class="msg" id="groupName_msg" name="groupName_msg" style="display: none;"></div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input-control">
                                     <label for="eng">코드그룹 이름 (영문)<span style="color: red;">*</span></label>
-                                    <input type="text" id="eng" name="eng" value="" placeholder="영문(대소문자),숫자">
+                                    <input type="text" id="eng" name="eng" value="<c:out value="${item.ifcgNameEng }"/>" placeholder="영문(대소문자),숫자">
                                     <div class="msg" id="eng_msg" name="eng_msg" style="display: none;"></div>
                                 </div>
                             </div>
@@ -267,7 +267,7 @@
                             <div class="col">
                                 <div class="input-control">
                                     <label for="orderBY">순서<span style="color: red;">*</span></label>
-                                    <input type="text" id="orderBY" name="orderBY" value="<c:out value="${item.ccgOrder }"/>" placeholder="숫자">
+                                    <input type="text" id="orderBY" name="orderBY" value="<c:out value="${item.ifcgOrder }"/>" placeholder="숫자">
                                     <div class="msg" id="orderBY_msg" name="orderBY_msg" style="display: none;"></div>
                                 </div>
                             </div>
@@ -296,14 +296,14 @@
                             <div class="col">
                                 <div class="input-control">
                                     <label for="referenceV1">예비1 (varchar type)</label>
-                                    <input type="text" id="referenceV1" name="referenceV1" value="" placeholder="영문(대소문자), 숫자">
+                                    <input type="text" id="referenceV1" name="referenceV1" value="<c:out value="${item.referenceV1 }"/>" placeholder="영문(대소문자), 숫자">
                                     <div class="msg" id="referenceV1_msg" name="referenceV1_msg" style="display: none;"></div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input-control">
                                     <label for="referenceV2">예비2 (varchar type)</label>
-                                    <input type="text" id="referenceV2" name="referenceV2" value="" placeholder="영문(대소문자), 숫자">
+                                    <input type="text" id="referenceV2" name="referenceV2" value="<c:out value="${item.referenceV2 }"/>" placeholder="영문(대소문자), 숫자">
                                     <div class="msg" id="referenceV2_msg" name="referenceV2_msg" style="display: none;"></div>
                                 </div>
                             </div>
@@ -312,7 +312,7 @@
                             <div class="col-6">
                                 <div class="input-control">
                                     <label for="referenceV3">예비3 (varchar type)</label>
-                                    <input type="text" id="referenceV3" name="referenceV3" value="" placeholder="영문(대소문자), 숫자">
+                                    <input type="text" id="referenceV3" name="referenceV3" value="<c:out value="${item.referenceV3 }"/>" placeholder="영문(대소문자), 숫자">
                                     <div class="msg" id="referenceV3_msg" name="referenceV3_msg" style="display: none;"></div>
                                 </div>
                             </div>
@@ -321,14 +321,14 @@
                             <div class="col">
                                 <div class="input-control">
                                     <label for="referenceI1">예비1 (int type)</label>
-                                    <input type="text" id="referenceI1" name="referenceI1" value="" placeholder="영문(대소문자), 숫자">
+                                    <input type="text" id="referenceI1" name="referenceI1" value="<c:out value="${item.referenceI1 }"/>" placeholder="영문(대소문자), 숫자">
                                     <div class="msg" id="referenceI1_msg" name="referenceI1_msg" style="display: none;"></div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input-control">
                                     <label for="referenceI2">예비2 (int type)</label>
-                                    <input type="text" id="referenceI2" name="referenceI2" value="" placeholder="영문(대소문자), 숫자">
+                                    <input type="text" id="referenceI2" name="referenceI2" value="<c:out value="${item.referenceI2 }"/>" placeholder="영문(대소문자), 숫자">
                                     <div class="msg" id="referenceI2_msg" name="referenceI2_msg" style="display: none;"></div>
                                 </div>
                             </div>
@@ -337,7 +337,7 @@
                             <div class="col-6">
                                 <div class="input-control">
                                     <label for="referenceI3">예비3 (int type)</label>
-                                    <input type="text" id="referenceI3" name="referenceI3" value="" placeholder="영문(대소문자), 숫자">
+                                    <input type="text" id="referenceI3" name="referenceI3" value="<c:out value="${item.referenceI3 }"/>" placeholder="영문(대소문자), 숫자">
                                     <div class="msg" id="referenceI3_msg" name="referenceI3_msg" style="display: none;"></div>
                                 </div>
                             </div>

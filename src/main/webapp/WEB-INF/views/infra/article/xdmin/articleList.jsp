@@ -279,7 +279,7 @@
                                                 id="flexCheckDefault">
 			                                        </td>
 			                                        <td>${list.seq }</td>
-			                                        <td>${list.title }</td>
+			                                        <td><a href="/article/articleView?seq=<c:out value="${list.seq }"/>">${list.title }</a></td>
 			                                        <td>${list.reporter }</td>
 			                                        <td>${list.event }</td>
 			                                        <td>${list.newspaper }</td>

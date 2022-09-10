@@ -362,7 +362,7 @@
                 </ul>
                 <div class="footer_copy">
                     <a id="fot.naver" target="_blank" href="https://www.navercorp.com">
-                        <img src="../../image/SPOPIA1.png" alt="logo" style="width: 45px;">
+                        <img src="../../resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
                     </a>
                     <span class="text">Copyright</span>
                     <span class="corp">© SPOPIA Corp.</span>

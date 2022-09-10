@@ -14,7 +14,7 @@
     <title>Article Reg Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="/resources/css/xdmin/article/articleForm.css" rel="stylesheet" type="text/css">
+    <link href="/resources/css/xdmin/article/articleView.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -43,7 +43,7 @@
                                 <li class="px-3">
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
-                                        <div class="avatar ps-1 pt-2">
+                                        <div class="avatar mt-2 ms-2">
                                             <img class="avatar-img rounded-circle shadow" src="../../resources/images/diano.jpg"
                                                 alt="avatar" style="width: 30px;">
                                         </div>
@@ -90,89 +90,48 @@
     </header>
 
     <main>
-        <form class="needs-validation" action="/article/articleInst" method="post">
-            <div style="height: 80px;"></div>
-            <div class="container" style="max-width: 900px;">
-                <div class="text-center pb-3">
-                    <span class="fs-1 fw-bold">기사 등록</span>
+        <div style="height: 80px;"></div>
+        <div class="container" style="max-width: 900px;">
+            <div class="text-center pb-3">
+                <span class="fs-1 fw-bold">게시물 상세</span>
+            </div>
+            <div class="card ps-5 pe-5 pt-4 pb-4 shadow">
+                <div class="row">
+                    <div class="col-12 mb-2">
+                        <div class="fs-4 fw-bold" id="title" name="title">${list.title }</div>
+                    </div>
                 </div>
-                <div class="card ps-5 pe-5 pt-4 pb-4 shadow">
-                    <div class="row mb-4">
-                        <div class="col-5">
-                            <label for="title" class="form-label fw-bold">제목</label>
-                            <input type="text" class="form-control" id="title" name="title" value="">
-                        </div>
+                <div class="row">
+                    <div class="col-12 mb-2">
+                        <span style="font-size: small;"><strong>기사제공</strong> ${list.newspaper }</span>
+                        <span class="ps-3" style=" font-size: small;"><strong>기사입력</strong> ${list.createdAt } |
+                        </span>
+                        <span style="font-size: small;"><strong>최종수정</strong> ${list.modifiedAt }</span>
+                        <hr>
                     </div>
-                    <div class="row">
-                        <div class="col-12 mb-4">
-                            <label for="content" class="form-label fw-bold">본문</label>
-                            <textarea class="form-control" style="height: 200px;" id="content" name="content" aria-label="content" th:text="${list.title }"></textarea>
-                        </div>
+                    <div class="col-12 mb-3">
+                        <img class="pb-2" src="../../image/baseball.jpg" alt="야구"
+                            style="width: 100%; height: 300px; float: left;">
                     </div>
-                    <div class="row mb-4">
-                        <div class="col">
-                            <label for="newspaper" class="form-label fw-bold">신문사</label>
-                            <input type="text" class="form-control" id="newspaper" name="newspaper" value="">
-                        </div>
-                        <div class="col">
-                            <label for="abroadNY" class="form-label fw-bold">해외여부</label>
-                            <select id="abroadNY" class="form-select form-select fw-bold" name="abroadNy" aria-label=".form-select example">
-                                <option value="" selected>선택</option>
-                                <option value="1">국내</option>
-                                <option value="2">해외</option>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <label for="event" class="form-label fw-bold">종목</label>
-                            <select id="event" class="form-select form-select fw-bold" name="event" aria-label=".form-select example">
-                                <option value="" selected>선택</option>
-                                <option value="1">야구</option>
-                                <option value="2">축구</option>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <label for="league" class="form-label fw-bold">리그</label>
-                            <select id="league" class="form-select form-select fw-bold" name="league" aria-label=".form-select example">
-                                <option value="" selected>선택</option>
-                                <option value="1">KBO</option>
-                                <option value="2">메이저리그</option>
-                                <option value="3">아메리칸리그</option>
-                                <option value="4">센트럴리그</option>
-                                <option value="5">퍼시픽리그</option>
-                                <option value="6">K리그 1</option>
-                                <option value="7">K리그 2</option>
-                                <option value="8">프리미어리그</option>
-                                <option value="9">라리가</option>
-                                <option value="10">분데스리가</option>
-                                <option value="11">세리에 A</option>
-                                <option value="12">리그 1</option>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <label for="reporter" class="form-label fw-bold">기자</label>
-                            <input type="text" class="form-control" id="reporter" name="reporter" value="">
-                        </div>
+                    <div class="col-12">
+                        ${list.content }
+                        <span><strong>기사제공</strong> ${list.newspaper }</span>
+                        <p>${list.reporter } 기자 (niners@munhwa.com)</p>
                     </div>
-                    <div class="row mb-4">
-                        <div class="col align-items-center">
-                            <img src="" id="preview" width="500px;" class="mb-2">
-                            <label for="ex_file"></label>
-                            <input type="file" id="ex_file" class="form-control" aria-label="file example">
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <a class="btn btn-primary btn-sm text-white fw-bold shadow" href="../article/articleList.html"
+                            role="button">뒤로</a>
                     </div>
-                    <div class="row">
-                        <div class="col-2">
-                            <a class="btn btn-primary btn-sm text-white fw-bold shadow" href="/article/articleList"
-                                role="button">취소</a>
-                        </div>
-                        <div class="col-2 offset-8" align="right">
-                            <button class="btn btn-primary btn-sm text-white fw-bold shadow" type="submit">등록</button>
-                        </div>
+                    <div class="col-2 offset-8" align="right">
+                        <a class="btn btn-primary btn-sm text-white fw-bold shadow"
+                            href="/article/articleModForm" role="button">수정</a>
                     </div>
                 </div>
             </div>
-            <div style="height: 50px;"></div>
-        </form>
+        </div>
+        <div style="height: 50px;"></div>
     </main>
 
     <footer>
@@ -192,7 +151,7 @@
                 </ul>
                 <div class="footer_copy">
                     <a id="fot.naver" target="_blank" href="https://www.navercorp.com">
-                        <img src="../../image/SPOPIA1.png" alt="logo" style="width: 45px;">
+                        <img src="../../resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
                     </a>
                     <span class="text">Copyright</span>
                     <span class="corp">© SPOPIA Corp.</span>
@@ -207,41 +166,6 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (() => {
-            'use strict'
-
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            const forms = document.querySelectorAll('.needs-validation')
-
-            // Loop over them and prevent submission
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-
-                    form.classList.add('was-validated')
-                }, false)
-            })
-        })()
-
-        // 이미지 미리보기
-		const reader = new FileReader();
-
-        reader.onload = (readerEvent) => {
-            document.querySelector("#preview").setAttribute("src", readerEvent.target.result);
-        };
-
-        document.querySelector("#ex_file").addEventListener("change", (changeEvent) => {
-
-            const imgFile = changeEvent.target.files[0];
-            reader.readAsDataURL(imgFile);
-            document.getElementById("text").innerHTML = " ";
-        })
-    </script>
 </body>
 
 </html>

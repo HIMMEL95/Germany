@@ -98,7 +98,7 @@
             <div class="card ps-5 pe-5 pt-4 pb-4 shadow">
                 <div class="row">
                     <div class="col-12 mb-2">
-                        <div class="fs-4 fw-bold" id="title" name="title">${list.title }</div>
+                        <input type="text" class="form-control" id="title" name="title" value="<c:out value="${list.title }"/>" placeholder="">
                     </div>
                 </div>
                 <div class="row">

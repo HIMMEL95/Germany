@@ -14,9 +14,11 @@ public class ArticleController {
 	@Autowired
 	ArticleServiceImpl service;
 	
-	@RequestMapping(value = "articleView")
-	public String articleView()throws Exception {
-		return "infra/article/xdmin/articleView";
+	@RequestMapping(value = "articleXdminView")
+	public String articleView(Model model)throws Exception {
+		List<Article> list = service.selectList();
+		model.addAttribute("list", list);
+		return "infra/article/xdmin/articleXdminView";
 	}
 	
 	@RequestMapping(value = "articleForm")

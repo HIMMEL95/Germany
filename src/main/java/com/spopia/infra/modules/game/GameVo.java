@@ -1,6 +1,6 @@
-package com.spopia.infra.modules.member;
+package com.spopia.infra.modules.game;
 
-public class MemberVo {
+public class GameVo {
 	
 	private String shOption;
 	private String shValue;
@@ -51,4 +51,5 @@ public class MemberVo {
 	public void setSeq(String seq) {
 		this.seq = seq;
 	}
+
 }

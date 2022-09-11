@@ -5,14 +5,35 @@ import java.time.LocalDateTime;
 public class Comment {
 	private String seq;
 	private String comment;
-	private LocalDateTime createdAt;
+	private String createdAt;
 	private Integer createdBy;
-	private LocalDateTime modifiedAt;
+	private String modifiedAt;
 	private Integer modifiedBy;
 	private Integer game_seq;
 	private Integer article_seq;
 	private Integer gcDelNy;
 	private Integer acDelNy;
+	private String name;
+	private String Id;
+	private Integer gender;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getId() {
+		return Id;
+	}
+	public void setId(String id) {
+		Id = id;
+	}
+	public Integer getGender() {
+		return gender;
+	}
+	public void setGender(Integer gender) {
+		this.gender = gender;
+	}
 	public Integer getGcDelNy() {
 		return gcDelNy;
 	}
@@ -37,10 +58,10 @@ public class Comment {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	public LocalDateTime getCreatedAt() {
+	public String getCreatedAt() {
 		return createdAt;
 	}
-	public void setCreatedAt(LocalDateTime createdAt) {
+	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
 	public Integer getCreatedBy() {
@@ -49,10 +70,10 @@ public class Comment {
 	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
-	public LocalDateTime getModifiedAt() {
+	public String getModifiedAt() {
 		return modifiedAt;
 	}
-	public void setModifiedAt(LocalDateTime modifiedAt) {
+	public void setModifiedAt(String modifiedAt) {
 		this.modifiedAt = modifiedAt;
 	}
 	public Integer getModifiedBy() {

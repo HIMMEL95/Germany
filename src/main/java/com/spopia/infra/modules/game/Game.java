@@ -1,15 +1,11 @@
 package com.spopia.infra.modules.game;
 
-import java.sql.Date;
-import java.sql.Time;
-import java.time.LocalDateTime;
-
 public class Game {
 
 	private String seq;
 	private Integer abroadNy;
 	private Integer event;
-	private Integer league;
+	private String league;
 	private Integer team_home;
 	private Integer team_away;
 	private Integer score_home;
@@ -17,19 +13,11 @@ public class Game {
 	private String player_home;
 	private String player_away;
 	private Integer stadium;
-	private Date gameDate;
-	private Time gameDuration;
-	private LocalDateTime createdAt;
-	private Integer createdBy;
-	private LocalDateTime modifiedAt;
-	private Integer modifiedBy;
-	private Integer gDelNy;
-	public Integer getgDelNy() {
-		return gDelNy;
-	}
-	public void setgDelNy(Integer gDelNy) {
-		this.gDelNy = gDelNy;
-	}
+	private String gameDate;
+	private String gameDuration;
+	private String createdAt;
+	private String modifiedAt;
+	private Integer gcDelNy;
 	public String getSeq() {
 		return seq;
 	}
@@ -48,10 +36,10 @@ public class Game {
 	public void setEvent(Integer event) {
 		this.event = event;
 	}
-	public Integer getLeague() {
+	public String getLeague() {
 		return league;
 	}
-	public void setLeague(Integer league) {
+	public void setLeague(String league) {
 		this.league = league;
 	}
 	public Integer getTeam_home() {
@@ -96,40 +84,34 @@ public class Game {
 	public void setStadium(Integer stadium) {
 		this.stadium = stadium;
 	}
-	public Date getGameDate() {
+	public String getGameDate() {
 		return gameDate;
 	}
-	public void setGameDate(Date gameDate) {
+	public void setGameDate(String gameDate) {
 		this.gameDate = gameDate;
 	}
-	public Time getGameDuration() {
+	public String getGameDuration() {
 		return gameDuration;
 	}
-	public void setGameDuration(Time gameDuration) {
+	public void setGameDuration(String gameDuration) {
 		this.gameDuration = gameDuration;
 	}
-	public LocalDateTime getCreatedAt() {
+	public String getCreatedAt() {
 		return createdAt;
 	}
-	public void setCreatedAt(LocalDateTime createdAt) {
+	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
-	public Integer getCreatedBy() {
-		return createdBy;
-	}
-	public void setCreatedBy(Integer createdBy) {
-		this.createdBy = createdBy;
-	}
-	public LocalDateTime getModifiedAt() {
+	public String getModifiedAt() {
 		return modifiedAt;
 	}
-	public void setModifiedAt(LocalDateTime modifiedAt) {
+	public void setModifiedAt(String modifiedAt) {
 		this.modifiedAt = modifiedAt;
 	}
-	public Integer getModifiedBy() {
-		return modifiedBy;
+	public Integer getGcDelNy() {
+		return gcDelNy;
 	}
-	public void setModifiedBy(Integer modifiedBy) {
-		this.modifiedBy = modifiedBy;
+	public void setGcDelNy(Integer gcDelNy) {
+		this.gcDelNy = gcDelNy;
 	}
 }

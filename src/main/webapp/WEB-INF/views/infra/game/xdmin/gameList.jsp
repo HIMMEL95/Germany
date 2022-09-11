@@ -15,6 +15,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="/resources/css/xdmin/gameList.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 
 <body>
@@ -211,29 +214,38 @@
                         <div class="card p-3 shadow">
                             <div class="row align-items-center pb-2">
                                 <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" selected>선택</option>
-                                        <option value="createdAt">등록일</option>
-                                        <option value="modifiedAt">수정일</option>
+                                    <select class="form-select form-select-sm fw-bold" id="shDelNy" name="shDelNy" aria-label=".form-select-sm example">
+                                       	<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>선택</option>
+                                        <option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
+                                        <option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option>
                                     </select>
                                 </div>
-                                <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-01-01" required>
+                                <div class="col-2">
+                                    <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
+                                        <option value="" <c:if test="${empty vo.shDate }">selected</c:if> selected>선택</option>
+                                        <option value="1" <c:if test="${vo.shDate eq 1 }">selected</c:if>>등록일</option>
+                                        <option value="2" <c:if test="${vo.shDate eq 2 }">selected</c:if>>수정일</option>
+                                    </select>
                                 </div>
-                                <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-12-31" required>
+                                <div class="col-2">
+                                    <input type="text" class="form-control datepicker" id="date_st" placeholder="2022-01-01" autocomplete="off">
+                                </div>
+                                <div class="col-2">
+                                    <input type="text" class="form-control datepicker" id="date_end" placeholder="2022-12-31" autocomplete="off">
                                 </div>
                             </div>
                             <div class="row align-items-center">
                                 <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" selected>선택</option>
-                                        <option value="name">이름</option>
-                                        <option value="id">아이디</option>
+                                    <select class="form-select form-select-sm fw-bold" name="shOption" aria-label=".form-select-sm example">
+                                        <option value="" <c:if test="${empty vo.shOption }">selected</c:if>>선택</option>
+                                        <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>종목</option>
+                                        <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>경기 일자</option>
+                                        <option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>홈팀</option>
+                                        <option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>원정팀</option>
                                     </select>
                                 </div>
-                                <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" value="" required>
+                                <div class="col-2">
+                                    <input type="text" class="form-control" id="validationCustom01" value="" autocomplete="off">
                                 </div>
                                 <div class="col-3">
                                     <button class="btn btn-primary fw-bold btn-sm shadow" type="submit">검색</button>
@@ -261,54 +273,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr onclick="newPage()">
-                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-                                        </td>
-                                        <td>1</td>
-                                        <td>야구</td>
-                                        <td>두산</td>
-                                        <td>KIA</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>광주</td>
-                                        <td>2022.07.15</td>
-                                        <td>18:30</td>
-                                        <td>2022-07-13 10:02:00</td>
-                                        <td>2022-07-13 10:17:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-                                        </td>
-                                        <td>2</td>
-                                        <td>축구</td>
-                                        <td>울산 현대</td>
-                                        <td>FC 서울</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>울산문수월드컵경기장</td>
-                                        <td>2022.07.16</td>
-                                        <td>18:00</td>
-                                        <td>2022-07-14 10:02:00</td>
-                                        <td>2022-07-14 10:17:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-                                        </td>
-                                        <td>3</td>
-                                        <td>야구</td>
-                                        <td>SSG</td>
-                                        <td>KT</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>인천 SSG랜더스필드</td>
-                                        <td>2022.07.15</td>
-                                        <td>18:30</td>
-                                        <td>2022-07-14 11:02:00</td>
-                                        <td>2022-07-14 11:17:00</td>
-                                    </tr>
+                                	<c:choose>
+                                		<c:when test="${fn:length(list) eq 0}">
+                                			<tr>
+                                				<td class="text-center" colspan="8">There is no data!</td>
+                                			</tr>
+                                		</c:when>
+                                		<c:otherwise>
+	                                		<c:forEach items="${list}" var="list" varStatus="status">
+                                				<tr>
+			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
+			                                                id="flexCheckDefault">
+			                                        </td>
+			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.seq}</td>
+			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.event}</td>
+			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.team_home}</td>
+			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.team_away}</td>
+			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.score_home}</td>
+			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.score_away}</td>
+			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.stadium}</td>
+			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.gameDate}</td>
+			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.gameDuration}</td>
+			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.createdAt}</td>
+			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.modifiedAt}</td>
+			                                    </tr>
+											</c:forEach>
+                                		</c:otherwise>
+                                	</c:choose>
                                 </tbody>
                             </table>
                             <nav aria-label="Page navigation">
@@ -355,7 +346,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-1 offset-10 pe-3">
+                            <div class="col-1 offset-10" align="right">
                                 <a class="border-0 btn btn-sm shadow" role="button" href="/game/gameForm">
                                     <i class="fa-solid fa-id-card fa-lg"></i>
                                 </a>
@@ -386,7 +377,7 @@
                 </ul>
                 <div class="footer_copy">
                     <a id="fot.naver" target="_blank" href="https://www.navercorp.com">
-                        <img src="../../image/SPOPIA1.png" alt="logo" style="width: 45px;">
+                        <img src="../../resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
                     </a>
                     <span class="text">Copyright</span>
                     <span class="corp">© SPOPIA Corp.</span>
@@ -401,10 +392,18 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
-        // row 클릭시 페이지 이동
-        function newPage() {
-            window.location.href = './gameView.html'
-        }
+        $(function() {
+    		$("#date_st").datepicker({
+    			dateFormat: "yy-mm-dd"
+    			,showMonthAfterYear: true
+    			,showOtherMonths: true
+    		});
+    		$("#date_end").datepicker({
+    			dateFormat: "yy-mm-dd"
+       			,showMonthAfterYear: true
+       			,showOtherMonths: true
+       		});
+    	})
     </script>
 </body>
 

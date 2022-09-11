@@ -1,7 +1,7 @@
-package com.spopia.infra.modules.member;
+package com.spopia.infra.modules.comment;
 
-public class MemberVo {
-	
+public class CommentVo {
+
 	private String shOption;
 	private String shValue;
 	private Integer shDelNy;

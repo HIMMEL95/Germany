@@ -14,7 +14,10 @@
     <title>Article List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="/resources/css/xdmin/articleList.css" rel="stylesheet" type="text/css">
+    <link href="/resources/css/xdmin/article/articleList.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 
 <body>
@@ -226,10 +229,10 @@
                                     </select>
                                 </div>
                                 <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" name="startDate" placeholder="2022-01-01">
+                                    <input type="text" class="form-control datepicker" id="date_st" placeholder="시작일" autocomplete="off">
                                 </div>
                                 <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" name="endDate" placeholder="2022-12-31">
+                                    <input type="text" class="form-control datepicker" id="date_end" placeholder="종료일" autocomplete="off">
                                 </div>
                             </div>
                             <div class="row align-items-center">
@@ -335,7 +338,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-1 offset-10 pe-3">
+                            <div class="col-1 offset-10" align="right">
                                 <a class="border-0 btn btn-sm shadow role=" button" href="/article/articleForm">
                                     <i class="fa-solid fa-id-card fa-lg"></i>
                                 </a>
@@ -380,6 +383,20 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+	   	$(function() {
+	   		$("#date_st").datepicker({
+	   			dateFormat: "yy-mm-dd"
+	   			,showMonthAfterYear: true
+	   			,showOtherMonths: true
+	   		});
+	   		$("#date_end").datepicker({
+	   			dateFormat: "yy-mm-dd"
+	      			,showMonthAfterYear: true
+	      			,showOtherMonths: true
+	      		});
+	   	})
+   </script>
 </body>
 
 </html>

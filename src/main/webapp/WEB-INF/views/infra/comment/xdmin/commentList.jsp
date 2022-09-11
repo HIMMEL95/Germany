@@ -14,7 +14,10 @@
     <title>ArticleComment List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="/resources/css/xdmin/comment.css" rel="stylesheet" type="text/css">
+    <link href="/resources/css/xdmin/commentList.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 
 <body>
@@ -210,30 +213,38 @@
                         <!-- 검색 -->
                         <div class="card p-3 shadow">
                             <div class="row align-items-center pb-2">
+                            	<div class="col-2">
+                                    <select class="form-select form-select-sm fw-bold" id="shDelNy" name="shDelNy" aria-label=".form-select-sm example">
+                                       	<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>선택</option>
+                                        <option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
+                                        <option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option>
+                                    </select>
+                                </div>
                                 <div class="col-2">
                                     <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" selected>선택</option>
-                                        <option value="createdAt">등록일</option>
-                                        <option value="modifiedAt">수정일</option>
+                                        <option value="" <c:if test="${empty vo.shDate }">selected</c:if> selected>선택</option>
+                                        <option value="1" <c:if test="${vo.shDate eq 1 }">selected</c:if>>등록일</option>
+                                        <option value="2" <c:if test="${vo.shDate eq 2 }">selected</c:if>>수정일</option>
                                     </select>
                                 </div>
                                 <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-01-01" required>
+                                    <input type="text" class="form-control datepicker" id="date_st" placeholder="시작일" autocomplete="off">
                                 </div>
                                 <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" placeholder="2022-12-31" required>
+                                    <input type="text" class="form-control datepicker" id="date_end" placeholder="종료일" autocomplete="off"s>
                                 </div>
                             </div>
                             <div class="row align-items-center">
                                 <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" selected>선택</option>
-                                        <option value="name">이름</option>
-                                        <option value="id">아이디</option>
+                                    <select class="form-select form-select-sm fw-bold" name="shOption" aria-label=".form-select-sm example">
+                                        <option value="" <c:if test="${empty vo.shOption }"> selected</c:if>>선택</option>
+                                        <option value="1" <c:if test="${vo.shOption eq 1}"> selected</c:if>>이름</option>
+                                        <option value="2" <c:if test="${vo.shOption eq 2}"> selected</c:if>>아이디</option>
+                                        <option value="3" <c:if test="${vo.shOption eq 3}"> selected</c:if>>성별</option>
                                     </select>
                                 </div>
                                 <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" value="" required>
+                                    <input type="text" class="form-control" id="validationCustom01" value="" autocomplete="off">
                                 </div>
                                 <div class="col-3">
                                     <button class="btn btn-primary fw-bold btn-sm shadow" type="submit">검색</button>
@@ -257,39 +268,29 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        </td>
-                                        <td>1</td>
-                                        <td>이하늘</td>
-                                        <td>남자</td>
-                                        <td>himmel</td>
-                                        <td>두산이겨라!</td>
-                                        <td>2022-05-16 12:00:00</td>
-                                        <td>2022-05-16 12:15:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        </td>
-                                        <td>2</td>
-                                        <td>박지성</td>
-                                        <td>남자</td>
-                                        <td>Jisung</td>
-                                        <td>LG 이겨라!!</td>
-                                        <td>2022-05-16 12:00:00</td>
-                                        <td>2022-05-16 12:15:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        </td>
-                                        <td>3</td>
-                                        <td>김연경</td>
-                                        <td>여자</td>
-                                        <td>yunkyung</td>
-                                        <td>아무나 이겨라!!!</td>
-                                        <td>2022-05-16 12:00:00</td>
-                                        <td>2022-05-16 12:15:00</td>
-                                    </tr>
+                                	<c:choose>
+                                		<c:when test="${fn:length(list) eq 0}">
+                                			<tr>
+                                				<td class="text-center" colspan="8">There is no data!</td>
+                                			</tr>
+                                		</c:when>
+                                		<c:otherwise>
+	                                		<c:forEach items="${list}" var="list" varStatus="status">
+												<tr>
+			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault">
+			                                        </td>
+			                                        <td>${list.seq }</td>
+			                                        <td><a href="/article/articleXdminView?seq=<c:out value="${list.seq }"/>">${list.name }</a></td>
+			                                        <td>${list.gender }</td>
+			                                        <td>${list.id }</td>
+			                                        <td>${list.comment }</td>
+			                                        <td>${list.createdAt }</td>
+			                                        <td>${list.modifiedAt }</td>
+			                                    </tr>		
+											</c:forEach>
+                                		</c:otherwise>
+                                	</c:choose>
                                 </tbody>
                             </table>
                             <nav aria-label="Page navigation">
@@ -376,6 +377,20 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+	   	$(function() {
+	   		$("#date_st").datepicker({
+	   			dateFormat: "yy-mm-dd"
+	   			,showMonthAfterYear: true
+	   			,showOtherMonths: true
+	   		});
+	   		$("#date_end").datepicker({
+	   			dateFormat: "yy-mm-dd"
+	      			,showMonthAfterYear: true
+	      			,showOtherMonths: true
+	      		});
+	   	})
+   </script>
 </body>
 
 </html>

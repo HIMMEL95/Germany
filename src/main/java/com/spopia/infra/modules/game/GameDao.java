@@ -20,4 +20,16 @@ public class GameDao {
 	public List<Game> selectList() throws Exception {
 		return sqlSession.selectList(namespace + ".selectList", "");
 	}
+	
+	public List<Game> selectList(GameVo vo) throws Exception {
+		return sqlSession.selectList(namespace + ".selectList", vo);
+	}
+	
+	public int insert(Game dto) {
+		return sqlSession.insert(namespace + ".insert", dto);
+	}
+	
+	public Game selectOne(GameVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOne", vo);
+	}
 }

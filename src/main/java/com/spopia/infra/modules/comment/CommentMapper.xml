@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spopia.infra.modules.comment.CommentMapper">
+
+    <resultMap id="resultMapObj" type="com.spopia.infra.modules.comment.Comment"></resultMap>
+	
+	<!-- <sql id ='selectCommon'>
+		FROM CCG cg
+		WHERE 1=1
+			<if test="groupName != null and !groupName.eqauls('')">AND groupName = #{shValue}</if>
+			<choose>
+				<when test="shOption == 1">AND groupName LIKE CONCAT('%', ${shValue},'%')</when>
+				<when test="shOption == 2">AND seq = #{shValue}</when>
+			</choose>
+	</sql> -->
+	
+	<select id="selectList" resultMap="resultMapObj">
+		<!-- select 
+			cg.*
+		    ,count(c.CCG_seq)
+		from CCG cg
+		inner join CC c on c.CCG_seq = cg.seq
+		group by
+			c.CCG_seq -->
+		
+		(select 
+			ac.seq
+		    ,ac.comment
+		    ,ac.createdAt
+		    ,ac.modifiedAt
+		    ,u.name
+		    ,u.id
+		    ,u.gender
+		from 
+			article_comment ac
+			inner join user u on u.seq = ac.createdBy
+		order by
+			ac.article_seq
+			,ac.createdAt)
+		union all
+		(select
+			gc.seq
+		    ,gc.comment
+		    ,gc.createdAt
+		    ,gc.modifiedAt
+		    ,u.name
+		    ,u.id
+		    ,u.gender
+		from game_comment gc
+			inner join user u on u.seq = gc.createdBy
+		order by 
+			gc.game_seq
+		    ,gc.createdAt)
+		order by
+			createdAt
+			
+			<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if> -->
+			
+			<if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if>
+			<choose>
+				<when test="shOption == 1">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 2">AND id LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND gender = #{shValue}</when>
+				<otherwise></otherwise>
+			</choose>
+			<choose>
+				<when test="shDate == 1">AND createdAt BETWEEN #{startDate} AND #{endDate}</when>
+				<otherwise></otherwise>
+			</choose>
+	</select>
+
+</mapper>	

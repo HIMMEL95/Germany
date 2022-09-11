@@ -98,7 +98,7 @@
             <div class="card ps-5 pe-5 pt-4 pb-4 shadow">
                 <div class="row">
                     <div class="col-12 mb-2">
-                        <input type="text" class="form-control" id="title" name="title" value="<c:out value="${list.title }"/>" placeholder="">
+                        <span class="fs-4 fw-bold">최지만 2타수 무안타 후 교체, 탬파베이는 3-2 역전승</span>
                     </div>
                 </div>
                 <div class="row">

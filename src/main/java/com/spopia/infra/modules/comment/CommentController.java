@@ -1,14 +1,24 @@
 package com.spopia.infra.modules.comment;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(value = "/")
 public class CommentController {
 	
-	@RequestMapping(value = "comment")
-	public String comment() throws Exception {
-		return "infra/comment/xdmin/comment";
+	@Autowired
+	CommentServiceImpl service;
+	
+	@RequestMapping(value = "commentList")
+	public String comment(Model model, CommentVo vo) throws Exception {
+		
+		List<Comment> list = service.selectList(vo);
+		model.addAttribute("list", list);
+		return "infra/comment/xdmin/commentList";
 	}
 }

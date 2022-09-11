@@ -236,16 +236,16 @@
                                 </div>
                                 <div class="col-2">
                                     <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="">선택</option>
-                                        <option value="createdAt">등록일</option>
-                                        <option value="modifiedAt" selected>수정일</option>
+                                        <option value="" <c:if test="${empty vo.shDate }">selected</c:if> selected>선택</option>
+                                        <option value="1" <c:if test="${vo.shDate eq 1 }">selected</c:if>>등록일</option>
+                                        <option value="2" <c:if test="${vo.shDate eq 2 }">selected</c:if>>수정일</option>
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control datepicker" id="date_st" placeholder="시작일">
+                                    <input type="text" class="form-control datepicker" id="date_st" placeholder="시작일" autocomplete="off">
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control datepickerl" id="date_end" placeholder="종료일">
+                                    <input type="text" class="form-control datepicker" id="date_end" placeholder="종료일" autocomplete="off">
                                 </div>
                             </div>
                             <div class="row align-items-center">
@@ -258,7 +258,7 @@
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>">
+                                    <input type="text" class="form-control" id="shValue" name="shValue" value="<c:out value="${vo.shValue }"/>" autocomplete="off">
                                 </div>
                                 <div class="col-2">
                                     <button class="btn btn-warning fw-bold btn-sm shadow" type="submit">

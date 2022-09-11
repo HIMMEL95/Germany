@@ -15,6 +15,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="/resources/css/xdmin/gameForm.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 
 <body>
@@ -92,7 +95,7 @@
     <main>
         <div style="height: 80px;"></div>
         <div class="container">
-            <form class="needs-validation" novalidate method="get" action="../game/gameList.html">
+            <form class="needs-validation" method="post" action="/game/gameInst">
                 <div class="text-center pb-3">
                     <span class="fs-1 fw-bold">경기 기록 등록</span>
                 </div>
@@ -100,23 +103,23 @@
                     <div class="row pt-4">
                         <div class="col mb-4">
                             <label for="abroadNY" class="form-label fw-bold">해외여부</label>
-                            <select class="form-select" id="abroadNY" aria-label=".form-select example" required>
+                            <select class="form-select" id="abroadNY" name="abroadNy" aria-label=".form-select example">
                                 <option value="" selected>선택</option>
-                                <option value="1">국내</option>
-                                <option value="2">해외</option>
+                                <option value="9">국내</option>
+                                <option value="10">해외</option>
                             </select>
                         </div>
                         <div class="col mb-4">
                             <label for="event" class="form-label fw-bold">종목</label>
-                            <select class="form-select" id="event" aria-label=".form-select example" required>
+                            <select class="form-select" id="event" name="event" aria-label=".form-select example">
                                 <option value="" selected>선택</option>
-                                <option value="1">야구</option>
-                                <option value="2">축구</option>
+                                <option value="11">야구</option>
+                                <option value="12">축구</option>
                             </select>
                         </div>
                         <div class="col mb-4">
                             <label for="leagueList" class="form-label fw-bold">리그</label>
-                            <input class="form-control" list="league" id="leagueList" placeholder="Type to search..." required>
+                            <input class="form-control" list="league" id="leagueList" name="league" placeholder="Type to search...">
                             <datalist class="" id="league">
                                 <option value="KBO">KBO</option>
                                 <option value="메이저리그">메이저리그</option>
@@ -136,7 +139,7 @@
                     <div class="row mb-4">
                         <div class="col">
                             <label for="homeTeam" class="form-label fw-bold">홈팀</label>
-                            <select class="form-select form-select" id="homeTeam" aria-label=".form-select example" required>
+                            <select class="form-select form-select" id="homeTeam" name="team_home" aria-label=".form-select example">
                                 <option value="" selected>선택</option>
                                 <option value="1">두산 베어스</option>
                                 <option value="2">KIA 타이거즈</option>
@@ -146,7 +149,7 @@
                         </div>
                         <div class="col">
                             <label for="awayTeam" class="form-label fw-bold">원정팀</label>
-                            <select class="form-select form-select" id="awayTeam" aria-label=".form-select example" required>
+                            <select class="form-select form-select" id="awayTeam" name="team_away" aria-label=".form-select example">
                                 <option value="" selected>선택</option>
                                 <option value="1">두산 베어스</option>
                                 <option value="2">KIA 타이거즈</option>
@@ -158,27 +161,27 @@
                     <div class="row mb-4">
                         <div class="col">
                             <label for="homeTeamScore" class="form-label fw-bold">홈팀 선발</label>
-                            <input type="text" class="form-control" id="player_home" value="" required>
+                            <input type="text" class="form-control" id="player_home" name="player_home" value="">
                         </div>
                         <div class="col">
                             <label for="awayTeamScore" class="form-label fw-bold">원정팀 선발</label>
-                            <input type="text" class="form-control" id="player_away" value="" required>
+                            <input type="text" class="form-control" id="player_away" name="player_away" value="">
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col">
                             <label for="homeTeamScore" class="form-label fw-bold">홈팀 스코어</label>
-                            <input type="number" class="form-control" id="homeTeamScore" value="" required>
+                            <input type="number" class="form-control" id="homeTeamScore" name="score_home" value="">
                         </div>
                         <div class="col">
                             <label for="awayTeamScore" class="form-label fw-bold">원정팀 스코어</label>
-                            <input type="number" class="form-control" id="awayTeamScore" value="" required>
+                            <input type="number" class="form-control" id="awayTeamScore" name="score_away" value="">
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col">
                             <label for="stadium" class="form-label fw-bold">경기장</label>
-                            <select class="form-select form-select" id="stadium" aria-label=".form-select example" required>
+                            <select class="form-select form-select" id="stadium" name="stadium" aria-label=".form-select example">
                                 <option value="" selected>선택</option>
                                 <option value="1">서울</option>
                                 <option value="2">광주</option>
@@ -188,13 +191,13 @@
                         </div>
                         <div class="col">
                             <label for="gameDuration" class="form-label fw-bold">경기 시간</label>
-                            <input type="time" class="form-control" id="gameDuration" value="" required>
+                            <input type="time" class="form-control" id="gameDuration" name="gameDuration" value="">
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-6">
-                            <label for="gameDates" class="form-label fw-bold">경기 일자</label>
-                            <input type="date" class="form-control" id="gameDate" value="" required>
+                            <label for="gameDate" class="form-label fw-bold">경기 일자</label>
+                            <input type="text" class="form-control datepicker" id="gameDate" name="gameDate" placeholder="경기 일자" autocomplete="off">
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -252,25 +255,6 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
-        (() => {
-            'use strict'
-
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            const forms = document.querySelectorAll('.needs-validation')
-
-            // Loop over them and prevent submission
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-
-                    form.classList.add('was-validated')
-                }, false)
-            })
-        })()
-
         // 이미지 미리보기
 		const reader = new FileReader();
 
@@ -284,6 +268,14 @@
             reader.readAsDataURL(imgFile);
             document.getElementById("text").innerHTML = " ";
         })
+        
+        $(function() {
+	   		$("#gameDate").datepicker({
+	   			dateFormat: "yy-mm-dd"
+	   			,showMonthAfterYear: true
+	   			,showOtherMonths: true
+	   		});
+	   	})
     </script>
 </body>
 

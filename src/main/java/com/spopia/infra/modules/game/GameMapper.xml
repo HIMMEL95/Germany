@@ -9,7 +9,90 @@
     <resultMap id="resultMapObj" type="com.spopia.infra.modules.game.Game"></resultMap>
 	
 	<select id="selectList" resultMap="resultMapObj">
-		
+		select 
+			g.seq
+			,g.abroadNy
+		    ,g.event
+		    ,g.league
+		    ,g.score_home
+		    ,g.score_away
+		    ,g.player_home
+		    ,g.player_away
+		    ,g.stadium
+		    ,g.gameDate
+		    ,g.gameDuration
+		    ,g.createdAt
+		    ,g.modifiedAt
+		    ,g.gcDelNy
+		    ,t1.teamName as team_home
+		    ,t2.teamName as team_away
+		from game g
+			inner join team t1 on t1.teamSeq = g.team_home
+			inner join team t2 on t2.teamSeq = g.team_away
+		where 1=1
+		order by 
+			g.gameDate
+		    ,g.gameDuration
+		    
+		    <if test="shDelNy != null and !shDelNy.equals('')">AND gcDelNy = #{shDelNy}</if>
+			<choose>
+				<when test="shOption == 1">AND event LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 2">AND gameDate LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND team_home LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 4">AND team_away LIKE CONCAT('%',#{shValue},'%')</when>
+				<otherwise></otherwise>
+			</choose>
+			<choose>
+				<when test="shDate == 1">AND g.createdAt BETWEEN #{startDate} AND #{endDate}</when>
+				<otherwise></otherwise>
+			</choose>
 	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		select
+			g.*
+		from
+			game g
+		where 1=1
+			AND g.seq = #{seq}
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO game (
+			abroadNy
+			,event
+			,league
+			,team_home
+			,team_away
+			,score_home
+			,score_away
+			,player_home
+			,player_away
+			,stadium
+			,gameDate
+			,gameDuration
+			,createdAt
+			,modifiedAt
+		) 
+		VALUES (
+			#{abroadNy}
+			,#{event}
+			,#{league}
+			,#{team_home}
+			,#{team_away}
+			,#{score_home}
+			,#{score_away}
+			,#{player_home}
+			,#{player_away}
+			,#{stadium}
+			,#{gameDate}
+			,#{gameDuration}
+			,now()
+			,now()
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
 
 </mapper>

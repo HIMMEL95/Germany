@@ -36,7 +36,7 @@
 		    
 		    <if test="shDelNy != null and !shDelNy.equals('')">AND gcDelNy = #{shDelNy}</if>
 			<choose>
-				<when test="shOption == 1">AND event LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 1">AND event = #{shValue}</when>
 				<when test="shOption == 2">AND gameDate LIKE CONCAT('%',#{shValue},'%')</when>
 				<when test="shOption == 3">AND team_home LIKE CONCAT('%',#{shValue},'%')</when>
 				<when test="shOption == 4">AND team_away LIKE CONCAT('%',#{shValue},'%')</when>
@@ -112,8 +112,8 @@
 	</insert>
 	
 	<update id="update">
-		update game 
-		set
+		UPDATE game 
+		SET
 			abroadNy = #{abroadNy}
 			,event = #{event}
 			,league = #{league}
@@ -127,7 +127,7 @@
 			,team_home = #{team_home}
 			,team_away = #{team_away}
 			,modifiedAt = now()
-		where 1=1
+		WHERE 1=1
 			and seq = #{seq}
 	</update>
 

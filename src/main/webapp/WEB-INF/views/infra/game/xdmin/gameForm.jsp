@@ -120,7 +120,7 @@
                         <div class="col mb-4">
                             <label for="leagueList" class="form-label fw-bold">리그</label>
                             <input class="form-control" list="league" id="leagueList" name="league" placeholder="Type to search...">
-                            <datalist class="" id="league">
+                            <datalist id="league">
                                 <option value="KBO">KBO</option>
                                 <option value="메이저리그">메이저리그</option>
                                 <option value="아메리칸리그">아메리칸리그</option>
@@ -139,7 +139,7 @@
                     <div class="row mb-4">
                         <div class="col">
                             <label for="team_home" class="form-label fw-bold">홈팀</label>
-                            <select class="form-select form-select" id="team_home" name="team_home" aria-label=".form-select example">
+                            <select class="form-select" id="team_home" name="team_home" aria-label=".form-select example">
                                 <option value="" selected>선택</option>
                                 <option value="1">두산 베어스</option>
                                 <option value="2">KIA 타이거즈</option>
@@ -149,7 +149,7 @@
                         </div>
                         <div class="col">
                             <label for="team_away" class="form-label fw-bold">원정팀</label>
-                            <select class="form-select form-select" id="team_away" name="team_away" aria-label=".form-select example">
+                            <select class="form-select" id="team_away" name="team_away" aria-label=".form-select example">
                                 <option value="" selected>선택</option>
                                 <option value="1">두산 베어스</option>
                                 <option value="2">KIA 타이거즈</option>

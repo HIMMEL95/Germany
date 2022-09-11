@@ -95,7 +95,7 @@
     <main>
         <div style="height: 80px;"></div>
         <div class="container">
-            <form>  
+            <form method="post" action="/game/gameModForm">  
                 <div class="text-center pb-3">
                     <span class="fs-1 fw-bold">경기 기록 수정</span>
                 </div>
@@ -103,23 +103,23 @@
                     <div class="row pt-4">
                         <div class="col mb-4">
                             <label for="abroadNy" class="form-label fw-bold">해외여부</label>
-                            <select class="form-select form-select" id="abroadNy" name="abroadNy" aria-label=".form-select example">
+                            <select class="form-select" id="abroadNy" name="abroadNy" value="<c:out value="${item.abroadNy }"/>" aria-label=".form-select example">
                                 <option value="">선택</option>
-                                <option value="1" selected>국내</option>
-                                <option value="2">해외</option>
+                                <option value="9">국내</option>
+                                <option value="10">해외</option>
                             </select>
                         </div>
                         <div class="col mb-4">
                             <label for="event" class="form-label fw-bold">종목</label>
-                            <select class="form-select form-select" id="event" name="event" aria-label=".form-select example">
+                            <select class="form-select" id="event" name="event" value="<c:out value="${item.event }"/>" aria-label=".form-select example">
                                 <option value="">선택</option>
-                                <option value="1" selected>야구</option>
-                                <option value="2">축구</option>
+                                <option value="11">야구</option>
+                                <option value="12">축구</option>
                             </select>
                         </div>
                         <div class="col mb-4">
                             <label for="league" class="form-label fw-bold">리그</label>
-                            <input class="form-control" list="league" id="league" name="league" placeholder="Type to search...">
+                            <input class="form-control" list="league" id="league" name="league" value="<c:out value="${item.league }"/>" placeholder="Type to search...">
                             <datalist id="league">
                                 <option value="KBO" selected>KBO</option>
                                 <option value="메이저리그">메이저리그</option>
@@ -139,7 +139,7 @@
                     <div class="row mb-4">
                         <div class="col">
                             <label for="team_home" class="form-label fw-bold">홈팀</label>
-                            <select class="form-select form-select" id="team_home" name="team_home" aria-label=".form-select example">
+                            <select class="form-select" id="team_home" name="team_home" value="<c:out value="${item.team_home }"/>" aria-label=".form-select example">
                                 <option value="">선택</option>
                                 <option value="1" selected>두산 베어스</option>
                                 <option value="2">KIA 타이거즈</option>
@@ -149,7 +149,7 @@
                         </div>
                         <div class="col">
                             <label for="team_away" class="form-label fw-bold">원정팀</label>
-                            <select class="form-select form-select" id="team_away" name="team_away" value="" aria-label=".form-select example">
+                            <select class="form-select" id="team_away" name="team_away" value="<c:out value="${item.team_away }"/>" aria-label=".form-select example">
                                 <option value="">선택</option>
                                 <option value="1">두산 베어스</option>
                                 <option value="2" selected>KIA 타이거즈</option>
@@ -164,8 +164,8 @@
                             <input type="text" class="form-control" id="player_home" name="player_home" value="<c:out value="${item.player_home }"/>" required>
                         </div>
                         <div class="col">
-                            <label for="awayTeamScore" class="form-label fw-bold">원정팀 선발</label>
-                            <input type="text" class="form-control" id="player_away" value="<c:out value="${item.player_away }"/>" required>
+                            <label for="player_away" class="form-label fw-bold">원정팀 선발</label>
+                            <input type="text" class="form-control" id="player_away" name="player_away" value="<c:out value="${item.player_away }"/>" required>
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -181,8 +181,8 @@
                     <div class="row mb-4">
                         <div class="col">
                             <label for="stadium" class="form-label fw-bold">경기장</label>
-                            <select class="form-select form-select" id="stadium" name="stadium" aria-label=".form-select example">
-                                <option selected>선택</option>
+                            <select class="form-select" id="stadium" name="stadium" aria-label=".form-select example">
+                                <option value="">선택</option>
                                 <option value="1">서울</option>
                                 <option value="2" selected>광주</option>
                                 <option value="3">인천</option>
@@ -196,7 +196,7 @@
                     </div>
                     <div class="row mb-4">
                         <div class="col-6">
-                            <label for="gameDates" class="form-label fw-bold">경기 일자</label>
+                            <label for="gameDate" class="form-label fw-bold">경기 일자</label>
                             <input type="text" class="form-control datepicker" id="gameDate" name="gameDate" value="<c:out value="${item.gameDate }"/>" required>
                         </div>
                     </div>
@@ -209,11 +209,11 @@
                     </div>
                     <div class="row">
                         <div class="col-2">
-                            <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="../game/gameList.html"
+                            <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="/game/gameView"
                                 role="button">취소</a>
                         </div>
                         <div class="col-2 offset-8" align="right">
-                            <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="../game/gameList.html"
+                            <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="/game/gameList"
                                 role="button">등록</a>
                         </div>
                     </div>

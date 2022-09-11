@@ -116,99 +116,101 @@
 
     <main>
         <div style="height: 80px;"></div>
-        <div class="container" style="max-width: 1000px;">
-            <div class="card shadow p-3 mb-3">
-                <div class="fs-3 text-center mb-2 fw-bold">
-                    <span>메인페이지 경기 기록 미리보기</span>
-                </div>
-                <div class="col-4 offset-3 card text-white" style="width: 50%;">
-                    <img src="../../resources/images/user/baseball.jpg" class="card-img shadow" alt="..." style="height: 250px;">
-                    <div class="card-img-overlay">
-                        <span class="card-title fs-3 text-center">야구</span>
-                        <span class="card-title fs-3 ms-3 text-center">KBO 리그</span>
-                        <div class="row text-center mt-5">
-                            <div class="col">
-                                <p class="emblem mb-2">
-                                    <img src="https://sports-phinf.pstatic.net/team/kbo/default/OB.png" width="40" height="40"
-                                        alt="두산" onerror="imageOnError(this);">
-                                </p>
-                                <span class="card-text fs-6">두산</span>
-                            </div>
-                            <div class="col p-2">
-                                <p class="card-text mb-2 fs-6">VS</p>
-                                <span class="card-text fs-6">18:00 예정</span>
-                            </div>
-                            <div class="col">
-                                <p class="emblem mb-2">
-                                    <img src="https://sports-phinf.pstatic.net/team/kbo/default/HT.png" width="40" height="40"
-                                        alt="" onerror="imageOnError(this);">
-                                </p>
-                                <span class="card-text fs-6">KIA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card shadow p-3">
-                <div class="fs-3 mt-3 text-center mb-2 fw-bold">
-                    <span>경기 상세 페이지 미리보기</span>
-                </div>
-                <div class="card shadow">
-                    <!-- <img class="card-img" src="../../image/background.jpg" alt="background" style="height: 300px;"> -->
-                    <img src="https://ssl.pstatic.net/static/sports/common/livecenter/new/bg_live_baseball.jpg"
-                        class="LiveGuide_cover_image__3dPRt card shadow alt="">
-                                <div class=" card-img-overlay align-bottom text-white">
-                    <span class="blind">남은 시간</span>
-                    <div class="position-absolute top-50 start-50 translate-middle text-center">
-                        <time datetime="03:43:02">03:43:02</time>
-                        <p class="LiveGuide_text__sQNRi ">라이브가 곧 시작됩니다.</p>
-                    </div>
-                </div>
-                </div>
-                <div class="mb-3 rounded shadow MatchBox_comp_match_box__1oRmr MatchBox_type_ready__2Q2dm">
-                    <div class="MatchBox_info__2l4DE">
-                        <span class="MatchBox_state__2AzL_">경기전</span>
-                        <span class="MatchBox_date__1bJ9G mb-2">08.06<span class="MatchBox_time__2z_nB">18:00</span></span>
-                        <span class="MatchBox_stadium__17mQ4">광주</span>
-                    </div>
-                    <div class="MatchBox_home__MPL6D pt-2">
-                        <div class="MatchBox_team_area__a9Jet">
-                            <div class="MatchBox_image__3CcVt"><img
-                                    src="https://sports-phinf.pstatic.net/team/kbo/default/OB.png?type=f108_108" alt="" width="72"
-                                    height="72"></div>
-                            <div class="MatchBox_text__22e-R text-center">
-                                <em class="MatchBox_name__11AyG">두산</em>
-                                <p class="MatchBox_pitcher__2Krgp">선-스탁</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="MatchBox_away__1rDsC pt-2">
-                        <div class="MatchBox_team_area__a9Jet">
-                            <div class="MatchBox_image__3CcVt"><img
-                                    src="https://sports-phinf.pstatic.net/team/kbo/default/HT.png?type=f108_108" alt="" width="72"
-                                    height="72"></div>
-                            <div class="MatchBox_text__22e-R text-center">
-                                <em class="MatchBox_name__11AyG">
-                                    <i class="MatchBox_badge__p5jYW">홈</i>KIA</em>
-                                <p class="MatchBox_pitcher__2Krgp">선-임기영</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col">
-                    <a role="button" class="btn btn-primary" href="/game/gameList">
-                        <span style="color: white; font-weight: 800;">뒤로</span>
-                    </a>
-                </div>
-                <div class="col offset-9" align="right">
-                    <a role="button" class="btn btn-primary" href="/game/gameModForm">
-                        <span style="color: white; font-weight: 800;">수정</span>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <form method="post" action="/game/gameModForm">
+        	<div class="container" style="max-width: 1000px;">
+	            <div class="card shadow p-3 mb-3">
+	                <div class="fs-3 text-center mb-2 fw-bold">
+	                    <span>메인페이지 경기 기록 미리보기</span>
+	                </div>
+	                <div class="col-4 offset-3 card text-white" style="width: 50%;">
+	                    <img src="../../resources/images/user/baseball.jpg" class="card-img shadow" alt="..." style="height: 250px;">
+	                    <div class="card-img-overlay">
+	                        <span class="card-title fs-3 text-center">${item.event }</span>
+	                        <span class="card-title fs-3 ms-3 text-center">${item.league }</span>
+	                        <div class="row text-center mt-5">
+	                            <div class="col">
+	                                <p class="emblem mb-2">
+	                                    <img src="https://sports-phinf.pstatic.net/team/kbo/default/OB.png" width="40" height="40"
+	                                        alt="두산" onerror="imageOnError(this);">
+	                                </p>
+	                                <span class="card-text fs-6">${item.team_away }</span>
+	                            </div>
+	                            <div class="col p-2">
+	                                <p class="card-text mb-2 fs-6">VS</p>
+	                                <span class="card-text fs-6">${item.gameDuration } 예정</span>
+	                            </div>
+	                            <div class="col">
+	                                <p class="emblem mb-2">
+	                                    <img src="https://sports-phinf.pstatic.net/team/kbo/default/HT.png" width="40" height="40"
+	                                        alt="" onerror="imageOnError(this);">
+	                                </p>
+	                                <span class="card-text fs-6">${item.team_home }</span>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="card shadow p-3">
+	                <div class="fs-3 mt-3 text-center mb-2 fw-bold">
+	                    <span>경기 상세 페이지 미리보기</span>
+	                </div>
+	                <div class="card shadow">
+	                    <!-- <img class="card-img" src="../../image/background.jpg" alt="background" style="height: 300px;"> -->
+	                    <img src="https://ssl.pstatic.net/static/sports/common/livecenter/new/bg_live_baseball.jpg"
+	                        class="LiveGuide_cover_image__3dPRt card shadow alt="">
+	                                <div class=" card-img-overlay align-bottom text-white">
+	                    <span class="blind">남은 시간</span>
+	                    <div class="position-absolute top-50 start-50 translate-middle text-center">
+	                        <time datetime="03:43:02">03:43:02</time>
+	                        <p class="LiveGuide_text__sQNRi ">라이브가 곧 시작됩니다.</p>
+	                    </div>
+	                </div>
+	                </div>
+	                <div class="mb-3 rounded shadow MatchBox_comp_match_box__1oRmr MatchBox_type_ready__2Q2dm">
+	                    <div class="MatchBox_info__2l4DE">
+	                        <span class="MatchBox_state__2AzL_">경기전</span>
+	                        <span class="MatchBox_date__1bJ9G mb-2">${item.gameDate }<span class="MatchBox_time__2z_nB">${item.gameDuration }</span></span>
+	                        <span class="MatchBox_stadium__17mQ4">${item.stadium }</span>
+	                    </div>
+	                    <div class="MatchBox_home__MPL6D pt-2">
+	                        <div class="MatchBox_team_area__a9Jet">
+	                            <div class="MatchBox_image__3CcVt"><img
+	                                    src="https://sports-phinf.pstatic.net/team/kbo/default/OB.png?type=f108_108" alt="" width="72"
+	                                    height="72"></div>
+	                            <div class="MatchBox_text__22e-R text-center">
+	                                <em class="MatchBox_name__11AyG">${item.team_away }</em>
+	                                <p class="MatchBox_pitcher__2Krgp">선-${item.player_away }</p>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="MatchBox_away__1rDsC pt-2">
+	                        <div class="MatchBox_team_area__a9Jet">
+	                            <div class="MatchBox_image__3CcVt"><img
+	                                    src="https://sports-phinf.pstatic.net/team/kbo/default/HT.png?type=f108_108" alt="" width="72"
+	                                    height="72"></div>
+	                            <div class="MatchBox_text__22e-R text-center">
+	                                <em class="MatchBox_name__11AyG">
+	                                    <i class="MatchBox_badge__p5jYW">홈</i>${item.team_home }</em>
+	                                <p class="MatchBox_pitcher__2Krgp">선-${item.player_home }</p>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="row mt-3">
+	                <div class="col">
+	                    <a role="button" class="btn btn-primary" href="/game/gameList">
+	                        <span style="color: white; font-weight: 800;">뒤로</span>
+	                    </a>
+	                </div>
+	                <div class="col offset-9" align="right">
+	                    <a role="button" class="btn btn-primary" href="/game/gameModForm?seq=<c:out value="${item.seq }"/>">
+	                        <span style="color: white; font-weight: 800;">수정</span>
+	                    </a>
+	                </div>
+	            </div>
+	        </div>
+        </form>
         <div style="height: 40px;"></div>
     </main>
 

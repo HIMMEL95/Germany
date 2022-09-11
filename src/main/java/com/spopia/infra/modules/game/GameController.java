@@ -38,6 +38,18 @@ public class GameController {
 		Game item = service.selectOne(vo);
 		model.addAttribute("item", item);
 		
+		List<Game> list = service.selectList();
+		model.addAttribute("list", list);
 		return "infra/game/xdmin/gameView";		
+	}
+	
+	@RequestMapping(value = "gameModForm")
+	public String gameModForm(Model model, GameVo vo, Game dto) throws Exception {
+		Game item = service.selectOne(vo);
+		model.addAttribute("item", item);
+		
+		int result = service.update(dto);
+		System.out.println("Controller result : " + result);
+		return "infra/game/xdmin/gameModForm";
 	}
 }

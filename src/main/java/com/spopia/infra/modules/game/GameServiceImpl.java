@@ -30,4 +30,9 @@ public class GameServiceImpl implements GameService{
 	public Game selectOne(GameVo vo) throws Exception {
 		return dao.selectOne(vo);
 	}
+	
+	@Override
+	public int update(Game dto) throws Exception {
+		return dao.update(dto);
+	}
 }

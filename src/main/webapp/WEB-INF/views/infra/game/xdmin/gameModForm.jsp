@@ -11,10 +11,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Game Reg Form</title>
+    <title>Game Mod Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="/resources/css/xdmin/gameForm.css" rel="stylesheet" type="text/css">
+    <link href="/resources/css/xdmin/game/gameModForm.css" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -28,7 +28,7 @@
             <div class="container px-3 px-xl-5 pt-1">
                 <!-- Logo START -->
                 <a class="navbar-brand" href="/sportMain">
-                    <img class="light-mode-item navbar-brand-item" src="../../resources/images/SPOPIA_white.png" alt="logo"
+                    <img class="light-mode-item navbar-brand-item" src="/resources/images/SPOPIA_white.png" alt="logo"
                         style="width: 90px;">
                 </a>
                 <!-- Profile START -->
@@ -37,7 +37,7 @@
                         <li class="me-2">
                             <a class="p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
                                 data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img class="avatar-img rounded-circle" src="../../resources/images/diano.jpg" alt="avatar"
+                                <img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar"
                                     style="width: 30px;">
                             </a>
                             <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
@@ -47,7 +47,7 @@
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
                                         <div class="avatar ps-1 pt-2">
-                                            <img class="avatar-img rounded-circle shadow" src="../../resources/images/diano.jpg"
+                                            <img class="avatar-img rounded-circle shadow" src="/resources/images/diano.jpg"
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
@@ -95,33 +95,33 @@
     <main>
         <div style="height: 80px;"></div>
         <div class="container">
-            <form class="needs-validation" method="post" action="/game/gameInst">
+            <form>  
                 <div class="text-center pb-3">
-                    <span class="fs-1 fw-bold">경기 기록 등록</span>
+                    <span class="fs-1 fw-bold">경기 기록 수정</span>
                 </div>
                 <div class="card ps-5 pe-5 pt-4 pb-4 shadow">
                     <div class="row pt-4">
                         <div class="col mb-4">
-                            <label for="abroadNY" class="form-label fw-bold">해외여부</label>
-                            <select class="form-select" id="abroadNY" name="abroadNy" aria-label=".form-select example">
-                                <option value="" selected>선택</option>
-                                <option value="9">국내</option>
-                                <option value="10">해외</option>
+                            <label for="abroadNy" class="form-label fw-bold">해외여부</label>
+                            <select class="form-select form-select" id="abroadNy" name="abroadNy" aria-label=".form-select example">
+                                <option value="">선택</option>
+                                <option value="1" selected>국내</option>
+                                <option value="2">해외</option>
                             </select>
                         </div>
                         <div class="col mb-4">
                             <label for="event" class="form-label fw-bold">종목</label>
-                            <select class="form-select" id="event" name="event" aria-label=".form-select example">
-                                <option value="" selected>선택</option>
-                                <option value="11">야구</option>
-                                <option value="12">축구</option>
+                            <select class="form-select form-select" id="event" name="event" aria-label=".form-select example">
+                                <option value="">선택</option>
+                                <option value="1" selected>야구</option>
+                                <option value="2">축구</option>
                             </select>
                         </div>
                         <div class="col mb-4">
-                            <label for="leagueList" class="form-label fw-bold">리그</label>
-                            <input class="form-control" list="league" id="leagueList" name="league" placeholder="Type to search...">
-                            <datalist class="" id="league">
-                                <option value="KBO">KBO</option>
+                            <label for="league" class="form-label fw-bold">리그</label>
+                            <input class="form-control" list="league" id="league" name="league" placeholder="Type to search...">
+                            <datalist id="league">
+                                <option value="KBO" selected>KBO</option>
                                 <option value="메이저리그">메이저리그</option>
                                 <option value="아메리칸리그">아메리칸리그</option>
                                 <option value="센트럴리그">센트럴리그</option>
@@ -140,8 +140,8 @@
                         <div class="col">
                             <label for="team_home" class="form-label fw-bold">홈팀</label>
                             <select class="form-select form-select" id="team_home" name="team_home" aria-label=".form-select example">
-                                <option value="" selected>선택</option>
-                                <option value="1">두산 베어스</option>
+                                <option value="">선택</option>
+                                <option value="1" selected>두산 베어스</option>
                                 <option value="2">KIA 타이거즈</option>
                                 <option value="3">SSG 랜더스</option>
                                 <option value="4">삼성 라이온즈</option>
@@ -149,10 +149,10 @@
                         </div>
                         <div class="col">
                             <label for="team_away" class="form-label fw-bold">원정팀</label>
-                            <select class="form-select form-select" id="team_away" name="team_away" aria-label=".form-select example">
-                                <option value="" selected>선택</option>
+                            <select class="form-select form-select" id="team_away" name="team_away" value="" aria-label=".form-select example">
+                                <option value="">선택</option>
                                 <option value="1">두산 베어스</option>
-                                <option value="2">KIA 타이거즈</option>
+                                <option value="2" selected>KIA 타이거즈</option>
                                 <option value="3">SSG 랜더스</option>
                                 <option value="4">삼성 라이온즈</option>
                             </select>
@@ -160,44 +160,44 @@
                     </div>
                     <div class="row mb-4">
                         <div class="col">
-                            <label for="homeTeamScore" class="form-label fw-bold">홈팀 선발</label>
-                            <input type="text" class="form-control" id="player_home" name="player_home" value="">
+                            <label for="player_home" class="form-label fw-bold">홈팀 선발</label>
+                            <input type="text" class="form-control" id="player_home" name="player_home" value="<c:out value="${item.player_home }"/>" required>
                         </div>
                         <div class="col">
                             <label for="awayTeamScore" class="form-label fw-bold">원정팀 선발</label>
-                            <input type="text" class="form-control" id="player_away" name="player_away" value="">
+                            <input type="text" class="form-control" id="player_away" value="<c:out value="${item.player_away }"/>" required>
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col">
-                            <label for="homeTeamScore" class="form-label fw-bold">홈팀 스코어</label>
-                            <input type="number" class="form-control" id="homeTeamScore" name="score_home" value="">
+                            <label for="score_home" class="form-label fw-bold">홈팀 스코어</label>
+                            <input type="number" class="form-control" id="score_home" name="score_home" value="<c:out value="${item.score_home }"/>" required>
                         </div>
                         <div class="col">
-                            <label for="awayTeamScore" class="form-label fw-bold">원정팀 스코어</label>
-                            <input type="number" class="form-control" id="awayTeamScore" name="score_away" value="">
+                            <label for="score_away" class="form-label fw-bold">원정팀 스코어</label>
+                            <input type="number" class="form-control" id="score_away" name="score_away" value="<c:out value="${item.score_away }"/>" required>
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col">
                             <label for="stadium" class="form-label fw-bold">경기장</label>
                             <select class="form-select form-select" id="stadium" name="stadium" aria-label=".form-select example">
-                                <option value="" selected>선택</option>
+                                <option selected>선택</option>
                                 <option value="1">서울</option>
-                                <option value="2">광주</option>
+                                <option value="2" selected>광주</option>
                                 <option value="3">인천</option>
                                 <option value="4">대구</option>
                             </select>
                         </div>
                         <div class="col">
                             <label for="gameDuration" class="form-label fw-bold">경기 시간</label>
-                            <input type="time" class="form-control" id="gameDuration" name="gameDuration" value="">
+                            <input type="time" class="form-control" id="gameDuration" name="gameDuration" value="<c:out value="${item.gameDuration }"/>" required>
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-6">
-                            <label for="gameDate" class="form-label fw-bold">경기 일자</label>
-                            <input type="text" class="form-control datepicker" id="gameDate" name="gameDate" placeholder="경기 일자" autocomplete="off">
+                            <label for="gameDates" class="form-label fw-bold">경기 일자</label>
+                            <input type="text" class="form-control datepicker" id="gameDate" name="gameDate" value="<c:out value="${item.gameDate }"/>" required>
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -209,11 +209,12 @@
                     </div>
                     <div class="row">
                         <div class="col-2">
-                            <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="/game/gameList"
+                            <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="../game/gameList.html"
                                 role="button">취소</a>
                         </div>
                         <div class="col-2 offset-8" align="right">
-                            <button class="btn btn-primary text-white fw-bold btn-sm shadow" type="submit">등록</button>
+                            <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="../game/gameList.html"
+                                role="button">등록</a>
                         </div>
                     </div>
                 </div>
@@ -239,7 +240,7 @@
                 </ul>
                 <div class="footer_copy">
                     <a id="fot.naver" target="_blank" href="https://www.navercorp.com">
-                        <img src="../../resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
+                        <img src="/resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
                     </a>
                     <span class="text">Copyright</span>
                     <span class="corp">© SPOPIA Corp.</span>

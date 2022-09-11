@@ -50,9 +50,25 @@
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		select
-			g.*
-		from
-			game g
+			g.seq
+			,g.abroadNy
+		    ,g.event
+		    ,g.league
+		    ,g.score_home
+		    ,g.score_away
+		    ,g.player_home
+		    ,g.player_away
+		    ,g.stadium
+		    ,DATE_FORMAT(g.gameDate, '%m.%d') as gameDate
+		    ,DATE_FORMAT(g.gameDuration, '%H:%i') as gameDuration
+		    ,g.createdAt
+		    ,g.modifiedAt
+		    ,g.gcDelNy
+		    ,t1.teamName as team_home
+		    ,t2.teamName as team_away
+		from game g
+			inner join team t1 on t1.teamSeq = g.team_home
+			inner join team t2 on t2.teamSeq = g.team_away
 		where 1=1
 			AND g.seq = #{seq}
 	</select>
@@ -94,5 +110,25 @@
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	
+	<update id="update">
+		update game 
+		set
+			abroadNy = #{abroadNy}
+			,event = #{event}
+			,league = #{league}
+			,score_home = #{score_home}
+			,score_away = #{score_away}
+			,player_home = #{player_home}
+			,player_away = #{player_away}
+			,stadium = #{stadium}
+			,gameDate = #{gameDate}
+			,gameDuration = #{gameDuration}
+			,team_home = #{team_home}
+			,team_away = #{team_away}
+			,modifiedAt = now()
+		where 1=1
+			and seq = #{seq}
+	</update>
 
 </mapper>

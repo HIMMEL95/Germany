@@ -28,5 +28,13 @@ public class ArticleDao {
 	public int insert(Article dto) {
 		return sqlSession.insert(namespace+".insert", dto);
 	}
+	
+	public Article selectOne(ArticleVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOne", vo);
+	}
+	
+	public int update(Article dto) {
+		return sqlSession.update(namespace + ".update", dto);
+	}
 
 }

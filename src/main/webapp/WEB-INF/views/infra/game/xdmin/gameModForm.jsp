@@ -95,7 +95,7 @@
     <main>
         <div style="height: 80px;"></div>
         <div class="container">
-            <form method="post" action="/game/gameModForm">  
+            <form method="post" action="/game/gameUpdt?seq=<c:out value="${item.seq }"/>">  
                 <div class="text-center pb-3">
                     <span class="fs-1 fw-bold">경기 기록 수정</span>
                 </div>
@@ -104,7 +104,7 @@
                         <div class="col mb-4">
                             <label for="abroadNy" class="form-label fw-bold">해외여부</label>
                             <select class="form-select" id="abroadNy" name="abroadNy" value="<c:out value="${item.abroadNy }"/>" aria-label=".form-select example">
-                                <option value="">선택</option>
+                                <option value=""선택</option>
                                 <option value="9">국내</option>
                                 <option value="10">해외</option>
                             </select>
@@ -141,7 +141,7 @@
                             <label for="team_home" class="form-label fw-bold">홈팀</label>
                             <select class="form-select" id="team_home" name="team_home" value="<c:out value="${item.team_home }"/>" aria-label=".form-select example">
                                 <option value="">선택</option>
-                                <option value="1" selected>두산 베어스</option>
+                                <option value="1">두산 베어스</option>
                                 <option value="2">KIA 타이거즈</option>
                                 <option value="3">SSG 랜더스</option>
                                 <option value="4">삼성 라이온즈</option>
@@ -161,21 +161,21 @@
                     <div class="row mb-4">
                         <div class="col">
                             <label for="player_home" class="form-label fw-bold">홈팀 선발</label>
-                            <input type="text" class="form-control" id="player_home" name="player_home" value="<c:out value="${item.player_home }"/>" required>
+                            <input type="text" class="form-control" id="player_home" name="player_home" value="<c:out value="${item.player_home }"/>">
                         </div>
                         <div class="col">
                             <label for="player_away" class="form-label fw-bold">원정팀 선발</label>
-                            <input type="text" class="form-control" id="player_away" name="player_away" value="<c:out value="${item.player_away }"/>" required>
+                            <input type="text" class="form-control" id="player_away" name="player_away" value="<c:out value="${item.player_away }"/>">
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col">
                             <label for="score_home" class="form-label fw-bold">홈팀 스코어</label>
-                            <input type="number" class="form-control" id="score_home" name="score_home" value="<c:out value="${item.score_home }"/>" required>
+                            <input type="number" class="form-control" id="score_home" name="score_home" value="<c:out value="${item.score_home }"/>">
                         </div>
                         <div class="col">
                             <label for="score_away" class="form-label fw-bold">원정팀 스코어</label>
-                            <input type="number" class="form-control" id="score_away" name="score_away" value="<c:out value="${item.score_away }"/>" required>
+                            <input type="number" class="form-control" id="score_away" name="score_away" value="<c:out value="${item.score_away }"/>">
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -191,13 +191,13 @@
                         </div>
                         <div class="col">
                             <label for="gameDuration" class="form-label fw-bold">경기 시간</label>
-                            <input type="time" class="form-control" id="gameDuration" name="gameDuration" value="<c:out value="${item.gameDuration }"/>" required>
+                            <input type="time" class="form-control" id="gameDuration" name="gameDuration" value="<c:out value="${item.gameDuration }"/>">
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-6">
                             <label for="gameDate" class="form-label fw-bold">경기 일자</label>
-                            <input type="text" class="form-control datepicker" id="gameDate" name="gameDate" value="<c:out value="${item.gameDate }"/>" required>
+                            <input type="text" class="form-control datepicker" id="gameDate" name="gameDate" value="<c:out value="${item.gameDate }"/>">
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -213,8 +213,7 @@
                                 role="button">취소</a>
                         </div>
                         <div class="col-2 offset-8" align="right">
-                            <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="/game/gameList"
-                                role="button">등록</a>
+                            <button class="btn btn-primary text-white fw-bold btn-sm shadow" type="submit">등록</button>
                         </div>
                     </div>
                 </div>

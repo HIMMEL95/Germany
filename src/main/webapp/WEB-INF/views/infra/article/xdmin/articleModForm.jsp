@@ -92,7 +92,7 @@
     <main>
         <div style="height: 80px;"></div>
         <div class="container">
-            <form method="get">
+            <form method="post" action="/article/articleUpdt?seq=<c:out value="${list.seq }"/>">
                 <div class="col-12 text-center pb-3">
                     <span class="fs-1 fw-bold">게시물 수정</span>
                 </div>
@@ -100,36 +100,25 @@
                     <div class="row mb-4">
                         <div class="col-12">
                             <label for="title" class="form-label fw-bold">제목</label>
-                            <input type="text" class="form-control" id="title" value="최지만 2타수 무안타 후 교체, 탬파베이는 3-2 역전승" required>
+                            <input type="text" class="form-control" id="title" name="title" value="<c:out value="${item.title }"/>">
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-12">
                             <label for="content" class="form-label fw-bold">본문</label>
-                            <textarea class="form-control" id="content" style="height: 200px;" aria-label="content">
-                                            최지만(31·탬파베이 레이스)이 안타 없이 두 타석만 소화하고 교체됐다. 특히 역전 찬스에서 곧바로 교체돼 아쉬움을 남겼다.
-                
-                                            최지만은 13일 오전(한국시간) 미국 플로리다주 세인트피터즈버그 트로피카나필드에서 열린 미국프로야구 메이저리그 보스턴과 경기에 6번 타자(1루수)로 선발 출전해
-                                            2타수 무안타를 남겼다. 최지만의 타율은 0.283에서 0.280으로 하락했다.
-                
-                                            최지만은 2회 말 1사에서 크리스 세일의 슬라이더에 헛스윙 삼진으로 물러났고, 4회 1사 3루에서는
-                                            세일의 초구를 쳤지만 2루수 땅볼로 아웃됐다. 탬파베이는 0-2로 뒤진 6회 2사 1, 2루에서 최지만 타석 때 보스턴이 좌완 맷 스트람으로 교체하자 곧바로 대타
-                                            프란시스코
-                                            메히아를 투입했다.
-                
-                                            스위치 타자인 메히아는 1타점 중전 적시타를 쳤다. 탬파베이는 이어진 1사 1, 2루에서 테일러 윌스가 투수 강습 타구를 날렸고, 상대 실책이 연거푸 나오면서 2점을
-                                            뽑아 3-2로 역전했다. 탬파베이는 1점 차 리드를 끝까지 지켜 이겼다.
-                                        </textarea>
+                            <textarea class="form-control" id="content" name="content" value="<c:out value="${item.content }"/>" style="height: 200px;" aria-label="content">
+                            	<c:out value="${item.content }"/>
+                            </textarea>
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col">
                             <label for="newspaper" class="form-label fw-bold">신문사</label>
-                            <input type="text" class="form-control" id="newspaper" value="문화일보" required>
+                            <input type="text" class="form-control" id="newspaper" name="newspaper" value="<c:out value="${item.newspaper }"/>">
                         </div>
                         <div class="col">
-                            <label for="abroadNY" class="form-label fw-bold">해외여부</label>
-                            <select id="abroadNY" class="form-select form-select fw-bold" aria-label=".form-select example">
+                            <label for="abroadNy" class="form-label fw-bold">해외여부</label>
+                            <select id="abroadNy" name="abroadNy" value="<c:out value="${item.abroadNy }"/>" class="form-select  fw-bold" aria-label=".form-select example">
                                 <option value="">선택</option>
                                 <option value="1">국내</option>
                                 <option value="2" selected>해외</option>
@@ -137,15 +126,15 @@
                         </div>
                         <div class="col">
                             <label for="event" class="form-label fw-bold">종목</label>
-                            <select id="event" class="form-select form-select fw-bold" aria-label=".form-select example">
+                            <select id="event" name="event" value="<c:out value="${item.event }"/>" class="form-select fw-bold" aria-label=".form-select example">
                                 <option value="">선택</option>
                                 <option value="1" selected>야구</option>
                                 <option value="2">축구</option>
                             </select>
                         </div>
                         <div class="col">
-                            <label for="event" class="form-label fw-bold">리그</label>
-                            <select id="event" class="form-select form-select fw-bold" aria-label=".form-select example">
+                            <label for="league" class="form-label fw-bold">리그</label>
+                            <select id="league" name="league" value="<c:out value="${item.league }"/>" class="form-select fw-bold" aria-label=".form-select example">
                                 <option value="">선택</option>
                                 <option value="1">KBO</option>
                                 <option value="2">메이저리그</option>
@@ -163,7 +152,7 @@
                         </div>
                         <div class="col">
                             <label for="reporter" class="form-label fw-bold">기자</label>
-                            <input type="text" class="form-control" id="reporter" value="정세영" required>
+                            <input type="text" class="form-control" id="reporter" name="reporter" value="<c:out value="${item.reporter }"/>">
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -175,12 +164,10 @@
                     </div>
                     <div class="row">
                         <div class="col-2">
-                            <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="../article/articleList.html"
-                                role="button">취소</a>
+                            <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="/article/articleList" role="button">취소</a>
                         </div>
                         <div class="col-2 offset-8" align="right">
-                            <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="../article/articleList.html"
-                                role="button">등록</a>
+                            <button class="btn btn-primary text-white fw-bold btn-sm shadow" type="submit">등록</a>
                         </div>
                     </div>
                 </div>

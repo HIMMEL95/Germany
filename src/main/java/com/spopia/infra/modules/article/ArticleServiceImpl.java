@@ -25,4 +25,14 @@ public class ArticleServiceImpl  implements ArticleService{
 	public int insert(Article dto) throws Exception {
 		return dao.insert(dto);
 	}
+
+	@Override
+	public int update(Article dto) throws Exception {
+		return dao.update(dto);
+	}
+
+	@Override
+	public Article selectOne(ArticleVo vo) throws Exception {
+		return dao.selectOne(vo);
+	}
 }

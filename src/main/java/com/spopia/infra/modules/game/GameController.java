@@ -44,12 +44,17 @@ public class GameController {
 	}
 	
 	@RequestMapping(value = "gameModForm")
-	public String gameModForm(Model model, GameVo vo, Game dto) throws Exception {
+	public String gameModForm(Model model, GameVo vo) throws Exception {
 		Game item = service.selectOne(vo);
 		model.addAttribute("item", item);
 		
+		return "infra/game/xdmin/gameModForm";
+	}
+	
+	@RequestMapping(value = "gameUpdt")
+	public String gameUpdt(Game dto) throws Exception {
 		int result = service.update(dto);
 		System.out.println("Controller result : " + result);
-		return "infra/game/xdmin/gameModForm";
+		return "redirect:/game/gameList";
 	}
 }

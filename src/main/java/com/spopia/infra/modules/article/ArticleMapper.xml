@@ -21,8 +21,10 @@
 		    ,a.aDelNy
 		    ,a.createdAt
 		    ,a.modifiedAt
+		    ,u.email as email
 		from 
 			article a
+			inner join user u on u.seq = a.createdBy
 		where 1=1
 			
 			<if test="shDelNy != null and !shDelNy.equals('')">AND aDelNy  = #{shDelNy}</if>
@@ -36,6 +38,26 @@
 				<when test="shDate == 1">AND a.createdAt BETWEEN #{startDate} AND #{endDate}</when>
 				<otherwise></otherwise>
 			</choose>
+	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		select
+			a.seq
+			,a.title
+			,a.content
+			,a.newspaper
+			,a.abroadNy
+			,a.event
+			,a.league
+			,a.reporter
+			,a.aDelNy
+			,a.createdAt
+			,a.modifiedAt
+			,u.email as email
+		from article a
+			inner join user u on u.seq = a.createdBy
+		where 1=1
+			and a.seq = #{seq}
 	</select>
 	
 	<insert id="insert">
@@ -67,5 +89,20 @@
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	
+	<update id="update">
+		UPDATE article
+		SET
+			title = #{title}
+			,content = #{content}
+			,newspaper = #{newspaper}
+			,abroadNy = #{abroadNy}
+			,event = #{event}
+			,league = #{league}
+			,reporter = #{reporter}
+			,modifiedAt = now()
+		where 1=1
+			and seq = #{seq}
+	</update>
 
 </mapper>

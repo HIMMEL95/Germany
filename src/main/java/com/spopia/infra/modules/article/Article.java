@@ -15,6 +15,13 @@ public class Article {
 	private String modifiedAt;
 	private Integer modifiedBy;
 	private Integer aDelNy;
+	private String email;
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public Integer getaDelNy() {
 		return aDelNy;
 	}

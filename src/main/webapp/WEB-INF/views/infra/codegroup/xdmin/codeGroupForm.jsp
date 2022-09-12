@@ -256,10 +256,10 @@
                             <div class="col">
                                 <div class="input-control">
                                     <label for="useNY">사용여부<span style="color: red;">*</span></label>
-                                    <select class="form-select" id="useNY">
+                                    <select class="form-select" id="useNY" name="">
                                         <option selected value="">Choose...</option>
                                         <option value="0">N</option>
-                                        <option value="1" >Y</option>
+                                        <option value="1">Y</option>
                                     </select>
                                     <div class="msg" id="useNY_msg" name="useNY_msg" style="display: none;"></div>
                                 </div>

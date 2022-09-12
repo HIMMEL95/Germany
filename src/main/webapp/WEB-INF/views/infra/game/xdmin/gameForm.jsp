@@ -170,18 +170,18 @@
                     </div>
                     <div class="row mb-4">
                         <div class="col">
-                            <label for="homeTeamScore" class="form-label fw-bold">홈팀 스코어</label>
-                            <input type="number" class="form-control" id="homeTeamScore" name="score_home" value="">
+                            <label for="score_home" class="form-label fw-bold">홈팀 스코어</label>
+                            <input type="number" class="form-control" id="score_home" name="score_home" value="">
                         </div>
                         <div class="col">
-                            <label for="awayTeamScore" class="form-label fw-bold">원정팀 스코어</label>
-                            <input type="number" class="form-control" id="awayTeamScore" name="score_away" value="">
+                            <label for="score_away" class="form-label fw-bold">원정팀 스코어</label>
+                            <input type="number" class="form-control" id="score_away" name="score_away" value="">
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col">
                             <label for="stadium" class="form-label fw-bold">경기장</label>
-                            <select class="form-select form-select" id="stadium" name="stadium" aria-label=".form-select example">
+                            <select class="form-select" id="stadium" name="stadium" aria-label=".form-select example">
                                 <option value="" selected>선택</option>
                                 <option value="1">서울</option>
                                 <option value="2">광주</option>

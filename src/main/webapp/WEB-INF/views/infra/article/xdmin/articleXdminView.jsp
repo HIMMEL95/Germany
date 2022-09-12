@@ -91,46 +91,48 @@
 
     <main>
         <div style="height: 80px;"></div>
-        <div class="container" style="max-width: 900px;">
-            <div class="text-center pb-3">
-                <span class="fs-1 fw-bold">게시물 상세</span>
-            </div>
-            <div class="card ps-5 pe-5 pt-4 pb-4 shadow">
-                <div class="row">
-                    <div class="col-12 mb-2">
-                        <span class="fs-4 fw-bold">최지만 2타수 무안타 후 교체, 탬파베이는 3-2 역전승</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 mb-2">
-                        <span style="font-size: small;"><strong>기사제공</strong> ${list.newspaper }</span>
-                        <span class="ps-3" style=" font-size: small;"><strong>기사입력</strong> ${list.createdAt } |
-                        </span>
-                        <span style="font-size: small;"><strong>최종수정</strong> ${list.modifiedAt }</span>
-                        <hr>
-                    </div>
-                    <div class="col-12 mb-3">
-                        <img class="pb-2" src="../../image/baseball.jpg" alt="야구"
-                            style="width: 100%; height: 300px; float: left;">
-                    </div>
-                    <div class="col-12">
-                        ${list.content }
-                        <span><strong>기사제공</strong> ${list.newspaper }</span>
-                        <p>${list.reporter } 기자 (niners@munhwa.com)</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-2">
-                        <a class="btn btn-primary btn-sm text-white fw-bold shadow" href="../article/articleList.html"
-                            role="button">뒤로</a>
-                    </div>
-                    <div class="col-2 offset-8" align="right">
-                        <a class="btn btn-primary btn-sm text-white fw-bold shadow"
-                            href="/article/articleModForm" role="button">수정</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+       	<form method="post" action="/article/articleModForm">
+       		<div class="container" style="max-width: 900px;">
+	            <div class="text-center pb-3">
+	                <span class="fs-1 fw-bold">게시물 상세</span>
+	            </div>
+	            <div class="card ps-5 pe-5 pt-4 pb-4 shadow">
+	                <div class="row">
+	                    <div class="col-12 mb-2">
+	                        <span class="fs-4 fw-bold">${item.title }</span>
+	                    </div>
+	                </div>
+	                <div class="row">
+	                    <div class="col-12 mb-2">
+	                        <span style="font-size: small;"><strong>기사제공</strong> ${item.newspaper }</span>
+	                        <span class="ps-3" style=" font-size: small;"><strong>기사입력</strong> ${item.createdAt } |
+	                        </span>
+	                        <span style="font-size: small;"><strong>최종수정</strong> ${item.modifiedAt }</span>
+	                        <hr>
+	                    </div>
+	                    <div class="col-12 mb-3">
+	                        <img class="pb-2" src="../../image/baseball.jpg" alt="야구"
+	                            style="width: 100%; height: 300px; float: left;">
+	                    </div>
+	                    <div class="col-12">
+	                        <p> ${item.content } </p>
+	                        <span><strong>기사제공</strong> ${item.newspaper }</span>
+	                        <p>${item.reporter } 기자 ${item.email }</p>
+	                    </div>
+	                </div>
+	                <div class="row">
+	                    <div class="col-2">
+	                        <a class="btn btn-primary btn-sm text-white fw-bold shadow" href="../article/articleList.html"
+	                            role="button">뒤로</a>
+	                    </div>
+	                    <div class="col-2 offset-8" align="right">
+	                        <a class="btn btn-primary btn-sm text-white fw-bold shadow"
+	                            href="/article/articleModForm?seq=<c:out value="${item.seq }"/>" role="button">수정</a>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+       	</form>
         <div style="height: 50px;"></div>
     </main>
 

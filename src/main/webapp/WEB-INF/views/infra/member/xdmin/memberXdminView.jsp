@@ -93,7 +93,7 @@
     <main>
         <div style="height: 100px;"></div>
         <div class="container">
-            <form>
+            <form method="post" action="/member/memberList">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">

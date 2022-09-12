@@ -92,7 +92,7 @@
     <main>
         <div style="height: 80px;"></div>
         <div class="container">
-            <form method="post" action="/article/articleUpdt?seq=<c:out value="${list.seq }"/>">
+            <form method="post" action="/article/articleUpdt?seq=<c:out value="${item.seq }"/>">
                 <div class="col-12 text-center pb-3">
                     <span class="fs-1 fw-bold">게시물 수정</span>
                 </div>

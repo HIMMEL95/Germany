@@ -22,9 +22,10 @@
 		    ,u.address
 		    ,u.address_detail
 		    ,u.job
-		    ,date_format(u.createdAt, '%Y.%m.%d %H:%i:%s') as createdAt
-		    ,date_format(u.modifiedAt, '%Y.%m.%d %H:%i:%s') as modifiedAt
+		    ,date_format(u.createdAt, '%Y-%m-%d %H:%i:%s') as createdAt
+		    ,date_format(u.modifiedAt, '%Y-%m-%d %H:%i:%s') as modifiedAt
 		    ,u.user_div
+		    ,u.uDelNy
 			,t.teamName as team
 		from user u
 		inner join teamUser tu on tu.user_seq = u.seq
@@ -32,12 +33,15 @@
 		where 1=1
 			and tu.defaultNY = 0
 			
-			<if test="shDelNy != null and !shDelNy.equals('')">AND deleteNy = #{shDelNy}</if>
+			<if test="shDelNy != null and !shDelNy.equals('')">AND uDelNy = #{shDelNy}</if>
+			<choose>
+				<when test="shDate == 1">AND createdAt BETWEEN #{startDate} AND #{endDate}</when>
+				<otherwise></otherwise>
+			</choose>
 			<choose>
 				<when test="shOption == 1">AND seq = #{shValue}</when>
 				<when test="shOption == 2">AND name LIKE CONCAT('%', #{shValue}, '%')</when>
 				<when test="shOption == 3">AND id LIKE CONCAT('%', #{shValue}, '%')</when>
-				<when test="shOption == 4">AND email LIKE CONCAT('%', #{shValue}, '%')</when>
 			</choose>
 	</select>
 

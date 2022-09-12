@@ -151,7 +151,7 @@
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/comment">
+                                                            <a class="nav-link" href="/commentList">
                                                                 <i class="fas fa-light fa-comments pe-3"></i>
                                                                 <span>댓글 리스트</span>
                                                             </a>

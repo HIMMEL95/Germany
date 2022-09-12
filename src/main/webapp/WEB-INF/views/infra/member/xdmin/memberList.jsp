@@ -155,7 +155,7 @@
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/comment">
+                                                            <a class="nav-link" href="/commentList">
                                                                 <i class="fas fa-light fa-comments pe-3"></i>
                                                                 <span>댓글 리스트</span>
                                                             </a>
@@ -223,17 +223,17 @@
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" selected>선택</option>
-                                        <option value="1">남성</option>
-                                        <option value="2">여성</option>
+                                    <select class="form-select form-select-sm fw-bold" id="shDate" name="shDate" aria-label=".form-select-sm example">
+                                        <option value="" <c:if test="${empty vo.shDate }">selected</c:if> selected>선택</option>
+                                        <option value="1" <c:if test="${vo.shDate eq 1 }">selected</c:if>>등록일</option>
+                                        <option value="2" <c:if test="${vo.shDate eq 2 }">selected</c:if>>수정일</option>
                                     </select>
                                 </div>
                                 <div class="col-3">
-                                    <input type="text" class="form-control datepicker" id="date_st" placeholder="2022-01-01">
+                                    <input type="text" class="form-control datepicker" id="date_st" name="startDate" placeholder="2022-01-01">
                                 </div>
                                 <div class="col-3">
-                                    <input type="text" class="form-control datepicker" id="date_end" placeholder="2022-12-31">
+                                    <input type="text" class="form-control datepicker" id="date_end" name="endDate" placeholder="2022-12-31">
                                 </div>
                             </div>
                             <div class="row align-items-center">
@@ -243,7 +243,6 @@
                                         <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>번호</option>
                                         <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>이름</option>
                                         <option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>아이디</option>
-                                        <option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>이메일</option>
                                     </select>
                                 </div>
                                 <div class="col-3">

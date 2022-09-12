@@ -36,14 +36,14 @@
 		    
 		    <if test="shDelNy != null and !shDelNy.equals('')">AND gcDelNy = #{shDelNy}</if>
 			<choose>
-				<when test="shOption == 1">AND event = #{shValue}</when>
+				<when test="shOption == 1">AND seq = #{shValue}</when>
 				<when test="shOption == 2">AND gameDate LIKE CONCAT('%',#{shValue},'%')</when>
 				<when test="shOption == 3">AND team_home LIKE CONCAT('%',#{shValue},'%')</when>
 				<when test="shOption == 4">AND team_away LIKE CONCAT('%',#{shValue},'%')</when>
 				<otherwise></otherwise>
 			</choose>
 			<choose>
-				<when test="shDate == 1">AND g.createdAt BETWEEN #{startDate} AND #{endDate}</when>
+				<when test="shDate == 1">AND createdAt BETWEEN #{startDate} AND #{endDate}</when>
 				<otherwise></otherwise>
 			</choose>
 	</select>

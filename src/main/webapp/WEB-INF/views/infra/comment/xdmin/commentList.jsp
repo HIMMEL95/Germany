@@ -153,7 +153,7 @@
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/comment">
+                                                            <a class="nav-link" href="/commentList">
                                                                 <i class="fas fa-light fa-comments pe-3"></i>
                                                                 <span>댓글 리스트</span>
                                                             </a>
@@ -221,17 +221,17 @@
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
+                                    <select class="form-select form-select-sm fw-bold" id="shDate" name="shDate" aria-label=".form-select-sm example">
                                         <option value="" <c:if test="${empty vo.shDate }">selected</c:if> selected>선택</option>
                                         <option value="1" <c:if test="${vo.shDate eq 1 }">selected</c:if>>등록일</option>
                                         <option value="2" <c:if test="${vo.shDate eq 2 }">selected</c:if>>수정일</option>
                                     </select>
                                 </div>
                                 <div class="col-3">
-                                    <input type="text" class="form-control datepicker" id="date_st" placeholder="시작일" autocomplete="off">
+                                    <input type="text" class="form-control datepicker" id="date_st" name="startDate" placeholder="시작일" autocomplete="off">
                                 </div>
                                 <div class="col-3">
-                                    <input type="text" class="form-control datepicker" id="date_end" placeholder="종료일" autocomplete="off"s>
+                                    <input type="text" class="form-control datepicker" id="date_end" name="endDate" placeholder="종료일" autocomplete="off"s>
                                 </div>
                             </div>
                             <div class="row align-items-center">

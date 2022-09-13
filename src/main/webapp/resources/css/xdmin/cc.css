@@ -601,3 +601,7 @@ img {
     text-align: center;
     vertical-align: middle;
 }
+
+.modal-body {
+	text-align: center;
+}

@@ -363,11 +363,11 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body fs-6">
-                                                선택하신 게시물을 정말로 삭제하시겠습니까?
+                                                		선택하신 게시물을 정말로 삭제하시겠습니까?
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                                                <button id="btnUel" type="button" class="btn btn-primary">삭제</button>
+                                                <button id="delBtn" type="button" class="btn btn-primary">삭제</button>
                                             </div>
                                         </div>
                                     </div>
@@ -376,23 +376,6 @@
                                     data-bs-target="#deleteModal">
                                     <i class="fa-solid fa-trash-can" style="color: white;"></i>
                                 </button>
-								<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-								  <div class="modal-dialog">
-								    <div class="modal-content">
-								      <div class="modal-header">
-								        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-								        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-								      </div>
-								      <div class="modal-body">
-							        	선택하신 게시물을 정말로 삭제하시겠습니까?
-								      </div>
-								      <div class="modal-footer">
-								        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-								        <button id="btnDel" type="button" class="btn btn-primary">Save changes</button>
-								      </div>
-								    </div>
-								  </div>
-								</div> -->
                                 <button id="btnSave" class="border-0 btn btn-sm bg-success shadow" type="button" onclick="validation()">
                                     <i class="fa-regular fa-bookmark" style="color: white;"></i>
                                 </button>
@@ -470,19 +453,36 @@
         	} else {
         		form.attr("action", goUrlUpdt).submit();
         	}
-			
 		});
+        
+        var valueList= [];
+        $(".modalBtn").each(function() {
+			var value = $(this).attr('value');
+			valueList.push(value);
+		})
+		
+		for (var i=0; i < valueList.length; i++) {
+			if (value == "Uel") {
+	        	$(".modal-body").html("선택하신 게시물을 삭제하시겠습니까?");
+	        	$("#delBtn").on("click", function() {
+	        		form.attr("action", goUrlUel).submit();
+				});
+	        } else if (value == "Del"){
+	        	$(".modal-body").html("해당 게시물을 진짜로 삭제하시겠습니까?");
+	        	$("#delBtn").on("click", function() {
+	        		form.attr("action", goUrlDel).submit();				
+				});
+	        }
+		}
 
-	 	$("#btnUel").on("click", function() {
-        	form.attr("action", goUrlUel ).submit();	
+	 /* 	$("#btnUel").on("click", function() {
+        	form.attr("action", goUrlUel).submit();	
 		});
 		
 	 	$("#btnDel").on("click", function() {
         	form.attr("action", goUrlDel).submit();			
-		});
+		}); */
 	 	
-	 	
-
         /* test = function() {
         	
         	// radio

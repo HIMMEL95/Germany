@@ -224,10 +224,10 @@
                                         <option value="2" <c:if test="${vo.shDate eq 2 }">selected</c:if>>수정일</option>
                                     </select>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-2">
                                     <input type="text" class="form-control datepicker" id="date_st" name="startDate" placeholder="2022-01-01">
                                 </div>
-                                <div class="col-3">
+                                <div class="col-2">
                                     <input type="text" class="form-control datepicker" id="date_end" name="endDate" placeholder="2022-12-31">
                                 </div>
                             </div>
@@ -240,10 +240,10 @@
                                         <option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>아이디</option>
                                     </select>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-2">
                                     <input type="text" class="form-control" name="shValue" id="validationCustom01" value="<c:out value="${vo.shValue }"/>">
                                 </div>
-                                <div class="col-3">
+                                <div class="col-2">
                                     <button class="btn btn-primary fw-bold btn-sm shadow" type="submit">검색</button>
                                 </div>
                             </div>

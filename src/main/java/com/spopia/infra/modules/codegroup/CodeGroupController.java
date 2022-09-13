@@ -47,9 +47,6 @@ public class CodeGroupController {
 		CodeGroup item = service.selectOne(vo);
 		model.addAttribute("item", item);
 		
-		List<CodeGroup> list = service.selectList();
-		model.addAttribute("list", list);
-		
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}
 	

@@ -45,7 +45,7 @@ public class CodeGroupController {
 	public String CodeGroupView(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 		
 		CodeGroup item = service.selectOne(vo);
-//		model.addAttribute("item", item);
+		model.addAttribute("item", item);
 		
 		List<CodeGroup> list = service.selectList();
 		model.addAttribute("list", list);

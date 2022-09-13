@@ -245,7 +245,7 @@
                                     </select>
                                 </div>
                                 <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" name="shValue" value="">
+                                    <input type="text" class="form-control" id="validationCustom01" name="shValue" value="" autocomplete="off">
                                 </div>
                                 <div class="col-3">
                                     <button class="btn btn-primary fw-bold btn-sm shadow" type="submit">검색</button>

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class ArticleServiceImpl  implements ArticleService{
 
 	@Autowired
-	private ArticleDao dao;
+	ArticleDao dao;
 
 	@Override
 	public List<Article> selectList(ArticleVo vo) throws Exception {

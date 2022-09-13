@@ -93,7 +93,7 @@
     <main>
         <div style="height: 100px;"></div>
         <div class="container">
-            <form method="post" action="/member/memberList">
+            <form method="post" action="/member/memberModForm">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -199,81 +199,85 @@
                                         <div class=" row mb-4">
                             <div class="col">
                                 <label for="name" class="form-label fw-bold">이름</label>
-                                <input type="text" class="form-control bg-white" id="name" value="이하늘" required readonly>
+                                <input type="text" class="form-control bg-white" id="name" value="<c:out value="${item.name }"/>" readonly>
                             </div>
                             <div class="col">
                                 <label for="id" class="form-label fw-bold">아이디</label>
-                                <input type="text" class="form-control bg-white" id="id" value="Himmel" required readonly>
+                                <input type="text" class="form-control bg-white" id="id" value="<c:out value="${item.id }"/>" readonly>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="dob" class="form-label fw-bold">생년월일</label>
-                                <input type="text" class="form-control bg-white" id="dob" value="1995-10-08" required readonly>
+                                <input type="text" class="form-control bg-white" id="dob" value="<c:out value="${item.dob }"/>" readonly>
                             </div>
                             <div class="col">
                                 <label for="email" class="form-label fw-bold">이메일</label>
-                                <input type="email" class="form-control bg-white" id="email" value="himmel@gmail.com" required readonly>
+                                <input type="email" class="form-control bg-white" id="email" value="<c:out value="${item.email }"/>" readonly>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="tel" class="form-label fw-bold">전화번호</label>
-                                <input type="tel" class="form-control bg-white" id="tel" value="010-1234-1234" required readonly>
+                                <input type="tel" class="form-control bg-white" id="tel" value="<c:out value="${item.phone }"/>" readonly>
                             </div>
                             <div class="col">
                                 <label for="gender" class="form-label fw-bold">성별</label>
-                                <select class="form-select form-select-lg fs-6 bg-white" id="gender"
-                                    aria-label=".form-select-lg example" required disabled readonly>
+                                <select class="form-select form-select-lg fs-6 bg-white" id="gender" name="gender" value="<c:out value="${item.gender }"/>"
+                                    aria-label=".form-select-lg example" disabled readonly>
                                     <option value="">선택</option>
-                                    <option value="남성" selected>남성</option>
-                                    <option value="여성">여성</option>
+                                    <option value="5" selected>남성</option>
+                                    <option value="6">여성</option>
                                 </select>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="job" class="form-label fw-bold">직업</label>
-                                <input type="text" class="form-control bg-white" id="job" value="학생" required readonly>
+                                <input type="text" class="form-control bg-white" id="job" value="<c:out value="${item.job }"/>" readonly>
                             </div>
                             <div class="col">
                                 <label for="team" class="form-label fw-bold">좋아하는 팀</label>
-                                <input type="text" class="form-control bg-white" id="team" value="두산" required readonly>
+                                <input type="text" class="form-control bg-white" id="team" value="<c:out value="${item.team }"/>" readonly>
                             </div>
                         </div>
                         <div class="row mb-4" hidden>
                             <div class="col">
                                 <label for="password" class="form-label fw-bold">비밀번호</label>
-                                <input type="password" class="form-control bg-white" id="password" value="" required readonly>
+                                <input type="password" class="form-control bg-white" id="password" value="" readonly>
                             </div>
                             <div class="col">
                                 <label for="password_confirm" class="form-label fw-bold">비밀번호 확인</label>
-                                <input type="password" class="form-control bg-white" id="password_confirm" value="" required readonly>
+                                <input type="password" class="form-control bg-white" id="password_confirm" value="" readonly>
                             </div>
                         </div>
                         <hr>
                         <div class="row mb-4">
                             <div class="col-6">
                                 <label for="zip" class="form-label fw-bold">우편번호</label>
-                                <input type="text" class="form-control bg-white" id="zip" value="12345" required readonly>
+                                <input type="text" class="form-control bg-white" id="zip" name="zip" value="<c:out value="${item.zip }"/>" readonly>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="address" class="form-label fw-bold">주소</label>
-                                <input type="text" class="form-control bg-white" id="address" value="경기도 용인시 기흥구" required readonly>
+                                <input type="text" class="form-control bg-white" id="address" name="address" value="<c:out value="${item.address }"/>" readonly>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="addressDetail" class="form-label fw-bold">상세주소</label>
-                                <input type="text" class="form-control bg-white" id="addressDetail" value="205동" required readonly>
+                                <input type="text" class="form-control bg-white" id="addressDetail" name="address_detail" value="<c:out value="${item.address_detail }"/>" readonly>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-2">
-                                <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="../user/userList.html"
+                                <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="/member/memberList"
                                     role="button">뒤로</a>
+                            </div>
+                            <div class="col-2 offset-8" align="right">
+                                <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="/member/memberModForm?seq=<c:out value="${item.seq }"/>"
+                                    role="button">수정</a>
                             </div>
                         </div>
                     </div>

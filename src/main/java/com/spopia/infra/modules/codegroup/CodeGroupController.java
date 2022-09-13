@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -27,8 +28,8 @@ public class CodeGroupController {
 	}
 	
 	@RequestMapping(value = "codeGroupForm")
-	public String codeGroupForm(Model model) throws Exception {
-		
+	public String codeGroupForm() throws Exception {
+
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}
 
@@ -41,12 +42,36 @@ public class CodeGroupController {
 	}
 	
 	@RequestMapping(value = "codeGroupView")
-	public String CodeGroupView(CodeGroupVo vo, Model model) throws Exception {
+	public String CodeGroupView(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 		
 		CodeGroup item = service.selectOne(vo);
-		model.addAttribute("item",item);
+//		model.addAttribute("item", item);
+		
+		List<CodeGroup> list = service.selectList();
+		model.addAttribute("list", list);
 		
 		return "infra/codegroup/xdmin/codeGroupForm";
+	}
+	
+	@RequestMapping(value = "codeGroupUpdt")
+	public String codeGroupUpdt(CodeGroup dto, Model model) throws Exception {
+		int result = service.update(dto);
+		System.out.println("Controller Result : " + result);
+		return "redirect:/codeGroup/codeGroupList";
+	}
+	
+	@RequestMapping(value = "codeGroupUele")
+	public String codeGroupUele(CodeGroupVo vo, CodeGroup dto) throws Exception {
+		int result = service.uelete(dto);
+		System.out.println("Controller Result : " + result);
+		return "redirect:/codeGroup/codeGroupList";
+	}
+	
+	@RequestMapping(value = "codeGroupDele")
+	public String codeGroupDele(CodeGroupVo vo) throws Exception {
+		int result = service.delete(vo);
+		System.out.println("Controller Result : " + result);
+		return "redirect:/codeGroup/codeGroupList";
 	}
 }
 

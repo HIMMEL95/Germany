@@ -23,8 +23,29 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "memberXdminView")
-	public String memeberView() throws Exception {
-		return "infra/member/xdmin/memberView";
+	public String memberView(Model model, MemberVo vo) throws Exception {
+		Member item = service.selectOne(vo);
+		model.addAttribute("item", item);
+		
+		List<Member> list = service.selectList();
+		model.addAttribute("list", list);
+		return "infra/member/xdmin/memberXdminView";
 	}
-
+	
+	@RequestMapping(value = "memberModForm")
+	public String memberModFrom(Model model, MemberVo vo) throws Exception {
+		Member item = service.selectOne(vo);
+		model.addAttribute("item", item);
+		
+		return "infra/member/xdmin/memberModForm";
+	}
+	
+	@RequestMapping(value = "memberUpdt")
+	public String memberUpdt(Member dto) throws Exception {
+		int result = service.update(dto);
+		System.out.println("Controller Result :" + result);
+		
+		return "redirect:/member/memberList";
+	}
+ 
 }

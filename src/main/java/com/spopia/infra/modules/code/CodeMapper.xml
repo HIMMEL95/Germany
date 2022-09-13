@@ -89,5 +89,38 @@
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	
+	<update id="update">
+		UPDATE code
+		SET
+			ifccName = #{ifccName}
+			,ifccAnother = #{ifccAnother}
+			,ifccNameEng = #{ifccNameEng}
+			,ifccUseNy = #{ifccUseNy}
+			,ifccOrder = #{ifccOrder}
+			,ifccExplanation = #{ifccExplanation}
+			,ifccDelNy = #{ifccDelNy}
+			,ifccReferencev1 = #{referencev1}
+			,ifccReferencev2 = #{referencev2}
+			,ifccReferencev3 = #{referencev3}
+			,ifccReferenceI1 = #{referenceI1}
+			,ifccReferenceI2 = #{referenceI2}
+			,ifccReferenceI3 = #{referenceI3}
+		WHERE 1=1
+			AND ccgSeq = #{ccgSeq}
+	</update>
+	
+	<update id="uelete">
+		UPDATE code
+		SET
+			ifccDelNy = 1
+		where 1=1
+			and ccSeq = #{ccSeq}
+	</update>
+	
+	<delete id="delete">
+		DELETE
+		FROM code where ccSeq = #{ccSeq}
+	</delete>
 
 </mapper>	

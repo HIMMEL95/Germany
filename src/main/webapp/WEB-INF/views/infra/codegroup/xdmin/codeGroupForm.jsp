@@ -120,7 +120,7 @@
     <main>
         <div class="top_space"></div>
         <div class="container">
-            <form id="myForm" method="post" action="/codeGroup/codeGroupInst">
+            <form id="myForm" method="post">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -224,14 +224,14 @@
                             <div class="col">
                                 <div class="input-control">
                                     <label for="ccgSeq">코드그룹 코드<span style="color: red;">*</span></label>
-                                    <input type="text" id="ccgSeq" name="ccgSeq" value="" placeholder="영문(대문자),숫자">
+                                    <input type="text" class="form-control" id="ccgSeq" name="ccgSeq" value="<c:out value="${vo.ccgSeq }"/>" placeholder="영문(대문자),숫자">
                                     <div class="msg" id="ccgSeq_msg" name="ccgSeq_msg" style="display: none;"></div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input-control">
                                     <label for="ifcgAnother">코드그룹 코드 (Another)<span style="color: red;">*</span></label>
-                                    <input type="text" id="ifcgAnother" name="ifcgAnother" value="<c:out value="${item.ifcgAnother }"/>" placeholder="영문(대문자),숫자">
+                                    <input type="text" class="form-control" id="ifcgAnother" name="ifcgAnother" value="<c:out value="${item.ifcgAnother }"/>" placeholder="영문(대문자),숫자">
                                     <div class="msg" id="ifcgAnother_msg" name="ifcgAnother_msg" style="display: none;"></div>
                                 </div>
                             </div>
@@ -240,14 +240,14 @@
                             <div class="col">
                                 <div class="input-control">
                                     <label for="ifcgName">코드그룹 이름 (한글)<span style="color: red;">*</span></label>
-                                    <input type="text" id="ifcgName" name="ifcgName" value="<c:out value="${item.ifcgName }"/>" placeholder="한글,숫자">
+                                    <input type="text" class="form-control" id="ifcgName" name="ifcgName" value="<c:out value="${item.ifcgName }"/>" placeholder="한글,숫자">
                                     <div class="msg" id="ifcgName_msg" name="ifcgName_msg" style="display: none;"></div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input-control">
                                     <label for="ifcgNameEng">코드그룹 이름 (영문)<span style="color: red;">*</span></label>
-                                    <input type="text" id="ifcgNameEng" name="ifcgNameEng" value="<c:out value="${item.ifcgNameEng }"/>" placeholder="영문(대소문자),숫자">
+                                    <input type="text" class="form-control" id="ifcgNameEng" name="ifcgNameEng" value="<c:out value="${item.ifcgNameEng }"/>" placeholder="영문(대소문자),숫자">
                                     <div class="msg" id="ifcgNameEng_msg" name="ifcgNameEng_msg" style="display: none;"></div>
                                 </div>
                             </div>
@@ -255,19 +255,18 @@
                         <div class="row">
                             <div class="col">
                                 <div class="input-control">
-                                    <label for="useNY">사용여부<span style="color: red;">*</span></label>
-                                    <select class="form-select" id="useNY" name="">
-                                        <option selected value="">Choose...</option>
-                                        <option value="0">N</option>
-                                        <option value="1">Y</option>
+                                    <label for="ifcgUseNy">사용여부<span style="color: red;">*</span></label>
+                                    <select class="form-select" id="ifcgUseNy" name="ifcgUseNy">
+                                        <option value="0" <c:if test="${item.ifcgUseNy eq 0 }">selected</c:if>>N</option>
+                                        <option value="1" <c:if test="${item.ifcgUseNy eq 1 }">selected</c:if>>Y</option>
                                     </select>
-                                    <div class="msg" id="useNY_msg" name="useNY_msg" style="display: none;"></div>
+                                    <div class="msg" class="form-control" id="ifcgUseNy_msg" name="ifcgUseNy_msg" style="display: none;"></div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input-control">
                                     <label for="ifcgOrder">순서<span style="color: red;">*</span></label>
-                                    <input type="text" id="ifcgOrder" name="ifcgOrder" value="<c:out value="${item.ifcgOrder }"/>" placeholder="숫자">
+                                    <input type="text" class="form-control" id="ifcgOrder" name="ifcgOrder" value="<c:out value="${item.ifcgOrder }"/>" placeholder="숫자">
                                     <div class="msg" id="ifcgOrder_msg" name="ifcgOrder_msg" style="display: none;"></div>
                                 </div>
                             </div>
@@ -276,7 +275,7 @@
                             <div class="col">
                                 <div class="input-control">
                                     <label for="ifcgExplanation">설명<span style="color: red;">*</span></label>
-                                    <textarea id="ifcgExplanation" name="ifcgExplanation" placeholder=""></textarea>
+                                    <textarea class="form-control" id="ifcgExplanation" name="ifcgExplanation" value="<c:out value="${item.ifcgExplanation }"/>" placeholder=""></textarea>
                                     <div class="msg" id="ifcgExplanation_msg" name="ifcgExplanation_msg" style="display: none;"></div>
                                 </div>
                             </div>
@@ -285,8 +284,8 @@
                                     <label for="deleteNY">삭제여부<span style="color: red;">*</span></label>
                                     <select class="form-select" id="deleteNY" name="deleteNY">
                                         <option selected value="">Choose...</option>
-                                        <option value="0">N</option>
-                                        <option value="1">Y</option>
+                                        <option value="0" <c:if test="${item.ifcgUseNy eq 0 }">selected</c:if>>N</option>
+                                        <option value="1" <c:if test="${item.ifcgUseNy eq 1 }">selected</c:if>>Y</option>
                                     </select>
                                     <div class="msg" id="deleteNY_msg" name="deleteNY_msg" style="display: none;"></div>
                                 </div>
@@ -296,14 +295,14 @@
                             <div class="col">
                                 <div class="input-control">
                                     <label for="referenceV1">예비1 (varchar type)</label>
-                                    <input type="text" id="referenceV1" name="referenceV1" value="<c:out value="${item.referenceV1 }"/>" placeholder="영문(대소문자), 숫자">
+                                    <input type="text" class="form-control" id="referenceV1" name="referenceV1" value="<c:out value="${item.referenceV1 }"/>" placeholder="영문(대소문자), 숫자">
                                     <div class="msg" id="referenceV1_msg" name="referenceV1_msg" style="display: none;"></div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input-control">
                                     <label for="referenceV2">예비2 (varchar type)</label>
-                                    <input type="text" id="referenceV2" name="referenceV2" value="<c:out value="${item.referenceV2 }"/>" placeholder="영문(대소문자), 숫자">
+                                    <input type="text" class="form-control" id="referenceV2" name="referenceV2" value="<c:out value="${item.referenceV2 }"/>" placeholder="영문(대소문자), 숫자">
                                     <div class="msg" id="referenceV2_msg" name="referenceV2_msg" style="display: none;"></div>
                                 </div>
                             </div>
@@ -312,7 +311,7 @@
                             <div class="col-6">
                                 <div class="input-control">
                                     <label for="referenceV3">예비3 (varchar type)</label>
-                                    <input type="text" id="referenceV3" name="referenceV3" value="<c:out value="${item.referenceV3 }"/>" placeholder="영문(대소문자), 숫자">
+                                    <input type="text" class="form-control" id="referenceV3" name="referenceV3" value="<c:out value="${item.referenceV3 }"/>" placeholder="영문(대소문자), 숫자">
                                     <div class="msg" id="referenceV3_msg" name="referenceV3_msg" style="display: none;"></div>
                                 </div>
                             </div>
@@ -321,14 +320,14 @@
                             <div class="col">
                                 <div class="input-control">
                                     <label for="referenceI1">예비1 (int type)</label>
-                                    <input type="text" id="referenceI1" name="referenceI1" value="<c:out value="${item.referenceI1 }"/>" placeholder="영문(대소문자), 숫자">
+                                    <input type="text" class="form-control" id="referenceI1" name="referenceI1" value="<c:out value="${item.referenceI1 }"/>" placeholder="영문(대소문자), 숫자">
                                     <div class="msg" id="referenceI1_msg" name="referenceI1_msg" style="display: none;"></div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input-control">
                                     <label for="referenceI2">예비2 (int type)</label>
-                                    <input type="text" id="referenceI2" name="referenceI2" value="<c:out value="${item.referenceI2 }"/>" placeholder="영문(대소문자), 숫자">
+                                    <input type="text" class="form-control" id="referenceI2" name="referenceI2" value="<c:out value="${item.referenceI2 }"/>" placeholder="영문(대소문자), 숫자">
                                     <div class="msg" id="referenceI2_msg" name="referenceI2_msg" style="display: none;"></div>
                                 </div>
                             </div>
@@ -337,7 +336,7 @@
                             <div class="col-6">
                                 <div class="input-control">
                                     <label for="referenceI3">예비3 (int type)</label>
-                                    <input type="text" id="referenceI3" name="referenceI3" value="<c:out value="${item.referenceI3 }"/>" placeholder="영문(대소문자), 숫자">
+                                    <input type="text" class="form-control" id="referenceI3" name="referenceI3" value="<c:out value="${item.referenceI3 }"/>" placeholder="영문(대소문자), 숫자">
                                     <div class="msg" id="referenceI3_msg" name="referenceI3_msg" style="display: none;"></div>
                                 </div>
                             </div>
@@ -345,12 +344,12 @@
                         <!-- 리스트 -->
                         <div class="row align-items-center">
                             <div class="col-1">
-                                <a class="border-0 btn btn-sm bg-secondary shadow" type="button" href="codeGroupList">
+                                <a class="border-0 btn btn-sm bg-secondary shadow" roel="button" href="codeGroupList">
                                     <i class="fa-solid fa-bars" style="color: white;"></i>
                                 </a>
                             </div>
                             <div class="col-3 offset-8" align="right">
-                                <button class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
+                                <button id="btnUel" value="Uel" class="border-0 btn btn-sm bg-danger shadow modalBtn" type="button" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal">
                                     <i class="fa-solid fa-xmark" style="color: white;"></i>
                                 </button>
@@ -368,16 +367,33 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                                                <button type="button" class="btn btn-primary">삭제</button>
+                                                <button id="btnUel" type="button" class="btn btn-primary">삭제</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
+                                <button id="btnDel" value="Del" class="border-0 btn btn-sm bg-danger shadow modalBtn" type="button" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal">
                                     <i class="fa-solid fa-trash-can" style="color: white;"></i>
                                 </button>
-                                <button class="border-0 btn btn-sm bg-success shadow" type="button" onclick="validation()">
+								<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								  <div class="modal-dialog">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+								        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								      </div>
+								      <div class="modal-body">
+							        	선택하신 게시물을 정말로 삭제하시겠습니까?
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+								        <button id="btnDel" type="button" class="btn btn-primary">Save changes</button>
+								      </div>
+								    </div>
+								  </div>
+								</div> -->
+                                <button id="btnSave" class="border-0 btn btn-sm bg-success shadow" type="button" onclick="validation()">
                                     <i class="fa-regular fa-bookmark" style="color: white;"></i>
                                 </button>
                             </div>
@@ -439,6 +455,45 @@
 
         	document.getElementById('myForm').submit();
         };
+        
+        var goUrlInst = "/codeGroup/codeGroupInst";
+        var goUrlUpdt = "/codeGroup/codeGroupUpdt";
+        var goUrlUel = "/codeGroup/codeGroupUele";
+        var goUrlDel = "/codeGroup/codeGroupDele"
+        
+        var seq = $("input[name=ccgSeq]");
+        var form = $("#myForm");
+        
+        $("#btnSave").on("click", function() {
+        	if (seq.val() == "0" || seq.val() == "") {
+        		form.attr("action", goUrlInst).submit();
+        	} else {
+        		form.attr("action", goUrlUpdt).submit();
+        	}
+			
+		});
+		
+ 	/* 	$("#btnUel").on("click", function() {
+        	form.attr("action", goUrlUel ).submit();	
+		});
+		
+	 	$("#btnDel").on("click", function() {
+        	form.attr("action", goUrlDel).submit();			
+		}); */
+	 	
+	 	$('.modalBtn').on("click", function() {
+			var value = $(this).val();
+			if (value = "Uel") {
+				$("#btnUel").on("click", function(){
+					form.attr("action", goUrlUel).submit();
+				})
+			} else {
+				$("#btnDel").on("click", function() {
+		        	form.attr("action", goUrlDel).submit();			
+				});
+			}
+		});
+
         /* test = function() {
         	
         	// radio

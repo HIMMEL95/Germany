@@ -6,6 +6,10 @@
     --labels-size: 2rem;
 }
 
+.top_space {
+	height: 100px;
+}
+
 /* header */
 .fixed-top {
     position: fixed;

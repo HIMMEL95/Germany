@@ -11,13 +11,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ArticleComment List</title>
+    <title>memberView</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="/resources/css/xdmin/commentList.css" rel="stylesheet" type="text/css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="/resources/css/xdmin/dashboard.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -35,8 +32,9 @@
                 <div class="dropdown">
                     <ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
                         <li class="me-2">
-                            <a class="p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
-                                data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="p-0" href="/member/memberView" id="profileDropdown" role="button"
+                                data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 <img class="avatar-img rounded-circle" src="../../resources/images/diano.jpg" alt="avatar"
                                     style="width: 30px;">
                             </a>
@@ -51,7 +49,7 @@
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="#">이하늘</a>
+                                            <a class="fs-6 fw-bold" href="../member/memberView.html">이하늘</a>
                                             <p class="small m-0">himmel@gmail.com</p>
                                         </div>
                                     </div>
@@ -95,7 +93,7 @@
     <main>
         <div style="height: 100px;"></div>
         <div class="container">
-            <form method="post" action="/comment/commentList">
+            <form method="post" action="/member/memberUpdt?seq=<c:out value="${item.seq }"/>">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -135,33 +133,21 @@
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/dashboard">
+                                                            <a class="nav-link" href="/member/memberView">
                                                                 <i class="fa-solid fa-chart-line pe-3"></i>
-                                                                <span>Dashboard</span>
+                                                                <span>계정 정보 상세</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/member/memberList">
+                                                            <a class="nav-link" href="../member/memberCommentView.html">
                                                                 <i class="fa-solid fa-users pe-3"></i>
-                                                                <span>회원관리</span>
+                                                                <span>작성 글</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/article/articleList">
+                                                            <a class="nav-link" href="/">
                                                                 <i class="fas fa-light fa-newspaper pe-3"></i>
-                                                                <span>게시물 관리</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="/commentList">
-                                                                <i class="fas fa-light fa-comments pe-3"></i>
-                                                                <span>댓글 리스트</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="/game/gameList">
-                                                                <i class="fas fa-duotone fa-trophy pe-3"></i>
-                                                                <span>경기 기록 관리</span>
+                                                                <span>로그아웃</span>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -190,7 +176,8 @@
                                             </li>
                                         </ul>
                                         <p class="small text-center mt-1">©2022 <a class="text-body" target="_blank" href="#"> SPOPIA
-                                            </a></p>
+                                            </a>
+                                        </p>
                                     </div>
                                 </div>
                             </nav>
@@ -198,144 +185,111 @@
                     </div>
                     <!-- 중앙 메인 영역 -->
                     <div class="col-md-8 col-lg-9 vstack gap-4">
-                        <!-- 게시물 사진 -->
+                        <span class="fs-1 fw-bold text-center">회원 정보</span>
+                        <div class="row mb-4">
+                            <div class="col-12 shadow rounded pt-3 ps-4" style="height: 100px; background-color: #f7f7fc;">
+                            	<div class="row" style="align-items: center;">
+                            		<div class="col-2">
+                            			<img src="../../resources/images/diano.jpg" class="rounded-circle avatar-img shadow" style="width: 60px;">
+		                                <div class="form-attachment-btn btn btn-primary btn-sm ms-3" hidden>
+		                                    <i class="fa-solid fa-arrows-rotate me-2"></i>Upload photo
+		                                    <input type="file" class="js-file-attach form-attachment-btn-label" id="avatarUploader">
+		                                </div>
+                            		</div>
+                            		<div class="col-2 offset-7">
+                            			<div style="width: 150px;">
+		                                	<select class="form-select form-select-sm fw-bold" id="user_div" name="user_div" value="<c:out value="${item.user_div }"/>" aria-label=".form-select-sm example">
+			                                   	<option value="">선택</option>
+			                                    <option value="24">관리자</option>
+			                                    <option value="25">일반</option>
+			                                </select>
+		                                </div>
+                            		</div>
+                            	</div>
+                            </div>
+                        </div>
+                        <div class="card ps-5 pe-5 pt-4 pb-4 shadow" style="background-color: #f7f7fc;"">
+                                        <div class=" row mb-4">
+                            <div class="col">
+                                <label for="name" class="form-label fw-bold">이름</label>
+                                <input type="text" class="form-control bg-white" id="name" value="<c:out value="${item.name }"/>" readonly>
+                            </div>
+                            <div class="col">
+                                <label for="id" class="form-label fw-bold">아이디</label>
+                                <input type="text" class="form-control bg-white" id="id" value="<c:out value="${item.id }"/>" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <label for="dob" class="form-label fw-bold">생년월일</label>
+                                <input type="text" class="form-control bg-white" id="dob" value="<c:out value="${item.dob }"/>" readonly>
+                            </div>
+                            <div class="col">
+                                <label for="email" class="form-label fw-bold">이메일</label>
+                                <input type="email" class="form-control bg-white" id="email" value="<c:out value="${item.email }"/>" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <label for="tel" class="form-label fw-bold">전화번호</label>
+                                <input type="tel" class="form-control bg-white" id="tel" value="<c:out value="${item.phone }"/>" readonly>
+                            </div>
+                            <div class="col">
+                                <label for="gender" class="form-label fw-bold">성별</label>
+                                <select class="form-select form-select-lg fs-6 bg-white" id="gender" name="gender" value="<c:out value="${item.gender }"/>"
+                                    aria-label=".form-select-lg example" disabled readonly>
+                                    <option value="">선택</option>
+                                    <option value="5" selected>남성</option>
+                                    <option value="6">여성</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <label for="job" class="form-label fw-bold">직업</label>
+                                <input type="text" class="form-control bg-white" id="job" value="<c:out value="${item.job }"/>" readonly>
+                            </div>
+                            <div class="col">
+                                <label for="team" class="form-label fw-bold">좋아하는 팀</label>
+                                <input type="text" class="form-control bg-white" id="team" value="<c:out value="${item.team }"/>" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-4" hidden>
+                            <div class="col">
+                                <label for="password" class="form-label fw-bold">비밀번호</label>
+                                <input type="password" class="form-control bg-white" id="password" value="" readonly>
+                            </div>
+                            <div class="col">
+                                <label for="password_confirm" class="form-label fw-bold">비밀번호 확인</label>
+                                <input type="password" class="form-control bg-white" id="password_confirm" value="" readonly>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <label for="zip" class="form-label fw-bold">우편번호</label>
+                                <input type="text" class="form-control bg-white" id="zip" name="zip" value="<c:out value="${item.zip }"/>" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <label for="address" class="form-label fw-bold">주소</label>
+                                <input type="text" class="form-control bg-white" id="address" name="address" value="<c:out value="${item.address }"/>" readonly>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <label for="addressDetail" class="form-label fw-bold">상세주소</label>
+                                <input type="text" class="form-control bg-white" id="addressDetail" name="address_detail" value="<c:out value="${item.address_detail }"/>" readonly>
+                            </div>
+                        </div>
                         <div class="row">
-                            <div class="col-12 ">
-                                <div class="card text-white position-relative shadow-lg">
-                                    <img src="../../resources/images/xdmin/listBack.jpg" class="card-img" style="height: 200px;"
-                                        alt="...">
-                                    <div class="card-img-overlay text-center p-4 position-absoulte top-50 start-50 translate-middle">
-                                        <span class="card-title align-middle fw-bold fs-3">댓글 관리</span>
-                                    </div>
-                                </div>
+                            <div class="col-2">
+                                <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="/member/memberList"
+                                    role="button">뒤로</a>
                             </div>
-                        </div>
-                        <!-- 검색 -->
-                        <div class="card p-3 shadow">
-                            <div class="row align-items-center pb-2">
-                            	<div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" id="shDelNy" name="shDelNy" aria-label=".form-select-sm example">
-                                       	<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>선택</option>
-                                        <option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
-                                        <option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option>
-                                    </select>
-                                </div>
-                                <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" id="shDate" name="shDate" aria-label=".form-select-sm example">
-                                        <option value="" <c:if test="${empty vo.shDate }">selected</c:if> selected>선택</option>
-                                        <option value="1" <c:if test="${vo.shDate eq 1 }">selected</c:if>>등록일</option>
-                                        <option value="2" <c:if test="${vo.shDate eq 2 }">selected</c:if>>수정일</option>
-                                    </select>
-                                </div>
-                                <div class="col-3">
-                                    <input type="text" class="form-control datepicker" id="date_st" name="startDate" placeholder="시작일" autocomplete="off">
-                                </div>
-                                <div class="col-3">
-                                    <input type="text" class="form-control datepicker" id="date_end" name="endDate" placeholder="종료일" autocomplete="off"s>
-                                </div>
-                            </div>
-                            <div class="row align-items-center">
-                                <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" name="shOption" aria-label=".form-select-sm example">
-                                        <option value="" <c:if test="${empty vo.shOption }"> selected</c:if>>선택</option>
-                                        <option value="1" <c:if test="${vo.shOption eq 1}"> selected</c:if>>이름</option>
-                                        <option value="2" <c:if test="${vo.shOption eq 2}"> selected</c:if>>아이디</option>
-                                        <option value="3" <c:if test="${vo.shOption eq 3}"> selected</c:if>>성별</option>
-                                    </select>
-                                </div>
-                                <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" name="shValue" value="" autocomplete="off">
-                                </div>
-                                <div class="col-3">
-                                    <button class="btn btn-primary fw-bold btn-sm shadow" type="submit">검색</button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 리스트 -->
-                        <div class="card ps-3 pt-3 pe-3 shadow">
-                            <table class="table text-center align-middle">
-                                <thead>
-                                    <tr>
-                                        <th style="font-size: small;"><input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault"></th>
-                                        <th>번호</th>
-                                        <th>이름</th>
-                                        <th>성별</th>
-                                        <th>아이디</th>
-                                        <th>내용</th>
-                                        <th>등록일</th>
-                                        <th>수정일</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                	<c:choose>
-                                		<c:when test="${fn:length(list) eq 0}">
-                                			<tr>
-                                				<td class="text-center" colspan="8">There is no data!</td>
-                                			</tr>
-                                		</c:when>
-                                		<c:otherwise>
-	                                		<c:forEach items="${list}" var="list" varStatus="status">
-												<tr>
-			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-			                                        </td>
-			                                        <td>${list.seq }</td>
-			                                        <td><a href="/article/articleXdminView?seq=<c:out value="${list.seq }"/>">${list.name }</a></td>
-			                                        <td>${list.gender }</td>
-			                                        <td>${list.id }</td>
-			                                        <td>${list.comment }</td>
-			                                        <td>${list.createdAt }</td>
-			                                        <td>${list.modifiedAt }</td>
-			                                    </tr>		
-											</c:forEach>
-                                		</c:otherwise>
-                                	</c:choose>
-                                </tbody>
-                            </table>
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination pagination-sm col-3 offset-5">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <div class="row align-items-center">
-                            <div class="col-1">
-                                <button class="border-0 btn btn-sm shadow" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">
-                                    <i class="fa-solid fa-trash fa-lg text-danger"></i>
-                                </button>
-                                <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false"
-                                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title fw-bold" id="staticBackdropLabel">게시물 삭제</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body fs-6">
-                                                선택하신 게시물을 정말로 삭제하시겠습니까?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                                                <button type="button" class="btn btn-primary">삭제</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-2 offset-8" align="right">
+                                <button class="btn btn-primary text-white fw-bold btn-sm shadow" type="button">등록</a>
                             </div>
                         </div>
                     </div>
@@ -377,20 +331,6 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-	   	$(function() {
-	   		$("#date_st").datepicker({
-	   			dateFormat: "yy-mm-dd"
-	   			,showMonthAfterYear: true
-	   			,showOtherMonths: true
-	   		});
-	   		$("#date_end").datepicker({
-	   			dateFormat: "yy-mm-dd"
-	      			,showMonthAfterYear: true
-	      			,showOtherMonths: true
-	      		});
-	   	})
-   </script>
 </body>
 
 </html>

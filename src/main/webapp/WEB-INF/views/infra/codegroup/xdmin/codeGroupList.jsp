@@ -5,7 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-<html>
+<!doctype html>
+<html lang="ko">
 <head>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -301,7 +302,7 @@
 			                                        </td>
 			                                        <td>${list.ccgSeq}</td>
 			                                        <td>${list.ifcgAnother}</td>
-			                                        <td><a href="/codeGroup/codeGroupView?seq=<c:out value="${list.ccgSeq }"/>">${list.ifcgName}</a></td>
+			                                        <td><a href="/codeGroup/codeGroupView?ccgSeq=<c:out value="${list.ccgSeq }"/>">${list.ifcgName}</a></td>
 			                                        <td>${list.ifcgNameEng}</td>
 			                                        <td>${list.count}</td>
 			                                        <td>${list.createdAt}</td>

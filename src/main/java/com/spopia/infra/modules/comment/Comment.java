@@ -1,7 +1,5 @@
 package com.spopia.infra.modules.comment;
 
-import java.time.LocalDateTime;
-
 public class Comment {
 	private String seq;
 	private String comment;
@@ -11,41 +9,10 @@ public class Comment {
 	private Integer modifiedBy;
 	private Integer game_seq;
 	private Integer article_seq;
-	private Integer gcDelNy;
-	private Integer acDelNy;
+	private Integer DelNy;
 	private String name;
 	private String Id;
 	private Integer gender;
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getId() {
-		return Id;
-	}
-	public void setId(String id) {
-		Id = id;
-	}
-	public Integer getGender() {
-		return gender;
-	}
-	public void setGender(Integer gender) {
-		this.gender = gender;
-	}
-	public Integer getGcDelNy() {
-		return gcDelNy;
-	}
-	public void setGcDelNy(Integer gcDelNy) {
-		this.gcDelNy = gcDelNy;
-	}
-	public Integer getAcDelNy() {
-		return acDelNy;
-	}
-	public void setAcDelNy(Integer acDelNy) {
-		this.acDelNy = acDelNy;
-	}
 	public String getSeq() {
 		return seq;
 	}
@@ -93,5 +60,29 @@ public class Comment {
 	}
 	public void setArticle_seq(Integer article_seq) {
 		this.article_seq = article_seq;
+	}
+	public Integer getDelNy() {
+		return DelNy;
+	}
+	public void setDelNy(Integer delNy) {
+		DelNy = delNy;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getId() {
+		return Id;
+	}
+	public void setId(String id) {
+		Id = id;
+	}
+	public Integer getGender() {
+		return gender;
+	}
+	public void setGender(Integer gender) {
+		this.gender = gender;
 	}
 }

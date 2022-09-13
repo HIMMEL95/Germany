@@ -32,9 +32,10 @@
 		    ,ac.comment
 		    ,ac.createdAt
 		    ,ac.modifiedAt
-		    ,u.name
-		    ,u.id
-		    ,u.gender
+		    ,ac.DelNy
+		    ,u.name as name
+		    ,u.id as id
+		    ,u.gender as gender
 		from 
 			article_comment ac
 			inner join user u on u.seq = ac.createdBy
@@ -47,9 +48,10 @@
 		    ,gc.comment
 		    ,gc.createdAt
 		    ,gc.modifiedAt
-		    ,u.name
-		    ,u.id
-		    ,u.gender
+		    ,gc.DelNy
+		    ,u.name as name
+		    ,u.id as id
+		    ,u.gender as gender
 		from game_comment gc
 			inner join user u on u.seq = gc.createdBy
 		order by 
@@ -60,7 +62,7 @@
 			
 			<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if> -->
 			
-			<if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if>
+			<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
 			<choose>
 				<when test="shOption == 1">AND name LIKE CONCAT('%',#{shValue},'%')</when>
 				<when test="shOption == 2">AND id LIKE CONCAT('%',#{shValue},'%')</when>

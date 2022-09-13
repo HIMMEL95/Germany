@@ -5,23 +5,18 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-<html>
+<!doctype html>
+<html lang="ko">
 <head>
-	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-	<!-- Bootstrap CSS -->
-	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap extra CSS -->    
-    <link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
-    <!-- jquery ui CSS -->    
-    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">    
-    <!-- user css -->
     <link rel="stylesheet" href="/resources/css/xdmin/memberList.css" />
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<title>Home</title>
 </head>
 <body>
 	<header class="navbar-light fixed-top header-static bg-mode align-items-center">
@@ -97,7 +92,7 @@
     <main>
         <div style="height: 100px;"></div>
         <div class="container">
-            <form method="post">
+            <form method="post" action="/member/memberList">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -290,7 +285,7 @@
 			                                        </td>
 			                                        <td><c:out value="${list.seq }"/></td>
 			                                        <td>${list.user_div }</td>
-			                                        <td><a href="#">${list.name }</a></td>
+			                                        <td><a href="/member/memberXdminView?seq=<c:out value="${list.seq }"/>">${list.name }</a></td>
 			                                        <td>${list.gender }</td>
 			                                        <td>${list.id }</td>
 			                                        <td>${list.email }</td>
@@ -386,6 +381,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
     	$(function() {
     		$("#date_st").datepicker({

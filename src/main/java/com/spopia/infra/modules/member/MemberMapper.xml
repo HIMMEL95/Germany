@@ -44,5 +44,40 @@
 				<when test="shOption == 3">AND id LIKE CONCAT('%', #{shValue}, '%')</when>
 			</choose>
 	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		select 
+			u.seq
+		    ,u.name
+		    ,u.id
+		    ,u.email
+		    ,u.gender
+		    ,u.dob
+		    ,u.radio_operator
+		    ,u.phone
+		    ,u.zip
+		    ,u.address
+		    ,u.address_detail
+		    ,u.job
+		    ,date_format(u.createdAt, '%Y-%m-%d %H:%i:%s') as createdAt
+		    ,date_format(u.modifiedAt, '%Y-%m-%d %H:%i:%s') as modifiedAt
+		    ,u.user_div
+		    ,u.uDelNy
+			,t.teamName as team
+		from user u
+			inner join teamUser tu on tu.user_seq = u.seq
+			inner join team t on t.teamSeq = tu.team_seq
+		where 1=1
+			and u.seq = #{seq}
+			and tu.defaultNY = 0
+	</select>
+	
+	<update id="update">
+		UPDATE user
+		SET
+			user_div = #{user_div}
+		where 1=1
+			and seq = #{seq]
+	</update>
 
 </mapper>

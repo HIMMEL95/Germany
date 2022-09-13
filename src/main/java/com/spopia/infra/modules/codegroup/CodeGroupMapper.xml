@@ -104,5 +104,38 @@
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	
+	<update id="update">
+		UPDATE codeGroup
+		SET
+			ifcgName = #{ifcgName}
+			,ifcgAnother = #{ifcgAnother}
+			,ifcgNameEng = #{ifcgNameEng}
+			,ifcgUseNy = #{ifcgUseNy}
+			,ifcgOrder = #{ifcgOrder}
+			,ifcgExplanation = #{ifcgExplanation}
+			,ifcgDelNy = #{ifcgDelNy}
+			,ifcgReferencev1 = #{referenceV1}
+			,ifcgReferencev2 = #{referenceV2}
+			,ifcgReferencev3 = #{referenceV3}
+			,ifcgReferenceI1 = #{referenceI1}
+			,ifcgReferenceI2 = #{referenceI2}
+			,ifcgReferenceI3 = #{referenceI3}
+		WHERE 1=1
+			AND ccgSeq = #{ccgSeq}
+	</update>
+	
+	<update id="uelete">
+		UPDATE codeGroup
+		SET
+			ifcgDelNy = 1
+		where 1=1
+			and ccgSeq = #{ccgSeq}
+	</update>
+	
+	<delete id="delete">
+		DELETE
+		FROM codeGroup where ccgSeq = #{ccgSeq}
+	</delete>
 
 </mapper>	

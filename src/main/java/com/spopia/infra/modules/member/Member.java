@@ -13,7 +13,7 @@ public class Member {
 	private String dob;
 	private Integer radio_operator;
 	private String phone;
-	private Integer zip;
+	private String zip;
 	private String address;
 	private String address_detail;
 	private String job;
@@ -90,10 +90,10 @@ public class Member {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public Integer getZip() {
+	public String getZip() {
 		return zip;
 	}
-	public void setZip(Integer zip) {
+	public void setZip(String zip) {
 		this.zip = zip;
 	}
 	public String getAddress() {

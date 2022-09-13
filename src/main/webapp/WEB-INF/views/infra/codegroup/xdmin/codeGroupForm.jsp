@@ -472,27 +472,16 @@
         	}
 			
 		});
-		
- 	/* 	$("#btnUel").on("click", function() {
+
+	 	$("#btnUel").on("click", function() {
         	form.attr("action", goUrlUel ).submit();	
 		});
 		
 	 	$("#btnDel").on("click", function() {
         	form.attr("action", goUrlDel).submit();			
-		}); */
-	 	
-	 	$('.modalBtn').on("click", function() {
-			var value = $(this).val();
-			if (value = "Uel") {
-				$("#btnUel").on("click", function(){
-					form.attr("action", goUrlUel).submit();
-				})
-			} else {
-				$("#btnDel").on("click", function() {
-		        	form.attr("action", goUrlDel).submit();			
-				});
-			}
 		});
+	 	
+	 	
 
         /* test = function() {
         	

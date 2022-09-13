@@ -51,14 +51,14 @@ public class CodeGroupController {
 	}
 	
 	@RequestMapping(value = "codeGroupUpdt")
-	public String codeGroupUpdt(CodeGroup dto, Model model) throws Exception {
+	public String codeGroupUpdt(CodeGroup dto) throws Exception {
 		int result = service.update(dto);
 		System.out.println("Controller Result : " + result);
 		return "redirect:/codeGroup/codeGroupList";
 	}
 	
 	@RequestMapping(value = "codeGroupUele")
-	public String codeGroupUele(CodeGroupVo vo, CodeGroup dto) throws Exception {
+	public String codeGroupUele(CodeGroup dto) throws Exception {
 		int result = service.uelete(dto);
 		System.out.println("Controller Result : " + result);
 		return "redirect:/codeGroup/codeGroupList";

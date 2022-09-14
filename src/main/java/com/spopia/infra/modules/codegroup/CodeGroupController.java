@@ -16,7 +16,7 @@ public class CodeGroupController {
 	CodeGroupServiceImpl service;
 
 	@RequestMapping(value = "codeGroupList")
-	public String codeGroupList(Model model, CodeGroupVo vo) throws Exception {
+	public String codeGroupList(Model model, @ModelAttribute("vo") CodeGroupVo vo) throws Exception {
 
 		System.out.println("vo.getShOption : " + vo.getShOption());
 		System.out.println("vo.getShValue : " + vo.getShValue());

@@ -125,7 +125,7 @@
     <main>
         <div style="height: 150px;"></div>
         <div class="container">
-            <form method="post" action="/code/codeList">
+            <form method="post" id="myForm">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -236,26 +236,27 @@
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" aria-label=".form-select-sm example">
-                                        <option value="" <c:if test="${empty vo.shDate }">selected</c:if> selected>선택</option>
+                                    <select class="form-select form-select-sm fw-bold" id="shDate" name="shDate" aria-label=".form-select-sm example">
+                                        <option value="" <c:if test="${empty vo.shDate }">selected</c:if>>선택</option>
                                         <option value="1" <c:if test="${vo.shDate eq 1 }">selected</c:if>>등록일</option>
                                         <option value="2" <c:if test="${vo.shDate eq 2 }">selected</c:if>>수정일</option>
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control datepicker" id="date_st" placeholder="시작일" autocomplete="off">
+                                    <input type="text" class="form-control datepicker" id="startDate" name="startDate" value="<c:out value="${vo.startDate }"/>" placeholder="2022-01-01" autocomplete="off">
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control datepicker" id="date_end" placeholder="종료일" autocomplete="off">
+                                    <input type="text" class="form-control datepicker" id="endDate" name="endDate" value="<c:out value="${vo.endDate }"/>" placeholder="2022-12-31" autocomplete="off">
                                 </div>
                             </div>
                             <div class="row align-items-center">
                                 <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" name="shOption" aria-label=".form-select-sm example">
+	                                <select class="form-select form-select-sm fw-bold" id="shOption" name="shOption" aria-label=".form-select-sm example">
                                         <option value="" <c:if test="${empty vo.shOption }">selected</c:if>>선택</option>
                                         <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>번호</option>
                                         <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>이름</option>
                                         <option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>CG번호</option>
+                                        <option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>CG이름</option>
                                     </select>
                                 </div>
                                 <div class="col-2">
@@ -265,7 +266,7 @@
                                     <button class="btn btn-warning fw-bold btn-sm shadow" type="submit">
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                     </button>
-                                    <button class="btn btn-danger fw-bold btn-sm shadow" type="submit">
+                                    <button id="refresh" class="btn btn-danger fw-bold btn-sm shadow" type="button">
                                         <i class="fa-solid fa-arrow-rotate-right"></i>
                                     </button>
                                 </div>
@@ -420,13 +421,20 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script type="text/javascript">
-	   	$(function() {
-	   		$("#date_st").datepicker({
+	    var goUrlList = "/code/codeList";
+		var form = $("myForm");
+		
+		$("#refresh").on("click", function() {
+			$(location).attr("href", goUrlList);
+		});
+		
+		$(function() {
+	   		$("#startDate").datepicker({
 	   			dateFormat: "yy-mm-dd"
 	   			,showMonthAfterYear: true
 	   			,showOtherMonths: true
 	   		});
-	   		$("#date_end").datepicker({
+	   		$("#endDate").datepicker({
 	   			dateFormat: "yy-mm-dd"
 	      			,showMonthAfterYear: true
 	      			,showOtherMonths: true

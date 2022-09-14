@@ -2,20 +2,17 @@ package com.spopia.infra.modules.code;
 
 public class CodeVo {
 	
-	private String shOption;
+	private Integer shOption;
 	private String shValue;
 	private Integer shDelNy;
 	private String ccSeq;
-	public String getCcSeq() {
-		return ccSeq;
-	}
-	public void setCcSeq(String ccSeq) {
-		this.ccSeq = ccSeq;
-	}
-	public String getShOption() {
+	private String startDate;
+	private String endDate;
+	private String shDate;
+	public Integer getShOption() {
 		return shOption;
 	}
-	public void setShOption(String shOption) {
+	public void setShOption(Integer shOption) {
 		this.shOption = shOption;
 	}
 	public String getShValue() {
@@ -29,5 +26,29 @@ public class CodeVo {
 	}
 	public void setShDelNy(Integer shDelNy) {
 		this.shDelNy = shDelNy;
+	}
+	public String getCcSeq() {
+		return ccSeq;
+	}
+	public void setCcSeq(String ccSeq) {
+		this.ccSeq = ccSeq;
+	}
+	public String getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+	public String getShDate() {
+		return shDate;
+	}
+	public void setShDate(String shDate) {
+		this.shDate = shDate;
 	}
 }

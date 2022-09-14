@@ -224,7 +224,7 @@
                                 <label for=ccgSeq class="form-label">코드그룹</label>
                                 <select class="form-select" id="ccgSeq" name="ccgSeq">
                                     <c:forEach items="${list1}" var="list1" varStatus="status">
-	                     				<option value="${list1.ccgSeq }">${list1.ifcgName } </option>
+	                     				<option value="<c:out value="${list1.ccgSeq }"/>">${list1.ifcgName } </option>
 									</c:forEach>
                                 </select>
                             </div>

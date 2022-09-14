@@ -27,17 +27,18 @@
 			,c.createdAt
 			,c.modifiedAt
 			,c.codeGroup_ccgSeq
-		   <!--  ,cg.seq as ccgseq
-		    ,cg.groupName as groupName -->
+		    ,cg.ccgSeq as ccgSeq
+		    ,cg.ifcgName as ifcgName
 		from 
 			code c
-			<!-- inner join CCG cg on cg.seq = c.CCG_seq -->
+			inner join codeGroup cg on cg.ccgSeq = c.codeGroup_ccgSeq
 		where 1=1
 			<if test="shDelNy != null and !shDelNy.equals('')">AND ifccDelNy = #{shDelNy}</if>
 			<choose>
 				<when test="shOption == 1">AND ccSeq = #{shValue}</when>
 				<when test="shOption == 2">AND ifccName LIKE CONCAT('%',#{shValue},'%')</when>
 				<when test="shOption == 3">AND ccgSeq = #{shValue}</when>
+				<when test="shOption == 4">AND ifcgName LIKE CONCAT('%',#{shValue},'%')</when>
 				<otherwise></otherwise>
 			</choose>
 	</select>
@@ -115,7 +116,7 @@
 		SET
 			ifccDelNy = 1
 		where 1=1
-			and ccSeq = #{ccSeq}
+			AND ccSeq = #{ccSeq}
 	</update>
 	
 	<delete id="delete">

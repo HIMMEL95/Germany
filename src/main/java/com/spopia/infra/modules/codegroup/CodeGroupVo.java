@@ -6,6 +6,27 @@ public class CodeGroupVo {
 	private String shValue;
 	private Integer shDelNy;
 	private String ccgSeq;
+	private String startDate;
+	private String endDate;
+	private String shDate;
+	public String getShDate() {
+		return shDate;
+	}
+	public void setShDate(String shDate) {
+		this.shDate = shDate;
+	}
+	public String getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
 	public String getCcgSeq() {
 		return ccgSeq;
 	}

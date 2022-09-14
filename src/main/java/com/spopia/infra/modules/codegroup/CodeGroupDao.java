@@ -40,8 +40,5 @@ public class CodeGroupDao {
 		return sqlSession.delete(namespace + ".delete", vo);
 	}
 	
-	/* paging 관련 */
-	public int getListCnt() {
-		return sqlSession.selectList(namespace + ".getList", "");
-	}
+
 } 

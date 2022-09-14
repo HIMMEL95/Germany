@@ -258,7 +258,7 @@
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control" name="shValue" id="validationCustom01" value="<c:out value="${vo.shValue }"/>" autocomplete="off">
+                                    <input type="text" class="form-control" name="shValue" id="shValue" value="<c:out value="${vo.shValue }"/>" autocomplete="off">
                                 </div>
                                 <div class="col-2">
                                     <button class="btn btn-warning fw-bold btn-sm shadow" type="submit">
@@ -297,8 +297,8 @@
                                 		<c:otherwise>
 	                                		<c:forEach items="${list}" var="list" varStatus="status">
 												<tr>
-			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
-			                                                id="flexCheckDefault">
+			                                        <td onclick="event.cancelBubble=true">
+			                                        	<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
 			                                        </td>
 			                                        <td>${list.ccgSeq}</td>
 			                                        <td>${list.ifcgAnother}</td>

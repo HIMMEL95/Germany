@@ -5,7 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-<html>
+<!doctype html>
+<html lang="ko">
 <head>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -301,8 +302,8 @@
                                 		<c:otherwise>
                                 			<c:forEach items="${list}" var="list" varStatus="status">
 												<tr>
-			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
-			                                                id="flexCheckDefault">
+			                                        <td onclick="event.cancelBubble=true">
+			                                        	<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
 			                                        </td>
 			                                        <td>${list.ccSeq}</td>
 			                                        <td>${list.ccgSeq}</td>
@@ -310,7 +311,7 @@
 			                                        <td></td>
 			                                        <td>${list.ifccAnother }</td>
 			                                        <td>
-			                                            <a href="/code/codeView?seq=<c:out value="${list.ccSeq }"/>">${list.ifccName}</a>
+			                                            <a href="/code/codeView?ccSeq=<c:out value="${list.ccSeq }"/>">${list.ifccName}</a>
 			                                        </td>
 			                                        <td>${list.ifccNameEng }</td>
 			                                        <td>${list.ifccUseNy}</td>

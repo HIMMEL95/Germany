@@ -75,7 +75,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item bg-danger-soft-hover" href="../../seperate/html/seperatePage.html">
+                                    <a class="dropdown-item bg-danger-soft-hover" href="/">
                                         <i class="fa-solid fa-power-off me-2"></i>
                                         Sign Out
                                     </a>
@@ -281,13 +281,12 @@
                             </div>
                             <div class="col">
                                 <div class="input-control">
-                                    <label for="deleteNY">삭제여부<span style="color: red;">*</span></label>
-                                    <select class="form-select" id="deleteNY" name="deleteNY">
-                                        <option selected value="">Choose...</option>
-                                        <option value="0" <c:if test="${item.ifcgUseNy eq 0 }">selected</c:if>>N</option>
-                                        <option value="1" <c:if test="${item.ifcgUseNy eq 1 }">selected</c:if>>Y</option>
+                                    <label for="ifcgDelNy">삭제여부<span style="color: red;">*</span></label>
+                                    <select class="form-select" id="ifcgDelNy" name="ifcgDelNy">
+                                        <option value="0" <c:if test="${item.ifcgDelNy eq 0 }">selected</c:if>>N</option>
+                                        <option value="1" <c:if test="${item.ifcgDelNy eq 1 }">selected</c:if>>Y</option>
                                     </select>
-                                    <div class="msg" id="deleteNY_msg" name="deleteNY_msg" style="display: none;"></div>
+                                    <div class="msg" id="ifcgDelNy_msg" name="ifcgDelNy_msg" style="display: none;"></div>
                                 </div>
                             </div>
                         </div>
@@ -344,12 +343,12 @@
                         <!-- 리스트 -->
                         <div class="row align-items-center">
                             <div class="col-1">
-                                <a class="border-0 btn btn-sm bg-secondary shadow" roel="button" href="codeGroupList">
+                                <a class="border-0 btn btn-sm bg-secondary shadow" roel="button" href="/codeGroup/codeGroupList">
                                     <i class="fa-solid fa-bars" style="color: white;"></i>
                                 </a>
                             </div>
                             <div class="col-3 offset-8" align="right">
-                                <button id="btnUel" value="Uel" class="border-0 btn btn-sm bg-danger shadow modalBtn" type="button" data-bs-toggle="modal"
+                                <button id="btnUel" value="Uel" class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal">
                                     <i class="fa-solid fa-xmark" style="color: white;"></i>
                                 </button>
@@ -363,7 +362,7 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body fs-6">
-                                                		선택하신 게시물을 정말로 삭제하시겠습니까?
+                                           		선택하신 게시물을 정말로 삭제하시겠습니까?
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
@@ -372,11 +371,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button id="btnDel" value="Del" class="border-0 btn btn-sm bg-danger shadow modalBtn" type="button" data-bs-toggle="modal"
+                                <button id="btnDel" value="Del" class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal">
                                     <i class="fa-solid fa-trash-can" style="color: white;"></i>
                                 </button>
-                                <button id="btnSave" class="border-0 btn btn-sm bg-success shadow" type="button" onclick="validation()">
+                                <button id="btnSave" class="border-0 btn btn-sm bg-success shadow" type="button">
                                     <i class="fa-regular fa-bookmark" style="color: white;"></i>
                                 </button>
                             </div>
@@ -385,8 +384,7 @@
                 </div>
             </form>
         </div>
-        <div style="height: 50px;">
-        </div>
+        <div style="height: 50px;"></div>
     </main>
 
     <footer>
@@ -423,7 +421,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         validation = function() {
-        	if(!checkOnlyKorEngNum('ccgSeq', 2, 0, "한글, 영문(대소문자), 숫자만 입력 가능합니다.", "ccgSeq_msg")) return false;         
+        	if(!checkOnlyKorEngNum('ccgSeq', 2, 0, "숫자만 입력 가능합니다.", "ccgSeq_msg")) return false;         
         	if(!checkOnlyEngNum('ifcgAnother', 2, 1, "영문(대소문자), 숫자만 입력 가능합니다.", "ifcgAnother_msg")) return false;         
         	if(!checkOnlyKorNum('ifcgName', 2, 0, "한글, 숫자만 입력 가능합니다.", "ifcgName_msg")) return false;      
         	if(!checkOnlyEngNum('ifcgNameEng', 2, 1, "영문(대소문자), 숫자만 입력 가능합니다.", "ifcgNameEng_msg")) return false; 
@@ -454,34 +452,21 @@
         		form.attr("action", goUrlUpdt).submit();
         	}
 		});
-        
-        var valueList= [];
-        $(".modalBtn").each(function() {
-			var value = $(this).attr('value');
-			valueList.push(value);
+		
+		$("#btnUel").on("click", function() {
+			DelValidation("#delBtn", goUrlUel, "선택하신 게시물을 삭제하시겠습니까?");
 		})
 		
-		for (var i=0; i < valueList.length; i++) {
-			if (value == "Uel") {
-	        	$(".modal-body").html("선택하신 게시물을 삭제하시겠습니까?");
-	        	$("#delBtn").on("click", function() {
-	        		form.attr("action", goUrlUel).submit();
-				});
-	        } else if (value == "Del"){
-	        	$(".modal-body").html("해당 게시물을 진짜로 삭제하시겠습니까?");
-	        	$("#delBtn").on("click", function() {
-	        		form.attr("action", goUrlDel).submit();				
-				});
-	        }
-		}
-
-	 /* 	$("#btnUel").on("click", function() {
-        	form.attr("action", goUrlUel).submit();	
-		});
+		$("#btnDel").on("click", function() {
+			DelValidation("#delBtn", goUrlDel, "선택하신 게시물을 진짜로 삭제하시겠습니까?");		
+		})
 		
-	 	$("#btnDel").on("click", function() {
-        	form.attr("action", goUrlDel).submit();			
-		}); */
+		DelValidation = function(confirm, url, msg) {
+			$(".modal-body").html(msg);
+			$(confirm).on("click", function() {
+				form.attr("action", url).submit();
+			})
+		}
 	 	
         /* test = function() {
         	

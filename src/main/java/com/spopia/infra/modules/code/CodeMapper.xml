@@ -48,7 +48,7 @@
 		from
 			code c
 		where 1=1
-			AND c.ccSeq = #{ccSeq}
+			AND ccSeq = #{ccSeq}
 	</select>
 	
 	<insert id="insert">
@@ -100,14 +100,14 @@
 			,ifccOrder = #{ifccOrder}
 			,ifccExplanation = #{ifccExplanation}
 			,ifccDelNy = #{ifccDelNy}
-			,ifccReferencev1 = #{referencev1}
-			,ifccReferencev2 = #{referencev2}
-			,ifccReferencev3 = #{referencev3}
+			,ifccReferencev1 = #{referenceV1}
+			,ifccReferencev2 = #{referenceV2}
+			,ifccReferencev3 = #{referenceV3}
 			,ifccReferenceI1 = #{referenceI1}
 			,ifccReferenceI2 = #{referenceI2}
 			,ifccReferenceI3 = #{referenceI3}
 		WHERE 1=1
-			AND ccgSeq = #{ccgSeq}
+			AND ccSeq = #{ccSeq}
 	</update>
 	
 	<update id="uelete">

@@ -24,8 +24,8 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container px-3 px-xl-5 pt-1">
                 <!-- Logo START -->
-                <a class="navbar-brand" href="../../user/member/main_page.html">
-                    <img class="light-mode-item navbar-brand-item" src="../../../image/SPOPIA_white.png" alt="logo"
+                <a class="navbar-brand" href="/sportMain">
+                    <img class="light-mode-item navbar-brand-item" src="/resources/images/SPOPIA_white.png" alt="logo"
                         style="width: 90px;">
                 </a>
                 <!-- Profile START -->
@@ -34,7 +34,7 @@
                         <li class="me-2">
                             <a class="p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
                                 data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img class="avatar-img rounded-circle" src="../../../image/diano.jpg" alt="avatar"
+                                <img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar"
                                     style="width: 30px;">
                             </a>
                             <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
@@ -44,7 +44,7 @@
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
                                         <div class="avatar1 me-3">
-                                            <img class="avatar-img rounded-circle shadow" src="../../../image/diano.jpg"
+                                            <img class="avatar-img rounded-circle shadow" src="/resources/images/diano.jpg"
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
@@ -74,7 +74,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item bg-danger-soft-hover" href="../../seperate/html/seperatePage.html">
+                                    <a class="dropdown-item bg-danger-soft-hover" href="/">
                                         <i class="fa-solid fa-power-off me-2"></i>
                                         Sign Out
                                     </a>
@@ -119,7 +119,7 @@
     <main>
         <div class="top_space"></div>
         <div class="container">
-            <form method="post" action="/code/codeInst">
+            <form method="post" id="myForm">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -143,13 +143,13 @@
                 
                                     <div class="offcanvas-body d-block px-2 px-lg-0">
                                         <div class="card overflow-hidden">
-                                            <img src="../../dmin_image/mountains.png" class="card-img-top" alt="background"
+                                            <img src="/resources/images/mountains.png" class="card-img-top" alt="background"
                                                 style="height: 50px; background-position: center; background-size: cover; background-repeat: no-repeat;">
                                             <div class="card-body pt-0">
                                                 <div class="text-center">
                                                     <div class="avatar avatar-lg mt-n5 mb-3">
                                                         <a href="#"><img class="avatar-img rounded border border-white border-3"
-                                                                src="../../../image/diano.jpg" style="width: 50px;" alt=""></a>
+                                                                src="/resources/images/diano.jpg" style="width: 50px;" alt=""></a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
                                                         <span class="mb-0"><a href="#">이하늘</a></span>
@@ -231,8 +231,8 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <label for="code" class="form-label">코드</label>
-                                <input type="text" class="form-control" id="code" value="자동생성" disabled>
+                                <label for="ccSeq" class="form-label">코드</label>
+                                <input type="text" class="form-control" id="ccSeq" name="ccSeq" value="<c:out value="${item.ccSeq }"/>" disabled>
                             </div>
                             <div class="col">
                                 <label for="ifccAnother" class="form-label">코드 (Another)</label>
@@ -247,18 +247,17 @@
                                 <div class="msg" id="ifccName_msg" name="ifccName_msg" style="display: none;"></div>
                             </div>
                             <div class="col">
-                                <label for=""ifccNameEng"" class="form-label">코드 이름 (영문)</label>
+                                <label for="ifccNameEng" class="form-label">코드 이름 (영문)</label>
                                 <input type="text" class="form-control" id="ifccNameEng" name="ifccNameEng" value="<c:out value="${item.ifccNameEng }"/>" placeholder="">
                                 <div class="msg" id="ifccNameEng_msg" name="ifccNameEng_msg" style="display: none;"></div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <label for="useNY" class="form-label">사용여부</label>
-                                <select class="form-select" id="useNY" name="useNY">
-                                    <option selected value="">Choose...</option>
-                                    <option value="0">N</option>
-                                    <option value="1">Y</option>
+                                <label for="ifccUseNy" class="form-label">사용여부</label>
+                                <select class="form-select" id="ifccUseNy" name="ifccUseNy">
+                                    <option value="0" <c:if test="${item.ifccUseNy eq 0 }">selected</c:if>>N</option>
+                                    <option value="1" <c:if test="${item.ifccUseNy eq 1 }">selected</c:if>>Y</option>
                                 </select>
                             </div>
                             <div class="col">
@@ -269,66 +268,65 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <label for="useNY" class="form-label">설명</label>
-                                <textarea class="form-control" id="validationTextarea" placeholder=""></textarea>
-                                <div class="msg" id="cg_code_msg" name="cg_code_msg" style="display: none;"></div>
+                                <label for="ifccExplanation" class="form-label">설명</label>
+                                <textarea class="form-control" id="ifccExplanation" name="ifccExplanation" placeholder=""></textarea>
+                                <div class="msg" id="ifccExplanation_msg" name="ifccExplanation_msg" style="display: none;"></div>
                             </div>
                             <div class="col">
-                                <label for="deleteNY" class="form-label">삭제여부</label>
-                                <select class="form-select" id="usdeleteNYeNY">
-                                    <option selected disabled value="">Choose...</option>
-                                    <option>N</option>
-                                    <option>Y</option>
-                                </select>
+                                <label for="ifccDelNy" class="form-label">삭제여부</label>
+                                <select class="form-select" id="ifccDelNy" name="ifccDelNy">
+	                                <option value="0" <c:if test="${item.ifccDelNy eq 0 }">selected</c:if>>N</option>
+	                                <option value="1" <c:if test="${item.ifccDelNy eq 1 }">selected</c:if>>Y</option>
+	                            </select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label for="referenceV1" class="form-label">예비1 (varchar type)</label>
-                                <input type="text" class="form-control" id="referenceV1" name="referenceV1" value="<c:out value="${item.ReferenceV1 }"/>" placeholder="영문(대소문자), 숫자">
+                                <input type="text" class="form-control" id="referenceV1" name="referenceV1" value="<c:out value="${item.referenceV1 }"/>" placeholder="영문(대소문자), 숫자">
                             	<div class="msg" id="referenceV1_msg" name="referenceV1_msg" style="display: none;"></div>
                             </div>
                             <div class="col">
                                 <label for="referenceV2" class="form-label">예비2 (varchar type)</label>
-                                <input type="text" class="form-control" id="referenceV2" name="referenceV2" value="<c:out value="${item.ReferenceV2 }"/>" placeholder="영문(대소문자), 숫자">
+                                <input type="text" class="form-control" id="referenceV2" name="referenceV2" value="<c:out value="${item.referenceV2 }"/>" placeholder="영문(대소문자), 숫자">
                                 <div class="msg" id="referenceV2_msg" name="referenceV2_msg" style="display: none;"></div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <label for="referenceV3" class="form-label">예비3 (varchar type)</label>
-                                <input type="text" class="form-control" id="referenceV3" name="referenceV3"  value="<c:out value="${item.ReferenceV3 }"/>" placeholder="영문(대소문자), 숫자">
+                                <input type="text" class="form-control" id="referenceV3" name="referenceV3"  value="<c:out value="${item.referenceV3 }"/>" placeholder="영문(대소문자), 숫자">
                                 <div class="msg" id="referenceV3_msg" name="referenceV3_msg" style="display: none;"></div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label for="referenceI1" class="form-label">예비1 (int type)</label>
-                                <input type="text" class="form-control" id="referenceI1" name="referenceI1" value="<c:out value="${item.ReferenceI1 }"/>" placeholder="숫자">
+                                <input type="text" class="form-control" id="referenceI1" name="referenceI1" value="<c:out value="${item.referenceI1 }"/>" placeholder="숫자">
                                 <div class="msg" id="referenceI1_msg" name="referenceI1_msg" style="display: none;"></div>
                             </div>
                             <div class="col">
                                 <label for="referenceI2" class="form-label">예비2 (int type)</label>
-                                <input type="text" class="form-control" id="referenceI2" name="referenceI2" value="<c:out value="${item.ReferenceI2 }"/>" placeholder="숫자">
+                                <input type="text" class="form-control" id="referenceI2" name="referenceI2" value="<c:out value="${item.referenceI2 }"/>" placeholder="숫자">
                                 <div class="msg" id="referenceI2_msg" name="referenceI2_msg" style="display: none;"></div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <label for="referenceI3" class="form-label">예비3 (int type)</label>
-                                <input type="text" class="form-control" id="referenceI3" name="referenceI3" value="<c:out value="${item.ReferenceI3 }"/>" placeholder="숫자">
+                                <input type="text" class="form-control" id="referenceI3" name="referenceI3" value="<c:out value="${item.referenceI3 }"/>" placeholder="숫자">
                                 <div class="msg" id="referenceI3_msg" name="referenceI3_msg" style="display: none;"></div>
                             </div>
                         </div>
                         <!-- 리스트 -->
                         <div class="row align-items-center">
                             <div class="col-1">
-                                <a class="border-0 btn btn-sm bg-secondary shadow" role="button" href="./codeList.html">
+                                <a class="border-0 btn btn-sm bg-secondary shadow" roel="button" href="/code/codeList">
                                     <i class="fa-solid fa-bars" style="color: white;"></i>
                                 </a>
                             </div>
                             <div class="col-3 offset-8" align="right">
-                                <button class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
+                                <button id="btnUel" value="Uel" class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal">
                                     <i class="fa-solid fa-xmark" style="color: white;"></i>
                                 </button>
@@ -341,21 +339,21 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body" style="text-align: start;">
-                                                선택하신 게시물을 정말로 삭제하시겠습니까?
+                                            <div class="modal-body fs-6">
+                                           		선택하신 게시물을 정말로 삭제하시겠습니까?
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                                                <button type="button" class="btn btn-primary">삭제</button>
+                                                <button id="delBtn" type="button" class="btn btn-primary">삭제</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
+                                <button id="btnDel" value="Del" class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal">
                                     <i class="fa-solid fa-trash-can" style="color: white;"></i>
                                 </button>
-                                <button class="border-0 btn btn-sm bg-success shadow" type="submit">
+                                <button id="btnSave" class="border-0 btn btn-sm bg-success shadow" type="button">
                                     <i class="fa-regular fa-bookmark" style="color: white;"></i>
                                 </button>
                             </div>
@@ -385,7 +383,7 @@
                 </ul>
                 <div class="footer_copy">
                     <a id="fot.naver" target="_blank" href="https://www.navercorp.com">
-                        <img src="../../../image/SPOPIA1.png" alt="logo" style="width: 45px;">
+                        <img src="/resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
                     </a>
                     <span class="text">Copyright</span>
                     <span class="corp">© SPOPIA Corp.</span>
@@ -399,6 +397,7 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script type="text/javascript">
 	    validation = function() {
 	    	if(!checkOnlyKorEngNum('cg_code', 2, 0, "한글, 영문(대소문자), 숫자만 입력 가능합니다.", "cg_code_msg")) return false;         
@@ -410,6 +409,37 @@
 	
 	    	document.getElementById('myForm').submit();
 	    };
+	    
+	    var goUrlInst = "/code/codeInst";
+        var goUrlUpdt = "/code/codeUpdt";
+        var goUrlUel = "/code/codeUele";
+        var goUrlDel = "/code/codeDele";
+        
+        var seq = $("input[name=ccSeq]");
+        var form = $("#myForm");
+        
+        $("#btnSave").on("click", function() {
+        	if (seq.val() == "0" || seq.val() == "") {
+        		form.attr("action", goUrlInst).submit();
+        	} else {
+        		form.attr("action", goUrlUpdt).submit();
+        	}
+		});
+		
+		$("#btnUel").on("click", function() {
+			DelValidation("#delBtn", goUrlUel, "선택하신 게시물을 삭제하시겠습니까?");
+		})
+		
+		$("#btnDel").on("click", function() {
+			DelValidation("#delBtn", goUrlDel, "선택하신 게시물을 진짜로 삭제하시겠습니까?");		
+		})
+		
+		DelValidation = function(confirm, url, msg) {
+			$(".modal-body").html(msg);
+			$(confirm).on("click", function() {
+				form.attr("action", url).submit();
+			})
+		}
     </script>
 </body>
 </html>

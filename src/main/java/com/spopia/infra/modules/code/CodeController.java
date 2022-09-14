@@ -5,12 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spopia.infra.modules.codegroup.CodeGroup;
 import com.spopia.infra.modules.codegroup.CodeGroupServiceImpl;
-import com.spopia.infra.modules.codegroup.CodeGroupVo;
-
 
 @Controller
 @RequestMapping(value = "/code/")
@@ -34,11 +33,10 @@ public class CodeController {
 	}
 	
 	@RequestMapping(value = "codeForm")
-	public String codeForm(Model model) throws Exception {
+	public String codeForm(Model model) throws Exception {	
 		
 		List<CodeGroup> list1 = cgService.selectList();
 		model.addAttribute("list1", list1);
-		
 		return "infra/code/xdmin/codeForm";
 	}
 	
@@ -50,13 +48,30 @@ public class CodeController {
 	}
 
 	@RequestMapping(value = "codeView")
-	public String CodeView(CodeVo vo, Model model) throws Exception {
+	public String codeView(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
 		Code item = service.selectOne(vo);
 		model.addAttribute("item", item);
 		
 		List<CodeGroup> list1 = cgService.selectList();
 		model.addAttribute("list1", list1);
-		
 		return "infra/code/xdmin/codeForm";
+	}
+	
+	@RequestMapping(value = "codeUpdt")
+	public String codeUpdt(Code dto) throws Exception {
+		service.update(dto);
+		return "redirect:/code/codeList";
+	}
+	
+	@RequestMapping(value = "codeUele")
+	public String codeUele(Code dto) throws Exception {
+		service.uelete(dto);
+		return "redirect:/code/codeList";
+	}
+	
+	@RequestMapping(value = "codeDele")
+	public String codeDele(CodeVo vo) throws Exception {
+		service.delete(vo);
+		return "redirect:/code/codeList";
 	}
 }

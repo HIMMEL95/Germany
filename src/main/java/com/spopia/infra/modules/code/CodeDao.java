@@ -18,6 +18,8 @@ public class CodeDao {
 	private static String namespace = "com.spopia.infra.modules.code.CodeMapper";
 	
 	public List<Code> selectList(CodeVo vo){ return sqlSession.selectList(namespace + ".selectList", vo); }
+	
+	public List<Code> selectList() {return sqlSession.selectList(namespace + ".selectList", ""); }
 
 	public int insert(Code dto) {
 		return sqlSession.insert(namespace + ".insert", dto);

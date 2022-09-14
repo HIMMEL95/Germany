@@ -29,7 +29,6 @@ public class CodeGroupController {
 	
 	@RequestMapping(value = "codeGroupForm")
 	public String codeGroupForm() throws Exception {
-
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}
 
@@ -43,10 +42,8 @@ public class CodeGroupController {
 	
 	@RequestMapping(value = "codeGroupView")
 	public String CodeGroupView(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
-		
 		CodeGroup item = service.selectOne(vo);
 		model.addAttribute("item", item);
-		
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}
 	

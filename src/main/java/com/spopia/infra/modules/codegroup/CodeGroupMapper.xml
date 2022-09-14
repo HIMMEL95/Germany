@@ -137,4 +137,20 @@
 		FROM codeGroup where ccgSeq = #{ccgSeq}
 	</delete>
 
+
+	<!-- paging 관련 start -->
+	<select id="getList" resultMap="resultMapObj">
+		select
+			cg.*
+		from codeGroup cg
+		limit #{startList}, #{listSize}
+	</select>
+	
+	<select id="getCnt" resultMap="resultMapObj">
+		select 
+			count(cg.*) as listCnt
+		from 
+			codeGroup cg 
+	</select>
+	<!-- paging 관련 end -->
 </mapper>	

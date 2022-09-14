@@ -14,4 +14,7 @@ public interface CodeGroupService {
 	public int uelete(CodeGroup dto) throws Exception;
 	public int delete(CodeGroupVo vo) throws Exception;
 	
+	/* pagination 관련 */
+	public int getCnt() throws Exception;
+	public List<CodeGroup> getList(Pagination pagination) throws Exception;
 }

@@ -315,18 +315,30 @@
                             </table>
                             <nav aria-label="Page navigation">
                                 <ul class=" pagination pagination-sm col-3 offset-5">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                	<c:if test="${pagination.prev }">
+	                                    <li class="page-item">
+	                                        <a class="page-link" href="#" aria-label="Previous" onclick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">
+	                                            <span aria-hidden="true">&laquo;</span>
+	                                        </a>
+	                                    </li>
+                                    </c:if>
+                                    <c:forEach begin="${pagination.startPage }" end="${pagination.endPage }" var="idx">
+                                    	<li class="page-item" value="<c:out value="${pagination.page == idx ? 'active' : ''}"/>">
+                                    		<a class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')"> ${idx} </a>
+                                   		</li>
+                                    </c:forEach>
+                                    <c:if test="${pagination.next }">
+                                    	<li class="page-item">
+	                                    	<a class="page-link" href="#" onClick="fn_next('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')" >Next</a>
+                                    	</li>
+                                    </c:if>
+<!--                                     <li class="page-item"><a class="page-link" href="#">1</a></li>
                                     <li class="page-item"><a class="page-link" href="#">2</a></li>
                                     <li class="page-item"><a class="page-link" href="#">3</a></li>
                                     <li class="page-item">
                                         <a class="page-link" href="#" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
-                                        </a>
+                                        </a> -->
                                     </li>
                                 </ul>
                             </nav>
@@ -428,6 +440,35 @@
 	      			,showOtherMonths: true
 	      		});
 	   	})
+	   	
+	   	function fn_prev(page, range, rangeSize) {	
+    		var page = ((range - 2) * rangeSize) + 1;		
+    		var range = range - 1;				
+    		var url = "${pageContext.request.contextPath}/board/getBoardList";	
+    		
+    		url = url + "?page=" + page;		
+    		url = url + "&range=" + range;				
+    		location.href = url;	
+   		}  
+    		
+    		//페이지 번호 클릭	
+   		function fn_pagination(page, range, rangeSize, searchType, keyword) {		
+   			var url = "${pageContext.request.contextPath}/board/getBoardList";		
+   			url = url + "?page=" + page;		
+   			url = url + "&range=" + range;		
+   			location.href = url;		
+		}	
+   		
+   		//다음 버튼 이벤트	
+   		function fn_next(page, range, rangeSize) {		
+   			var page = parseInt((range * rangeSize)) + 1;		
+   			var range = parseInt(range) + 1;				
+   			var url = "${pageContext.request.contextPath}/board/getBoardList";		
+   			url = url + "?page=" + page;		
+   			url = url + "&range=" + range;				
+   			location.href = url;	
+		}
+
     </script>
 </body>
 </html>

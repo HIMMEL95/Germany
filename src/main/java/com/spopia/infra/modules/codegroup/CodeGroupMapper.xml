@@ -148,7 +148,7 @@
 	
 	<select id="getCnt" resultMap="resultMapObj">
 		select 
-			count(cg.*) as listCnt
+			count(*) as listCnt
 		from 
 			codeGroup cg 
 	</select>

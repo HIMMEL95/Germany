@@ -19,6 +19,7 @@ public class CodeGroup {
 	private String createdAt;
 	private String modifiedAt;
 	private Integer count;
+
 	public String getCcgSeq() {
 		return ccgSeq;
 	}
@@ -121,5 +122,4 @@ public class CodeGroup {
 	public void setCount(Integer count) {
 		this.count = count;
 	}
-	
 }

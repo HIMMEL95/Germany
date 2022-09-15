@@ -19,13 +19,31 @@ public class CodeGroupController {
 	CodeGroupServiceImpl service;
 
 	@RequestMapping(value = "codeGroupList")
-	public String codeGroupList(Model model, @ModelAttribute("vo") CodeGroupVo vo) throws Exception {
+	public String codeGroupList(Model model, @ModelAttribute("vo") CodeGroupVo vo
+			, @RequestParam(value = "nowPage", required = false) String nowPage
+			, @RequestParam(value = "cntPerPage", required = false) String cntPerPage
+			, PagingVo pv) throws Exception {
 
 		System.out.println("vo.getShOption : " + vo.getShOption());
 		System.out.println("vo.getShValue : " + vo.getShValue());
 		
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
+		
+		/* pagination 관련 */
+		int total = service.getCnt();
+		if(nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "10";
+		}
+		
+		pv = new PagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("paging", pv);
+		model.addAttribute("viewAll", service.selectGroup(pv));
 		
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
@@ -71,24 +89,5 @@ public class CodeGroupController {
 		return "redirect:/codeGroup/codeGroupList";
 	}
 	
-	/* pagination 관련 */
-	@RequestMapping(value = "getList", method = RequestMethod.GET)
-	public String getList(Model model
-			, @RequestParam(required = false, defaultValue = "1") int page
-			, @RequestParam(required = false, defaultValue = "1") int range
-			) throws Exception {
-		
-		/* 전체 게시글 개수 */
-		int listCnt = service.getCnt();
-		
-		/* Pagination 객체생성 */
-		Pagination pagination = new Pagination();
-		pagination.pageInfo(page, range, listCnt);
-		
-		model.addAttribute("pagination", pagination);
-		model.addAttribute("getList", service.getList(pagination));
-		return "redirect:/codeGroup/codeGroupList";
-		
-	}
 }
 

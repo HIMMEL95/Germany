@@ -16,5 +16,5 @@ public interface CodeGroupService {
 	
 	/* pagination 관련 */
 	public int getCnt() throws Exception;
-	public List<CodeGroup> getList(Pagination pagination) throws Exception;
+	public List<CodeGroup> selectGroup(PagingVo vo) throws Exception;
 }

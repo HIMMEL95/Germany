@@ -47,6 +47,7 @@
 		    ,(select count(c.codeGroup_ccgSeq) from code c where 1=1 and c.codeGroup_ccgSeq = cg.ccgSeq) as count
 		from codeGroup cg
 		where 1=1
+			and ccgSeq BETWEEN 0 AND 10
 			<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if> -->
 			
 			<if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if>
@@ -138,19 +139,35 @@
 	</delete>
 
 
-	<!-- paging 관련 start -->
-	<select id="getList" resultMap="resultMapObj">
+	<!-- paging 관련 start -->	
+	<select id="countList" resultType="com.spopia.infra.modules.codegroup.CodeGroup">
 		select
-			cg.*
+			cg.ccgSeq
+			,cg.ifcgAnother
+			,cg.ifcgName
+			,cg.ifcgNameEng
+			,cg.ifcgUseNy
+			,cg.ifcgOrder
+			,cg.ifcgExplanation
+			,cg.ifcgDelNy
+			,cg.ifcgReferencev1
+			,cg.ifcgReferencev2
+			,cg.ifcgReferencev3
+			,cg.ifcgReferenceI1
+			,cg.ifcgReferenceI2
+			,cg.ifcgReferenceI3
+			,cg.createdAt
+			,cg.modifiedAt
+		    ,(select count(c.codeGroup_ccgSeq) from code c where 1=1 and c.codeGroup_ccgSeq = cg.ccgSeq) as count
 		from codeGroup cg
-		limit #{startList}, #{listSize}
+		where 1=1
+			and ccgSeq BETWEEN #{start} AND #{end}
 	</select>
 	
-	<select id="getCnt" resultMap="resultMapObj">
+	<select id="getCnt" resultType="int">
 		select 
-			count(*) as listCnt
-		from 
-			codeGroup cg 
+			count(*)
+		from codeGroup
 	</select>
 	<!-- paging 관련 end -->
 </mapper>	

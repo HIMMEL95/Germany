@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CodeGroupServiceImpl implements CodeGroupService {
@@ -49,12 +50,11 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 	/* pagination 관련 */
 	@Override
 	public int getCnt() throws Exception {
-		return dao.getCnt();
+		return dao.count();
 	}
 
 	@Override
-	public List<CodeGroup> getList(Pagination pagination) throws Exception {
-		return dao.getList(pagination);
+	public List<CodeGroup> selectGroup(PagingVo vo) throws Exception {
+		return dao.selectGroup(vo);
 	}
-	
 }

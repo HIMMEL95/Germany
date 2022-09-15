@@ -18,44 +18,46 @@
 			</choose>
 	</sql> -->
 	
+	<sql id ="selectCommon">
+	FROM codeGroup a
+	WHERE 1=1
+		<if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if>
+		<choose>
+			<when test="shOption == 1">AND ccgSeq = #{shValue}</when>
+			<when test="shOption == 2">AND ifcgName LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND ifcgNameEng LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
+	</sql>
+	
 	<select id="selectList" resultMap="resultMapObj">
-		<!-- select 
-			cg.*
-		    ,count(c.CCG_seq)
-		from CCG cg
-		inner join CC c on c.CCG_seq = cg.seq
-		group by
-			c.CCG_seq -->
-		
-		select
-			cg.ccgSeq
-			,cg.ifcgAnother
-			,cg.ifcgName
-			,cg.ifcgNameEng
-			,cg.ifcgUseNy
-			,cg.ifcgOrder
-			,cg.ifcgExplanation
-			,cg.ifcgDelNy
-			,cg.ifcgReferencev1
-			,cg.ifcgReferencev2
-			,cg.ifcgReferencev3
-			,cg.ifcgReferenceI1
-			,cg.ifcgReferenceI2
-			,cg.ifcgReferenceI3
-			,cg.createdAt
-			,cg.modifiedAt
-		    ,(select count(c.codeGroup_ccgSeq) from code c where 1=1 and c.codeGroup_ccgSeq = cg.ccgSeq) as count
-		from codeGroup cg
-		where 1=1
-			and ccgSeq BETWEEN 0 AND 10
-			<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if> -->
-			
-			<if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if>
-			<choose>
-				<when test="shOption == 1">AND ccgSeq = #{shValue}</when>
-				<when test="shOption == 2">AND ifcgName LIKE CONCAT('%',#{shValue},'%')</when>
-				<otherwise></otherwise>
-			</choose>
+		<include refid="Base.selectListUpperForMysql" />
+			select
+				a.ccgSeq
+				,a.ifcgAnother
+				,a.ifcgName
+				,a.ifcgNameEng
+				,a.ifcgUseNy
+				,a.ifcgOrder
+				,a.ifcgExplanation
+				,a.ifcgDelNy
+				,a.ifcgReferencev1
+				,a.ifcgReferencev2
+				,a.ifcgReferencev3
+				,a.ifcgReferenceI1
+				,a.ifcgReferenceI2
+				,a.ifcgReferenceI3
+				,a.createdAt
+				,a.modifiedAt
+			    ,(select count(c.codeGroup_ccgSeq) from code c where 1=1 and c.codeGroup_ccgSeq = a.ccgSeq) as count
+			<include refid="selectCommon" />
+			ORDER BY a.ccgSeq DESC
+			<include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">
@@ -138,36 +140,4 @@
 		FROM codeGroup where ccgSeq = #{ccgSeq}
 	</delete>
 
-
-	<!-- paging 관련 start -->	
-	<select id="countList" resultType="com.spopia.infra.modules.codegroup.CodeGroup">
-		select
-			cg.ccgSeq
-			,cg.ifcgAnother
-			,cg.ifcgName
-			,cg.ifcgNameEng
-			,cg.ifcgUseNy
-			,cg.ifcgOrder
-			,cg.ifcgExplanation
-			,cg.ifcgDelNy
-			,cg.ifcgReferencev1
-			,cg.ifcgReferencev2
-			,cg.ifcgReferencev3
-			,cg.ifcgReferenceI1
-			,cg.ifcgReferenceI2
-			,cg.ifcgReferenceI3
-			,cg.createdAt
-			,cg.modifiedAt
-		    ,(select count(c.codeGroup_ccgSeq) from code c where 1=1 and c.codeGroup_ccgSeq = cg.ccgSeq) as count
-		from codeGroup cg
-		where 1=1
-			and ccgSeq BETWEEN #{start} AND #{end}
-	</select>
-	
-	<select id="getCnt" resultType="int">
-		select 
-			count(*)
-		from codeGroup
-	</select>
-	<!-- paging 관련 end -->
 </mapper>	

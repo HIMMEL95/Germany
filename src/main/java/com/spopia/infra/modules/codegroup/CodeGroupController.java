@@ -18,33 +18,18 @@ public class CodeGroupController {
 	@Autowired
 	CodeGroupServiceImpl service;
 
+
 	@RequestMapping(value = "codeGroupList")
-	public String codeGroupList(Model model, @ModelAttribute("vo") CodeGroupVo vo
-			, @RequestParam(value = "nowPage", required = false) String nowPage
-			, @RequestParam(value = "cntPerPage", required = false) String cntPerPage
-			, PagingVo pv) throws Exception {
+	public String codeGroupList(Model model, @ModelAttribute("vo") CodeGroupVo vo) throws Exception {
 
 		System.out.println("vo.getShOption : " + vo.getShOption());
 		System.out.println("vo.getShValue : " + vo.getShValue());
 		
+		vo.setParamsPaging(service.selectOneCount(vo));
+		
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
-		
-		/* pagination 관련 */
-		int total = service.getCnt();
-		if(nowPage == null && cntPerPage == null) {
-			nowPage = "1";
-			cntPerPage = "10";
-		} else if (nowPage == null) {
-			nowPage = "1";
-		} else if (cntPerPage == null) {
-			cntPerPage = "10";
-		}
-		
-		pv = new PagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		model.addAttribute("paging", pv);
-		model.addAttribute("viewAll", service.selectGroup(pv));
-		
+
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
 	
@@ -53,7 +38,6 @@ public class CodeGroupController {
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}
 
-	
 	@RequestMapping(value = "codeGroupInst")
 	public String codeGroupInst(CodeGroup dto) throws Exception {
 		int result = service.insert(dto);

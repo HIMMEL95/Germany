@@ -125,7 +125,11 @@
     <main>
         <div style="height: 150px;"></div>
         <div class="container">
-            <form method="post" id="myForm">
+            <form method="post" id="myForm" name="myForm">
+               	<input type="hidden" name="mainkey">
+               	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
+               	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
+               	<input type="hidden" name="checkboxSeqArray">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -295,13 +299,13 @@
                                 			</tr>
                                 		</c:when>
                                 		<c:otherwise>
-	                                		<c:forEach items="${viewAll}" var="list" varStatus="status">
+	                                		<c:forEach items="${list}" var="list" varStatus="status">
 												<tr>
 			                                        <td onclick="event.cancelBubble=true">
 			                                        	<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
 			                                        </td>
+			                                        <td><c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/></td>
 			                                        <td>${list.ccgSeq}</td>
-			                                        <td>${list.ifcgAnother}</td>
 			                                        <td><a href="/codeGroup/codeGroupView?ccgSeq=<c:out value="${list.ccgSeq }"/>">${list.ifcgName}</a></td>
 			                                        <td>${list.ifcgNameEng}</td>
 			                                        <td>${list.count}</td>
@@ -313,35 +317,9 @@
                                 	</c:choose>
                                 </tbody>
                             </table>
-                            <nav aria-label="Page navigation">
-                                <ul class=" pagination pagination-sm col-3 offset-5">
-                                	<c:if test="${paging.startPage != 1 }">
-	                                    <li class="page-item">
-	                                        <a class="page-link" href="/codeGroup/codeGroupList?nowPage=${paging.startPage - 1}&cntPerPage=${paging.cntPerPage}" aria-label="Previous">
-	                                           <span aria-hidden="true">&laquo;</span>
-	                                        </a>
-	                                    </li>
-                                    </c:if>
-                                    <c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
-                                    	<c:choose>
-                                    		<c:when test="${p == paging.nowPage }">
-                                    			<b>${p }</b>
-                                    		</c:when>
-                                    		<c:when test="${p != paging.nowPage }">
-                                   				<li class="page-item">
-		                                    		<a class="page-link num" href="/codeGroup/codeGroupList?nowPage=${p }&cntPerPage=${paging.cntPerPage}"> ${p} </a>
-		                                   		</li>
-                                   			</c:when>
-                                    	</c:choose>
-                                    </c:forEach>
-                                    <c:if test="${paging.endPage != paging.lastPage }">
-                                    	<li class="page-item">
-	                                    	<a class="page-link" href="/codeGroup/codeGroupList?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">Next</a>
-                                    	</li>
-                                    </c:if>
-                                    </li>
-                                </ul>
-                            </nav>
+                            <!--  Pagination s -->
+                            <%@include file="../../common/xdmin/includeV1/pagination.jsp" %>
+                            <!--  Pagination e -->
                         </div>
                         <div class="row align-items-center">
                             <div class="col-2">
@@ -422,7 +400,7 @@
         crossorigin="anonymous"></script>
   	<script type="text/javascript">	
     	var goUrlList = "/codeGroup/codeGroupList";
-    	var form = $("myForm");
+    	var form = $("form[name=myForm]");
     	
     	$("#refresh").on("click", function() {
 			$(location).attr("href", goUrlList);
@@ -440,6 +418,12 @@
 	      			,showOtherMonths: true
 	      		});
 	   	})
+	   	
+	   	
+	   	goList = function(thisPage) {
+			$("input:hidden[name=thisPage]").val(thisPage);
+			form.attr("action", goUrlList).submit();
+		}
 
     </script>
 </body>

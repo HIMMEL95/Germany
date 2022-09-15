@@ -47,14 +47,9 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 		return dao.delete(vo);
 	}
 
-	/* pagination 관련 */
 	@Override
-	public int getCnt() throws Exception {
-		return dao.count();
+	public int selectOneCount(CodeGroupVo vo) throws Exception {
+		return dao.selectOneCount(vo);
 	}
 
-	@Override
-	public List<CodeGroup> selectGroup(PagingVo vo) throws Exception {
-		return dao.selectGroup(vo);
-	}
 }

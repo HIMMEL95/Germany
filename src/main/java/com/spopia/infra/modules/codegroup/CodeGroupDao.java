@@ -39,13 +39,8 @@ public class CodeGroupDao {
 	public int delete(CodeGroupVo vo) {
 		return sqlSession.delete(namespace + ".delete", vo);
 	}
-
-	/* pagination 관련 */
-	public int count() {
-		return sqlSession.selectOne(namespace + ".getCnt");
-	}
 	
-	public List<CodeGroup> selectGroup(PagingVo vo) {
-		return sqlSession.selectList(namespace + ".countList", vo);
+	public int selectOneCount(CodeGroupVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
 } 

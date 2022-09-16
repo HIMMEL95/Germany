@@ -41,10 +41,8 @@ public class CodeGroupController {
 	@RequestMapping(value = "codeGroupForm")
 	public String codeGroupForm(@ModelAttribute("vo") CodeGroupVo vo, Model model, CodeGroup dto) throws Exception {
 		
-		System.out.println("test1 : " + vo.getCcgSeq());
 		CodeGroup item = service.selectOne(vo);
 		model.addAttribute("item", item);
-		System.out.println("test2 : " +  vo.getCcgSeq());
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}
 
@@ -66,11 +64,12 @@ public class CodeGroupController {
 	}
 	
 	@RequestMapping(value = "codeGroupUpdt")
-	public String codeGroupUpdt(CodeGroup dto) throws Exception {
-		System.out.println("test3 : " + dto.getCcgSeq());
-		int result = service.update(dto);
-		System.out.println("Controller Result : " + result);
-		return "redirect:/codeGroup/codeGroupList";
+	public String codeGroupUpdt(CodeGroup dto, CodeGroupVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		service.update(dto);
+		
+		vo.setCcgSeq(dto.getCcgSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/codeGroup/codeGroupForm";
 	}
 	
 	@RequestMapping(value = "codeGroupUele")

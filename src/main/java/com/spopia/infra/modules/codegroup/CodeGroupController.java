@@ -2,14 +2,12 @@ package com.spopia.infra.modules.codegroup;
 
 import java.util.List;
 
-import org.apache.logging.log4j.core.appender.rewrite.MapRewritePolicy.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "/codeGroup/")
@@ -17,6 +15,13 @@ public class CodeGroupController {
 	
 	@Autowired
 	CodeGroupServiceImpl service;
+	
+	public void setSearchAndPaging(CodeGroupVo vo) throws Exception {
+		/* vo.setShDate(vo.getShDate() == null ? 1 : vo.getShDate()); */
+		vo.setShDelNy(vo.getShDelNy() == null  ? 0 : vo.getShDelNy());
+		
+		vo.setParamsPaging(service.selectOneCount(vo));
+	}
 
 
 	@RequestMapping(value = "codeGroupList")
@@ -25,7 +30,7 @@ public class CodeGroupController {
 		System.out.println("vo.getShOption : " + vo.getShOption());
 		System.out.println("vo.getShValue : " + vo.getShValue());
 		
-		vo.setParamsPaging(service.selectOneCount(vo));
+		setSearchAndPaging(vo);
 		
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
@@ -34,15 +39,23 @@ public class CodeGroupController {
 	}
 	
 	@RequestMapping(value = "codeGroupForm")
-	public String codeGroupForm() throws Exception {
+	public String codeGroupForm(@ModelAttribute("vo") CodeGroupVo vo, Model model, CodeGroup dto) throws Exception {
+		
+		System.out.println("test1 : " + vo.getCcgSeq());
+		CodeGroup item = service.selectOne(vo);
+		model.addAttribute("item", item);
+		System.out.println("test2 : " +  vo.getCcgSeq());
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}
 
 	@RequestMapping(value = "codeGroupInst")
-	public String codeGroupInst(CodeGroup dto) throws Exception {
-		int result = service.insert(dto);
-		System.out.println("controller result: "+ result);
-		return "redirect:/codeGroup/codeGroupList";
+	public String codeGroupInst(CodeGroup dto, CodeGroupVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		service.insert(dto);
+
+		vo.setCcgSeq(dto.getCcgSeq());
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/codeGroup/codeGroupForm";
 	}
 	
 	@RequestMapping(value = "codeGroupView")
@@ -54,6 +67,7 @@ public class CodeGroupController {
 	
 	@RequestMapping(value = "codeGroupUpdt")
 	public String codeGroupUpdt(CodeGroup dto) throws Exception {
+		System.out.println("test3 : " + dto.getCcgSeq());
 		int result = service.update(dto);
 		System.out.println("Controller Result : " + result);
 		return "redirect:/codeGroup/codeGroupList";

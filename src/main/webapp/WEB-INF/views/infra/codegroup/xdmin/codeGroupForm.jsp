@@ -121,6 +121,9 @@
         <div class="top_space"></div>
         <div class="container">
             <form id="myForm" method="post">
+            	<!-- *Vo.jsp s -->
+				<%@include file="codeGroupVo.jsp"%>		<!-- #-> -->
+				<!-- *Vo.jsp e -->
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -224,7 +227,7 @@
                             <div class="col">
                                 <div class="input-control">
                                     <label for="ccgSeq">코드그룹 코드<span style="color: red;">*</span></label>
-                                    <input type="text" class="form-control" id="ccgSeq" name="ccgSeq" value="<c:out value="${vo.ccgSeq }"/>" placeholder="영문(대문자),숫자">
+                                    <input type="text" class="form-control" id="ccgSeq" value="<c:out value="${item.ccgSeq }"/>" placeholder="" readonly="readonly">
                                     <div class="msg" id="ccgSeq_msg" name="ccgSeq_msg" style="display: none;"></div>
                                 </div>
                             </div>
@@ -343,9 +346,9 @@
                         <!-- 리스트 -->
                         <div class="row align-items-center">
                             <div class="col-1">
-                                <a class="border-0 btn btn-sm bg-secondary shadow" roel="button" href="/codeGroup/codeGroupList">
+                                <button class="border-0 btn btn-sm bg-secondary shadow" id="btnList" type="button">
                                     <i class="fa-solid fa-bars" style="color: white;"></i>
-                                </a>
+                                </button>
                             </div>
                             <div class="col-3 offset-8" align="right">
                                 <button id="btnUel" value="Uel" class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
@@ -384,6 +387,11 @@
                 </div>
             </form>
         </div>
+        <form name="formVo" id="formVo" method="post">
+		<!-- *Vo.jsp s -->
+		<%@include file="codeGroupVo.jsp"%>		<!-- #-> -->
+		<!-- *Vo.jsp e -->
+		</form>
         <div style="height: 50px;"></div>
     </main>
 
@@ -437,13 +445,15 @@
         	document.getElementById('myForm').submit();
         };
         
+        var goUrlList = "/codeGroup/codeGroupList";
         var goUrlInst = "/codeGroup/codeGroupInst";
         var goUrlUpdt = "/codeGroup/codeGroupUpdt";
         var goUrlUel = "/codeGroup/codeGroupUele";
         var goUrlDel = "/codeGroup/codeGroupDele"
         
-        var seq = $("input[name=ccgSeq]");
+        var seq = $("input:hidden[name=ccgSeq]");
         var form = $("#myForm");
+        var formVo = $("form[name=formVo]");
         
         $("#btnSave").on("click", function() {
         	if (seq.val() == "0" || seq.val() == "") {
@@ -452,7 +462,11 @@
         		form.attr("action", goUrlUpdt).submit();
         	}
 		});
-		
+        
+        $("#btnList").on("click", function(){
+    		formVo.attr("action", goUrlList).submit();
+    	});        
+
 		$("#btnUel").on("click", function() {
 			DelValidation("#delBtn", goUrlUel, "선택하신 게시물을 삭제하시겠습니까?");
 		})

@@ -19,7 +19,10 @@ public class CodeGroupDao {
 	
 	public List<CodeGroup> selectList(CodeGroupVo vo){ return sqlSession.selectList(namespace + ".selectList", vo); }
 	public List<CodeGroup> selectList(){ return sqlSession.selectList(namespace + ".selectList", ""); }
-
+	public List<CodeGroup> selectList1() {
+		return sqlSession.selectList(namespace + ".selectList1", "");
+	}
+	
 	public int insert(CodeGroup dto) {
 		return sqlSession.insert(namespace + ".insert", dto);
 	}

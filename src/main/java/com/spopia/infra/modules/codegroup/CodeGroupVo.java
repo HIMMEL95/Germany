@@ -10,7 +10,7 @@ public class CodeGroupVo {
 	private String ccgSeq;
 	private String startDate;
 	private String endDate;
-	private String shDate;
+	private Integer shDate;
 	
 	// paging
 	private int thisPage = 1;									// 현재 페이지
@@ -74,10 +74,10 @@ public class CodeGroupVo {
 		
 	}
 	
-	public String getShDate() {
+	public Integer getShDate() {
 		return shDate;
 	}
-	public void setShDate(String shDate) {
+	public void setShDate(Integer shDate) {
 		this.shDate = shDate;
 	}
 	public String getStartDate() {

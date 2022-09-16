@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spopia.infra.modules.codegroup.CodeGroup;
 import com.spopia.infra.modules.codegroup.CodeGroupServiceImpl;
+import com.spopia.infra.modules.codegroup.CodeGroupVo;
 
 @Controller
 @RequestMapping(value = "/code/")
@@ -20,11 +21,19 @@ public class CodeController {
 	@Autowired
 	CodeGroupServiceImpl cgService;
 	
+	public void setSearchAndPaging(CodeVo vo) throws Exception {
+		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy() );
+		
+		vo.setParamsPaging(service.selectOneCount(vo));
+	}
+	
 	@RequestMapping(value = "codeList")
 	public String codeList(Model model, @ModelAttribute("vo") CodeVo vo) throws Exception {
 		
 		System.out.println("vo.getShOption() : " + vo.getShOption());
 		System.out.println("vo.getShValue() : " + vo.getShValue());
+		
+		setSearchAndPaging(vo);
 
 		List<Code> list = service.selectList(vo);
 		model.addAttribute("list", list);
@@ -33,10 +42,10 @@ public class CodeController {
 	}
 	
 	@RequestMapping(value = "codeForm")
-	public String codeForm(Model model) throws Exception {	
+	public String codeForm(Model model, @ModelAttribute("vo") CodeGroupVo vo) throws Exception {	
 		
-		List<CodeGroup> list1 = cgService.selectList();
-		model.addAttribute("list1", list1);
+		List<CodeGroup> list = cgService.selectList1();
+		model.addAttribute("list", list);
 		return "infra/code/xdmin/codeForm";
 	}
 	

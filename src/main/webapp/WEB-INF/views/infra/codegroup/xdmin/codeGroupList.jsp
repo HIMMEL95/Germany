@@ -129,6 +129,7 @@
                	<input type="hidden" name="mainkey">
                	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
                	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
+               	<input type="hidden" name="ccgSeq" value='<c:out value="${vo.ccgSeq }"></c:out>'>
                	<input type="hidden" name="checkboxSeqArray">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
@@ -275,7 +276,7 @@
                             </div>
                         </div>
                         <!-- 리스트 -->
-                        <span style="margin: 0; padding: 0; font-weight: 800;">Total : </span>
+                        <span style="margin: 0; padding: 0; font-weight: 800;">Total : ${vo.totalRows }</span>
                         <div class="card ps-3 pt-3 pe-3 shadow">
                             <table class="table text-center align-middle">
                                 <thead>
@@ -306,7 +307,7 @@
 			                                        </td>
 			                                        <td><c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/></td>
 			                                        <td>${list.ccgSeq}</td>
-			                                        <td><a href="/codeGroup/codeGroupView?ccgSeq=<c:out value="${list.ccgSeq }"/>">${list.ifcgName}</a></td>
+			                                        <td><a href="javascript:goForm(<c:out value="${list.ccgSeq }"/>)" class="text-decoration-none"><c:out value="${list.ifcgName }"/></a></td>
 			                                        <td>${list.ifcgNameEng}</td>
 			                                        <td>${list.count}</td>
 			                                        <td>${list.createdAt}</td>
@@ -356,9 +357,9 @@
                                     data-bs-target="#deleteModal">
                                     <i class="fa-regular fa-file-excel" style="color: white;"></i>
                                 </button>
-                                <a class="border-0 btn btn-sm shadow bg-primary" role="button" href="/codeGroup/codeGroupForm">
+                                <button class="border-0 btn btn-sm shadow bg-primary" id="btnForm" type="button">
                                     <i class="fa-regular fa-plus fa-1x" style="color: white;"></i>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -399,8 +400,9 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
   	<script type="text/javascript">	
+    	var goUrlForm = "/codeGroup/codeGroupForm";
     	var goUrlList = "/codeGroup/codeGroupList";
-    	var form = $("form[name=myForm]");
+    	var form = $("#myForm");
     	
     	$("#refresh").on("click", function() {
 			$(location).attr("href", goUrlList);
@@ -417,12 +419,23 @@
 	      			,showMonthAfterYear: true
 	      			,showOtherMonths: true
 	      		});
-	   	})
-	   	
-	   	
+	   	});
+
 	   	goList = function(thisPage) {
 			$("input:hidden[name=thisPage]").val(thisPage);
 			form.attr("action", goUrlList).submit();
+		};
+		
+		var seq = $("input:hidden[name=ccgSeq]");
+
+		$('#btnForm').on("click", function() {
+			goForm(0);                
+		});
+
+		goForm = function(keyValue) {
+	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+	    	seq.val(keyValue);
+			form.attr("action", goUrlForm).submit();
 		}
 
     </script>

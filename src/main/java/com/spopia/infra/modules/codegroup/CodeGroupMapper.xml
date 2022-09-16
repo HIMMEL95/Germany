@@ -8,19 +8,9 @@
 
     <resultMap id="resultMapObj" type="com.spopia.infra.modules.codegroup.CodeGroup"></resultMap>
 	
-	<!-- <sql id ='selectCommon'>
-		FROM CCG cg
-		WHERE 1=1
-			<if test="groupName != null and !groupName.eqauls('')">AND groupName = #{shValue}</if>
-			<choose>
-				<when test="shOption == 1">AND groupName LIKE CONCAT('%', ${shValue},'%')</when>
-				<when test="shOption == 2">AND seq = #{shValue}</when>
-			</choose>
-	</sql> -->
-	
 	<sql id ="selectCommon">
-	FROM codeGroup a
-	WHERE 1=1
+		FROM codeGroup a
+		WHERE 1=1
 		<if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if>
 		<choose>
 			<when test="shOption == 1">AND ccgSeq = #{shValue}</when>
@@ -53,6 +43,32 @@
 			ORDER BY a.ccgSeq DESC
 			<include refid="Base.orderByLimitForMysql" />
 		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectList1" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+			select
+				a.ccgSeq
+				,a.ifcgAnother
+				,a.ifcgName
+				,a.ifcgNameEng
+				,a.ifcgUseNy
+				,a.ifcgOrder
+				,a.ifcgExplanation
+				,a.ifcgDelNy
+				,a.ifcgReferencev1
+				,a.ifcgReferencev2
+				,a.ifcgReferencev3
+				,a.ifcgReferenceI1
+				,a.ifcgReferenceI2
+				,a.ifcgReferenceI3
+				,a.createdAt
+				,a.modifiedAt
+			    ,(select count(c.codeGroup_ccgSeq) from code c where 1=1 and c.codeGroup_ccgSeq = a.ccgSeq) as count
+			<include refid="selectCommon" />
+			ORDER BY a.ccgSeq DESC
+			<include refid="Base.orderByLimitForMysql" />
+		)aa
 	</select>
 	
 	<select id="selectOneCount" resultType="Integer">

@@ -45,4 +45,9 @@ public class CodeServiceImpl implements CodeService{
 	public int delete(CodeVo vo) throws Exception {
 		return dao.delete(vo);
 	}
+
+	@Override
+	public int selectOneCount(CodeVo vo) throws Exception {
+		return dao.selectOneCount(vo);
+	}
 }

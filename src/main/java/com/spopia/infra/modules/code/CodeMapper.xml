@@ -7,40 +7,50 @@
 <mapper namespace="com.spopia.infra.modules.code.CodeMapper">
 
     <resultMap id="resultMapObj" type="com.spopia.infra.modules.code.Code"></resultMap>
+    
+    <sql id ="selectCommon">
+		FROM code c
+		inner join codeGroup cg on cg.ccgSeq = c.codeGroup_ccgSeq
+		WHERE 1=1
+		<if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if>
+		<choose>
+			<when test="shOption == 1">AND ccSeq = #{shValue}</when>
+			<when test="shOption == 2">AND ifcgName LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND ifcgNameEng LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
+	</sql>
 	
 	<select id="selectList" resultMap="resultMapObj">
-		select 
-			c.ccSeq
-			,c.ifccAnother
-			,c.ifccName
-			,c.ifccNameEng
-			,c.ifccUseNy
-			,c.ifccOrder
-			,c.ifccExplanation
-			,c.ifccDelNy
-			,c.ifccReferencev1
-			,c.ifccReferencev2
-			,c.ifccReferencev3
-			,c.ifccReferenceI1
-			,c.ifccReferenceI2
-			,c.ifccReferenceI3
-			,c.createdAt
-			,c.modifiedAt
-			,c.codeGroup_ccgSeq
-		    ,cg.ccgSeq as ccgSeq
-		    ,cg.ifcgName as ifcgName
-		from 
-			code c
-			inner join codeGroup cg on cg.ccgSeq = c.codeGroup_ccgSeq
-		where 1=1
-			<if test="shDelNy != null and !shDelNy.equals('')">AND ifccDelNy = #{shDelNy}</if>
-			<choose>
-				<when test="shOption == 1">AND ccSeq = #{shValue}</when>
-				<when test="shOption == 2">AND ifccName LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 3">AND ccgSeq = #{shValue}</when>
-				<when test="shOption == 4">AND ifcgName LIKE CONCAT('%',#{shValue},'%')</when>
-				<otherwise></otherwise>
-			</choose>
+		<include refid="Base.selectListUpperForMysql"/>
+			select 
+				c.ccSeq
+				,c.ifccAnother
+				,c.ifccName
+				,c.ifccNameEng
+				,c.ifccUseNy
+				,c.ifccOrder
+				,c.ifccExplanation
+				,c.ifccDelNy
+				,c.ifccReferencev1
+				,c.ifccReferencev2
+				,c.ifccReferencev3
+				,c.ifccReferenceI1
+				,c.ifccReferenceI2
+				,c.ifccReferenceI3
+				,c.createdAt
+				,c.modifiedAt
+				,c.codeGroup_ccgSeq
+			    ,cg.ccgSeq as ccgSeq
+			    ,cg.ifcgName as ifcgName
+		    <include refid="selectCommon"/>
+			ORDER BY c.ccSeq DESC
+			<include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">

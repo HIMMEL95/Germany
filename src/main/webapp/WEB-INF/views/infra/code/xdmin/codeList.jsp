@@ -125,7 +125,11 @@
     <main>
         <div style="height: 150px;"></div>
         <div class="container">
-            <form method="post" id="myForm">
+            <form method="post" id="myForm" name="myForm">
+            	<input type="hidden" name="mainkey">
+             	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
+             	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
+             	<input type="hidden" name="checkboxSeqArray">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -273,7 +277,7 @@
                             </div>
                         </div>
                         <!-- 리스트 -->
-                        <span style="margin: 0; padding: 0; font-weight: 800;">Total :</span>
+                        <span style="margin: 0; padding: 0; font-weight: 800;">Total : ${vo.totalRows }</span>
                         <div class="card ps-3 pt-3 pe-3 shadow">
                             <table class="table text-center align-middle">
                                 <thead>
@@ -306,8 +310,8 @@
 			                                        <td onclick="event.cancelBubble=true">
 			                                        	<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
 			                                        </td>
+			                                        <td><c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/></td>
 			                                        <td>${list.ccSeq}</td>
-			                                        <td>${list.ccgSeq}</td>
 			                                        <td>${list.ifcgName}</td>
 			                                        <td></td>
 			                                        <td>${list.ifccAnother }</td>
@@ -325,23 +329,7 @@
                                 	</c:choose>
                                 </tbody>
                             </table>
-                            <nav aria-label="Page navigation">
-                                <ul class=" pagination pagination-sm col-3 offset-5">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            <%@include file="../../common/xdmin/includeV1/pagination.jsp" %>
                         </div>
                         <div class="row align-items-center">
                             <div class="col-2">
@@ -422,7 +410,7 @@
         crossorigin="anonymous"></script>
     <script type="text/javascript">
 	    var goUrlList = "/code/codeList";
-		var form = $("myForm");
+	    var form = $("form[name=myForm]");
 		
 		$("#refresh").on("click", function() {
 			$(location).attr("href", goUrlList);
@@ -440,6 +428,11 @@
 	      			,showOtherMonths: true
 	      		});
 	   	})
+	   	
+	   	goList = function(thisPage) {
+			$("input:hidden[name=thisPage]").val(thisPage);
+			form.attr("action", goUrlList).submit();			
+		}
    </script>
 </body>
 </html>

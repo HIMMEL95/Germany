@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CodeGroupServiceImpl implements CodeGroupService {
@@ -15,6 +14,11 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 	@Override
 	public List<CodeGroup> selectList(CodeGroupVo vo) throws Exception {
 		return dao.selectList(vo);
+	}
+
+	@Override
+	public List<CodeGroup> selectList1() throws Exception {
+		return dao.selectList1();
 	}
 
 	@Override

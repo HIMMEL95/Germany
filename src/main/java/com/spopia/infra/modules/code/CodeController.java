@@ -7,10 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spopia.infra.modules.codegroup.CodeGroup;
 import com.spopia.infra.modules.codegroup.CodeGroupServiceImpl;
-import com.spopia.infra.modules.codegroup.CodeGroupVo;
 
 @Controller
 @RequestMapping(value = "/code/")
@@ -42,7 +42,10 @@ public class CodeController {
 	}
 	
 	@RequestMapping(value = "codeForm")
-	public String codeForm(Model model, @ModelAttribute("vo") CodeGroupVo vo) throws Exception {	
+	public String codeForm(Model model, @ModelAttribute("vo") CodeVo vo) throws Exception {	
+		
+		Code item = service.selectOne(vo);
+		model.addAttribute("item", item);
 		
 		List<CodeGroup> list = cgService.selectList1();
 		model.addAttribute("list", list);
@@ -50,10 +53,12 @@ public class CodeController {
 	}
 	
 	@RequestMapping(value = "codeInst")
-	public String codeInst(Code dto) throws Exception {
-		int result = service.insert(dto);
-		System.out.println("controller result: "+ result);
-		return "redirect:/code/codeList";
+	public String codeInst(Code dto, CodeVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		service.insert(dto);
+		
+		vo.setCcSeq(dto.getCcSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/code/codeForm";
 	}
 
 	@RequestMapping(value = "codeView")
@@ -61,15 +66,18 @@ public class CodeController {
 		Code item = service.selectOne(vo);
 		model.addAttribute("item", item);
 		
-		List<CodeGroup> list1 = cgService.selectList();
+		List<CodeGroup> list1 = cgService.selectList1();
 		model.addAttribute("list1", list1);
 		return "infra/code/xdmin/codeForm";
 	}
 	
 	@RequestMapping(value = "codeUpdt")
-	public String codeUpdt(Code dto) throws Exception {
+	public String codeUpdt(Code dto, CodeVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		service.update(dto);
-		return "redirect:/code/codeList";
+		
+		vo.setCcSeq(dto.getCcSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/code/codeForm";
 	}
 	
 	@RequestMapping(value = "codeUele")

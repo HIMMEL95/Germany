@@ -74,15 +74,13 @@ public class CodeGroupController {
 	
 	@RequestMapping(value = "codeGroupUele")
 	public String codeGroupUele(CodeGroup dto) throws Exception {
-		int result = service.uelete(dto);
-		System.out.println("Controller Result : " + result);
+		service.uelete(dto);
 		return "redirect:/codeGroup/codeGroupList";
 	}
 	
 	@RequestMapping(value = "codeGroupDele")
 	public String codeGroupDele(CodeGroupVo vo) throws Exception {
-		int result = service.delete(vo);
-		System.out.println("Controller Result : " + result);
+		service.delete(vo);
 		return "redirect:/codeGroup/codeGroupList";
 	}
 	

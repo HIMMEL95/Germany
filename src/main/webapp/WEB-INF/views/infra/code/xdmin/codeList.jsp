@@ -129,6 +129,7 @@
             	<input type="hidden" name="mainkey">
              	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
              	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
+             	<input type="hidden" name="ccSeq" value='<c:out value="${vo.ccSeq }"></c:out>'>
              	<input type="hidden" name="checkboxSeqArray">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
@@ -311,9 +312,9 @@
 			                                        	<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
 			                                        </td>
 			                                        <td><c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/></td>
-			                                        <td>${list.ccSeq}</td>
+			                                        <td>${list.ccgSeq}</td>
 			                                        <td>${list.ifcgName}</td>
-			                                        <td></td>
+			                                        <td>${list.ccSeq }</td>
 			                                        <td>${list.ifccAnother }</td>
 			                                        <td>
 			                                            <a href="/code/codeView?ccSeq=<c:out value="${list.ccSeq }"/>">${list.ifccName}</a>
@@ -409,6 +410,7 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script type="text/javascript">
+    	var goUrlForm = "/code/codeForm";
 	    var goUrlList = "/code/codeList";
 	    var form = $("form[name=myForm]");
 		
@@ -432,6 +434,17 @@
 	   	goList = function(thisPage) {
 			$("input:hidden[name=thisPage]").val(thisPage);
 			form.attr("action", goUrlList).submit();			
+		}
+		
+		var seq = $("input:hidden[name=ccSeq]");
+		
+		$('#btnForm').on("click", function() {
+			goForm(0);
+		})
+		
+		goForm = function() {
+			seq.val(keyValue);
+			form.attr("action", goUrlForm).submit();
 		}
    </script>
 </body>

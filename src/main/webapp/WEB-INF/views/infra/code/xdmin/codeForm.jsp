@@ -121,6 +121,9 @@
         <div class="container">
             <form method="post" id="myForm">
                 <div class="row g-4">
+	                <!-- *Vo.jsp s -->
+					<%@include file="codeVo.jsp"%>		<!-- #-> -->
+					<!-- *Vo.jsp e -->
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
                         <!-- Advanced filter responsive toggler START -->
@@ -321,9 +324,9 @@
                         <!-- 리스트 -->
                         <div class="row align-items-center">
                             <div class="col-1">
-                                <a class="border-0 btn btn-sm bg-secondary shadow" roel="button" href="/code/codeList">
+                                <button class="border-0 btn btn-sm bg-secondary shadow" type="button" id="btnList">
                                     <i class="fa-solid fa-bars" style="color: white;"></i>
-                                </a>
+                                </button>
                             </div>
                             <div class="col-3 offset-8" align="right">
                                 <button id="btnUel" value="Uel" class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
@@ -362,6 +365,11 @@
                 </div>
             </form>
         </div>
+        <form name="formVo" id="formVo" method="post">
+			<!-- *Vo.jsp s -->
+			<%@include file="codeVo.jsp"%>		<!-- #-> -->
+			<!-- *Vo.jsp e -->
+		</form>
         <div style="height: 50px;">
         </div>
     </main>
@@ -410,13 +418,15 @@
 	    	document.getElementById('myForm').submit();
 	    };
 	    
+	    var goUrlList = "/code/codeList";
 	    var goUrlInst = "/code/codeInst";
         var goUrlUpdt = "/code/codeUpdt";
         var goUrlUel = "/code/codeUele";
         var goUrlDel = "/code/codeDele";
         
-        var seq = $("input[name=ccSeq]");
+        var seq = $("input:hidden[name=ccSeq]");
         var form = $("#myForm");
+        var formVo = $("form[name=formVo]");
         
         $("#btnSave").on("click", function() {
         	if (seq.val() == "0" || seq.val() == "") {
@@ -424,6 +434,10 @@
         	} else {
         		form.attr("action", goUrlUpdt).submit();
         	}
+		});
+        
+        $("#btnList").on("click", function() {
+			formVo.attr("action", goUrlList).submit();
 		});
 		
 		$("#btnUel").on("click", function() {

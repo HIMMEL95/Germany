@@ -78,6 +78,7 @@
 			,ifccReferenceI2
 			,ifccReferenceI3
 			,codeGroup_ccgSeq
+			,createdAt
 		)
 		VALUES (
 			#{ifccName}
@@ -94,6 +95,7 @@
 			,#{referenceI2}
 			,#{referenceI3}
 			,#{ccgSeq}
+			,now()
 		)
 		
 		<selectKey resultType="String" keyProperty="ccSeq" order="AFTER">
@@ -117,6 +119,7 @@
 			,ifccReferenceI1 = #{referenceI1}
 			,ifccReferenceI2 = #{referenceI2}
 			,ifccReferenceI3 = #{referenceI3}
+			,modifiedAt = now()
 		WHERE 1=1
 			AND ccSeq = #{ccSeq}
 	</update>

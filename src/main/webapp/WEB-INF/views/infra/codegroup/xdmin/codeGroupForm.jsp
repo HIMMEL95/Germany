@@ -446,7 +446,7 @@
         };
         
         var goUrlList = "/codeGroup/codeGroupList";
-        var goUrlInst = "/codeGroup/codeGroupInst";
+        var goUrlInst = "/codeGroup/codeGroupInst";m
         var goUrlUpdt = "/codeGroup/codeGroupUpdt";
         var goUrlUel = "/codeGroup/codeGroupUele";
         var goUrlDel = "/codeGroup/codeGroupDele"

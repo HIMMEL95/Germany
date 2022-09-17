@@ -101,6 +101,7 @@
 			,ifcgReferenceI1
 			,ifcgReferenceI2
 			,ifcgReferenceI3
+			,createdAt
 		)
 		VALUES (
 			#{ifcgName}
@@ -116,6 +117,7 @@
 			,#{referenceI1}
 			,#{referenceI2}
 			,#{referenceI3}
+			,now()
 		)
 		
 		<selectKey resultType="String" keyProperty="ccgSeq" order="AFTER">
@@ -139,6 +141,7 @@
 			,ifcgReferenceI1 = #{referenceI1}
 			,ifcgReferenceI2 = #{referenceI2}
 			,ifcgReferenceI3 = #{referenceI3}
+			,modifiedAt = now()
 		WHERE 1=1
 			AND ccgSeq = #{ccgSeq}
 	</update>

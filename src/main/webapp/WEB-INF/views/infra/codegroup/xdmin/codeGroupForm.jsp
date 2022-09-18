@@ -348,7 +348,7 @@
                             <div class="col-1">
                                 <button class="border-0 btn btn-sm bg-secondary shadow" id="btnList" type="button">
                                     <i class="fa-solid fa-bars" style="color: white;"></i>
-                                </button>
+                                </button> 
                             </div>
                             <div class="col-3 offset-8" align="right">
                                 <button id="btnUel" value="Uel" class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"

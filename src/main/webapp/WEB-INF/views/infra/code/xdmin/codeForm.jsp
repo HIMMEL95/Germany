@@ -407,7 +407,7 @@
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-	    validation = function() {
+	    validation = function() { 
 	    	if(!checkOnlyKorEngNum('cg_code', 2, 0, "한글, 영문(대소문자), 숫자만 입력 가능합니다.", "cg_code_msg")) return false;         
 	    	if(!checkOnlyEngNum('seqAnother', 2, 1, "영문(대소문자), 숫자만 입력 가능합니다.", "seqAnother_msg")) return false;         
 	    	if(!checkOnlyKorNum('groupName', 2, 0, "한글, 숫자만 입력 가능합니다.", "groupName_msg")) return false;      

@@ -56,6 +56,19 @@ public class CodeController {
 	public String codeInst(Code dto, CodeVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		service.insert(dto);
 		
+		/*
+		 * LocalDateTime now = LocalDateTime.now();
+		 * 
+		 * String createdAt =
+		 * now.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH:mm:ss")); String
+		 * modifiedAt =
+		 * now.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH:mm:ss"));
+		 * dto.setCreatedAt(createdAt); dto.setModifiedAt(modifiedAt);
+		 * 
+		 * System.out.println("createdAt : " + createdAt);
+		 * System.out.println("modifiedAt : " + modifiedAt);
+		 */
+		
 		vo.setCcSeq(dto.getCcSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/code/codeForm";

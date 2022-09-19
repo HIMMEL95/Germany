@@ -102,6 +102,7 @@
 			,ifcgReferenceI2
 			,ifcgReferenceI3
 			,createdAt
+			,modifiedAt
 		)
 		VALUES (
 			#{ifcgName}
@@ -110,13 +111,14 @@
 			,#{ifcgUseNy}
 			,#{ifcgOrder}
 			,#{ifcgExplanation}
-			,#{ifcgDelNy}
+			,0
 			,#{referenceV1}
 			,#{referenceV2}
 			,#{referenceV3}
 			,#{referenceI1}
 			,#{referenceI2}
 			,#{referenceI3}
+			,now()
 			,now()
 		)
 		
@@ -134,7 +136,6 @@
 			,ifcgUseNy = #{ifcgUseNy}
 			,ifcgOrder = #{ifcgOrder}
 			,ifcgExplanation = #{ifcgExplanation}
-			,ifcgDelNy = #{ifcgDelNy}
 			,ifcgReferencev1 = #{referenceV1}
 			,ifcgReferencev2 = #{referenceV2}
 			,ifcgReferencev3 = #{referenceV3}
@@ -150,6 +151,7 @@
 		UPDATE codeGroup
 		SET
 			ifcgDelNy = 1
+			,modifiedAt = now()
 		where 1=1
 			and ccgSeq = #{ccgSeq}
 	</update>

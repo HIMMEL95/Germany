@@ -22,7 +22,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<title>Home</title>
+	<title>CodeGroupList</title>
 </head>
 <body>
 	 <header class="navbar-light fixed-top header-static bg-mode align-items-center">
@@ -301,13 +301,13 @@
                                 		</c:when>
                                 		<c:otherwise>
 	                                		<c:forEach items="${list}" var="list" varStatus="status">
-												<tr>
+												<tr onclick="goForm(<c:out value="${list.ccgSeq }"/>)" style="cursor: pointer;">
 			                                        <td onclick="event.cancelBubble=true">
 			                                        	<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
 			                                        </td>
 			                                        <td><c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/></td>
 			                                        <td>${list.ccgSeq}</td>
-			                                        <td><a href="javascript:goForm(<c:out value="${list.ccgSeq }"/>)" class="text-decoration-none"><c:out value="${list.ifcgName }"/></a></td>
+			                                        <td><c:out value="${list.ifcgName }"/></a></td>
 			                                        <td>${list.ifcgNameEng}</td>
 			                                        <td>${list.count}</td>
 			                                        <td>${list.createdAt}</td>

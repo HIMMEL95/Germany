@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Article List</title>
+    <title>CodeGroup</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="/resources/css/xdmin/cc.css" />
@@ -226,14 +226,14 @@
                         <div class="row">
                             <div class="col">
                                 <div class="input-control">
-                                    <label for="ccgSeq">코드그룹 코드<span style="color: red;">*</span></label>
+                                    <label for="ccgSeq">코드그룹 코드</label>
                                     <input type="text" class="form-control" id="ccgSeq" value="<c:out value="${item.ccgSeq }"/>" placeholder="" readonly="readonly">
                                     <div class="msg" id="ccgSeq_msg" name="ccgSeq_msg" style="display: none;"></div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="input-control">
-                                    <label for="ifcgAnother">코드그룹 코드 (Another)<span style="color: red;">*</span></label>
+                                    <label for="ifcgAnother">코드그룹 코드 (Another)</label>
                                     <input type="text" class="form-control" id="ifcgAnother" name="ifcgAnother" value="<c:out value="${item.ifcgAnother }"/>" placeholder="영문(대문자),숫자">
                                     <div class="msg" id="ifcgAnother_msg" name="ifcgAnother_msg" style="display: none;"></div>
                                 </div>
@@ -249,7 +249,7 @@
                             </div>
                             <div class="col">
                                 <div class="input-control">
-                                    <label for="ifcgNameEng">코드그룹 이름 (영문)<span style="color: red;">*</span></label>
+                                    <label for="ifcgNameEng">코드그룹 이름 (영문)</label>
                                     <input type="text" class="form-control" id="ifcgNameEng" name="ifcgNameEng" value="<c:out value="${item.ifcgNameEng }"/>" placeholder="영문(대소문자),숫자">
                                     <div class="msg" id="ifcgNameEng_msg" name="ifcgNameEng_msg" style="display: none;"></div>
                                 </div>
@@ -275,14 +275,14 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-6">
                                 <div class="input-control">
-                                    <label for="ifcgExplanation">설명<span style="color: red;">*</span></label>
+                                    <label for="ifcgExplanation">설명</label>
                                     <textarea class="form-control" id="ifcgExplanation" name="ifcgExplanation" value="<c:out value="${item.ifcgExplanation }"/>" placeholder=""></textarea>
                                     <div class="msg" id="ifcgExplanation_msg" name="ifcgExplanation_msg" style="display: none;"></div>
                                 </div>
                             </div>
-                            <div class="col">
+                            <%-- <div class="col">
                                 <div class="input-control">
                                     <label for="ifcgDelNy">삭제여부<span style="color: red;">*</span></label>
                                     <select class="form-select" id="ifcgDelNy" name="ifcgDelNy">
@@ -291,7 +291,7 @@
                                     </select>
                                     <div class="msg" id="ifcgDelNy_msg" name="ifcgDelNy_msg" style="display: none;"></div>
                                 </div>
-                            </div>
+                            </div> --%>
                         </div>
                         <div class="row">
                             <div class="col">
@@ -429,7 +429,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         validation = function() {
-        	if(!checkOnlyKorEngNum('ccgSeq', 2, 0, "숫자만 입력 가능합니다.", "ccgSeq_msg")) return false;         
         	if(!checkOnlyEngNum('ifcgAnother', 2, 1, "영문(대소문자), 숫자만 입력 가능합니다.", "ifcgAnother_msg")) return false;         
         	if(!checkOnlyKorNum('ifcgName', 2, 0, "한글, 숫자만 입력 가능합니다.", "ifcgName_msg")) return false;      
         	if(!checkOnlyEngNum('ifcgNameEng', 2, 1, "영문(대소문자), 숫자만 입력 가능합니다.", "ifcgNameEng_msg")) return false; 
@@ -446,7 +445,7 @@
         };
         
         var goUrlList = "/codeGroup/codeGroupList";
-        var goUrlInst = "/codeGroup/codeGroupInst";m
+        var goUrlInst = "/codeGroup/codeGroupInst";
         var goUrlUpdt = "/codeGroup/codeGroupUpdt";
         var goUrlUel = "/codeGroup/codeGroupUele";
         var goUrlDel = "/codeGroup/codeGroupDele"
@@ -457,6 +456,7 @@
         
         $("#btnSave").on("click", function() {
         	if (seq.val() == "0" || seq.val() == "") {
+        		if (validation() == false) return false;
         		form.attr("action", goUrlInst).submit();
         	} else {
         		form.attr("action", goUrlUpdt).submit();

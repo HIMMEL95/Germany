@@ -93,7 +93,10 @@
     <main>
         <div style="height: 100px;"></div>
         <div class="container">
-            <form method="post" action="/member/memberModForm">
+            <form method="post" id="myForm" name="myForm">
+            	<!-- *Vo.jsp s -->
+				<%@include file="memberVo.jsp"%>		<!-- #-> -->
+				<!-- *Vo.jsp e -->
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -117,13 +120,13 @@
                 
                                     <div class="offcanvas-body d-block px-2 px-lg-0">
                                         <div class="card overflow-hidden">
-                                            <img src="../../resources/images/mountains.png" class="card-img-top" alt="background"
+                                            <img src="/resources/images/mountains.png" class="card-img-top" alt="background"
                                                 style="height: 50px; background-position: center; background-size: cover; background-repeat: no-repeat;">
                                             <div class="card-body pt-0">
                                                 <div class="text-center">
                                                     <div class="avatar avatar-lg mt-n5 mb-3">
                                                         <a href="#"><img class="avatar-img rounded border border-white border-3"
-                                                                src="../../resources/images/diano.jpg" style="width: 50px;" alt=""></a>
+                                                                src="/resources/images/diano.jpg" style="width: 50px;" alt=""></a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
                                                         <span class="mb-0"><a href="#">이하늘</a></span>
@@ -225,9 +228,8 @@
                                 <label for="gender" class="form-label fw-bold">성별</label>
                                 <select class="form-select form-select-lg fs-6 bg-white" id="gender" name="gender" value="<c:out value="${item.gender }"/>"
                                     aria-label=".form-select-lg example" disabled readonly>
-                                    <option value="">선택</option>
-                                    <option value="5" selected>남성</option>
-                                    <option value="6">여성</option>
+                                    <option value="5" <c:if test="${item.gender eq 5 }">selected</c:if>>남성</option>
+                                    <option value="6" <c:if test="${item.gender eq 6 }">selected</c:if>>여성</option>
                                 </select>
                             </div>
                         </div>
@@ -272,18 +274,22 @@
                         </div>
                         <div class="row">
                             <div class="col-2">
-                                <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="/member/memberList"
-                                    role="button">뒤로</a>
+                                <button class="btn btn-primary text-white fw-bold btn-sm shadow" id="btnList" type="button">뒤로</button>
                             </div>
                             <div class="col-2 offset-8" align="right">
-                                <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="/member/memberModForm?seq=<c:out value="${item.seq }"/>"
-                                    role="button">수정</a>
+                                <button class="btn btn-primary text-white fw-bold btn-sm shadow" id="btnMod" href="/member/memberModForm?seq=<c:out value="${item.seq }"/>"
+                                    type="button">수정</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
+        <form name="formVo" id="formVo" method="post">
+		<!-- *Vo.jsp s -->
+		<%@include file="memberVo.jsp"%>		<!-- #-> -->
+		<!-- *Vo.jsp e -->
+		</form>
         <div style="height: 50px;">
         </div>
     </main>
@@ -305,7 +311,7 @@
                 </ul>
                 <div class="footer_copy">
                     <a id="fot.naver" target="_blank" href="https://www.navercorp.com">
-                        <img src="../../resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
+                        <img src="/resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
                     </a>
                     <span class="text">Copyright</span>
                     <span class="corp">© SPOPIA Corp.</span>
@@ -319,6 +325,23 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    	
+    	var goUrlList = "/member/memberList";
+    	var goUrlMod = "/member/memberModForm";
+    	
+    	var form = $("form[name=myForm]");
+    	var formVo = $("form[name=formVo]");
+    	
+    	$("#btnList").on("click", function() {
+			formVo.attr("action", goUrlList).submit();
+		})
+		
+		$("#btnMod").on("click", function() {
+			form.attr("action", goUrlMod).submit();
+		})
+    </script>
 </body>
 
 </html>

@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Member {
 	
-	private Integer seq;
+	private String seq;
 	private String name;
 	private String id;
 	private String email;
@@ -36,10 +36,10 @@ public class Member {
 	public void setTeam(Integer team) {
 		this.team = team;
 	}
-	public Integer getSeq() {
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(Integer seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
 	}
 	public String getName() {

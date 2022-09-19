@@ -10,7 +10,7 @@
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Home</title>
+	<title>Member List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="/resources/css/xdmin/memberList.css" />
@@ -25,7 +25,7 @@
             <div class="container px-3 px-xl-5 pt-1">
                 <!-- Logo START -->
                 <a class="navbar-brand" href="/sportMain">
-                    <img class="light-mode-item navbar-brand-item" src="../../resources/images/SPOPIA_white.png" alt="logo"
+                    <img class="light-mode-item navbar-brand-item" src="/resources/images/SPOPIA_white.png" alt="logo"
                         style="width: 90px;">
                 </a>
                 <!-- Profile START -->
@@ -34,7 +34,7 @@
                         <li class="me-2">
                             <a class="p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
                                 data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img class="avatar-img rounded-circle" src="../../resources/images/diano.jpg" alt="avatar"
+                                <img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar"
                                     style="width: 30px;">
                             </a>
                             <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
@@ -44,7 +44,7 @@
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
                                         <div class="avatar ps-1 pt-2">
-                                            <img class="avatar-img rounded-circle shadow" src="../../resources/images/diano.jpg"
+                                            <img class="avatar-img rounded-circle shadow" src="/resources/images/diano.jpg"
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
@@ -204,7 +204,7 @@
                         <div class="row">
                             <div class="col-12 ">
                                 <div class="card text-white position-relative shadow-lg">
-                                    <img src="../../resources/images/back.jpg" class="card-img" style="height: 200px;"
+                                    <img src="/resources/images/back.jpg" class="card-img" style="height: 200px;"
                                         alt="...">
                                     <div class="card-img-overlay text-center p-4 position-absoulte top-50 start-50 translate-middle">
                                         <span class="card-title align-middle fw-bold fs-3">회원 관리</span>
@@ -230,10 +230,10 @@
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control datepicker" id="date_st" name="startDate" placeholder="2022-01-01">
+                                    <input type="text" class="form-control datepicker" id="startDate" name="startDate" value="<c:out value="${vo.startDate }"/>" placeholder="2022-01-01">
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control datepicker" id="date_end" name="endDate" placeholder="2022-12-31">
+                                    <input type="text" class="form-control datepicker" id="endDate" name="endDate" value="<c:out value="${vo.endDate }"/>" placeholder="2022-12-31">
                                 </div>
                             </div>
                             <div class="row align-items-center">
@@ -249,14 +249,17 @@
                                     <input type="text" class="form-control" name="shValue" id="validationCustom01" value="<c:out value="${vo.shValue }"/>">
                                 </div>
                                 <div class="col-2">
-                                    <button class="btn btn-primary fw-bold btn-sm shadow" type="submit">검색</button>
+                                    <button class="btn btn-warning fw-bold btn-sm shadow" type="submit">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </button>
+                                    <button id="refresh" class="btn btn-danger fw-bold btn-sm shadow" type="button">
+                                        <i class="fa-solid fa-arrow-rotate-right"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                         <!-- 리스트 -->
-                        <div style="margin: 0; padding: 0; font-weight: 800;">
-                        	<span>Total : ${vo.totalRows }</span>
-                       	</div>
+                        <div style="margin: 0; padding: 0; font-weight: 800;">Total : ${vo.totalRows }</div>
                         <div class="card ps-3 pt-3 pe-3 shadow">
                             <table class="table text-center align-middle">
                                 <thead>
@@ -284,11 +287,11 @@
                                 		</c:when>
                                 		<c:otherwise>
 	                                		<c:forEach items="${list}" var="list" varStatus="status">
-												<tr  onclick="goForm(<c:out value="${list.seq }"/>)" style="cursor: pointer;">
-			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
-			                                                id="flexCheckDefault">
+												<tr onclick="goForm(<c:out value="${list.seq }"/>)" style="cursor: pointer;">
+			                                        <td onclick="event.cancelBubble=true">
+			                                        	<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
 			                                        </td>
-			                                        <td><c:out value="${list.seq }"/></td>
+			                                        <td><c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/></td>
 			                                        <td>${list.user_div }</td>
 			                                        <td>${list.name }</td>
 			                                        <td>${list.gender }</td>
@@ -387,7 +390,9 @@
        		});
     	});
     	
-    	var seq = $("input:hidden[name=ccgSeq]");
+    	var goUrlList = "/member/memberList";
+    	var goUrlForm = "/member/memberXdminView";
+    	var seq = $("input:hidden[name=seq]");
     	var form = $("#myForm");
     	
     	goForm = function(keyValue) {
@@ -395,6 +400,15 @@
 	    	seq.val(keyValue);
 			form.attr("action", goUrlForm).submit();
 		}
+    	
+    	goList = function(thisPage) {
+			$("input:hidden[name=thisPage]").val(thisPage);
+			form.attr("action", goUrlList).submit();
+		};
+    	
+    	$("#refresh").on("click", function() {
+			$(location).attr("href", goUrlList);
+		});
     </script>
 </body>
 </html>

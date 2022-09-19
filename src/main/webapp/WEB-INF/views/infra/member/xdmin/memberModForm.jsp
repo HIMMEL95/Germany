@@ -93,7 +93,10 @@
     <main>
         <div style="height: 100px;"></div>
         <div class="container">
-            <form method="post" action="/member/memberUpdt?seq=<c:out value="${item.seq }"/>">
+            <form method="post" id="myForm" name="myForm">
+            	<!-- *Vo.jsp s -->
+				<%@include file="memberVo.jsp"%>		<!-- #-> -->
+				<!-- *Vo.jsp e -->
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -117,13 +120,13 @@
                 
                                     <div class="offcanvas-body d-block px-2 px-lg-0">
                                         <div class="card overflow-hidden">
-                                            <img src="../../resources/images/mountains.png" class="card-img-top" alt="background"
+                                            <img src="/resources/images/mountains.png" class="card-img-top" alt="background"
                                                 style="height: 50px; background-position: center; background-size: cover; background-repeat: no-repeat;">
                                             <div class="card-body pt-0">
                                                 <div class="text-center">
                                                     <div class="avatar avatar-lg mt-n5 mb-3">
                                                         <a href="#"><img class="avatar-img rounded border border-white border-3"
-                                                                src="../../resources/images/diano.jpg" style="width: 50px;" alt=""></a>
+                                                                src="/resources/images/diano.jpg" style="width: 50px;" alt=""></a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
                                                         <span class="mb-0"><a href="#">이하늘</a></span>
@@ -198,10 +201,9 @@
                             		</div>
                             		<div class="col-2 offset-7">
                             			<div style="width: 150px;">
-		                                	<select class="form-select form-select-sm fw-bold" id="user_div" name="user_div" value="<c:out value="${item.user_div }"/>" aria-label=".form-select-sm example">
-			                                   	<option value="">선택</option>
-			                                    <option value="24">관리자</option>
-			                                    <option value="25">일반</option>
+		                                	<select class="form-select form-select-sm fw-bold" id="user_div" name="user_div" aria-label=".form-select-sm example">
+			                                    <option value="24" <c:if test="${item.user_div eq 24 }">selected</c:if>>관리자</option>
+			                                    <option value="25" <c:if test="${item.user_div eq 25}">selected</c:if>>일반</option>
 			                                </select>
 		                                </div>
                             		</div>
@@ -212,84 +214,81 @@
                                         <div class=" row mb-4">
                             <div class="col">
                                 <label for="name" class="form-label fw-bold">이름</label>
-                                <input type="text" class="form-control bg-white" id="name" value="<c:out value="${item.name }"/>" readonly>
+                                <input type="text" class="form-control bg-white" id="name" value="<c:out value="${item.name }"/>">
                             </div>
                             <div class="col">
                                 <label for="id" class="form-label fw-bold">아이디</label>
-                                <input type="text" class="form-control bg-white" id="id" value="<c:out value="${item.id }"/>" readonly>
+                                <input type="text" class="form-control bg-white" id="id" value="<c:out value="${item.id }"/>">
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="dob" class="form-label fw-bold">생년월일</label>
-                                <input type="text" class="form-control bg-white" id="dob" value="<c:out value="${item.dob }"/>" readonly>
+                                <input type="text" class="form-control bg-white" id="dob" value="<c:out value="${item.dob }"/>">
                             </div>
                             <div class="col">
                                 <label for="email" class="form-label fw-bold">이메일</label>
-                                <input type="email" class="form-control bg-white" id="email" value="<c:out value="${item.email }"/>" readonly>
+                                <input type="email" class="form-control bg-white" id="email" value="<c:out value="${item.email }"/>">
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="tel" class="form-label fw-bold">전화번호</label>
-                                <input type="tel" class="form-control bg-white" id="tel" value="<c:out value="${item.phone }"/>" readonly>
+                                <input type="tel" class="form-control bg-white" id="tel" value="<c:out value="${item.phone }"/>">
                             </div>
                             <div class="col">
                                 <label for="gender" class="form-label fw-bold">성별</label>
-                                <select class="form-select form-select-lg fs-6 bg-white" id="gender" name="gender" value="<c:out value="${item.gender }"/>"
-                                    aria-label=".form-select-lg example" disabled readonly>
-                                    <option value="">선택</option>
-                                    <option value="5" selected>남성</option>
-                                    <option value="6">여성</option>
+                                <select class="form-select form-select-lg fs-6 bg-white" id="gender" name="gender" aria-label=".form-select-lg example">
+                                    <option value="5" <c:if test="${item.gender eq 5 }">selected</c:if>>남성</option>
+                                    <option value="6" <c:if test="${item.gender eq 6 }">selected</c:if>>여성</option>
                                 </select>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="job" class="form-label fw-bold">직업</label>
-                                <input type="text" class="form-control bg-white" id="job" value="<c:out value="${item.job }"/>" readonly>
+                                <input type="text" class="form-control bg-white" id="job" name="job" value="<c:out value="${item.job }"/>">
                             </div>
                             <div class="col">
                                 <label for="team" class="form-label fw-bold">좋아하는 팀</label>
-                                <input type="text" class="form-control bg-white" id="team" value="<c:out value="${item.team }"/>" readonly>
+                                <input type="text" class="form-control bg-white" id="team" name="team" value="<c:out value="${item.team }"/>">
                             </div>
                         </div>
                         <div class="row mb-4" hidden>
                             <div class="col">
                                 <label for="password" class="form-label fw-bold">비밀번호</label>
-                                <input type="password" class="form-control bg-white" id="password" value="" readonly>
+                                <input type="password" class="form-control bg-white" id="password" value="">
                             </div>
                             <div class="col">
                                 <label for="password_confirm" class="form-label fw-bold">비밀번호 확인</label>
-                                <input type="password" class="form-control bg-white" id="password_confirm" value="" readonly>
+                                <input type="password" class="form-control bg-white" id="password_confirm" value="">
                             </div>
                         </div>
                         <hr>
                         <div class="row mb-4">
                             <div class="col-6">
                                 <label for="zip" class="form-label fw-bold">우편번호</label>
-                                <input type="text" class="form-control bg-white" id="zip" name="zip" value="<c:out value="${item.zip }"/>" readonly>
+                                <input type="text" class="form-control bg-white" id="zip" name="zip" value="<c:out value="${item.zip }"/>">
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="address" class="form-label fw-bold">주소</label>
-                                <input type="text" class="form-control bg-white" id="address" name="address" value="<c:out value="${item.address }"/>" readonly>
+                                <input type="text" class="form-control bg-white" id="address" name="address" value="<c:out value="${item.address }"/>">
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="addressDetail" class="form-label fw-bold">상세주소</label>
-                                <input type="text" class="form-control bg-white" id="addressDetail" name="address_detail" value="<c:out value="${item.address_detail }"/>" readonly>
+                                <input type="text" class="form-control bg-white" id="addressDetail" name="address_detail" value="<c:out value="${item.address_detail }"/>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-2">
-                                <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="/member/memberList"
-                                    role="button">뒤로</a>
+                                <button class="btn btn-primary text-white fw-bold btn-sm shadow" id="btnList" type="button">뒤로</button>
                             </div>
                             <div class="col-2 offset-8" align="right">
-                                <button class="btn btn-primary text-white fw-bold btn-sm shadow" type="button">등록</a>
+                                <button class="btn btn-primary text-white fw-bold btn-sm shadow" id="btnSave" type="button">등록</a>
                             </div>
                         </div>
                     </div>
@@ -331,6 +330,20 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    	var goUrlList = "/member/memberList";
+    	var goUrlUpdt = "/member/memberUpdt";
+    	var form = $("#myForm");
+    	
+    	$("#btnSave").on("click", function() {
+			form.attr("action", goUrlUpdt).submit();
+		});
+    	
+    	$("#btnList").on("click", function() {
+			form.attr("action", goUrlList).submit();
+		});
+    </script>
 </body>
 
 </html>

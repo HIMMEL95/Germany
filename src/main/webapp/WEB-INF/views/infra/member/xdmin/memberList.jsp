@@ -92,7 +92,12 @@
     <main>
         <div style="height: 100px;"></div>
         <div class="container">
-            <form method="post" action="/member/memberList">
+            <form method="post" id="myForm" name="myForm">
+            	<input type="hidden" name="mainkey">
+               	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
+               	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
+               	<input type="hidden" name="seq" value='<c:out value="${vo.seq }"></c:out>'>
+               	<input type="hidden" name="checkboxSeqArray">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -211,7 +216,7 @@
                         <div class="card p-3 shadow">
                             <div class="row align-items-center pb-2">
                                 <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" id="shDelNy" name="shDelNy" aria-label=".form-select-sm example">
+                                    <select class="form-select form-select-sm fw-bold" id="uDelNy" name="uDelNy" aria-label=".form-select-sm example">
                                        	<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>선택</option>
                                         <option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
                                         <option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option>
@@ -250,7 +255,7 @@
                         </div>
                         <!-- 리스트 -->
                         <div style="margin: 0; padding: 0; font-weight: 800;">
-                        	<span>Total :</span>
+                        	<span>Total : ${vo.totalRows }</span>
                        	</div>
                         <div class="card ps-3 pt-3 pe-3 shadow">
                             <table class="table text-center align-middle">
@@ -279,13 +284,13 @@
                                 		</c:when>
                                 		<c:otherwise>
 	                                		<c:forEach items="${list}" var="list" varStatus="status">
-												<tr onclick="newPage()">
+												<tr  onclick="goForm(<c:out value="${list.seq }"/>)" style="cursor: pointer;">
 			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
 			                                                id="flexCheckDefault">
 			                                        </td>
 			                                        <td><c:out value="${list.seq }"/></td>
 			                                        <td>${list.user_div }</td>
-			                                        <td><a href="/member/memberXdminView?seq=<c:out value="${list.seq }"/>">${list.name }</a></td>
+			                                        <td>${list.name }</td>
 			                                        <td>${list.gender }</td>
 			                                        <td>${list.id }</td>
 			                                        <td>${list.email }</td>
@@ -299,23 +304,9 @@
                                 	</c:choose>
                                 </tbody>
                             </table>
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination pagination-sm col-3 offset-5">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            <!--  Pagination s -->
+                            <%@include file="../../common/xdmin/includeV1/pagination.jsp" %>
+                            <!--  Pagination e -->
                         </div>
                         <div class="row align-items-center">
                             <div class="col-1">
@@ -369,7 +360,7 @@
                 </ul>
                 <div class="footer_copy">
                     <a id="fot.naver" target="_blank" href="https://www.navercorp.com">
-                        <img src="../../resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
+                        <img src="/resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
                     </a>
                     <span class="text">Copyright</span>
                     <span class="corp">© SPOPIA Corp.</span>
@@ -394,7 +385,16 @@
        			,showMonthAfterYear: true
        			,showOtherMonths: true
        		});
-    	})
+    	});
+    	
+    	var seq = $("input:hidden[name=ccgSeq]");
+    	var form = $("#myForm");
+    	
+    	goForm = function(keyValue) {
+	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+	    	seq.val(keyValue);
+			form.attr("action", goUrlForm).submit();
+		}
     </script>
 </body>
 </html>

@@ -7,8 +7,26 @@
 <mapper namespace="com.spopia.infra.modules.member.MemberMapper">
 
     <resultMap id="resultMapObj" type="com.spopia.infra.modules.member.Member"></resultMap>
+    
+    <sql id ="selectCommon">
+		FROM user u
+			inner join teamUser tu on tu.user_seq = u.seq
+			inner join team t on t.teamSeq = tu.team_seq
+		WHERE 1=1
+			and tu.defaultNY = 0
+		<if test="shDelNy != null and !shDelNy.equals('')">AND uDelNy = #{shDelNy}</if>
+		<choose>
+				<when test="shDate == 1">AND createdAt BETWEEN #{startDate} AND #{endDate}</when>
+				<otherwise></otherwise>
+			</choose>
+		<choose>
+			<when test="shOption == 1">AND seq = #{shValue}</when>
+			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND id LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
+	</sql>
 	
-	<select id="selectList" resultMap="resultMapObj">
+	<!-- <select id="selectList" resultMap="resultMapObj">
 		select 
 			u.seq
 		    ,u.name
@@ -43,6 +61,63 @@
 				<when test="shOption == 2">AND name LIKE CONCAT('%', #{shValue}, '%')</when>
 				<when test="shOption == 3">AND id LIKE CONCAT('%', #{shValue}, '%')</when>
 			</choose>
+	</select> -->
+	
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+			select 
+				u.seq
+			    ,u.name
+			    ,u.id
+			    ,u.email
+			    ,u.gender
+			    ,u.dob
+			    ,u.radio_operator
+			    ,u.phone
+			    ,u.zip
+			    ,u.address
+			    ,u.address_detail
+			    ,u.job
+			    ,date_format(u.createdAt, '%Y-%m-%d %H:%i:%s') as createdAt
+			    ,date_format(u.modifiedAt, '%Y-%m-%d %H:%i:%s') as modifiedAt
+			    ,u.user_div
+			    ,u.uDelNy
+				,t.teamName as team
+			<include refid="selectCommon"></include>
+			ORDER BY u.seq DESC
+			<include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectList1" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+			select 
+				u.seq
+			    ,u.name
+			    ,u.id
+			    ,u.email
+			    ,u.gender
+			    ,u.dob
+			    ,u.radio_operator
+			    ,u.phone
+			    ,u.zip
+			    ,u.address
+			    ,u.address_detail
+			    ,u.job
+			    ,date_format(u.createdAt, '%Y-%m-%d %H:%i:%s') as createdAt
+			    ,date_format(u.modifiedAt, '%Y-%m-%d %H:%i:%s') as modifiedAt
+			    ,u.user_div
+			    ,u.uDelNy
+				,t.teamName as team
+			<include refid="selectCommon"></include>
+			ORDER BY u.seq DESC
+			<include refid="Base.orderByLimitForMysql" />
+			) aa
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">

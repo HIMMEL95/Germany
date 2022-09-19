@@ -21,6 +21,14 @@ public class MemberDao {
 		return sqlSession.selectList(namespace+".selectList", vo);
 	}
 	
+	public List<Member> selectList1() {
+		return sqlSession.selectList(namespace+".selectList1", "");
+	}
+	
+	public int selectOneCount(MemberVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
+	}
+	
 	public List<Member> selectList() {
 		return sqlSession.selectList(namespace+".selectList", "");
 	}

@@ -1,6 +1,8 @@
 package com.spopia.infra.modules.member;
 
-public class MemberVo {
+import com.spopia.infra.common.base.BaseVo;
+
+public class MemberVo extends BaseVo{
 	
 	private String shOption;
 	private String shValue;

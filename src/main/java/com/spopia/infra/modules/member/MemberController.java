@@ -14,8 +14,17 @@ public class MemberController {
 	@Autowired
 	MemberServiceImpl service;
 	
+	public void setSearchAndPaging(MemberVo vo) throws Exception {
+		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
+		
+		vo.setParamsPaging(service.selectOneCount(vo));
+	}
+	
 	@RequestMapping(value = "memberList")
 	public String memberList(Model model, MemberVo vo) throws Exception {
+		
+		setSearchAndPaging(vo);
+		
 		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		

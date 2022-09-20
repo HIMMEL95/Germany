@@ -1,5 +1,8 @@
 package com.spopia.infra.modules.code;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Code {
 
 	private String ccSeq;
@@ -19,7 +22,11 @@ public class Code {
 	private String createdAt;
 	private String modifiedAt;
 	private String ifcgName;
-	private Integer ccgSeq;
+	private String ccgSeq;
+	
+//	for cache
+	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();
+	
 	public String getCcSeq() {
 		return ccSeq;
 	}
@@ -122,10 +129,10 @@ public class Code {
 	public void setIfcgName(String ifcgName) {
 		this.ifcgName = ifcgName;
 	}
-	public Integer getCcgSeq() {
+	public String getCcgSeq() {
 		return ccgSeq;
 	}
-	public void setCcgSeq(Integer ccgSeq) {
+	public void setCcgSeq(String ccgSeq) {
 		this.ccgSeq = ccgSeq;
 	}
 		

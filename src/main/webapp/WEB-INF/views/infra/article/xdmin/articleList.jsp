@@ -239,9 +239,10 @@
                                 <div class="col-2">
                                     <select class="form-select form-select-sm fw-bold" name="shOption" aria-label=".form-select-sm example">
                                         <option value="" <c:if test="${empty vo.shOption }"> selected</c:if>>선택</option>
-                                        <option value="1" <c:if test="${vo.shOption eq 1}"> selected</c:if>>기자</option>
+                                        <option value="1" <c:if test="${vo.shOption eq 1}"> selected</c:if>>번호</option>
                                         <option value="2" <c:if test="${vo.shOption eq 2}"> selected</c:if>>신문사</option>
-                                        <option value="3" <c:if test="${vo.shOption eq 3}"> selected</c:if>>종목</option>
+                                        <option value="3" <c:if test="${vo.shOption eq 3}"> selected</c:if>>기자</option>
+                                        <option value="4" <c:if test="${vo.shOption eq 4}"> selected</c:if>>종목</option>
                                     </select>
                                 </div>
                                 <div class="col-3">

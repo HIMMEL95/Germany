@@ -7,37 +7,69 @@
 <mapper namespace="com.spopia.infra.modules.article.ArticleMapper">
 
     <resultMap id="resultMapObj" type="com.spopia.infra.modules.article.Article"></resultMap>
+    
+    <sql id ="selectCommon">
+		FROM article a
+			inner join user u on u.seq = a.createdBy
+		WHERE 1=1
+		<if test="shDelNy != null and !shDelNy.equals('')">AND aDelNy = #{shDelNy}</if>
+		<choose>
+			<when test="shOption == 1">AND seq = #{shValue}</when>
+			<when test="shOption == 2">AND newspaper LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND reporter LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 4">AND event LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
+		<choose>
+			<when test="shDate == 1">AND a.createdAt BETWEEN #{startDate} AND #{endDate}</when>
+			<otherwise></otherwise>
+		</choose>
+	</sql>
 	
 	<select id="selectList" resultMap="resultMapObj">
-		select
-			a.seq
-			,a.title
-		    ,a.content
-		    ,a.newspaper
-		    ,a.abroadNy
-		    ,a.event
-		    ,a.league
-		    ,a.reporter
-		    ,a.aDelNy
-		    ,a.createdAt
-		    ,a.modifiedAt
-		    ,u.email as email
-		from 
-			article a
-			inner join user u on u.seq = a.createdBy
-		where 1=1
-			
-			<if test="shDelNy != null and !shDelNy.equals('')">AND aDelNy  = #{shDelNy}</if>
-			<choose>
-				<when test="shOption == 1">AND reporter LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 2">AND newspaper LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 3">AND event LIKE CONCAT('%',#{shValue},'%')</when>
-				<otherwise></otherwise>
-			</choose>
-			<choose>
-				<when test="shDate == 1">AND a.createdAt BETWEEN #{startDate} AND #{endDate}</when>
-				<otherwise></otherwise>
-			</choose>
+		<include refid="Base.selectListUpperForMysql" />
+			select
+				a.seq
+				,a.title
+			    ,a.content
+			    ,a.newspaper
+			    ,a.abroadNy
+			    ,a.event
+			    ,a.league
+			    ,a.reporter
+			    ,a.aDelNy
+			    ,a.createdAt
+			    ,a.modifiedAt
+			    ,u.email as email
+			<include refid="selectCommon"></include>
+			ORDER BY a.seq DESC
+			<include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectList1" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+			select
+				a.seq
+				,a.title
+			    ,a.content
+			    ,a.newspaper
+			    ,a.abroadNy
+			    ,a.event
+			    ,a.league
+			    ,a.reporter
+			    ,a.aDelNy
+			    ,a.createdAt
+			    ,a.modifiedAt
+			    ,u.email as email
+			<include refid="selectCommon"></include>
+			ORDER BY a.seq DESC
+			<include refid="Base.orderByLimitForMysql" />
+			)aa
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">

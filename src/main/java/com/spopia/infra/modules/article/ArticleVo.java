@@ -1,6 +1,8 @@
 package com.spopia.infra.modules.article;
 
-public class ArticleVo {
+import com.spopia.infra.common.base.BaseVo;
+
+public class ArticleVo extends BaseVo{
 
 	private String shOption;
 	private String shValue;

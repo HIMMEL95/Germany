@@ -25,6 +25,10 @@ public class ArticleDao {
 		return sqlSession.selectList(namespace + ".selectList", "");
 	}
 	
+	public List<Article> selectList1() {
+		return sqlSession.selectList(namespace + ".selectList1", "");
+	}
+	
 	public int insert(Article dto) {
 		return sqlSession.insert(namespace+".insert", dto);
 	}
@@ -36,5 +40,8 @@ public class ArticleDao {
 	public int update(Article dto) {
 		return sqlSession.update(namespace + ".update", dto);
 	}
-
+	
+	public int selectOneCoutn(ArticleVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
+	}
 }

@@ -22,6 +22,11 @@ public class ArticleServiceImpl  implements ArticleService{
 	}
 
 	@Override
+	public List<Article> selectList1() throws Exception {
+		return dao.selectList1();
+	}
+	
+	@Override
 	public int insert(Article dto) throws Exception {
 		return dao.insert(dto);
 	}
@@ -34,5 +39,10 @@ public class ArticleServiceImpl  implements ArticleService{
 	@Override
 	public Article selectOne(ArticleVo vo) throws Exception {
 		return dao.selectOne(vo);
+	}
+	
+	@Override
+	public int selectOneCount(ArticleVo vo) throws Exception {
+		return dao.selectOneCoutn(vo);
 	}
 }

@@ -136,5 +136,17 @@
 		DELETE
 		FROM code where ccSeq = #{ccSeq}
 	</delete>
+	
+    <select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
+		SELECT 
+			ccSeq
+			, ifccName
+			, codeGroup_ccgSeq
+		FROM
+			code
+		WHERE 1=1
+			AND ifccDelNy = 0
+		    AND ifccUseNy = 1
+    </select>
 
 </mapper>	

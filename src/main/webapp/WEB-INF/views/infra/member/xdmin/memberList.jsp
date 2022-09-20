@@ -93,6 +93,7 @@
         <div style="height: 100px;"></div>
         <div class="container">
             <form method="post" id="myForm" name="myForm">
+            	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
             	<input type="hidden" name="mainkey">
                	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
                	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
@@ -294,7 +295,11 @@
 			                                        <td><c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/></td>
 			                                        <td>${list.user_div }</td>
 			                                        <td>${list.name }</td>
-			                                        <td>${list.gender }</td>
+			                                        <td>
+                               							<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
+															<c:if test="${list.gender eq listGender.ccSeq}"><c:out value="${listGender.ifccName }"/></c:if>
+														</c:forEach>
+													</td>
 			                                        <td>${list.id }</td>
 			                                        <td>${list.email }</td>
 			                                        <td>${list.dob }</td>

@@ -5,6 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<jsp:useBean id="CodeServiceImpl" class="com.spopia.infra.modules.code.CodeServiceImpl"/>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -93,7 +95,6 @@
         <div style="height: 100px;"></div>
         <div class="container">
             <form method="post" id="myForm" name="myForm">
-            	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
             	<input type="hidden" name="mainkey">
                	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
                	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
@@ -280,6 +281,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2') }" />
+                                	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
+      
                                 	<c:choose>
                                 		<c:when test="${fn:length(list) eq 0}">
                                 			<tr>
@@ -303,7 +307,11 @@
 			                                        <td>${list.id }</td>
 			                                        <td>${list.email }</td>
 			                                        <td>${list.dob }</td>
-			                                        <td>${list.team }</td>
+			                                        <td>
+			                                        	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+															<c:if test="${list.team eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+														</c:forEach>
+			                                        </td>
 			                                        <td>${list.createdAt }</td>
 			                                        <td>${list.modifiedAt }</td>
 			                                    </tr>		

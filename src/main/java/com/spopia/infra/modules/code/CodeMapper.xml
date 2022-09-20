@@ -141,7 +141,7 @@
 		SELECT 
 			ccSeq
 			, ifccName
-			, codeGroup_ccgSeq
+			, codeGroup_ccgSeq as ccgSeq
 		FROM
 			code
 		WHERE 1=1

@@ -137,4 +137,15 @@
 			and seq = #{seq}
 	</update>
 
+	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
+		SELECT 
+			ccSeq
+			, ifccName
+			, codeGroup_ccgSeq as ccgSeq
+		FROM
+			article
+		WHERE 1=1
+			AND ifccDelNy = 0
+		    AND ifccUseNy = 1
+    </select>
 </mapper>

@@ -271,6 +271,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2') }" />
+                                	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
                                 	<c:choose>
                                 		<c:when test="${fn:length(list) eq 0}">
                                 			<tr>
@@ -283,17 +285,21 @@
 			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
 			                                                id="flexCheckDefault">
 			                                        </td>
-			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.seq}</td>
-			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.event}</td>
-			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.team_home}</td>
-			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.team_away}</td>
-			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.score_home}</td>
-			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.score_away}</td>
-			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.stadium}</td>
-			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.gameDate}</td>
-			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.gameDuration}</td>
-			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.createdAt}</td>
-			                                        <td><a href="/game/gameView?seq=<c:out value="${list.seq }"/>"</a>${list.modifiedAt}</td>
+			                                        <td>${list.seq}</td>
+			                                        <td>${list.event}</td>
+			                                        <td>${list.team_home}
+			                                        	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+															<c:if test="${list.team eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+														</c:forEach>
+			                                        </td>
+			                                        <td>${list.team_away}</td>
+			                                        <td>${list.score_home}</td>
+			                                        <td>${list.score_away}</td>
+			                                        <td>${list.stadium}</td>
+			                                        <td>${list.gameDate}</td>
+			                                        <td>${list.gameDuration}</td>
+			                                        <td>${list.createdAt}</td>
+			                                        <td>${list.modifiedAt}</td>
 			                                    </tr>
 											</c:forEach>
                                 		</c:otherwise>

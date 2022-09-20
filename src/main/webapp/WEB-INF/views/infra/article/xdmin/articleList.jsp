@@ -5,6 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<jsp:useBean id="CodeServiceImpl" class="com.spopia.infra.modules.code.CodeServiceImpl"/>
+
 <!doctype html>
 <html lang="ko">
 
@@ -95,7 +97,10 @@
     <main>
         <div style="height: 100px;"></div>
         <div class="container">
-            <form method="post" action="/article/articleList">
+            <form method="post" action="/article/articleList" id="myForm" name="myForm">
+            	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
+               	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
+               	<input type="hidden" name="seq" value='<c:out value="${vo.seq }"></c:out>'>
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -270,6 +275,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                	<c:set var="listCodeEvent" value="${CodeServiceImpl.selectListCachedCode('5')}"/>
                                 	<c:choose>
                                 		<c:when test="${fn:length(list) eq 0}">
                                 			<tr>
@@ -285,7 +291,11 @@
 			                                        <td>${list.seq }</td>
 			                                        <td><a href="/article/articleXdminView?seq=<c:out value="${list.seq }"/>">${list.title }</a></td>
 			                                        <td>${list.reporter }</td>
-			                                        <td>${list.event }</td>
+			                                        <td>
+			                                        	<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
+															<c:if test="${list.event eq listEvent.ccSeq}"><c:out value="${listEvent.ifccName }"/></c:if>
+														</c:forEach>
+		                                        	</td>
 			                                        <td>${list.newspaper }</td>
 			                                        <td>${list.createdAt }</td>
 			                                        <td>${list.modifiedAt }</td>

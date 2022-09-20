@@ -5,6 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<jsp:useBean id="CodeServiceImpl" class="com.spopia.infra.modules.code.CodeServiceImpl"/>
+
 <!doctype html>
 <html lang="ko">
 
@@ -95,7 +97,10 @@
     <main>
         <div style="height: 100px;"></div>
         <div class="container">
-            <form method="post" action="/comment/commentList">
+            <form method="post" action="/comment/commentList" id="myForm" name="myForm">
+            	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
+               	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
+               	<input type="hidden" name="seq" value='<c:out value="${vo.seq }"></c:out>'>
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -268,6 +273,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2') }" />
                                 	<c:choose>
                                 		<c:when test="${fn:length(list) eq 0}">
                                 			<tr>
@@ -282,7 +288,11 @@
 			                                        </td>
 			                                        <td>${list.seq }</td>
 			                                        <td><a href="/article/articleXdminView?seq=<c:out value="${list.seq }"/>">${list.name }</a></td>
-			                                        <td>${list.gender }</td>
+			                                        <td>
+			                                        	<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
+															<c:if test="${list.gender eq listGender.ccSeq}"><c:out value="${listGender.ifccName }"/></c:if>
+														</c:forEach>
+			                                        </td>
 			                                        <td>${list.id }</td>
 			                                        <td>${list.comment }</td>
 			                                        <td>${list.createdAt }</td>

@@ -147,12 +147,97 @@
 			and tu.defaultNY = 0
 	</select>
 	
-	<update id="update">
+	
+	<!-- user insert -->
+	<insert id="userInsert">
+		INSERT INTO user (
+			name
+			,id
+			,email
+			,pwd
+			,gender
+			,dob
+			,radio_operator
+			,phone
+			,zip
+			,address
+			,address_detail
+			,job
+			,createdAt
+			,modifiedAt
+			,user_div
+			,uDelNy
+		)
+		VALUES (
+			#{name}
+			,#{id}
+			,#{email}
+			,#{pwd}
+			,#{gender}
+			,#{dob}
+			,#{radio_operator}
+			,#{phone}
+			,#{zip}
+			,#{address}
+			,#{address_detail}
+			,#{job}
+			,now()
+			,now()
+			,25
+			,0
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<!-- team insert -->
+	<insert id="teamInsert">
+		INSERT INTO teamUser (
+			team
+			,user_seq
+			,deleteNY
+			,defaultNY
+		)
+		VALUES (
+			#{team}
+			,#{seq}
+			,0
+			,0
+		)
+		<selectKey resultType="String" keyProperty="tuSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<!-- user Update -->
+	<update id="userUpdate">
 		UPDATE user
 		SET
-			user_div = #{user_div}
+			name = #{name}
+			,id = #{id}
+			,dob = #{dob}
+			,email = #{email}
+			,phone = #{phone}
+			,gender = #{gender}
+			,job = #{job}
+			,zip = #{zip}
+			,address = #{address}
+			,address_detail = #{address_detail}
+			,modifiedAt = now()
+			,user_div = #{user_div}
 		where 1=1
-			and seq = #{seq]
+			and seq = #{seq}
+	</update>
+	
+	<!-- team Update -->
+	<update id="teamUpdate">
+		UPDATE teamUser
+		SET
+			team_seq = #{team}
+		where 1=1
+			and user_seq = #{seq}
+		    and defaultNY = 0
 	</update>
 
 </mapper>

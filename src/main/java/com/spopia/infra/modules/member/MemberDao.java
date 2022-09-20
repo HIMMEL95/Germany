@@ -17,6 +17,7 @@ public class MemberDao {
 	
 	private static String namespace = "com.spopia.infra.modules.member.MemberMapper";
 	
+	// Member 관련
 	public List<Member> selectList(MemberVo vo) {
 		return sqlSession.selectList(namespace+".selectList", vo);
 	}
@@ -37,8 +38,21 @@ public class MemberDao {
 		return sqlSession.selectOne(namespace + ".selectOne", vo);
 	}
 	
-	public int update(Member dto) {
-		return sqlSession.update(namespace + ".update", dto);
+	public int userUpdt(Member dto) {
+		return sqlSession.update(namespace + ".userUpdate", dto);
+	}
+	
+	public int userInst(Member dto) {
+		return sqlSession.insert(namespace + ".userInsert", dto);
+	}
+	
+	// team 관련
+	public int teamInst(Member dto) {
+		return sqlSession.insert(namespace + ".teamInsert", dto);
+	}
+	
+	public int teamUpdt(Member dto) {
+		return sqlSession.update(namespace + ".teamUpdate", dto);
 	}
 
 }

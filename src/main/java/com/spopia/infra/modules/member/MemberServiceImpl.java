@@ -11,6 +11,7 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	MemberDao dao;
 
+	/* member 관련 */
 	@Override
 	public List<Member> selectList1() throws Exception {
 		return dao.selectList1();
@@ -37,8 +38,30 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int update(Member dto) throws Exception {
-		return dao.update(dto);
+	public int userUpdt(Member dto) throws Exception {
+		return dao.userUpdt(dto);
+	}
+	
+	@Override
+	public int userInst(Member dto) throws Exception {
+		return dao.userInst(dto);
+	}
+	
+	/* team 관련 */
+	@Override
+	public int teamInst(Member dto) throws Exception {
+		return dao.teamInst(dto);
+	}
+	
+	@Override
+	public int teamUpdt(Member dto) throws Exception {
+		return dao.teamUpdt(dto);
 	}
 
+	public void update(Member dto) throws Exception {
+		System.out.println(dto.getSeq());
+		userUpdt(dto);
+		System.out.println(dto.getSeq());
+		teamUpdt(dto);
+	}
 }

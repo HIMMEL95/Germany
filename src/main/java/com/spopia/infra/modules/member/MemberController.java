@@ -52,7 +52,8 @@ public class MemberController {
 	
 	@RequestMapping(value = "memberUpdt")
 	public String memberUpdt(Member dto, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
-		service.update(dto); 
+		/* service.userUpdt(dto); */
+		service.update(dto);
 		
 		vo.setSeq(dto.getSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);

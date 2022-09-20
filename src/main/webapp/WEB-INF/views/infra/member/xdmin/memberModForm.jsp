@@ -214,27 +214,27 @@
                                         <div class=" row mb-4">
                             <div class="col">
                                 <label for="name" class="form-label fw-bold">이름</label>
-                                <input type="text" class="form-control bg-white" id="name" value="<c:out value="${item.name }"/>">
+                                <input type="text" class="form-control bg-white" id="name" name="name" value="<c:out value="${item.name }"/>">
                             </div>
                             <div class="col">
                                 <label for="id" class="form-label fw-bold">아이디</label>
-                                <input type="text" class="form-control bg-white" id="id" value="<c:out value="${item.id }"/>">
+                                <input type="text" class="form-control bg-white" id="id" name="id" value="<c:out value="${item.id }"/>">
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="dob" class="form-label fw-bold">생년월일</label>
-                                <input type="text" class="form-control bg-white" id="dob" value="<c:out value="${item.dob }"/>">
+                                <input type="text" class="form-control bg-white" id="dob" name="dob" value="<c:out value="${item.dob }"/>">
                             </div>
                             <div class="col">
                                 <label for="email" class="form-label fw-bold">이메일</label>
-                                <input type="email" class="form-control bg-white" id="email" value="<c:out value="${item.email }"/>">
+                                <input type="email" class="form-control bg-white" id="email" name="email" value="<c:out value="${item.email }"/>">
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="tel" class="form-label fw-bold">전화번호</label>
-                                <input type="tel" class="form-control bg-white" id="tel" value="<c:out value="${item.phone }"/>">
+                                <input type="tel" class="form-control bg-white" id="tel" name="phone" value="<c:out value="${item.phone }"/>">
                             </div>
                             <div class="col">
                                 <label for="gender" class="form-label fw-bold">성별</label>

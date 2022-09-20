@@ -1,9 +1,8 @@
 package com.spopia.infra.modules.member;
 
-import java.util.Date;
-
 public class Member {
 	
+	// member Dto
 	private String seq;
 	private String name;
 	private String id;
@@ -24,6 +23,45 @@ public class Member {
 	private Integer user_div;
 	private Integer team;
 	private Integer uDelNy;
+	
+	// teamUser Dto
+	private String tuSeq;
+	private Integer user_seq;
+	private Integer team_seq;
+	private Integer defaultNY;
+	private Integer deleteNY;
+	
+	public String getTuSeq() {
+		return tuSeq;
+	}
+	public void setTuSeq(String tuSeq) {
+		this.tuSeq = tuSeq;
+	}
+	public Integer getUser_seq() {
+		return user_seq;
+	}
+	public void setUser_seq(Integer user_seq) {
+		this.user_seq = user_seq;
+	}
+	public Integer getTeam_seq() {
+		return team_seq;
+	}
+	public void setTeam_seq(Integer team_seq) {
+		this.team_seq = team_seq;
+	}
+	public Integer getDefaultNY() {
+		return defaultNY;
+	}
+	public void setDefaultNY(Integer defaultNY) {
+		this.defaultNY = defaultNY;
+	}
+	public Integer getDeleteNY() {
+		return deleteNY;
+	}
+	public void setDeleteNY(Integer deleteNY) {
+		this.deleteNY = deleteNY;
+	}
+	
 	public Integer getuDelNy() {
 		return uDelNy;
 	}

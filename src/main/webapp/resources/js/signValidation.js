@@ -355,3 +355,17 @@ detail_regex = function(obj, value, message, hide) {
         return true;
     }
 }
+
+team_regex = function(obj, value, message, hide) {
+    if (!checkNull(obj, value)) {
+        hide.parent().addClass('error')
+        $(hide).text(message)
+        $(hide).show()
+        return false;
+    } else {
+        hide.parent().removeClass('error')
+        hide.parent().addClass('success')
+        $(hide).hide()
+        return true;
+    }
+}

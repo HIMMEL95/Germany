@@ -190,6 +190,21 @@
                         </div>
                     </div>
                 </div>
+               	<div class="row">
+               		<div class="col-6">
+                        <div class="input-control">
+                            <label for="team">좋아하는 팀<span style="color: red;">*</span></label>
+                            <select id="team" name="team" aria-label=".form-select-lg example" onclick="validationUpdt()">
+                            	<option value="" <c:if test="${empty item.team}">selected</c:if>>선택</option>
+                                <option value="25" <c:if test="${item.team eq 25 }">selected</c:if>>두산 베어스</option>
+                                <option value="26" <c:if test="${item.team eq 26 }">selected</c:if>>KIA 타이거즈</option>
+                                <option value="27" <c:if test="${item.team eq 27 }">selected</c:if>>SSG 랜더스</option>
+                                <option value="28" <c:if test="${item.team eq 28 }">selected</c:if>>삼성 라이온즈</option>
+                            </select>
+                            <div class="msg" id="team_msg" name="team_msg" style="display: none;"></div>
+                        </div>
+                    </div>
+               	</div>
                 <hr>
                 <h1>선택 사항</h1>
                 <div class="row">
@@ -197,12 +212,6 @@
                         <div class="input-control">
                             <label for="job">직업</label>
                             <input id="job" name="job" type="text">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="input-control">
-                            <label for="team">좋아하는 팀</label>
-                            <input id="team" name="team" type="text">
                         </div>
                     </div>
                 </div>
@@ -272,6 +281,8 @@
                 return false;
             } else if(!detail_regex($('input[name=address_detail]'), $('input[name=address_detail]').val(), "상세주소를 입력하세요!", $('#address_detail_msg'))) {
                 return false;
+            } else if(!team_regex($('#team'), $('#team').val(), "좋아하는 팀을 입력하세요!", $('#team_msg'))) {
+            	return false;
             } else {
                 return true;
             }
@@ -335,13 +346,6 @@
         var form = $("form[name=form]");
         
         $("#btnSave").on("click", function() {
-        	alert($("#zip").val());
-        	alert($("#address").val());
-        	alert($("#address_detail").val());
-        	alert($("#extraAddress").val());
-        	alert($("#name").val());
-        	alert($("#id").val());
-        	alert($("#email").val());
         	if (validationUpdt() == false) return false;
         	else form.attr("action", goUrlInst).submit();
 		});

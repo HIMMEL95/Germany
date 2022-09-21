@@ -30,7 +30,7 @@
         <div id="container" class="container">
             <div class="header_inner text-center pt-5 mt-5" style="height: 200px;">
                 <a href="/" class="logo">
-                    <img src="../../resources/images/SPOPIA1.png" style="width: 150px;">
+                    <img src="/resources/images/SPOPIA1.png" style="width: 150px;">
                 </a>
             </div>
             <!-- content -->

@@ -88,8 +88,9 @@
                         <div class="input-control">
                             <label for="gender">성별<span style="color: red;">*</span></label>
                             <select id="gender" name="gender" aria-label=".form-select-lg example" onclick="validationUpdt()">
-                                <option value="1" <c:if test="${item.gender eq 1 }">selected</c:if>>남성</option>
-                                <option value="2" <c:if test="${item.gender eq 2 }">selected</c:if>>여성</option>
+                                <option value="" <c:if test="${empty item.gender}">selected</c:if>>선택</option>
+                                <option value="5" <c:if test="${item.gender eq 5 }">selected</c:if>>남성</option>
+                                <option value="6" <c:if test="${item.gender eq 6 }">selected</c:if>>여성</option>
                             </select>
                             <div class="msg" id="gender_msg" name="gender_msg" style="display: none;"></div>
                         </div>
@@ -100,6 +101,7 @@
                         <div class="input-control">
                             <label for="radio_operator">통신사<span style="color: red;">*</span></label>
                             <select id="radio_operator" name="radio_operator" aria-label=".form-select-lg example" onclick="validationUpdt()">
+                            	<option value="" <c:if test="${empty item.radio_operator}">selected</c:if>>선택</option>
                                 <option value="1" <c:if test="${item.radio_operator eq 1 }">selected</c:if>>SKT</option>
                                 <option value="2" <c:if test="${item.radio_operator eq 2 }">selected</c:if>>KT</option>
                                 <option value="3" <c:if test="${item.radio_operator eq 3 }">selected</c:if>>LGT</option>
@@ -145,7 +147,7 @@
                     <div class="col-6">
                         <div class="input-control">
                             <label for="zip">우편번호<span style="color: red;">*</span></label>
-                            <input id="zip" name="zip" type="text" disabled> 
+                            <input id="zip" name="zip" type="text" > 
                             <div class="msg" id="zip_msg" name="zip_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -167,7 +169,7 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="address">주소<span style="color: red;">*</span></label>
-                            <input id="address" name="address" type="text" onkeypress="validationUpdt()" disabled> 
+                            <input id="address" name="address" type="text" onkeypress="validationUpdt()" > 
                             <div class="msg" id="address_msg" name="address_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -183,7 +185,7 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="extraAddress">참고항목<span style="color: red;">*</span></label>
-                            <input id="extraAddress" name="extraAddress" type="text" onkeypress="validationUpdt()" disabled> 
+                            <input id="extraAddress" name="extraAddress" type="text" onkeypress="validationUpdt()" > 
                             <div class="msg" id="extraAddress_msg" name="extraAddress_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -248,11 +250,6 @@
     <script type="text/javascript">
         $('.error').hide();
         validationUpdt = function() {
-            // if(!checkNull($('input[name=id]'), $('input[name=id]').val(), "아이디를 입력하세요!", $('#id_msg')) || (!id_regex($('input[name=id]'), $('#id_msg')))) {
-            //     return false;
-            // } else {
-            //     return true;
-            // }
             if(!id_regex($('input[name=id]'), $('input[name=id]').val(), "아이디를 입력하세요!", $('#id_msg'))) {
                 return false;
             } else if(!name_regex($('input[name=name]'), $('input[name=name]').val(), "이름을 입력하세요!", $('#name_msg'))) {
@@ -267,9 +264,9 @@
                 return false;
             } else if(!gender_regex($('#gender'), $('#gender').val(), "성별을 선택하세요!", $('#gender_msg'))) {
                 return false;
-            } else if(!radio_regex($('#radio_operator'), $('#radio_operator').val(), "통신사를 선택하세요!", $('#radio_msg'))) {
+            } else if(!radio_regex($('#radio_operator'), $('#radio_operator').val(), "통신사를 선택하세요!", $('#radio_operator_msg'))) {
                 return false;
-            } else if(!tel_regex($('input[name=tel]'), $('input[name=tel]').val(), "전화번호를 입력하세요!", $('#tel_msg'))) {
+            } else if(!tel_regex($('input[name=phone]'), $('input[name=phone]').val(), "전화번호를 입력하세요!", $('#phone_msg'))) {
                 return false;
             } else if(!zip_regex($('input[name=zip]'), $('input[name=zip]').val(), "우편번호를 입력하세요!", $('#zip_msg'))) {
                 return false;
@@ -338,6 +335,13 @@
         var form = $("form[name=form]");
         
         $("#btnSave").on("click", function() {
+        	alert($("#zip").val());
+        	alert($("#address").val());
+        	alert($("#address_detail").val());
+        	alert($("#extraAddress").val());
+        	alert($("#name").val());
+        	alert($("#id").val());
+        	alert($("#email").val());
         	if (validationUpdt() == false) return false;
         	else form.attr("action", goUrlInst).submit();
 		});

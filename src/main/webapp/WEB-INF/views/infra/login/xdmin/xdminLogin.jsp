@@ -126,7 +126,6 @@
                 </div>
                 <ul class="find_wrap" id="find_wrap">
                     <li><a target="_self" href="/" class="find_text">아이디 및 비밀번호 찾기</a></li>
-                    <li><a target="_self" href="/" class="find_text">회원가입</a></li>
                 </ul>
             </div>
         </div>

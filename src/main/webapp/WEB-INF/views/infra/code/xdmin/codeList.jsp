@@ -307,7 +307,7 @@
                                 		</c:when>
                                 		<c:otherwise>
                                 			<c:forEach items="${list}" var="list" varStatus="status">
-												<tr>
+												<tr onclick="goForm(<c:out value="${list.ccSeq }"/>)" style="cursor: pointer;">
 			                                        <td onclick="event.cancelBubble=true">
 			                                        	<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
 			                                        </td>
@@ -316,9 +316,7 @@
 			                                        <td>${list.ifcgName}</td>
 			                                        <td>${list.ccSeq }</td>
 			                                        <td>${list.ifccAnother }</td>
-			                                        <td>
-			                                            <a href="/code/codeView?ccSeq=<c:out value="${list.ccSeq }"/>">${list.ifccName}</a>
-			                                        </td>
+			                                        <td>${list.ifccName}</td>
 			                                        <td>${list.ifccNameEng }</td>
 			                                        <td>${list.ifccUseNy}</td>
 			                                        <td>${list.ifccOrder}</td>
@@ -442,7 +440,7 @@
 			goForm(0);
 		})
 		
-		goForm = function() {
+		goForm = function(keyValue) {
 			seq.val(keyValue);
 			form.attr("action", goUrlForm).submit();
 		}

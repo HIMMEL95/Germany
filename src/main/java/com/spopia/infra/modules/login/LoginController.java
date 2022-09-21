@@ -29,11 +29,10 @@ public class LoginController {
 		return "infra/login/xdmin/signUp";
 	}
 	
-	  @RequestMapping(value = "signUpInst") 
-	  public String signUpInst(Member dto, MemberVo vo) throws Exception { 
-		  service.userInst(dto);
-	  
-		  return "infra/login/xdmin/userLogin";
-	  }
-	 
+	@RequestMapping(value = "signUpInst") 
+	public String signUpInst(Member dto, MemberVo vo) throws Exception {
+		service.userInst(dto);
+		return "infra/login/xdmin/userLogin";
+	}
+ 
 }

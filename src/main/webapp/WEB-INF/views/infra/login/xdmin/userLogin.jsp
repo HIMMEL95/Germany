@@ -154,7 +154,7 @@
                 </div>
                 <ul class="find_wrap" id="find_wrap">
                     <li><a target="_self" href="../login/findId.html" class="find_text">아이디 및 비밀번호 찾기</a></li>
-                    <li><a target="_self" href="../login/singUpForm.html" class="find_text">회원가입</a></li>
+                    <li><a target="_self" href="/signUp" class="find_text">회원가입</a></li>
                 </ul>
             </div>
         </div>
@@ -176,7 +176,7 @@
                 </ul>
                 <div class="footer_copy">
                     <a id="fot.naver" target="_blank" href="https://www.navercorp.com">
-                        <img src="../../resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
+                        <img src="/resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
                     </a>
                     <span class="text">Copyright</span>
                     <span class="corp">© SPOPIA Corp.</span>

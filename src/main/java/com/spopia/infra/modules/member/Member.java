@@ -17,9 +17,7 @@ public class Member {
 	private String address_detail;
 	private String job;
 	private String createdAt;
-	private Integer createdBy;
 	private String modifiedAt;
-	private Integer modifiedBy;
 	private Integer user_div;
 	private Integer team;
 	private Integer uDelNy;
@@ -158,23 +156,11 @@ public class Member {
 	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
-	public Integer getCreatedBy() {
-		return createdBy;
-	}
-	public void setCreatedBy(Integer createdBy) {
-		this.createdBy = createdBy;
-	}
 	public String getModifiedAt() {
 		return modifiedAt;
 	}
 	public void setModifiedAt(String modifiedAt) {
 		this.modifiedAt = modifiedAt;
-	}
-	public Integer getModifiedBy() {
-		return modifiedBy;
-	}
-	public void setModifiedBy(Integer modifiedBy) {
-		this.modifiedBy = modifiedBy;
 	}
 	public Integer getUser_div() {
 		return user_div;

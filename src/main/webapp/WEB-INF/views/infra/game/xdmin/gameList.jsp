@@ -5,6 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<jsp:useBean id="CodeServiceImpl" class="com.spopia.infra.modules.code.CodeServiceImpl"/>
+
 <!doctype html>
 <html lang="ko">
 
@@ -93,7 +95,7 @@
     <main>
         <div style="height: 100px;"></div>
         <div class="container">
-            <form method="post" action="/game/gameList">
+            <form method="post" action="/game/gameList" id="myForm" name="myForm">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -271,8 +273,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2') }" />
                                 	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
+                                	<c:set var="listCodeStadium" value="${CodeServiceImpl.selectListCachedCode('8') }" />
+                                	<c:set var="listCodeEvent" value="${CodeServiceImpl.selectListCachedCode('5') }" />
                                 	<c:choose>
                                 		<c:when test="${fn:length(list) eq 0}">
                                 			<tr>
@@ -281,21 +284,33 @@
                                 		</c:when>
                                 		<c:otherwise>
 	                                		<c:forEach items="${list}" var="list" varStatus="status">
-                                				<tr>
+                                				<tr onclick="goForm(<c:out value="${list.seq }"/>)" style="cursor: pointer;">
 			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
 			                                                id="flexCheckDefault">
 			                                        </td>
 			                                        <td>${list.seq}</td>
-			                                        <td>${list.event}</td>
-			                                        <td>${list.team_home}
-			                                        	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
-															<c:if test="${list.team eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+			                                        <td>
+			                                        	<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
+															<c:if test="${list.event eq listEvent.ccSeq}"><c:out value="${listEvent.ifccName }"/></c:if>
 														</c:forEach>
 			                                        </td>
-			                                        <td>${list.team_away}</td>
+			                                        <td>
+			                                        	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+															<c:if test="${list.team_home eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+														</c:forEach>
+			                                        </td>
+			                                        <td>
+			                                        	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+															<c:if test="${list.team_away eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+														</c:forEach>
+			                                        </td>
 			                                        <td>${list.score_home}</td>
 			                                        <td>${list.score_away}</td>
-			                                        <td>${list.stadium}</td>
+			                                        <td>
+			                                        	<c:forEach items="${listCodeStadium}" var="listStadium" varStatus="statusStadium">
+															<c:if test="${list.stadium eq listStadium.ccSeq}"><c:out value="${listStadium.ifccName }"/></c:if>
+														</c:forEach>
+			                                        </td>
 			                                        <td>${list.gameDate}</td>
 			                                        <td>${list.gameDuration}</td>
 			                                        <td>${list.createdAt}</td>
@@ -381,7 +396,7 @@
                 </ul>
                 <div class="footer_copy">
                     <a id="fot.naver" target="_blank" href="https://www.navercorp.com">
-                        <img src="../../resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
+                        <img src="/resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
                     </a>
                     <span class="text">Copyright</span>
                     <span class="corp">© SPOPIA Corp.</span>
@@ -408,6 +423,17 @@
        			,showOtherMonths: true
        		});
     	})
+    	
+    	var goUrlForm = "/game/gameView";
+    	var seq = $("input:hidden[name=seq]");
+    	var form = $("#myForm");
+    	
+    	goForm = function(keyValue) {
+	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+	    	seq.val(keyValue);
+			form.attr("action", goUrlForm).submit();
+		}
+    	
     </script>
 </body>
 

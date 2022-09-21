@@ -5,6 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<jsp:useBean id="CodeServiceImpl" class="com.spopia.infra.modules.code.CodeServiceImpl"/>
+
 <!doctype html>
 <html lang="ko">
 
@@ -97,6 +99,7 @@
             	<!-- *Vo.jsp s -->
 				<%@include file="memberVo.jsp"%>		<!-- #-> -->
 				<!-- *Vo.jsp e -->
+				<c:set var="listCodeTeam" value="${CodeServiceImpl.selectOneCachedCode(30) }" />
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -240,7 +243,7 @@
                             </div>
                             <div class="col">
                                 <label for="team" class="form-label fw-bold">좋아하는 팀</label>
-                                <input type="text" class="form-control bg-white" id="team" value="<c:out value="${item.team }"/>" readonly>
+                                <input type="text" class="form-control bg-white" id="team" value="<c:out value="${listCodeTeam }"/>" readonly>
                             </div>
                         </div>
                         <div class="row mb-4" hidden>
@@ -251,7 +254,7 @@
                             <div class="col">
                                 <label for="password_confirm" class="form-label fw-bold">비밀번호 확인</label>
                                 <input type="password" class="form-control bg-white" id="password_confirm" value="" readonly>
-                            </div>
+                            </div> 
                         </div>
                         <hr>
                         <div class="row mb-4">

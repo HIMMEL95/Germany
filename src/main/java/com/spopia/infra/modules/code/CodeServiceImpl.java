@@ -75,14 +75,23 @@ public class CodeServiceImpl implements CodeService{
 		return rt;
 	}
 	
+	
+	public static String selectOneCachedCode(int code) throws Exception {
+		String rt = "";
+		for(Code codeRow : Code.cachedCodeArrayList) {
+			if (codeRow.getCcSeq().equals(Integer.toString(code))) {
+				rt = codeRow.getIfccName();
+			} else {
+				// by pass
+			}
+		}
+		return rt;
+	}
+	
+	
 	/*
-	 * public static String selectOneCachedCode(int code) throws Exception { String
-	 * rt = ""; for(Code codeRow : Code.cachedCodeArrayList) { if
-	 * (codeRow.getCcSeq().equals(Integer.toString(code))) { rt =
-	 * codeRow.getIfcgName(); } else { // by pass } } return rt; }
-	 * 
-	 * 
 	 * public static void clear() throws Exception {
 	 * Code.cachedCodeArrayList.clear(); }
 	 */
+	 
 }

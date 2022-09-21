@@ -119,35 +119,32 @@
                         <div class="col">
                             <label for="abroadNy" class="form-label fw-bold">해외여부</label>
                             <select id="abroadNy" name="abroadNy" value="<c:out value="${item.abroadNy }"/>" class="form-select  fw-bold" aria-label=".form-select example">
-                                <option value="">선택</option>
-                                <option value="1">국내</option>
-                                <option value="2" selected>해외</option>
+                                <option value="9" <c:if test="${item.abroadNy eq 9 }">selected</c:if>>국내</option>
+                                <option value="10" <c:if test="${item.abroadNy eq 10 }">selected</c:if>>해외</option>
                             </select>
                         </div>
                         <div class="col">
                             <label for="event" class="form-label fw-bold">종목</label>
                             <select id="event" name="event" value="<c:out value="${item.event }"/>" class="form-select fw-bold" aria-label=".form-select example">
-                                <option value="">선택</option>
-                                <option value="1" selected>야구</option>
-                                <option value="2">축구</option>
+                                <option value="11" <c:if test="${item.event eq 11 }">selected</c:if>>야구</option>
+                                <option value="12" <c:if test="${item.event eq 12 }">selected</c:if>>축구</option>
                             </select>
                         </div>
                         <div class="col">
                             <label for="league" class="form-label fw-bold">리그</label>
                             <select id="league" name="league" value="<c:out value="${item.league }"/>" class="form-select fw-bold" aria-label=".form-select example">
-                                <option value="">선택</option>
-                                <option value="1">KBO</option>
-                                <option value="2">메이저리그</option>
-                                <option value="3" selected>아메리칸리그</option>
-                                <option value="4">센트럴리그</option>
-                                <option value="5">퍼시픽리그</option>
-                                <option value="6">K리그 1</option>
-                                <option value="7">K리그 2</option>
-                                <option value="8">프리미어리그</option>
-                                <option value="9">라리가</option>
-                                <option value="10">분데스리가</option>
-                                <option value="11">세리에 A</option>
-                                <option value="12">리그 1</option>
+                                <option value="13" <c:if test="${item.event eq 13 }">selected</c:if>>KBO</option>
+                                <option value="14" <c:if test="${item.event eq 14 }">selected</c:if>>메이저리그</option>
+                                <option value="15" <c:if test="${item.event eq 15 }">selected</c:if>>아메리칸리그</option>
+                                <option value="16" <c:if test="${item.event eq 16 }">selected</c:if>>센트럴리그</option>
+                                <option value="17" <c:if test="${item.event eq 17 }">selected</c:if>>퍼시픽리그</option>
+                                <option value="18" <c:if test="${item.event eq 18 }">selected</c:if>>K리그 1</option>
+                                <option value="19" <c:if test="${item.event eq 19 }">selected</c:if>>K리그 2</option>
+                                <option value="20" <c:if test="${item.event eq 20 }">selected</c:if>>프리미어리그</option>
+                                <option value="21" <c:if test="${item.event eq 21 }">selected</c:if>>라리가</option>
+                                <option value="22" <c:if test="${item.event eq 22 }">selected</c:if>>분데스리가</option>
+                                <option value="23" <c:if test="${item.event eq 23 }">selected</c:if>>세리에 A</option>
+                                <option value="24" <c:if test="${item.event eq 24 }">selected</c:if>>리그 1</option>
                             </select>
                         </div>
                         <div class="col">

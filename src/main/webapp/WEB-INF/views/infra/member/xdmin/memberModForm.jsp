@@ -5,6 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<jsp:useBean id="CodeServiceImpl" class="com.spopia.infra.modules.code.CodeServiceImpl"/>
+
 <!doctype html>
 <html lang="ko">
 
@@ -250,8 +252,9 @@
                                 <input type="text" class="form-control bg-white" id="job" name="job" value="<c:out value="${item.job }"/>">
                             </div>
                             <div class="col">
+                            	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectOneCachedCode(30) }" />
                                 <label for="team" class="form-label fw-bold">좋아하는 팀</label>
-                                <input type="text" class="form-control bg-white" id="team" name="team" value="<c:out value="${item.team }"/>">
+                                <input type="text" class="form-control bg-white" id="team" name="team" value="<c:out value="${listCodeTeam }"/>">
                             </div>
                         </div>
                         <div class="row mb-4" hidden>
@@ -316,7 +319,7 @@
                 </ul>
                 <div class="footer_copy">
                     <a id="fot.naver" target="_blank" href="https://www.navercorp.com">
-                        <img src="../../resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
+                        <img src="/resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
                     </a>
                     <span class="text">Copyright</span>
                     <span class="corp">© SPOPIA Corp.</span>

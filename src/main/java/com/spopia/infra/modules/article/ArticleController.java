@@ -52,7 +52,7 @@ public class ArticleController {
 		Article item = service.selectOne(vo);
 		model.addAttribute("item", item);
 		
-		List<Article> list = service.selectList();
+		List<Article> list = service.selectList1();
 		model.addAttribute("list", list);
 		return "infra/article/xdmin/articleXdminView";
 	}	

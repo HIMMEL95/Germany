@@ -147,15 +147,15 @@
                     <div class="col-6">
                         <div class="input-control">
                             <label for="zip">우편번호<span style="color: red;">*</span></label>
-                            <input id="zip" name="zip" type="text" > 
+                            <input id="zip" name="zip" type="text" readonly> 
                             <div class="msg" id="zip_msg" name="zip_msg" style="display: none;"></div>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="row">
                             <div class="col-4">
-                                <button type="button" class="btn fw-bold text-white certification"
-                                    style="background-color: #03c75a;" onclick="daumPostCode()">주소검색</button>
+                                <button type="button" id="searchBtn" class="btn fw-bold text-white certification"
+                                    style="background-color: #03c75a;">주소검색</button>
                             </div>
                             <div class="col-3">
                                 <button id="refresh" class="btn btn-danger fw-bold btn-sm shadow" type="button">
@@ -169,7 +169,7 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="address">주소<span style="color: red;">*</span></label>
-                            <input id="address" name="address" type="text" onkeypress="validationUpdt()" > 
+                            <input id="address" name="address" type="text" onkeypress="validationUpdt()" readonly> 
                             <div class="msg" id="address_msg" name="address_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -184,9 +184,23 @@
                     </div>
                     <div class="col">
                         <div class="input-control">
-                            <label for="extraAddress">참고항목<span style="color: red;">*</span></label>
-                            <input id="extraAddress" name="extraAddress" type="text" onkeypress="validationUpdt()" > 
+                            <label for="extraAddress">참고항목</label>
+                            <input id="extraAddress" name="extraAddress" type="text" onkeypress="validationUpdt()" readonly> 
                             <div class="msg" id="extraAddress_msg" name="extraAddress_msg" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="input-control">
+                            <label for="address_detail">위도</label>
+                            <input id="lat" name="lat" value="" type="text" onkeypress="validationUpdt()" readonly> 
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-control">
+                            <label for="extraAddress">경도</label>
+                            <input id="long" name="long" value="" type="text" onkeypress="validationUpdt()" readonly> 
                         </div>
                     </div>
                 </div>
@@ -256,6 +270,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2655da82c3779d622f0aff959060e6&libraries=services"></script>
     <script type="text/javascript">
         $('.error').hide();
         validationUpdt = function() {
@@ -279,8 +294,8 @@
                 return false;
             } else if(!zip_regex($('input[name=zip]'), $('input[name=zip]').val(), "우편번호를 입력하세요!", $('#zip_msg'))) {
                 return false;
-            } else if(!detail_regex($('input[name=address_detail]'), $('input[name=address_detail]').val(), "상세주소를 입력하세요!", $('#address_detail_msg'))) {
-                return false;
+            } else if(!add_regex($('input[name=address]'), $('input[name=address]').val(), "주소를 입력하세요!", $('#address_msg'))) {
+            	return false;
             } else if(!team_regex($('#team'), $('#team').val(), "좋아하는 팀을 입력하세요!", $('#team_msg'))) {
             	return false;
             } else {
@@ -332,6 +347,15 @@
                     document.getElementById("address").value = addr;
                     // 커서를 상세주소 필드로 이동한다.
                     document.getElementById("address_detail").focus();
+                    
+        			var geocoder = new daum.maps.services.Geocoder();
+        			
+        			geocoder.addressSearch(addr, function(result, status) {
+        				if(status === daum.maps.services.Status.OK) {
+        					$("#lat").val(result[0].y);
+        					$("#long").val(result[0].x);
+        				}
+        			});
                 }
             }).open();
         };
@@ -349,8 +373,12 @@
         	if (validationUpdt() == false) return false;
         	else form.attr("action", goUrlInst).submit();
 		});
-		
-		
+        
+        
+        $("#searchBtn").on("click", function() {
+        	daumPostCode();
+		});
+        
     </script>
 </body>
 </html> 

@@ -284,7 +284,7 @@ radio_regex = function(obj, value, message, hide) {
 }
 
 tel_regex = function(obj, value, message, hide) {
-    const re = /^[\d]{3}-[\d]{4}-[\d]{4}$/g;
+    const re = /^[\d]{3}-[\d]{4}-[\d]{4}$/;
     if (!checkNull(obj, value)) {
         hide.parent().addClass('error')
         $(hide).text(message)
@@ -342,10 +342,21 @@ add_regex = function(obj, value, message, hide) {
     }
 }
 
-detail_regex = function(obj, value, message, hide) {
+/*detail_regex = function(obj, value, message, hide) {
+	const re = /^[ㄱ-ㅎ가-힣a-zA-z0-9\s]{5}+[\s]+[ㄱ-ㅎ가-힣a-zA-z0-9\s]{5}$/g;
     if (!checkNull(obj, value)) {
         hide.parent().addClass('error')
         $(hide).text(message)
+        $(hide).show()
+        return false;
+    } else if (!(re.test($.trim($(obj).val())))) {
+		hide.parent().addClass('error')
+        $(hide).text("양식에 맞게 작성하세요")
+        $(hide).show()
+        return false;
+	} else if(!(($.trim($(obj).val()).length > 1) && ($.trim($(obj).val()).length < 10))) {
+        $(hide).text('10자 사이의 상세주소를 작성하시오')
+        hide.parent().addClass('error')
         $(hide).show()
         return false;
     } else {
@@ -354,7 +365,7 @@ detail_regex = function(obj, value, message, hide) {
         $(hide).hide()
         return true;
     }
-}
+}*/
 
 team_regex = function(obj, value, message, hide) {
     if (!checkNull(obj, value)) {

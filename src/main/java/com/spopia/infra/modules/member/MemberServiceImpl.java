@@ -69,7 +69,6 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String idCheck(String id) throws Exception {
 		String cnt = dao.idCheck(id);
-		System.out.println("cnt : " + id);
 		return cnt;
 	}
 }

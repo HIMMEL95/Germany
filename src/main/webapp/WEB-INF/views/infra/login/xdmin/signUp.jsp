@@ -276,7 +276,9 @@
     <script type="text/javascript">
         $('.error').hide();
         validationUpdt = function() {
-            if(!name_regex($('input[name=name]'), $('input[name=name]').val(), "이름을 입력하세요!", $('#name_msg'))) {
+            if (!id_regex($('input[name=id]'), $('input[name=id]').val(), "아이디를 입력하세요!", $('#id_msg'))) {
+            	return false;
+            } else if(!name_regex($('input[name=name]'), $('input[name=name]').val(), "이름을 입력하세요!", $('#name_msg'))) {
                 return false;
             } else if(!email_regex($('input[name=email]'), $('input[name=email]').val(), "이메일을 입력하세요!", $('#email_msg'))) {
                 return false;
@@ -381,19 +383,21 @@
         
         $("#idCheck").on("click", function() {
 			var id = $("#id").val();
+			var email = $("#email").val();
 			
 			var loginData = {"id" : id};
 			$.ajax({
 				url: "idCheck",
 				type : "get",
-				data: {id : id},
+				data: loginData,
 				success: function(cnt) {
 					if (cnt == 0) {
 					 	$('#id_msg').parent().removeClass('error');
 					 	$('#id_msg').parent().addClass('success');
 				        $('#id_msg').text("멋진 아이디 입니다.");
-				        $('#id_msg').hide();
+				        $('#id_msg').show();
 					} else {
+					 	$('#id_msg').parent().removeClass('success');						
 					 	$('#id_msg').parent().addClass('error');
 				        $('#id_msg').text("이미 있는 아이디 입니다.");
 				        $('#id_msg').show();

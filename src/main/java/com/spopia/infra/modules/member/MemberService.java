@@ -16,4 +16,8 @@ public interface MemberService {
 	/* team 관련 */
 	public int teamUpdt(Member dto) throws Exception;
 	public int teamInst(Member dto) throws Exception;
+	
+	/* id 중복 관련 */
+	public int idCheck(String id) throws Exception;
+	
 }

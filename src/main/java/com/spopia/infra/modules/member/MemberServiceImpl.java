@@ -64,4 +64,12 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println(dto.getSeq());
 		teamUpdt(dto);
 	}
+
+	/* id 중복관련 */
+	@Override
+	public int idCheck(String id) throws Exception {
+		int cnt = dao.idCheck(id);
+		System.out.println("cnt : " + id);
+		return cnt;
+	}
 }

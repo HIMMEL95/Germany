@@ -31,14 +31,14 @@
                     <div class="col-6">
                         <div class="input-control">
                             <label for="id">Id<span style="color: red;">*</span></label>
-                            <input id="id" name="id" type="text" onkeypress="validationUpdt()"> 
+                            <input id="id" name="id" type="text" value=""> 
                             <div class="msg" id="id_msg" name="id_msg" style="display: none;"></div>
                         </div>
                     </div>
                     <div class="col-2">
                         <div class="row">
                             <div class="col">
-                                <button type="button" class="btn fw-bold text-white certification"
+                                <button type="button" id="idCheck" btn fw-bold text-white certification"
                                     style="background-color: #03c75a;">중복확인</button>
                             </div>
                         </div>
@@ -274,9 +274,7 @@
     <script type="text/javascript">
         $('.error').hide();
         validationUpdt = function() {
-            if(!id_regex($('input[name=id]'), $('input[name=id]').val(), "아이디를 입력하세요!", $('#id_msg'))) {
-                return false;
-            } else if(!name_regex($('input[name=name]'), $('input[name=name]').val(), "이름을 입력하세요!", $('#name_msg'))) {
+            if(!name_regex($('input[name=name]'), $('input[name=name]').val(), "이름을 입력하세요!", $('#name_msg'))) {
                 return false;
             } else if(!email_regex($('input[name=email]'), $('input[name=email]').val(), "이메일을 입력하세요!", $('#email_msg'))) {
                 return false;
@@ -379,6 +377,34 @@
         	daumPostCode();
 		});
         
+        $("#idCheck").on("click", function() {
+			var id = $("#id").val();
+			
+			$.ajax({
+				url: "./idCheck",
+				type : "post",
+				data: {id : id},
+				success: function(cnt) {
+					if (cnt == 0) {
+					 	$('#id_msg').parent().removeClass('error');
+					 	$('#id_msg').parent().addClass('success');
+				        $('#id_msg').text("멋진 아이디 입니다.");
+				        $('#id_msg').hide();
+					} else {
+					 	$('#id_msg').parent().addClass('error');
+				        $('#id_msg').text("이미 있는 아이디 입니다.");
+				        $('#id_msg').show();
+				        alert("아이디를 다시 입력해주세요");
+				        $("#id").val('');
+					}
+				},
+				error: function() {
+					alert("에러입니다.")
+				}
+			});
+			alert("test");			
+		});
+		
     </script>
 </body>
 </html> 

@@ -55,4 +55,8 @@ public class MemberDao {
 		return sqlSession.update(namespace + ".teamUpdate", dto);
 	}
 
+	/* id 중복 관련 */
+	public int idCheck(String id) {
+		return sqlSession.selectOne(namespace + ".idCheck", id);
+	}
 }

@@ -3,6 +3,8 @@ package com.spopia.infra.modules.login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spopia.infra.modules.member.Member;
 import com.spopia.infra.modules.member.MemberServiceImpl;
@@ -34,5 +36,12 @@ public class LoginController {
 		service.userInst(dto);
 		return "infra/login/xdmin/userLogin";
 	}
- 
+
+	@RequestMapping(value = "/idCheck")
+	@ResponseBody
+	public int idCheck(@RequestParam("id") String id) throws Exception {
+		int cnt = service.idCheck(id);
+		System.out.println("cnt : " + cnt);
+		return cnt;
+	}
 }

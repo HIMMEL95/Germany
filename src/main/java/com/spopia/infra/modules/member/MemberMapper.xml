@@ -239,5 +239,10 @@
 			and user_seq = #{seq}
 		    and defaultNY = 0
 	</update>
+	
+	<!-- id중복 관련 -->
+	<select id="idCheck" parameterType="String" resultType="int">
+		select count(id) from user where id = #{id}
+	</select>
 
 </mapper>

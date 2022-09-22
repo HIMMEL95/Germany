@@ -37,11 +37,11 @@ public class LoginController {
 		return "infra/login/xdmin/userLogin";
 	}
 
-	@RequestMapping(value = "/idCheck")
+	@RequestMapping(value = "idCheck")
 	@ResponseBody
-	public int idCheck(@RequestParam("id") String id) throws Exception {
-		int cnt = service.idCheck(id);
-		System.out.println("cnt : " + cnt);
+	public String idCheck(@RequestParam("id") String id) throws Exception {
+		String cnt = service.idCheck(id);
+		System.out.println("cnt 1 : " + cnt);
 		return cnt;
 	}
 }

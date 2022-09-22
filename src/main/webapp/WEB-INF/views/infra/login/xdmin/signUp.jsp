@@ -24,7 +24,7 @@
 
     <main>
         <div class="container">
-            <form id="form" name="form" onkeyup="" action="../login/loginForm.html" method="get">
+            <form id="form" name="form" method="get">
                 <img src="/resources/images/SPOPIA1.png">
                 <h1>필수 사항</h1>
                 <div class="row">
@@ -267,10 +267,12 @@
             </div>
         </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2655da82c3779d622f0aff959060e6&libraries=services"></script>
+    <script src=""></script>
     <script type="text/javascript">
         $('.error').hide();
         validationUpdt = function() {
@@ -380,9 +382,10 @@
         $("#idCheck").on("click", function() {
 			var id = $("#id").val();
 			
+			var loginData = {"id" : id};
 			$.ajax({
-				url: "./idCheck",
-				type : "post",
+				url: "idCheck",
+				type : "get",
 				data: {id : id},
 				success: function(cnt) {
 					if (cnt == 0) {
@@ -402,7 +405,6 @@
 					alert("에러입니다.")
 				}
 			});
-			alert("test");			
 		});
 		
     </script>

@@ -31,16 +31,9 @@
                     <div class="col-6">
                         <div class="input-control">
                             <label for="id">Id<span style="color: red;">*</span></label>
-                            <input id="id" name="id" type="text" value="" autocomplete="off"> 
+                            <input type="hidden" id="idAllowedNy" name="idAllowedNy" value="0">
+                            <input id="id" name="id" type="text" value="<c:out value="${item.id }"/>" autocomplete="off"> 
                             <div class="msg" id="id_msg" name="id_msg" style="display: none;"></div>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="row">
-                            <div class="col">
-                                <button type="button" id="idCheck" btn fw-bold text-white certification"
-                                    style="background-color: #03c75a;">중복확인</button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -298,6 +291,8 @@
                 return false;
             } else if(!add_regex($('input[name=address]'), $('input[name=address]').val(), "주소를 입력하세요!", $('#address_msg'))) {
             	return false;
+            } else if (!detail_regex($('input[name=address_detail]'), $('input[name=address_detail]').val(), "우편번호를 입력하세요!", $('#address_detail_msg'))) {
+            	return false;
             } else if(!team_regex($('#team'), $('#team').val(), "좋아하는 팀을 입력하세요!", $('#team_msg'))) {
             	return false;
             } else {
@@ -382,46 +377,57 @@
         	daumPostCode();
 		});
         
-        $("#idCheck").on("click", function() {
-			var id = $("#id").val();
-			var email = $("#email").val();
-			
-			var loginData = {"id" : id};
-			$.ajax({
-				url: "idCheck",
-				type : "post",
-				data: loginData,
-				success: function(cnt) {
-					if (cnt == 0) {
-						if (id.length > 0) {
-					        successValidation("멋진 아이디 입니다.");
-						} else {
-					        errorValidation("아이디를 입력해주세요!!!");
-						}
-					} else {
-				        errorValidation("이미 있는 아이디 입니다.");
-					}
-				},
-				error: function() {
-					alert("에러입니다.");
-				}
-			});
-		});
-        
-        errorValidation = function(message) {
-        	$('#id_msg').parent().removeClass('success');						
-		 	$('#id_msg').parent().addClass('error');
-	        $('#id_msg').text(message);
-	        $('#id_msg').show();
-	        $("#id").val('');
+        errorValidation = function(input, msg, message) {
+        	$(msg).parent().removeClass('success');						
+		 	$(msg).parent().addClass('error');
+	        $(msg).text(message);
+	        $(msg).show();
+	        $(input).val('');
+	        $(input).focus();
 		}
         
-        successValidation = function(message) {
-        	$('#id_msg').parent().removeClass('error');
-		 	$('#id_msg').parent().addClass('success');
-	        $('#id_msg').text(message);
-	        $('#id_msg').show();
+        successValidation = function(input, msg, message) {
+        	$(msg).parent().removeClass('error');
+		 	$(msg).parent().addClass('success');
+	        $(msg).text(message);
+	        $(msg).show();
 		}
+        
+        
+    	$("#id").on("focusout", function(){
+    		var id = $("#id").val();
+    		
+    		if(!id_regex($('input[name=id]'), $('input[name=id]').val(), "아이디를 입력하세요!", $('#id_msg'))) {
+    			return false;
+    		} else {
+    			$.ajax({
+    				async: true 
+    				,cache: false
+    				,type: "post"
+    				/* ,dataType:"json" */
+    				,url: "idCheck"
+    				/* ,data : $("#formLogin").serialize() */
+    				,data : { "id" : id }
+    				,success: function(response) {
+    					if(response.rt == "success") {
+    						if (id.length > 0) {
+	    						successValidation('#id', '#id_msg', "사용가능한 아이디 입니다.");
+	    						document.getElementById("idAllowedNy").value = 1;
+    						} else {
+    							 errorValidation('#id', '#id_msg', "아이디를 입력해주세요!!!");
+    							 document.getElementById("idAllowedNy").value = 0;
+    						}
+    					} else {
+    						errorValidation('#id', '#id_msg', "이미 있는 아이디 입니다.");
+    						document.getElementById("idAllowedNy").value = 0;
+    					}
+    				}
+    				,error : function(jqXHR, textStatus, errorThrown){
+    					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+    				}
+    			});
+    		}
+    	});
 		
     </script>
 </body>

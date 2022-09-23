@@ -241,7 +241,7 @@
 	</update>
 	
 	<!-- id중복 관련 -->
-	<select id="idCheck" parameterType="String" resultType="String">
+	<select id="idCheck" parameterType="String" resultType="int">
 		select count(*) from user where id = #{id}
 	</select>
 

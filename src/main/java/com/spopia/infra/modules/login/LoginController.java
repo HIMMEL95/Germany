@@ -1,9 +1,11 @@
 package com.spopia.infra.modules.login;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spopia.infra.modules.member.Member;
@@ -37,11 +39,19 @@ public class LoginController {
 		return "infra/login/xdmin/userLogin";
 	}
 
-	@RequestMapping(value = "idCheck")
 	@ResponseBody
-	public String idCheck(@RequestParam("id") String id) throws Exception {
-		String cnt = service.idCheck(id);
-		return cnt;
+	@RequestMapping(value = "idCheck")
+	public Map<String, Object> idCheck(Member dto) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		int result = service.idCheck(dto);
+		
+		if (result > 0) {
+			returnMap.put("rt", "fail");
+		} else {
+			returnMap.put("rt", "success");
+		}
+		return returnMap;
 	}
 	
 }

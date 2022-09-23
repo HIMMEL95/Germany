@@ -56,7 +56,7 @@ public class MemberDao {
 	}
 
 	/* id 중복 관련 */
-	public String idCheck(String id) {
-		return sqlSession.selectOne(namespace + ".idCheck", id);
+	public int idCheck(Member dto) {
+		return sqlSession.selectOne(namespace + ".idCheck", dto);
 	}
 }

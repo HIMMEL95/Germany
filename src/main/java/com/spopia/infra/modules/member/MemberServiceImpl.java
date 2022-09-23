@@ -72,8 +72,8 @@ public class MemberServiceImpl implements MemberService {
 
 	/* id 중복관련 */
 	@Override
-	public String idCheck(String id) throws Exception {
-		String cnt = dao.idCheck(id);
+	public int idCheck(Member dto) throws Exception {
+		int cnt = dao.idCheck(dto);
 		return cnt;
 	}
 }

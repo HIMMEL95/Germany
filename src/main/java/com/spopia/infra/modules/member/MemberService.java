@@ -18,6 +18,6 @@ public interface MemberService {
 	public int teamInst(Member dto) throws Exception;
 	
 	/* id 중복 관련 */
-	public String idCheck(String id) throws Exception;
+	public int idCheck(Member dto) throws Exception;
 	
 }

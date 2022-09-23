@@ -224,7 +224,7 @@
                 </div>
                 <div class="row">
                     <div class="col-2">
-                        <button type="button" onClick="/userLogin" style="background: #03c75a;">뒤로</button>
+                        <button type="button" id="backBtn" style="background: #03c75a;">뒤로</button>
                     </div>
                     <div class="col-2 offset-8">
                         <button class="submit" type="button" id="btnSave">Sign Up</button>
@@ -364,14 +364,18 @@
 			$("#extraAddress").val('');
 		});
         
+        var goUrlLogin = "/userLogin";
         var goUrlInst = "/signUpInst";
         var form = $("form[name=form]");
+        
+        $("#backBtn").on("click", function() {
+			form.attr("action", goUrlLogin).submit();
+		})
         
         $("#btnSave").on("click", function() {
         	if (validationUpdt() == false) return false;
         	else form.attr("action", goUrlInst).submit();
 		});
-        
         
         $("#searchBtn").on("click", function() {
         	daumPostCode();

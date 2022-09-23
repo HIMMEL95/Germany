@@ -60,5 +60,16 @@ public class MemberController {
 		
 		return "redirect:/member/memberModForm";
 	}
+	
+	@RequestMapping(value = "memberUView")
+	public String memberUView(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+		Member item = service.selectOne(vo);
+		model.addAttribute("item", item);
+		return "infra/member/user/memberView";
+	}
  
+	@RequestMapping(value = "memberUMod")
+	public String memberUMod(Member dto) throws Exception {
+		return "infra/member/user/memberUModForm";
+	}
 }

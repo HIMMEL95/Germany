@@ -33,7 +33,7 @@ public class LoginController {
 	
 	@RequestMapping(value = "signUpInst") 
 	public String signUpInst(Member dto, MemberVo vo) throws Exception {
-		service.userInst(dto);
+		service.insert(dto);
 		return "infra/login/xdmin/userLogin";
 	}
 
@@ -43,4 +43,5 @@ public class LoginController {
 		String cnt = service.idCheck(id);
 		return cnt;
 	}
+	
 }

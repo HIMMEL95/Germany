@@ -64,6 +64,11 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println(dto.getSeq());
 		teamUpdt(dto);
 	}
+	
+	public void insert(Member dto) throws Exception {
+		userInst(dto);
+		teamInst(dto);
+	}
 
 	/* id 중복관련 */
 	@Override

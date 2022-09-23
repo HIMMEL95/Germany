@@ -24,8 +24,6 @@ public class Member {
 	
 	// teamUser Dto
 	private String tuSeq;
-	private Integer user_seq;
-	private Integer team_seq;
 	private Integer defaultNY;
 	private Integer deleteNY;
 	
@@ -34,18 +32,6 @@ public class Member {
 	}
 	public void setTuSeq(String tuSeq) {
 		this.tuSeq = tuSeq;
-	}
-	public Integer getUser_seq() {
-		return user_seq;
-	}
-	public void setUser_seq(Integer user_seq) {
-		this.user_seq = user_seq;
-	}
-	public Integer getTeam_seq() {
-		return team_seq;
-	}
-	public void setTeam_seq(Integer team_seq) {
-		this.team_seq = team_seq;
 	}
 	public Integer getDefaultNY() {
 		return defaultNY;

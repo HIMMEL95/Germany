@@ -53,7 +53,7 @@
                                     </h3>
                                     <ul class="pro_ul">
                                         <li class="pro_li">
-                                            <a class="pro_a" href="/">
+                                            <a class="pro_a" href="/member/memberUView">
                                                 <i class="fa-solid fa-user me-2"></i>
                                                 Edit Profile
                                             </a>

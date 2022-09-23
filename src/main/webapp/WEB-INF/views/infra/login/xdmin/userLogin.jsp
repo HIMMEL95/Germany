@@ -71,7 +71,7 @@
                                                     <span class="blind">비밀번호</span>
                                                 </span>
                                             </div>
-                                            <input type="password" id="pw" name="pw" placeholder="비밀번호" title="비밀번호"
+                                            <input type="password" id="pwd" name="pwd" placeholder="비밀번호" title="비밀번호"
                                                 class="input_text" maxlength="16">
                                             <span role="button" class="btn_delete" id="pw_clear" style="display: none;">
                                                 <span class="icon_delete">
@@ -116,10 +116,10 @@
                                         </div>
                                     </div>
                                     <div class="btn_login_wrap text-center">
-                                        <a role="submit" class="btn_login" id="log.login"
+                                        <button type="button" class="btn_login" id="log.login"
                                             href="/sportMain">
                                             <span class="btn_text">로그인</span>
-                                        </a>
+                                        </button>
                                         <div class="btn_login_wrap">
                                             <button type="submit" class="btn_login" id="log.login" style="background-color: #fceb00;">
                                                 <span class="btn_text text-black">
@@ -188,6 +188,38 @@
     <script type="text/javascript" async="" src="https://ssl.pstatic.net/tveta/libs/glad/prod/gfp-core.js"></script>
     <script type="text/javascript" src="/login/js/v2/default/common_202201.js?v=20220322"></script>
     <script type="text/javascript" src="/login/js/v2/default/default_202105.js?v=20210910"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    
+    <script type="text/javascript">
+    	$("#log.login").on("click", function() {
+    		var id = $("#id").val();
+			var pwd = $("#pw").val();
+			
+			var loginData = {"id": id, "pwd": pwd};
+			
+			$.ajax({
+				type:"POST",
+				url: "loginCheck";
+				contentType: "application/json";
+				data: JSON.stringify(loginData),
+				success : function(cnt) {
+					if (result == 0) {
+						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+						return fd
+					} else if (result == 9) {
+						alert("통신 오류");
+						return false;
+					} else {
+						window.location.href = "/sportMain";
+					}
+				},
+				error : function(jqXHR, status, error) {
+					alert("알 수 없는 에러 [ " + error + " ]");
+				}
+			});
+		});
+    </script>
 </body>
 
 </html>

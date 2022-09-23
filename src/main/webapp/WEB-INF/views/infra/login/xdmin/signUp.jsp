@@ -24,14 +24,14 @@
 
     <main>
         <div class="container">
-            <form id="form" name="form" method="get">
+            <form id="form" name="form" method="post">
                 <img src="/resources/images/SPOPIA1.png">
                 <h1>필수 사항</h1>
                 <div class="row">
                     <div class="col-6">
                         <div class="input-control">
                             <label for="id">Id<span style="color: red;">*</span></label>
-                            <input id="id" name="id" type="text" value=""> 
+                            <input id="id" name="id" type="text" value="" autocomplete="off"> 
                             <div class="msg" id="id_msg" name="id_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -48,14 +48,14 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="name">Username<span style="color: red;">*</span></label>
-                            <input id="name" name="name" type="text" onkeypress="validationUpdt()"> 
+                            <input id="name" name="name" type="text" onkeypress="validationUpdt()" autocomplete="off"> 
                             <div class="msg" id="name_msg" name="name_msg" style="display: none;"></div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="input-control">
                             <label for="email">Email<span style="color: red;">*</span></label>
-                            <input id="email" name="email" type="text" onkeypress="validationUpdt()">
+                            <input id="email" name="email" type="text" onkeypress="validationUpdt()" autocomplete="off">
                             <div class="msg" id="email_msg" name="email_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -64,14 +64,14 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="pwd">Password<span style="color: red;">*</span></label>
-                            <input id="pwd" name="pwd" type="password" onkeypress="validationUpdt()">
+                            <input id="pwd" name="pwd" type="password" onkeypress="validationUpdt()" autocomplete="off">
                             <div class="msg" id="pwd_msg" name="pwd_msg" style="display: none;"></div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="input-control">
                             <label for="pwd2">Password again<span style="color: red;">*</span></label>
-                            <input id="pwd2" name="pwd2" type="password" onkeypress="validationUpdt()">
+                            <input id="pwd2" name="pwd2" type="password" onkeypress="validationUpdt()" autocomplete="off">
                             <div class="msg" id="pwd2_msg" name="pwd2_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="dob">생년월일<span style="color: red;">*</span></label>
-                            <input id="dob" name="dob" type="text" placeholder="1900-01-01" onkeypress="validationUpdt()">
+                            <input id="dob" name="dob" type="text" placeholder="1900-01-01" autocomplete="off" onkeypress="validationUpdt()">
                             <div class="msg" id="dob_msg" name="dob_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="phone">전화번호<span style="color: red;">*</span></label>
-                            <input id="phone" name="phone" type="tel" placeholder="010-0000-0000" onkeypress="validationUpdt()">
+                            <input id="phone" name="phone" type="tel" placeholder="010-0000-0000" autocomplete="off" onkeypress="validationUpdt()">
                             <div class="msg" id="phone_msg" name="phone_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -147,7 +147,7 @@
                     <div class="col-6">
                         <div class="input-control">
                             <label for="zip">우편번호<span style="color: red;">*</span></label>
-                            <input id="zip" name="zip" type="text" readonly> 
+                            <input id="zip" name="zip" type="text" readonly autocomplete="off"> 
                             <div class="msg" id="zip_msg" name="zip_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -178,7 +178,7 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="address_detail">상세주소<span style="color: red;">*</span></label>
-                            <input id="address_detail" name="address_detail" type="text" onkeypress="validationUpdt()"> 
+                            <input id="address_detail" name="address_detail" type="text" autocomplete="off" onkeypress="validationUpdt()"> 
                             <div class="msg" id="address_detail_msg" name="address_detail_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -225,13 +225,13 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="job">직업</label>
-                            <input id="job" name="job" type="text">
+                            <input id="job" name="job" type="text" autocomplete="off">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-2">
-                        <button type="button" onClick="history.back();" style="background: #03c75a;">뒤로</button>
+                        <button type="button" onClick="/userLogin" style="background: #03c75a;">뒤로</button>
                     </div>
                     <div class="col-2 offset-8">
                         <button class="submit" type="button" id="btnSave">Sign Up</button>
@@ -303,6 +303,7 @@
             } else {
                 return true;
             }
+           	alert("회원가입이 완료 되었습니다.");
         };
         
         function daumPostCode() {
@@ -388,28 +389,39 @@
 			var loginData = {"id" : id};
 			$.ajax({
 				url: "idCheck",
-				type : "get",
+				type : "post",
 				data: loginData,
 				success: function(cnt) {
 					if (cnt == 0) {
-					 	$('#id_msg').parent().removeClass('error');
-					 	$('#id_msg').parent().addClass('success');
-				        $('#id_msg').text("멋진 아이디 입니다.");
-				        $('#id_msg').show();
+						if (id.length > 0) {
+					        successValidation("멋진 아이디 입니다.");
+						} else {
+					        errorValidation("아이디를 입력해주세요!!!");
+						}
 					} else {
-					 	$('#id_msg').parent().removeClass('success');						
-					 	$('#id_msg').parent().addClass('error');
-				        $('#id_msg').text("이미 있는 아이디 입니다.");
-				        $('#id_msg').show();
-				        alert("아이디를 다시 입력해주세요");
-				        $("#id").val('');
+				        errorValidation("이미 있는 아이디 입니다.");
 					}
 				},
 				error: function() {
-					alert("에러입니다.")
+					alert("에러입니다.");
 				}
 			});
 		});
+        
+        errorValidation = function(message) {
+        	$('#id_msg').parent().removeClass('success');						
+		 	$('#id_msg').parent().addClass('error');
+	        $('#id_msg').text(message);
+	        $('#id_msg').show();
+	        $("#id").val('');
+		}
+        
+        successValidation = function(message) {
+        	$('#id_msg').parent().removeClass('error');
+		 	$('#id_msg').parent().addClass('success');
+	        $('#id_msg').text(message);
+	        $('#id_msg').show();
+		}
 		
     </script>
 </body>

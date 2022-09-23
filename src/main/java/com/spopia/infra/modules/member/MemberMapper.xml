@@ -194,7 +194,7 @@
 	<!-- team insert -->
 	<insert id="teamInsert">
 		INSERT INTO teamUser (
-			team
+			team_seq
 			,user_seq
 			,deleteNY
 			,defaultNY

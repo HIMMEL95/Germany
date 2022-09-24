@@ -20,4 +20,6 @@ public interface MemberService {
 	/* id 중복 관련 */
 	public int idCheck(Member dto) throws Exception;
 	
+//	login 관련 
+	public Member loginCheck(Member dto) throws Exception;
 }

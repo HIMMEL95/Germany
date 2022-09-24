@@ -3,11 +3,15 @@ package com.spopia.infra.modules.login;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mysql.cj.Session;
 import com.spopia.infra.modules.member.Member;
 import com.spopia.infra.modules.member.MemberServiceImpl;
 import com.spopia.infra.modules.member.MemberVo;
@@ -54,4 +58,17 @@ public class LoginController {
 		return returnMap;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "loginCheck")
+	public Map<String, Object> loginCheck(Member dto, HttpServletRequest request) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		HttpSession session = request.getSession();
+		
+		Member result = service.loginCheck(dto);
+		
+		System.out.println("result : " + result);
+		
+		return returnMap;
+	}
 }

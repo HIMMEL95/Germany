@@ -76,4 +76,10 @@ public class MemberServiceImpl implements MemberService {
 		int cnt = dao.idCheck(dto);
 		return cnt;
 	}
+
+//	login 관련 
+	@Override
+	public Member loginCheck(Member dto) throws Exception {
+		return dao.loginCheck(dto);
+	}	
 }

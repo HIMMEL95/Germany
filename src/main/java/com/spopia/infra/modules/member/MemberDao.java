@@ -59,4 +59,9 @@ public class MemberDao {
 	public int idCheck(Member dto) {
 		return sqlSession.selectOne(namespace + ".idCheck", dto);
 	}
+	
+//	login 관련
+	public Member loginCheck(Member dto) {
+		return sqlSession.selectOne(namespace + ".loginCheck", dto);
+	}
 }

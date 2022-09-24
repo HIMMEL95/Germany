@@ -116,8 +116,7 @@
                                         </div>
                                     </div>
                                     <div class="btn_login_wrap text-center">
-                                        <button type="button" class="btn_login" id="log.login"
-                                            href="/sportMain">
+                                        <button type="button" class="btn_login" id="loginBtn" href="/sportMain">
                                             <span class="btn_text">로그인</span>
                                         </button>
                                         <div class="btn_login_wrap">
@@ -188,12 +187,13 @@
     <script type="text/javascript" async="" src="https://ssl.pstatic.net/tveta/libs/glad/prod/gfp-core.js"></script>
     <script type="text/javascript" src="/login/js/v2/default/common_202201.js?v=20220322"></script>
     <script type="text/javascript" src="/login/js/v2/default/default_202105.js?v=20210910"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
-    
     <script type="text/javascript">
-    	$("#log.login").on("click", function() {
-    		var id = $("#id").val();
+    	$("#loginBtn").on("click", function() {
+    		
+    		alert("Test");
+    		/* var id = $("#id").val();
 			var pwd = $("#pw").val();
 			
 			var loginData = {"id": id, "pwd": pwd};
@@ -217,7 +217,7 @@
 				error : function(jqXHR, status, error) {
 					alert("알 수 없는 에러 [ " + error + " ]");
 				}
-			});
+			}); */
 		});
     </script>
 </body>

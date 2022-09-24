@@ -190,25 +190,21 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
+    
     	$("#loginBtn").on("click", function() {
     		
-    		alert("Test");
-    		/* var id = $("#id").val();
-			var pwd = $("#pw").val();
-			
-			var loginData = {"id": id, "pwd": pwd};
+    		var id = $("#id").val();
+			var pwd = $("#pwd").val();
 			
 			$.ajax({
-				type:"POST",
-				url: "loginCheck";
-				contentType: "application/json";
-				data: JSON.stringify(loginData),
-				success : function(cnt) {
-					if (result == 0) {
+				async: true
+				,cache: false
+				,type:"POST"
+				,url: "loginCheck"
+				,data: {"id": id, "pwd": pwd}
+				,success : function(response) {
+					if (response.rt == "fail") {
 						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
-						return fd
-					} else if (result == 9) {
-						alert("통신 오류");
 						return false;
 					} else {
 						window.location.href = "/sportMain";
@@ -217,7 +213,7 @@
 				error : function(jqXHR, status, error) {
 					alert("알 수 없는 에러 [ " + error + " ]");
 				}
-			}); */
+			});
 		});
     </script>
 </body>

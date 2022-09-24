@@ -24,6 +24,8 @@
 </head>
 
 <body>
+	<%String id = (String) session.getAttribute("id");%>
+	<%String email = (String) session.getAttribute("email");%>
     <div class="container">
         <!-- header 영역 -->
         <header>
@@ -47,9 +49,9 @@
                                 </div>
                                 <div class="menu">
                                     <h3>
-                                        Himmel
+                                    	<%=id %>
                                         <br>
-                                        <a href="#" style="text-transform: none;">himmel@gmail.com</a>
+                                        <a href="#" style="text-transform: none;"><%=email %></a>
                                     </h3>
                                     <ul class="pro_ul">
                                         <li class="pro_li">
@@ -71,7 +73,7 @@
                                             </a>
                                         </li>
                                         <li class="pro_li">
-                                            <a class="pro_a" href="/">
+                                            <a class="pro_a" id="signOutBtn" href="/">
                                                 <i class="fa-solid fa-power-off me-2"></i>
                                                 Sign Out
                                             </a>
@@ -683,13 +685,24 @@
         </footer>
     </div>
 
-    <script>
+    <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
         function menuToggle() {
             const toggleMenu = document.querySelector('.menu');
             toggleMenu.classList.toggle('active')
         }
-    </script>
-    <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
+        
+        $("#signOutBtn").on("click", function() {
+			$.ajax({
+				type: "POST"
+				,url: "logout"
+				,data: {}
+				,success : function(response) {
+					location.reload();
+				}
+			});
+		});
+	</script>    
 </body>
 
 </html>

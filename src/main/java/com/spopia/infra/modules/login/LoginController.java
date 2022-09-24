@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mysql.cj.Session;
 import com.spopia.infra.modules.member.Member;
 import com.spopia.infra.modules.member.MemberServiceImpl;
 import com.spopia.infra.modules.member.MemberVo;
@@ -64,11 +63,28 @@ public class LoginController {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		HttpSession session = request.getSession();
-		
 		Member result = service.loginCheck(dto);
 		
-		System.out.println("result : " + result);
-		
+		if(result != null) {
+			session.setAttribute("id", result.getId());
+			session.setAttribute("name", result.getName());	
+			session.setAttribute("email", result.getEmail());
+			returnMap.put("rt", "success");
+		} else {
+			returnMap.put("rt", "fail");
+		}
 		return returnMap;
+	}
+	
+	@RequestMapping(value = "logout")
+	public String logout(HttpServletRequest request) throws Exception {
+		
+		HttpSession session = request.getSession();
+		if (session != null) {
+			session.removeAttribute("id");
+			session.removeAttribute("name");
+			session.removeAttribute("email");
+		}
+		return "redirect:/";
 	}
 }

@@ -246,7 +246,7 @@
 	</select>
 	
 	<!-- login 관련 -->
-	<select id="loginCheck" parameterType="String">
+	<select id="loginCheck" resultMap="resultMapObj">
 		select 
 			u.seq
 			,u.id
@@ -255,8 +255,8 @@
 			,u.pwd
 		from user u
 		where 1=1 
-			and id = ${id} 
-			and pwd = ${pwd}
+			and id = #{id} 
+			and pwd = #{pwd}
 	</select>
 
 </mapper>

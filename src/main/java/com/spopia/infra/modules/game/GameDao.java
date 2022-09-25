@@ -25,6 +25,14 @@ public class GameDao {
 		return sqlSession.selectList(namespace + ".selectList", vo);
 	}
 	
+	public List<Game> selectList1() {
+		return sqlSession.selectList(namespace + ".selectList1", "");
+	}
+	
+	public int selectOneCount(GameVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
+	}
+	
 	public int insert(Game dto) {
 		return sqlSession.insert(namespace + ".insert", dto);
 	}

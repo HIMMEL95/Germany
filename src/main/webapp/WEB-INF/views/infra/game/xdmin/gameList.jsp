@@ -28,7 +28,7 @@
             <div class="container px-3 px-xl-5 pt-1">
                 <!-- Logo START -->
                 <a class="navbar-brand" href="/sportMain">
-                    <img class="light-mode-item navbar-brand-item" src="../../resources/images/SPOPIA_white.png" alt="logo"
+                    <img class="light-mode-item navbar-brand-item" src="/resources/images/SPOPIA_white.png" alt="logo"
                         style="width: 90px;">
                 </a>
                 <!-- Profile START -->
@@ -37,7 +37,7 @@
                         <li class="me-2">
                             <a class="p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
                                 data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img class="avatar-img rounded-circle" src="../../resources/images/diano.jpg" alt="avatar"
+                                <img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar"
                                     style="width: 30px;">
                             </a>
                             <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
@@ -47,7 +47,7 @@
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
                                         <div class="avatar mt-2">
-                                            <img class="avatar-img rounded-circle shadow" src="../../resources/images/diano.jpg"
+                                            <img class="avatar-img rounded-circle shadow" src="/resources/images/diano.jpg"
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
@@ -95,7 +95,7 @@
     <main>
         <div style="height: 100px;"></div>
         <div class="container">
-            <form method="post" action="/game/gameList" id="myForm" name="myForm">
+            <form method="post" id="myForm" name="myForm">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -189,8 +189,12 @@
                                                 <a class="nav-link" href="privacy-and-terms.html">Privacy &amp; terms</a>
                                             </li>
                                         </ul>
-                                        <p class="small text-center mt-1">©2022 <a class="text-body" target="_blank" href="#"> SPOPIA
-                                            </a></p>
+                                        <p class="small text-center mt-1">
+                                        	©2022 
+                                        	<a class="text-body" target="_blank" href="#"> 
+                                        		SPOPIA
+                                            </a>
+                                       </p>
                                     </div>
                                 </div>
                             </nav>
@@ -202,7 +206,7 @@
                         <div class="row">
                             <div class="col-12 ">
                                 <div class="card text-white position-relative shadow-lg">
-                                    <img src="../../resources/images/xdmin/listBack.jpg" class="card-img" style="height: 200px;"
+                                    <img src="/resources/images/xdmin/listBack.jpg" class="card-img" style="height: 200px;"
                                         alt="...">
                                     <div class="card-img-overlay text-center p-4 position-absoulte top-50 start-50 translate-middle">
                                         <span class="card-title align-middle fw-bold fs-3">경기 기록 관리</span>
@@ -215,7 +219,6 @@
                             <div class="row align-items-center pb-2">
                                 <div class="col-2">
                                     <select class="form-select form-select-sm fw-bold" id="shDelNy" name="shDelNy" aria-label=".form-select-sm example">
-                                       	<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>선택</option>
                                         <option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
                                         <option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option>
                                     </select>
@@ -228,10 +231,10 @@
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control datepicker" id="date_st" name="startDate" placeholder="시작일" autocomplete="off">
+                                    <input type="text" class="form-control datepicker" id="startDate" name="startDate" value="<c:out value="${vo.startDate }"/>" placeholder="시작일" autocomplete="off">
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control datepicker" id="date_end" name="endDate" placeholder="종료일" autocomplete="off">
+                                    <input type="text" class="form-control datepicker" id="endDate" name="endDate" value="<c:out value="${vo.endDate }"/>" placeholder="종료일" autocomplete="off">
                                 </div>
                             </div>
                             <div class="row align-items-center">
@@ -245,14 +248,20 @@
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control" id="validationCustom01" value="" autocomplete="off">
+                                    <input type="text" class="form-control" id="validationCustom01" value="<c:out value="${vo.shValue }"/>" autocomplete="off">
                                 </div>
-                                <div class="col-3">
-                                    <button class="btn btn-primary fw-bold btn-sm shadow" type="submit">검색</button>
+                                <div class="col-2">
+                                    <button class="btn btn-warning fw-bold btn-sm shadow" type="submit">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </button>
+                                    <button id="refresh" class="btn btn-danger fw-bold btn-sm shadow" type="button">
+                                        <i class="fa-solid fa-arrow-rotate-right"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                         <!-- 리스트 -->
+                        <div style="margin: 0; padding: 0; font-weight: 800;">Total : ${vo.totalRows }</div>
                         <div class="card ps-3 pt-3 pe-3 shadow">
                             <table class="table text-center align-middle">
                                 <thead>
@@ -288,7 +297,7 @@
 			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
 			                                                id="flexCheckDefault">
 			                                        </td>
-			                                        <td>${list.seq}</td>
+			                                        <td><c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/></td>
 			                                        <td>
 			                                        	<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
 															<c:if test="${list.event eq listEvent.ccSeq}"><c:out value="${listEvent.ifccName }"/></c:if>
@@ -321,23 +330,9 @@
                                 	</c:choose>
                                 </tbody>
                             </table>
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination pagination-sm col-3 offset-5">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            <!--  Pagination s -->
+                            <%@include file="../../common/xdmin/includeV1/pagination.jsp" %>
+                            <!--  Pagination e -->
                         </div>
                         <div class="row align-items-center">
                             <div class="col-1">
@@ -424,6 +419,7 @@
        		});
     	})
     	
+    	var goUrlList = "/game/gameList";
     	var goUrlForm = "/game/gameView";
     	var seq = $("input:hidden[name=seq]");
     	var form = $("#myForm");
@@ -432,9 +428,17 @@
 	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
 	    	seq.val(keyValue);
 			form.attr("action", goUrlForm).submit();
-		}
+		};
+		
+		goList = function(thisPage) {
+			$("input:hidden[name=thisPage]").val(thisPage);
+			form.attr("action", goUrlList).submit();
+		};
+    	
+    	$("#refresh").on("click", function() {
+			$(location).attr("href", goUrlList);
+		});
     	
     </script>
 </body>
-
 </html>

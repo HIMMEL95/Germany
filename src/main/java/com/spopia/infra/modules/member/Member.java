@@ -45,7 +45,6 @@ public class Member {
 	public void setDeleteNY(Integer deleteNY) {
 		this.deleteNY = deleteNY;
 	}
-	
 	public Integer getuDelNy() {
 		return uDelNy;
 	}

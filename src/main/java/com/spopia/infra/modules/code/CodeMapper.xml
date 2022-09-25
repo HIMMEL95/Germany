@@ -12,11 +12,11 @@
 		FROM code c
 		inner join codeGroup cg on cg.ccgSeq = c.codeGroup_ccgSeq
 		WHERE 1=1
-		<if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if>
+		<if test="shDelNy != null and !shDelNy.equals('')">AND ifccDelNy = #{shDelNy}</if>
 		<choose>
 			<when test="shOption == 1">AND ccSeq = #{shValue}</when>
-			<when test="shOption == 2">AND ifcgName LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 3">AND ifcgNameEng LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND ifccName LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND ifccNameEng LIKE CONCAT('%',#{shValue},'%')</when>
 		</choose>
 	</sql>
 	

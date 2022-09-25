@@ -23,7 +23,8 @@ public class ArticleController {
 	}
 
 	@RequestMapping(value = "articleList")
-	public String articleList(Model model, ArticleVo vo) throws Exception {
+	public String articleList(Model model, @ModelAttribute("vo") ArticleVo vo) throws Exception {
+		setSearchAndPaging(vo);
 		
 		List<Article> list = service.selectList(vo);
 		model.addAttribute("list", list);

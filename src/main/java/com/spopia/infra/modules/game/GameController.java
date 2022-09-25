@@ -14,8 +14,17 @@ public class GameController {
 	@Autowired
 	GameServiceImpl service;
 	
+	public void setSearchAndPaging(GameVo vo) throws Exception {
+		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
+		
+		vo.setParamsPaging(service.selectOneCount(vo));
+	}
+	
 	@RequestMapping(value = "gameList")
 	public String gameList(Model model, GameVo vo) throws Exception {
+		
+		setSearchAndPaging(vo);
+		
 		List<Game> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		return "infra/game/xdmin/gameList";

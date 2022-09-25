@@ -22,6 +22,16 @@ public class GameServiceImpl implements GameService{
 	}
 	
 	@Override
+	public List<Game> selectList1() throws Exception {
+		return dao.selectList();
+	}
+	
+	@Override
+	public int selectOneCount(GameVo vo) throws Exception {
+		return dao.selectOneCount(vo);
+	}
+	
+	@Override
 	public int insert(Game dto) throws Exception {
 		return dao.insert(dto);
 	}

@@ -1,6 +1,8 @@
 package com.spopia.infra.modules.game;
 
-public class GameVo {
+import com.spopia.infra.common.base.BaseVo;
+
+public class GameVo extends BaseVo{
 	
 	private String shOption;
 	private String shValue;
@@ -51,5 +53,4 @@ public class GameVo {
 	public void setSeq(String seq) {
 		this.seq = seq;
 	}
-
 }

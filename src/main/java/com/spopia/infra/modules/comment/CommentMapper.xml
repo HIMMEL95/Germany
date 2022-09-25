@@ -18,6 +18,20 @@
 			</choose>
 	</sql> -->
 	
+	<sql id ="selectCommon">
+		FROM  u
+			inner join teamUser tu on tu.user_seq = u.seq
+			inner join team t on t.teamSeq = tu.team_seq
+		WHERE 1=1
+			and tu.defaultNY = 0
+		<if test="shDelNy != null and !shDelNy.equals('')">AND uDelNy = #{shDelNy}</if>
+		<choose>
+			<when test="shOption == 1">AND seq = #{shValue}</when>
+			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND id LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
+	</sql>
+	
 	<select id="selectList" resultMap="resultMapObj">
 		<!-- select 
 			cg.*

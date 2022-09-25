@@ -23,7 +23,6 @@
 </head>
 
 <body>
-
     <header class="navbar-light fixed-top header-static bg-mode align-items-center">
         <!-- 상단 -->
         <nav class="navbar navbar-expand-lg">
@@ -233,10 +232,10 @@
                                     </select>
                                 </div>
                                 <div class="col-3">
-                                    <input type="text" class="form-control datepicker" id="date_st" name="startDate" placeholder="시작일" autocomplete="off">
+                                    <input type="text" class="form-control datepicker" id="startDate" name="startDate" value="<c:out value="${vo.startDate }"/>" placeholder="시작일" autocomplete="off">
                                 </div>
                                 <div class="col-3">
-                                    <input type="text" class="form-control datepicker" id="date_end" name="endDate" placeholder="종료일" autocomplete="off"s>
+                                    <input type="text" class="form-control datepicker" id="endDate" name="endDate" value="<c:out value="${vo.endDate }"/>" placeholder="종료일" autocomplete="off"s>
                                 </div>
                             </div>
                             <div class="row align-items-center">
@@ -248,15 +247,21 @@
                                         <option value="3" <c:if test="${vo.shOption eq 3}"> selected</c:if>>성별</option>
                                     </select>
                                 </div>
-                                <div class="col-3">
-                                    <input type="text" class="form-control" id="validationCustom01" name="shValue" value="" autocomplete="off">
+                                <div class="col-2">
+                                    <input type="text" class="form-control" id="validationCustom01" name="shValue" value="<c:out value="${vo.shValue }"/>" autocomplete="off">
                                 </div>
-                                <div class="col-3">
-                                    <button class="btn btn-primary fw-bold btn-sm shadow" type="submit">검색</button>
+                                <div class="col-2">
+                                    <button class="btn btn-warning fw-bold btn-sm shadow" type="submit">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </button>
+                                    <button id="refresh" class="btn btn-danger fw-bold btn-sm shadow" type="button">
+                                        <i class="fa-solid fa-arrow-rotate-right"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                         <!-- 리스트 -->
+                        <span style="margin: 0; padding: 0; font-weight: 800;">Total : ${vo.totalRows }</span>
                         <div class="card ps-3 pt-3 pe-3 shadow">
                             <table class="table text-center align-middle">
                                 <thead>
@@ -286,7 +291,7 @@
 			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
                                                 id="flexCheckDefault">
 			                                        </td>
-			                                        <td>${list.seq }</td>
+			                                        <td><c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/></td>
 			                                        <td><a href="/article/articleXdminView?seq=<c:out value="${list.seq }"/>">${list.name }</a></td>
 			                                        <td>
 			                                        	<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
@@ -303,23 +308,7 @@
                                 	</c:choose>
                                 </tbody>
                             </table>
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination pagination-sm col-3 offset-5">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            <%@include file="../../common/xdmin/includeV1/pagination.jsp" %>
                         </div>
                         <div class="row align-items-center">
                             <div class="col-1">
@@ -373,7 +362,7 @@
                 </ul>
                 <div class="footer_copy">
                     <a id="fot.naver" target="_blank" href="https://www.navercorp.com">
-                        <img src="../../resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
+                        <img src="/resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
                     </a>
                     <span class="text">Copyright</span>
                     <span class="corp">© SPOPIA Corp.</span>
@@ -399,7 +388,33 @@
 	      			,showMonthAfterYear: true
 	      			,showOtherMonths: true
 	      		});
-	   	})
+	   	});
+	   	
+	   	var goUrlList = "/comment/commentList";
+	    var form = $("form[name=myForm]");
+		
+		$("#refresh").on("click", function() {
+			$(location).attr("href", goUrlList);
+		});
+		
+		$(function() {
+	   		$("#startDate").datepicker({
+	   			dateFormat: "yy-mm-dd"
+	   			,showMonthAfterYear: true
+	   			,showOtherMonths: true
+	   		});
+	   		$("#endDate").datepicker({
+	   			dateFormat: "yy-mm-dd"
+	      			,showMonthAfterYear: true
+	      			,showOtherMonths: true
+	      		});
+	   	});
+	   	
+	   	goList = function(thisPage) {
+			$("input:hidden[name=thisPage]").val(thisPage);
+			form.attr("action", goUrlList).submit();			
+		};
+		
    </script>
 </body>
 

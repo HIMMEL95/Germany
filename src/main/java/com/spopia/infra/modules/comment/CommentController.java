@@ -13,7 +13,7 @@ public class CommentController {
 	
 	@Autowired
 	CommentServiceImpl service;
-	
+
 	@RequestMapping(value = "commentList")
 	public String comment(Model model, CommentVo vo) throws Exception {
 		

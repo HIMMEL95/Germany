@@ -87,4 +87,9 @@ public class LoginController {
 		}
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value = "kakaoLogin")
+	public String kakaoLogin() throws Exception {
+		return "redirect:/";
+	}
 }

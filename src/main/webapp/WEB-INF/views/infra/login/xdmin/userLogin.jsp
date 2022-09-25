@@ -45,8 +45,7 @@
                             </a>
                         </li>
                     </ul>
-                    <form id="frmNIDLogin" name="frmNIDLogin" target="_top" autocomplete="off"
-                        action="https://nid.naver.com/nidlogin.login" method="POST">
+                    <form id="frmNIDLogin" name="frmNIDLogin" target="_top" autocomplete="off" method="POST">
                         <ul class="panel_wrap">
                             <li class="panel_item" style="display: block;">
                                 <div class="panel_inner" role="tabpanel" aria-controls="loinid">
@@ -120,9 +119,9 @@
                                             <span class="btn_text">로그인</span>
                                         </button>
                                         <div class="btn_login_wrap">
-                                            <button type="submit" class="btn_login" id="log.login" style="background-color: #fceb00;">
+                                            <button type="submit" class="btn_login" id="kakaoBtn" style="background-color: #fceb00;">
                                                 <span class="btn_text text-black">
-                                                	<img src="../../resources/images/user/kakao.png" style="width: 25px;" class="me-3">
+                                                	<img src="/resources/images/user/kakao.png" style="width: 25px;" class="me-3">
                                                		카카오 로그인
                                            		</span>
                                             </button>
@@ -189,6 +188,9 @@
     <script type="text/javascript" src="/login/js/v2/default/default_202105.js?v=20210910"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- kakao login s -->
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <!-- kakao login e -->
     <script type="text/javascript">
     
     	$("#loginBtn").on("click", function() {
@@ -215,6 +217,31 @@
 				}
 			});
 		});
+    	
+    	var goUrlMain = "/sportMain";
+    	var form = $("#frmNIDLogin");
+    	
+    	Kakao.init('ec2655da82c3779d622f0aff959060e6');
+    	console.log(Kakao.isInitialized());
+    	$("#kakaoBtn").on("click", function() {
+    		Kakao.Auth.login({
+   		      success: function (response) {
+   		        Kakao.API.request({
+   		          url: 'kakaoLogin',
+   		          success: function (response) {
+   		        	  console.log(response);
+   		        	  form.attr("action", goUrlMain).submit();
+   		          },
+   		          fail: function (error) {
+   		            console.log(error);
+   		          },
+   		        })
+   		      },
+   		      fail: function (error) {
+   		        console.log(error)
+   		      },
+   		    })
+		})
     </script>
 </body>
 

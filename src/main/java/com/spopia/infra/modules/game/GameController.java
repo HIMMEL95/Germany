@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -21,7 +22,7 @@ public class GameController {
 	}
 	
 	@RequestMapping(value = "gameList")
-	public String gameList(Model model, GameVo vo) throws Exception {
+	public String gameList(Model model, @ModelAttribute("vo") GameVo vo) throws Exception {
 		
 		setSearchAndPaging(vo);
 		

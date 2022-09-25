@@ -113,7 +113,7 @@
 			,#{event}
 			,#{league}
 			,#{reporter}
-			,#{aDelNy}
+			,0
 			,now()
 			,now()
 		)

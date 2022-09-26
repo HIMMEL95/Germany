@@ -33,4 +33,7 @@ public class CommentDao {
 		return sqlSession.selectList(namespace + ".selectList1", vo);
 	}
 	 
+	public int selectOneCount1(CommentVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneCount1", vo);
+	}
 }

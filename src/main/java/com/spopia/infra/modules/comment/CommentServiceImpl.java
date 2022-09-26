@@ -31,5 +31,9 @@ public class CommentServiceImpl implements CommentService {
 	public List<Comment> selectList1(CommentVo vo) throws Exception {
 		return dao.selectList1(vo);
 	}
-	
+
+	@Override
+	public int selectOneCount1(CommentVo vo) throws Exception {
+		return dao.selectOneCount1(vo);
+	}
 }

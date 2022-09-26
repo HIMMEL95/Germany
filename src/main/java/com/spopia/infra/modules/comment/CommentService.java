@@ -10,4 +10,6 @@ public interface CommentService {
 	public int selectOneCount(CommentVo vo) throws Exception; 
 	
 	public List<Comment> selectList1(CommentVo vo) throws Exception;
+	
+	public int selectOneCount1(CommentVo vo) throws Exception;
 }

@@ -179,4 +179,45 @@
 			<include refid="Base.orderByLimitForMysql" />
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
+	
+	<select id="selectOneCount1" resultType="Integer">
+		select count(*) from (
+			(select 
+				ac.seq
+			    ,ac.comment
+			    ,ac.createdAt
+			    ,ac.modifiedAt
+			    ,ac.DelNy
+			    ,u.name as name
+			    ,u.id as id
+			    ,u.gender as gender
+			from 
+				article_comment ac
+				inner join user u on u.seq = ac.createdBy
+			where 1=1
+				and createdBy = #{seq}
+			order by
+				ac.article_seq
+				,ac.createdAt)
+			union all
+			(select
+				gc.seq
+			    ,gc.comment
+			    ,gc.createdAt
+			    ,gc.modifiedAt
+			    ,gc.DelNy
+			    ,u.name as name
+			    ,u.id as id
+			    ,u.gender as gender
+			from game_comment gc
+				inner join user u on u.seq = gc.createdBy
+			where 1=1
+				and createdBy = #{seq}
+			order by 
+				gc.game_seq
+			    ,gc.createdAt)
+			order by
+				createdAt
+		) aa	
+	</select>
 </mapper>	

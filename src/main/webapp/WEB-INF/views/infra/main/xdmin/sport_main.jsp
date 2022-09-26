@@ -62,7 +62,9 @@
 	                                    <ul class="pro_ul">
 	                                        <li class="pro_li">
 	                                           <%--  <button class="pro_a" type="button" onclick="goForm(<c:out value="${list.seq }"/>)" style="cursor: pointer;"> --%>
-	                                            <a class="pro_a" role="button" id="editBtn" onclick="goForm(<%=seq %>)" style="cursor: pointer;">
+	                                            <%-- <a class="pro_a" role="button" id="editBtn" onclick="goForm(<%=seq %>)" style="cursor: pointer;"> --%>
+	                                            <a class="pro_a" role="button" id="editBtn" onclick="goForm(<c:out value="${vo.seq }"/>)" style="cursor: pointer;">
+	                                            	<c:out value="${vo.seq }"/>
 	                                                <i class="fa-solid fa-user me-2"></i>
 	                                                Edit Profile
 	                                            </a>

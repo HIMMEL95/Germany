@@ -103,9 +103,8 @@
             <form method="post" id="myForm" name="myForm">
             	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
                	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
-               	<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
+               	<input type="hidden" name="seq" value="<%= seq%>">
                	<%-- <input type="hidden" name="seq" value='<c:out value="<%=seq %>"></c:out>'> --%>
-               	<c:out value="<%= seq %>"></c:out>
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -389,6 +388,8 @@
 	      		});
 	   	});
 	   	
+		alert($("input:hidden[name=seq]").val());
+		
 	   	goList = function(thisPage) {
 			$("input:hidden[name=thisPage]").val(thisPage);
 			form.attr("action", goUrlList).submit();			

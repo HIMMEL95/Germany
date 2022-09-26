@@ -1,6 +1,11 @@
 package com.spopia.infra.modules.comment;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,8 +40,13 @@ public class CommentController {
 	}
 	
 	@RequestMapping(value = "userCommentList")
-	public String userCommentList(Model model, @ModelAttribute("vo") CommentVo vo, Member dto) throws Exception {
-		 
+	public String userCommentList(Model model, @ModelAttribute("vo") CommentVo vo, HttpServletRequest request) throws Exception {
+				
+		HttpSession session = request.getSession();
+		
+		String seq = (String) session.getAttribute("seq");
+		
+		vo.setSeq(seq);
 		List<Comment> list = service.selectList1(vo);
 		model.addAttribute("list", list);
 		

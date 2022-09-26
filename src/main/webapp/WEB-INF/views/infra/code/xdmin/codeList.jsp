@@ -261,7 +261,6 @@
                                         <option value="1" <c:if test="${vo.shOption eq 1 }">selected</c:if>>번호</option>
                                         <option value="2" <c:if test="${vo.shOption eq 2 }">selected</c:if>>이름</option>
                                         <option value="3" <c:if test="${vo.shOption eq 3 }">selected</c:if>>CG번호</option>
-                                        <option value="4" <c:if test="${vo.shOption eq 4 }">selected</c:if>>CG이름</option>
                                     </select>
                                 </div>
                                 <div class="col-2">

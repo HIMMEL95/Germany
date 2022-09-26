@@ -18,75 +18,102 @@
 			</choose>
 	</sql> -->
 	
-	<sql id ="selectCommon">
-		FROM  u
-			inner join teamUser tu on tu.user_seq = u.seq
-			inner join team t on t.teamSeq = tu.team_seq
-		WHERE 1=1
-			and tu.defaultNY = 0
-		<if test="shDelNy != null and !shDelNy.equals('')">AND uDelNy = #{shDelNy}</if>
-		<choose>
-			<when test="shOption == 1">AND seq = #{shValue}</when>
-			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 3">AND id LIKE CONCAT('%',#{shValue},'%')</when>
-		</choose>
-	</sql>
-	
 	<select id="selectList" resultMap="resultMapObj">
-		<!-- select 
-			cg.*
-		    ,count(c.CCG_seq)
-		from CCG cg
-		inner join CC c on c.CCG_seq = cg.seq
-		group by
-			c.CCG_seq -->
-		
-		(select 
-			ac.seq
-		    ,ac.comment
-		    ,ac.createdAt
-		    ,ac.modifiedAt
-		    ,ac.DelNy
-		    ,u.name as name
-		    ,u.id as id
-		    ,u.gender as gender
-		from 
-			article_comment ac
-			inner join user u on u.seq = ac.createdBy
-		order by
-			ac.article_seq
-			,ac.createdAt)
-		union all
-		(select
-			gc.seq
-		    ,gc.comment
-		    ,gc.createdAt
-		    ,gc.modifiedAt
-		    ,gc.DelNy
-		    ,u.name as name
-		    ,u.id as id
-		    ,u.gender as gender
-		from game_comment gc
-			inner join user u on u.seq = gc.createdBy
-		order by 
-			gc.game_seq
-		    ,gc.createdAt)
-		order by
-			createdAt
-			
-			<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND ifcgDelNy = #{shDelNy}</if> -->
-			
-			<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
-			<choose>
-				<when test="shOption == 1">AND name LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 2">AND id LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 3">AND gender = #{shValue}</when>
-				<otherwise></otherwise>
-			</choose>
-			<choose>
-				<when test="shDate == 1">AND createdAt BETWEEN #{startDate} AND #{endDate}</when>
-				<otherwise></otherwise>
-			</choose>
+		<include refid="Base.selectListUpperForMysql"/>
+			(select 
+				ac.seq
+			    ,ac.comment
+			    ,ac.createdAt
+			    ,ac.modifiedAt
+			    ,ac.DelNy
+			    ,u.name as name
+			    ,u.id as id
+			    ,u.gender as gender
+			from 
+				article_comment ac
+				inner join user u on u.seq = ac.createdBy
+			 where 1=1
+				<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
+				<choose>
+					<when test="shOption == 1">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+					<when test="shOption == 2">AND id LIKE CONCAT('%',#{shValue},'%')</when>
+					<otherwise></otherwise>
+				</choose>
+				<choose>
+					<when test="shDate == 1">AND createdAt BETWEEN #{startDate} AND #{endDate}</when>
+					<otherwise></otherwise>
+				</choose>
+			order by
+				ac.article_seq
+				,ac.createdAt)
+			union all
+			(select
+				gc.seq
+			    ,gc.comment
+			    ,gc.createdAt
+			    ,gc.modifiedAt
+			    ,gc.DelNy
+			    ,u.name as name
+			    ,u.id as id
+			    ,u.gender as gender
+			from 
+				game_comment gc
+				inner join user u on u.seq = gc.createdBy
+			 where 1=1
+				<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
+				<choose>
+					<when test="shOption == 1">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+					<when test="shOption == 2">AND id LIKE CONCAT('%',#{shValue},'%')</when>
+					<otherwise></otherwise>
+				</choose>
+				<choose>
+					<when test="shDate == 1">AND createdAt BETWEEN #{startDate} AND #{endDate}</when>
+					<otherwise></otherwise>
+				</choose>
+			order by 
+				gc.game_seq
+			    ,gc.createdAt)
+			order by
+				createdAt
+			<include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" />
 	</select>
-
+	
+	
+	<select id="selectOneCount" resultType="Integer">
+		select count(*) from (
+			(select 
+				ac.seq
+			    ,ac.comment
+			    ,ac.createdAt
+			    ,ac.modifiedAt
+			    ,ac.DelNy
+			    ,u.name as name
+			    ,u.id as id
+			    ,u.gender as gender
+			from 
+				article_comment ac
+				inner join user u on u.seq = ac.createdBy
+			order by
+				ac.article_seq
+				,ac.createdAt)
+			union all
+			(select
+				gc.seq
+			    ,gc.comment
+			    ,gc.createdAt
+			    ,gc.modifiedAt
+			    ,gc.DelNy
+			    ,u.name as name
+			    ,u.id as id
+			    ,u.gender as gender
+			from game_comment gc
+				inner join user u on u.seq = gc.createdBy
+			order by 
+				gc.game_seq
+			    ,gc.createdAt)
+			order by
+				createdAt
+		) aa	
+	</select>
 </mapper>	

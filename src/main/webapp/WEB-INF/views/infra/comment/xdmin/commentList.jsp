@@ -206,7 +206,7 @@
                         <div class="row">
                             <div class="col-12 ">
                                 <div class="card text-white position-relative shadow-lg">
-                                    <img src="../../resources/images/xdmin/listBack.jpg" class="card-img" style="height: 200px;"
+                                    <img src="/resources/images/xdmin/listBack.jpg" class="card-img" style="height: 200px;"
                                         alt="...">
                                     <div class="card-img-overlay text-center p-4 position-absoulte top-50 start-50 translate-middle">
                                         <span class="card-title align-middle fw-bold fs-3">댓글 관리</span>
@@ -219,7 +219,6 @@
                             <div class="row align-items-center pb-2">
                             	<div class="col-2">
                                     <select class="form-select form-select-sm fw-bold" id="shDelNy" name="shDelNy" aria-label=".form-select-sm example">
-                                       	<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>선택</option>
                                         <option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
                                         <option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option>
                                     </select>
@@ -244,7 +243,6 @@
                                         <option value="" <c:if test="${empty vo.shOption }"> selected</c:if>>선택</option>
                                         <option value="1" <c:if test="${vo.shOption eq 1}"> selected</c:if>>이름</option>
                                         <option value="2" <c:if test="${vo.shOption eq 2}"> selected</c:if>>아이디</option>
-                                        <option value="3" <c:if test="${vo.shOption eq 3}"> selected</c:if>>성별</option>
                                     </select>
                                 </div>
                                 <div class="col-2">

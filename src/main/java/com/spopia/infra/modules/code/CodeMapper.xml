@@ -16,7 +16,7 @@
 		<choose>
 			<when test="shOption == 1">AND ccSeq = #{shValue}</when>
 			<when test="shOption == 2">AND ifccName LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 3">AND ifccNameEng LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND codeGroup_ccgSeq = #{shValue}</when>
 		</choose>
 	</sql>
 	

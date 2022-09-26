@@ -1,6 +1,8 @@
 package com.spopia.infra.modules.comment;
 
-public class CommentVo {
+import com.spopia.infra.common.base.BaseVo;
+
+public class CommentVo extends BaseVo {
 
 	private String shOption;
 	private String shValue;

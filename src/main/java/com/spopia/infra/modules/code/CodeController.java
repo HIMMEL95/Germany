@@ -22,7 +22,7 @@ public class CodeController {
 	CodeGroupServiceImpl cgService;
 	
 	public void setSearchAndPaging(CodeVo vo) throws Exception {
-		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy() );
+		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
 		
 		vo.setParamsPaging(service.selectOneCount(vo));
 	}

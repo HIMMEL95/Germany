@@ -44,4 +44,12 @@ public class GameDao {
 	public int update(Game dto) {
 		return sqlSession.update(namespace + ".update", dto);
 	}
+	
+	public int uelete(Game dto) {
+		return sqlSession.update(namespace + ".uelete", dto);
+	}
+	
+	public int delete(GameVo vo) {
+		return sqlSession.delete(namespace + ".delete", vo);
+	}
 }

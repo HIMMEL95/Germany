@@ -88,8 +88,7 @@
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		select
-			g.seq
-			,g.abroadNy
+			g.abroadNy
 		    ,g.event
 		    ,g.league
 		    ,g.score_home
@@ -97,13 +96,13 @@
 		    ,g.player_home
 		    ,g.player_away
 		    ,g.stadium
-		    ,DATE_FORMAT(g.gameDate, '%m.%d') as gameDate
+		    ,DATE_FORMAT(g.gameDate, '%Y-%m-%d') as gameDate
 		    ,DATE_FORMAT(g.gameDuration, '%H:%i') as gameDuration
 		    ,g.createdAt
 		    ,g.modifiedAt
 		    ,g.gcDelNy
-		    ,t1.teamName as team_home
-		    ,t2.teamName as team_away
+		    ,t1.teamSeq as team_home
+		    ,t2.teamSeq as team_away
 		from game g
 			inner join team t1 on t1.teamSeq = g.team_home
 			inner join team t2 on t2.teamSeq = g.team_away
@@ -125,6 +124,7 @@
 			,stadium
 			,gameDate
 			,gameDuration
+			,gcDelNy
 			,createdAt
 			,modifiedAt
 		) 
@@ -141,6 +141,7 @@
 			,#{stadium}
 			,#{gameDate}
 			,#{gameDuration}
+			,0
 			,now()
 			,now()
 		)
@@ -168,5 +169,18 @@
 		WHERE 1=1
 			and seq = #{seq}
 	</update>
+	
+	<update id="uelete">
+		UPDATE game
+		SET
+			gcDelNy = 1
+			,modifiedAt = now()
+		where 1=1
+			and seq = #{seq}
+	</update>
 
+	<delete id="delete">
+		DELETE
+		FROM game where seq = #{seq}
+	</delete>
 </mapper>

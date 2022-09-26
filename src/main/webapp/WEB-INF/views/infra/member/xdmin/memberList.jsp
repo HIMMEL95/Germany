@@ -123,7 +123,7 @@
                 
                                     <div class="offcanvas-body d-block px-2 px-lg-0">
                                         <div class="card overflow-hidden">
-                                            <img src="../../resources/images/mountains.png" class="card-img-top" alt="background"
+                                            <img src="/resources/images/mountains.png" class="card-img-top" alt="background"
                                                 style="height: 50px; background-position: center; background-size: cover; background-repeat: no-repeat;">
                                             <div class="card-body pt-0">
                                                 <div class="text-center">

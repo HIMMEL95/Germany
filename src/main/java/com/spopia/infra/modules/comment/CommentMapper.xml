@@ -116,4 +116,67 @@
 				createdAt
 		) aa	
 	</select>
+	
+	<select id="selectList1" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql"/>
+			(select 
+				ac.seq
+			    ,ac.comment
+			    ,ac.createdAt
+			    ,ac.modifiedAt
+			    ,ac.DelNy
+			    ,u.name as name
+			    ,u.id as id
+			    ,u.gender as gender
+			from 
+				article_comment ac
+				inner join user u on u.seq = ac.createdBy
+			 where 1=1
+			 	and createdBy = #{seq}
+				<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
+				<choose>
+					<when test="shOption == 1">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+					<when test="shOption == 2">AND id LIKE CONCAT('%',#{shValue},'%')</when>
+					<otherwise></otherwise>
+				</choose>
+				<choose>
+					<when test="shDate == 1">AND createdAt BETWEEN #{startDate} AND #{endDate}</when>
+					<otherwise></otherwise>
+				</choose>
+			order by
+				ac.article_seq
+				,ac.createdAt)
+			union all
+			(select
+				gc.seq
+			    ,gc.comment
+			    ,gc.createdAt
+			    ,gc.modifiedAt
+			    ,gc.DelNy
+			    ,u.name as name
+			    ,u.id as id
+			    ,u.gender as gender
+			from 
+				game_comment gc
+				inner join user u on u.seq = gc.createdBy
+			 where 1=1
+			 	and createdBy = #{seq}
+				<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
+				<choose>
+					<when test="shOption == 1">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+					<when test="shOption == 2">AND id LIKE CONCAT('%',#{shValue},'%')</when>
+					<otherwise></otherwise>
+				</choose>
+				<choose>
+					<when test="shDate == 1">AND createdAt BETWEEN #{startDate} AND #{endDate}</when>
+					<otherwise></otherwise>
+				</choose>
+			order by 
+				gc.game_seq
+			    ,gc.createdAt)
+			order by
+				createdAt
+			<include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
 </mapper>	

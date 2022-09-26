@@ -95,7 +95,10 @@
     <main>
         <div style="height: 80px;"></div>
         <div class="container">
-            <form class="needs-validation" method="post" action="/game/gameInst">
+            <form method="post" id="myForm" name="myForm">
+            	<!-- *Vo.jsp s -->
+				<%@include file="gameVo.jsp"%>		<!-- #-> -->
+				<!-- *Vo.jsp e -->
                 <div class="text-center pb-3">
                     <span class="fs-1 fw-bold">경기 기록 등록</span>
                 </div>
@@ -104,100 +107,100 @@
                         <div class="col mb-4">
                             <label for="abroadNY" class="form-label fw-bold">해외여부</label>
                             <select class="form-select" id="abroadNY" name="abroadNy" aria-label=".form-select example">
-                                <option value="" selected>선택</option>
-                                <option value="9">국내</option>
-                                <option value="10">해외</option>
+                                <option value="" >선택</option>
+                                <option value="9" <c:if test="${item.abroadNy eq 9 }">selected</c:if>>국내</option>
+                                <option value="10" <c:if test="${item.abroadNy eq 10 }">selected</c:if>>해외</option>
                             </select>
                         </div>
                         <div class="col mb-4">
                             <label for="event" class="form-label fw-bold">종목</label>
                             <select class="form-select" id="event" name="event" aria-label=".form-select example">
-                                <option value="" selected>선택</option>
-                                <option value="11">야구</option>
-                                <option value="12">축구</option>
+                                <option value="" >선택</option>
+                                <option value="11" <c:if test="${item.event eq 11 }">selected</c:if>>야구</option>
+                                <option value="12" <c:if test="${item.event eq 12 }">selected</c:if>>축구</option>
                             </select>
                         </div>
                         <div class="col mb-4">
-                            <label for="leagueList" class="form-label fw-bold">리그</label>
-                            <input class="form-control" list="league" id="leagueList" name="league" placeholder="Type to search...">
-                            <datalist id="league">
-                                <option value="KBO">KBO</option>
-                                <option value="메이저리그">메이저리그</option>
-                                <option value="아메리칸리그">아메리칸리그</option>
-                                <option value="센트럴리그">센트럴리그</option>
-                                <option value="퍼시픽리그">퍼시픽리그</option>
-                                <option value="K리그 1">K리그 1</option>
-                                <option value="K리그 2">K리그 2</option>
-                                <option value="프리미어리그">프리미어리그</option>
-                                <option value="라리가">라리가</option>
-                                <option value="분데스리가">분데스리가</option>
-                                <option value="세리에 A">세리에 A</option>
-                                <option value="리그 1">리그 1</option>
-                            </datalist>
+                            <label for="league" class="form-label fw-bold">리그</label>
+                            <select class="form-select" id="league" name="league" aria-label=".form-select example">
+                                <option value="">선택</option>
+                                <option value="13" <c:if test="${item.league eq 13 }">selected</c:if>>KBO</option>
+                                <option value="14" <c:if test="${item.league eq 14 }">selected</c:if>>내셔널리그</option>
+                                <option value="15" <c:if test="${item.league eq 15 }">selected</c:if>>아메리칸리그</option>
+                                <option value="16" <c:if test="${item.league eq 16 }">selected</c:if>>센트럴리그</option>
+                                <option value="17" <c:if test="${item.league eq 17 }">selected</c:if>>퍼시픽리그</option>
+                                <option value="18" <c:if test="${item.league eq 18 }">selected</c:if>>K리그 1</option>
+                                <option value="19" <c:if test="${item.league eq 19 }">selected</c:if>>K리그 2</option>
+                                <option value="20" <c:if test="${item.league eq 20 }">selected</c:if>>프리미어리그</option>
+                                <option value="21" <c:if test="${item.league eq 21 }">selected</c:if>>라리가</option>
+                                <option value="22" <c:if test="${item.league eq 22 }">selected</c:if>>분데스리가</option>
+                                <option value="23" <c:if test="${item.league eq 23 }">selected</c:if>>세리에 A</option>
+                                <option value="24" <c:if test="${item.league eq 24 }">selected</c:if>>리그 1</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col">
                             <label for="team_home" class="form-label fw-bold">홈팀</label>
                             <select class="form-select" id="team_home" name="team_home" aria-label=".form-select example">
-                                <option value="" selected>선택</option>
-                                <option value="1">두산 베어스</option>
-                                <option value="2">KIA 타이거즈</option>
-                                <option value="3">SSG 랜더스</option>
-                                <option value="4">삼성 라이온즈</option>
+                                <option value="">선택</option>
+                                <option value="1" <c:if test="${item.team_home eq 1 }">selected</c:if>>두산 베어스</option>
+                                <option value="2" <c:if test="${item.team_home eq 2 }">selected</c:if>>KIA 타이거즈</option>
+                                <option value="3" <c:if test="${item.team_home eq 3 }">selected</c:if>>SSG 랜더스</option>
+                                <option value="4" <c:if test="${item.team_home eq 4 }">selected</c:if>>삼성 라이온즈</option>
                             </select>
                         </div>
                         <div class="col">
                             <label for="team_away" class="form-label fw-bold">원정팀</label>
                             <select class="form-select" id="team_away" name="team_away" aria-label=".form-select example">
-                                <option value="" selected>선택</option>
-                                <option value="1">두산 베어스</option>
-                                <option value="2">KIA 타이거즈</option>
-                                <option value="3">SSG 랜더스</option>
-                                <option value="4">삼성 라이온즈</option>
+                                <option value="">선택</option>
+                                <option value="1" <c:if test="${item.team_away eq 1 }">selected</c:if>>두산 베어스</option>
+                                <option value="2" <c:if test="${item.team_away eq 2 }">selected</c:if>>KIA 타이거즈</option>
+                                <option value="3" <c:if test="${item.team_away eq 3 }">selected</c:if>>SSG 랜더스</option>
+                                <option value="4" <c:if test="${item.team_away eq 4 }">selected</c:if>>삼성 라이온즈</option>
                             </select>
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col">
                             <label for="homeTeamScore" class="form-label fw-bold">홈팀 선발</label>
-                            <input type="text" class="form-control" id="player_home" name="player_home" value="">
+                            <input type="text" class="form-control" id="player_home" name="player_home" value="<c:out value="${item.player_home }"/>">
                         </div>
                         <div class="col">
                             <label for="awayTeamScore" class="form-label fw-bold">원정팀 선발</label>
-                            <input type="text" class="form-control" id="player_away" name="player_away" value="">
+                            <input type="text" class="form-control" id="player_away" name="player_away" value="<c:out value="${item.player_away }"/>">
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col">
                             <label for="score_home" class="form-label fw-bold">홈팀 스코어</label>
-                            <input type="number" class="form-control" id="score_home" name="score_home" value="">
+                            <input type="number" class="form-control" id="score_home" name="score_home" value="<c:out value="${item.score_home }"/>">
                         </div>
                         <div class="col">
                             <label for="score_away" class="form-label fw-bold">원정팀 스코어</label>
-                            <input type="number" class="form-control" id="score_away" name="score_away" value="">
+                            <input type="number" class="form-control" id="score_away" name="score_away" value="<c:out value="${item.score_away }"/>">
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col">
                             <label for="stadium" class="form-label fw-bold">경기장</label>
                             <select class="form-select" id="stadium" name="stadium" aria-label=".form-select example">
-                                <option value="" selected>선택</option>
-                                <option value="1">서울</option>
-                                <option value="2">광주</option>
-                                <option value="3">인천</option>
-                                <option value="4">대구</option>
+                                <option value="">선택</option>
+                                <option value="73" <c:if test="${item.stadium eq 73 }">selected</c:if>>서울</option>
+                                <option value="74" <c:if test="${item.stadium eq 74 }">selected</c:if>>광주</option>
+                                <option value="75" <c:if test="${item.stadium eq 75 }">selected</c:if>>인천</option>
+                                <option value="76" <c:if test="${item.stadium eq 76 }">selected</c:if>>대구</option>
                             </select>
                         </div>
                         <div class="col">
                             <label for="gameDuration" class="form-label fw-bold">경기 시간</label>
-                            <input type="time" class="form-control" id="gameDuration" name="gameDuration" value="">
+                            <input type="time" class="form-control" id="gameDuration" name="gameDuration" value="<c:out value="${item.gameDuration }"/>">
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-6">
                             <label for="gameDate" class="form-label fw-bold">경기 일자</label>
-                            <input type="text" class="form-control datepicker" id="gameDate" name="gameDate" placeholder="경기 일자" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="gameDate" name="gameDate" placeholder="경기 일자" value="<c:out value="${item.gameDate }"/>" autocomplete="off">
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -207,18 +210,54 @@
                             <input type="file" id="ex_file" class="form-control" aria-label="file example">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-2">
-                            <a class="btn btn-primary text-white fw-bold btn-sm shadow" href="/game/gameList"
-                                role="button">취소</a>
+                    <!-- 리스트 -->
+                    <div class="row align-items-center">
+                        <div class="col-1">
+                            <button class="border-0 btn btn-sm bg-secondary shadow" id="btnList" type="button">
+                                <i class="fa-solid fa-bars" style="color: white;"></i>
+                            </button> 
                         </div>
-                        <div class="col-2 offset-8" align="right">
-                            <button class="btn btn-primary text-white fw-bold btn-sm shadow" type="submit">등록</button>
+                        <div class="col-3 offset-8" align="right">
+                            <button id="btnUel" value="Uel" class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal">
+                                <i class="fa-solid fa-xmark" style="color: white;"></i>
+                            </button>
+                            <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title fw-bold" id="staticBackdropLabel">게시물 삭제</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body fs-6">
+                                       		선택하신 게시물을 정말로 삭제하시겠습니까?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                                            <button id="delBtn" type="button" class="btn btn-primary">삭제</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="btnDel" value="Del" class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal">
+                                <i class="fa-solid fa-trash-can" style="color: white;"></i>
+                            </button>
+                            <button id="btnSave" class="border-0 btn btn-sm bg-success shadow" type="button">
+                                <i class="fa-regular fa-bookmark" style="color: white;"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
+        <form name="formVo" id="formVo" method="post">
+		<!-- *Vo.jsp s -->
+		<%@include file="gameVo.jsp"%>		<!-- #-> -->
+		<!-- *Vo.jsp e -->
+		</form>
         <div style="height: 50px;"></div>
     </main>
 
@@ -270,12 +309,66 @@
         })
         
         $(function() {
+       		 $.datepicker.setDefaults({
+                dateFormat: 'yy-mm-dd' //Input Display Format 변경
+                ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+                ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
+                ,changeYear: true //콤보박스에서 년 선택 가능
+                ,changeMonth: true //콤보박스에서 월 선택 가능                
+                ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
+                ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
+                ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
+                ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
+                ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
+                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
+                ,minDate: "-1M" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+                ,maxDate: "+1M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                    
+            });
+       		 
 	   		$("#gameDate").datepicker({
 	   			dateFormat: "yy-mm-dd"
 	   			,showMonthAfterYear: true
 	   			,showOtherMonths: true
 	   		});
 	   	})
+	   	
+	   	var goUrlList = "/game/gameList";
+        var goUrlInst = "/game/gameInst";
+        var goUrlUpdt = "/game/gameUpdt";
+        var goUrlUel = "/game/gameUele";
+        var goUrlDel = "/game/gameDele"
+        
+        var seq = $("input:hidden[name=seq]");
+        var form = $("#myForm");
+        var formVo = $("form[name=formVo]");
+        
+        $("#btnSave").on("click", function() {
+        	if (seq.val() == "0" || seq.val() == "") {
+        		form.attr("action", goUrlInst).submit();
+        	} else {
+        		form.attr("action", goUrlUpdt).submit();
+        	}
+		});
+        
+        $("#btnList").on("click", function(){
+    		formVo.attr("action", goUrlList).submit();
+    	});        
+
+		$("#btnUel").on("click", function() {
+			DelValidation("#delBtn", goUrlUel, "선택하신 게시물을 삭제하시겠습니까?");
+		})
+		
+		$("#btnDel").on("click", function() {
+			DelValidation("#delBtn", goUrlDel, "선택하신 게시물을 진짜로 삭제하시겠습니까?");		
+		})
+		
+		DelValidation = function(confirm, url, msg) {
+			$(".modal-body").html(msg);
+			$(confirm).on("click", function() {
+				form.attr("action", url).submit();
+			})
+		}
+	 	
     </script>
 </body>
 

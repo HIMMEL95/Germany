@@ -66,6 +66,7 @@ public class LoginController {
 		Member result = service.loginCheck(dto);
 		
 		if(result != null) {
+			session.setAttribute("seq", result.getSeq());
 			session.setAttribute("id", result.getId());
 			session.setAttribute("name", result.getName());	
 			session.setAttribute("email", result.getEmail());
@@ -81,6 +82,7 @@ public class LoginController {
 		
 		HttpSession session = request.getSession();
 		if (session != null) {
+			session.removeAttribute("seq");
 			session.removeAttribute("id");
 			session.removeAttribute("name");
 			session.removeAttribute("email");
@@ -90,6 +92,6 @@ public class LoginController {
 	
 	@RequestMapping(value = "kakaoLogin")
 	public String kakaoLogin() throws Exception {
-		return "redirect:/";
+		return "/sportMain";
 	}
 }

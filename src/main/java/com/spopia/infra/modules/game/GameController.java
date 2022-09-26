@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "/game/")
@@ -32,39 +33,48 @@ public class GameController {
 	}
 	
 	@RequestMapping(value = "gameForm")
-	public String gameForm() throws Exception {
+	public String gameForm(Model model, @ModelAttribute("vo") GameVo vo) throws Exception {
+		
+		Game item = service.selectOne(vo);
+		model.addAttribute("item", item);
 		return "infra/game/xdmin/gameForm";
 	}
 	
 	@RequestMapping(value = "gameInst")
-	public String gameInst(Game dto) throws Exception {
-		int result = service.insert(dto);
-		System.out.println("Controller result : " + result);
-		return "redirect:/game/gameList";
+	public String gameInst(Game dto, GameVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		service.insert(dto);
+
+		vo.setSeq(dto.getSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/game/gameForm";
 	}
 	
 	@RequestMapping(value = "gameView")
-	public String gameView(Model model, GameVo vo) throws Exception {
+	public String gameView(Model model, @ModelAttribute("vo") GameVo vo) throws Exception {
 		Game item = service.selectOne(vo);
 		model.addAttribute("item", item);
-		
-		List<Game> list = service.selectList();
-		model.addAttribute("list", list);
-		return "infra/game/xdmin/gameView";		
-	}
-	
-	@RequestMapping(value = "gameModForm")
-	public String gameModForm(Model model, GameVo vo) throws Exception {
-		Game item = service.selectOne(vo);
-		model.addAttribute("item", item);
-		
-		return "infra/game/xdmin/gameModForm";
+
+		return "infra/game/xdmin/gameForm";		
 	}
 	
 	@RequestMapping(value = "gameUpdt")
-	public String gameUpdt(Game dto) throws Exception {
-		int result = service.update(dto);
-		System.out.println("Controller result : " + result);
+	public String gameModForm(Game dto, GameVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		service.update(dto);
+
+		vo.setSeq(dto.getSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/game/gameForm";
+	}
+	
+	@RequestMapping(value = "gameUele")
+	public String gameUele(Game dto) throws Exception {
+		service.uelete(dto);
+		return "redirect:/game/gameList";
+	}
+	
+	@RequestMapping(value = "gameDele")
+	public String gameDele(GameVo vo) throws Exception {
+		service.delete(vo);
 		return "redirect:/game/gameList";
 	}
 }

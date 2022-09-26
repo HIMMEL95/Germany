@@ -26,15 +26,11 @@ public class CodeGroupController {
 
 	@RequestMapping(value = "codeGroupList")
 	public String codeGroupList(Model model, @ModelAttribute("vo") CodeGroupVo vo) throws Exception {
-
-		System.out.println("vo.getShOption : " + vo.getShOption());
-		System.out.println("vo.getShValue : " + vo.getShValue());
 		
 		setSearchAndPaging(vo);
 		
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);
-
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
 	

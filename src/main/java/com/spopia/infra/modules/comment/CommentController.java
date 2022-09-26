@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.spopia.infra.modules.member.Member;
+
+
 @Controller
 @RequestMapping(value = "/comment/")
 public class CommentController {
@@ -29,5 +32,14 @@ public class CommentController {
 		List<Comment> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		return "infra/comment/xdmin/commentList";
+	}
+	
+	@RequestMapping(value = "userCommentList")
+	public String userCommentList(Model model, @ModelAttribute("vo") CommentVo vo, Member dto) throws Exception {
+		 
+		List<Comment> list = service.selectList1(vo);
+		model.addAttribute("list", list);
+		
+		return "infra/comment/user/userCommentList";
 	}
 }

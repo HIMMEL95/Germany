@@ -65,6 +65,9 @@ public class MemberController {
 	public String memberUView(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 		Member item = service.selectOne(vo);
 		model.addAttribute("item", item);
+		
+		List<Member> list = service.selectList(vo);
+		model.addAttribute("list", list);
 		return "infra/member/user/memberView";
 	}
  

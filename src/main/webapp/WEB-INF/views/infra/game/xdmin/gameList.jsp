@@ -96,6 +96,9 @@
         <div style="height: 100px;"></div>
         <div class="container">
             <form method="post" id="myForm" name="myForm">
+            	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
+               	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
+               	<input type="hidden" name="seq" value='<c:out value="${vo.seq }"></c:out>'>
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -119,13 +122,13 @@
                 
                                     <div class="offcanvas-body d-block px-2 px-lg-0">
                                         <div class="card overflow-hidden">
-                                            <img src="../../resources/images/mountains.png" class="card-img-top" alt="background"
+                                            <img src="/resources/images/mountains.png" class="card-img-top" alt="background"
                                                 style="height: 50px; background-position: center; background-size: cover; background-repeat: no-repeat;">
                                             <div class="card-body pt-0">
                                                 <div class="text-center">
                                                     <div class="avatar avatar-lg mt-n5 mb-3">
                                                         <a href="#"><img class="avatar-img rounded border border-white border-3"
-                                                                src="../../resources/images/diano.jpg" style="width: 50px;" alt=""></a>
+                                                                src="/resources/images/diano.jpg" style="width: 50px;" alt=""></a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
                                                         <span class="mb-0"><a href="#">이하늘</a></span>
@@ -293,8 +296,8 @@
                                 		<c:otherwise>
 	                                		<c:forEach items="${list}" var="list" varStatus="status">
                                 				<tr onclick="goForm(<c:out value="${list.seq }"/>)" style="cursor: pointer;">
-			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
-			                                                id="flexCheckDefault">
+			                                        <td onclick="event.cancelBubble=true">
+			                                        	<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
 			                                        </td>
 			                                        <td><c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/></td>
 			                                        <td>
@@ -360,9 +363,9 @@
                                 </div>
                             </div>
                             <div class="col-1 offset-10" align="right">
-                                <a class="border-0 btn btn-sm shadow" role="button" href="/game/gameForm">
+                                <button class="border-0 btn btn-sm shadow" id="btnForm" type="button">
                                     <i class="fa-solid fa-id-card fa-lg"></i>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -405,6 +408,14 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
+    	var goUrlList = "/game/gameList";
+    	var goUrlForm = "/game/gameForm";
+    	var form = $("#myForm");
+
+    	$("#refresh").on("click", function() {
+			$(location).attr("href", goUrlList);
+		});
+		
         $(function() {
     		$("#date_st").datepicker({
     			dateFormat: "yy-mm-dd"
@@ -416,28 +427,24 @@
        			,showMonthAfterYear: true
        			,showOtherMonths: true
        		});
-    	})
+    	});
+
+    	goList = function(thisPage) {
+			$("input:hidden[name=thisPage]").val(thisPage);
+			form.attr("action", goUrlList).submit();
+		};
     	
-    	var goUrlList = "/game/gameList";
-    	var goUrlForm = "/game/gameView";
     	var seq = $("input:hidden[name=seq]");
-    	var form = $("#myForm");
+
+		$('#btnForm').on("click", function() {
+			goForm(0);                
+		});
     	
     	goForm = function(keyValue) {
 	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
 	    	seq.val(keyValue);
 			form.attr("action", goUrlForm).submit();
 		};
-		
-		goList = function(thisPage) {
-			$("input:hidden[name=thisPage]").val(thisPage);
-			form.attr("action", goUrlList).submit();
-		};
-    	
-    	$("#refresh").on("click", function() {
-			$(location).attr("href", goUrlList);
-		});
-    	
     </script>
 </body>
 </html>

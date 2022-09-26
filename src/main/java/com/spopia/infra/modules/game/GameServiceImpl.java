@@ -45,4 +45,16 @@ public class GameServiceImpl implements GameService{
 	public int update(Game dto) throws Exception {
 		return dao.update(dto);
 	}
+
+	@Override
+	public int uelete(Game dto) throws Exception {
+		return dao.uelete(dto);
+	}
+
+	@Override
+	public int delete(GameVo vo) throws Exception {
+		return dao.delete(vo);
+	}
+	
+	
 }

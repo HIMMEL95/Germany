@@ -20,10 +20,6 @@
 </head>
 
 <body>
-	<%String id = (String) session.getAttribute("id");%>
-	<%String email = (String) session.getAttribute("email");%>
-	<%String seq = (String) session.getAttribute("seq"); %>
-	<%String name = (String) session.getAttribute("name"); %>
     <header class="navbar-light fixed-top header-static bg-mode align-items-center">
         <!-- 상단 -->
         <nav class="navbar navbar-expand-lg">
@@ -54,8 +50,8 @@
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="/member/memberUView"><%=name %></a>
-                                            <p class="small m-0"><%=email %></p>
+                                            <a class="fs-6 fw-bold" href="/member/memberUView"><c:out value="${sessName }"/><br></a>
+                                            <p class="small m-0"><c:out value="${sessEmail }"/><br></p>
                                         </div>
                                     </div>
                                     <hr>
@@ -80,7 +76,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item bg-danger-soft-hover" href="/">
+                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" href="/">
                                         <i class="fa-solid fa-power-off me-2"></i>
                                         Sign Out
                                     </a>
@@ -135,9 +131,9 @@
                                                                 src="/resources/images/diano.jpg" style="width: 50px;" alt=""></a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
-                                                        <span class="mb-0"><a href="#"><%=name %></a></span>
-                                                        <small><%=id %></small><br>
-                                                        <small><%=email %></small>
+                                                        <span class="mb-0"><a href="#"><c:out value="${sessName }"/><br></a></span>
+                                                        <small><c:out value="${sessId }"/><br></small>
+                                                        <small><c:out value="${sessEmail }"/><br></small>
                                                     </div>
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
@@ -154,7 +150,7 @@
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/">
+                                                            <a class="nav-link" id="signOutBtn1" href="/">
                                                                 <i class="fas fa-light fa-newspaper pe-3"></i>
                                                                 <span>로그아웃</span>
                                                             </a>
@@ -348,6 +344,28 @@
 		$("#btnMod").on("click", function() {
 			form.attr("action", goUrlMod).submit();
 		})
+		
+		$("#signOutBtn").on("click", function() {
+			$.ajax({
+				type: "POST"
+				,url: "logout"
+				,data: {}
+				,success : function(response) {
+					location.reload();
+				}
+			});
+		});
+    	
+    	$("#signOutBtn1").on("click", function() {
+			$.ajax({
+				type: "POST"
+				,url: "logout"
+				,data: {}
+				,success : function(response) {
+					location.reload();
+				}
+			});
+		});
     </script>
 </body>
 

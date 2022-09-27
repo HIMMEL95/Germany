@@ -3,7 +3,6 @@ package com.spopia.infra.modules.login;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spopia.infra.common.constants.Constants;
+import com.spopia.infra.common.util.UtilSecurity;
 import com.spopia.infra.modules.member.Member;
 import com.spopia.infra.modules.member.MemberServiceImpl;
 import com.spopia.infra.modules.member.MemberVo;
@@ -41,6 +42,11 @@ public class LoginController {
 		service.insert(dto);
 		return "infra/login/xdmin/userLogin";
 	}
+	
+	@RequestMapping(value = "findId")
+	public String findId() throws Exception {
+		return "infra/login/xdmin/findId";
+	}
 
 	@ResponseBody
 	@RequestMapping(value = "idCheck")
@@ -59,17 +65,20 @@ public class LoginController {
 	
 	@ResponseBody
 	@RequestMapping(value = "loginCheck")
-	public Map<String, Object> loginCheck(Member dto, HttpServletRequest request) throws Exception {
+	public Map<String, Object> loginCheck(Member dto, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		HttpSession session = request.getSession();
+		dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
 		Member result = service.loginCheck(dto);
 		
-		if(result != null) {
-			session.setAttribute("seq", result.getSeq());
-			session.setAttribute("id", result.getId());
-			session.setAttribute("name", result.getName());	
-			session.setAttribute("email", result.getEmail());
+		if (result != null) {
+			
+			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
+			httpSession.setAttribute("sessSeq", result.getSeq());
+			httpSession.setAttribute("sessId", result.getId());
+			httpSession.setAttribute("sessName", result.getName());
+			httpSession.setAttribute("sessEmail", result.getEmail());
+	
 			returnMap.put("rt", "success");
 		} else {
 			returnMap.put("rt", "fail");
@@ -77,17 +86,13 @@ public class LoginController {
 		return returnMap;
 	}
 	
-	@RequestMapping(value = "logout")
-	public String logout(HttpServletRequest request) throws Exception {
-		
-		HttpSession session = request.getSession();
-		if (session != null) {
-			session.removeAttribute("seq");
-			session.removeAttribute("id");
-			session.removeAttribute("name");
-			session.removeAttribute("email");
-		}
-		return "redirect:/";
+	@ResponseBody
+	@RequestMapping(value = "logoutProc")
+	public Map<String, Object> logoutProc(HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		httpSession.invalidate();
+		returnMap.put("rt", "success");
+		return returnMap;
 	}
 	
 	@RequestMapping(value = "kakaoLogin")

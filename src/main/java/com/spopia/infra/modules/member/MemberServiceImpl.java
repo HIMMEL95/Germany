@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spopia.infra.common.util.UtilSecurity;
+
 @Service
 public class MemberServiceImpl implements MemberService {
 	
@@ -66,6 +68,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	public void insert(Member dto) throws Exception {
+    	dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
+    	dto.setName(dto.getName());
 		userInst(dto);
 		teamInst(dto);
 	}

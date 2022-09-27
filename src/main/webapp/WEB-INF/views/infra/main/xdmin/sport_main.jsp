@@ -24,10 +24,6 @@
 </head>
 
 <body>
-	<%String id = (String) session.getAttribute("id");%>
-	<%String email = (String) session.getAttribute("email");%>
-	<%String seq = (String) session.getAttribute("seq"); %>
-	<%String name = (String) session.getAttribute("name"); %>
     <div class="container">
     	<form method="post" id="myForm" name="myform">
     		<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
@@ -55,16 +51,13 @@
 	                                </div>
 	                                <div class="menu">
 	                                    <h3>
-	                                    	<%=id %>
+	                                    	<c:out value="${sessId }"/>
 	                                        <br>
-	                                        <a href="#" style="text-transform: none;"><%=email %></a>
+	                                        <a href="#" style="text-transform: none;"><c:out value="${sessEmail }"/><br></a>
 	                                    </h3>
 	                                    <ul class="pro_ul">
 	                                        <li class="pro_li">
-	                                           <%--  <button class="pro_a" type="button" onclick="goForm(<c:out value="${list.seq }"/>)" style="cursor: pointer;"> --%>
-	                                            <%-- <a class="pro_a" role="button" id="editBtn" onclick="goForm(<%=seq %>)" style="cursor: pointer;"> --%>
-	                                            <a class="pro_a" role="button" id="editBtn" onclick="goForm(<c:out value="${vo.seq }"/>)" style="cursor: pointer;">
-	                                            	<c:out value="${vo.seq }"/>
+	                                            <a class="pro_a" role="button" id="editBtn" onclick="goForm(<c:out value="${sessSeq }"/>)" style="cursor: pointer;">
 	                                                <i class="fa-solid fa-user me-2"></i>
 	                                                Edit Profile
 	                                            </a>
@@ -706,10 +699,12 @@
         $("#signOutBtn").on("click", function() {
 			$.ajax({
 				type: "POST"
-				,url: "logout"
+				,url: "logoutProc"
 				,data: {}
 				,success : function(response) {
-					location.reload();
+					if (response.rt == "success") {
+						window.location.href = "/";
+					}
 				}
 			});
 		});

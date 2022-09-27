@@ -119,6 +119,14 @@
                                             <span class="btn_text">로그인</span>
                                         </button>
                                         <div class="btn_login_wrap">
+                                            <a type="button" class="btn_login" id="naverIdLogin_loginButton" href="javascript:void(0)" style="background-color: #04c259;">
+                                                <span class="btn_text">
+                                                	<!-- <img src="/resources/images/user/naver.png" style="width: 25px;" class="me-3"> -->
+                                               		네이버 로그인
+                                           		</span>
+                                            </a>
+                                        </div>
+                                        <div class="btn_login_wrap">
                                             <button type="submit" class="btn_login" id="kakaoBtn" style="background-color: #fceb00;">
                                                 <span class="btn_text text-black">
                                                 	<img src="/resources/images/user/kakao.png" style="width: 25px;" class="me-3">
@@ -151,7 +159,7 @@
                     </form>
                 </div>
                 <ul class="find_wrap" id="find_wrap">
-                    <li><a target="_self" href="../login/findId.html" class="find_text">아이디 및 비밀번호 찾기</a></li>
+                    <li><a target="_self" href="/findId" class="find_text">아이디 및 비밀번호 찾기</a></li>
                     <li><a target="_self" href="/signUp" class="find_text">회원가입</a></li>
                 </ul>
             </div>
@@ -191,6 +199,9 @@
     <!-- kakao login s -->
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <!-- kakao login e -->
+    <!-- Naver login s -->
+    <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+    <!-- Naver login e -->
     <script type="text/javascript">
     
     	$("#loginBtn").on("click", function() {
@@ -221,6 +232,7 @@
     	var goUrlMain = "/sportMain";
     	var form = $("#frmNIDLogin");
     	
+    	/* kakao login s */
     	Kakao.init('ec2655da82c3779d622f0aff959060e6');
     	console.log(Kakao.isInitialized());
     	$("#kakaoBtn").on("click", function() {
@@ -241,7 +253,56 @@
    		        console.log(error)
    		      },
    		    })
-		})
+		});
+    	/* kakao login e */
+		
+    	/* naver login s */
+    	var naverLogin = new naver.LoginWithNaverId(
+    			{
+    				clientId: "lV6KfB2eFPQ18h0lZcFB", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
+    				callbackUrl: "http://localhost:8080/userLogin", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
+    				isPopup: false,
+    				callbackHandle: true
+    			}
+    		);	
+
+    	naverLogin.init();
+
+    	window.addEventListener('load', function () {
+    		naverLogin.getLoginStatus(function (status) {
+    			if (status) {
+    				var email = naverLogin.user.getEmail(); // 필수로 설정할것을 받아와 아래처럼 조건문을 줍니다.
+    	    		
+    				console.log(naverLogin.user); 
+    	    		
+    	            if( email == undefined || email == null) {
+    					alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
+    					naverLogin.reprompt();
+    					return;
+    				}
+    			} else {
+    				console.log("callback 처리에 실패하였습니다.");
+    			}
+    		});
+    	});
+
+
+    	var testPopUp;
+    	function openPopUp() {
+    	    testPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
+    	}
+    	function closePopUp(){
+    	    testPopUp.close();
+    	}
+
+    	function naverLogout() {
+    		openPopUp();
+    		setTimeout(function() {
+    			closePopUp();
+    			}, 1000);
+    	}
+    	/* naver login e */
+    	</script>
     </script>
 </body>
 

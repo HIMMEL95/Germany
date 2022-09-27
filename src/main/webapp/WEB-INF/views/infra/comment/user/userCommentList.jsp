@@ -56,8 +56,8 @@
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="#"><%=name %></a>
-                                            <p class="small m-0"><%=email %></p>
+                                            <a class="fs-6 fw-bold" href="#"><c:out value="${sessName }"/><br></a>
+                                            <p class="small m-0"><c:out value="${sessEmail }"/><br></p>
                                         </div>
                                     </div>
                                     <hr>
@@ -82,10 +82,10 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item bg-danger-soft-hover" href="/">
+                                    <button class="dropdown-item bg-danger-soft-hover" name="signOutBtn">
                                         <i class="fa-solid fa-power-off me-2"></i>
                                         Sign Out
-                                    </a>
+                                    </button>
                                 </li>
                                 <!-- Dark mode switch START -->
                             </ul>
@@ -103,8 +103,7 @@
             <form method="post" id="myForm" name="myForm">
             	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
                	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
-               	<input type="hidden" name="seq" value="<%= seq%>">
-               	<%-- <input type="hidden" name="seq" value='<c:out value="<%=seq %>"></c:out>'> --%>
+               	<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/><br>">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -137,9 +136,9 @@
                                                                 src="/resources/images/diano.jpg" style="width: 50px;" alt=""></a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
-                                                        <span class="mb-0"><a href="#"><%=name %></a></span>
-                                                        <small><%=id %></small><br>
-                                                        <small><%=email %></small>
+                                                        <span class="mb-0"><a href="#"><c:out value="${sessName }"/><br></a></span>
+                                                        <small><c:out value="${sessId }"/><br></small>
+                                                        <small><c:out value="${sessEmail }"/><br></small>
                                                     </div>
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
@@ -156,7 +155,7 @@
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/">
+                                                            <a class="nav-link" >
                                                                 <i class="fas fa-light fa-newspaper pe-3"></i>
                                                                 <span>로그아웃</span>
                                                             </a>
@@ -388,12 +387,21 @@
 	      		});
 	   	});
 	   	
-		alert($("input:hidden[name=seq]").val());
-		
 	   	goList = function(thisPage) {
 			$("input:hidden[name=thisPage]").val(thisPage);
 			form.attr("action", goUrlList).submit();			
 		};
+		
+		$("button[name=signOutBtn]").on("click", function() {
+			$.ajax({
+				type: "POST"
+				,url: "logout"
+				,data: {}
+				,success : function(response) {
+					location.reload();
+				}
+			});
+		});
 		
    </script>
 </body>

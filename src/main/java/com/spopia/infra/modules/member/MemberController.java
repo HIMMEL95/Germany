@@ -65,12 +65,9 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "memberUView")
-	public String memberUView(@ModelAttribute("vo") MemberVo vo, Model model, HttpServletRequest request) throws Exception {
-		
-		HttpSession session = request.getSession();
-		
-		String seq = (String) session.getAttribute("seq");
-		
+	public String memberUView(@ModelAttribute("vo") MemberVo vo, Model model,  HttpSession httpSession) throws Exception {
+
+		String seq = (String) httpSession.getAttribute("sessSeq");
 		vo.setSeq(seq);
 		
 		Member item = service.selectOne(vo);

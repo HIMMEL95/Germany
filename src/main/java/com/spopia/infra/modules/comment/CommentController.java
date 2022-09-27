@@ -35,15 +35,13 @@ public class CommentController {
 	}
 	
 	@RequestMapping(value = "userCommentList")
-	public String userCommentList(Model model, @ModelAttribute("vo") CommentVo vo, HttpServletRequest request) throws Exception {
-		HttpSession session = request.getSession();
-		String seq = (String) session.getAttribute("seq");
+	public String userCommentList(Model model, @ModelAttribute("vo") CommentVo vo, HttpSession httpSession) throws Exception {
+		
+		String seq = (String) httpSession.getAttribute("sessSeq");
 		vo.setSeq(seq);
 				
 		vo.setParamsPaging(service.selectOneCount1(vo));
-		
-		System.out.println("vo.setParamsPaging(service.selectOneCount1(vo))" + service.selectOneCount1(vo));
-		
+
 		List<Comment> list = service.selectList1(vo);
 		model.addAttribute("list", list);
 		

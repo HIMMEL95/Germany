@@ -69,7 +69,7 @@
                                                     <span class="blind">비밀번호</span>
                                                 </span>
                                             </div>
-                                            <input type="password" id="pw" name="pw" placeholder="비밀번호" title="비밀번호"
+                                            <input type="password" id="pwd" name="pwd" placeholder="비밀번호" title="비밀번호"
                                                 class="input_text" maxlength="16">
                                             <span role="button" class="btn_delete" id="pw_clear" style="display: none;">
                                                 <span class="icon_delete">
@@ -114,10 +114,9 @@
                                         </div>
                                     </div>
                                     <div class="btn_login_wrap text-center">
-                                        <a role="submit" class="btn_login" id="log.login"
-                                            href="/dashboard">
+                                        <button type="button" class="btn_login" id="loginBtn">
                                             <span class="btn_text">로그인</span>
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             </li>
@@ -147,7 +146,7 @@
                 </ul>
                 <div class="footer_copy">
                     <a id="fot.naver" target="_blank" href="https://www.navercorp.com">
-                        <img src="../../resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
+                        <img src="/resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
                     </a>
                     <span class="text">Copyright</span>
                     <span class="corp">© SPOPIA Corp.</span>
@@ -159,6 +158,33 @@
     <script type="text/javascript" async="" src="https://ssl.pstatic.net/tveta/libs/glad/prod/gfp-core.js"></script>
     <script type="text/javascript" src="/login/js/v2/default/common_202201.js?v=20220322"></script>
     <script type="text/javascript" src="/login/js/v2/default/default_202105.js?v=20210910"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+	    $("#loginBtn").on("click", function() {
+			var id = $("#id").val();
+			var pwd = $("#pwd").val();
+			
+			$.ajax({
+				async: true
+				,cache: false
+				,type:"POST"
+				,url: "xdminLoginCheck"
+				,data: {"id": id, "pwd": pwd}
+				,success : function(response) {
+					if (response.rt == "fail") {
+						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+						return false;
+					} else {
+						window.location.href = "/sportMain";
+					}
+				},
+				error : function(jqXHR, status, error) {
+					alert("알 수 없는 에러 [ " + error + " ]");
+				}
+			});
+		});
+    </script>
 </body>
 
 </html>

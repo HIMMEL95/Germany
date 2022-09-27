@@ -127,7 +127,7 @@
                                             </a>
                                         </div>
                                         <div class="btn_login_wrap">
-                                            <button type="submit" class="btn_login" id="kakaoBtn" style="background-color: #fceb00;">
+                                            <button type="button" class="btn_login" id="kakaoBtn" style="background-color: #fceb00;">
                                                 <span class="btn_text text-black">
                                                 	<img src="/resources/images/user/kakao.png" style="width: 25px;" class="me-3">
                                                		카카오 로그인
@@ -135,7 +135,7 @@
                                             </button>
                                         </div>
                                         <div class="btn_login_wrap">
-                                            <button type="submit" class="btn_login" id="log.login"
+                                            <button type="button" class="btn_login" id="log.login"
                                                 style="background-color: #dc462f;">
                                                 <span class="btn_text">
                                                 	<i class="fa-brands fa-google text-white pe-3 fa-lg"></i>
@@ -144,7 +144,7 @@
                                             </button>
                                         </div>
                                         <div class="btn_login_wrap">
-                                            <button type="submit" class="btn_login" id="log.login"
+                                            <button type="button" class="btn_login" id="log.login"
                                                 style="background-color: #304e9c;">
                                                 <span class="btn_text">
                                                 	<i class="fa-brands fa-square-facebook text-white pe-3 fa-lg"></i>
@@ -205,7 +205,6 @@
     <script type="text/javascript">
     
     	$("#loginBtn").on("click", function() {
-    		
     		var id = $("#id").val();
 			var pwd = $("#pwd").val();
 			
@@ -228,7 +227,7 @@
 				}
 			});
 		});
-    	
+    	    	
     	var goUrlMain = "/sportMain";
     	var form = $("#frmNIDLogin");
     	

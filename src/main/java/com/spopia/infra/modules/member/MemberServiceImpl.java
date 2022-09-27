@@ -85,5 +85,10 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member loginCheck(Member dto) throws Exception {
 		return dao.loginCheck(dto);
+	}
+
+	@Override
+	public Member xdminLoginCheck(Member dto) throws Exception {
+		return dao.xdminLoginCheck(dto);
 	}	
 }

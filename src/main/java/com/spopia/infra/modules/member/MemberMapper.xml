@@ -249,10 +249,26 @@
 			,u.name
 			,u.email
 			,u.pwd
+			,u.user_div
 		from user u
 		where 1=1 
 			and id = #{id} 
 			and pwd = #{pwd}
+	</select>
+
+	<select id="xdminLoginCheck" resultMap="resultMapObj">
+		select 
+			u.seq
+			,u.id
+			,u.name
+			,u.email
+			,u.pwd
+			,u.user_div
+		from user u
+		where 1=1 
+			and id = #{id} 
+			and pwd = #{pwd}
+			and user_div = 24
 	</select>
 
 </mapper>

@@ -78,7 +78,32 @@ public class LoginController {
 			httpSession.setAttribute("sessId", result.getId());
 			httpSession.setAttribute("sessName", result.getName());
 			httpSession.setAttribute("sessEmail", result.getEmail());
+			httpSession.setAttribute("sessUser", result.getUser_div());
 	
+			returnMap.put("rt", "success");
+		} else {
+			returnMap.put("rt", "fail");
+		}
+		return returnMap;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "xdminLoginCheck")
+	public Map<String, Object> xdminLoginCheck(Member dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
+		Member result = service.xdminLoginCheck(dto);
+		
+		if (result != null) {
+			
+			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
+			httpSession.setAttribute("sessSeq", result.getSeq());
+			httpSession.setAttribute("sessId", result.getId());
+			httpSession.setAttribute("sessName", result.getName());
+			httpSession.setAttribute("sessEmail", result.getEmail());
+			httpSession.setAttribute("sessUser", result.getUser_div());
+			
 			returnMap.put("rt", "success");
 		} else {
 			returnMap.put("rt", "fail");

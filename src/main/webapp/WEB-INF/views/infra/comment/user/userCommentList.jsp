@@ -63,30 +63,68 @@
                                     <hr>
                                 </li>
                                 <!-- Links -->
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fa-solid fa-user me-2"></i>
-                                        Edit Profile
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fa-solid fa-gear me-2"></i>
-                                        Account Settings
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fa-solid fa-circle-info me-2"></i>
-                                        Help
-                                    </a>
-                                </li>
-                                <li>
-                                    <button class="dropdown-item bg-danger-soft-hover" name="signOutBtn">
-                                        <i class="fa-solid fa-power-off me-2"></i>
-                                        Sign Out
-                                    </button>
-                                </li>
+                                <c:choose>
+									<c:when test="${empty sessUser}">
+										<li>
+		                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" href="/">
+		                                        <i class="fa-solid fa-power-off me-2"></i>
+		                                        Sign in
+		                                    </a>
+		                                </li>
+										<li>
+		                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" href="/">
+		                                        <i class="fa-solid fa-power-off me-2"></i>
+		                                        Sign up
+		                                    </a>
+		                                </li>
+									</c:when>
+									<c:when test="${sessUser eq 25}">
+										<li class="ms-3">
+                                            <a class="pro_a" role="button" id="editBtn" onclick="goForm(<c:out value="${sessSeq }"/>)" style="cursor: pointer;">
+                                                <i class="fa-solid fa-user me-2"></i>
+                                                Edit Profile
+                                            </a>
+                                        </li>
+                                        <li class="ms-3">
+                                            <a class="pro_a" href="#">
+                                                <i class="fa-solid fa-circle-info me-2"></i>
+                                                Help
+                                            </a>
+                                        </li>
+                                        <li class="ms-3">
+                                            <a class="pro_a" id="signOutBtn" href="/">
+                                                <i class="fa-solid fa-power-off me-2"></i>
+                                                Sign Out
+                                            </a>
+                                        </li>
+									</c:when>
+									<c:otherwise>
+										<li>
+		                                    <a class="dropdown-item" href="#">
+		                                        <i class="fa-solid fa-user me-2"></i>
+		                                        Edit Profile
+		                                    </a>
+		                                </li>
+		                                <li>
+		                                    <a class="dropdown-item" href="#">
+		                                        <i class="fa-solid fa-gear me-2"></i>
+		                                        Account Settings
+		                                    </a>
+		                                </li>
+		                                <li>
+		                                    <a class="dropdown-item" href="#">
+		                                        <i class="fa-solid fa-circle-info me-2"></i>
+		                                        Help
+		                                    </a>
+		                                </li>
+		                                <li>
+		                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" href="/">
+		                                        <i class="fa-solid fa-power-off me-2"></i>
+		                                        Sign Out
+		                                    </a>
+		                                </li>
+									</c:otherwise>
+								</c:choose>
                                 <!-- Dark mode switch START -->
                             </ul>
                         </li>

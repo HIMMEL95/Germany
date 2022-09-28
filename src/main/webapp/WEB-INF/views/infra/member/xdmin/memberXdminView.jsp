@@ -27,7 +27,7 @@
             <div class="container px-3 px-xl-5 pt-1">
                 <!-- Logo START -->
                 <a class="navbar-brand" href="/sportMain">
-                    <img class="light-mode-item navbar-brand-item" src="../../resources/images/SPOPIA_white.png" alt="logo"
+                    <img class="light-mode-item navbar-brand-item" src="/resources/images/SPOPIA_white.png" alt="logo"
                         style="width: 90px;">
                 </a>
                 <!-- Profile START -->
@@ -37,7 +37,7 @@
                             <a class="p-0" href="/member/memberView" id="profileDropdown" role="button"
                                 data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                <img class="avatar-img rounded-circle" src="../../resources/images/diano.jpg" alt="avatar"
+                                <img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar"
                                     style="width: 30px;">
                             </a>
                             <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
@@ -47,12 +47,12 @@
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
                                         <div class="avatar ps-1 pt-2">
-                                            <img class="avatar-img rounded-circle shadow" src="../../resources/images/diano.jpg"
+                                            <img class="avatar-img rounded-circle shadow" src="/resources/images/diano.jpg"
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="../member/memberView.html">이하늘</a>
-                                            <p class="small m-0">himmel@gmail.com</p>
+                                            <a class="fs-6 fw-bold" id="editBtn" onclick="goForm(<c:out value="${sessSeq }"/>)"><c:out value="${sessName }"/></a>
+                                            <p class="small m-0"><c:out value="${sessEmail }"/></p>
                                         </div>
                                     </div>
                                     <hr>
@@ -132,28 +132,40 @@
                                                                 src="/resources/images/diano.jpg" style="width: 50px;" alt=""></a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
-                                                        <span class="mb-0"><a href="#">이하늘</a></span>
-                                                        <small>Himmel</small><br>
-                                                        <small>himmel@gmail.com</small>
+                                                        <span class="mb-0"><a href="#"><c:out value="${sessName }"/></a></span>
+                                                        <small><c:out value="${sessId }"/></small><br>
+                                                        <small><c:out value="${sessEmail }"/></small>
                                                     </div>
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/member/memberView">
+                                                            <a class="nav-link" href="/dashboard">
                                                                 <i class="fa-solid fa-chart-line pe-3"></i>
-                                                                <span>계정 정보 상세</span>
+                                                                <span>Dashboard</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="../member/memberCommentView.html">
+                                                            <a class="nav-link" href="/member/memberList">
                                                                 <i class="fa-solid fa-users pe-3"></i>
-                                                                <span>작성 글</span>
+                                                                <span>회원관리</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/">
+                                                            <a class="nav-link" href="/article/articleList">
                                                                 <i class="fas fa-light fa-newspaper pe-3"></i>
-                                                                <span>로그아웃</span>
+                                                                <span>게시물 관리</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="/comment/commentList">
+                                                                <i class="fas fa-light fa-comments pe-3"></i>
+                                                                <span>댓글 리스트</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="/game/gameList">
+                                                                <i class="fas fa-duotone fa-trophy pe-3"></i>
+                                                                <span>경기 기록 관리</span>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -182,8 +194,7 @@
                                             </li>
                                         </ul>
                                         <p class="small text-center mt-1">©2022 <a class="text-body" target="_blank" href="#"> SPOPIA
-                                            </a>
-                                        </p>
+                                            </a></p>
                                     </div>
                                 </div>
                             </nav>
@@ -194,13 +205,25 @@
                         <span class="fs-1 fw-bold text-center">회원 정보</span>
                         <div class="row mb-4">
                             <div class="col-12 shadow rounded pt-3 ps-4" style="height: 100px; background-color: #f7f7fc;">
-                                <img src="../../resources/images/diano.jpg" class="rounded-circle avatar-img shadow" style="width: 60px;">
-                                <div class="form-attachment-btn btn btn-primary btn-sm ms-3" hidden>
-                                    <i class="fa-solid fa-arrows-rotate me-2"></i>Upload photo
-                                    <input type="file" class="js-file-attach form-attachment-btn-label" id="avatarUploader">
-                                </div>
+                            	<div class="row" style="align-items: center;">
+                            		<div class="col-2">
+                            			<img src="/resources/images/diano.jpg" class="rounded-circle avatar-img shadow" style="width: 60px;">
+		                                <div class="form-attachment-btn btn btn-primary btn-sm ms-3" hidden>
+		                                    <i class="fa-solid fa-arrows-rotate me-2"></i>Upload photo
+		                                    <input type="file" class="js-file-attach form-attachment-btn-label" id="avatarUploader">
+		                                </div>
+                            		</div>
+                            		<div class="col-2 offset-7">
+                            			<div style="width: 150px;">
+		                                	<select class="form-select form-select-sm fw-bold" id="user_div" name="user_div" disabled aria-label=".form-select-sm example">
+			                                    <option value="24" <c:if test="${item.user_div eq 24 }">selected</c:if>>관리자</option>
+			                                    <option value="25" <c:if test="${item.user_div eq 25}">selected</c:if>>일반</option>
+			                                </select>
+		                                </div>
+                            		</div>
+                            	</div>
                             </div>
-                        </div>
+                  		</div>
                         <div class="card ps-5 pe-5 pt-4 pb-4 shadow" style="background-color: #f7f7fc;"">
                                         <div class=" row mb-4">
                             <div class="col">
@@ -344,6 +367,16 @@
 		$("#btnMod").on("click", function() {
 			form.attr("action", goUrlMod).submit();
 		})
+		
+		var seq = $("input:hidden[name=seq]");
+        var goUrlView = "/member/memberUView";
+      
+       goForm = function(keyValue) {
+	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+	    	seq.val(keyValue);
+			form.attr("action", goUrlView).submit();
+		}
+
     </script>
 </body>
 

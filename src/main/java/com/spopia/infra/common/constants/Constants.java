@@ -12,4 +12,7 @@ public final class Constants {
 	
 	// login time
 	public static final int SESSION_MINUTE = 30;
+	
+	public static final String URL_USERLOGINFORM = "/userLogin";
+	public static final String URL_ADDINLOGINFORM = "/xdminLogin";
 }

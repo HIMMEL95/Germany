@@ -14,13 +14,13 @@
 		WHERE 1=1
 		<if test="shDelNy != null and !shDelNy.equals('')">AND aDelNy = #{shDelNy}</if>
 		<choose>
-			<when test="shOption == 1">AND seq = #{shValue}</when>
+			<when test="shOption == 1">AND aSeq = #{shValue}</when>
 			<when test="shOption == 2">AND newspaper LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 3">AND reporter LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 4">AND event LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 4">AND aEvent LIKE CONCAT('%',#{shValue},'%')</when>
 		</choose>
 		<choose>
-			<when test="shDate == 1">AND a.createdAt BETWEEN #{startDate} AND #{endDate}</when>
+			<when test="shDate == 1">AND a.aCreatedAt BETWEEN #{startDate} AND #{endDate}</when>
 			<otherwise></otherwise>
 		</choose>
 	</sql>
@@ -28,17 +28,17 @@
 	<select id="selectList" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />
 			select
-				a.seq
+				a.aSeq
 				,a.title
 			    ,a.content
 			    ,a.newspaper
-			    ,a.abroadNy
-			    ,a.event
-			    ,a.league
+			    ,a.aAbroadNy
+			    ,a.aEvent
+			    ,a.aLeague
 			    ,a.reporter
 			    ,a.aDelNy
-			    ,a.createdAt
-			    ,a.modifiedAt
+			    ,a.aCreatedAt
+			    ,a.aModifiedAt
 			    ,u.email as email
 			<include refid="selectCommon"></include>
 			ORDER BY a.seq DESC
@@ -53,13 +53,13 @@
 				,a.title
 			    ,a.content
 			    ,a.newspaper
-			    ,a.abroadNy
-			    ,a.event
-			    ,a.league
+			    ,a.aAbroadNy
+			    ,a.aEvent
+			    ,a.aLeague
 			    ,a.reporter
 			    ,a.aDelNy
-			    ,a.createdAt
-			    ,a.modifiedAt
+			    ,a.aCreatedAt
+			    ,a.aModifiedAt
 			    ,u.email as email
 			<include refid="selectCommon"></include>
 			ORDER BY a.seq DESC
@@ -78,18 +78,18 @@
 			,a.title
 			,a.content
 			,a.newspaper
-			,a.abroadNy
-			,a.event
-			,a.league
+			,a.aAbroadNy
+			,a.aEvent
+			,a.aLeague
 			,a.reporter
 			,a.aDelNy
-			,a.createdAt
-			,a.modifiedAt
+			,a.aCreatedAt
+			,a.aModifiedAt
 			,u.email as email
 		from article a
 			inner join user u on u.seq = a.createdBy
 		where 1=1
-			and a.seq = #{seq}
+			and a.aSeq = #{seq}
 	</select>
 	
 	<insert id="insert">
@@ -97,13 +97,13 @@
 			title
 			,content
 			,newspaper
-			,abroadNy
-			,event
-			,league
+			,aAbroadNy
+			,aEvent
+			,aLeague
 			,reporter
 			,aDelNy
-			,createdAt
-			,modifiedAt
+			,aCreatedAt
+			,aModifiedAt
 		) 
 		VALUES (
 			#{title}
@@ -128,13 +128,13 @@
 			title = #{title}
 			,content = #{content}
 			,newspaper = #{newspaper}
-			,abroadNy = #{abroadNy}
-			,event = #{event}
-			,league = #{league}
+			,aAbroadNy = #{abroadNy}
+			,aEvent = #{event}
+			,aLeague = #{league}
 			,reporter = #{reporter}
-			,modifiedAt = now()
+			,aModifiedAt = now()
 		where 1=1
-			and seq = #{seq}
+			and aSeq = #{seq}
 	</update>
 
 	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
@@ -148,4 +148,5 @@
 			AND ifccDelNy = 0
 		    AND ifccUseNy = 1
     </select>
+
 </mapper>

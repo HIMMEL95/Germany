@@ -39,89 +39,95 @@
 	                </div>
 	                <div class="navigation">
 	                    <ul class="nav_ul">
-	                        <li class="nav_li">
-	                            <a class="login" href="../login/loginForm.html">
-	                                <i class="fa-solid fa-right-to-bracket"></i>
-	                            </a>
-	                        </li>
-	                        <li class="nav_li">
-	                            <div class="action">
-	                                <div class="profile" onclick="menuToggle();">
-	                                    <img class="pro_img" src="/resources/images/diano.jpg" width="35">
-	                                </div>
-	                                <div class="menu">
-	                                    <h3>
-	                                    	<c:out value="${sessId }"/>
-	                                        <br>
-	                                        <a href="#" style="text-transform: none;"><c:out value="${sessEmail }"/><br></a>
-	                                    </h3>
-	                                    <ul class="pro_ul">
-		                                    <c:choose>
-												<c:when test="${empty sessUser}">
-													<li class="pro_li">
-			                                            <a class="pro_a" id="signOutBtn" href="/">
-			                                                <i class="fa-solid fa-power-off me-2"></i>
-			                                                Sign In
-			                                            </a>
-			                                        </li>
-													<li class="pro_li">
-			                                            <a class="pro_a" id="signOutBtn" href="/">
-			                                                <i class="fa-solid fa-power-off me-2"></i>
-			                                                Sign Up
-			                                            </a>
-			                                        </li>
-												</c:when>
-												<c:when test="${sessUser eq 25}">
-													<li class="pro_li">
-			                                            <a class="pro_a" role="button" id="editBtn" onclick="goForm(<c:out value="${sessSeq }"/>)" style="cursor: pointer;">
-			                                                <i class="fa-solid fa-user me-2"></i>
-			                                                Edit Profile
-			                                            </a>
-			                                        </li>
-			                                        <li class="pro_li">
-			                                            <a class="pro_a" href="#">
-			                                                <i class="fa-solid fa-circle-info me-2"></i>
-			                                                Help
-			                                            </a>
-			                                        </li>
-			                                        <li class="pro_li">
-			                                            <a class="pro_a" id="signOutBtn" href="/">
-			                                                <i class="fa-solid fa-power-off me-2"></i>
-			                                                Sign Out
-			                                            </a>
-			                                        </li>
-												</c:when>
-												<c:otherwise>
-													<li class="pro_li">
-			                                            <a class="pro_a" role="button" id="editBtn" onclick="goForm(<c:out value="${sessSeq }"/>)" style="cursor: pointer;">
-			                                                <i class="fa-solid fa-user me-2"></i>
-			                                                Edit Profile
-			                                            </a>
-			                                        </li>
-			                                        <li class="pro_li">
-			                                            <a class="pro_a" href="/dashboard">
-			                                                <i class="fa-solid fa-gear me-2"></i>
-			                                                Admin Page
-			                                            </a>
-			                                        </li>
-			                                        <li class="pro_li">
-			                                            <a class="pro_a" href="#">
-			                                                <i class="fa-solid fa-circle-info me-2"></i>
-			                                                Help
-			                                            </a>
-			                                        </li>
-			                                        <li class="pro_li">
-			                                            <a class="pro_a" id="signOutBtn" href="/">
-			                                                <i class="fa-solid fa-power-off me-2"></i>
-			                                                Sign Out
-			                                            </a>
-			                                        </li>
-												</c:otherwise>
-											</c:choose>
-	                                    </ul>
-	                                </div>
-	                            </div>
-	                        </li>
+	                    	<c:choose>
+	                    		<c:when test="${empty sessSeq }">
+	                    			<li class="nav_li">
+			                            <a class="login" href="/userLogin">
+			                                <i class="fa-solid fa-right-to-bracket"></i>
+			                            </a>
+			                        </li>
+	                    		</c:when>	
+	                    		<c:otherwise>
+	                    			<li class="nav_li">
+			                            <div class="action">
+			                                <div class="profile" onclick="menuToggle();">
+			                                    <img class="pro_img" src="/resources/images/diano.jpg" width="35">
+			                                </div>
+			                                <div class="menu">
+			                                    <h3>
+			                                    	<c:out value="${sessId }"/>
+			                                        <br>
+			                                        <a href="#" style="text-transform: none;"><c:out value="${sessEmail }"/><br></a>
+			                                    </h3>
+			                                    <ul class="pro_ul">
+				                                    <c:choose>
+														<c:when test="${empty sessUser}">
+															<li class="pro_li">
+					                                            <a class="pro_a" id="signOutBtn" href="/userLogin">
+					                                                <i class="fa-solid fa-power-off me-2"></i>
+					                                                Sign In
+					                                            </a>
+					                                        </li>
+															<li class="pro_li">
+					                                            <a class="pro_a" id="signOutBtn" href="/signUp">
+					                                                <i class="fa-solid fa-power-off me-2"></i>
+					                                                Sign Up
+					                                            </a>
+					                                        </li>
+														</c:when>
+														<c:when test="${sessUser eq 25}">
+															<li class="pro_li">
+					                                            <a class="pro_a" role="button" id="editBtn" href="/member/memberUView?seq=${sessSeq }" style="cursor: pointer;">
+					                                                <i class="fa-solid fa-user me-2"></i>
+					                                                Edit Profile
+					                                            </a>
+					                                        </li>
+					                                        <li class="pro_li">
+					                                            <a class="pro_a" href="#">
+					                                                <i class="fa-solid fa-circle-info me-2"></i>
+					                                                Help
+					                                            </a>
+					                                        </li>
+					                                        <li class="pro_li">
+					                                            <a class="pro_a" id="signOutBtn" href="/userLogin">
+					                                                <i class="fa-solid fa-power-off me-2"></i>
+					                                                Sign Out
+					                                            </a>
+					                                        </li>
+														</c:when>
+														<c:otherwise>
+															<li class="pro_li">
+					                                            <a class="pro_a" role="button" id="editBtn" href="/member/memberUView?seq=${sessSeq }" style="cursor: pointer;">
+					                                                <i class="fa-solid fa-user me-2"></i>
+					                                                Edit Profile
+					                                            </a>
+					                                        </li>
+					                                        <li class="pro_li">
+					                                            <a class="pro_a" href="/dashboard">
+					                                                <i class="fa-solid fa-gear me-2"></i>
+					                                                Admin Page
+					                                            </a>
+					                                        </li>
+					                                        <li class="pro_li">
+					                                            <a class="pro_a" href="#">
+					                                                <i class="fa-solid fa-circle-info me-2"></i>
+					                                                Help
+					                                            </a>
+					                                        </li>
+					                                        <li class="pro_li">
+					                                            <a class="pro_a" id="signOutBtn" href="/userLogin">
+					                                                <i class="fa-solid fa-power-off me-2"></i>
+					                                                Sign Out
+					                                            </a>
+					                                        </li>
+														</c:otherwise>
+													</c:choose>
+			                                    </ul>
+			                                </div>
+			                            </div>
+			                        </li>
+	                    		</c:otherwise>                    	
+	                    	</c:choose>
 	                    </ul>
 	                </div>
 	            </div>
@@ -170,28 +176,58 @@
 	                        </div>
 	                    </div>
 	                </a>
-	                <a class="game_card" href="">
+	                <c:choose>
+                  		<c:when test="${fn:length(list) eq 0}">
+                  			<tr>
+                  				<td class="text-center" colspan="11">There is no data!</td>
+                  			</tr>
+                  		</c:when>
+                   		<c:otherwise>
+                       		<c:forEach items="${list}" var="list" varStatus="status">
+								<tr onclick="goForm(<c:out value="${list.seq }"/>)" style="cursor: pointer;">
+									<td onclick="event.cancelBubble=true">
+									<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+									</td>
+									<td><c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/></td>
+									<td>${list.user_div }</td>
+									<td>${list.name }</td>
+									<td></td>
+									<td>${list.id }</td>
+									<td>${list.email }</td>
+									<td>${list.dob }</td>
+									<td>
+										<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+											<c:if test="${list.team eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+										</c:forEach>
+									</td>
+									<td>${list.createdAt }</td>
+									<td>${list.modifiedAt }</td>
+								</tr>		
+							</c:forEach>
+                   		</c:otherwise>
+                   	</c:choose>
+	                <a class="game_card" onclick="goForm(<c:out value="${list.seq }"/>)" style="cursor: pointer;">
 	                    <div class="head">
-	                        <span class="event">야구</span>
-	                        <span class="league">KBO</span>
+	                        <span class="event">${gList.event}</span>
+	                        <span class="league">${gList.league}</span>
 	                    </div>
 	                    <div class="game_content">
 	                        <div class="away game">
 	                            <img class="away_img" src="https://sports-phinf.pstatic.net/team/kbo/default/OB.png"
 	                                width="30" height="30">
 	                            <br>
-	                            <span>두산</span>
+	                            <span>${gList.team_home}</span>
 	                        </div>
 	                        <div class="info game">
 	                            <span>VS</span>
 	                            <br>
-	                            <span>18:00 예정</span>
+	                            <span>${gList.gameDate} 예정</span>
 	                        </div>
 	                        <div class="home game">
 	                            <img class="home_img" src="https://sports-phinf.pstatic.net/team/kbo/default/HT.png"
 	                                width="30" height="30">
 	                            <br>
-	                            <span>KIA</span>
+	                            <span>${gList.team_away}</span>
 	                        </div>
 	                    </div>
 	                </a>
@@ -277,20 +313,48 @@
 	            </div>
 	            <!-- article 영역 -->
 	            <div id="article">
-	                <a class="article_card" href="article/articleView">
+	            	<c:choose>
+                  		<c:when test="${fn:length(list) eq 0}">
+                  			<tr>
+                  				<td class="text-center" colspan="11">There is no data!</td>
+                  			</tr>
+                  		</c:when>
+                   		<c:otherwise>
+                       		<c:forEach items="${list}" var="list" varStatus="status">
+								<a class="article_card" href="article/articleView?seq=${list.seq }">
+				                    <div class="article_img">
+				                        <img class="article_img" src="/resources/images/user/baseball.jpg">
+				                    </div>
+				                    <div class="article_content">
+				                        <div class="article_title">
+				                            ${list.title }
+				                        </div>
+				                        <div class="article_context">
+				                            ${list.content }
+				                        </div>
+				                        <div class="article_info">
+				                            <span class="newspaper">${list.newspaper }</span>
+				                            <span class="league">${list.league }</span>
+				                        </div>
+				                    </div>
+				                </a>		
+							</c:forEach>
+                   		</c:otherwise>
+                   	</c:choose>
+	                <a class="article_card" href="article/articleView?seq=${list.seq }">
 	                    <div class="article_img">
 	                        <img class="article_img" src="/resources/images/user/baseball.jpg">
 	                    </div>
 	                    <div class="article_content">
 	                        <div class="article_title">
-	                            '폭우 속 혈투' 수원FC, 강원 3:2로 꺾고 6위 사수
+	                            ${list.title }
 	                        </div>
 	                        <div class="article_context">
-	                            라스(수원FC). 한국프로축구연맹 제공수원FC가 수중전으로 치러진 강원FC 원정 경기에서 승리를 따냈다.15일 강원도 춘천에 위치한 춘천송암스포츠타운에서 하..."
+	                            ${list.content }
 	                        </div>
 	                        <div class="article_info">
-	                            <span class="newspaper">풋볼리스트</span>
-	                            <span class="league">K리그</span>
+	                            <span class="newspaper">${list.newspaper }</span>
+	                            <span class="league">${list.league }</span>
 	                        </div>
 	                    </div>
 	                </a>

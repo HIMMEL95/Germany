@@ -11,4 +11,7 @@ public interface ArticleService {
 	public int update(Article dto) throws Exception;
 	public Article selectOne(ArticleVo vo) throws Exception;
 	public int selectOneCount(ArticleVo vo) throws Exception;
+
+	/* mainlist */
+	public List<Article> mainList() throws Exception;
 }

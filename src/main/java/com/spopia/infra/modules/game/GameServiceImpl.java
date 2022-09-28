@@ -55,6 +55,11 @@ public class GameServiceImpl implements GameService{
 	public int delete(GameVo vo) throws Exception {
 		return dao.delete(vo);
 	}
-	
+
+	/* mainList */
+	@Override
+	public List<Game> mainList() throws Exception {
+		return dao.mainList();
+	}
 	
 }

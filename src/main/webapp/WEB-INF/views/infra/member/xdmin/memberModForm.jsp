@@ -20,7 +20,6 @@
 </head>
 
 <body>
-
     <header class="navbar-light fixed-top header-static bg-mode align-items-center">
         <!-- 상단 -->
         <nav class="navbar navbar-expand-lg">
@@ -138,21 +137,33 @@
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/member/memberView">
+                                                            <a class="nav-link" href="/dashboard">
                                                                 <i class="fa-solid fa-chart-line pe-3"></i>
-                                                                <span>계정 정보 상세</span>
+                                                                <span>Dashboard</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="../member/memberCommentView.html">
+                                                            <a class="nav-link" href="/member/memberList">
                                                                 <i class="fa-solid fa-users pe-3"></i>
-                                                                <span>작성 글</span>
+                                                                <span>회원관리</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/">
+                                                            <a class="nav-link" href="/article/articleList">
                                                                 <i class="fas fa-light fa-newspaper pe-3"></i>
-                                                                <span>로그아웃</span>
+                                                                <span>게시물 관리</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="/comment/commentList">
+                                                                <i class="fas fa-light fa-comments pe-3"></i>
+                                                                <span>댓글 리스트</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="/game/gameList">
+                                                                <i class="fas fa-duotone fa-trophy pe-3"></i>
+                                                                <span>경기 기록 관리</span>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -181,8 +192,7 @@
                                             </li>
                                         </ul>
                                         <p class="small text-center mt-1">©2022 <a class="text-body" target="_blank" href="#"> SPOPIA
-                                            </a>
-                                        </p>
+                                            </a></p>
                                     </div>
                                 </div>
                             </nav>
@@ -195,7 +205,7 @@
                             <div class="col-12 shadow rounded pt-3 ps-4" style="height: 100px; background-color: #f7f7fc;">
                             	<div class="row" style="align-items: center;">
                             		<div class="col-2">
-                            			<img src="../../resources/images/diano.jpg" class="rounded-circle avatar-img shadow" style="width: 60px;">
+                            			<img src="/resources/images/diano.jpg" class="rounded-circle avatar-img shadow" style="width: 60px;">
 		                                <div class="form-attachment-btn btn btn-primary btn-sm ms-3" hidden>
 		                                    <i class="fa-solid fa-arrows-rotate me-2"></i>Upload photo
 		                                    <input type="file" class="js-file-attach form-attachment-btn-label" id="avatarUploader">
@@ -216,31 +226,31 @@
                                         <div class=" row mb-4">
                             <div class="col">
                                 <label for="name" class="form-label fw-bold">이름</label>
-                                <input type="text" class="form-control bg-white" id="name" name="name" value="<c:out value="${item.name }"/>" readonly>
+                                <input type="text" class="form-control bg-white" id="name" name="name" value="<c:out value="${item.name }"/>">
                             </div>
                             <div class="col">
                                 <label for="id" class="form-label fw-bold">아이디</label>
-                                <input type="text" class="form-control bg-white" id="id" name="id" value="<c:out value="${item.id }"/>" readonly>
+                                <input type="text" class="form-control bg-white" id="id" name="id" value="<c:out value="${item.id }"/>">
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="dob" class="form-label fw-bold">생년월일</label>
-                                <input type="text" class="form-control bg-white" id="dob" name="dob" value="<c:out value="${item.dob }"/>" readonly>
+                                <input type="text" class="form-control bg-white" id="dob" name="dob" value="<c:out value="${item.dob }"/>">
                             </div>
                             <div class="col">
                                 <label for="email" class="form-label fw-bold">이메일</label>
-                                <input type="email" class="form-control bg-white" id="email" name="email" value="<c:out value="${item.email }"/>" readonly>
+                                <input type="email" class="form-control bg-white" id="email" name="email" value="<c:out value="${item.email }"/>">
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="tel" class="form-label fw-bold">전화번호</label>
-                                <input type="tel" class="form-control bg-white" id="tel" name="phone" value="<c:out value="${item.phone }"/>" readonly>
+                                <input type="tel" class="form-control bg-white" id="tel" name="phone" value="<c:out value="${item.phone }"/>">
                             </div>
                             <div class="col">
                                 <label for="gender" class="form-label fw-bold">성별</label>
-                                <select class="form-select form-select-lg fs-6 bg-white" id="gender" name="gender" aria-label=".form-select-lg example" disabled>
+                                <select class="form-select form-select-lg fs-6 bg-white" id="gender" name="gender" aria-label=".form-select-lg example">
                                     <option value="5" <c:if test="${item.gender eq 5 }">selected</c:if>>남성</option>
                                     <option value="6" <c:if test="${item.gender eq 6 }">selected</c:if>>여성</option>
                                 </select>
@@ -249,41 +259,41 @@
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="job" class="form-label fw-bold">직업</label>
-                                <input type="text" class="form-control bg-white" id="job" name="job" value="<c:out value="${item.job }"/>" readonly>
+                                <input type="text" class="form-control bg-white" id="job" name="job" value="<c:out value="${item.job }"/>">
                             </div>
                             <div class="col">
-                            	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectOneCachedCode(30) }" />
+                            	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectOneCachedCode(10) }" />
                                 <label for="team" class="form-label fw-bold">좋아하는 팀</label>
-                                <input type="text" class="form-control bg-white" id="team" name="team" value="<c:out value="${listCodeTeam }"/>" readonly>
+                                <input type="text" class="form-control bg-white" id="team" name="team" value="<c:out value="${listCodeTeam }"/>">
                             </div>
                         </div>
                         <div class="row mb-4" hidden>
                             <div class="col">
                                 <label for="password" class="form-label fw-bold">비밀번호</label>
-                                <input type="password" class="form-control bg-white" id="password" value="" readonly>
+                                <input type="password" class="form-control bg-white" id="password" value="">
                             </div>
                             <div class="col">
                                 <label for="password_confirm" class="form-label fw-bold">비밀번호 확인</label>
-                                <input type="password" class="form-control bg-white" id="password_confirm" value="" readonly>
+                                <input type="password" class="form-control bg-white" id="password_confirm" value="">
                             </div>
                         </div>
                         <hr>
                         <div class="row mb-4">
                             <div class="col-6">
                                 <label for="zip" class="form-label fw-bold">우편번호</label>
-                                <input type="text" class="form-control bg-white" id="zip" name="zip" value="<c:out value="${item.zip }"/>" readonly>
+                                <input type="text" class="form-control bg-white" id="zip" name="zip" value="<c:out value="${item.zip }"/>">
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="address" class="form-label fw-bold">주소</label>
-                                <input type="text" class="form-control bg-white" id="address" name="address" value="<c:out value="${item.address }"/>" readonly>
+                                <input type="text" class="form-control bg-white" id="address" name="address" value="<c:out value="${item.address }"/>">
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="addressDetail" class="form-label fw-bold">상세주소</label>
-                                <input type="text" class="form-control bg-white" id="addressDetail" name="address_detail" value="<c:out value="${item.address_detail }"/>" readonly>
+                                <input type="text" class="form-control bg-white" id="addressDetail" name="address_detail" value="<c:out value="${item.address_detail }"/>">
                             </div>
                         </div>
                         <div class="row">

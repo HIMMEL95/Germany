@@ -30,7 +30,7 @@
         <div id="container" class="container">
             <div class="header_inner text-center pt-5 mt-5" style="height: 200px;">
                 <a href="/" class="logo">
-                    <img src="../../resources/images/SPOPIA1.png" style="width: 150px;">
+                    <img src="/resources/images/SPOPIA1.png" style="width: 150px;">
                 </a>
             </div>
             <!-- content -->
@@ -176,7 +176,7 @@
 						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
 						return false;
 					} else {
-						window.location.href = "/sportMain";
+						window.location.href = "/dashboard";
 					}
 				},
 				error : function(jqXHR, status, error) {

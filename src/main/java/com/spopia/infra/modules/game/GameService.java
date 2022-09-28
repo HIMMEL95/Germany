@@ -14,4 +14,8 @@ public interface GameService {
 	public int uelete(Game dto) throws Exception;
 	public int delete(GameVo vo) throws Exception;
 	public int selectOneCount(GameVo vo) throws Exception;
+	
+	/* mainList */
+	public List<Game> mainList() throws Exception;
+	
 }

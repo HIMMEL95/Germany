@@ -23,6 +23,24 @@
 	
 	<context:component-scan base-package="com.spopia.infra" />
 	
-	
+	<!-- session interceptor s 2022.03.13 for logincheck -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<exclude-mapping path="/resources/**" />
+			<exclude-mapping path="/userLogin" />
+			<exclude-mapping path="/xdminLogin" />
+			<exclude-mapping path="/loginCheck" />
+			<exclude-mapping path="/sportMain" />
+			<exclude-mapping path="/" />
+			<exclude-mapping path="/signUp" />
+			<exclude-mapping path="/findId" />
+			<exclude-mapping path="/xdminLoginCheck" />
+			<exclude-mapping path="/test/**" />
+			<exclude-mapping path="/rest/**" />
+			<beans:bean id="checkLoginSessionInterception" class="com.spopia.infra.common.interceptor.CheckLoginSessionInterception"/>
+		</interceptor>
+	</interceptors>	
+	<!-- session interceptor e 2022.03.13 for logincheck -->
 	
 </beans:beans>

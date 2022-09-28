@@ -52,4 +52,9 @@ public class GameDao {
 	public int delete(GameVo vo) {
 		return sqlSession.delete(namespace + ".delete", vo);
 	}
+
+	/* mainList */
+	public List<Game> mainList() {
+		return sqlSession.selectList(namespace + ".mainList", "");
+	}
 }

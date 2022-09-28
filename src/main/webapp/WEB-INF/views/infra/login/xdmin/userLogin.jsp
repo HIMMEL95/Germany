@@ -81,18 +81,19 @@
                                     </div>
                                     <div class="login_keep_wrap" id="login_keep_wrap">
                                         <div class="keep_check">
-                                            <input type="checkbox" id="keep" name="nvlong" class="input_keep"
-                                                value="off">
-                                            <label for="keep" class="keep_text">로그인 상태 유지</label>
+                                            <div class="form-check" style="margin-left: -20px;">
+											  	<input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+											  	<label class="form-check-label" for="flexCheckIndeterminate" style="color: #777777;">
+												    로그인 상태 유지
+											  	</label>
+											</div>
                                         </div>
                                         <div class="ip_check">
-                                            <a href="/login/ext/help_ip3.html" target="_blank" id="ipguide"
-                                                title="IP보안"><span class="ip_text">IP보안</span></a>
                                             <span class="switch">
-                                                <input type="checkbox" id="switch" class="switch_checkbox" value="off">
-                                                <label for="switch" class="switch_btn">
-                                                    <span class="blind" id="switch_blind">on</span>
-                                                </label>
+                                                <div class="form-check form-switch form-check-reverse keep_check mt-2">
+													<input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse">
+												  	<label class="form-check-label keep_text" for="flexSwitchCheckReverse" style="display: inline-block; width: 70px;">IP보안</label>
+												</div>
                                             </span>
                                         </div>
                                     </div>

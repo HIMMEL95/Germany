@@ -24,7 +24,7 @@
                 <a id="user" href="/userLogin">
                     <div class="card">
                         <div class="user_img">
-                            <img class="card_img" src="../../resources/images/seperate/user_back.jpg" alt="user_page">
+                            <img class="card_img" src="/resources/images/seperate/user_back.jpg" alt="user_page">
                         </div>
                         <div class="user_text">
                             User Page
@@ -34,7 +34,7 @@
                 <a id="admin" href="/xdminLogin">
                     <div class="card">
                         <div class="admin_img">
-                            <img class="card_img" src="../../resources/images/seperate/admin_back.jpg" alt="admin_page">
+                            <img class="card_img" src="/resources/images/seperate/admin_back.jpg" alt="admin_page">
                         </div>
                         <div class="admin_text">
                             admin Page

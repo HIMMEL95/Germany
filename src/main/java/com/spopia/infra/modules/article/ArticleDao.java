@@ -44,4 +44,9 @@ public class ArticleDao {
 	public int selectOneCoutn(ArticleVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
+	
+	/* mainList */
+	public List<Article> mainList() {
+		return sqlSession.selectList(namespace + ".mainList", "");
+	}
 }

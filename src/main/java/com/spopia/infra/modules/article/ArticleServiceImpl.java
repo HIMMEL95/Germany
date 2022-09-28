@@ -45,4 +45,11 @@ public class ArticleServiceImpl  implements ArticleService{
 	public int selectOneCount(ArticleVo vo) throws Exception {
 		return dao.selectOneCoutn(vo);
 	}
+
+	/* mainlist */
+	@Override
+	public List<Article> mainList() throws Exception {
+		return dao.mainList();
+	}
+
 }

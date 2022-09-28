@@ -22,7 +22,7 @@
 				<otherwise></otherwise>
 			</choose>
 			<choose>
-				<when test="shDate == 1">AND createdAt BETWEEN #{startDate} AND #{endDate}</when>
+				<when test="shDate == 1">AND gCreatedAt BETWEEN #{startDate} AND #{endDate}</when>
 				<otherwise></otherwise>
 			</choose>
 	</sql>
@@ -31,9 +31,9 @@
 		<include refid="Base.selectListUpperForMysql" />
 			select 
 				g.seq
-				,g.abroadNy
-			    ,g.event
-			    ,g.league
+				,g.gAbroadNy
+			    ,g.gEvent
+			    ,g.gLeague
 			    ,g.score_home
 			    ,g.score_away
 			    ,g.player_home
@@ -41,8 +41,8 @@
 			    ,g.stadium
 			    ,g.gameDate
 			    ,g.gameDuration
-			    ,g.createdAt
-			    ,g.modifiedAt
+			    ,g.gCreatedAt
+			    ,g.gModifiedAt
 			    ,g.gcDelNy
 			    ,t1.teamName as team_home
 			    ,t2.teamName as team_away
@@ -58,9 +58,9 @@
 		<include refid="Base.selectListUpperForMysql" />
 			select 
 				g.seq
-				,g.abroadNy
-			    ,g.event
-			    ,g.league
+				,g.gAbroadNy
+			    ,g.gEvent
+			    ,g.gLeague
 			    ,g.score_home
 			    ,g.score_away
 			    ,g.player_home
@@ -68,8 +68,8 @@
 			    ,g.stadium
 			    ,g.gameDate
 			    ,g.gameDuration
-			    ,g.createdAt
-			    ,g.modifiedAt
+			    ,g.gCreatedAt
+			    ,g.gModifiedAt
 			    ,g.gcDelNy
 			    ,t1.teamName as team_home
 			    ,t2.teamName as team_away
@@ -88,9 +88,9 @@
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		select
-			g.abroadNy
-		    ,g.event
-		    ,g.league
+			g.gAbroadNy
+		    ,g.gEvent
+		    ,g.gLeague
 		    ,g.score_home
 		    ,g.score_away
 		    ,g.player_home
@@ -98,8 +98,8 @@
 		    ,g.stadium
 		    ,DATE_FORMAT(g.gameDate, '%Y-%m-%d') as gameDate
 		    ,DATE_FORMAT(g.gameDuration, '%H:%i') as gameDuration
-		    ,g.createdAt
-		    ,g.modifiedAt
+		    ,g.gCreatedAt
+		    ,g.gModifiedAt
 		    ,g.gcDelNy
 		    ,t1.teamSeq as team_home
 		    ,t2.teamSeq as team_away
@@ -107,14 +107,14 @@
 			inner join team t1 on t1.teamSeq = g.team_home
 			inner join team t2 on t2.teamSeq = g.team_away
 		where 1=1
-			AND g.seq = #{seq}
+			AND g.gSeq = #{seq}
 	</select>
 	
 	<insert id="insert">
 		INSERT INTO game (
-			abroadNy
-			,event
-			,league
+			gAbroadNy
+			,gEvent
+			,GLeague
 			,team_home
 			,team_away
 			,score_home
@@ -125,8 +125,8 @@
 			,gameDate
 			,gameDuration
 			,gcDelNy
-			,createdAt
-			,modifiedAt
+			,gCreatedAt
+			,gModifiedAt
 		) 
 		VALUES (
 			#{abroadNy}
@@ -153,9 +153,9 @@
 	<update id="update">
 		UPDATE game 
 		SET
-			abroadNy = #{abroadNy}
-			,event = #{event}
-			,league = #{league}
+			gAbroadNy = #{abroadNy}
+			,gEvent = #{event}
+			,gLeague = #{league}
 			,score_home = #{score_home}
 			,score_away = #{score_away}
 			,player_home = #{player_home}
@@ -165,9 +165,9 @@
 			,gameDuration = #{gameDuration}
 			,team_home = #{team_home}
 			,team_away = #{team_away}
-			,modifiedAt = now()
+			,gModifiedAt = now()
 		WHERE 1=1
-			and seq = #{seq}
+			and gSeq = #{seq}
 	</update>
 	
 	<update id="uelete">
@@ -176,11 +176,12 @@
 			gcDelNy = 1
 			,modifiedAt = now()
 		where 1=1
-			and seq = #{seq}
+			and gSeq = #{seq}
 	</update>
 
 	<delete id="delete">
 		DELETE
-		FROM game where seq = #{seq}
+		FROM game where gSeq = #{seq}
 	</delete>
+	
 </mapper>

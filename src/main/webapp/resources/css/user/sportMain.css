@@ -1,3 +1,4 @@
+
 /* :root {
   --main-radius: 5px;
   --main-padding: 5px;
@@ -327,7 +328,15 @@ main {
 }
 
 .game_content .info {
-  font-size: 16px;
+  font-size: 14px;
+}
+
+.game_content .away {
+	font-size: 14px;
+}
+
+.game_content .home {
+	font-size: 14px;
 }
 
 .game_live {

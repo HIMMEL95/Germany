@@ -12,7 +12,7 @@
     <select id="articleList" resultMap="resultMapObj">
     	<include refid="Base.selectListUpperForMysql" />
 	    	SELECT
-	    		a.seq
+	    		a.aSeq
 	    		,a.title
 	    		,a.content
 	    		,a.newspaper
@@ -26,7 +26,7 @@
 	   		FROM article a
 				inner join user u on u.seq = a.createdBy
 			WHERE 1=1
-   			ORDER BY a.seq DESC
+   			ORDER BY a.aSeq DESC
 			limit 99999999999
 		)aa
 		limit 6
@@ -36,7 +36,7 @@
 	<select id="gameList" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />
 			select 
-				g.seq
+				g.gSeq
 				,g.gAbroadNy
 			    ,g.gEvent
 			    ,g.gLeague

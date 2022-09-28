@@ -5,6 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<jsp:useBean id="CodeServiceImpl" class="com.spopia.infra.modules.code.CodeServiceImpl"/>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -176,273 +178,100 @@
 	                        </div>
 	                    </div>
 	                </a>
+	                <c:set var="listCodeEvent" value="${CodeServiceImpl.selectListCachedCode('5') }" />
+	                <c:set var="listCodeLeague" value="${CodeServiceImpl.selectListCachedCode('6') }" />
+	                <c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
 	                <c:choose>
-                  		<c:when test="${fn:length(list) eq 0}">
+                  		<c:when test="${fn:length(gList) eq 0}">
                   			<tr>
                   				<td class="text-center" colspan="11">There is no data!</td>
                   			</tr>
                   		</c:when>
                    		<c:otherwise>
-                       		<c:forEach items="${list}" var="list" varStatus="status">
-								<tr onclick="goForm(<c:out value="${list.seq }"/>)" style="cursor: pointer;">
-									<td onclick="event.cancelBubble=true">
-									<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-									</td>
-									<td><c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/></td>
-									<td>${list.user_div }</td>
-									<td>${list.name }</td>
-									<td></td>
-									<td>${list.id }</td>
-									<td>${list.email }</td>
-									<td>${list.dob }</td>
-									<td>
-										<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
-											<c:if test="${list.team eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
-										</c:forEach>
-									</td>
-									<td>${list.createdAt }</td>
-									<td>${list.modifiedAt }</td>
-								</tr>		
+                       		<c:forEach items="${gList}" var="gList" varStatus="status">
+								<a class="game_card" onclick="goForm(<c:out value="${list.seq }"/>)" style="cursor: pointer;">
+				                    <div class="head">
+				                        <span class="event">
+				                        	<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
+												<c:if test="${gList.gEvent eq listEvent.ccSeq}"><c:out value="${listEvent.ifccName }"/></c:if>
+											</c:forEach>
+				                        </span>
+				                        <span class="league">
+				                        	<c:forEach items="${listCodeLeague}" var="listLeague" varStatus="statusLeague">
+												<c:if test="${gList.gLeague eq listLeague.ccSeq}"><c:out value="${listLeague.ifccName }"/></c:if>
+											</c:forEach>
+				                        </span>
+				                    </div>
+				                    <div class="game_content">
+				                        <div class="away game">
+				                            <img class="away_img" src="https://sports-phinf.pstatic.net/team/kbo/default/OB.png"
+				                                width="30" height="30">
+				                            <br>
+				                            <span>
+				                            	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+													<c:if test="${gList.team_home eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+												</c:forEach>
+				                            </span>
+				                        </div>
+				                        <div class="info game">
+				                            <span>VS</span>
+				                            <br>
+				                            <span>${gList.gameDuration} 예정</span>
+				                        </div>
+				                        <div class="home game">
+				                            <img class="home_img" src="https://sports-phinf.pstatic.net/team/kbo/default/HT.png"
+				                                width="30" height="30">
+				                            <br>
+				                            <span>
+				                            	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+													<c:if test="${gList.team_away eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+												</c:forEach>
+				                            </span>
+				                        </div>
+				                    </div>
+				                </a>
 							</c:forEach>
                    		</c:otherwise>
                    	</c:choose>
-	                <a class="game_card" onclick="goForm(<c:out value="${list.seq }"/>)" style="cursor: pointer;">
-	                    <div class="head">
-	                        <span class="event">${gList.event}</span>
-	                        <span class="league">${gList.league}</span>
-	                    </div>
-	                    <div class="game_content">
-	                        <div class="away game">
-	                            <img class="away_img" src="https://sports-phinf.pstatic.net/team/kbo/default/OB.png"
-	                                width="30" height="30">
-	                            <br>
-	                            <span>${gList.team_home}</span>
-	                        </div>
-	                        <div class="info game">
-	                            <span>VS</span>
-	                            <br>
-	                            <span>${gList.gameDate} 예정</span>
-	                        </div>
-	                        <div class="home game">
-	                            <img class="home_img" src="https://sports-phinf.pstatic.net/team/kbo/default/HT.png"
-	                                width="30" height="30">
-	                            <br>
-	                            <span>${gList.team_away}</span>
-	                        </div>
-	                    </div>
-	                </a>
-	                <a class="game_card" href="#">
-	                    <div class="head">
-	                        <span class="event">야구</span>
-	                        <span class="league">KBO</span>
-	                    </div>
-	                    <div class="game_content">
-	                        <div class="away game">
-	                            <img class="away_img" src="https://sports-phinf.pstatic.net/team/kbo/default/SS.png"
-	                                width="30" height="30">
-	                            <br>
-	                            <span>삼성</span>
-	                        </div>
-	                        <div class="info game">
-	                            <span>VS</span>
-	                            <br>
-	                            <span>18:00 예정</span>
-	                        </div>
-	                        <div class="home game">
-	                            <img class="home_img" src="https://sports-phinf.pstatic.net/team/kbo/default/SK.png"
-	                                width="30" height="30">
-	                            <br>
-	                            <span>SSG</span>
-	                        </div>
-	                    </div>
-	                </a>
-	                <a class="game_card" href="#">
-	                    <div class="head">
-	                        <span class="event">축구</span>
-	                        <span class="league">K리그 1</span>
-	                    </div>
-	                    <div class="game_content">
-	                        <div class="away game">
-	                            <img class="away_img" src="https://sports-phinf.pstatic.net/team/kleague/default/17.png"
-	                                width="30" height="30">
-	                            <br>
-	                            <span>대구</span>
-	                        </div>
-	                        <div class="info game">
-	                            <span>VS</span>
-	                            <br>
-	                            <span>19:30 예정</span>
-	                        </div>
-	                        <div class="home game">
-	                            <img class="home_img" src="https://sports-phinf.pstatic.net/team/kleague/default/29.png"
-	                                width="30" height="30">
-	                            <br>
-	                            <span>수원FC</span>
-	                        </div>
-	                    </div>
-	                </a>
-	                <a class="game_card" href="#">
-	                    <div class="head">
-	                        <span class="event">축구</span>
-	                        <span class="league">K리그 1</span>
-	                    </div>
-	                    <div class="game_content">
-	                        <div class="away game">
-	                            <img class="away_img"
-	                                src="https://sports-phinf.pstatic.net/team/kleague/default/01.png?type=f108_108"
-	                                width="30" height="30">
-	                            <br>
-	                            <span>울산</span>
-	                        </div>
-	                        <div class="info game">
-	                            <span>VS</span>
-	                            <br>
-	                            <span>19:30 예정</span>
-	                        </div>
-	                        <div class="home game">
-	                            <img class="home_img" src="https://sports-phinf.pstatic.net/team/kleague/default/05.png"
-	                                width="30" height="30">
-	                            <br>
-	                            <span>전북</span>
-	                        </div>
-	                    </div>
-	                </a>
 	                <div class="game_pagination">
 	                    <a href="#"><i class="fa-solid fa-circle-chevron-right"></i></a>
 	                </div>
 	            </div>
 	            <!-- article 영역 -->
 	            <div id="article">
+	            	<c:set var="listCodeLeague" value="${CodeServiceImpl.selectListCachedCode('6') }" />
 	            	<c:choose>
-                  		<c:when test="${fn:length(list) eq 0}">
+                  		<c:when test="${fn:length(aList) eq 0}">
                   			<tr>
                   				<td class="text-center" colspan="11">There is no data!</td>
                   			</tr>
                   		</c:when>
                    		<c:otherwise>
-                       		<c:forEach items="${list}" var="list" varStatus="status">
-								<a class="article_card" href="article/articleView?seq=${list.seq }">
+                       		<c:forEach items="${aList}" var="aList" varStatus="status">
+								<a class="article_card" href="article/articleView?seq=${aList.aSeq }">
 				                    <div class="article_img">
 				                        <img class="article_img" src="/resources/images/user/baseball.jpg">
 				                    </div>
 				                    <div class="article_content">
 				                        <div class="article_title">
-				                            ${list.title }
+				                            ${aList.title }
 				                        </div>
 				                        <div class="article_context">
-				                            ${list.content }
+				                            ${aList.content }
 				                        </div>
 				                        <div class="article_info">
-				                            <span class="newspaper">${list.newspaper }</span>
-				                            <span class="league">${list.league }</span>
+				                            <span class="newspaper">${aList.newspaper }</span>
+				                            <span class="league">
+				                            	<c:forEach items="${listCodeLeague}" var="listLeague" varStatus="statusLeague">
+													<c:if test="${aList.aLeague eq listLeague.ccSeq}"><c:out value="${listLeague.ifccName }"/></c:if>
+												</c:forEach>
+				                            </span>
 				                        </div>
 				                    </div>
 				                </a>		
 							</c:forEach>
                    		</c:otherwise>
                    	</c:choose>
-	                <a class="article_card" href="article/articleView?seq=${list.seq }">
-	                    <div class="article_img">
-	                        <img class="article_img" src="/resources/images/user/baseball.jpg">
-	                    </div>
-	                    <div class="article_content">
-	                        <div class="article_title">
-	                            ${list.title }
-	                        </div>
-	                        <div class="article_context">
-	                            ${list.content }
-	                        </div>
-	                        <div class="article_info">
-	                            <span class="newspaper">${list.newspaper }</span>
-	                            <span class="league">${list.league }</span>
-	                        </div>
-	                    </div>
-	                </a>
-	                <a class="article_card">
-	                    <div class="article_img">
-	                        <img class="article_img" src="/resources/images/user/baseball.jpg">
-	                    </div>
-	                    <div class="article_content">
-	                        <div class="article_title">
-	                            '폭우 속 혈투' 수원FC, 강원 3:2로 꺾고 6위 사수
-	                        </div>
-	                        <div class="article_context">
-	                            라스(수원FC). 한국프로축구연맹 제공수원FC가 수중전으로 치러진 강원FC 원정 경기에서 승리를 따냈다.15일 강원도 춘천에 위치한 춘천송암스포츠타운에서 하..."
-	                        </div>
-	                        <div class="article_info">
-	                            <span class="newspaper">풋볼리스트</span>
-	                            <span class="league">K리그</span>
-	                        </div>
-	                    </div>
-	                </a>
-	                <a class="article_card">
-	                    <div class="article_img">
-	                        <img class="article_img" src="/resources/images/user/baseball.jpg">
-	                    </div>
-	                    <div class="article_content">
-	                        <div class="article_title">
-	                            '폭우 속 혈투' 수원FC, 강원 3:2로 꺾고 6위 사수
-	                        </div>
-	                        <div class="article_context">
-	                            라스(수원FC). 한국프로축구연맹 제공수원FC가 수중전으로 치러진 강원FC 원정 경기에서 승리를 따냈다.15일 강원도 춘천에 위치한 춘천송암스포츠타운에서 하..."
-	                        </div>
-	                        <div class="article_info">
-	                            <span class="newspaper">풋볼리스트</span>
-	                            <span class="league">K리그</span>
-	                        </div>
-	                    </div>
-	                </a>
-	                <a class="article_card">
-	                    <div class="article_img">
-	                        <img class="article_img" src="/resources/images/user/baseball.jpg">
-	                    </div>
-	                    <div class="article_content">
-	                        <div class="article_title">
-	                            '폭우 속 혈투' 수원FC, 강원 3:2로 꺾고 6위 사수
-	                        </div>
-	                        <div class="article_context">
-	                            라스(수원FC). 한국프로축구연맹 제공수원FC가 수중전으로 치러진 강원FC 원정 경기에서 승리를 따냈다.15일 강원도 춘천에 위치한 춘천송암스포츠타운에서 하..."
-	                        </div>
-	                        <div class="article_info">
-	                            <span class="newspaper">풋볼리스트</span>
-	                            <span class="league">K리그</span>
-	                        </div>
-	                    </div>
-	                </a>
-	                <a class="article_card">
-	                    <div class="article_img">
-	                        <img class="article_img" src="/resources/images/user/baseball.jpg">
-	                    </div>
-	                    <div class="article_content">
-	                        <div class="article_title">
-	                            '폭우 속 혈투' 수원FC, 강원 3:2로 꺾고 6위 사수
-	                        </div>
-	                        <div class="article_context">
-	                            라스(수원FC). 한국프로축구연맹 제공수원FC가 수중전으로 치러진 강원FC 원정 경기에서 승리를 따냈다.15일 강원도 춘천에 위치한 춘천송암스포츠타운에서 하..."
-	                        </div>
-	                        <div class="article_info">
-	                            <span class="newspaper">풋볼리스트</span>
-	                            <span class="league">K리그</span>
-	                        </div>
-	                    </div>
-	                </a>
-	                <a class="article_card">
-	                    <div class="article_img">
-	                        <img class="article_img" src="/resources/images/user/baseball.jpg">
-	                    </div>
-	                    <div class="article_content">
-	                        <div class="article_title">
-	                            '폭우 속 혈투' 수원FC, 강원 3:2로 꺾고 6위 사수
-	                        </div>
-	                        <div class="article_context">
-	                            라스(수원FC). 한국프로축구연맹 제공수원FC가 수중전으로 치러진 강원FC 원정 경기에서 승리를 따냈다.15일 강원도 춘천에 위치한 춘천송암스포츠타운에서 하..."
-	                        </div>
-	                        <div class="article_info">
-	                            <span class="newspaper">풋볼리스트</span>
-	                            <span class="league">K리그</span>
-	                        </div>
-	                    </div>
-	                </a>
 	            </div>
 	            <div id="content">
 	                <div class="content_header">

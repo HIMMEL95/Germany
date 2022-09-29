@@ -34,7 +34,8 @@
 			<exclude-mapping path="/signUpInst" />
 			<exclude-mapping path="/sportMain" />
 			<exclude-mapping path="/idCheck" />
-			<exclude-mapping path="/article/aritcleView" />
+			<exclude-mapping path="/articleView" />
+			<exclude-mapping path="/gameView" />
 			<exclude-mapping path="/" />
 			<exclude-mapping path="/signUp" />
 			<exclude-mapping path="/findId" />

@@ -159,7 +159,7 @@
 	            <div id="game">
 	            	 <div class="swiper game_list swiper-container-initialized swiper-container-horizontal" id="game_list" style="display: block;">
                         <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-                        	<div class="swiper-slide">
+                        	<!-- <div class="swiper-slide"> -->
                         		<c:set var="listCodeEvent" value="${CodeServiceImpl.selectListCachedCode('5') }" />
 				                <c:set var="listCodeLeague" value="${CodeServiceImpl.selectListCachedCode('6') }" />
 				                <c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
@@ -169,9 +169,10 @@
 			                  		</c:when>
 			                   		<c:otherwise>
 			                       		<c:forEach items="${gList}" var="gList" varStatus="status">
-											<a class="game_card" href="/member/memberUView?seq=${gList.gSeq }" style="cursor: pointer;">
+											<a class="game_card" href="/gameView?seq=${gList.gSeq }" style="cursor: pointer;">
 							                    <div class="head">
 							                        <span class="event">
+							                        	${gList.gSeq }
 							                        	<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
 															<c:if test="${gList.gEvent eq listEvent.ccSeq}"><c:out value="${listEvent.ifccName }"/></c:if>
 														</c:forEach>
@@ -213,7 +214,7 @@
 										</c:forEach>
 			                   		</c:otherwise>
 			                   	</c:choose>
-                        	</div>
+                        	<!-- </div> -->
                         </div>
                         <div class="swiper-button-next" tabindex="0" role="button" aria-label="다음 슬라이드" aria-disabled="true" id="right-btn"></div>
                         <div class="swiper-button-prev" tabindex="0" role="button" aria-label="이전 슬라이드" aria-disabled="false" id="left-btn"></div>
@@ -229,7 +230,7 @@
                   		</c:when>
                    		<c:otherwise>
                        		<c:forEach items="${aList}" var="aList" varStatus="status">
-								<a class="article_card" href="/article/articleView?seq=${aList.aSeq }">
+								<a class="article_card" href="/articleView?seq=${aList.aSeq }">
 				                    <div class="article_img">
 				                        <img class="article_img" src="/resources/images/user/baseball.jpg">
 				                    </div>

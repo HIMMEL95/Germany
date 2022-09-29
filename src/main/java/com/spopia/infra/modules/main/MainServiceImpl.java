@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 @Service
-public class MainServiceImpl {
+public class MainServiceImpl implements MainService{
 	
 	@Autowired
 	MainDao dao;
@@ -19,4 +19,25 @@ public class MainServiceImpl {
 		List<Main> gList = dao.gameList(vo);
 		model.addAttribute("gList", gList);
 	}
+
+	@Override
+	public List<Main> articleList(MainVo vo) throws Exception {
+		return dao.articleList(vo);
+	}
+
+	@Override
+	public List<Main> gamList(MainVo vo) throws Exception {
+		return dao.gameList(vo);
+	}
+
+	@Override
+	public Main articleSelectOne(MainVo vo) throws Exception {
+		return dao.articleSelectOne(vo);
+	}
+
+	@Override
+	public Main gameSelectOne(MainVo vo) throws Exception {
+		return dao.gameSelectOne(vo);
+	}
+	
 }

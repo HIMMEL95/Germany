@@ -77,11 +77,4 @@ public class ArticleController {
 		return "redirect:/article/articleList";
 	}
 	
-	@RequestMapping(value = "/articleView")
-	public String articleView(ArticleVo vo, Model model, MainVo mVo) throws Exception {
-		
-		Article item = service.selectOne(vo);
-		model.addAttribute("item", item);
-		return "infra/article/user/articleView";
-	}
 }

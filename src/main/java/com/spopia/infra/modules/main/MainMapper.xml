@@ -65,5 +65,48 @@
 	   	)aa
 	</select>
     
+    <select id="articleSelectOne" resultMap="resultMapObj">
+		select
+			a.aSeq
+			,a.title
+			,a.content
+			,a.newspaper
+			,a.aAbroadNy
+			,a.aEvent
+			,a.aLeague
+			,a.reporter
+			,a.aDelNy
+			,a.aCreatedAt
+			,a.aModifiedAt
+			,u.email as email
+		from article a
+			inner join user u on u.seq = a.createdBy
+		where 1=1
+			and a.aSeq = #{aSeq}
+	</select>
+	
+	<select id="gameSelectOne" resultMap="resultMapObj">
+		select
+			g.gAbroadNy
+		    ,g.gEvent
+		    ,g.gLeague
+		    ,g.score_home
+		    ,g.score_away
+		    ,g.player_home
+		    ,g.player_away
+		    ,g.stadium
+		    ,DATE_FORMAT(g.gameDate, '%Y-%m-%d') as gameDate
+		    ,DATE_FORMAT(g.gameDuration, '%H:%i') as gameDuration
+		    ,g.gCreatedAt
+		    ,g.gModifiedAt
+		    ,g.gcDelNy
+		    ,t1.teamSeq as team_home
+		    ,t2.teamSeq as team_away
+		from game g
+			inner join team t1 on t1.teamSeq = g.team_home
+			inner join team t2 on t2.teamSeq = g.team_away
+		where 1=1
+			AND g.gSeq = #{gSeq}
+	</select>
 
 </mapper>

@@ -30,7 +30,7 @@
 	<select id="selectList" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />
 			select 
-				g.seq
+				g.gSeq
 				,g.gAbroadNy
 			    ,g.gEvent
 			    ,g.gLeague
@@ -57,7 +57,7 @@
 	<select id="selectList1" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />
 			select 
-				g.seq
+				g.gSeq
 				,g.gAbroadNy
 			    ,g.gEvent
 			    ,g.gLeague
@@ -107,14 +107,14 @@
 			inner join team t1 on t1.teamSeq = g.team_home
 			inner join team t2 on t2.teamSeq = g.team_away
 		where 1=1
-			AND g.gSeq = #{seq}
+			AND g.gSeq = #{gSeq}
 	</select>
 	
 	<insert id="insert">
 		INSERT INTO game (
 			gAbroadNy
 			,gEvent
-			,GLeague
+			,gLeague
 			,team_home
 			,team_away
 			,score_home
@@ -129,9 +129,9 @@
 			,gModifiedAt
 		) 
 		VALUES (
-			#{abroadNy}
-			,#{event}
-			,#{league}
+			#{gAbroadNy}
+			,#{gEvent}
+			,#{gLeague}
 			,#{team_home}
 			,#{team_away}
 			,#{score_home}
@@ -145,7 +145,7 @@
 			,now()
 			,now()
 		)
-		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+		<selectKey resultType="String" keyProperty="gSeq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
@@ -153,9 +153,9 @@
 	<update id="update">
 		UPDATE game 
 		SET
-			gAbroadNy = #{abroadNy}
-			,gEvent = #{event}
-			,gLeague = #{league}
+			gAbroadNy = #{gAbroadNy}
+			,gEvent = #{gEvent}
+			,gLeague = #{gLeague}
 			,score_home = #{score_home}
 			,score_away = #{score_away}
 			,player_home = #{player_home}
@@ -167,7 +167,7 @@
 			,team_away = #{team_away}
 			,gModifiedAt = now()
 		WHERE 1=1
-			and gSeq = #{seq}
+			and gSeq = #{gSeq}
 	</update>
 	
 	<update id="uelete">
@@ -176,12 +176,12 @@
 			gcDelNy = 1
 			,modifiedAt = now()
 		where 1=1
-			and gSeq = #{seq}
+			and gSeq = #{gSeq}
 	</update>
 
 	<delete id="delete">
 		DELETE
-		FROM game where gSeq = #{seq}
+		FROM game where gSeq = #{gSeq}
 	</delete>
 	
 </mapper>

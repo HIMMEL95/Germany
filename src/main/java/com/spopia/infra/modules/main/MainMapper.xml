@@ -46,7 +46,7 @@
 			    ,g.player_away
 			    ,g.stadium
 			    ,g.gameDate
-			    ,g.gameDuration
+			    ,DATE_FORMAT(g.gameDuration,'%H:%i') as gameDuration
 			    ,g.gCreatedAt
 			    ,g.gModifiedAt
 			    ,g.gcDelNy

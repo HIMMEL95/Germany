@@ -140,15 +140,15 @@ a {
   border-radius: 15px;
   transition: 0.5s;
   visibility: hidden;
-  opacity: 0;
 }
 
 .action .menu.active {
   background: #F6F6F2;
   top: 80px;
   visibility: visible;
-  opacity: 0.5;
+  opacity: 1;
   position: fixed;
+  z-index: 300;
 }
 
 .action .menu::before {

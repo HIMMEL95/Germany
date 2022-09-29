@@ -10,7 +10,7 @@ public class GameVo extends BaseVo{
 	private Integer shDate;
 	private String startDate;
 	private String endDate;	
-	private String seq;
+	private String gSeq;
 	public String getShOption() {
 		return shOption;
 	}
@@ -47,10 +47,11 @@ public class GameVo extends BaseVo{
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
-	public String getSeq() {
-		return seq;
+	public String getgSeq() {
+		return gSeq;
 	}
-	public void setSeq(String seq) {
-		this.seq = seq;
+	public void setgSeq(String gSeq) {
+		this.gSeq = gSeq;
 	}
+	
 }

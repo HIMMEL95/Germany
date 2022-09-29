@@ -16,6 +16,8 @@
     <title>userTest</title>
     <link rel="stylesheet" href="/resources/css/user/sportMain.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script>
         $(document).ready(function () {
             $('#icon').click(function () {
@@ -153,98 +155,75 @@
 	        <main>
 	            <!-- game 영역 -->
 	            <div id="game">
-	                <div class="game_pagination">
-	                    <a href="#"><i class="fa-solid fa-circle-chevron-left"></i></a>
-	                </div>
-	                <a class="game_live" href="../member/gameView.html" hidden>
-	                    <div class="image_area">
-	                        <span class="game_preivew">
-	                            <img src="/resources/images/user/baseball.jpg" alt="game_preview">
-	                        </span>
-	                        <div class="live_info">
-	                            <span class="live_tag">
-	                                <span class="blind">LIVE</span>
-	                            </span>
-	                            <span class="live_viewer">
-	                                <span class="number">1,569</span>
-	                                시청
-	                            </span>
-	                        </div>
-	                    </div>
-	                    <div class="general_info">
-	                        <div class="match_title">2022 프로야구</div>
-	                        <div class="match_press">
-	                            <span class="league">야구</span>
-	                        </div>
-	                    </div>
-	                </a>
-	                <c:set var="listCodeEvent" value="${CodeServiceImpl.selectListCachedCode('5') }" />
-	                <c:set var="listCodeLeague" value="${CodeServiceImpl.selectListCachedCode('6') }" />
-	                <c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
-	                <c:choose>
-                  		<c:when test="${fn:length(gList) eq 0}">
-                  			<tr>
-                  				<td class="text-center" colspan="11">There is no data!</td>
-                  			</tr>
-                  		</c:when>
-                   		<c:otherwise>
-                       		<c:forEach items="${gList}" var="gList" varStatus="status">
-								<a class="game_card" onclick="goForm(<c:out value="${list.seq }"/>)" style="cursor: pointer;">
-				                    <div class="head">
-				                        <span class="event">
-				                        	<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
-												<c:if test="${gList.gEvent eq listEvent.ccSeq}"><c:out value="${listEvent.ifccName }"/></c:if>
-											</c:forEach>
-				                        </span>
-				                        <span class="league">
-				                        	<c:forEach items="${listCodeLeague}" var="listLeague" varStatus="statusLeague">
-												<c:if test="${gList.gLeague eq listLeague.ccSeq}"><c:out value="${listLeague.ifccName }"/></c:if>
-											</c:forEach>
-				                        </span>
-				                    </div>
-				                    <div class="game_content">
-				                        <div class="away game">
-				                            <img class="away_img" src="https://sports-phinf.pstatic.net/team/kbo/default/OB.png"
-				                                width="30" height="30">
-				                            <br>
-				                            <span>
-				                            	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
-													<c:if test="${gList.team_home eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
-												</c:forEach>
-				                            </span>
-				                        </div>
-				                        <div class="info game">
-				                            <span>VS</span>
-				                            <br>
-				                            <span>${gList.gameDuration} 예정</span>
-				                        </div>
-				                        <div class="home game">
-				                            <img class="home_img" src="https://sports-phinf.pstatic.net/team/kbo/default/HT.png"
-				                                width="30" height="30">
-				                            <br>
-				                            <span>
-				                            	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
-													<c:if test="${gList.team_away eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
-												</c:forEach>
-				                            </span>
-				                        </div>
-				                    </div>
-				                </a>
-							</c:forEach>
-                   		</c:otherwise>
-                   	</c:choose>
-	                <div class="game_pagination">
-	                    <a href="#"><i class="fa-solid fa-circle-chevron-right"></i></a>
-	                </div>
+	            	 <div class="swiper game_list swiper-container-initialized swiper-container-horizontal" id="game_list" style="display: block;">
+                        <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+                        	<div class="swiper-slide">
+                        		<c:set var="listCodeEvent" value="${CodeServiceImpl.selectListCachedCode('5') }" />
+				                <c:set var="listCodeLeague" value="${CodeServiceImpl.selectListCachedCode('6') }" />
+				                <c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
+				                <c:choose>
+			                  		<c:when test="${fn:length(gList) eq 0}">
+		                  				<div class="text-center">There is no data!</div>
+			                  		</c:when>
+			                   		<c:otherwise>
+			                       		<c:forEach items="${gList}" var="gList" varStatus="status">
+											<a class="game_card" onclick="goForm(<c:out value="${list.seq }"/>)" style="cursor: pointer;">
+							                    <div class="head">
+							                        <span class="event">
+							                        	<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
+															<c:if test="${gList.gEvent eq listEvent.ccSeq}"><c:out value="${listEvent.ifccName }"/></c:if>
+														</c:forEach>
+							                        </span>
+							                        <span class="league">
+							                        	<c:forEach items="${listCodeLeague}" var="listLeague" varStatus="statusLeague">
+															<c:if test="${gList.gLeague eq listLeague.ccSeq}"><c:out value="${listLeague.ifccName }"/></c:if>
+														</c:forEach>
+							                        </span>
+							                    </div>
+							                    <div class="game_content">
+							                        <div class="away game">
+							                            <img class="away_img" src="https://sports-phinf.pstatic.net/team/kbo/default/OB.png"
+							                                width="30" height="30">
+							                            <br>
+							                            <span>
+							                            	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+																<c:if test="${gList.team_home eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+															</c:forEach>
+							                            </span>
+							                        </div>
+							                        <div class="info game">
+							                            <span>VS</span>
+							                            <br>
+							                            <span>${gList.gameDuration} 예정</span>
+							                        </div>
+							                        <div class="home game">
+							                            <img class="home_img" src="https://sports-phinf.pstatic.net/team/kbo/default/HT.png"
+							                                width="30" height="30">
+							                            <br>
+							                            <span>
+							                            	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+																<c:if test="${gList.team_away eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+															</c:forEach>
+							                            </span>
+							                        </div>
+							                    </div>
+							                </a>
+										</c:forEach>
+			                   		</c:otherwise>
+			                   	</c:choose>
+                        	</div>
+                        </div>
+                        <div class="swiper-button-next" tabindex="0" role="button" aria-label="다음 슬라이드" aria-disabled="true" id="right-btn"></div>
+                        <div class="swiper-button-prev" tabindex="0" role="button" aria-label="이전 슬라이드" aria-disabled="false" id="left-btn"></div>
+                    	<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                   	</div>
 	            </div>
 	            <!-- article 영역 -->
 	            <div id="article">
 	            	<c:set var="listCodeLeague" value="${CodeServiceImpl.selectListCachedCode('6') }" />
 	            	<c:choose>
                   		<c:when test="${fn:length(aList) eq 0}">
-                  			<tr>
-                  				<td class="text-center" colspan="11">There is no data!</td>
-                  			</tr>
+              				<div class="text-center">There is no data!</div>
                   		</c:when>
                    		<c:otherwise>
                        		<c:forEach items="${aList}" var="aList" varStatus="status">
@@ -620,6 +599,7 @@
     </div>
 
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
+     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	<script type="text/javascript">
         function menuToggle() {
             const toggleMenu = document.querySelector('.menu');
@@ -643,13 +623,26 @@
         var goUrlView = "/member/memberUView";
         var form = $("#myForm");
       
-       goForm = function(keyValue) {
+       	goForm = function(keyValue) {
 	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
 	    	seq.val(keyValue);
 			form.attr("action", goUrlView).submit();
-		}
-
-	</script>    
+		};
+		
+		var swiper = new Swiper(".game_list", {
+	        spaceBetween: 35,
+	        slidesPerView: 4,
+	        slidesPerGroup : 4,
+	        loopFillGroupWithBlank : true,
+	        direction: 'horizontal',
+	        autoplay:  false,
+	        navigation: {
+	          nextEl: ".swiper-button-next",
+	          prevEl: ".swiper-button-prev",
+	        },
+	      });
+		
+	</script>
 </body>
 
 </html>

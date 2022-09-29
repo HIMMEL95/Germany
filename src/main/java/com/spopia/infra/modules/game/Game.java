@@ -1,11 +1,13 @@
 package com.spopia.infra.modules.game;
 
-public class Game {
+import com.spopia.infra.common.base.BaseVo;
 
-	private String seq;
-	private Integer abroadNy;
-	private Integer event;
-	private String league;
+public class Game extends BaseVo{
+
+	private String gSeq;
+	private Integer gAbroadNy;
+	private Integer gEvent;
+	private String gLeague;
 	private Integer team_home;
 	private Integer team_away;
 	private Integer score_home;
@@ -15,32 +17,33 @@ public class Game {
 	private Integer stadium;
 	private String gameDate;
 	private String gameDuration;
-	private String createdAt;
-	private String modifiedAt;
+	private String gCreatedAt;
+	private String gModifiedAt;
 	private Integer gcDelNy;
-	public String getSeq() {
-		return seq;
+	
+	public String getgSeq() {
+		return gSeq;
 	}
-	public void setSeq(String seq) {
-		this.seq = seq;
+	public void setgSeq(String gSeq) {
+		this.gSeq = gSeq;
 	}
-	public Integer getAbroadNy() {
-		return abroadNy;
+	public Integer getgAbroadNy() {
+		return gAbroadNy;
 	}
-	public void setAbroadNy(Integer abroadNy) {
-		this.abroadNy = abroadNy;
+	public void setgAbroadNy(Integer gAbroadNy) {
+		this.gAbroadNy = gAbroadNy;
 	}
-	public Integer getEvent() {
-		return event;
+	public Integer getgEvent() {
+		return gEvent;
 	}
-	public void setEvent(Integer event) {
-		this.event = event;
+	public void setgEvent(Integer gEvent) {
+		this.gEvent = gEvent;
 	}
-	public String getLeague() {
-		return league;
+	public String getgLeague() {
+		return gLeague;
 	}
-	public void setLeague(String league) {
-		this.league = league;
+	public void setgLeague(String gLeague) {
+		this.gLeague = gLeague;
 	}
 	public Integer getTeam_home() {
 		return team_home;
@@ -96,17 +99,17 @@ public class Game {
 	public void setGameDuration(String gameDuration) {
 		this.gameDuration = gameDuration;
 	}
-	public String getCreatedAt() {
-		return createdAt;
+	public String getgCreatedAt() {
+		return gCreatedAt;
 	}
-	public void setCreatedAt(String createdAt) {
-		this.createdAt = createdAt;
+	public void setgCreatedAt(String gCreatedAt) {
+		this.gCreatedAt = gCreatedAt;
 	}
-	public String getModifiedAt() {
-		return modifiedAt;
+	public String getgModifiedAt() {
+		return gModifiedAt;
 	}
-	public void setModifiedAt(String modifiedAt) {
-		this.modifiedAt = modifiedAt;
+	public void setgModifiedAt(String gModifiedAt) {
+		this.gModifiedAt = gModifiedAt;
 	}
 	public Integer getGcDelNy() {
 		return gcDelNy;

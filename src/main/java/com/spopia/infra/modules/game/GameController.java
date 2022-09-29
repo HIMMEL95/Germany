@@ -44,7 +44,7 @@ public class GameController {
 	public String gameInst(Game dto, GameVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		service.insert(dto);
 
-		vo.setSeq(dto.getSeq());
+		vo.setgSeq(dto.getgSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/game/gameForm";
 	}
@@ -61,7 +61,7 @@ public class GameController {
 	public String gameModForm(Game dto, GameVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		service.update(dto);
 
-		vo.setSeq(dto.getSeq());
+		vo.setgSeq(dto.getgSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/game/gameForm";
 	}

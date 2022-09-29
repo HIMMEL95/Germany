@@ -105,37 +105,37 @@
                 <div class="card ps-5 pe-5 pt-4 pb-4 shadow">
                     <div class="row pt-4">
                         <div class="col mb-4">
-                            <label for="abroadNY" class="form-label fw-bold">해외여부</label>
-                            <select class="form-select" id="abroadNY" name="abroadNy" aria-label=".form-select example">
+                            <label for="gAbroadNy" class="form-label fw-bold">해외여부</label>
+                            <select class="form-select" id="gAbroadNy" name="gAbroadNy" aria-label=".form-select example">
                                 <option value="" >선택</option>
-                                <option value="9" <c:if test="${item.abroadNy eq 9 }">selected</c:if>>국내</option>
-                                <option value="10" <c:if test="${item.abroadNy eq 10 }">selected</c:if>>해외</option>
+                                <option value="9" <c:if test="${item.gAbroadNy eq 9 }">selected</c:if>>국내</option>
+                                <option value="10" <c:if test="${item.gAbroadNy eq 10 }">selected</c:if>>해외</option>
                             </select>
                         </div>
                         <div class="col mb-4">
-                            <label for="event" class="form-label fw-bold">종목</label>
-                            <select class="form-select" id="event" name="event" aria-label=".form-select example">
+                            <label for="gEvent" class="form-label fw-bold">종목</label>
+                            <select class="form-select" id="gEvent" name="gEvent" aria-label=".form-select example">
                                 <option value="" >선택</option>
-                                <option value="11" <c:if test="${item.event eq 11 }">selected</c:if>>야구</option>
-                                <option value="12" <c:if test="${item.event eq 12 }">selected</c:if>>축구</option>
+                                <option value="11" <c:if test="${item.gEvent eq 11 }">selected</c:if>>야구</option>
+                                <option value="12" <c:if test="${item.gEvent eq 12 }">selected</c:if>>축구</option>
                             </select>
                         </div>
                         <div class="col mb-4">
-                            <label for="league" class="form-label fw-bold">리그</label>
-                            <select class="form-select" id="league" name="league" aria-label=".form-select example">
+                            <label for="gLeague" class="form-label fw-bold">리그</label>
+                            <select class="form-select" id="gLeague" name="gLeague" aria-label=".form-select example">
                                 <option value="">선택</option>
-                                <option value="13" <c:if test="${item.league eq 13 }">selected</c:if>>KBO</option>
-                                <option value="14" <c:if test="${item.league eq 14 }">selected</c:if>>내셔널리그</option>
-                                <option value="15" <c:if test="${item.league eq 15 }">selected</c:if>>아메리칸리그</option>
-                                <option value="16" <c:if test="${item.league eq 16 }">selected</c:if>>센트럴리그</option>
-                                <option value="17" <c:if test="${item.league eq 17 }">selected</c:if>>퍼시픽리그</option>
-                                <option value="18" <c:if test="${item.league eq 18 }">selected</c:if>>K리그 1</option>
-                                <option value="19" <c:if test="${item.league eq 19 }">selected</c:if>>K리그 2</option>
-                                <option value="20" <c:if test="${item.league eq 20 }">selected</c:if>>프리미어리그</option>
-                                <option value="21" <c:if test="${item.league eq 21 }">selected</c:if>>라리가</option>
-                                <option value="22" <c:if test="${item.league eq 22 }">selected</c:if>>분데스리가</option>
-                                <option value="23" <c:if test="${item.league eq 23 }">selected</c:if>>세리에 A</option>
-                                <option value="24" <c:if test="${item.league eq 24 }">selected</c:if>>리그 1</option>
+                                <option value="13" <c:if test="${item.gLeague eq 13 }">selected</c:if>>KBO</option>
+                                <option value="14" <c:if test="${item.gLeague eq 14 }">selected</c:if>>내셔널리그</option>
+                                <option value="15" <c:if test="${item.gLeague eq 15 }">selected</c:if>>아메리칸리그</option>
+                                <option value="16" <c:if test="${item.gLeague eq 16 }">selected</c:if>>센트럴리그</option>
+                                <option value="17" <c:if test="${item.gLeague eq 17 }">selected</c:if>>퍼시픽리그</option>
+                                <option value="18" <c:if test="${item.gLeague eq 18 }">selected</c:if>>K리그 1</option>
+                                <option value="19" <c:if test="${item.gLeague eq 19 }">selected</c:if>>K리그 2</option>
+                                <option value="20" <c:if test="${item.gLeague eq 20 }">selected</c:if>>프리미어리그</option>
+                                <option value="21" <c:if test="${item.gLeague eq 21 }">selected</c:if>>라리가</option>
+                                <option value="22" <c:if test="${item.gLeague eq 22 }">selected</c:if>>분데스리가</option>
+                                <option value="23" <c:if test="${item.gLeague eq 23 }">selected</c:if>>세리에 A</option>
+                                <option value="24" <c:if test="${item.gLeague eq 24 }">selected</c:if>>리그 1</option>
                             </select>
                         </div>
                     </div>
@@ -338,7 +338,7 @@
         var goUrlUel = "/game/gameUele";
         var goUrlDel = "/game/gameDele"
         
-        var seq = $("input:hidden[name=seq]");
+        var seq = $("input:hidden[name=gSeq]");
         var form = $("#myForm");
         var formVo = $("form[name=formVo]");
         

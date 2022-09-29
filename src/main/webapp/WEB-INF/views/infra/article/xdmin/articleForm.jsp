@@ -90,7 +90,7 @@
     </header>
 
     <main>
-        <form class="needs-validation" action="/article/articleInst" method="post">
+        <form class="needs-validation" action="/article/articleInst" method="post" name="myForm">
             <div style="height: 80px;"></div>
             <div class="container" style="max-width: 900px;">
                 <div class="text-center pb-3">
@@ -100,57 +100,57 @@
                     <div class="row mb-4">
                         <div class="col-5">
                             <label for="title" class="form-label fw-bold">제목</label>
-                            <input type="text" class="form-control" id="title" name="title" value="">
+                            <input type="text" class="form-control" id="title" name="title" value='<c:out value="${item.title }"/>'>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 mb-4">
                             <label for="content" class="form-label fw-bold">본문</label>
-                            <textarea class="form-control" style="height: 200px;" id="content" name="content" aria-label="content" th:text="${list.title }"></textarea>
+                            <textarea class="form-control" style="height: 200px;" id="content" name="content" aria-label="content" th:text="${item.content }"></textarea>
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col">
                             <label for="newspaper" class="form-label fw-bold">신문사</label>
-                            <input type="text" class="form-control" id="newspaper" name="newspaper" value="">
+                            <input type="text" class="form-control" id="newspaper" name="newspaper" value='<c:out value="${item.newspaper }"/>'>
                         </div>
                         <div class="col">
-                            <label for="abroadNY" class="form-label fw-bold">해외여부</label>
-                            <select id="abroadNY" class="form-select form-select fw-bold" name="abroadNy" aria-label=".form-select example">
-                                <option value="" selected>선택</option>
-                                <option value="1">국내</option>
-                                <option value="2">해외</option>
+                            <label for="aAbroadNy" class="form-label fw-bold">해외여부</label>
+                            <select id="aAbroadNy" class="form-select form-select fw-bold" name="aAbroadNy" aria-label=".form-select example">
+                                <option value="">선택</option>
+                                <option value="9" <c:if test="${item.aAbroadNy eq 9 }">selected</c:if>>국내</option>
+                                <option value="10" <c:if test="${item.aAbroadNy eq 10 }">selected</c:if>>해외</option>
                             </select>
                         </div>
                         <div class="col">
-                            <label for="event" class="form-label fw-bold">종목</label>
-                            <select id="event" class="form-select form-select fw-bold" name="event" aria-label=".form-select example">
-                                <option value="" selected>선택</option>
-                                <option value="1">야구</option>
-                                <option value="2">축구</option>
+                            <label for="aEvent" class="form-label fw-bold">종목</label>
+                            <select id="aEvent" class="form-select form-select fw-bold" name="aEvent" aria-label=".form-select example">
+                                <option value="">선택</option>
+                                <option value="10" <c:if test="${item.aEvent eq 10 }">selected</c:if>>야구</option>
+                                <option value="11" <c:if test="${item.aEvent eq 11 }">selected</c:if>>축구</option>
                             </select>
                         </div>
                         <div class="col">
-                            <label for="league" class="form-label fw-bold">리그</label>
-                            <select id="league" class="form-select form-select fw-bold" name="league" aria-label=".form-select example">
+                            <label for="aLeague" class="form-label fw-bold">리그</label>
+                            <select id="aLeague" class="form-select form-select fw-bold" name="aLeague" aria-label=".form-select example">
                                 <option value="" selected>선택</option>
-                                <option value="1">KBO</option>
-                                <option value="2">메이저리그</option>
-                                <option value="3">아메리칸리그</option>
-                                <option value="4">센트럴리그</option>
-                                <option value="5">퍼시픽리그</option>
-                                <option value="6">K리그 1</option>
-                                <option value="7">K리그 2</option>
-                                <option value="8">프리미어리그</option>
-                                <option value="9">라리가</option>
-                                <option value="10">분데스리가</option>
-                                <option value="11">세리에 A</option>
-                                <option value="12">리그 1</option>
+                                <option value="13" <c:if test="${item.aLeague eq 13 }">selected</c:if>>KBO</option>
+                                <option value="14" <c:if test="${item.aLeague eq 14 }">selected</c:if>>메이저리그</option>
+                                <option value="15" <c:if test="${item.aLeague eq 15 }">selected</c:if>>아메리칸리그</option>
+                                <option value="16" <c:if test="${item.aLeague eq 16 }">selected</c:if>>센트럴리그</option>
+                                <option value="17" <c:if test="${item.aLeague eq 17 }">selected</c:if>>퍼시픽리그</option>
+                                <option value="18" <c:if test="${item.aLeague eq 18 }">selected</c:if>>K리그 1</option>
+                                <option value="19" <c:if test="${item.aLeague eq 19 }">selected</c:if>>K리그 2</option>
+                                <option value="20" <c:if test="${item.aLeague eq 20 }">selected</c:if>>프리미어리그</option>
+                                <option value="21" <c:if test="${item.aLeague eq 21 }">selected</c:if>>라리가</option>
+                                <option value="22" <c:if test="${item.aLeague eq 22 }">selected</c:if>>분데스리가</option>
+                                <option value="23" <c:if test="${item.aLeague eq 23 }">selected</c:if>>세리에 A</option>
+                                <option value="24" <c:if test="${item.aLeague eq 24 }">selected</c:if>>리그 1</option>
                             </select>
                         </div>
                         <div class="col">
                             <label for="reporter" class="form-label fw-bold">기자</label>
-                            <input type="text" class="form-control" id="reporter" name="reporter" value="">
+                            <input type="text" class="form-control" id="reporter" name="reporter" value='<c:out value="${item.reporter }"/>'>
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -166,7 +166,7 @@
                                 role="button">취소</a>
                         </div>
                         <div class="col-2 offset-8" align="right">
-                            <button class="btn btn-primary btn-sm text-white fw-bold shadow" type="submit">등록</button>
+                            <button class="btn btn-primary btn-sm text-white fw-bold shadow" type="submit" id="btnSave" >등록</button>
                         </div>
                     </div>
                 </div>
@@ -192,7 +192,7 @@
                 </ul>
                 <div class="footer_copy">
                     <a id="fot.naver" target="_blank" href="https://www.navercorp.com">
-                        <img src="../../image/SPOPIA1.png" alt="logo" style="width: 45px;">
+                        <img src="/resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
                     </a>
                     <span class="text">Copyright</span>
                     <span class="corp">© SPOPIA Corp.</span>
@@ -241,6 +241,13 @@
             reader.readAsDataURL(imgFile);
             document.getElementById("text").innerHTML = " ";
         })
+        
+        var goUrlInst = "/article/articleInst";
+        var form = "$(form[name=myForm])"
+        
+        $("#btnSave").on("click", function() {
+			form.attr("action", goUrlInst).submit();
+		})
     </script>
 </body>
 

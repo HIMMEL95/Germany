@@ -43,7 +43,7 @@ public class ArticleController {
 	public String articleInst(Article dto, ArticleVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		service.insert(dto);
 		
-		vo.setSeq(dto.getSeq());
+		vo.setaSeq(dto.getaSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/article/articleForm";
 	}
@@ -67,10 +67,11 @@ public class ArticleController {
 	}
 	
 	@RequestMapping(value = "articleUpdt")
-	public String articleUpdt(Article dto) throws Exception {
-		int result = service.update(dto);
-		System.out.println("Controller Result : " + result);
+	public String articleUpdt(Article dto, ArticleVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		service.update(dto);
 		
+		vo.setaSeq(dto.getaSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/article/articleList";
 	}
 }

@@ -41,7 +41,7 @@
 			    ,a.aModifiedAt
 			    ,u.email as email
 			<include refid="selectCommon"></include>
-			ORDER BY a.seq DESC
+			ORDER BY a.aSeq DESC
 			<include refid="Base.orderByLimitForMysql" />
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
@@ -49,7 +49,7 @@
 	<select id="selectList1" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />
 			select
-				a.seq
+				a.aSeq
 				,a.title
 			    ,a.content
 			    ,a.newspaper
@@ -62,7 +62,7 @@
 			    ,a.aModifiedAt
 			    ,u.email as email
 			<include refid="selectCommon"></include>
-			ORDER BY a.seq DESC
+			ORDER BY a.aSeq DESC
 			<include refid="Base.orderByLimitForMysql" />
 			)aa
 	</select>
@@ -74,7 +74,7 @@
 	
 	<select id="selectOne" resultMap="resultMapObj">
 		select
-			a.seq
+			a.aSeq
 			,a.title
 			,a.content
 			,a.newspaper
@@ -89,7 +89,7 @@
 		from article a
 			inner join user u on u.seq = a.createdBy
 		where 1=1
-			and a.aSeq = #{seq}
+			and a.aSeq = #{aSeq}
 	</select>
 	
 	<insert id="insert">
@@ -109,15 +109,15 @@
 			#{title}
 			,#{content}
 			,#{newspaper}
-			,#{abroadNy}
-			,#{event}
-			,#{league}
+			,#{aAbroadNy}
+			,#{aEvent}
+			,#{aLeague}
 			,#{reporter}
 			,0
 			,now()
 			,now()
 		)
-		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+		<selectKey resultType="String" keyProperty="aSeq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
@@ -128,13 +128,13 @@
 			title = #{title}
 			,content = #{content}
 			,newspaper = #{newspaper}
-			,aAbroadNy = #{abroadNy}
-			,aEvent = #{event}
-			,aLeague = #{league}
+			,aAbroadNy = #{aAbroadNy}
+			,aEvent = #{aEvent}
+			,aLeague = #{aLeague}
 			,reporter = #{reporter}
 			,aModifiedAt = now()
 		where 1=1
-			and aSeq = #{seq}
+			and aSeq = #{aSeq}
 	</update>
 
 	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">

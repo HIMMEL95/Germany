@@ -117,7 +117,7 @@
                         <hr>
                     </div>
                     <div class="col-12 mb-3">
-                        <img class="pb-2" src="../../resources/images/user/baseball.jpg" alt="야구"
+                        <img class="pb-2" src="/resources/images/user/baseball.jpg" alt="야구"
                             style="width: 100%; height: 300px; float: left;">
                     </div>
                     <div class="col-12">

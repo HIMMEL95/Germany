@@ -10,7 +10,7 @@ public class ArticleVo extends BaseVo{
 	private Integer shDate;
 	private String startDate;
 	private String endDate;	
-	private String seq;
+	private String aSeq;
 	public String getShOption() {
 		return shOption;
 	}
@@ -47,10 +47,11 @@ public class ArticleVo extends BaseVo{
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
-	public String getSeq() {
-		return seq;
+	public String getaSeq() {
+		return aSeq;
 	}
-	public void setSeq(String seq) {
-		this.seq = seq;
+	public void setaSeq(String aSeq) {
+		this.aSeq = aSeq;
 	}
+	
 }

@@ -2,37 +2,25 @@ package com.spopia.infra.modules.article;
 
 public class Article {
 
-	private String seq;
+	private String aSeq;
 	private String title;
 	private String content;
 	private String newspaper;
-	private Integer abroadNy;
-	private Integer event;
-	private Integer league;
+	private Integer aAbroadNy;
+	private Integer aEvent;
+	private Integer aLeague;
 	private String reporter;
-	private String createdAt;
+	private String aCreatedAt;
 	private Integer createdBy;
-	private String modifiedAt;
+	private String aModifiedAt;
 	private Integer modifiedBy;
 	private Integer aDelNy;
 	private String email;
-	public String getEmail() {
-		return email;
+	public String getaSeq() {
+		return aSeq;
 	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public Integer getaDelNy() {
-		return aDelNy;
-	}
-	public void setaDelNy(Integer aDelNy) {
-		this.aDelNy = aDelNy;
-	}
-	public String getSeq() {
-		return seq;
-	}
-	public void setSeq(String seq) {
-		this.seq = seq;
+	public void setaSeq(String aSeq) {
+		this.aSeq = aSeq;
 	}
 	public String getTitle() {
 		return title;
@@ -52,23 +40,23 @@ public class Article {
 	public void setNewspaper(String newspaper) {
 		this.newspaper = newspaper;
 	}
-	public Integer getAbroadNy() {
-		return abroadNy;
+	public Integer getaAbroadNy() {
+		return aAbroadNy;
 	}
-	public void setAbroadNy(Integer abroadNy) {
-		this.abroadNy = abroadNy;
+	public void setaAbroadNy(Integer aAbroadNy) {
+		this.aAbroadNy = aAbroadNy;
 	}
-	public Integer getEvent() {
-		return event;
+	public Integer getaEvent() {
+		return aEvent;
 	}
-	public void setEvent(Integer event) {
-		this.event = event;
+	public void setaEvent(Integer aEvent) {
+		this.aEvent = aEvent;
 	}
-	public Integer getLeague() {
-		return league;
+	public Integer getaLeague() {
+		return aLeague;
 	}
-	public void setLeague(Integer league) {
-		this.league = league;
+	public void setaLeague(Integer aLeague) {
+		this.aLeague = aLeague;
 	}
 	public String getReporter() {
 		return reporter;
@@ -76,11 +64,11 @@ public class Article {
 	public void setReporter(String reporter) {
 		this.reporter = reporter;
 	}
-	public String getCreatedAt() {
-		return createdAt;
+	public String getaCreatedAt() {
+		return aCreatedAt;
 	}
-	public void setCreatedAt(String createdAt) {
-		this.createdAt = createdAt;
+	public void setaCreatedAt(String aCreatedAt) {
+		this.aCreatedAt = aCreatedAt;
 	}
 	public Integer getCreatedBy() {
 		return createdBy;
@@ -88,11 +76,11 @@ public class Article {
 	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
-	public String getModifiedAt() {
-		return modifiedAt;
+	public String getaModifiedAt() {
+		return aModifiedAt;
 	}
-	public void setModifiedAt(String modifiedAt) {
-		this.modifiedAt = modifiedAt;
+	public void setaModifiedAt(String aModifiedAt) {
+		this.aModifiedAt = aModifiedAt;
 	}
 	public Integer getModifiedBy() {
 		return modifiedBy;
@@ -100,4 +88,17 @@ public class Article {
 	public void setModifiedBy(Integer modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
+	public Integer getaDelNy() {
+		return aDelNy;
+	}
+	public void setaDelNy(Integer aDelNy) {
+		this.aDelNy = aDelNy;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 }

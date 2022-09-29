@@ -25,7 +25,7 @@
             <div class="container px-3 px-xl-5 pt-1">
                 <!-- Logo START -->
                 <a class="navbar-brand" href="/sportMain">
-                    <img class="light-mode-item navbar-brand-item" src="../../resources/images/SPOPIA_white.png" alt="logo"
+                    <img class="light-mode-item navbar-brand-item" src="/resources/images/SPOPIA_white.png" alt="logo"
                         style="width: 90px;">
                 </a>
                 <!-- Profile START -->
@@ -34,7 +34,7 @@
                         <li class="me-2">
                             <a class="p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
                                 data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img class="avatar-img rounded-circle" src="../../resources/images/diano.jpg" alt="avatar"
+                                <img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar"
                                     style="width: 30px;">
                             </a>
                             <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
@@ -44,7 +44,7 @@
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
                                         <div class="avatar mt-2 ms-2">
-                                            <img class="avatar-img rounded-circle shadow" src="../../resources/images/diano.jpg"
+                                            <img class="avatar-img rounded-circle shadow" src="/resources/images/diano.jpg"
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
@@ -105,9 +105,9 @@
 	                <div class="row">
 	                    <div class="col-12 mb-2">
 	                        <span style="font-size: small;"><strong>기사제공</strong> ${item.newspaper }</span>
-	                        <span class="ps-3" style=" font-size: small;"><strong>기사입력</strong> ${item.createdAt } |
+	                        <span class="ps-3" style=" font-size: small;"><strong>기사입력</strong> ${item.aCreatedAt } |
 	                        </span>
-	                        <span style="font-size: small;"><strong>최종수정</strong> ${item.modifiedAt }</span>
+	                        <span style="font-size: small;"><strong>최종수정</strong> ${item.aModifiedAt }</span>
 	                        <hr>
 	                    </div>
 	                    <div class="col-12 mb-3">
@@ -127,7 +127,7 @@
 	                    </div>
 	                    <div class="col-2 offset-8" align="right">
 	                        <a class="btn btn-primary btn-sm text-white fw-bold shadow"
-	                            href="/article/articleModForm?seq=<c:out value="${item.seq }"/>" role="button">수정</a>
+	                            href="/article/articleModForm?seq=<c:out value="${item.aSeq }"/>" role="button">수정</a>
 	                    </div>
 	                </div>
 	            </div>

@@ -52,7 +52,7 @@
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="#">이하늘</a>
+                                            <a class="fs-6 fw-bold" href="#"><c:out value="${sessName }"/></a>
                                             <p class="small m-0">himmel@gmail.com</p>
                                         </div>
                                     </div>
@@ -99,7 +99,7 @@
             <form method="post" id="myForm" name="myForm">
             	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
                	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
-               	<input type="hidden" name="seq" value='<c:out value="${vo.seq }"></c:out>'>
+               	<input type="hidden" name="aSeq" value='<c:out value="${vo.aSeq }"></c:out>'>
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -289,21 +289,21 @@
                                 		</c:when>
                                 		<c:otherwise>
 	                                		<c:forEach items="${list}" var="list" varStatus="status">
-												<tr>
+												<tr  onclick="goForm(<c:out value="${list.aSeq }"/>)" style="cursor: pointer;">
 			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
                                                 id="flexCheckDefault">
 			                                        </td>
 			                                        <td><c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/></td>
-			                                        <td><a href="/article/articleXdminView?seq=<c:out value="${list.seq }"/>">${list.title }</a></td>
+			                                        <td>${list.title }</td>
 			                                        <td>${list.reporter }</td>
 			                                        <td>
 			                                        	<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
-															<c:if test="${list.event eq listEvent.ccSeq}"><c:out value="${listEvent.ifccName }"/></c:if>
+															<c:if test="${list.aEvent eq listEvent.ccSeq}"><c:out value="${listEvent.ifccName }"/></c:if>
 														</c:forEach>
 		                                        	</td>
 			                                        <td>${list.newspaper }</td>
-			                                        <td>${list.createdAt }</td>
-			                                        <td>${list.modifiedAt }</td>
+			                                        <td>${list.aCreatedAt }</td>
+			                                        <td>${list.aModifiedAt }</td>
 			                                    </tr>		
 											</c:forEach>
                                 		</c:otherwise>
@@ -401,7 +401,7 @@
 	   	
 	   	var goUrlList = "/article/articleList";
     	var goUrlForm = "/article/articleForm";
-    	var seq = $("input:hidden[name=seq]");
+    	var seq = $("input:hidden[name=aSeq]");
     	var form = $("#myForm");
     	
     	goForm = function(keyValue) {

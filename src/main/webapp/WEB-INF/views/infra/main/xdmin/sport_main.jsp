@@ -32,6 +32,8 @@
     	<form method="post" id="myForm" name="myform">
     		<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
            	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
+           	<input type="hidden" name="gSeq" value='<c:out value="${vo.gSeq }"></c:out>'>
+           	<input type="hidden" name="aSeq" value='<c:out value="${vo.aSeq }"></c:out>'>
            	<input type="hidden" name="seq" value='<c:out value="${vo.seq }"></c:out>'>
 	        <!-- header 영역 -->
 	        <header>
@@ -167,7 +169,7 @@
 			                  		</c:when>
 			                   		<c:otherwise>
 			                       		<c:forEach items="${gList}" var="gList" varStatus="status">
-											<a class="game_card" onclick="goForm(<c:out value="${list.seq }"/>)" style="cursor: pointer;">
+											<a class="game_card" href="/member/memberUView?seq=${gList.gSeq }" style="cursor: pointer;">
 							                    <div class="head">
 							                        <span class="event">
 							                        	<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
@@ -227,12 +229,13 @@
                   		</c:when>
                    		<c:otherwise>
                        		<c:forEach items="${aList}" var="aList" varStatus="status">
-								<a class="article_card" href="article/articleView?seq=${aList.aSeq }">
+								<a class="article_card" href="/article/articleView?seq=${aList.aSeq }">
 				                    <div class="article_img">
 				                        <img class="article_img" src="/resources/images/user/baseball.jpg">
 				                    </div>
 				                    <div class="article_content">
 				                        <div class="article_title">
+				                        ${aList.aSeq }
 				                            ${aList.title }
 				                        </div>
 				                        <div class="article_context">
@@ -641,6 +644,22 @@
 	          prevEl: ".swiper-button-prev",
 	        },
 	      });
+		
+		var goUrlArticle = "/article/articleView";
+		var goUrlGame = "/game/GameView";
+		
+		var aSeq = $("input:hidden[name=aSeq]");
+		var gSeq = $("input:hidden[name=gSeq]");
+		
+		goArticle = function(keyValue) {
+			aSeq.val(keyValue);
+			form.attr("action", goUrlArticle).submit();
+		}
+		
+		goGame = function(keyValue) {
+			gSeq.val(keyValue);
+			form.attr("action", goUrlGame).submit();
+		}
 		
 	</script>
 </body>

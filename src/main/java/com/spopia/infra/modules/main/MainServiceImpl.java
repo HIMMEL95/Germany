@@ -12,11 +12,11 @@ public class MainServiceImpl {
 	@Autowired
 	MainDao dao;
 
-	public void mainList(Model model) throws Exception {
-		List<Main> aList = dao.articleList();
+	public void mainList(Model model, MainVo vo) throws Exception {
+		List<Main> aList = dao.articleList(vo);
 		model.addAttribute("aList", aList);
 		
-		List<Main> gList = dao.gameList();
+		List<Main> gList = dao.gameList(vo);
 		model.addAttribute("gList", gList);
 	}
 }

@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Article Reg Form</title>
+    <title>Article View</title>
     <link
         href="https://ssl.pstatic.net/static.sports/resources/web-ui/game/220804-183157/static/css/main.5632a96e.chunk.css"
         rel="stylesheet">
@@ -105,15 +105,15 @@
             <div class="card ps-5 pe-5 pt-4 pb-4 mb-3 shadow">
                 <div class="row">
                     <div class="col-12 mb-2">
-                        <span class="fs-4 fw-bold">최지만 2타수 무안타 후 교체, 탬파베이는 3-2 역전승</span>
+                        <span class="fs-4 fw-bold">최지만 2타수 무안타 후 교체, 탬파베이는 3-2 역전승${item.title } ${item.aSeq }</span>
                     </div>
                 </div>
                 <div class="row mb-5">
                     <div class="col-12 mb-2">
-                        <span style="font-size: small;"><strong>기사제공</strong> 문화일보</span>
-                        <span class="ps-3" style=" font-size: small;"><strong>기사입력</strong> 2022.07.13. 오전 11 : 36 |
+                        <span style="font-size: small;"><strong>기사제공</strong> 문화일보${item.newspaper }</span>
+                        <span class="ps-3" style=" font-size: small;"><strong>기사입력</strong> 2022.07.13. 오전 11 : 36${item.aCreatedAt } |
                         </span>
-                        <span style="font-size: small;"><strong>최종수정</strong> 2022.07.13. 오전 11 : 36</span>
+                        <span style="font-size: small;"><strong>최종수정</strong> 2022.07.13. 오전 11 : 36 ${item.aModifiedAt }</span>
                         <hr>
                     </div>
                     <div class="col-12 mb-3">
@@ -142,7 +142,7 @@
                                 3-2로 역전했다. 탬파베이는 1점 차 리드를 끝까지 지켜 이겼다.
                             </p><br>
                         </div>
-                        <span><strong>기사제공</strong> 문화일보</span>
+                        <span><strong>기사제공</strong> 문화일보${item.newspaper }</span>
                         <p>정세영 기자 (niners@munhwa.com)</p>
                     </div>
                 </div>

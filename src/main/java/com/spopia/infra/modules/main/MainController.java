@@ -17,8 +17,8 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "sportMain")
-	public String sportMain(Model model) throws Exception {
-		service.mainList(model);
+	public String sportMain(Model model, MainVo vo) throws Exception {
+		service.mainList(model, vo);
 		return "infra/main/xdmin/sport_main";
 	}
 

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spopia.infra.modules.main.MainVo;
+
 @Controller
 @RequestMapping(value = "/article/")
 public class ArticleController {
@@ -73,5 +75,13 @@ public class ArticleController {
 		vo.setaSeq(dto.getaSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/article/articleList";
+	}
+	
+	@RequestMapping(value = "/articleView")
+	public String articleView(ArticleVo vo, Model model, MainVo mVo) throws Exception {
+		
+		Article item = service.selectOne(vo);
+		model.addAttribute("item", item);
+		return "infra/article/user/articleView";
 	}
 }

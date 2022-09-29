@@ -17,11 +17,11 @@ public class MainDao {
 	
 	private static String namespace = "com.spopia.infra.modules.main.MainMapper";
 	
-	public List<Main> articleList() throws Exception {
+	public List<Main> articleList(MainVo vo) throws Exception {
 		return sqlSession.selectList(namespace + ".articleList", "");
 	}
 	
-	public List<Main> gameList() throws Exception {
+	public List<Main> gameList(MainVo vo) throws Exception {
 		return sqlSession.selectList(namespace + ".gameList", "");
 	}
 

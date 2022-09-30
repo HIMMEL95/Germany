@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container px-3 px-xl-5 pt-1">
                 <!-- Logo START -->
-                <a class="navbar-brand" href="../../user/member/main_page.html">
+                <a class="navbar-brand" href="/sportMain">
                     <img class="light-mode-item navbar-brand-item" src="/resources/images/SPOPIA_white.png" alt="logo"
                         style="width: 90px;">
                 </a>
@@ -226,12 +226,14 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
     	var goUrlBack = "/userLogin";
     	var form = $("#myForm");
     	
     	$("#backBtn").on("click", function() {
-			form.attr("action", goUrlBack).
+			form.attr("action", goUrlBack).submit();
 		})
     </script>
 </body>

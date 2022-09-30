@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.spopia.infra.modules.main.MainVo;
-
 @Controller
 @RequestMapping(value = "/article/")
 public class ArticleController {

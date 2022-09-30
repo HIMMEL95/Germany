@@ -18,10 +18,10 @@
         <!-- main 영역 -->
         <main class="card">
             <div id="img">
-                <img src="../../resources/images/SPOPIA_white.png" alt="SPOPIA logo">
+                <img src="/resources/images/SPOPIA_white.png" alt="SPOPIA logo">
             </div>
             <div id="content">
-                <a id="user" href="/userLogin">
+                <a id="user" href="/sportMain">
                     <div class="card">
                         <div class="user_img">
                             <img class="card_img" src="/resources/images/seperate/user_back.jpg" alt="user_page">

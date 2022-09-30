@@ -8,6 +8,9 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.spopia.infra.modules.comment.Comment;
+import com.spopia.infra.modules.comment.CommentVo;
+
 @Repository
 public class ArticleDao {
 	
@@ -41,12 +44,21 @@ public class ArticleDao {
 		return sqlSession.update(namespace + ".update", dto);
 	}
 	
-	public int selectOneCoutn(ArticleVo vo) {
+	public int selectOneCount(ArticleVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
 	
 	/* mainList */
-	public List<Article> mainList() {
-		return sqlSession.selectList(namespace + ".mainList", "");
+	public List<Article> mainList(ArticleVo vo) {
+		return sqlSession.selectList(namespace + ".mainList", vo);
+	}
+	
+	/* article comment */
+	public List<Comment> articleComment(CommentVo vo) {
+		return sqlSession.selectList(namespace + ".articleComment", vo);
+	}
+	
+	public int articleCommentCount(CommentVo vo) {
+		return sqlSession.selectOne(namespace + ".articleCommentCount", vo);
 	}
 }

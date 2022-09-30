@@ -16,6 +16,6 @@ public interface GameService {
 	public int selectOneCount(GameVo vo) throws Exception;
 	
 	/* mainList */
-	public List<Game> mainList() throws Exception;
+	public List<Game> mainList(GameVo vo) throws Exception;
 	
 }

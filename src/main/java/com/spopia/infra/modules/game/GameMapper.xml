@@ -184,4 +184,35 @@
 		FROM game where gSeq = #{gSeq}
 	</delete>
 	
+	<select id="mainList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+			select 
+				g.gSeq
+				,g.gAbroadNy
+			    ,g.gEvent
+			    ,g.gLeague
+			    ,g.score_home
+			    ,g.score_away
+			    ,g.player_home
+			    ,g.player_away
+			    ,g.stadium
+			    ,g.gameDate
+			    ,DATE_FORMAT(g.gameDuration,'%H:%i') as gameDuration
+			    ,g.gCreatedAt
+			    ,g.gModifiedAt
+			    ,g.gcDelNy
+			    ,t1.teamName as team_home
+			    ,t2.teamName as team_away
+		    from game g
+				inner join team t1 on t1.teamSeq = g.team_home
+				inner join team t2 on t2.teamSeq = g.team_away
+			where 1=1
+				and g.gcDelNy = 0
+				and date_format(gameDate, '%Y-%m-%d') = date_format(now(),  '%Y-%m-%d')
+		    ORDER BY 
+		    	g.gameDate ASC
+		    	,g.gameDuration ASC
+		   	limit 99999999999
+	   	)aa
+	</select>
 </mapper>

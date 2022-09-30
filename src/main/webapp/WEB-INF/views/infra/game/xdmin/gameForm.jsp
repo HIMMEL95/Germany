@@ -144,20 +144,20 @@
                             <label for="team_home" class="form-label fw-bold">홈팀</label>
                             <select class="form-select" id="team_home" name="team_home" aria-label=".form-select example">
                                 <option value="">선택</option>
-                                <option value="1" <c:if test="${item.team_home eq 1 }">selected</c:if>>두산 베어스</option>
-                                <option value="2" <c:if test="${item.team_home eq 2 }">selected</c:if>>KIA 타이거즈</option>
-                                <option value="3" <c:if test="${item.team_home eq 3 }">selected</c:if>>SSG 랜더스</option>
-                                <option value="4" <c:if test="${item.team_home eq 4 }">selected</c:if>>삼성 라이온즈</option>
+                                <option value="25" <c:if test="${item.team_home eq 25 }">selected</c:if>>두산 베어스</option>
+                                <option value="26" <c:if test="${item.team_home eq 26 }">selected</c:if>>KIA 타이거즈</option>
+                                <option value="27" <c:if test="${item.team_home eq 27 }">selected</c:if>>SSG 랜더스</option>
+                                <option value="28" <c:if test="${item.team_home eq 28 }">selected</c:if>>삼성 라이온즈</option>
                             </select>
                         </div>
                         <div class="col">
                             <label for="team_away" class="form-label fw-bold">원정팀</label>
                             <select class="form-select" id="team_away" name="team_away" aria-label=".form-select example">
                                 <option value="">선택</option>
-                                <option value="1" <c:if test="${item.team_away eq 1 }">selected</c:if>>두산 베어스</option>
-                                <option value="2" <c:if test="${item.team_away eq 2 }">selected</c:if>>KIA 타이거즈</option>
-                                <option value="3" <c:if test="${item.team_away eq 3 }">selected</c:if>>SSG 랜더스</option>
-                                <option value="4" <c:if test="${item.team_away eq 4 }">selected</c:if>>삼성 라이온즈</option>
+                                 <option value="25" <c:if test="${item.team_away eq 25 }">selected</c:if>>두산 베어스</option>
+                                <option value="26" <c:if test="${item.team_away eq 26 }">selected</c:if>>KIA 타이거즈</option>
+                                <option value="27" <c:if test="${item.team_away eq 27 }">selected</c:if>>SSG 랜더스</option>
+                                <option value="28" <c:if test="${item.team_away eq 28 }">selected</c:if>>삼성 라이온즈</option>
                             </select>
                         </div>
                     </div>

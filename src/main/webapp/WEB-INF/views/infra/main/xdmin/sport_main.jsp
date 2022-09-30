@@ -34,7 +34,6 @@
            	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
            	<input type="hidden" name="gSeq" value='<c:out value="${vo.gSeq }"></c:out>'>
            	<input type="hidden" name="aSeq" value='<c:out value="${vo.aSeq }"></c:out>'>
-           	<input type="hidden" name="seq" value='<c:out value="${vo.seq }"></c:out>'>
 	        <!-- header 영역 -->
 	        <header>
 	            <div class="nav">
@@ -169,10 +168,9 @@
 			                  		</c:when>
 			                   		<c:otherwise>
 			                       		<c:forEach items="${gList}" var="gList" varStatus="status">
-											<a class="game_card" href="/gameView?seq=${gList.gSeq }" style="cursor: pointer;">
+											<a class="game_card" href="/gameView?gSeq=${gList.gSeq }" style="cursor: pointer;">
 							                    <div class="head">
 							                        <span class="event">
-							                        	${gList.gSeq }
 							                        	<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
 															<c:if test="${gList.gEvent eq listEvent.ccSeq}"><c:out value="${listEvent.ifccName }"/></c:if>
 														</c:forEach>
@@ -230,13 +228,12 @@
                   		</c:when>
                    		<c:otherwise>
                        		<c:forEach items="${aList}" var="aList" varStatus="status">
-								<a class="article_card" href="/articleView?seq=${aList.aSeq }">
+								<a class="article_card" href="/articleView?aSeq=${aList.aSeq }">
 				                    <div class="article_img">
 				                        <img class="article_img" src="/resources/images/user/baseball.jpg">
 				                    </div>
 				                    <div class="article_content">
 				                        <div class="article_title">
-				                        ${aList.aSeq }
 				                            ${aList.title }
 				                        </div>
 				                        <div class="article_context">
@@ -603,7 +600,9 @@
     </div>
 
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
-     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
         function menuToggle() {
             const toggleMenu = document.querySelector('.menu');
@@ -645,22 +644,6 @@
 	          prevEl: ".swiper-button-prev",
 	        },
 	      });
-		
-		var goUrlArticle = "/article/articleView";
-		var goUrlGame = "/game/GameView";
-		
-		var aSeq = $("input:hidden[name=aSeq]");
-		var gSeq = $("input:hidden[name=gSeq]");
-		
-		goArticle = function(keyValue) {
-			aSeq.val(keyValue);
-			form.attr("action", goUrlArticle).submit();
-		}
-		
-		goGame = function(keyValue) {
-			gSeq.val(keyValue);
-			form.attr("action", goUrlGame).submit();
-		}
 		
 	</script>
 </body>

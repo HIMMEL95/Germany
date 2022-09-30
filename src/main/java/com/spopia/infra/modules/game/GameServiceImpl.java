@@ -58,8 +58,8 @@ public class GameServiceImpl implements GameService{
 
 	/* mainList */
 	@Override
-	public List<Game> mainList() throws Exception {
-		return dao.mainList();
+	public List<Game> mainList(GameVo vo) throws Exception {
+		return dao.mainList(vo);
 	}
 	
 }

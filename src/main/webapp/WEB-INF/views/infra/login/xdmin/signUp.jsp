@@ -41,14 +41,14 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="name">Username<span style="color: red;">*</span></label>
-                            <input id="name" name="name" type="text" onkeypress="validationUpdt()" autocomplete="off"> 
+                            <input id="name" name="name" type="text" onfocusout="validationUpdt()" autocomplete="off"> 
                             <div class="msg" id="name_msg" name="name_msg" style="display: none;"></div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="input-control">
                             <label for="email">Email<span style="color: red;">*</span></label>
-                            <input id="email" name="email" type="text" onkeypress="validationUpdt()" autocomplete="off">
+                            <input id="email" name="email" type="text" onfocusout="validationUpdt()" autocomplete="off">
                             <div class="msg" id="email_msg" name="email_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -57,14 +57,14 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="pwd">Password<span style="color: red;">*</span></label>
-                            <input id="pwd" name="pwd" type="password" onkeypress="validationUpdt()" autocomplete="off">
+                            <input id="pwd" name="pwd" type="password" onfocusout="validationUpdt()" autocomplete="off">
                             <div class="msg" id="pwd_msg" name="pwd_msg" style="display: none;"></div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="input-control">
                             <label for="pwd2">Password again<span style="color: red;">*</span></label>
-                            <input id="pwd2" name="pwd2" type="password" onkeypress="validationUpdt()" autocomplete="off">
+                            <input id="pwd2" name="pwd2" type="password" onfocusout="validationUpdt()" onkeypress="validationUpdt()" autocomplete="off">
                             <div class="msg" id="pwd2_msg" name="pwd2_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -73,14 +73,14 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="dob">생년월일<span style="color: red;">*</span></label>
-                            <input id="dob" name="dob" type="text" placeholder="1900-01-01" autocomplete="off" onkeypress="validationUpdt()">
+                            <input id="dob" name="dob" type="text" placeholder="1900-01-01" autocomplete="off" onfocusout="validationUpdt()">
                             <div class="msg" id="dob_msg" name="dob_msg" style="display: none;"></div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="input-control">
                             <label for="gender">성별<span style="color: red;">*</span></label>
-                            <select id="gender" name="gender" aria-label=".form-select-lg example" onclick="validationUpdt()">
+                            <select id="gender" name="gender" aria-label=".form-select-lg example" onfocusout="validationUpdt()">
                                 <option value="" <c:if test="${empty item.gender}">selected</c:if>>선택</option>
                                 <option value="5" <c:if test="${item.gender eq 5 }">selected</c:if>>남성</option>
                                 <option value="6" <c:if test="${item.gender eq 6 }">selected</c:if>>여성</option>
@@ -93,7 +93,7 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="radio_operator">통신사<span style="color: red;">*</span></label>
-                            <select id="radio_operator" name="radio_operator" aria-label=".form-select-lg example" onclick="validationUpdt()">
+                            <select id="radio_operator" name="radio_operator" aria-label=".form-select-lg example" onfocusout="validationUpdt()">
                             	<option value="" <c:if test="${empty item.radio_operator}">selected</c:if>>선택</option>
                                 <option value="1" <c:if test="${item.radio_operator eq 1 }">selected</c:if>>SKT</option>
                                 <option value="2" <c:if test="${item.radio_operator eq 2 }">selected</c:if>>KT</option>
@@ -106,7 +106,7 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="phone">전화번호<span style="color: red;">*</span></label>
-                            <input id="phone" name="phone" type="tel" placeholder="010-0000-0000" autocomplete="off" onkeypress="validationUpdt()">
+                            <input id="phone" name="phone" type="tel" placeholder="010-0000-0000" autocomplete="off" onfocusout="validationUpdt()">
                             <div class="msg" id="phone_msg" name="phone_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
                     <div class="col-6">
                         <div class="input-control">
                             <label for="tel_certification">인증번호</label>
-                            <input id="tel_certification" name="tel_certification" type="text" onkeypress="validationUpdt()"> 
+                            <input id="tel_certification" name="tel_certification" type="text" onfocusout="validationUpdt()"> 
                             <div class="msg" id="tel_certi_msg" name="tel_certi_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -140,7 +140,7 @@
                     <div class="col-6">
                         <div class="input-control">
                             <label for="zip">우편번호<span style="color: red;">*</span></label>
-                            <input id="zip" name="zip" type="text" readonly autocomplete="off"> 
+                            <input id="zip" name="zip" type="text" readonly autocomplete="off" onfocusout="validationUpdt()"> 
                             <div class="msg" id="zip_msg" name="zip_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -162,7 +162,7 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="address">주소<span style="color: red;">*</span></label>
-                            <input id="address" name="address" type="text" onkeypress="validationUpdt()" readonly> 
+                            <input id="address" name="address" type="text" onfocusout="validationUpdt()" readonly> 
                             <div class="msg" id="address_msg" name="address_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -171,14 +171,14 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="address_detail">상세주소<span style="color: red;">*</span></label>
-                            <input id="address_detail" name="address_detail" type="text" autocomplete="off" onkeypress="validationUpdt()"> 
+                            <input id="address_detail" name="address_detail" type="text" autocomplete="off" onfocusout="validationUpdt()"> 
                             <div class="msg" id="address_detail_msg" name="address_detail_msg" style="display: none;"></div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="input-control">
                             <label for="extraAddress">참고항목</label>
-                            <input id="extraAddress" name="extraAddress" type="text" onkeypress="validationUpdt()" readonly> 
+                            <input id="extraAddress" name="extraAddress" type="text" onfocusout="validationUpdt()" readonly> 
                             <div class="msg" id="extraAddress_msg" name="extraAddress_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -187,13 +187,13 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="address_detail">위도</label>
-                            <input id="lat" name="lat" value="" type="text" onkeypress="validationUpdt()" readonly> 
+                            <input id="lat" name="lat" value="" type="text" onfocusout="validationUpdt()" readonly> 
                         </div>
                     </div>
                     <div class="col">
                         <div class="input-control">
                             <label for="extraAddress">경도</label>
-                            <input id="long" name="long" value="" type="text" onkeypress="validationUpdt()" readonly> 
+                            <input id="long" name="long" value="" type="text" onfocusout="validationUpdt()" readonly> 
                         </div>
                     </div>
                 </div>
@@ -265,6 +265,7 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ec2655da82c3779d622f0aff959060e6&libraries=services"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript">
         $('.error').hide();
         validationUpdt = function() {
@@ -373,8 +374,21 @@
         
         $("#btnSave").on("click", function() {
         	if (validationUpdt() == false) return false;
-        	else form.attr("action", goUrlInst).submit();
+        	else swAlert("회원가입", "회원가입을 축하합니다.!!!", "success");
 		});
+        
+        function swAlert(title, text, icon) {
+			swal({
+				title: title
+				,text: text
+				,icon: icon
+				,buttons: "확인"
+			}).then((value) => {
+				if (value) {
+					location.href = goUrlInst;
+				}
+			})
+		}
         
         $("#searchBtn").on("click", function() {
         	daumPostCode();

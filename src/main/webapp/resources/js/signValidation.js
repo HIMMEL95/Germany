@@ -123,12 +123,14 @@ id_regex = function(obj, value, message, hide) {
     if (!checkNull(obj, value) && !(re.test($.trim($(obj).val())))) {
         hide.parent().addClass('error')
         $(hide).text(message)
-        $(hide).show()
+        $(hide).show();
+        obj.focus();
         return false;
     } else if(!(($.trim($(obj).val()).length > 2) && ($.trim($(obj).val()).length < 21))) {
         $(hide).text('4~20자 사이의 아이디를 작성하시오')
         hide.parent().addClass('error')
-        $(hide).show()
+        $(hide).show();
+        obj.focus();
         return false;
     } else {
         hide.parent().removeClass('error')
@@ -145,16 +147,19 @@ name_regex = function(obj, value, message, hide) {
         hide.parent().addClass('error')
         $(hide).text(message)
         $(hide).show()
+        obj.focus();
         return false;
     } else if (!(re.test($.trim($(obj).val())))) {
-        $(hide).text('양식에 맞게 작성하시오')
+        $(hide).text('2~10자 사이의 이름을 작성하시오')
         hide.parent().addClass('error')
         $(hide).show()
+        obj.focus();
         return false;
     } else if(!(($.trim($(obj).val()).length > 1) && ($.trim($(obj).val()).length < 10))) {
         $(hide).text('2~10자 사이의 이름을 작성하시오')
         hide.parent().addClass('error')
         $(hide).show()
+        obj.focus();
         return false;
     } else {
         hide.parent().removeClass('error')
@@ -217,12 +222,12 @@ pwd2_regex = function(obj, value, message, hide) {
         $(hide).text(message)
         $(hide).show()
         return false;
-    } else if ((re.test($.trim($(obj).val())))) {
-		hide.parent().addClass('error')
-        $(hide).text("최소 8자, 하나 이상의 대문자, 소문자, 숫자 및 하나의 특수 문자 입력하시오")
+    }  else if(!(($.trim($(obj).val()).length > 7))) {
+        $(hide).text('8자 이상의 비밀번호를 작성하시오')
+        hide.parent().addClass('error')
         $(hide).show()
         return false;
-	} else if(!(($.trim($(obj).val()) === $.trim($('#pwd').val())))) {
+    } else if(!(($.trim($(obj).val()) === $.trim($('#pwd').val())))) {
         $(hide).text('비밀번호가 일치하지 않습니다.')
         hide.parent().addClass('error')
         $(hide).show()
@@ -348,7 +353,7 @@ detail_regex = function(obj, value, message, hide) {
         $(hide).text(message)
         $(hide).show()
         return false;
-    } else if(!(($.trim($(obj).val()).length > 1) && ($.trim($(obj).val()).length < 10))) {
+    } else if(!(($.trim($(obj).val()).length > 4))) {
         $(hide).text('10자 사이의 상세주소를 작성하시오')
         hide.parent().addClass('error')
         $(hide).show()

@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spopia.infra.modules.comment.Comment;
+import com.spopia.infra.modules.comment.CommentVo;
+
 @Service
 public class ArticleServiceImpl  implements ArticleService{
 
@@ -43,13 +46,23 @@ public class ArticleServiceImpl  implements ArticleService{
 	
 	@Override
 	public int selectOneCount(ArticleVo vo) throws Exception {
-		return dao.selectOneCoutn(vo);
+		return dao.selectOneCount(vo);
 	}
 
 	/* mainlist */
 	@Override
-	public List<Article> mainList() throws Exception {
-		return dao.mainList();
+	public List<Article> mainList(ArticleVo vo) throws Exception {
+		return dao.mainList(vo);
 	}
 
+	/* article comment */
+	@Override
+	public List<Comment> articleComment(CommentVo vo) throws Exception {
+		return dao.articleComment(vo);
+	}
+
+	@Override
+	public int articleCommentCount(CommentVo vo) throws Exception {
+		return dao.articleCommentCount(vo);
+	}
 }

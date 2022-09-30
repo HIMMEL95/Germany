@@ -57,7 +57,7 @@
                                                 </span>
                                             </div>
                                             <input type="text" id="id" name="id" placeholder="아이디" title="아이디"
-                                                class="input_text" maxlength="41" value="">
+                                                class="input_text" maxlength="41" value="himmel">
                                             <span role="button" class="btn_delete" id="id_clear" style="display: none;">
                                                 <span class="icon_delete">
                                                     <span class="blind">삭제</span>
@@ -71,7 +71,7 @@
                                                 </span>
                                             </div>
                                             <input type="password" id="pwd" name="pwd" placeholder="비밀번호" title="비밀번호"
-                                                class="input_text" maxlength="16">
+                                                class="input_text" maxlength="16" value="123456789">
                                             <span role="button" class="btn_delete" id="pw_clear" style="display: none;">
                                                 <span class="icon_delete">
                                                     <span class="blind">삭제</span>

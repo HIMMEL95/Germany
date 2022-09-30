@@ -8,7 +8,7 @@
 <jsp:useBean id="CodeServiceImpl" class="com.spopia.infra.modules.code.CodeServiceImpl"/>
 
 <!doctype html>
-<html lang="ko" data-theme="light">
+<html lang="ko">
 
 <head>
     <meta charset="utf-8">
@@ -115,6 +115,8 @@
 		<!-- *Vo.jsp e -->
 	        <div style="height: 80px;"></div>
 	        <div class="container" style="max-width: 1000px;">
+	        	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
+	        	<c:set var="listCodeStadium" value="${CodeServiceImpl.selectListCachedCode('8') }" />
 	            <div class="card shadow position-relative">
 	                <!-- <img class="card-img" src="../../image/background.jpg" alt="background" style="height: 300px;"> -->
 	                <img src="https://ssl.pstatic.net/static/sports/common/livecenter/new/bg_live_baseball.jpg"
@@ -130,8 +132,12 @@
 	            <div class="mb-3 rounded shadow MatchBox_comp_match_box__1oRmr MatchBox_type_ready__2Q2dm">
 	                <div class="MatchBox_info__2l4DE">
 	                    <span class="MatchBox_state__2AzL_">경기전</span>
-	                    <span class="MatchBox_date__1bJ9G mb-2">08.06<span class="MatchBox_time__2z_nB">18:00${item.gameDuration }</span></span>
-	                    <span class="MatchBox_stadium__17mQ4">광주</span>
+	                    <span class="MatchBox_date__1bJ9G mb-2">${item.gameDate }<span class="MatchBox_time__2z_nB">${item.gameDuration }</span></span>
+	                    <span class="MatchBox_stadium__17mQ4">${item.stadium }
+	                    	<c:forEach items="${listCodeStadium}" var="listStadium" varStatus="statusStadium">
+								<c:if test="${list.stadium eq listStadium.ccSeq}"><c:out value="${listStadium.ifccName }"/></c:if>
+							</c:forEach>
+	                    </span>
 	                </div>
 	                <div class="MatchBox_home__MPL6D pt-2">
 	                    <div class="MatchBox_team_area__a9Jet">
@@ -139,8 +145,12 @@
 	                                src="https://sports-phinf.pstatic.net/team/kbo/default/OB.png?type=f108_108" alt="" width="72"
 	                                height="72"></div>
 	                        <div class="MatchBox_text__22e-R text-center">
-	                            <em class="MatchBox_name__11AyG">두산</em>
-	                            <p class="MatchBox_pitcher__2Krgp">선-스탁</p>
+	                            <em class="MatchBox_name__11AyG">${item.team_away }
+	                            	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+										<c:if test="${list.team_away eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+									</c:forEach>
+	                            </em>
+	                            <p class="MatchBox_pitcher__2Krgp">선-${item.player_away }</p>
 	                        </div>
 	                    </div>
 	                </div>
@@ -151,8 +161,8 @@
 	                                height="72"></div>
 	                        <div class="MatchBox_text__22e-R text-center">
 	                            <em class="MatchBox_name__11AyG">
-	                            <i class="MatchBox_badge__p5jYW">홈</i>KIA</em>
-	                            <p class="MatchBox_pitcher__2Krgp">선-임기영</p>
+	                            <i class="MatchBox_badge__p5jYW">홈</i>${item.team_home }</em>
+	                            <p class="MatchBox_pitcher__2Krgp">선-${item.player_home }</p>
 	                        </div>
 	                    </div>
 	                </div>

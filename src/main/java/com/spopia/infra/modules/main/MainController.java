@@ -61,4 +61,9 @@ public class MainController {
 		model.addAttribute("item", item);
 		return "infra/game/user/gameView";
 	}
+	
+	@RequestMapping(value = "naver")
+	public String naver() throws Exception {
+		return "infra/main/xdmin/naver";
+	}
 }

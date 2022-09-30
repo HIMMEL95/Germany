@@ -78,7 +78,11 @@ public class MemberController {
 	}
  
 	@RequestMapping(value = "memberUMod")
-	public String memberUMod(Member dto) throws Exception {
+	public String memberUMod(MemberVo vo, Model model) throws Exception {
+		
+		Member item = service.selectOne(vo);
+		model.addAttribute("item", item);
+		
 		return "infra/member/user/memberUModForm";
 	}
 }

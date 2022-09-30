@@ -27,7 +27,7 @@
             <div class="container px-3 px-xl-5 pt-1">
                 <!-- Logo START -->
                 <a class="navbar-brand" href="/sportMain">
-                    <img class="light-mode-item navbar-brand-item" src="../../resources/images/SPOPIA_white.png" alt="logo"
+                    <img class="light-mode-item navbar-brand-item" src="/resources/images/SPOPIA_white.png" alt="logo"
                         style="width: 90px;">
                 </a>
                 <!-- Profile START -->
@@ -37,7 +37,7 @@
                             <a class="p-0" href="/member/memberView" id="profileDropdown" role="button"
                                 data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                <img class="avatar-img rounded-circle" src="../../resources/images/diano.jpg" alt="avatar"
+                                <img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar"
                                     style="width: 30px;">
                             </a>
                             <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
@@ -47,12 +47,12 @@
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
                                         <div class="avatar ps-1 pt-2">
-                                            <img class="avatar-img rounded-circle shadow" src="../../resources/images/diano.jpg"
+                                            <img class="avatar-img rounded-circle shadow" src="/resources/images/diano.jpg"
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="../member/memberView.html">이하늘</a>
-                                            <p class="small m-0">himmel@gmail.com</p>
+                                            <a class="fs-6 fw-bold" href="../member/memberView.html"><c:out value="${sessName }"/></a>
+                                            <p class="small m-0"><c:out value="${sessEmail }"/></p>
                                         </div>
                                     </div>
                                     <hr>
@@ -131,28 +131,22 @@
                                                                 src="/resources/images/diano.jpg" style="width: 50px;" alt=""></a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
-                                                        <span class="mb-0"><a href="#">이하늘</a></span>
-                                                        <small>Himmel</small><br>
-                                                        <small>himmel@gmail.com</small>
+                                                        <span class="mb-0"><a href="#"><c:out value="${sessName }"/></a></span>
+                                                        <small><c:out value="${sessId }"/></small><br>
+                                                        <small><c:out value="${sessEmail }"/></small>
                                                     </div>
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/member/memberView">
+                                                            <a class="nav-link" href="/member/memberUView">
                                                                 <i class="fa-solid fa-chart-line pe-3"></i>
                                                                 <span>계정 정보 상세</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="../member/memberCommentView.html">
+                                                            <a class="nav-link" href="/comment/userCommentList">
                                                                 <i class="fa-solid fa-users pe-3"></i>
                                                                 <span>작성 글</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="/">
-                                                                <i class="fas fa-light fa-newspaper pe-3"></i>
-                                                                <span>로그아웃</span>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -199,14 +193,6 @@
 		                                <div class="form-attachment-btn btn btn-primary btn-sm ms-3" hidden>
 		                                    <i class="fa-solid fa-arrows-rotate me-2"></i>Upload photo
 		                                    <input type="file" class="js-file-attach form-attachment-btn-label" id="avatarUploader">
-		                                </div>
-                            		</div>
-                            		<div class="col-2 offset-7">
-                            			<div style="width: 150px;">
-		                                	<select class="form-select form-select-sm fw-bold" id="user_div" name="user_div" aria-label=".form-select-sm example">
-			                                    <option value="24" <c:if test="${item.user_div eq 24 }">selected</c:if>>관리자</option>
-			                                    <option value="25" <c:if test="${item.user_div eq 25}">selected</c:if>>일반</option>
-			                                </select>
 		                                </div>
                             		</div>
                             	</div>
@@ -335,7 +321,7 @@
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-    	var goUrlList = "/member/memberList";
+    	var goUrlList = "/member/memberUView?seq=<c:out value="${item.seq }"/>";
     	var goUrlUpdt = "/member/memberUpdt";
     	var form = $("#myForm");
     	
@@ -344,7 +330,7 @@
 		});
     	
     	$("#btnList").on("click", function() {
-			form.attr("action", goUrlList).submit();
+			window.history.back();
 		});
     </script>
 </body>

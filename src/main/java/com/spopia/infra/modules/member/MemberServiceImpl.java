@@ -68,8 +68,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	public void insert(Member dto) throws Exception {
-    	dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
-    	dto.setName(dto.getName());
+  	dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
+  	dto.setName(dto.getName());
 		userInst(dto);
 		teamInst(dto);
 	}

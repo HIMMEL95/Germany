@@ -187,12 +187,6 @@
                                                                 <span>작성 글</span>
                                                             </a>
                                                         </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" id="signOutBtn1" href="/">
-                                                                <i class="fas fa-light fa-newspaper pe-3"></i>
-                                                                <span>로그아웃</span>
-                                                            </a>
-                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -314,11 +308,8 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-2">
-                                <button class="btn btn-primary text-white fw-bold btn-sm shadow" id="btnList" type="button">뒤로</button>
-                            </div>
-                            <div class="col-2 offset-8" align="right">
-                                <button class="btn btn-primary text-white fw-bold btn-sm shadow" id="btnMod" href="/member/memberModForm?seq=<c:out value="${item.seq }"/>"
+                            <div class="col-2 offset-10" align="right">
+                                <button class="btn btn-primary text-white fw-bold btn-sm shadow" id="btnMod" href="/member/memberUMod?seq=<c:out value="${item.seq }"/>"
                                     type="button">수정</button>
                             </div>
                         </div>
@@ -370,7 +361,7 @@
     <script type="text/javascript">
     	
     	var goUrlList = "/member/memberList";
-    	var goUrlMod = "/member/memberModForm";
+    	var goUrlMod = "/member/memberUMod";
     	
     	var form = $("form[name=myForm]");
     	var formVo = $("form[name=formVo]");

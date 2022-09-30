@@ -68,14 +68,14 @@
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="#">이하늘</a>
-                                            <p class="small m-0">himmel@gmail.com</p>
+                                            <a class="fs-6 fw-bold" href="#"><c:out value="${sessName }"/></a>
+                                            <p class="small m-0"><c:out value="${sessEmail }"/></p>
                                         </div>
                                     </div>
                                 </li>
                                 <!-- Links -->
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/member/memberUView?seq=${sessSeq }">
                                         <i class="fa-solid fa-user me-2"></i>
                                         Edit Profile
                                     </a>
@@ -93,7 +93,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item bg-danger-soft-hover" href="../../seperate/html/seperatePage.html">
+                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" >
                                         <i class="fa-solid fa-power-off me-2"></i>
                                         Sign Out
                                     </a>
@@ -894,6 +894,22 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+	    $("#signOutBtn").on("click", function() {
+			$.ajax({
+				type: "POST"
+				,url: "logoutProc"
+				,data: {}
+				,success : function(response) {
+					if (response.rt == "success") {
+						window.location.href = "/";
+					}
+				}
+			});
+		});
+    </script>
 </body>
 
 </html>

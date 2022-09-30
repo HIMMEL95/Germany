@@ -192,12 +192,6 @@
                                                                 <span>작성 글</span>
                                                             </a>
                                                         </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" >
-                                                                <i class="fas fa-light fa-newspaper pe-3"></i>
-                                                                <span>로그아웃</span>
-                                                            </a>
-                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>

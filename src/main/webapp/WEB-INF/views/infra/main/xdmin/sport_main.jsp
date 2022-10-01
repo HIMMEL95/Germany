@@ -62,7 +62,7 @@
 			                                    <h3>
 			                                    	<c:out value="${sessId }"/>
 			                                        <br>
-			                                        <a href="#" style="text-transform: none;"><c:out value="${sessEmail }"/><br></a>
+			                                        <a href="/member/memberUView?seq=${sessSeq }" style="text-transform: none;"><c:out value="${sessEmail }"/><br></a>
 			                                    </h3>
 			                                    <ul class="pro_ul">
 				                                    <c:choose>

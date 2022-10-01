@@ -192,6 +192,18 @@
                                                                 <span>작성 글</span>
                                                             </a>
                                                         </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="/changePw">
+                                                                <i class="fa-solid fa-users pe-3"></i>
+                                                                <span>비밀번호 변경</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="/comment/userCommentList">
+                                                                <i class="fa-solid fa-users pe-3"></i>
+                                                                <span>탈퇴하기</span>
+                                                            </a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>

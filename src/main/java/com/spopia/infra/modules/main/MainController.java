@@ -66,4 +66,9 @@ public class MainController {
 	public String naver() throws Exception {
 		return "infra/main/xdmin/naver";
 	}
+	
+	@RequestMapping(value = "changePw")
+	public String changePw() throws Exception {
+		return "infra/member/user/changePwd";
+	}
 }

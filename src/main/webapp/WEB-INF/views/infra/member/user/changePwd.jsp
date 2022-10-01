@@ -13,14 +13,20 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>memberUMod</title>
+    <title>ArticleComment List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="/resources/css/user/memberUMod.css" rel="stylesheet" type="text/css">
+    <link href="/resources/css/xdmin/commentList.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 
 <body>
-
+	<%String id = (String) session.getAttribute("id");%>
+	<%String email = (String) session.getAttribute("email");%>
+	<%String seq = (String) session.getAttribute("seq"); %>
+	<%String name = (String) session.getAttribute("name"); %>
     <header class="navbar-light fixed-top header-static bg-mode align-items-center">
         <!-- 상단 -->
         <nav class="navbar navbar-expand-lg">
@@ -34,9 +40,8 @@
                 <div class="dropdown">
                     <ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
                         <li class="me-2">
-                            <a class="p-0" href="/member/memberView" id="profileDropdown" role="button"
-                                data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
+                                data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar"
                                     style="width: 30px;">
                             </a>
@@ -51,37 +56,75 @@
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="/member/memberUView?seq=${sessSeq }"><c:out value="${sessName }"/></a>
-                                            <p class="small m-0"><c:out value="${sessEmail }"/></p>
+                                            <a class="fs-6 fw-bold" href="#"><c:out value="${sessName }"/><br></a>
+                                            <p class="small m-0"><c:out value="${sessEmail }"/><br></p>
                                         </div>
                                     </div>
                                     <hr>
                                 </li>
                                 <!-- Links -->
-                                <li>
-                                    <a class="dropdown-item" href="/member/memberUView?seq=${sessSeq }">
-                                        <i class="fa-solid fa-user me-2"></i>
-                                        Edit Profile
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fa-solid fa-gear me-2"></i>
-                                        Account Settings
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fa-solid fa-circle-info me-2"></i>
-                                        Help
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item bg-danger-soft-hover" href="/">
-                                        <i class="fa-solid fa-power-off me-2"></i>
-                                        Sign Out
-                                    </a>
-                                </li>
+                                <c:choose>
+									<c:when test="${empty sessUser}">
+										<li>
+		                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" href="/">
+		                                        <i class="fa-solid fa-power-off me-2"></i>
+		                                        Sign in
+		                                    </a>
+		                                </li>
+										<li>
+		                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" href="/">
+		                                        <i class="fa-solid fa-power-off me-2"></i>
+		                                        Sign up
+		                                    </a>
+		                                </li>
+									</c:when>
+									<c:when test="${sessUser eq 25}">
+										<li class="ms-3">
+                                            <a class="pro_a" role="button" id="editBtn" onclick="goForm(<c:out value="${sessSeq }"/>)" style="cursor: pointer;">
+                                                <i class="fa-solid fa-user me-2"></i>
+                                                Edit Profile
+                                            </a>
+                                        </li>
+                                        <li class="ms-3">
+                                            <a class="pro_a" href="#">
+                                                <i class="fa-solid fa-circle-info me-2"></i>
+                                                Help
+                                            </a>
+                                        </li>
+                                        <li class="ms-3">
+                                            <a class="pro_a" id="signOutBtn" href="/">
+                                                <i class="fa-solid fa-power-off me-2"></i>
+                                                Sign Out
+                                            </a>
+                                        </li>
+									</c:when>
+									<c:otherwise>
+										<li>
+		                                    <a class="dropdown-item" href="#">
+		                                        <i class="fa-solid fa-user me-2"></i>
+		                                        Edit Profile
+		                                    </a>
+		                                </li>
+		                                <li>
+		                                    <a class="dropdown-item" href="#">
+		                                        <i class="fa-solid fa-gear me-2"></i>
+		                                        Account Settings
+		                                    </a>
+		                                </li>
+		                                <li>
+		                                    <a class="dropdown-item" href="#">
+		                                        <i class="fa-solid fa-circle-info me-2"></i>
+		                                        Help
+		                                    </a>
+		                                </li>
+		                                <li>
+		                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" href="/">
+		                                        <i class="fa-solid fa-power-off me-2"></i>
+		                                        Sign Out
+		                                    </a>
+		                                </li>
+									</c:otherwise>
+								</c:choose>
                                 <!-- Dark mode switch START -->
                             </ul>
                         </li>
@@ -96,9 +139,9 @@
         <div style="height: 100px;"></div>
         <div class="container">
             <form method="post" id="myForm" name="myForm">
-            	<!-- *Vo.jsp s -->
-				<%@include file="memberVo.jsp"%>		<!-- #-> -->
-				<!-- *Vo.jsp e -->
+            	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
+               	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
+               	<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/><br>">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -131,9 +174,9 @@
                                                                 src="/resources/images/diano.jpg" style="width: 50px;" alt=""></a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
-                                                        <span class="mb-0"><a href="#"><c:out value="${sessName }"/></a></span>
-                                                        <small><c:out value="${sessId }"/></small><br>
-                                                        <small><c:out value="${sessEmail }"/></small>
+                                                        <span class="mb-0"><a href="#"><c:out value="${sessName }"/><br></a></span>
+                                                        <small><c:out value="${sessId }"/><br></small>
+                                                        <small><c:out value="${sessEmail }"/><br></small>
                                                     </div>
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
@@ -150,7 +193,7 @@
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/comment/userCommentList">
+                                                            <a class="nav-link" href="/changePw">
                                                                 <i class="fa-solid fa-users pe-3"></i>
                                                                 <span>비밀번호 변경</span>
                                                             </a>
@@ -187,8 +230,7 @@
                                             </li>
                                         </ul>
                                         <p class="small text-center mt-1">©2022 <a class="text-body" target="_blank" href="#"> SPOPIA
-                                            </a>
-                                        </p>
+                                            </a></p>
                                     </div>
                                 </div>
                             </nav>
@@ -196,102 +238,47 @@
                     </div>
                     <!-- 중앙 메인 영역 -->
                     <div class="col-md-8 col-lg-9 vstack gap-4">
-                        <span class="fs-1 fw-bold text-center">회원 정보</span>
-                        <div class="row mb-4">
-                            <div class="col-12 shadow rounded pt-3 ps-4" style="height: 100px; background-color: #f7f7fc;">
-                            	<div class="row" style="align-items: center;">
-                            		<div class="col-2">
-                            			<img src="../../resources/images/diano.jpg" class="rounded-circle avatar-img shadow" style="width: 60px;">
-		                                <div class="form-attachment-btn btn btn-primary btn-sm ms-3" hidden>
-		                                    <i class="fa-solid fa-arrows-rotate me-2"></i>Upload photo
-		                                    <input type="file" class="js-file-attach form-attachment-btn-label" id="avatarUploader">
-		                                </div>
-                            		</div>
-                            	</div>
-                            </div>
-                        </div>
-                        <div class="card ps-5 pe-5 pt-4 pb-4 shadow" style="background-color: #f7f7fc;"">
-                                        <div class=" row mb-4">
-                            <div class="col">
-                                <label for="name" class="form-label fw-bold">이름</label>
-                                <input type="text" class="form-control bg-white" id="name" name="name" value="<c:out value="${item.name }"/>" readonly>
-                            </div>
-                            <div class="col">
-                                <label for="id" class="form-label fw-bold">아이디</label>
-                                <input type="text" class="form-control bg-white" id="id" name="id" value="<c:out value="${item.id }"/>" readonly>
-                            </div>
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col">
-                                <label for="dob" class="form-label fw-bold">생년월일</label>
-                                <input type="text" class="form-control bg-white" id="dob" name="dob" value="<c:out value="${item.dob }"/>" readonly>
-                            </div>
-                            <div class="col">
-                                <label for="email" class="form-label fw-bold">이메일</label>
-                                <input type="email" class="form-control bg-white" id="email" name="email" value="<c:out value="${item.email }"/>" readonly>
-                            </div>
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col">
-                                <label for="tel" class="form-label fw-bold">전화번호</label>
-                                <input type="tel" class="form-control bg-white" id="tel" name="phone" value="<c:out value="${item.phone }"/>" readonly>
-                            </div>
-                            <div class="col">
-                                <label for="gender" class="form-label fw-bold">성별</label>
-                                <select class="form-select form-select-lg fs-6 bg-white" id="gender" name="gender" aria-label=".form-select-lg example" disabled>
-                                    <option value="5" <c:if test="${item.gender eq 5 }">selected</c:if>>남성</option>
-                                    <option value="6" <c:if test="${item.gender eq 6 }">selected</c:if>>여성</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col">
-                                <label for="job" class="form-label fw-bold">직업</label>
-                                <input type="text" class="form-control bg-white" id="job" name="job" value="<c:out value="${item.job }"/>" readonly>
-                            </div>
-                            <div class="col">
-                            	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectOneCachedCode(30) }" />
-                                <label for="team" class="form-label fw-bold">좋아하는 팀</label>
-                                <input type="text" class="form-control bg-white" id="team" name="team" value="<c:out value="${listCodeTeam }"/>" readonly>
-                            </div>
-                        </div>
-                        <div class="row mb-4" hidden>
-                            <div class="col">
-                                <label for="password" class="form-label fw-bold">비밀번호</label>
-                                <input type="password" class="form-control bg-white" id="password" value="" readonly>
-                            </div>
-                            <div class="col">
-                                <label for="password_confirm" class="form-label fw-bold">비밀번호 확인</label>
-                                <input type="password" class="form-control bg-white" id="password_confirm" value="" readonly>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row mb-4">
-                            <div class="col-6">
-                                <label for="zip" class="form-label fw-bold">우편번호</label>
-                                <input type="text" class="form-control bg-white" id="zip" name="zip" value="<c:out value="${item.zip }"/>" readonly>
-                            </div>
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col">
-                                <label for="address" class="form-label fw-bold">주소</label>
-                                <input type="text" class="form-control bg-white" id="address" name="address" value="<c:out value="${item.address }"/>" readonly>
-                            </div>
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col">
-                                <label for="addressDetail" class="form-label fw-bold">상세주소</label>
-                                <input type="text" class="form-control bg-white" id="addressDetail" name="address_detail" value="<c:out value="${item.address_detail }"/>" readonly>
-                            </div>
-                        </div>
+                        <!-- 게시물 사진 -->
                         <div class="row">
-                            <div class="col-2">
-                                <button class="btn btn-primary text-white fw-bold btn-sm shadow" id="btnList" type="button">뒤로</button>
-                            </div>
-                            <div class="col-2 offset-8" align="right">
-                                <button class="btn btn-primary text-white fw-bold btn-sm shadow" id="btnSave" type="button">등록</a>
+                            <div class="col-12 ">
+                                <div class="card text-white position-relative shadow-lg">
+                                    <img src="/resources/images/xdmin/listBack.jpg" class="card-img" style="height: 200px;"
+                                        alt="...">
+                                    <div class="card-img-overlay text-center p-4 position-absoulte top-50 start-50 translate-middle">
+                                        <span class="card-title align-middle fw-bold fs-3">비밀번호 변경</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <!-- 검색 -->
+                        <div class="card p-3 shadow">
+                        	<div class="mb-3 row">
+                        		<label for="inputPassword" class="col-sm-2 col-form-label">현재 비밀번호</label>
+							    <div class="col-sm-10">
+							    	<input type="password" class="form-control" id="inputPassword">
+							    </div>
+						 	</div>
+						 	<div class="mb-3 row">
+						 		<label for="inputPassword" class="col-sm-2 col-form-label">새로운 비밀번호</label>
+							    <div class="col-sm-10">
+							      <input type="password" class="form-control" id="inputPassword">
+							    </div>
+						 	</div>
+						 	<div class="mb-3 row">
+						 		<label for="inputPassword" class="col-sm-2 col-form-label">새로운 비밀번호 확인</label>
+							    <div class="col-sm-10">
+							      <input type="password" class="form-control" id="inputPassword">
+							    </div>
+						 	</div>
+                            <div class="row align-items-center">
+                                <div class="col-2">
+                                    <button class="btn btn-warning fw-bold btn-sm shadow" type="submit">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 리스트 -->
                     </div>
                 </div>
             </form>
@@ -331,20 +318,18 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-    	var goUrlList = "/member/memberUView?seq=<c:out value="${item.seq }"/>";
-    	var goUrlUpdt = "/member/memberUpdt";
-    	var form = $("#myForm");
-    	
-    	$("#btnSave").on("click", function() {
-			form.attr("action", goUrlUpdt).submit();
+		$("button[name=signOutBtn]").on("click", function() {
+			$.ajax({
+				type: "POST"
+				,url: "logout"
+				,data: {}
+				,success : function(response) {
+					location.reload();
+				}
+			});
 		});
-    	
-    	$("#btnList").on("click", function() {
-			window.history.back();
-		});
-    </script>
+   </script>
 </body>
 
 </html>

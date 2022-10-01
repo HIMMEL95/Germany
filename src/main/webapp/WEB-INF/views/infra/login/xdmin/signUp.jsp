@@ -223,6 +223,16 @@
                     </div>
                 </div>
                 <div class="row">
+                	<div class="col">
+	                	<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 20px; height: 20px;">
+							<label class="form-check-label" for="flexCheckDefault">
+							  개인정보 제공에 동의 하시겠습니까?
+							</label>
+						</div>
+                	</div>
+                </div>
+                <div class="row">
                     <div class="col-2">
                         <button type="button" id="backBtn" style="background: #03c75a;">뒤로</button>
                     </div>

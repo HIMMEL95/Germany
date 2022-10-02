@@ -68,4 +68,8 @@ public class MemberDao {
 	public Member xdminLoginCheck(Member dto) {
 		return sqlSession.selectOne(namespace + ".xdminLoginCheck", dto);
 	}
+	
+	public int pwdUpdt(Member dto) {
+	    return sqlSession.update(namespace + ".pwdUpdt", dto);
+	}
 }

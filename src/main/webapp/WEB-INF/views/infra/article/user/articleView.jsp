@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+q<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -156,7 +156,7 @@
 	                                                    <div class="u_cbox_write_area">
 	                                                        <strong class="u_vc">댓글 입력</strong>
 	                                                        <div class="u_cbox_inbox">
-	                                                            <textarea title="응원톡" id="cbox_module__write_textarea" class="u_cbox_text"
+	                                                            <textarea title="응원톡" id="cbox_module__write_textarea" name="content" class="u_cbox_text"
 	                                                                rows="3" cols="30" data-log="RPC.input"></textarea>
 	                                                            <label for="cbox_module__write_textarea" class="u_cbox_guide"
 	                                                                data-action="write#placeholder" data-param="@event">
@@ -183,7 +183,7 @@
 	                                                                            <button type="button" class="btn btn-secondary"
 	                                                                                data-bs-dismiss="modal">Close</button>
 	                                                                            <a role="button" class="btn bg-white"
-	                                                                                href="../login/loginForm.html">Login</a>
+	                                                                                href="/userLogin">Login</a>
 	                                                                        </div>
 	                                                                    </div>
 	                                                                </div>

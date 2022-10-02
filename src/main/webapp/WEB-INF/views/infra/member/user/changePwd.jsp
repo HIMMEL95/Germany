@@ -64,20 +64,6 @@
                                 </li>
                                 <!-- Links -->
                                 <c:choose>
-									<c:when test="${empty sessUser}">
-										<li>
-		                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" href="/">
-		                                        <i class="fa-solid fa-power-off me-2"></i>
-		                                        Sign in
-		                                    </a>
-		                                </li>
-										<li>
-		                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" href="/">
-		                                        <i class="fa-solid fa-power-off me-2"></i>
-		                                        Sign up
-		                                    </a>
-		                                </li>
-									</c:when>
 									<c:when test="${sessUser eq 25}">
 										<li class="ms-3">
                                             <a class="pro_a" role="button" id="editBtn" onclick="goForm(<c:out value="${sessSeq }"/>)" style="cursor: pointer;">
@@ -92,10 +78,10 @@
                                             </a>
                                         </li>
                                         <li class="ms-3">
-                                            <a class="pro_a" id="signOutBtn" href="/">
+                                            <button class="pro_a" id="signOutBtn">
                                                 <i class="fa-solid fa-power-off me-2"></i>
                                                 Sign Out
-                                            </a>
+                                            </button>
                                         </li>
 									</c:when>
 									<c:otherwise>
@@ -252,31 +238,33 @@
                         </div>
                         <!-- 검색 -->
                         <div class="card p-3 shadow">
-                        	<div class="mb-3 row">
-                        		<label for="inputPassword" class="col-sm-2 col-form-label">현재 비밀번호</label>
-							    <div class="col-sm-10">
-							    	<input type="password" class="form-control" id="inputPassword">
-							    </div>
-						 	</div>
-						 	<div class="mb-3 row">
-						 		<label for="inputPassword" class="col-sm-2 col-form-label">새로운 비밀번호</label>
-							    <div class="col-sm-10">
-							      <input type="password" class="form-control" id="inputPassword">
-							    </div>
-						 	</div>
-						 	<div class="mb-3 row">
-						 		<label for="inputPassword" class="col-sm-2 col-form-label">새로운 비밀번호 확인</label>
-							    <div class="col-sm-10">
-							      <input type="password" class="form-control" id="inputPassword">
-							    </div>
-						 	</div>
-                            <div class="row align-items-center">
-                                <div class="col-2">
-                                    <button class="btn btn-warning fw-bold btn-sm shadow" type="submit">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </button>
-                                </div>
-                            </div>
+                        	<div class="">
+                        		<div class="mb-3 row">
+	                        		<label for="inputPassword" class="col-sm-3 offset-sm-2 col-form-label">현재 비밀번호</label>
+								    <div class="col-sm-3">
+								    	<input type="password" class="form-control" id="inputPassword">
+								    </div>
+							 	</div>
+							 	<div class="mb-3 row">
+							 		<label for="inputPassword" class="col-sm-3 offset-sm-2 col-form-label">새로운 비밀번호</label>
+								    <div class="col-sm-3">
+								      <input type="password" class="form-control" id="inputPassword" name="password">
+								    </div>
+							 	</div>
+							 	<div class="mb-3 row">
+							 		<label for="inputPassword" class="col-sm-3 offset-sm-2 col-form-label">새로운 비밀번호 확인</label>
+								    <div class="col-sm-3">
+								      <input type="password" class="form-control" id="inputPassword">
+								    </div>
+							 	</div>
+	                            <div class="row float-end">
+	                                <div class="col-2">
+	                                    <button class="btn btn-secondary fw-bold btn-sm shadow" type="submit" id="btnSave">
+	                                        <i class="fas fa-duotone fa-registered"></i>
+	                                    </button>
+	                                </div>
+	                            </div>
+                        	</div>
                         </div>
                         <!-- 리스트 -->
                     </div>
@@ -319,15 +307,24 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
-		$("button[name=signOutBtn]").on("click", function() {
+	    $("#signOutBtn").on("click", function() {
 			$.ajax({
 				type: "POST"
-				,url: "logout"
+				,url: "logoutProc"
 				,data: {}
 				,success : function(response) {
-					location.reload();
+					if (response.rt == "success") {
+						window.location.href = "/";
+					}
 				}
 			});
+		});
+		
+		var goUrlUpdt = "/pwdUpdt";
+		var form = $("#myForm");
+		
+		$("#btnSave").on("click", function() {
+			form.attr("action", goUrlUpdt).submit();
 		});
    </script>
 </body>

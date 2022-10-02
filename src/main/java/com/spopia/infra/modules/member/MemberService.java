@@ -23,4 +23,7 @@ public interface MemberService {
 //	login 관련 
 	public Member loginCheck(Member dto) throws Exception;
 	public Member xdminLoginCheck(Member dto) throws Exception;
+	
+    /* change Password */
+	public int pwdUpdt(Member dto) throws Exception;
 }

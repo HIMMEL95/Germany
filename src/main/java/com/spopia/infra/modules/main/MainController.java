@@ -1,6 +1,8 @@
 package com.spopia.infra.modules.main;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,8 @@ import com.spopia.infra.modules.comment.CommentVo;
 import com.spopia.infra.modules.game.Game;
 import com.spopia.infra.modules.game.GameServiceImpl;
 import com.spopia.infra.modules.game.GameVo;
+import com.spopia.infra.modules.member.Member;
+import com.spopia.infra.modules.member.MemberServiceImpl;
 
 @Controller
 public class MainController {
@@ -23,6 +27,8 @@ public class MainController {
 	ArticleServiceImpl aService;
 	@Autowired
 	GameServiceImpl gService;
+	@Autowired
+	MemberServiceImpl mService;
 	
 	@RequestMapping(value = "/")
 	public String main() throws Exception {
@@ -68,7 +74,13 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "changePw")
-	public String changePw() throws Exception {
+	public String changePw(Member dto) throws Exception {
 		return "infra/member/user/changePwd";
+	}
+	
+	@RequestMapping(value = "pwdUpdt")
+	public String pwdUpdt(Member dto) throws Exception {
+	    mService.pwdUpdt(dto);
+	   return "infra/member/user/changePwd";
 	}
 }

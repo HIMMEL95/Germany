@@ -271,4 +271,11 @@
 			and user_div = 24
 	</select>
 
+	<update id="pwdUpdt">
+		UPDATE user
+		SET
+			pwd = #{pwd}
+		where 1=1
+			and seq = #{seq}
+	</update>
 </mapper>

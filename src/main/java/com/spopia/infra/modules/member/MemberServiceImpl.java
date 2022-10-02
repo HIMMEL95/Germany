@@ -90,5 +90,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member xdminLoginCheck(Member dto) throws Exception {
 		return dao.xdminLoginCheck(dto);
-	}	
+	}
+
+	/* change Password */
+    @Override
+    public int pwdUpdt(Member dto) throws Exception {
+        return dao.pwdUpdt(dto);
+    }	
+	
 }

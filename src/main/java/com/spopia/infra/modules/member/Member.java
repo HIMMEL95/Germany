@@ -21,12 +21,19 @@ public class Member {
 	private Integer user_div;
 	private Integer team;
 	private Integer uDelNy;
+	private String newPassword;
 	
-	// teamUser Dto
+    // teamUser Dto
 	private String tuSeq;
 	private Integer defaultNY;
 	private Integer deleteNY;
 	
+	public String getNewPassword() {
+	    return newPassword;
+	}
+	public void setNewPassword(String newPassword) {
+	    this.newPassword = newPassword;
+	}
 	public String getTuSeq() {
 		return tuSeq;
 	}

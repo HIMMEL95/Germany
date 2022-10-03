@@ -1,8 +1,8 @@
-
-/* :root {
+/* 
+:root {
   --main-radius: 5px;
   --main-padding: 5px;
-} */
+}
 
 .container {
   display: grid;
@@ -22,7 +22,7 @@
   min-height: 100%;
 }
 
-/* header */
+header
 header {
   background: #2565D0;
   grid-area: header;
@@ -97,7 +97,7 @@ a {
   border-radius: 50%;
 }
 
-/* user dropdown */
+user dropdown
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
 
 * {
@@ -218,12 +218,12 @@ a {
   background: #fff;
   grid-area: topbar;
   padding-top: 10px;
-  /* border-radius: var(--main-radius);
-  padding-top: var(--main-padding); */
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
 }
 
 .menuBar ul {
-  /* float: left; */
+  float: left;
   margin-top: 10px;
 }
 
@@ -276,21 +276,21 @@ main {
 
 #game {
   grid-area: game;
-  /* border-radius: var(--main-radius);
-  padding-top: var(--main-padding); */
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
   display: flex;
   margin: 0 30px;
   justify-content: space-between;
   align-items: center;
 }
 
-/* card 뷰 영역 */
+card 뷰 영역
 .game_card {
   width: 250px;
   height: 120px;
   border-radius: 15px;
   margin: 25px 10px;
-  /* background-image: url('https://sports-phinf.pstatic.net/liveThumbnail/202208153509168.jpg?type=f640_360'); */
+  background-image: url('https://sports-phinf.pstatic.net/liveThumbnail/202208153509168.jpg?type=f640_360');
   background: white;
   box-shadow: 5px 5px 10px gray;
   cursor: pointer;
@@ -345,7 +345,7 @@ main {
   border-radius: 15px;
   margin: 25px 10px;
   left: 0;
-  /* background-image: url('https://sports-phinf.pstatic.net/liveThumbnail/202208153509168.jpg?type=f640_360'); */
+  background-image: url('https://sports-phinf.pstatic.net/liveThumbnail/202208153509168.jpg?type=f640_360');
   background: white;
   box-shadow: 5px 5px 10px gray;
   cursor: pointer;
@@ -422,8 +422,8 @@ main {
 #article {
   background: white;
   grid-area: article;
-  /* border-radius: var(--main-radius);
-  padding-top: var(--main-padding); */
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
   padding: 20px 0;
   border-top: 1px solid #dfe3ec;
   border-right: 1px solid #dfe3ec;
@@ -766,7 +766,7 @@ main {
 }
 
 
-/* footer 영역 */
+footer 영역
 footer {
   border-top: 1px solid gray;
   display: grid;
@@ -825,7 +825,7 @@ strong {
   font-weight: bold;
 }
 
-/* 저작권 영역 */
+저작권 영역
 .footer .footer_link+.footer_copy {
   margin-top: 9px;
 }
@@ -945,8 +945,8 @@ strong {
 
   #game {
     grid-area: game;
-    /* border-radius: var(--main-radius);
-  padding-top: var(--main-padding); */
+    border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
     display: flex;
     margin: 0 30px;
     justify-content: space-between;
@@ -954,13 +954,13 @@ strong {
     flex-wrap: wrap;
   }
 
-  /* card 뷰 영역 */
+  card 뷰 영역
   .game_card {
     width: 250px;
     height: 120px;
     border-radius: 15px;
     margin: 25px 10px;
-    /* background-image: url('https://sports-phinf.pstatic.net/liveThumbnail/202208153509168.jpg?type=f640_360'); */
+    background-image: url('https://sports-phinf.pstatic.net/liveThumbnail/202208153509168.jpg?type=f640_360');
     background: white;
     box-shadow: 5px 5px 10px gray;
     cursor: pointer;
@@ -973,4 +973,13 @@ strong {
     grid-gap: 0.2rem;
     width: 100%;
   }
+} */
+
+
+.news {
+ 	text-overflow: ellipsis;
+	display: -webkit-box;
+       -webkit-line-clamp: 2;
+       -webkit-box-orient: vertical;
+  	overflow: hidden;
 }

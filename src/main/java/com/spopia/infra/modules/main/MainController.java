@@ -1,8 +1,6 @@
 package com.spopia.infra.modules.main;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -69,7 +67,14 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "naver")
-	public String naver() throws Exception {
+	public String naver(Model model, ArticleVo aVo, GameVo gVo) throws Exception {
+		
+		List<Article> aList = aService.mainList(aVo);
+		model.addAttribute("aList", aList);
+		
+		List<Game> gList = gService.mainList(gVo);
+		model.addAttribute("gList", gList);
+		
 		return "infra/main/xdmin/naver";
 	}
 	

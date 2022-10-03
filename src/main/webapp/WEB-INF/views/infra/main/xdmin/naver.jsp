@@ -37,6 +37,7 @@
 	href="https://ssl.pstatic.net/static.sports/resources/pc/2022/09/29/130734/css/generated/nsportsHome.css">
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/user/naver.css">
+<link rel="stylesheet" href="/resources/css/user/sportMain.css">
 
 <link rel="shortcut icon"
 	href="https://www.naver.com/favicon.ico?v=20140228" type="image/x-icon">
@@ -119,13 +120,10 @@
 
 <body class="sports_home">
 	<form method="post" id="myForm" name="myForm">
-		<input type="hidden" name="thisPage"
-			value='<c:out value="${vo.thisPage }" default="1"/>'> <input
-			type="hidden" name="rowNumToShow"
-			value='<c:out value="${vo.rowNumToShow }"/>'> <input
-			type="hidden" name="gSeq" value='<c:out value="${vo.gSeq }"></c:out>'>
-		<input type="hidden" name="aSeq"
-			value='<c:out value="${vo.aSeq }"></c:out>'>
+		<input type="hidden" name="thisPage" value='<c:out value="${vo.thisPage }" default="1"/>'> 
+		<input type="hidden" name="rowNumToShow" value='<c:out value="${vo.rowNumToShow }"/>'> 
+		<input type="hidden" name="gSeq" value='<c:out value="${vo.gSeq }"></c:out>'>
+		<input type="hidden" name="aSeq" value='<c:out value="${vo.aSeq }"></c:out>'>
 		<!-- 사이드 광고 -->
 		<div id="veta_skin_left" data-veta-preview="p_sports_dpl"></div>
 		<div id="veta_skin_right" data-veta-preview="p_sports_dpl"></div>
@@ -692,7 +690,7 @@
 							</button>
 						</div>
 
-						<script>
+						<!-- <script>
 							naver = window.naver || {};
 							naver.sports = naver.sports || {};
 							naver.sports.section = naver.sports.section || {};
@@ -1424,7 +1422,7 @@
 													"thumbnailImage" : ""
 												} ],
 									});
-						</script>
+						</script> -->
 					</div>
 				</div>
 				<div id="content">
@@ -1432,139 +1430,39 @@
 						<div class="today_section type_no_da">
 							<h3 class="blind">오늘의 스포츠</h3>
 							<ul class="today_list">
-								<li class="today_item"><a
-									href="/news?oid=109&amp;aid=0004709574" class="link_today"
-									title="'켈리 16승 다승 1위+홍창기 결승타' LG, NC 꺾고 2위 확보...1위 계속 추격 [잠실 리뷰]"
-									onclick="clickcr(this, 'rnk*r.list', '109_0004709574', '1', event);"
-									data-not-edited="Y">
-										<div class="image_area">
-											<img
-												src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/109/2022/09/30/0004709574_001_20220930212307497.png&amp;type=nf160_95&amp;service=sports"
-												onerror="imageOnError(this);" width="160" height="95" alt="">
-										</div>
-										<div class="text_area">
-											<strong class="title">'켈리 16승 다승 1위+홍창기 결승타' LG, NC
-												꺾고 2위 확보…1위 계속 추격 </strong>
-											<!-- [D] 내용 두줄 말줄임 적용해주세요. -->
-											<p class="news">[OSEN=잠실, 한용섭 기자] LG가 NC에 승리했다.LG는 30일 서울
-												잠실구장에서 열린 2022 KBO리그 NC와의 경기에서 2-1 한 점 차 승리를 ..."</p>
-											<div class="information">
-												<span>OSEN</span> <span>KBO리그</span>
-											</div>
-										</div>
-								</a></li>
-
-								<li class="today_item"><a
-									href="/news?oid=025&amp;aid=0003227828" class="link_today"
-									title="'나폴리 벽' 김민재, 데뷔 2달 만에 '伊 세리에A 이달의 선수'"
-									onclick="clickcr(this, 'rnk*r.list', '025_0003227828', '2', event);"
-									data-not-edited="Y">
-										<div class="image_area">
-											<img
-												src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/025/2022/09/30/0003227828_001_20220930220001118.jpg&amp;type=nf160_95&amp;service=sports"
-												onerror="imageOnError(this);" width="160" height="95" alt="">
-										</div>
-										<div class="text_area">
-											<strong class="title">'나폴리 벽' 김민재, 데뷔 2달 만에 '伊 세리에A
-												이달의 선수'</strong>
-											<!-- [D] 내용 두줄 말줄임 적용해주세요. -->
-											<p class="news">이탈리아 프로축구 SSC 나폴리 김민재가 세리에A 9월 이달의 선수상을
-												수상했다. 사진 세리에A ‘나폴리의 벽’ 김민재(26)가 이탈리아 세리에A 데뷔 두 ..."</p>
-											<div class="information">
-												<span>중앙일보</span> <span>세리에A</span>
-											</div>
-										</div>
-								</a></li>
-
-								<li class="today_item"><a
-									href="/news?oid=477&amp;aid=0000384726" class="link_today"
-									title="이건 아니지…PS 탈락했어도 당연했던 문책성 교체"
-									onclick="clickcr(this, 'rnk*r.list', '477_0000384726', '3', event);"
-									data-not-edited="Y">
-										<div class="image_area">
-											<img
-												src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/477/2022/09/30/0000384726_001_20220930215902793.jpg&amp;type=nf160_95&amp;service=sports"
-												onerror="imageOnError(this);" width="160" height="95" alt="">
-										</div>
-										<div class="text_area">
-											<strong class="title">이건 아니지…PS 탈락했어도 당연했던 문책성 교체</strong>
-											<!-- [D] 내용 두줄 말줄임 적용해주세요. -->
-											<p class="news">▲ 두산 베어스 김재호(오른쪽) ⓒ 두산 베어스[스포티비뉴스=대구, 김민경
-												기자] "아직 경기가 남았다."김태형 두산 베어스 감독은 30일 대구 삼성 라이온..."</p>
-											<div class="information">
-												<span>스포티비뉴스</span> <span>KBO리그</span>
-											</div>
-										</div>
-								</a></li>
-
-								<li class="today_item"><a
-									href="/news?oid=117&amp;aid=0003651757" class="link_today"
-									title="'1050억' 손흥민, 전세계 레프트윙 시장가치 2위…1위는 비니시우스"
-									onclick="clickcr(this, 'rnk*r.list', '117_0003651757', '4', event);"
-									data-not-edited="Y">
-										<div class="image_area">
-											<!-- [D] 썸네일 이미지 alt 값 비워주세요. -->
-											<img
-												src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/117/2022/09/30/202209302041987081_1_20220930204502999.jpg&amp;type=nf160_95&amp;service=sports"
-												onerror="imageOnError(this);" width="160" height="95" alt="">
-										</div>
-										<div class="text_area">
-											<strong class="title">'1050억' 손흥민, 전세계 레프트윙 시장가치
-												2위…1위는 비니시우스</strong>
-											<!-- [D] 내용 두줄 말줄임 적용해주세요. -->
-											<p class="news">[마이데일리 = 김종국 기자] 손흥민이 전세계 레프트윙 중 시장가치가
-												최상위권인 것으로 나타났다.독일 이적전문매체 트랜스퍼마크트는 30일(한국시간) 전세계 ..."</p>
-											<div class="information">
-												<span>마이데일리</span> <span>해외축구 일반</span>
-											</div>
-										</div>
-								</a></li>
-
-								<li class="today_item"><a
-									href="/news?oid=108&amp;aid=0003092122" class="link_today"
-									title="오타니 노히트 깨진 '그 순간', 모두를 감동시킨 '행동 하나'"
-									onclick="clickcr(this, 'rnk*r.list', '108_0003092122', '5', event);"
-									data-not-edited="Y">
-										<div class="image_area">
-											<!-- [D] 썸네일 이미지 alt 값 비워주세요. -->
-											<img
-												src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/108/2022/09/30/0003092122_001_20220930210101439.jpg&amp;type=nf160_95&amp;service=sports"
-												onerror="imageOnError(this);" width="160" height="95" alt="">
-										</div>
-										<div class="text_area">
-											<strong class="title">오타니 노히트 깨진 '그 순간', 모두를 감동시킨
-												'행동 하나'</strong>
-											<!-- [D] 내용 두줄 말줄임 적용해주세요. -->
-											<p class="news">오타니 쇼헤이. /AFPBBNews=뉴스1오타니 쇼헤이(28·LA
-												에인절스)의 노히트 행진이 끝난 순간. 오타니가 오히려 위로를 건넨 쪽은 자신이 아닌, 공..."</p>
-											<div class="information">
-												<span>스타뉴스</span> <span>메이저리그</span>
-											</div>
-										</div>
-								</a></li>
-
-								<li class="today_item"><a
-									href="/news?oid=119&amp;aid=0002644352" class="link_today"
-									title="저지 MVP 저지? 멀티히트 오타니, 15승·210탈삼진 돌파"
-									onclick="clickcr(this, 'rnk*r.list', '119_0002644352', '6', event);"
-									data-not-edited="Y">
-										<div class="image_area">
-											<!-- [D] 썸네일 이미지 alt 값 비워주세요. -->
-											<img
-												src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/119/2022/09/30/0002644352_001_20220930225202920.jpeg&amp;type=nf160_95&amp;service=sports"
-												onerror="imageOnError(this);" width="160" height="95" alt="">
-										</div>
-										<div class="text_area">
-											<strong class="title">저지 MVP 저지? 멀티히트 오타니,
-												15승·210탈삼진 돌파</strong>
-											<!-- [D] 내용 두줄 말줄임 적용해주세요. -->
-											<p class="news">시즌 15승 고지에 올라선 오타니. ⓒ AP=뉴시스[데일리안 = 김태훈
-												기자] ‘투타 겸업’ 오타니 쇼헤이(28·LA 에인절스)가 15승 고지를 밟으며 애런..."</p>
-											<div class="information">
-												<span>데일리안</span> <span>메이저리그</span>
-											</div>
-										</div>
-								</a></li>
+								<c:set var="listCodeLeague" value="${CodeServiceImpl.selectListCachedCode('6') }" />
+				            	<c:choose>
+			                  		<c:when test="${fn:length(aList) eq 0}">
+			              				<div class="text-center">There is no data!</div>
+			                  		</c:when>
+			                   		<c:otherwise>
+			                       		<c:forEach items="${aList}" var="aList" varStatus="status">
+											<li class="today_item">
+												<a href="/news?oid=109&amp;aid=0004709574" class="link_today" title="'켈리 16승 다승 1위+홍창기 결승타' LG, NC 꺾고 2위 확보...1위 계속 추격 [잠실 리뷰]" onclick="clickcr(this, 'rnk*r.list', '109_0004709574', '1', event);" data-not-edited="Y">
+													<div class="image_area">
+														<img
+															src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/109/2022/09/30/0004709574_001_20220930212307497.png&amp;type=nf160_95&amp;service=sports"
+															onerror="imageOnError(this);" width="160" height="95" alt="">
+													</div>
+													<div class="text_area">
+														<strong class="title">${aList.title } </strong>
+														<!-- [D] 내용 두줄 말줄임 적용해주세요. -->
+														<p class="news">${aList.content }</p>
+														<div class="information">
+															<span>${aList.newspaper }</span> 
+															<span>
+																<c:forEach items="${listCodeLeague}" var="listLeague" varStatus="statusLeague">
+																	<c:if test="${aList.aLeague eq listLeague.ccSeq}"><c:out value="${listLeague.ifccName }"/></c:if>
+																</c:forEach>
+																리그
+															</span>
+														</div>
+													</div>
+												</a>
+											</li>		
+										</c:forEach>
+			                   		</c:otherwise>
+			                   	</c:choose>
 							</ul>
 						</div>
 						<div class="aside_section">

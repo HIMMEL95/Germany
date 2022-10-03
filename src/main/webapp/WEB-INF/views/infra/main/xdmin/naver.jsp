@@ -116,6 +116,8 @@
 	src="https://ssl.pstatic.net/static.sports/resources/pc/2022/09/29/130734/js/generated/baseJsBottomLazy.js"></script>
 <script src="https://ssl.pstatic.net/static.gn/js/clickcrD.js"
 	id="gnb_clickcrD" charset="utf-8"></script>
+	
+<link rel="stylesheet" href="/resources/css/user/sportMain.css"> 
 </head>
 
 <body class="sports_home">
@@ -146,20 +148,113 @@
 						</h1>
 					</div>
 					<!-- GNB -->
-					<div class="gnb_area">
+					<!-- <div class="gnb_area">
 						<div class="gnb_one" id="gnb">
 							<strong class="blind">사용자 링크</strong>
 							<ul class="gnb_lst" id="gnb_lst" style="display: block;">
-								<li class="gnb_login_li" id="gnb_login_layer"
-									style="display: inline-block;"><a class="gnb_btn_login"
-									href="https://nid.naver.com/nidlogin.login?url=https%3A%2F%2Fsports.news.naver.com%2Findex"
-									id="gnb_login_button"> <span class="gnb_bg"></span> <span
-										class="gnb_bdr"></span> <span class="gnb_txt">로그인</span>
-								</a></li>
+								<li class="gnb_login_li" id="gnb_login_layer" style="display: inline-block;">
+									<a class="gnb_btn_login" href="https://nid.naver.com/nidlogin.login?url=https%3A%2F%2Fsports.news.naver.com%2Findex" id="gnb_login_button"> 
+										<span class="gnb_bg"></span> 
+										<span class="gnb_bdr"></span> 
+										<span class="gnb_txt">로그인</span>
+									</a>
+								</li>
 							</ul>
 						</div>
-					</div>
-					<!-- GNB -->
+					</div> -->
+					<div class="navigation">
+	                    <ul class="nav_ul">
+	                    	<c:choose>
+	                    		<c:when test="${empty sessSeq }">
+	                    			<li class="nav_li">
+			                            <a class="login" href="/userLogin">
+			                                <i class="fa-solid fa-right-to-bracket"></i>
+			                            </a>
+			                        </li>
+	                    		</c:when>	
+	                    		<c:otherwise>
+	                    			<li class="nav_li">
+			                            <div class="action">
+			                                <div class="profile" onclick="menuToggle();">
+			                                    <img class="pro_img" src="/resources/images/diano.jpg" width="35">
+			                                </div>
+			                                <div class="menu">
+			                                    <h3>
+			                                    	<c:out value="${sessId }"/>
+			                                        <br>
+			                                        <a href="/member/memberUView?seq=${sessSeq }" style="text-transform: none;"><c:out value="${sessEmail }"/><br></a>
+			                                    </h3>
+			                                    <ul class="pro_ul">
+				                                    <c:choose>
+														<c:when test="${empty sessUser}">
+															<li class="pro_li">
+					                                            <a class="pro_a" id="signOutBtn" href="/userLogin">
+					                                                <i class="fa-solid fa-power-off me-2"></i>
+					                                                Sign In
+					                                            </a>
+					                                        </li>
+															<li class="pro_li">
+					                                            <a class="pro_a" id="signOutBtn" href="/signUp">
+					                                                <i class="fa-solid fa-power-off me-2"></i>
+					                                                Sign Up
+					                                            </a>
+					                                        </li>
+														</c:when>
+														<c:when test="${sessUser eq 25}">
+															<li class="pro_li">
+					                                            <a class="pro_a" role="button" id="editBtn" href="/member/memberUView?seq=${sessSeq }" style="cursor: pointer;">
+					                                                <i class="fa-solid fa-user me-2"></i>
+					                                                Edit Profile
+					                                            </a>
+					                                        </li>
+					                                        <li class="pro_li">
+					                                            <a class="pro_a" href="#">
+					                                                <i class="fa-solid fa-circle-info me-2"></i>
+					                                                Help
+					                                            </a>
+					                                        </li>
+					                                        <li class="pro_li">
+					                                            <a class="pro_a" id="signOutBtn" href="/userLogin">
+					                                                <i class="fa-solid fa-power-off me-2"></i>
+					                                                Sign Out
+					                                            </a>
+					                                        </li>
+														</c:when>
+														<c:otherwise>
+															<li class="pro_li">
+					                                            <a class="pro_a" role="button" id="editBtn" href="/member/memberUView?seq=${sessSeq }" style="cursor: pointer;">
+					                                                <i class="fa-solid fa-user me-2"></i>
+					                                                Edit Profile
+					                                            </a>
+					                                        </li>
+					                                        <li class="pro_li">
+					                                            <a class="pro_a" href="/dashboard">
+					                                                <i class="fa-solid fa-gear me-2"></i>
+					                                                Admin Page
+					                                            </a>
+					                                        </li>
+					                                        <li class="pro_li">
+					                                            <a class="pro_a" href="#">
+					                                                <i class="fa-solid fa-circle-info me-2"></i>
+					                                                Help
+					                                            </a>
+					                                        </li>
+					                                        <li class="pro_li">
+					                                            <a class="pro_a" id="signOutBtn" href="/userLogin">
+					                                                <i class="fa-solid fa-power-off me-2"></i>
+					                                                Sign Out
+					                                            </a>
+					                                        </li>
+														</c:otherwise>
+													</c:choose>
+			                                    </ul>
+			                                </div>
+			                            </div>
+			                        </li>
+	                    		</c:otherwise>                    	
+	                    	</c:choose>
+	                    </ul>
+	                </div>
 				</div>
 				<div class="sports_menu" role="navigation" id="_sports_lnb_menu">
 					<div class="menu_area">
@@ -547,44 +642,59 @@
 									style="touch-action: none;">
 									<div class="scroller" id="_section_home_live_scroll"
 										style="transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);">
-										<div class="live_box_card type_live">
-											<div class="category">KBO</div>
-											<div class="image_area">
-												<span class="image"><img
-													src="https://sports-phinf.pstatic.net/liveThumbnail/20220930WOSK02022.jpg?type=f640_360"
-													alt="" width="246" height="132"
-													onerror="imageOnError(this);"></span> <span
-													class="common_live_tag"><span class="blind">LIVE</span></span>
-												<span class="live_viewer"><span class="number">1,065,805</span>
-													시청</span>
-											</div>
-											<div class="match_info">
-												<div class="match_status">
-													<span class="status">11회말</span> <span class="league">KBO</span>
-												</div>
-												<div class="away_team">
-													<span class="score"><span class="point">3</span> </span> <span
-														class="team"> <span class="emblem"><img
-															src="https://sports-phinf.pstatic.net/team/kbo/default/WO.png"
-															width="30" height="30" alt=""
-															onerror="imageOnError(this);"></span> <span class="name">키움</span>
-													</span>
-												</div>
-												<div class="home_team">
-													<span class="score"><span class="point">7</span> </span> <span
-														class="team"> <span class="emblem"><img
-															src="https://sports-phinf.pstatic.net/team/kbo/default/SK.png"
-															width="30" height="30" alt="SSG"
-															onerror="imageOnError(this);"></span> <span class="name">SSG</span>
-													</span>
-												</div>
-											</div>
-											<a href="/game/20220930WOSK02022" class="link_live"
-												aria-label="새창"
-												onclick="clickcr(this, 'lbx.match', '', '', event);"><span
-												class="blind">영상 보기</span></a>
-										</div>
-
+										<c:set var="listCodeEvent" value="${CodeServiceImpl.selectListCachedCode('5') }" />
+						                <c:set var="listCodeLeague" value="${CodeServiceImpl.selectListCachedCode('6') }" />
+						                <c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
+						                <c:choose>
+					                  		<c:when test="${fn:length(gList) eq 0}">
+				                  				<div class="text-center">There is no data!</div>
+					                  		</c:when>
+					                   		<c:otherwise>
+					                       		<c:forEach items="${gList}" var="gList" varStatus="status">
+													<div class="live_box_card ">
+														<div class="category">
+															<c:forEach items="${listCodeLeague}" var="listLeague" varStatus="statusLeague">
+																<c:if test="${gList.gLeague eq listLeague.ccSeq}"><c:out value="${listLeague.ifccName }"/></c:if>
+															</c:forEach>
+														</div>
+														<div class="match_info">
+															<div class="match_status">
+																<span class="versus">VS</span> 
+																<span class="status">${gList.gameDuration } 예정</span>
+															</div>
+															<div class="away_team">
+																<span class="team"> 
+																	<span class="emblem">
+																		<img src="https://sports-phinf.pstatic.net/team/wfootball/default/32839.png" width="30" height="30" alt="" onerror="imageOnError(this);">
+																	</span> 
+																	<span class="name">
+																		<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+																			<c:if test="${gList.team_away eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+																		</c:forEach>
+																	</span>
+																</span>
+															</div>
+															<div class="home_team">
+																<span class="team"> 
+																	<span class="emblem">
+																		<img src="https://sports-phinf.pstatic.net/team/wfootball/default/26344.png" width="30" height="30" alt="마르세유" onerror="imageOnError(this);">
+																	</span> 
+																	<span class="name">
+																		<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+																			<c:if test="${gList.team_home eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+																		</c:forEach>
+																	</span>
+																</span>
+															</div>
+														</div>
+														<a href="/game/2022100162034172157" class="link_live" aria-label="새창" onclick="clickcr(this, 'lbx.match', '', '', event);">
+															<span class="blind">영상 보기</span>
+														</a>
+													</div>
+												</c:forEach>
+					                   		</c:otherwise>
+					                   	</c:choose>
+										
 										<div class="live_box_card type_live">
 											<div class="category">당구</div>
 											<div class="image_area">
@@ -4346,7 +4456,10 @@
 			</script>
 		</div>
 		<script type="text/javascript">
-			
+			 function menuToggle() {
+		            const toggleMenu = document.querySelector('.menu');
+		            toggleMenu.classList.toggle('active')
+	        }
 		</script>
 		<script>
 			lazyloadjs('https://ssl.pstatic.net/static.sports/resources/pc/2022/09/29/130734/js/generated/baseJsBottomLazy.js');

@@ -1109,12 +1109,12 @@ strong {
   padding-right: 20px;
 }
 
-.login {
+.login_po {
 	float: right;
 	position: relative;
 	align-items: center;
 	justify-content: center;
-	margin: 10px 0;
+	margin: 13px 0;
 }
 
 .fa-right-to-bracket {

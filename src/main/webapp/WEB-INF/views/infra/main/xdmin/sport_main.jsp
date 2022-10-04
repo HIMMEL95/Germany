@@ -6,18 +6,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 
-<jsp:useBean id="CodeServiceImpl"
-	class="com.spopia.infra.modules.code.CodeServiceImpl" />
+<jsp:useBean id="CodeServiceImpl" class="com.spopia.infra.modules.code.CodeServiceImpl" />
 
 <!DOCTYPE html>
-<html lang="ko"
-	data-useragent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36">
+<html lang="ko" data-useragent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36">
 <head>
-<script async="" type="text/javascript"
-	src="https://ssl.pstatic.net/tveta/libs/glad/prod/gfp-core.js"></script>
-<head>
-<script async="" type="text/javascript"
-	src="https://ssl.pstatic.net/tveta/libs/glad/prod/gfp-core.js"></script>
+<script async="" type="text/javascript" src="https://ssl.pstatic.net/tveta/libs/glad/prod/gfp-core.js"></script>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="X-UA-Compatible" content="requiresActiveX=true">
@@ -29,14 +23,11 @@
 <meta property="og:description" content="스포츠의 시작과 끝!">
 <meta name="description" content="스포츠의 모든 것, 네이버 스포츠와 함께 하세요">
 
-<title>스포츠홈 : 네이버 스포츠</title>
+<title>SPOPIA</title>
 
-<link rel="stylesheet" type="text/css"
-	href="https://ssl.pstatic.net/static.sports/resources/pc/2022/09/29/130734/css/generated/nsportsCss.css">
-<link rel="stylesheet" type="text/css"
-	href="https://ssl.pstatic.net/static.sports/resources/pc/2022/09/29/130734/css/generated/nsportsHome.css">
-<link rel="stylesheet" type="text/css"
-	href="/resources/css/user/naver.css">
+<link rel="stylesheet" type="text/css" href="https://ssl.pstatic.net/static.sports/resources/pc/2022/09/29/130734/css/generated/nsportsCss.css">
+<link rel="stylesheet" type="text/css" href="https://ssl.pstatic.net/static.sports/resources/pc/2022/09/29/130734/css/generated/nsportsHome.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/user/naver.css">
 <link rel="stylesheet" href="/resources/css/user/sportMain.css">
 
 <link rel="shortcut icon"
@@ -117,7 +108,6 @@
 <script src="https://ssl.pstatic.net/static.gn/js/clickcrD.js"
 	id="gnb_clickcrD" charset="utf-8"></script>
 	
-<link rel="stylesheet" href="/resources/css/user/sportMain.css"> 
 </head>
 
 <body class="sports_home">
@@ -135,16 +125,15 @@
 				<div class="sports_header" role="banner">
 					<div class="snb_area">
 						<h1 class="logo_group">
-							<a href="https://www.naver.com" class="logo_naver"
-								onclick="clickcr(this, 'STA.naverlogo', '', '', event);"><span
-								class="blind">네이버</span></a> <a
-								href="https://sports.news.naver.com/" class="logo_sports"
-								onclick="clickcr(this, 'STA.sports', '', '', event);"><span
-								class="blind">스포츠</span></a> <a
-								href="https://m.sports.naver.com/community/index"
-								class="logo_community"
-								onclick="clickcr(this, 'STA.community', '', '', event);"><span
-								class="blind">커뮤니티</span></a>
+							<a href="https://www.naver.com" class="logo_naver">
+								<span class="blind">네이버</span>
+							</a> 
+							<a href="https://sports.news.naver.com/" class="logo_sports" onclick="clickcr(this, 'STA.sports', '', '', event);">
+								<span class="blind">스포츠</span>
+							</a> 
+							<a href="https://m.sports.naver.com/community/index" class="logo_community" onclick="clickcr(this, 'STA.community', '', '', event);">
+								<span class="blind">커뮤니티</span>
+							</a>
 						</h1>
 					</div>
 					<!-- GNB -->
@@ -167,7 +156,7 @@
 	                    	<c:choose>
 	                    		<c:when test="${empty sessSeq }">
 	                    			<li class="nav_li">
-	                    				<div class="login">
+	                    				<div class="login_po">
 				                            <a class="login" href="/userLogin">
 				                                <i class="fa-solid fa-right-to-bracket"></i>
 				                            </a>	                    					
@@ -1551,7 +1540,7 @@
 			                   		<c:otherwise>
 			                       		<c:forEach items="${aList}" var="aList" varStatus="status">
 											<li class="today_item">
-												<a href="/news?oid=109&amp;aid=0004709574" class="link_today" title="'켈리 16승 다승 1위+홍창기 결승타' LG, NC 꺾고 2위 확보...1위 계속 추격 [잠실 리뷰]" onclick="clickcr(this, 'rnk*r.list', '109_0004709574', '1', event);" data-not-edited="Y">
+												<a href="articleView?aSeq=${aList.aSeq }" class="link_today" title="'켈리 16승 다승 1위+홍창기 결승타' LG, NC 꺾고 2위 확보...1위 계속 추격 [잠실 리뷰]" onclick="clickcr(this, 'rnk*r.list', '109_0004709574', '1', event);" data-not-edited="Y">
 													<div class="image_area">
 														<img
 															src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/109/2022/09/30/0004709574_001_20220930212307497.png&amp;type=nf160_95&amp;service=sports"

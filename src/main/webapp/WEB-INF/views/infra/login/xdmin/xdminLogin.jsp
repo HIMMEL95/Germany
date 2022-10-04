@@ -39,7 +39,7 @@
                     <ul class="menu_wrap" role="tablist">
                         <li class="menu_item" role="presentation">
                             <a href="./loginForm.html" id="loinid" class="menu_id on" role="tab" aria-selected="true">
-                                <span class="menu_text"><span class="text">ID 로그인</span></span>
+                                <span class="menu_text"><span class="text"><strong>ADMIN 로그인</strong></span></span>
                             </a>
                         </li>
                     </ul>

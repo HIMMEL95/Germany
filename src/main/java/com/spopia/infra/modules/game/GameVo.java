@@ -11,6 +11,15 @@ public class GameVo extends BaseVo{
 	private String startDate;
 	private String endDate;	
 	private String gSeq;
+	private String selectVal;
+	
+	public String getSelectVal() {
+		return selectVal;
+	}
+	public void setSelectVal(String selectVal) {
+		this.selectVal = selectVal;
+	}
+	
 	public String getShOption() {
 		return shOption;
 	}

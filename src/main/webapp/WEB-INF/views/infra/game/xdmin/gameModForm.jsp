@@ -51,8 +51,8 @@
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="#">이하늘</a>
-                                            <p class="small m-0">himmel@gmail.com</p>
+                                            <a class="fs-6 fw-bold" href="#"><c:out value="${sessName }"/></a>
+                                            <p class="small m-0"><c:out value="${sessEmail }"/></p>
                                         </div>
                                     </div>
                                     <hr>
@@ -102,9 +102,13 @@
                 <div class="card ps-5 pe-5 pt-4 pb-4 shadow">
                     <div class="row pt-4">
                         <div class="col mb-4">
+                        	<c:set var="listCodeEvent" value="${CodeServiceImpl.selectListCachedCode('5') }" />
                             <label for="abroadNy" class="form-label fw-bold">해외여부</label>
                             <select class="form-select" id="abroadNy" name="abroadNy" value="<c:out value="${item.abroadNy }"/>" aria-label=".form-select example">
                                 <option value=""선택</option>
+                                <c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+									<c:if test="${gList.team_home eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+								</c:forEach>
                                 <option value="9">국내</option>
                                 <option value="10">해외</option>
                             </select>

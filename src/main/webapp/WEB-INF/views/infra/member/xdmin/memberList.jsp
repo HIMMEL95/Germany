@@ -50,8 +50,8 @@
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="#">이하늘</a>
-                                            <p class="small m-0">himmel@gmail.com</p>
+                                            <a class="fs-6 fw-bold" href="/member/memberUView?seq=${sessSeq }"><c:out value="${sessName }"/></a>
+                                            <p class="small m-0"><c:out value="${sessEmail }"/></p>
                                         </div>
                                     </div>
                                     <hr>
@@ -132,9 +132,9 @@
                                                                 src="/resources/images/diano.jpg" style="width: 50px;" alt=""></a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
-                                                        <span class="mb-0"><a href="#">이하늘</a></span>
-                                                        <small>Himmel</small><br>
-                                                        <small>himmel@gmail.com</small>
+                                                        <span class="mb-0"><a href="/member/memberUView"><c:out value="${sessName }"/></a></span>
+                                                        <small><c:out value="${sessId }"/></small><br>
+                                                        <small><c:out value="${sessEmail }"/></small>
                                                     </div>
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
@@ -274,15 +274,12 @@
                                         <th>아이디</th>
                                         <th>이메일</th>
                                         <th>생년월일</th>
-                                        <th>좋아하는 팀</th>
                                         <th>등록일</th>
                                         <th>수정일</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2') }" />
-                                	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
-      
                                 	<c:choose>
                                 		<c:when test="${fn:length(list) eq 0}">
                                 			<tr>
@@ -306,11 +303,6 @@
 			                                        <td>${list.id }</td>
 			                                        <td>${list.email }</td>
 			                                        <td>${list.dob }</td>
-			                                        <td>
-			                                        	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
-															<c:if test="${list.team eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
-														</c:forEach>
-			                                        </td>
 			                                        <td>${list.createdAt }</td>
 			                                        <td>${list.modifiedAt }</td>
 			                                    </tr>		
@@ -414,7 +406,6 @@
 		}
     	
     	goList = function(thisPage) {
-    		alert("eree");
 			$("input:hidden[name=thisPage]").val(thisPage);
 			form.attr("action", goUrlList).submit();
 		};

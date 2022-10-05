@@ -59,7 +59,7 @@
                                 </li>
                                 <!-- Links -->
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/member/memberUView?seq=${sessSeq }">
                                         <i class="fa-solid fa-user me-2"></i>
                                         Edit Profile
                                     </a>
@@ -132,7 +132,7 @@
                                                                 src="/resources/images/diano.jpg" style="width: 50px;" alt=""></a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
-                                                        <span class="mb-0"><a href="#"><c:out value="${sessName }"/></a></span>
+                                                        <span class="mb-0"><a href="/member/memberUView"><c:out value="${sessName }"/></a></span>
                                                         <small><c:out value="${sessId }"/></small><br>
                                                         <small><c:out value="${sessEmail }"/></small>
                                                     </div>

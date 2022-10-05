@@ -59,28 +59,50 @@
 			var div = $(o).parent();
 			alert("div : " + div);
 			
-			
-			$.post(
-				'abroad'
-				, {code:code}
-				, function(rst){
-					var data = new Set();
+
+   			$.ajax({
+   				async: true 
+   				,cache: false
+   				,type: "post"
+   				/* ,dataType:"json" */
+   				,url: "abroad"
+   				/* ,data : $("#formLogin").serialize() */
+   				,data : { "code" : code }
+   				,success: function(response) {
+					if (response.rt == 9) {
+						
+						var data = response.rt;
+						var loop = data.length;
+						
+						alert("date : " + data);
+						alert("loop : " + loop);
+						
+						for(var i=0 ; i<loop ; i++){
+							/* options += $().append('<option value="' + data.rt[i].event + '">' + data.rt[i].event + '</option>'); */
+							$("#asdf").append('<option value="' + data.rt[i].event + '">' + data.rt[i].event + '</option>');
+						}						
+					} 
 					
-					data = rst;
 					
-					console.log(data);
-					var loop = data.rt.length;
-					console.log(loop);
-					
-					var options = "";
-					
-					for(var i=0 ; i<loop ; i++){
-						/* options += $().append('<option value="' + data.rt[i].event + '">' + data.rt[i].event + '</option>'); */
-						$("#asdf").append('<option value="' + data.rt[i].event + '">' + data.rt[i].event + '</option>');
-					}
-					
-					/* $("#asdf").append(); */
-			});
+   					
+   					if(response.rt == "success") {
+   						if (id.length > 0) {
+    						successValidation('#id', '#id_msg', "사용가능한 아이디 입니다.");
+    						document.getElementById("idAllowedNy").value = 1;
+   						} else {
+   							 errorValidation('#id', '#id_msg', "아이디를 입력해주세요!!!");
+   							 document.getElementById("idAllowedNy").value = 0;
+   						}
+   					} else {
+   						errorValidation('#id', '#id_msg', "이미 있는 아이디 입니다.");
+   						document.getElementById("idAllowedNy").value = 0;
+   					}
+   				}
+   				,error : function(jqXHR, textStatus, errorThrown){
+   					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+   				}
+   			});
+	 
 		}
 		
 	</script>

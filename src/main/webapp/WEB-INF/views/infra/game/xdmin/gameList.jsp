@@ -51,15 +51,15 @@
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="#">이하늘</a>
-                                            <p class="small m-0">himmel@gmail.com</p>
+                                            <a class="fs-6 fw-bold" href="/member/memberUView?seq=${sessSeq }"><c:out value="${sessName }"/> </a>
+                                            <p class="small m-0"><c:out value="${sessEmail }"/> </p>
                                         </div>
                                     </div>
                                     <hr>
                                 </li>
                                 <!-- Links -->
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/member/memberUView?seq=${sessSeq }">
                                         <i class="fa-solid fa-user me-2"></i>
                                         Edit Profile
                                     </a>
@@ -131,9 +131,9 @@
                                                                 src="/resources/images/diano.jpg" style="width: 50px;" alt=""></a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
-                                                        <span class="mb-0"><a href="#">이하늘</a></span>
-                                                        <small>Himmel</small><br>
-                                                        <small>himmel@gmail.com</small>
+                                                        <span class="mb-0"><a href="/member/memberUView"><c:out value="${sessName }"/></a></span>
+                                                        <small><c:out value="${sessId }"/></small><br>
+                                                        <small><c:out value="${sessEmail }"/></small>
                                                     </div>
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
@@ -192,12 +192,8 @@
                                                 <a class="nav-link" href="privacy-and-terms.html">Privacy &amp; terms</a>
                                             </li>
                                         </ul>
-                                        <p class="small text-center mt-1">
-                                        	©2022 
-                                        	<a class="text-body" target="_blank" href="#"> 
-                                        		SPOPIA
-                                            </a>
-                                       </p>
+                                        <p class="small text-center mt-1">©2022 <a class="text-body" target="_blank" href="#"> SPOPIA
+                                            </a></p>
                                     </div>
                                 </div>
                             </nav>

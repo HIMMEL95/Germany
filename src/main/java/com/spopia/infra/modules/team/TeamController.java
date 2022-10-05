@@ -18,7 +18,7 @@ public class TeamController {
     
     @RequestMapping(value = "testPage")
     public String testPage(Model model, Team dto) throws Exception {
-        List<Team> list = service.selectList();
+        List<Team> list = service.abroad(dto);
         model.addAttribute("list", list);
         return "infra/member/user/test";
     }
@@ -28,15 +28,12 @@ public class TeamController {
     public Map<String, Object> abroad(Team dto, Model model) throws Exception {
         Map<String, Object> returnMap = new HashMap<String, Object>();
         
-         List<Team> list = service.selectList(); 
-                
         List<Team> result = service.event(dto);
         
         if (result != null) {
-            returnMap.put("rt", result);
+            returnMap.put("rt", result.get(0).getAbroadNy().toString());
         } else {
             returnMap.put("rt", "fail");
-            returnMap.put("list", list); 
         }
         
         return returnMap;

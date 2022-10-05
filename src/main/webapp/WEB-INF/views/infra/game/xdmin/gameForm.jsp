@@ -52,7 +52,7 @@
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="#"><c:out value="${sessName }"/></a>
+                                            <a class="fs-6 fw-bold" href="/member/memberUView?seq=${sessSeq }"><c:out value="${sessName }"/></a>
                                             <p class="small m-0"><c:out value="${sessEmail }"/></p>
                                         </div>
                                     </div>
@@ -60,7 +60,7 @@
                                 </li>
                                 <!-- Links -->
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/member/memeberUView?seq=${sessSeq }">
                                         <i class="fa-solid fa-user me-2"></i>
                                         Edit Profile
                                     </a>

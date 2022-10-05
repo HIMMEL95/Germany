@@ -17,7 +17,7 @@
     <meta property="og:description" content="안전한 로그인을 위해 주소창의 URL과 자물쇠 마크를 확인하세요!">
     <meta property="og:image" content="https://ssl.pstatic.net/sstatic/search/common/og_v3.png">
     <meta property="og:image:type" content="image/png">
-    <title>SPOPIA : 로그인</title>
+    <title>SPOPIA : ADMIN 로그인</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="/resources/css/xdmin/login.css" rel="stylesheet" type="text/css">
@@ -56,7 +56,7 @@
                                                 </span>
                                             </div>
                                             <input type="text" id="id" name="id" placeholder="아이디" title="아이디"
-                                                class="input_text" maxlength="41" value="">
+                                                class="input_text" maxlength="41" value="himmel">
                                             <span role="button" class="btn_delete" id="id_clear" style="display: none;">
                                                 <span class="icon_delete">
                                                     <span class="blind">삭제</span>
@@ -70,7 +70,7 @@
                                                 </span>
                                             </div>
                                             <input type="password" id="pwd" name="pwd" placeholder="비밀번호" title="비밀번호"
-                                                class="input_text" maxlength="16">
+                                                class="input_text" maxlength="16" value="123456789">
                                             <span role="button" class="btn_delete" id="pw_clear" style="display: none;">
                                                 <span class="icon_delete">
                                                     <span class="blind">삭제</span>

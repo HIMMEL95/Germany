@@ -45,19 +45,19 @@
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
                                         <div class="avatar mt-2">
-                                            <img class="avatar-img rounded-circle shadow" src="../../resources/images/diano.jpg"
+                                            <img class="avatar-img rounded-circle shadow" src="/resources/images/diano.jpg"
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="#">이하늘</a>
-                                            <p class="small m-0">himmel@gmail.com</p>
+                                            <a class="fs-6 fw-bold" href="/member/memberUView?seq=${sessSeq }"><c:out value="${sessName }"/></a>
+                                            <p class="small m-0"><c:out value="${sessEmail }"/></p>
                                         </div>
                                     </div>
                                     <hr>
                                 </li>
                                 <!-- Links -->
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/member/memberUView?seq=${sessSeq }">
                                         <i class="fa-solid fa-user me-2"></i>
                                         Edit Profile
                                     </a>
@@ -75,7 +75,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item bg-danger-soft-hover" href="/">
+                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" href="/xdminLogin">
                                         <i class="fa-solid fa-power-off me-2"></i>
                                         Sign Out
                                     </a>
@@ -117,18 +117,18 @@
                 
                                     <div class="offcanvas-body d-block px-2 px-lg-0">
                                         <div class="card overflow-hidden">
-                                            <img src="../../resources/images/mountains.png" class="card-img-top" alt="background"
+                                            <img src="/resources/images/mountains.png" class="card-img-top" alt="background"
                                                 style="height: 50px; background-position: center; background-size: cover; background-repeat: no-repeat;">
                                             <div class="card-body pt-0">
                                                 <div class="text-center">
                                                     <div class="avatar avatar-lg mt-n5 mb-3">
                                                         <a href="#"><img class="avatar-img rounded border border-white border-3"
-                                                                src="../../resources/images/diano.jpg" style="width: 50px;" alt=""></a>
+                                                                src="/resources/images/diano.jpg" style="width: 50px;" alt=""></a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
-                                                        <span class="mb-0"><a href="#">이하늘</a></span>
-                                                        <small>Himmel</small><br>
-                                                        <small>himmel@gmail.com</small>
+                                                        <span class="mb-0"><a href="/member/memberUView"><c:out value="${sessName }"/></a></span>
+                                                        <small><c:out value="${sessId }"/></small><br>
+                                                        <small><c:out value="${sessEmail }"/></small>
                                                     </div>
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
@@ -407,6 +407,20 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+	    $("#signOutBtn").on("click", function() {
+			$.ajax({
+				type: "POST"
+				,url: "logoutProc"
+				,data: {}
+				,success : function(response) {
+					if (response.rt == "success") {
+						window.location.href = "/";
+					}
+				}
+			});
+		});
+    </script>
 </body>
 
 </html>

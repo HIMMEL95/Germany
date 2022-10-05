@@ -36,7 +36,7 @@
                             <a class="p-0" href="/member/memberView" id="profileDropdown" role="button"
                                 data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                <img class="avatar-img rounded-circle" src="../../resources/images/diano.jpg" alt="avatar"
+                                <img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar"
                                     style="width: 30px;">
                             </a>
                             <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
@@ -46,19 +46,19 @@
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
                                         <div class="avatar ps-1 pt-2">
-                                            <img class="avatar-img rounded-circle shadow" src="../../resources/images/diano.jpg"
+                                            <img class="avatar-img rounded-circle shadow" src="/resources/images/diano.jpg"
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="../member/memberView.html">이하늘</a>
-                                            <p class="small m-0">himmel@gmail.com</p>
+                                            <a class="fs-6 fw-bold" href="/member/memberUView?seq=${sessSeq }"><c:out value="${sessName }" /></a>
+                                            <p class="small m-0"><c:out value="${sessEmail }"/> </p>
                                         </div>
                                     </div>
                                     <hr>
                                 </li>
                                 <!-- Links -->
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/member/memberUView?seq=${sessSeq }">
                                         <i class="fa-solid fa-user me-2"></i>
                                         Edit Profile
                                     </a>
@@ -130,9 +130,9 @@
                                                                 src="/resources/images/diano.jpg" style="width: 50px;" alt=""></a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
-                                                        <span class="mb-0"><a href="#">이하늘</a></span>
-                                                        <small>Himmel</small><br>
-                                                        <small>himmel@gmail.com</small>
+                                                        <span class="mb-0"><a href="/member/memberUView"><c:out value="${sessName }"/></a></span>
+                                                        <small><c:out value="${sessId }"/></small><br>
+                                                        <small><c:out value="${sessEmail }"/></small>
                                                     </div>
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">

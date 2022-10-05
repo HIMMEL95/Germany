@@ -29,7 +29,7 @@
             <div class="container px-3 px-xl-5 pt-1">
                 <!-- Logo START -->
                 <a class="navbar-brand" href="/sportMain">
-                    <img class="light-mode-item navbar-brand-item" src="../../resources/images/SPOPIA_white.png" alt="logo"
+                    <img class="light-mode-item navbar-brand-item" src="/resources/images/SPOPIA_white.png" alt="logo"
                         style="width: 90px;">
                 </a>
                 <!-- Profile START -->
@@ -38,7 +38,7 @@
                         <li class="me-2">
                             <a class="p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
                                 data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img class="avatar-img rounded-circle" src="../../resources/images/diano.jpg" alt="avatar"
+                                <img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar"
                                     style="width: 30px;">
                             </a>
                             <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
@@ -48,19 +48,19 @@
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
                                         <div class="avatar1 me-3">
-                                            <img class="avatar-img rounded-circle shadow" src="../../resources/images/diano.jpg"
+                                            <img class="avatar-img rounded-circle shadow" src="/resources/images/diano.jpg"
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
                                             <a class="fs-6 fw-bold" href="#"><c:out value="${sessName }"/></a>
-                                            <p class="small m-0">himmel@gmail.com</p>
+                                            <p class="small m-0"><c:out value="${sessEmail }"/> </p>
                                         </div>
                                     </div>
                                     <hr>
                                 </li>
                                 <!-- Links -->
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/member/memberUView?seq=${sessSeq }">
                                         <i class="fa-solid fa-user me-2"></i>
                                         Edit Profile
                                     </a>
@@ -123,7 +123,7 @@
                 
                                     <div class="offcanvas-body d-block px-2 px-lg-0">
                                         <div class="card overflow-hidden">
-                                            <img src="../../resources/images/mountains.png" class="card-img-top" alt="background"
+                                            <img src="/resources/images/mountains.png" class="card-img-top" alt="background"
                                                 style="height: 50px; background-position: center; background-size: cover; background-repeat: no-repeat;">
                                             <div class="card-body pt-0">
                                                 <div class="text-center">
@@ -132,9 +132,9 @@
                                                                 src="/resources/images/diano.jpg" style="width: 50px;" alt=""></a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
-                                                        <span class="mb-0"><a href="#">이하늘</a></span>
-                                                        <small>Himmel</small><br>
-                                                        <small>himmel@gmail.com</small>
+                                                        <span class="mb-0"><a href="/member/memberUView"><c:out value="${sessName }"/></a></span>
+                                                        <small><c:out value="${sessId }"/></small><br>
+                                                        <small><c:out value="${sessEmail }"/></small>
                                                     </div>
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
@@ -194,8 +194,7 @@
                                             </li>
                                         </ul>
                                         <p class="small text-center mt-1">©2022 <a class="text-body" target="_blank" href="#"> SPOPIA
-                                            </a>
-                                        </p>
+                                            </a></p>
                                     </div>
                                 </div>
                             </nav>

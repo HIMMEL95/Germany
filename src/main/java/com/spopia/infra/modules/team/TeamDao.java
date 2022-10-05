@@ -17,8 +17,27 @@ public class TeamDao {
     
     private static String namespace = "com.spopia.infra.modules.team.TeamMapper";
     
-    /* select test */
-    public List<Team> selectTest(Team dto) {
-        return sqlSession.selectList(namespace + ".team", dto);
+    public List<Team> selectList() {
+        return sqlSession.selectList(namespace + ".team", "");
     }
+
+    /* select test */
+    public List<Team> abroad(Team dto) {
+        return sqlSession.selectList(namespace + ".abroad", dto);
+    }
+    
+    public List<Team> event(Team dto) {
+        return sqlSession.selectList(namespace + ".event", dto);
+    }
+    
+    public List<Team> league(Team dto) {
+        return sqlSession.selectList(namespace + ".league", dto);
+    }
+    
+    public List<Team> teamName(Team dto) {
+        return sqlSession.selectList(namespace + ".teamName", dto);
+    }
+    
+    
+    
 }

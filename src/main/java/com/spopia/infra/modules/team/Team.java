@@ -8,7 +8,14 @@ public class Team {
     private Integer event;
     private Integer league;
     private String teamName;
+    private int level;
     
+    public int getLevel() {
+        return level;
+    }
+    public void setLevel(int level) {
+        this.level = level;
+    }
     public String getTeamSeq() {
         return teamSeq;
     }

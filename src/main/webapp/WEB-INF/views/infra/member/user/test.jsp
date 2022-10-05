@@ -21,17 +21,26 @@
 
 <body>
 	<form name="form1" method="get" action="">
+		<c:set var="listCodeAbroad" value="${CodeServiceImpl.selectListCachedCode('4') }" />
 		<div>
-			<select name="code1" onclick="setComboBox(this)" style="width:100px;">
-			<option value="">- 전체 -</option>
-			<?makeCode1Option();?>
-		</select>
-			<select name="code2" onchange="setComboBox(this)" style="width:100px;">
-			<option value="">- 전체 -</option>
-		</select>
-			<select name="code3" style="width:100px;">
-			<option value="">- 전체 -</option>
-		</select>
+			<select class="code1" name="code1" onchange="setComboBox(this)" style="width:100px;">
+				<option value="">- 전체 -</option>
+				<c:forEach items="${list}" var="list" varStatus="status">
+					<option value="<c:out value="${list.abroadNy }"/>"> ${list.abroadNy }</option>				
+				</c:forEach>
+				<c:forEach items="${listCodeAbroad}" var="listAbroad" varStatus="statusAbroad">
+					<c:if test="${list.abroadNy eq listGender.ccSeq}"><c:out value="${listGender.ifccName }"/></c:if>
+				</c:forEach>
+			</select>
+			<select class="code2" name="code2" onchange="setComboBox(this)" style="width:100px;">
+				<div id="asdf">
+				
+				<option value="">- 전체 -</option>
+				</div>
+			</select>
+			<select class="code3" name="code3" style="width:100px;">
+				<option value="">- 전체 -</option>
+			</select>
 		</div>		
 	</form>
 	
@@ -46,27 +55,35 @@
 		var combo = $('select', div).eq(idx + 1);
 		var text = '<option value="">- 전체 -</option>';
 		
-		if(code == ''){ // 전체를 선택했을 경우
+		/* if(code == ''){ // 전체를 선택했을 경우
 			$('select:gt(' + idx + ')', div).html(text);
 			return;
-		}
-		
+		} */
 		$.post(
 			'test'
 			, {depth:depth, code:code}
 			, function(rst){
-				var data = eval('(' + rst + ')');
+				var data = new Set();
+				
+				data = rst;
+				
 				console.log(data);
-				var loop = data.length;
+				var loop = data.rt.length;
+				console.log(loop);
 				$('select:gt(' + idx + ')', div).html(text);
 				
+				var options = "";
+				
 				for(var i=0 ; i<loop ; i++){
-					combo.append('<option value="' + data[i].abroadNy + '">' + data[i].event + '</option>');
+					options += combo.append('<option value="' + data.rt[i].abroadNy + '">' + data.rt[i].abroadNy + '</option>');
 				}
+				
+				combo.append();
 			});
 		}
 	
 	</script>
+	
 </body>
 
 </html>

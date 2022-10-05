@@ -13,7 +13,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>memberView</title>
+    <title>회원정보</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="/resources/css/xdmin/dashboard.css" rel="stylesheet" type="text/css">
@@ -94,10 +94,10 @@
 									</c:when>
 									<c:otherwise>
 										<li>
-		                                    <a class="dropdown-item" href="#">
-		                                        <i class="fa-solid fa-user me-2"></i>
-		                                        Edit Profile
-		                                    </a>
+		                                    <a class="pro_a" role="button" id="editBtn" onclick="goForm(<c:out value="${sessSeq }"/>)" style="cursor: pointer;">
+                                                <i class="fa-solid fa-user me-2"></i>
+                                                Edit Profile
+                                            </a>
 		                                </li>
 		                                <li>
 		                                    <a class="dropdown-item" href="#">
@@ -248,46 +248,51 @@
                                         <div class=" row mb-4">
                             <div class="col">
                                 <label for="name" class="form-label fw-bold">이름</label>
-                                <input type="text" class="form-control bg-white" id="name" name="name" value="<c:out value="${item.name }"/>" readonly>
+                                <p>${item.name }</p>
                             </div>
                             <div class="col">
                                 <label for="id" class="form-label fw-bold">아이디</label>
-                                <input type="text" class="form-control bg-white" id="id" name="id" value="<c:out value="${item.id }"/>" readonly>
+                                <p>${item.id }</p>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="dob" class="form-label fw-bold">생년월일</label>
-                                <input type="text" class="form-control bg-white" id="dob" name="dob" value="<c:out value="${item.dob }"/>" readonly>
+                                <p>${item.dob }</p>
                             </div>
                             <div class="col">
                                 <label for="email" class="form-label fw-bold">이메일</label>
-                                <input type="email" class="form-control bg-white" id="email" name="email" value="<c:out value="${item.email }"/>" readonly>
+                                <p>${item.email }</p>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="tel" class="form-label fw-bold">전화번호</label>
-                                <input type="tel" class="form-control bg-white" id="tel" name="tel" value="<c:out value="${item.phone }"/>" readonly>
+                                <p>${item.phone }</p>
                             </div>
                             <div class="col">
                                 <label for="gender" class="form-label fw-bold">성별</label>
-                                <select class="form-select form-select-lg fs-6 bg-white" id="gender" name="gender" value="<c:out value="${item.gender }"/>"
-                                    aria-label=".form-select-lg example" disabled readonly>
-                                    <option value="5" <c:if test="${item.gender eq 5 }">selected</c:if>>남성</option>
-                                    <option value="6" <c:if test="${item.gender eq 6 }">selected</c:if>>여성</option>
-                                </select>
+                                <p>
+                                	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2') }" />
+                                	<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
+										<c:if test="${item.gender eq listGender.ccSeq}"><c:out value="${listGender.ifccName }"/></c:if>
+									</c:forEach>
+                                </p>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="job" class="form-label fw-bold">직업</label>
-                                <input type="text" class="form-control bg-white" id="job" name="job" value="<c:out value="${item.job }"/>" readonly>
+                                <p>${item.job }</p>
                             </div>
                             <div class="col">
                             	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
                                 <label for="team" class="form-label fw-bold">좋아하는 팀</label>
-                                <input type="text" class="form-control bg-white" id="team" name="team" value="<c:out value="${item.team }"/>" readonly>
+                                <p>
+                                	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+										<c:if test="${item.team eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+									</c:forEach>
+                                </p>
                             </div>
                         </div>
                         <div class="row mb-4" hidden>
@@ -300,23 +305,22 @@
                                 <input type="password" class="form-control bg-white" id="password_confirm" value="" readonly>
                             </div> 
                         </div>
-                        <hr>
                         <div class="row mb-4">
                             <div class="col-6">
                                 <label for="zip" class="form-label fw-bold">우편번호</label>
-                                <input type="text" class="form-control bg-white" id="zip" name="zip" value="<c:out value="${item.zip }"/>" readonly>
+                                <p>${item.zip }</p>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="address" class="form-label fw-bold">주소</label>
-                                <input type="text" class="form-control bg-white" id="address" name="address" value="<c:out value="${item.address }"/>" readonly>
+                                <p>${item.address }</p>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="addressDetail" class="form-label fw-bold">상세주소</label>
-                                <input type="text" class="form-control bg-white" id="addressDetail" name="address_detail" value="<c:out value="${item.address_detail }"/>" readonly>
+                                <p>${item.address_detail }</p>
                             </div>
                         </div>
                         <div class="row">

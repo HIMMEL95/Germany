@@ -57,4 +57,9 @@ public class GameDao {
 	public List<Game> mainList(GameVo vo) {
 		return sqlSession.selectList(namespace + ".mainList", vo);
 	}
+	
+    /* select test */
+	public List<Game> selectTest(Game dto) {
+	    return sqlSession.selectList(namespace + ".team", dto);
+	}
 }

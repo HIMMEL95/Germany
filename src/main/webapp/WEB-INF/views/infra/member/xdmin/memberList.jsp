@@ -414,6 +414,7 @@
 		}
     	
     	goList = function(thisPage) {
+    		alert("eree");
 			$("input:hidden[name=thisPage]").val(thisPage);
 			form.attr("action", goUrlList).submit();
 		};

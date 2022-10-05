@@ -20,8 +20,8 @@ public class Game extends BaseVo{
 	private String gCreatedAt;
 	private String gModifiedAt;
 	private Integer gcDelNy;
-	
-	public String getgSeq() {
+    
+    public String getgSeq() {
 		return gSeq;
 	}
 	public void setgSeq(String gSeq) {

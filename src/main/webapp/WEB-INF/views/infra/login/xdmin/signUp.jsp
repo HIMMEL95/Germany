@@ -57,14 +57,14 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="pwd">Password<span style="color: red;">*</span></label>
-                            <input id="pwd" name="pwd" type="password" onfocusout="validationUpdt()" autocomplete="off">
+                            <input id="pwd" name="pwd" type="password" onkeypress="validationUpdt()" onfocusout="validationUpdt()" autocomplete="off">
                             <div class="msg" id="pwd_msg" name="pwd_msg" style="display: none;"></div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="input-control">
                             <label for="pwd2">Password again<span style="color: red;">*</span></label>
-                            <input id="pwd2" name="pwd2" type="password" onfocusout="validationUpdt()" onkeypress="validationUpdt()" autocomplete="off">
+                            <input id="pwd2" name="pwd2" type="password" onkeypress="validationUpdt()" onfocusout="validationUpdt()" autocomplete="off">
                             <div class="msg" id="pwd2_msg" name="pwd2_msg" style="display: none;"></div>
                         </div>
                     </div>

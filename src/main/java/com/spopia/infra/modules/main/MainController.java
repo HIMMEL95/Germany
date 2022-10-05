@@ -1,12 +1,16 @@
 package com.spopia.infra.modules.main;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spopia.infra.common.util.UtilSecurity;
 import com.spopia.infra.modules.article.Article;
 import com.spopia.infra.modules.article.ArticleServiceImpl;
 import com.spopia.infra.modules.article.ArticleVo;
@@ -88,4 +92,5 @@ public class MainController {
 	    mService.pwdUpdt(dto);
 	   return "infra/member/user/changePwd";
 	}
+	
 }

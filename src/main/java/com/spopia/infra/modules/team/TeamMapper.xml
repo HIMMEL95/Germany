@@ -8,6 +8,16 @@
 
     <resultMap id="resultMapObj" type="com.spopia.infra.modules.team.Team"></resultMap>
     
+    <select id="team" resultMap="resultMapObj">
+		select
+			t.teamSeq
+			,t.abroadNy
+			,t.event
+			,t.league
+			,t.teamName
+		from team t
+	</select>
+    
 	<select id="abroad" resultMap="resultMapObj">
 		select
 			t.teamSeq

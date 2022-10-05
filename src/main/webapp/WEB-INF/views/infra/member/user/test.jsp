@@ -28,60 +28,61 @@
 				<c:forEach items="${list}" var="list" varStatus="status">
 					<option value="<c:out value="${list.abroadNy }"/>"> ${list.abroadNy }</option>				
 				</c:forEach>
-				<c:forEach items="${listCodeAbroad}" var="listAbroad" varStatus="statusAbroad">
-					<c:if test="${list.abroadNy eq listGender.ccSeq}"><c:out value="${listGender.ifccName }"/></c:if>
-				</c:forEach>
 			</select>
 			<select class="code2" name="code2" onchange="setComboBox(this)" style="width:100px;">
 				<div id="asdf">
-				
-				<option value="">- 전체 -</option>
+					<%-- <c:forEach items="${list}" var="list" varStatus="status">
+						<option value="<c:out value="${list.event }"/>"> ${list.event }</option>				
+					</c:forEach> --%>
 				</div>
 			</select>
 			<select class="code3" name="code3" style="width:100px;">
 				<option value="">- 전체 -</option>
+				<%-- <c:forEach items="${list}" var="list" varStatus="status">
+					<option value="<c:out value="${list.league }"/>"> ${list.league }</option>				
+				</c:forEach> --%>
+			</select>
+			<select class="code4" name="code4" style="width:100px;">
+				<option value="">- 전체 -</option>
+				<%-- <c:forEach items="${list}" var="list" varStatus="status">
+					<option value="<c:out value="${list.teamName }"/>"> ${list.teamName }</option>				
+				</c:forEach> --%>
 			</select>
 		</div>		
 	</form>
 	
 	<script type="text/javascript">
 
-	function setComboBox(o){
-		var code = o.value;
-		var div = $(o).parent(); // 셀렉트 박스의 상위 객체
-		var cnt = $('select', div).size(); // 셀렉트 박스 갯수
-		var idx = $('select', div).index(o); // 현재 셀렉트 박스의 순서
-		var depth = cnt - 1 + idx;
-		var combo = $('select', div).eq(idx + 1);
-		var text = '<option value="">- 전체 -</option>';
-		
-		/* if(code == ''){ // 전체를 선택했을 경우
-			$('select:gt(' + idx + ')', div).html(text);
-			return;
-		} */
-		$.post(
-			'test'
-			, {depth:depth, code:code}
-			, function(rst){
-				var data = new Set();
-				
-				data = rst;
-				
-				console.log(data);
-				var loop = data.rt.length;
-				console.log(loop);
-				$('select:gt(' + idx + ')', div).html(text);
-				
-				var options = "";
-				
-				for(var i=0 ; i<loop ; i++){
-					options += combo.append('<option value="' + data.rt[i].abroadNy + '">' + data.rt[i].abroadNy + '</option>');
-				}
-				
-				combo.append();
+		function setComboBox(o){
+			var code = o.value;
+			alert("code : "+code);
+			var div = $(o).parent();
+			alert("div : " + div);
+			
+			
+			$.post(
+				'abroad'
+				, {code:code}
+				, function(rst){
+					var data = new Set();
+					
+					data = rst;
+					
+					console.log(data);
+					var loop = data.rt.length;
+					console.log(loop);
+					
+					var options = "";
+					
+					for(var i=0 ; i<loop ; i++){
+						/* options += $().append('<option value="' + data.rt[i].event + '">' + data.rt[i].event + '</option>'); */
+						$("#asdf").append('<option value="' + data.rt[i].event + '">' + data.rt[i].event + '</option>');
+					}
+					
+					/* $("#asdf").append(); */
 			});
 		}
-	
+		
 	</script>
 	
 </body>

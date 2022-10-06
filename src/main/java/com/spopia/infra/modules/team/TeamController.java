@@ -18,83 +18,70 @@ public class TeamController {
     
     @RequestMapping(value = "testPage")
     public String testPage(Model model, Team dto) throws Exception {
+        
         List<Team> list = service.abroad(dto);
         model.addAttribute("list", list);
         return "infra/member/user/test";
     }
     
-    @ResponseBody
-    @RequestMapping(value = "abroad")
-    public Map<String, Object> abroad(Team dto, Model model) throws Exception {
-        Map<String, Object> returnMap = new HashMap<String, Object>();
-        
-        List<Team> result = service.event(dto);
-        
-        if (result != null) {
-            returnMap.put("rt", result.get(0).getAbroadNy().toString());
-        } else {
-            returnMap.put("rt", "fail");
-        }
-        
-        return returnMap;
-    }
-    
-    @ResponseBody
-    @RequestMapping(value = "event")
-    public Map<String, Object> event(Team dto, Model model) throws Exception {
-        Map<String, Object> returnMap = new HashMap<String, Object>();
-        
-        List<Team> list = service.selectList();
-        
-        List<Team> result = service.abroad(dto);
-        
-        if (result != null) {
-            returnMap.put("rt", result);
-        } else {
-            returnMap.put("rt", "fail");
-            returnMap.put("list", list);
-        }
-        
-        return returnMap;
-    }
-    
-    @ResponseBody
-    @RequestMapping(value = "league")
-    public Map<String, Object> league(Team dto, Model model) throws Exception {
-        Map<String, Object> returnMap = new HashMap<String, Object>();
-        
-        List<Team> list = service.selectList();
-        
-        List<Team> result = service.abroad(dto);
-        
-        if (result != null) {
-            returnMap.put("rt", result);
-        } else {
-            returnMap.put("rt", "fail");
-            returnMap.put("list", list);
-        }
-        
-        return returnMap;
-    }
-    
-    @ResponseBody
-    @RequestMapping(value = "teamName")
-    public Map<String, Object> teamName(Team dto, Model model) throws Exception {
-        Map<String, Object> returnMap = new HashMap<String, Object>();
-        
-        List<Team> list = service.selectList();
-        
-        List<Team> result = service.abroad(dto);
-        
-        if (result != null) {
-            returnMap.put("rt", result);
-        } else {
-            returnMap.put("rt", "fail");
-            returnMap.put("list", list);
-        }
-        
-        return returnMap;
-    }
+    /*
+     * @ResponseBody
+     * 
+     * @RequestMapping(value = "abroad")
+     * public Map<String, Object> abroad(Team dto, Model model) throws Exception {
+     * Map<String, Object> returnMap = new HashMap<String, Object>();
+     * 
+     * System.out.println("etestt");
+     * 
+     * List<Team> event = service.event(dto);
+     * 
+     * if (event != null) {
+     * returnMap.put("rt", "success");
+     * returnMap.put("event", event);
+     * } else {
+     * returnMap.put("rt", "fail");
+     * }
+     * 
+     * return returnMap;
+     * }
+     * 
+     * @ResponseBody
+     * 
+     * @RequestMapping(value = "event")
+     * public Map<String, Object> event(Team dto, Model model) throws Exception {
+     * Map<String, Object> returnMap = new HashMap<String, Object>();
+     * 
+     * List<Team> league = service.league(dto);
+     * 
+     * if (league != null) {
+     * returnMap.put("rt", "success");
+     * returnMap.put("league", league);
+     * } else {
+     * returnMap.put("rt", "fail");
+     * }
+     * 
+     * return returnMap;
+     * }
+     * 
+     * @ResponseBody
+     * 
+     * @RequestMapping(value = "league")
+     * public Map<String, Object> league(Team dto, Model model) throws Exception {
+     * Map<String, Object> returnMap = new HashMap<String, Object>();
+     * 
+     * List<Team> teamName = service.teamName(dto);
+     * 
+     * if (teamName != null) {
+     * returnMap.put("rt", "success");
+     * returnMap.put("teamName", teamName);
+     * } else {
+     * returnMap.put("rt", "fail");
+     * }
+     * 
+     * return returnMap;
+     * }
+     */
+
  
 
 }

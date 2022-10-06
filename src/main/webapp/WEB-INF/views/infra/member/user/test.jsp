@@ -21,29 +21,27 @@
 
 <body>
 	<form name="form1" method="get" action="">
-		<c:set var="listCodeAbroad" value="${CodeServiceImpl.selectListCachedCode('4') }" />
 		<div>
-			<select class="code1" name="code1" onchange="setComboBox(this)" style="width:100px;">
-				<option value="">- 전체 -</option>
+			<select class="code1" id="abroadNy" name="abroadNy" onchange="setComboBox1(this)" style="width:100px;">
+				<option value="">- 해외 -</option>
 				<c:forEach items="${list}" var="list" varStatus="status">
 					<option value="<c:out value="${list.abroadNy }"/>"> ${list.abroadNy }</option>				
 				</c:forEach>
 			</select>
-			<select class="code2" name="code2" onchange="setComboBox(this)" style="width:100px;">
-				<div id="asdf">
-					<%-- <c:forEach items="${list}" var="list" varStatus="status">
-						<option value="<c:out value="${list.event }"/>"> ${list.event }</option>				
-					</c:forEach> --%>
-				</div>
+			<select class="code2" id="event" name="event" onchange="setComboBox2(this)" style="width:100px;">
+				<option value="">- 종목 -</option>
+				<%-- <c:forEach items="${list}" var="list" varStatus="status">
+					<option value="<c:out value="${list.event }"/>"> ${list.event }</option>				
+				</c:forEach> --%>
 			</select>
-			<select class="code3" name="code3" style="width:100px;">
-				<option value="">- 전체 -</option>
+			<select class="code3" id="league" name="league" onchange="setComboBox3(this)" style="width:100px;">
+				<option value="">- 리그 -</option>
 				<%-- <c:forEach items="${list}" var="list" varStatus="status">
 					<option value="<c:out value="${list.league }"/>"> ${list.league }</option>				
 				</c:forEach> --%>
 			</select>
-			<select class="code4" name="code4" style="width:100px;">
-				<option value="">- 전체 -</option>
+			<select class="code4" id="teamName" name="teamName" style="width:100px;">
+				<option value="">- 팀 -</option>
 				<%-- <c:forEach items="${list}" var="list" varStatus="status">
 					<option value="<c:out value="${list.teamName }"/>"> ${list.teamName }</option>				
 				</c:forEach> --%>
@@ -53,12 +51,12 @@
 	
 	<script type="text/javascript">
 
-		function setComboBox(o){
+		function setComboBox1(o){
 			var code = o.value;
-			alert("code : "+code);
-			var div = $(o).parent();
-			alert("div : " + div);
 			
+			$("option").remove(".select");
+			$("option").remove(".select1");
+			$("option").remove(".select2");
 
    			$.ajax({
    				async: true 
@@ -67,35 +65,71 @@
    				/* ,dataType:"json" */
    				,url: "abroad"
    				/* ,data : $("#formLogin").serialize() */
-   				,data : { "code" : code }
+   				,data : { "abroadNy" : code }
    				,success: function(response) {
-					if (response.rt == 9) {
-						
-						var data = response.rt;
-						var loop = data.length;
-						
-						alert("date : " + data);
-						alert("loop : " + loop);
-						
-						for(var i=0 ; i<loop ; i++){
-							/* options += $().append('<option value="' + data.rt[i].event + '">' + data.rt[i].event + '</option>'); */
-							$("#asdf").append('<option value="' + data.rt[i].event + '">' + data.rt[i].event + '</option>');
-						}						
-					} 
-					
-					
    					
-   					if(response.rt == "success") {
-   						if (id.length > 0) {
-    						successValidation('#id', '#id_msg', "사용가능한 아이디 입니다.");
-    						document.getElementById("idAllowedNy").value = 1;
-   						} else {
-   							 errorValidation('#id', '#id_msg', "아이디를 입력해주세요!!!");
-   							 document.getElementById("idAllowedNy").value = 0;
-   						}
-   					} else {
-   						errorValidation('#id', '#id_msg', "이미 있는 아이디 입니다.");
-   						document.getElementById("idAllowedNy").value = 0;
+   					if (response.rt == "success") {
+						for (var i=0; i<response.event.length; i++) {
+							$(".code2").append('<option class="select" value="' + response.event[i].event + '">' + response.event[i].event + '</option>');
+						}
+   					}
+   				}
+   				,error : function(jqXHR, textStatus, errorThrown){
+   					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+   				}
+   			});
+	 
+		}
+
+		function setComboBox2(o){
+			var code = o.value;
+			var abroadNy = $("#abroadNy").val();
+			
+			$("option").remove(".select1");
+			$("option").remove(".select2");
+
+   			$.ajax({
+   				async: true 
+   				,cache: false
+   				,type: "post"
+   				/* ,dataType:"json" */
+   				,url: "event"
+   				/* ,data : $("#formLogin").serialize() */
+   				,data : { "event" : code, "abroadNy" : abroadNy }
+   				,success: function(response) {
+   					
+   					if (response.rt == "success") {
+						for (var i=0; i<response.league.length; i++) {
+							$(".code3").append('<option class="select1" value="' + response.league[i].league + '">' + response.league[i].league + '</option>');
+						}
+   					}
+   				}
+   				,error : function(jqXHR, textStatus, errorThrown){
+   					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+   				}
+   			});
+	 
+		}
+
+		function setComboBox3(o){
+			var code = o.value;
+			var abroadNy = $("#abroadNy").val();
+			var event = $("#event").val();
+			
+   			$.ajax({
+   				async: true 
+   				,cache: false
+   				,type: "post"
+   				/* ,dataType:"json" */
+   				,url: "league"
+   				/* ,data : $("#formLogin").serialize() */
+   				,data : { "league" : code, "event" : event, "abroadNy" : abroadNy  }
+   				,success: function(response) {
+   					
+   					if (response.rt == "success") {
+						for (var i=0; i<response.teamName.length; i++) {
+							$(".code4").append('<option class="select2" value="' + response.teamName[i].teamName + '">' + response.teamName[i].teamName + '</option>');
+						}
    					}
    				}
    				,error : function(jqXHR, textStatus, errorThrown){

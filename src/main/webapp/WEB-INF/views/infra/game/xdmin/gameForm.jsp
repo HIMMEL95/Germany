@@ -107,7 +107,7 @@
                     <div class="row pt-4">
                         <div class="col mb-4">
                             <label for="gAbroadNy" class="form-label fw-bold">해외여부</label>
-                            <select class="form-select" id="gAbroadNy" name="gAbroadNy" aria-label=".form-select example">
+                            <select class="form-select" id="gAbroadNy" name="gAbroadNy" onchange="setComboBox1(this)" aria-label=".form-select example">
                                 <option value="" >선택</option>
                                 <option value="9" <c:if test="${item.gAbroadNy eq 9 }">selected</c:if>>국내</option>
                                 <option value="10" <c:if test="${item.gAbroadNy eq 10 }">selected</c:if>>해외</option>
@@ -115,28 +115,14 @@
                         </div>
                         <div class="col mb-4">
                             <label for="gEvent" class="form-label fw-bold">종목</label>
-                            <select class="form-select" id="gEvent" name="gEvent" aria-label=".form-select example">
+                            <select class="form-select" id="gEvent" name="gEvent" onchange="setComboBox2(this)" aria-label=".form-select example">
                                 <option value="" >선택</option>
-                                <option value="11" <c:if test="${item.gEvent eq 11 }">selected</c:if>>야구</option>
-                                <option value="12" <c:if test="${item.gEvent eq 12 }">selected</c:if>>축구</option>
                             </select>
                         </div>
                         <div class="col mb-4">
                             <label for="gLeague" class="form-label fw-bold">리그</label>
-                            <select class="form-select" id="gLeague" name="gLeague" aria-label=".form-select example">
+                            <select class="form-select" id="gLeague" name="gLeague" onchange="setComboBox3(this)" aria-label=".form-select example">
                                 <option value="">선택</option>
-                                <option value="13" <c:if test="${item.gLeague eq 13 }">selected</c:if>>KBO</option>
-                                <option value="14" <c:if test="${item.gLeague eq 14 }">selected</c:if>>내셔널리그</option>
-                                <option value="15" <c:if test="${item.gLeague eq 15 }">selected</c:if>>아메리칸리그</option>
-                                <option value="16" <c:if test="${item.gLeague eq 16 }">selected</c:if>>센트럴리그</option>
-                                <option value="17" <c:if test="${item.gLeague eq 17 }">selected</c:if>>퍼시픽리그</option>
-                                <option value="18" <c:if test="${item.gLeague eq 18 }">selected</c:if>>K리그 1</option>
-                                <option value="19" <c:if test="${item.gLeague eq 19 }">selected</c:if>>K리그 2</option>
-                                <option value="20" <c:if test="${item.gLeague eq 20 }">selected</c:if>>프리미어리그</option>
-                                <option value="21" <c:if test="${item.gLeague eq 21 }">selected</c:if>>라리가</option>
-                                <option value="22" <c:if test="${item.gLeague eq 22 }">selected</c:if>>분데스리가</option>
-                                <option value="23" <c:if test="${item.gLeague eq 23 }">selected</c:if>>세리에 A</option>
-                                <option value="24" <c:if test="${item.gLeague eq 24 }">selected</c:if>>리그 1</option>
                             </select>
                         </div>
                     </div>
@@ -145,20 +131,12 @@
                             <label for="team_home" class="form-label fw-bold">홈팀</label>
                             <select class="form-select" id="team_home" name="team_home" aria-label=".form-select example">
                                 <option value="">선택</option>
-                                <option value="25" <c:if test="${item.team_home eq 25 }">selected</c:if>>두산 베어스</option>
-                                <option value="26" <c:if test="${item.team_home eq 26 }">selected</c:if>>KIA 타이거즈</option>
-                                <option value="27" <c:if test="${item.team_home eq 27 }">selected</c:if>>SSG 랜더스</option>
-                                <option value="28" <c:if test="${item.team_home eq 28 }">selected</c:if>>삼성 라이온즈</option>
                             </select>
                         </div>
                         <div class="col">
                             <label for="team_away" class="form-label fw-bold">원정팀</label>
                             <select class="form-select" id="team_away" name="team_away" aria-label=".form-select example">
                                 <option value="">선택</option>
-                                 <option value="25" <c:if test="${item.team_away eq 25 }">selected</c:if>>두산 베어스</option>
-                                <option value="26" <c:if test="${item.team_away eq 26 }">selected</c:if>>KIA 타이거즈</option>
-                                <option value="27" <c:if test="${item.team_away eq 27 }">selected</c:if>>SSG 랜더스</option>
-                                <option value="28" <c:if test="${item.team_away eq 28 }">selected</c:if>>삼성 라이온즈</option>
                             </select>
                         </div>
                     </div>
@@ -370,6 +348,98 @@
 			})
 		}
 	 	
+		
+		/* select ajax */
+		function setComboBox1(o){
+			var code = o.value;
+			
+			alert(code)
+			
+			$("option").remove(".select");
+			$("option").remove(".select1");
+			$("option").remove(".select2");
+
+   			$.ajax({
+   				async: true 
+   				,cache: false
+   				,type: "post"
+   				/* ,dataType:"json" */
+   				,url: "/game/abroad"
+   				/* ,data : $("#formLogin").serialize() */
+   				,data : { "abroadNy" : code }
+   				,success: function(response) {
+   					
+   					if (response.rt == "success") {
+						for (var i=0; i<response.event.length; i++) {
+							$("#gEvent").append('<option class="select" value="' + response.event[i].event + '">' + response.event[i].event + '</option>');
+						}
+   					}
+   				}
+   				,error : function(jqXHR, textStatus, errorThrown){
+   					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+   				}
+   			});
+	 
+		}
+
+		function setComboBox2(o){
+			var code = o.value;
+			var abroadNy = $("#abroadNy").val();
+			
+			$("option").remove(".select1");
+			$("option").remove(".select2");
+
+   			$.ajax({
+   				async: true 
+   				,cache: false
+   				,type: "post"
+   				/* ,dataType:"json" */
+   				,url: "/game/event"
+   				/* ,data : $("#formLogin").serialize() */
+   				,data : { "event" : code, "abroadNy" : abroadNy }
+   				,success: function(response) {
+   					
+   					if (response.rt == "success") {
+						for (var i=0; i<response.league.length; i++) {
+							$("#gLeague").append('<option class="select1" value="' + response.league[i].league + '">' + response.league[i].league + '</option>');
+						}
+   					}
+   				}
+   				,error : function(jqXHR, textStatus, errorThrown){
+   					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+   				}
+   			});
+	 
+		}
+
+		function setComboBox3(o){
+			var code = o.value;
+			var abroadNy = $("#abroadNy").val();
+			var event = $("#event").val();
+			
+   			$.ajax({
+   				async: true 
+   				,cache: false
+   				,type: "post"
+   				/* ,dataType:"json" */
+   				,url: "/game/league"
+   				/* ,data : $("#formLogin").serialize() */
+   				,data : { "league" : code, "event" : event, "abroadNy" : abroadNy  }
+   				,success: function(response) {
+   					
+   					if (response.rt == "success") {
+						for (var i=0; i<response.teamName.length; i++) {
+							$("#team_home").append('<option class="select2" value="' + response.teamName[i].teamName + '">' + response.teamName[i].teamName + '</option>');
+							$("#team_away").append('<option class="select2" value="' + response.teamName[i].teamName + '">' + response.teamName[i].teamName + '</option>');
+						}
+   					}
+   				}
+   				,error : function(jqXHR, textStatus, errorThrown){
+   					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+   				}
+   			});
+	 
+		}
     </script>
 </body>
 

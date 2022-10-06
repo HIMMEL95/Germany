@@ -37,6 +37,10 @@
 			<exclude-mapping path="/articleView" />
 			<exclude-mapping path="/gameView" />
 			<exclude-mapping path="/naver" />
+			<exclude-mapping path="/testPage" />
+			<exclude-mapping path="/abroad" />
+			<exclude-mapping path="/event" />
+			<exclude-mapping path="/league" />
 			<exclude-mapping path="/" />
 			<exclude-mapping path="/signUp" />
 			<exclude-mapping path="/findId" />

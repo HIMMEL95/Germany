@@ -20,6 +20,52 @@ public class Game extends BaseVo{
 	private String gCreatedAt;
 	private String gModifiedAt;
 	private Integer gcDelNy;
+	
+	 /* select test team */
+    private String teamSeq;
+    private Integer abroadNy;
+    private Integer event;
+    private Integer league;
+    private String teamName;
+    private int level;
+    
+    public int getLevel() {
+        return level;
+    }
+    public void setLevel(int level) {
+        this.level = level;
+    }
+    public String getTeamSeq() {
+        return teamSeq;
+    }
+    public void setTeamSeq(String teamSeq) {
+        this.teamSeq = teamSeq;
+    }
+    public Integer getAbroadNy() {
+        return abroadNy;
+    }
+    public void setAbroadNy(Integer abroadNy) {
+        this.abroadNy = abroadNy;
+    }
+    public Integer getEvent() {
+        return event;
+    }
+    public void setEvent(Integer event) {
+        this.event = event;
+    }
+    public Integer getLeague() {
+        return league;
+    }
+    public void setLeague(Integer league) {
+        this.league = league;
+    }
+    public String getTeamName() {
+        return teamName;
+    }
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+	
     
     public String getgSeq() {
 		return gSeq;

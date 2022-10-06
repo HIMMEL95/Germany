@@ -109,8 +109,9 @@
                             <label for="gAbroadNy" class="form-label fw-bold">해외여부</label>
                             <select class="form-select" id="gAbroadNy" name="gAbroadNy" onchange="setComboBox1(this)" aria-label=".form-select example">
                                 <option value="" >선택</option>
-                                <option value="9" <c:if test="${item.gAbroadNy eq 9 }">selected</c:if>>국내</option>
-                                <option value="10" <c:if test="${item.gAbroadNy eq 10 }">selected</c:if>>해외</option>
+                                <c:forEach items="${list}" var="list" varStatus="status">
+									<option value="<c:out value="${list.abroadNy }"/>"> ${list.abroadNy }</option>				
+								</c:forEach>
                             </select>
                         </div>
                         <div class="col mb-4">
@@ -186,7 +187,7 @@
                         <div class="col align-items-center">
                             <img src="" id="preview" width="500px;" class="mb-2">
                             <label for="ex_file"></label>
-                            <input type="file" id="ex_file" class="form-control" aria-label="file example">
+                            <input type="file" id="ex_file" class="form-control" aria-label="file example" multiple>
                         </div>
                     </div>
                     <!-- 리스트 -->
@@ -352,8 +353,6 @@
 		/* select ajax */
 		function setComboBox1(o){
 			var code = o.value;
-			
-			alert(code)
 			
 			$("option").remove(".select");
 			$("option").remove(".select1");

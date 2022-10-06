@@ -216,7 +216,7 @@
 	   	)aa
 	</select>
 	
-	<select id="team" resultMap="resultMapObj">
+	<select id="abroad" resultMap="resultMapObj">
 		select
 			t.teamSeq
 			,t.abroadNy
@@ -224,5 +224,46 @@
 			,t.league
 			,t.teamName
 		from team t
+		group by abroadNy
+	</select>
+	
+	<select id="event" resultMap="resultMapObj">
+		select
+			t.teamSeq
+			,t.abroadNy
+			,t.event
+			,t.league
+			,t.teamName
+		from team t
+		group by event
+	</select>
+	
+	<select id="league" resultMap="resultMapObj">
+		select
+			t.teamSeq
+			,t.abroadNy
+			,t.event
+			,t.league
+			,t.teamName
+		from team t
+		where 1=1
+			and abroadNy = #{gAbroadNy}
+			and event = #{event}
+		group by league
+	</select>
+	
+	<select id="teamName" resultMap="resultMapObj">
+		select
+			t.teamSeq
+			,t.abroadNy
+			,t.event
+			,t.league
+			,t.teamName
+		from team t
+		where 1=1
+			and abroadNy = #{gAbroadNy}
+			and event = #{event}
+			and league = #{league}
+		group by teamName
 	</select>
 </mapper>

@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spopia.infra.modules.team.Team;
+
 @Service
 public class GameServiceImpl implements GameService{
 
@@ -61,5 +63,26 @@ public class GameServiceImpl implements GameService{
 	public List<Game> mainList(GameVo vo) throws Exception {
 		return dao.mainList(vo);
 	}
+	
+	/* select Test */
+    @Override
+    public List<Game> abroad(Game dto) throws Exception {
+        return dao.abroad(dto);
+    }
+
+    @Override
+    public List<Game> event(Game dto) throws Exception {
+        return dao.event(dto);
+    }
+
+    @Override
+    public List<Game> league(Game dto) throws Exception {
+        return dao.league(dto);
+    }
+
+    @Override
+    public List<Game> teamName(Game dto) throws Exception {
+        return dao.teamName(dto);
+    }
 	
 }

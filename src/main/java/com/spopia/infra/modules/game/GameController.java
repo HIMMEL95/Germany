@@ -4,10 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.spopia.infra.modules.team.Team;
-import com.spopia.infra.modules.team.TeamServiceImpl;
 
 @Controller
 @RequestMapping(value = "/game/")
@@ -25,8 +19,6 @@ public class GameController {
 
 	@Autowired
 	GameServiceImpl service;
-	@Autowired
-	TeamServiceImpl tService;
 	
 	public void setSearchAndPaging(GameVo vo) throws Exception {
 		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
@@ -45,10 +37,13 @@ public class GameController {
 	}
 	
 	@RequestMapping(value = "gameForm")
-	public String gameForm(Model model, @ModelAttribute("vo") GameVo vo) throws Exception {
+	public String gameForm(Model model, @ModelAttribute("vo") GameVo vo, Game dto) throws Exception {
 		
 		Game item = service.selectOne(vo);
 		model.addAttribute("item", item);
+		
+		List<Game> list = service.abroad(dto);
+        model.addAttribute("list", list);
 		return "infra/game/xdmin/gameForm";
 	}
 	
@@ -92,12 +87,12 @@ public class GameController {
 	
 	@ResponseBody
     @RequestMapping(value = "abroad")
-    public Map<String, Object> abroad(Team dto, Model model) throws Exception {
+    public Map<String, Object> abroad(Game dto, Model model) throws Exception {
         Map<String, Object> returnMap = new HashMap<String, Object>();
        
         System.out.println("etestt");
         
-        List<Team> event = tService.event(dto);
+        List<Game> event = service.event(dto);
         
         if (event != null) {
             returnMap.put("rt", "success");
@@ -111,10 +106,10 @@ public class GameController {
     
     @ResponseBody
     @RequestMapping(value = "event")
-    public Map<String, Object> event(Team dto, Model model) throws Exception {
+    public Map<String, Object> event(Game dto, Model model) throws Exception {
         Map<String, Object> returnMap = new HashMap<String, Object>();
 
-        List<Team> league = tService.league(dto);
+        List<Game> league = service.league(dto);
         
         if (league != null) {
             returnMap.put("rt", "success");
@@ -128,10 +123,10 @@ public class GameController {
     
     @ResponseBody
     @RequestMapping(value = "league")
-    public Map<String, Object> league(Team dto, Model model) throws Exception {
+    public Map<String, Object> league(Game dto, Model model) throws Exception {
         Map<String, Object> returnMap = new HashMap<String, Object>();
         
-        List<Team> teamName = tService.teamName(dto);
+        List<Game> teamName = service.teamName(dto);
         
         if (teamName != null) {
             returnMap.put("rt", "success");

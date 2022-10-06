@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.spopia.infra.modules.team.Team;
+
 @Repository
 public class GameDao {
 
@@ -58,8 +60,21 @@ public class GameDao {
 		return sqlSession.selectList(namespace + ".mainList", vo);
 	}
 	
-    /* select test */
-	public List<Game> selectTest(Game dto) {
-	    return sqlSession.selectList(namespace + ".team", dto);
-	}
+	
+	/* select test */
+    public List<Game> abroad(Game dto) {
+        return sqlSession.selectList(namespace + ".abroad", dto);
+    }
+    
+    public List<Game> event(Game dto) {
+        return sqlSession.selectList(namespace + ".event", dto);
+    }
+    
+    public List<Game> league(Game dto) {
+        return sqlSession.selectList(namespace + ".league", dto);
+    }
+    
+    public List<Game> teamName(Game dto) {
+        return sqlSession.selectList(namespace + ".teamName", dto);
+    }
 }

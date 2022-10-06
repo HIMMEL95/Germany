@@ -49,7 +49,7 @@
 			,t.teamName
 		from team t
 		where 1=1
-			and abroadNy = #{abroadNy}
+			and abroadNy = #{gAbroadNy}
 			and event = #{event}
 		group by league
 	</select>
@@ -63,7 +63,7 @@
 			,t.teamName
 		from team t
 		where 1=1
-			and abroadNy = #{abroadNy}
+			and abroadNy = #{gAbroadNy}
 			and event = #{event}
 			and league = #{league}
 		group by teamName

@@ -302,6 +302,7 @@
 														</c:forEach>
 			                                        </td>
 			                                        <td>
+			                                        	${list.team_home }
 			                                        	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
 															<c:if test="${list.team_home eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
 														</c:forEach>

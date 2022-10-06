@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Game Reg Form</title>
+    <title>Game 등록</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="/resources/css/xdmin/gameForm.css" rel="stylesheet" type="text/css">
@@ -109,8 +109,10 @@
                             <label for="gAbroadNy" class="form-label fw-bold">해외여부</label>
                             <select class="form-select" id="gAbroadNy" name="gAbroadNy" onchange="setComboBox1(this)" aria-label=".form-select example">
                                 <option value="" >선택</option>
-                                <c:forEach items="${list}" var="list" varStatus="status">
-									<option value="<c:out value="${list.abroadNy }"/>"> ${list.abroadNy }</option>				
+                                <c:forEach items="${abroad}" var="abroad" varStatus="status">
+									<option value="<c:out value="${abroad.abroadNy }"/>" <c:if test="${abroad.abroad }">selected</c:if>> ${abroad.abroadNy }</option>				
+									<%-- <c:if test="${list.team_away eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+									<option value="73" <c:if test="${item.stadium eq 73 }">selected</c:if>>서울</option> --%>
 								</c:forEach>
                             </select>
                         </div>
@@ -118,12 +120,18 @@
                             <label for="gEvent" class="form-label fw-bold">종목</label>
                             <select class="form-select" id="gEvent" name="gEvent" onchange="setComboBox2(this)" aria-label=".form-select example">
                                 <option value="" >선택</option>
+                                <c:forEach items="${event}" var="event" varStatus="status">
+									<option class="select" value="<c:out value="${event.event }"/>"> ${event.event }</option>				
+								</c:forEach>
                             </select>
                         </div>
                         <div class="col mb-4">
                             <label for="gLeague" class="form-label fw-bold">리그</label>
                             <select class="form-select" id="gLeague" name="gLeague" onchange="setComboBox3(this)" aria-label=".form-select example">
                                 <option value="">선택</option>
+                                <c:forEach items="${league}" var="league" varStatus="status">
+									<option class="select" value="<c:out value="${league.league }"/>"> ${league.league }</option>				
+								</c:forEach>
                             </select>
                         </div>
                     </div>
@@ -132,12 +140,22 @@
                             <label for="team_home" class="form-label fw-bold">홈팀</label>
                             <select class="form-select" id="team_home" name="team_home" aria-label=".form-select example">
                                 <option value="">선택</option>
+                                <c:forEach items="${team}" var="team" varStatus="status">
+									<option class="select" value="<c:out value="${team.team }"/>"> ${team.team }</option>				
+								</c:forEach>
                             </select>
                         </div>
                         <div class="col">
+                        	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
                             <label for="team_away" class="form-label fw-bold">원정팀</label>
                             <select class="form-select" id="team_away" name="team_away" aria-label=".form-select example">
                                 <option value="">선택</option>
+                                <%-- <c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+                                	<option value="${item.team_away }" <c:if test="${item.team_away eq listTeam.ccSeq}">selected</c:if>><c:out value="${listTeam.ifccName }"/></option>
+								</c:forEach> --%>
+								<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+									<c:if test="${list.team_away eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+								</c:forEach>
                             </select>
                         </div>
                     </div>
@@ -383,7 +401,7 @@
 
 		function setComboBox2(o){
 			var code = o.value;
-			var abroadNy = $("#abroadNy").val();
+			var abroadNy = $("#gAbroadNy").val();
 			
 			$("option").remove(".select1");
 			$("option").remove(".select2");
@@ -395,7 +413,7 @@
    				/* ,dataType:"json" */
    				,url: "/game/event"
    				/* ,data : $("#formLogin").serialize() */
-   				,data : { "event" : code, "abroadNy" : abroadNy }
+   				,data : { "event" : code, "gAbroadNy" : abroadNy }
    				,success: function(response) {
    					
    					if (response.rt == "success") {
@@ -413,8 +431,8 @@
 
 		function setComboBox3(o){
 			var code = o.value;
-			var abroadNy = $("#abroadNy").val();
-			var event = $("#event").val();
+			var abroadNy = $("#gAbroadNy").val();
+			var event = $("#gEvent").val();
 			
    			$.ajax({
    				async: true 
@@ -423,7 +441,7 @@
    				/* ,dataType:"json" */
    				,url: "/game/league"
    				/* ,data : $("#formLogin").serialize() */
-   				,data : { "league" : code, "event" : event, "abroadNy" : abroadNy  }
+   				,data : { "league" : code, "event" : event, "gAbroadNy" : abroadNy  }
    				,success: function(response) {
    					
    					if (response.rt == "success") {

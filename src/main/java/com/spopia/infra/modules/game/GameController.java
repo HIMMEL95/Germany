@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spopia.infra.modules.team.Team;
+
 
 @Controller
 @RequestMapping(value = "/game/")
@@ -27,12 +29,13 @@ public class GameController {
 	}
 	
 	@RequestMapping(value = "gameList")
-	public String gameList(Model model, @ModelAttribute("vo") GameVo vo) throws Exception {
+	public String gameList(Model model, @ModelAttribute("vo") GameVo vo, Game dto) throws Exception {
 		
 		setSearchAndPaging(vo);
 		
 		List<Game> list = service.selectList(vo);
 		model.addAttribute("list", list);
+		
 		return "infra/game/xdmin/gameList";
 	}
 	
@@ -42,8 +45,18 @@ public class GameController {
 		Game item = service.selectOne(vo);
 		model.addAttribute("item", item);
 		
-		List<Game> list = service.abroad(dto);
-        model.addAttribute("list", list);
+		List<Game> abroad = service.abroad(dto);
+		model.addAttribute("abroad", abroad);
+
+		List<Game> event = service.event(dto);
+		model.addAttribute("event", event);
+		
+		List<Game> league = service.league(dto);
+		model.addAttribute("league", league);
+
+		List<Game> team = service.teamName(dto);
+		model.addAttribute("team", team);
+		
 		return "infra/game/xdmin/gameForm";
 	}
 	

@@ -16,7 +16,7 @@
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="/resources/css/xdmin/cc.css" />
     <script defer type="text/javascript" src="/resources/js/validation.js"></script>
-    <!-- <script src="/resources/js/xdmin/commonXdmin.js"></script> -->
+    <!-- <script defer src="/resources/js/xdmin/commonXdmin.js"></script> -->
     <script src="/resources/js/xdmin/constantsXdmin.js"></script>
     <script defer src="/resources/common/js/common.js"></script>
     <style type="text/css">
@@ -68,8 +68,8 @@
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="#">이하늘</a>
-                                            <p class="small m-0">himmel@gmail.com</p>
+                                            <a class="fs-6 fw-bold" href="#"><c:out value="${sessName }"/></a>
+                                            <p class="small m-0"><c:out value="${sessEmail }"/></p>
                                         </div>
                                     </div>
                                     <hr>
@@ -139,7 +139,7 @@
     <main>
         <div class="top_space"></div>
         <div class="container">
-            <form method="post" id="myForm">
+            <form method="post" id="myForm" enctype="multipart/form-data">
                 <div class="row g-4">
 	                <!-- *Vo.jsp s -->
 					<%@include file="codeVo.jsp"%>		<!-- #-> -->
@@ -175,9 +175,9 @@
                                                                 src="/resources/images/diano.jpg" style="width: 50px;" alt=""></a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
-                                                        <span class="mb-0"><a href="#">이하늘</a></span>
-                                                        <small>Himmel</small><br>
-                                                        <small>himmel@gmail.com</small>
+                                                        <span class="mb-0"><a href="#"><c:out value="${sessName }"/></a></span>
+                                                        <small><c:out value="${sessId }"/> </small><br>
+                                                        <small><c:out value="${sessEmail }"/> </small>
                                                     </div>
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
@@ -461,12 +461,6 @@
 	    };
 	    
 		upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
-			
-			const BOOTSTRAP5_SM_DIMENSIONS = "576";
-
-			const URL_INDEX_ADMIN = "/index/indexView";
-			const URL_LOGIN_FORM = "/member/loginForm";
-			const URL_CHANGE_PWD_FORM = "/member/changePwdForm";
 
 			const MAX_EACH_FILE_SIZE = 5 * 1024 * 1024;		//	5M
 			const MAX_TOTAL_FILE_SIZE = 25 * 1024 * 1024;	//	25M
@@ -566,7 +560,7 @@
 				 fileReader.readAsDataURL($("#" + objName +"")[0].files[0]);
 				
 				 fileReader.onload = function () {
-					 $("#imgProfile").attr("src", fileReader.result);		/* #-> */
+					 $("#imgProfile").attr("src", fileReader.result);		
 				 }		
 			} else {
 				return false;
@@ -590,10 +584,6 @@
 			$("#li_"+seq+"_"+index).remove();
 		}
 	    
-	    $("#btnSave1").on("click", function() {
-	    	upload('ifmmUploadedImage', 1, 0, 1, 0, 0, 1);
-		})
-	    
 	    var goUrlList = "/code/codeList";
 	    var goUrlInst = "/code/codeInst";
         var goUrlUpdt = "/code/codeUpdt";
@@ -605,12 +595,17 @@
         var formVo = $("form[name=formVo]");
         
         $("#btnSave").on("click", function() {
+        	alert($("#ccgSeq").val())
         	if (seq.val() == "0" || seq.val() == "") {
         		form.attr("action", goUrlInst).submit();
         	} else {
         		form.attr("action", goUrlUpdt).submit();
         	}
 		});
+        
+        $("#btnSave1").on("click", function() {
+        	upload('ifmmUploadedImage', 1, 0, 1, 0, 0, 1);
+		})
         
         $("#btnList").on("click", function() {
 			formVo.attr("action", goUrlList).submit();

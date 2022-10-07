@@ -20,6 +20,33 @@
 	</sql>
 	
 	
+	<sql id="insertRegModColumn">	
+		,regIp
+		,regSeq
+		,regDeviceCd
+		,regDateTime
+		,regDateTimeSvr
+		,modIp
+		,modSeq
+		,modDeviceCd
+		,modDateTime
+		,modDateTimeSvr
+	</sql>
+    
+    
+    <sql id="insertRegModValue">	
+		,#{regIp}
+		,#{regSeq}
+		,#{regDeviceCd}
+		,#{regDateTime}
+		,#{regDateTimeSvr}
+		,#{modIp}
+		,#{modSeq}
+		,#{modDeviceCd}
+		,#{modDateTime}
+		,#{modDateTimeSvr}
+	</sql>
+	
 	<sql id="insertRegColumn">	
 		,regIp
 		,regSeq

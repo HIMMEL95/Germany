@@ -1,3 +1,33 @@
+document.write("<script src='/resources/common/js/common.js'></script>");
+document.write("<script src='/resources/js/xdmin/constantsXdmin.js'></script>");
+// document.write("<script src='/resources/xdmin/js/validationXdmin.js'></script>");
+
+
+divSearchControl = function() {
+    var screenWidth = $(window).width();
+    if (screenWidth < BOOTSTRAP5_SM_DIMENSIONS) {
+        $('#divSearch').hide();
+        $('#iSearchControlUp').hide();
+        $('#iSearchControlDown').show();
+    } else {
+        // by pass
+    }
+}
+ 
+ 
+$('#divSearchControl').on('click', function() {
+    if ($('#divSearch').is(':visible')) {
+         $('#divSearch').hide();
+         $('#iSearchControlUp').hide();
+         $('#iSearchControlDown').show();
+    } else {
+         $('#divSearch').show();
+         $('#iSearchControlUp').show();
+         $('#iSearchControlDown').hide();
+    }
+ });
+
+
 checkUploadedTotalFileNumber = function(obj, allowedMaxTotalFileNumber, fileCount) {
 	if(allowedMaxTotalFileNumber < fileCount){
 		alert("전체 파일 갯수는 "+ allowedMaxTotalFileNumber +"개 까지 허용됩니다.");
@@ -11,7 +41,7 @@ checkUploadedTotalFileNumber = function(obj, allowedMaxTotalFileNumber, fileCoun
 checkUploadedExt = function(objName, seq, div) {
 	var ext = objName.split('.').pop().toLowerCase();
 	var extArray = eval("extArray" + div);
-	alert(extArray)
+	
 	if(extArray.indexOf(ext) == -1) {
 		alert("허용된 확장자가 아닙니다.");
 //		$("#file"+seq).val("");
@@ -37,3 +67,8 @@ checkUploadedTotalFileSize = function(seq, totalSize, allowedTotalFileSize) {
 		return false;
 	}
 }
+
+
+
+
+

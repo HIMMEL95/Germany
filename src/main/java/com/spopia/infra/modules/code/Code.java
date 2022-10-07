@@ -30,21 +30,21 @@ public class Code extends Base{
 	
 	// imageUpload
     
-    private MultipartFile[] ifmmUploadedImage;
-    private MultipartFile[] ifmmUploadedFile;
-     
-    public MultipartFile[] getIfmmUploadedImage() {
-        return ifmmUploadedImage;
-    }
-    public void setIfmmUploadedImage(MultipartFile[] ifmmUploadedImage) {
-        this.ifmmUploadedImage = ifmmUploadedImage;
-    }
-    public MultipartFile[] getIfmmUploadedFile() {
-        return ifmmUploadedFile;
-    }
-    public void setIfmmUploadedFile(MultipartFile[] ifmmUploadedFile) {
-        this.ifmmUploadedFile = ifmmUploadedFile;
-    }
+  private MultipartFile[] ifmmUploadedImage;
+  private MultipartFile[] ifmmUploadedFile;
+   
+  public MultipartFile[] getIfmmUploadedImage() {
+      return ifmmUploadedImage;
+  }
+  public void setIfmmUploadedImage(MultipartFile[] ifmmUploadedImage) {
+      this.ifmmUploadedImage = ifmmUploadedImage;
+  }
+  public MultipartFile[] getIfmmUploadedFile() {
+      return ifmmUploadedFile;
+  }
+  public void setIfmmUploadedFile(MultipartFile[] ifmmUploadedFile) {
+      this.ifmmUploadedFile = ifmmUploadedFile;
+  }
     
     //	for cache
 	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();

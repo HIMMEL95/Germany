@@ -400,7 +400,7 @@
 						 var list = response.event[i];
 						 for(var j=0; j<arr.length; j++){
 							 if(list.event == arr[j].num){
-								 		 list.event = arr[j].name;
+						 		 list.event = arr[j].name;
 							 }
 						 }
 						 $("#gEvent").append('<option value="' + list.event +'" <c:if test="${'+ list.event +'eq '+ num + ' }">selected</c:if>>'+ list.event+'</option>')

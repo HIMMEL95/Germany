@@ -1,7 +1,5 @@
 package com.spopia.infra.modules.game;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

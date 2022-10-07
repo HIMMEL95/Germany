@@ -53,7 +53,7 @@
 
 		function setComboBox1(o){
 			var code = o.value;
-			
+
 			$("option").remove(".select");
 			$("option").remove(".select1");
 			$("option").remove(".select2");
@@ -78,7 +78,7 @@
    					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
    				}
    			});
-	 
+		
 		}
 
 		function setComboBox2(o){

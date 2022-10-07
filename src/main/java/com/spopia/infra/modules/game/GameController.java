@@ -1,5 +1,7 @@
 package com.spopia.infra.modules.game;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,8 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.spopia.infra.modules.team.Team;
 
 
 @Controller
@@ -45,6 +45,9 @@ public class GameController {
 		Game item = service.selectOne(vo);
 		model.addAttribute("item", item);
 		
+		List<Game> gameList = service.gameList(dto);
+		model.addAttribute("gameList", gameList);
+		
 		List<Game> abroad = service.abroad(dto);
 		model.addAttribute("abroad", abroad);
 
@@ -61,7 +64,7 @@ public class GameController {
 	}
 	
 	@RequestMapping(value = "gameInst")
-	public String gameInst(Game dto, GameVo vo, RedirectAttributes redirectAttributes) throws Exception {
+	public String gameInst(Game dto, GameVo vo, Model model, RedirectAttributes redirectAttributes) throws Exception {
 		service.insert(dto);
 
 		vo.setgSeq(dto.getgSeq());
@@ -69,13 +72,16 @@ public class GameController {
 		return "redirect:/game/gameForm";
 	}
 	
-	@RequestMapping(value = "gameView")
-	public String gameView(Model model, @ModelAttribute("vo") GameVo vo) throws Exception {
-		Game item = service.selectOne(vo);
-		model.addAttribute("item", item);
-
-		return "infra/game/xdmin/gameForm";		
-	}
+    /*
+     * @RequestMapping(value = "gameView")
+     * public String gameView(Model model, @ModelAttribute("vo") GameVo vo) throws
+     * Exception {
+     * Game item = service.selectOne(vo);
+     * model.addAttribute("item", item);
+     * 
+     * return "infra/game/xdmin/gameForm";
+     * }
+     */
 	
 	@RequestMapping(value = "gameUpdt")
 	public String gameModForm(Game dto, GameVo vo, RedirectAttributes redirectAttributes) throws Exception {

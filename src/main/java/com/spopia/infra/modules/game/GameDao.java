@@ -62,7 +62,11 @@ public class GameDao {
 	
 	
 	/* select test */
-    public List<Game> abroad(Game dto) {
+	public List<Game> gameList(Game dto) {
+	    return sqlSession.selectList(namespace + ".gameList", dto);
+	}
+
+	public List<Game> abroad(Game dto) {
         return sqlSession.selectList(namespace + ".abroad", dto);
     }
     

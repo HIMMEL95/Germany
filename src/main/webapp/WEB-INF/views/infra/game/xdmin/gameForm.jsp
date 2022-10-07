@@ -5,6 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<jsp:useBean id="CodeServiceImpl" class="com.spopia.infra.modules.code.CodeServiceImpl"/>
+
 <!doctype html>
 <html lang="ko" data-theme="light">
 
@@ -106,42 +108,44 @@
                 <div class="card ps-5 pe-5 pt-4 pb-4 shadow">
                     <div class="row pt-4">
                         <div class="col mb-4">
+                        	<c:set var="listCodeAbroad" value="${CodeServiceImpl.selectListCachedCode('4') }" />
                             <label for="gAbroadNy" class="form-label fw-bold">해외여부</label>
                             <select class="form-select" id="gAbroadNy" name="gAbroadNy" onchange="setComboBox1(this)" aria-label=".form-select example">
                                 <option value="" >선택</option>
-                                <c:forEach items="${abroad}" var="abroad" varStatus="status">
-									<option value="<c:out value="${abroad.abroadNy }"/>" <c:if test="${abroad.abroad }">selected</c:if>> ${abroad.abroadNy }</option>				
-									<%-- <c:if test="${list.team_away eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
-									<option value="73" <c:if test="${item.stadium eq 73 }">selected</c:if>>서울</option> --%>
+ 								<c:forEach items="${listCodeAbroad}" var="listAborad" varStatus="statusAborad">
+									<option value="${item.gAbroadNy }" <c:if test="${item.gAbroadNy eq listAborad.ccSeq}">selected</c:if>><c:out value="${listAborad.ifccName }"/></option>
 								</c:forEach>
                             </select>
                         </div>
                         <div class="col mb-4">
+                        	<c:set var="listCodeEvent" value="${CodeServiceImpl.selectListCachedCode('5') }" />
                             <label for="gEvent" class="form-label fw-bold">종목</label>
                             <select class="form-select" id="gEvent" name="gEvent" onchange="setComboBox2(this)" aria-label=".form-select example">
                                 <option value="" >선택</option>
-                                <c:forEach items="${event}" var="event" varStatus="status">
-									<option class="select" value="<c:out value="${event.event }"/>"> ${event.event }</option>				
+                                <c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
+									<option class="select" value="${item.gEvent }" <c:if test="${item.gEvent eq listEvent.ccSeq}">selected</c:if>><c:out value="${listEvent.ifccName }"/></option>
 								</c:forEach>
                             </select>
                         </div>
                         <div class="col mb-4">
+                        	<c:set var="listCodeLeague" value="${CodeServiceImpl.selectListCachedCode('6') }" />
                             <label for="gLeague" class="form-label fw-bold">리그</label>
                             <select class="form-select" id="gLeague" name="gLeague" onchange="setComboBox3(this)" aria-label=".form-select example">
                                 <option value="">선택</option>
-                                <c:forEach items="${league}" var="league" varStatus="status">
-									<option class="select" value="<c:out value="${league.league }"/>"> ${league.league }</option>				
+                                <c:forEach items="${listCodeLeague}" var="listLeague" varStatus="statusLeague">
+									<option class="select1" value="${item.gLeague }" <c:if test="${item.gLeague eq listLeague.ccSeq}">selected</c:if>><c:out value="${listLeague.ifccName }"/></option>
 								</c:forEach>
                             </select>
                         </div>
                     </div>
                     <div class="row mb-4">
-                        <div class="col">
+                    	<div class="col">
+                    		<c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
                             <label for="team_home" class="form-label fw-bold">홈팀</label>
                             <select class="form-select" id="team_home" name="team_home" aria-label=".form-select example">
                                 <option value="">선택</option>
-                                <c:forEach items="${team}" var="team" varStatus="status">
-									<option class="select" value="<c:out value="${team.team }"/>"> ${team.team }</option>				
+                                <c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+									<option class="select2" value="${item.team_home }" <c:if test="${item.team_home eq listTeam.ccSeq}">selected</c:if>><c:out value="${listTeam.ifccName }"/></option>
 								</c:forEach>
                             </select>
                         </div>
@@ -150,11 +154,8 @@
                             <label for="team_away" class="form-label fw-bold">원정팀</label>
                             <select class="form-select" id="team_away" name="team_away" aria-label=".form-select example">
                                 <option value="">선택</option>
-                                <%-- <c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
-                                	<option value="${item.team_away }" <c:if test="${item.team_away eq listTeam.ccSeq}">selected</c:if>><c:out value="${listTeam.ifccName }"/></option>
-								</c:forEach> --%>
-								<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
-									<c:if test="${list.team_away eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+                                <c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+									<option class="select2" value="${item.team_away }" <c:if test="${item.team_away eq listTeam.ccSeq}">selected</c:if>><c:out value="${listTeam.ifccName }"/></option>
 								</c:forEach>
                             </select>
                         </div>
@@ -371,6 +372,7 @@
 		/* select ajax */
 		function setComboBox1(o){
 			var code = o.value;
+			alert(code)
 			
 			$("option").remove(".select");
 			$("option").remove(".select1");
@@ -385,12 +387,24 @@
    				/* ,data : $("#formLogin").serialize() */
    				,data : { "abroadNy" : code }
    				,success: function(response) {
-   					
-   					if (response.rt == "success") {
-						for (var i=0; i<response.event.length; i++) {
-							$("#gEvent").append('<option class="select" value="' + response.event[i].event + '">' + response.event[i].event + '</option>');
-						}
-   					}
+   					   					
+   					<c:set var="listCodeEvent" value="${CodeServiceImpl.selectListCachedCode('5') }" />
+					var arr = new Array();
+					<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
+						arr.push({
+							num : "${listEvent.ccSeq}"
+							,name : "${listEvent.ifccName}"
+						});
+					</c:forEach>
+					for(var i=0; i<response.event.length; i++){
+						 var list = response.event[i];
+						 for(var j=0; j<arr.length; j++){
+							 if(list.event == arr[j].num){
+								 		 list.event = arr[j].name;
+							 }
+						 }
+						 $("#gEvent").append('<option value="' + list.event +'" <c:if test="${'+ list.event +'eq '+ num + ' }">selected</c:if>>'+ list.event+'</option>')
+					}                                                                                                                                                                              
    				}
    				,error : function(jqXHR, textStatus, errorThrown){
    					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);

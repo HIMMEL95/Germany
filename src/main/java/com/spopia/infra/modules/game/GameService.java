@@ -19,6 +19,7 @@ public interface GameService {
 	public List<Game> mainList(GameVo vo) throws Exception;
 	
 	/* select test */
+	public List<Game> gameList(Game dto) throws Exception;
     public List<Game> abroad(Game dto) throws Exception;
     public List<Game> event(Game dto) throws Exception;
     public List<Game> league(Game dto) throws Exception;

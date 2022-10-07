@@ -65,7 +65,12 @@ public class GameServiceImpl implements GameService{
 	}
 	
 	/* select Test */
-    @Override
+	@Override
+	public List<Game> gameList(Game dto) throws Exception {
+	    return dao.abroad(dto);
+	}
+
+	@Override
     public List<Game> abroad(Game dto) throws Exception {
         return dao.abroad(dto);
     }

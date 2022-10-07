@@ -3,7 +3,11 @@ package com.spopia.infra.modules.code;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Code {
+import org.springframework.web.multipart.MultipartFile;
+
+import com.spopia.infra.common.base.Base;
+
+public class Code extends Base{
 
 	private String ccSeq;
 	private String ifccAnother;
@@ -24,7 +28,25 @@ public class Code {
 	private String ifcgName;
 	private String ccgSeq;
 	
-//	for cache
+	// imageUpload
+    
+    private MultipartFile[] ifmmUploadedImage;
+    private MultipartFile[] ifmmUploadedFile;
+     
+    public MultipartFile[] getIfmmUploadedImage() {
+        return ifmmUploadedImage;
+    }
+    public void setIfmmUploadedImage(MultipartFile[] ifmmUploadedImage) {
+        this.ifmmUploadedImage = ifmmUploadedImage;
+    }
+    public MultipartFile[] getIfmmUploadedFile() {
+        return ifmmUploadedFile;
+    }
+    public void setIfmmUploadedFile(MultipartFile[] ifmmUploadedFile) {
+        this.ifmmUploadedFile = ifmmUploadedFile;
+    }
+    
+    //	for cache
 	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();
 	
 	public String getCcSeq() {

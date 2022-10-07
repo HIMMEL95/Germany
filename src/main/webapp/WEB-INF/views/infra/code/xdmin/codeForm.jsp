@@ -359,27 +359,6 @@
 								</div>
 					        </div>
 					    </div>
-					
-					    <div class="row mt-sm-4">
-					        <div class="col-sm-6 mt-3 mt-sm-0">
-					            <label for="ifmmUploadedImage" class="form-label input-file-button">이미지첨부</label>
-					 			<input class="form-control form-control-sm" id="ifmmUploadedImage" name="ifmmUploadedImage" type="file" multiple="multiple" style="display: none;"<!--  onChange="upload('ifmmUploadedImage', 1, 0, 1, 0, 0, 1);" -->>
-					 			<div class="addScroll">
-									<div style="display: inline-block; height: 95px;">
-										<img src="/resources/common/image/default_111.jpg" class="rounded" width= "85px" height="85px">
-										<div style="position: relative; top:-85px; left:5px"><span style="color: red;">X</span></div>
-									</div>
-					 			</div>
-					        </div>
-					        <div class="col-sm-6 mt-3 mt-sm-0">
-								<label for="ifmmUploadedFile" class="form-label input-file-button">파일첨부</label>
-								<input class="form-control form-control-sm" id="ifmmUploadedFile" name="ifmmUploadedFile" type="file" multiple="multiple" style="display: none;" onChange="upload('ifmmUploadedFile', 2, 0, 2, 0, 0, 2);" >
-								<div class="addScroll">
-									<ul id="ulFile2" class="list-group">
-									</ul>
-								</div>
-					        </div>
-					    </div>
                         <!-- 리스트 -->
                         <div class="row align-items-center">
                             <div class="col-1">
@@ -481,57 +460,6 @@
 	    	document.getElementById('myForm').submit();
 	    };
 	    
-	    /* upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
-//			objName 과 seq 는 jsp 내에서 유일 하여야 함.
-//			memberProfileImage: 1
-//			memberImage: 2
-//			memberFile : 3
-			
-			var totalFileSize = 0;
-			var obj = $("#" + objName +"")[0].files;	
-			var fileCount = obj.length;
-			
-			allowedMaxTotalFileNumber = allowedMaxTotalFileNumber == 0 ? MAX_TOTAL_FILE_NUMBER : allowedMaxTotalFileNumber;
-			allowedEachFileSize = allowedEachFileSize == 0 ? MAX_EACH_FILE_SIZE : allowedEachFileSize;
-			allowedTotalFileSize = allowedTotalFileSize == 0 ? MAX_TOTAL_FILE_SIZE : allowedTotalFileSize;
-			
-			if(checkUploadedTotalFileNumber(obj, allowedMaxTotalFileNumber, fileCount) == false) { return false; }
-			alert("현재 올린 사진의 갯수는" + fileCount + "개 입니다.")
-			
-			for (var i = 0 ; i < fileCount ; i++) {
-				if(checkUploadedExt($("#" + objName +"")[0].files[i].name, seq, allowedExtdiv) == false) { return false; }
-				alert("pass2")
-				if(checkUploadedEachFileSize($("#" + objName +"")[0].files[i], seq, allowedEachFileSize) == false) { return false; }
-				totalFileSize += $("#" + objName +"")[0].files[i].size;
-			}
-			if(checkUploadedTotalFileSize(seq, totalFileSize, allowedTotalFileSize) == false) { return false; }
-			alert("모두 통과!!!")
-			
-			if (uiType == 1) {
-				$("#ulFile" + seq).children().remove();
-				
-				for (var i = 0 ; i < fileCount ; i++) {
-					addUploadLi(seq, i, $("#" + objName +"")[0].files[i].name);
-				}
-			} else if(uiType == 2) {
-				$("#ulFile" + seq).children().remove();
-				
-				for (var i = 0 ; i < fileCount ; i++) {
-					addUploadLi(seq, i, $("#" + objName +"")[0].files[i].name);
-				}
-			} else if (uiType == 3) {
-				var fileReader = new FileReader();
-				 fileReader.readAsDataURL($("#" + objName +"")[0].files[0]);
-				
-				 fileReader.onload = function () {
-					 $("#imgProfile").attr("src", fileReader.result);		
-				 }		
-			} else {
-				return false;
-			}
-			return false;
-		} */
-		
 		upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
 			
 			const BOOTSTRAP5_SM_DIMENSIONS = "576";
@@ -646,7 +574,6 @@
 			return false;
 		}
 		
-		
 		addUploadLi = function (seq, index, name){
 			
 			var ul_list = $("#ulFile0");
@@ -658,7 +585,6 @@
 			
 			$("#ulFile"+seq).append(li);
 		}
-		
 		
 		delLi = function(seq, index) {
 			$("#li_"+seq+"_"+index).remove();
@@ -705,71 +631,6 @@
 			})
 		}
 		
-		
-		/* upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
-//			objName 과 seq 는 jsp 내에서 유일 하여야 함.
-//			memberProfileImage: 1
-//			memberImage: 2
-//			memberFile : 3
-			
-			var totalFileSize = 0;
-			var obj = $("#" + objName +"")[0].files;	
-			var fileCount = obj.length;
-			
-			allowedMaxTotalFileNumber = allowedMaxTotalFileNumber == 0 ? MAX_TOTAL_FILE_NUMBER : allowedMaxTotalFileNumber;
-			allowedEachFileSize = allowedEachFileSize == 0 ? MAX_EACH_FILE_SIZE : allowedEachFileSize;
-			allowedTotalFileSize = allowedTotalFileSize == 0 ? MAX_TOTAL_FILE_SIZE : allowedTotalFileSize;
-			
-			if(checkUploadedTotalFileNumber(obj, allowedMaxTotalFileNumber, fileCount) == false) { return false; }
-			
-			for (var i = 0 ; i < fileCount ; i++) {
-				if(checkUploadedExt($("#" + objName +"")[0].files[i].name, seq, allowedExtdiv) == false) { return false; }
-				if(checkUploadedEachFileSize($("#" + objName +"")[0].files[i], seq, allowedEachFileSize) == false) { return false; }
-				totalFileSize += $("#" + objName +"")[0].files[i].size;
-			}
-			if(checkUploadedTotalFileSize(seq, totalFileSize, allowedTotalFileSize) == false) { return false; }
-			
-			if (uiType == 1) {
-				$("#ulFile" + seq).children().remove();
-				
-				for (var i = 0 ; i < fileCount ; i++) {
-					addUploadLi(seq, i, $("#" + objName +"")[0].files[i].name);
-				}
-			} else if(uiType == 2) {
-				$("#ulFile" + seq).children().remove();
-				
-				for (var i = 0 ; i < fileCount ; i++) {
-					addUploadLi(seq, i, $("#" + objName +"")[0].files[i].name);
-				}
-			} else if (uiType == 3) {
-				var fileReader = new FileReader();
-				 fileReader.readAsDataURL($("#" + objName +"")[0].files[0]);
-				
-				 fileReader.onload = function () {
-					 $("#imgProfile").attr("src", fileReader.result);		
-				 }		
-			} else {
-				return false;
-			}
-			return false;
-		}
-		 */
-		
-		delLi = function(seq, index) {
-			$("#li_"+seq+"_"+index).remove();
-		}
-		 
-		addUploadLi = function (seq, index, name){
-			
-			var ul_list = $("#ulFile0");
-			
-			li = '<li id="li_'+seq+'_'+index+'" class="list-group-item d-flex justify-content-between align-items-center">';
-			li = li + name;
-			li = li + '<span class="badge bg-danger rounded-pill" onClick="delLi('+ seq +','+ index +')"><i class="fa-solid fa-x" style="cursor: pointer;"></i></span>';
-			li = li + '</li>';
-			
-			$("#ulFile"+seq).append(li);
-		}
     </script>
 </body>
 </html>

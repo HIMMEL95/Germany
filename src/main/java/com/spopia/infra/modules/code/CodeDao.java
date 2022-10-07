@@ -47,4 +47,7 @@ public class CodeDao {
 	
 	/* for cache */
 	public List<Code> selectListCachedCodeArrayList(){ return sqlSession.selectList(namespace + ".selectListCachedCodeArrayList", null); }
+
+	// image Uploaded
+	public int insertUploaded(Code dto) { return sqlSession.insert("Base" + ".insertUploaded", dto); }
 }

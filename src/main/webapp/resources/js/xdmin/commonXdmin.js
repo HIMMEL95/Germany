@@ -11,7 +11,7 @@ checkUploadedTotalFileNumber = function(obj, allowedMaxTotalFileNumber, fileCoun
 checkUploadedExt = function(objName, seq, div) {
 	var ext = objName.split('.').pop().toLowerCase();
 	var extArray = eval("extArray" + div);
-	
+	alert(extArray)
 	if(extArray.indexOf(ext) == -1) {
 		alert("허용된 확장자가 아닙니다.");
 //		$("#file"+seq).val("");

@@ -18,5 +18,52 @@
 	<sql id="orderByLimitForMysql">
 		limit 99999999999
 	</sql>
-
+	
+	
+	<sql id="insertRegColumn">	
+		,regIp
+		,regSeq
+		,regDeviceCd
+		,regDateTime
+		,regDateTimeSvr
+	</sql>
+    
+    
+    <sql id="insertRegValue">	
+		,#{regIp}
+		,#{regSeq}
+		,#{regDeviceCd}
+		,#{regDateTime}
+		,#{regDateTimeSvr}
+	</sql>
+	
+	<!-- image uploaded s -->
+	<insert id="insertUploaded">
+		INSERT INTO ${tableName} (
+			type
+			,defaultNy
+			,sort
+			,path
+			,originalName
+			,uuidName
+			,ext
+			,size
+			,delNy
+			<include refid="Base.insertRegColumn" />
+			,pseq
+		) values (
+			#{type}
+			,#{defaultNy}
+			,#{sort}
+			,#{path}
+			,#{originalName}
+			,#{uuidName}
+			,#{ext}
+			,#{size}
+			,0
+			<include refid="Base.insertRegValue" />
+			,#{pseq}
+		)
+	</insert>
+	<!-- image uploaded e -->	
 </mapper>	

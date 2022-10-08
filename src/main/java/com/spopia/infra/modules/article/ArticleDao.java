@@ -61,4 +61,7 @@ public class ArticleDao {
 	public int articleCommentCount(CommentVo vo) {
 		return sqlSession.selectOne(namespace + ".articleCommentCount", vo);
 	}
+	
+	//image Uploaded
+	public int insertUploaded(Article dto) { return sqlSession.insert("Base" + ".insertUploaded", dto); }
 }

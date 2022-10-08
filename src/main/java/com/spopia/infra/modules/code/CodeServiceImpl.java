@@ -10,14 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import org.springframework.web.multipart.MultipartFile;
 
-import com.spopia.infra.common.util.UtilUpload;
+import com.spopia.infra.common.base.BaseServiceImpl;
 import com.spopia.infra.common.util.UtilDateTime;
 import com.spopia.infra.common.util.UtilRegMod;
 
 @Service
-public class CodeServiceImpl implements CodeService{
+public class CodeServiceImpl extends BaseServiceImpl implements CodeService{
 
 	@Autowired
 	CodeDao dao;
@@ -34,7 +33,56 @@ public class CodeServiceImpl implements CodeService{
 
 	@Override
 	public int insert(Code dto) throws Exception {
+		
 		return dao.insert(dto);
+//		try {
+//    	
+//    	setRegMod(dto);
+//    	
+//    	dao.insert(dto);
+//    	
+//    	int j = 0;
+//    	for(MultipartFile multipartFile : dto.getIfmmUploadedImage() ) {
+//    			
+//    		if(!multipartFile.isEmpty()) {
+//    		
+//    			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");		
+//    			UtilUpload.upload(multipartFile, pathModule, dto);
+//    			
+//	    		dto.setTableName("codeUploaded");
+//	    		dto.setType(2);
+//	    		dto.setDefaultNy(j == 0 ? 1 : 0);
+//	    		dto.setSort(j + 1);
+//	    		dto.setPseq(dto.getCcSeq());
+//
+//				dao.insertUploaded(dto);
+//				j++;
+//    		}
+//    	}
+//
+//    	j = 0;
+//    	for(MultipartFile multipartFile : dto.getIfmmUploadedFile() ) {
+//    		
+//    		if(!multipartFile.isEmpty()) {	    		
+//    		
+//	    		String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");		
+//	    		UtilUpload.upload(multipartFile, pathModule, dto);
+//	    		
+//	    		dto.setTableName("codeUploaded");
+//	    		dto.setType(3);
+//	    		dto.setDefaultNy(j == 0 ? 1 : 0);
+//	    		dto.setSort(j + 1);
+//	    		dto.setPseq(dto.getCcSeq());
+//	    		
+//	    		dao.insertUploaded(dto);
+//	    		j++;
+//    		}
+//    	}
+//		return 1;
+//
+//    } catch (Exception e) {
+//        throw new Exception();
+//    }
 	}
 
 	@Override

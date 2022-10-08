@@ -90,7 +90,10 @@
     </header>
 
     <main>
-        <form class="needs-validation" action="/article/articleInst" method="post" name="myForm">
+        <form method="post" name="myForm" id="myForm" autocomplete="off" enctype="multipart/form-data">
+        	<!-- *Vo.jsp s -->
+			<%@include file="articleVo.jsp"%>		<!-- #-> -->
+			<!-- *Vo.jsp e -->
             <div style="height: 80px;"></div>
             <div class="container" style="max-width: 900px;">
                 <div class="text-center pb-3">
@@ -156,8 +159,8 @@
                     <div class="row mb-4">
                         <div class="col align-items-center">
                             <img src="" id="preview" width="500px;" class="mb-2">
-                            <label for="ex_file"></label>
-                            <input type="file" id="ex_file" class="form-control" aria-label="file example">
+                            <label for="articleImage"></label>
+                            <input type="file" id="articleImage" name="articleImage" multiple="multiple" class="form-control" aria-label="file example" onChange="upload('articleImage', 1, 0, 1, 0, 0, 1);">
                         </div>
                     </div>
                     <div class="row">
@@ -166,13 +169,18 @@
                                 role="button">취소</a>
                         </div>
                         <div class="col-2 offset-8" align="right">
-                            <button class="btn btn-primary btn-sm text-white fw-bold shadow" type="submit" id="btnSave" >등록</button>
+                            <button class="btn btn-primary btn-sm text-white fw-bold shadow" type="button" id="btnSave" >등록</button>
                         </div>
                     </div>
                 </div>
             </div>
             <div style="height: 50px;"></div>
         </form>
+        <form name="formVo" id="formVo" method="post">
+			<!-- *Vo.jsp s -->
+			<%@include file="articleVo.jsp"%>		<!-- #-> -->
+			<!-- *Vo.jsp e -->
+		</form>
     </main>
 
     <footer>
@@ -207,27 +215,9 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (() => {
-            'use strict'
-
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            const forms = document.querySelectorAll('.needs-validation')
-
-            // Loop over them and prevent submission
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-
-                    form.classList.add('was-validated')
-                }, false)
-            })
-        })()
-
+    <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script type="text/javascript">
         // 이미지 미리보기
 		const reader = new FileReader();
 
@@ -241,13 +231,134 @@
             reader.readAsDataURL(imgFile);
             document.getElementById("text").innerHTML = " ";
         })
-        
+    </script> -->
+    <script type="text/javascript">
+    	var goUrlList = "/article/articleList";
         var goUrlInst = "/article/articleInst";
-        var form = "$(form[name=myForm])"
+        var goUrlUpdt = "/article/articleUpdt";
+        var goUrlUel = "/article/articleUele";
+        var goUrlDel = "/article/articleDele"
+        
+        var seq = $("input:hidden[name=aSeq]");
+        var form = $("#myForm");
+        var formVo = $("form[name=formVo]");
         
         $("#btnSave").on("click", function() {
-			form.attr("action", goUrlInst).submit();
-		})
+        	if (seq.val() == "0" || seq.val() == "") {
+        		form.attr("action", goUrlInst).submit();
+        	} else {
+        		form.attr("action", goUrlUpdt).submit();
+        	}
+		});
+		
+		upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
+
+			const MAX_EACH_FILE_SIZE = 5 * 1024 * 1024;		//	5M
+			const MAX_TOTAL_FILE_SIZE = 25 * 1024 * 1024;	//	25M
+			const MAX_TOTAL_FILE_NUMBER = 5;				//	5
+
+			function kbToMb(bytes) {
+			    var e = Math.floor(Math.log(bytes)/Math.log(1024));
+
+			    if(e == "-Infinity") return 0;
+			    else return (bytes/Math.pow(1024, Math.floor(e))).toFixed(2).slice(0, -3);
+			}
+			
+			checkUploadedTotalFileNumber = function(obj, allowedMaxTotalFileNumber, fileCount) {
+				if(allowedMaxTotalFileNumber < fileCount){
+					alert("전체 파일 갯수는 "+ allowedMaxTotalFileNumber +"개 까지 허용됩니다.");
+//					$("#file"+seq).val("");
+//					obj.val("");
+					return false;
+				}
+			}
+
+
+			checkUploadedExt = function(objName, seq, div) {
+				var ext = objName.split('.').pop().toLowerCase();
+				var extArray = eval("extArray" + div);
+				
+				if(extArray.indexOf(ext) == -1) {
+					alert("허용된 확장자가 아닙니다.");
+//					$("#file"+seq).val("");
+					return false;
+				}
+			}
+
+
+			checkUploadedEachFileSize = function(obj, seq, allowedEachFileSize) {
+
+				if(obj.size > allowedEachFileSize){
+					alert("각 첨부 파일 사이즈는 "+kbToMb(allowedEachFileSize)+"MB 이내로 등록 가능합니다.");
+					$("#file"+seq).val("");
+					return false;
+				}
+			}
+
+
+			checkUploadedTotalFileSize = function(seq, totalSize, allowedTotalFileSize) {
+				if(totalSize > allowedTotalFileSize){
+					alert("전체 용량은 "+kbToMb(allowedTotalFileSize)+"M를 넘을 수 없습니다.");
+					$("#file"+seq).val("");
+					return false;
+				}
+			}
+
+//			objName 과 seq 는 jsp 내에서 유일 하여야 함.
+//			memberProfileImage: 1
+//			memberImage: 2
+//			memberFile : 3
+			
+			var extArray1 = new Array();
+			extArray1 = ["jpg","gif","png","jpeg","bmp","tif","jfif"];
+			
+			var extArray2 = new Array();
+			extArray2 = ["txt","pdf","hwp","doc","docx","xls","xlsx","ppt","pptx","html"];
+			
+			var totalFileSize = 0;
+			var obj = $("#" + objName +"")[0].files;	
+			var fileCount = obj.length;
+			
+			allowedMaxTotalFileNumber = allowedMaxTotalFileNumber == 0 ? MAX_TOTAL_FILE_NUMBER : allowedMaxTotalFileNumber;
+			allowedEachFileSize = allowedEachFileSize == 0 ? MAX_EACH_FILE_SIZE : allowedEachFileSize;
+			allowedTotalFileSize = allowedTotalFileSize == 0 ? MAX_TOTAL_FILE_SIZE : allowedTotalFileSize;
+			
+			if(checkUploadedTotalFileNumber(obj, allowedMaxTotalFileNumber, fileCount) == false) { return false; } 
+			alert("총 " + fileCount + "개 파일을 선택하셨습니다.")
+
+			for (var i = 0 ; i < fileCount ; i++) {
+				if(checkUploadedExt($("#" + objName +"")[0].files[i].name, seq, allowedExtdiv) == false) { return false; }
+				if(checkUploadedEachFileSize($("#" + objName +"")[0].files[i], seq, allowedEachFileSize) == false) { return false; }
+
+				totalFileSize += $("#" + objName +"")[0].files[i].size;
+			}
+
+			if(checkUploadedTotalFileSize(seq, totalFileSize, allowedTotalFileSize) == false) { return false; }
+			
+			if (uiType == 1) {
+				$("#ulFile" + seq).children().remove();
+				
+				for (var i = 0 ; i < fileCount ; i++) {
+					addUploadLi(seq, i, $("#" + objName +"")[0].files[i].name);
+				}
+			} else if(uiType == 2) {
+				$("#ulFile" + seq).children().remove();
+				
+				for (var i = 0 ; i < fileCount ; i++) {
+					addUploadLi(seq, i, $("#" + objName +"")[0].files[i].name);
+				}
+			} else if (uiType == 3) {
+				var fileReader = new FileReader();
+				 fileReader.readAsDataURL($("#" + objName +"")[0].files[0]);
+				
+				 fileReader.onload = function () {
+					 $("#imgProfile").attr("src", fileReader.result);		
+				 }		
+			} else {
+				return false;
+			}
+			return false;
+		}
     </script>
 </body>
 

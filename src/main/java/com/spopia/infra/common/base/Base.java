@@ -33,6 +33,7 @@ public class Base {
     private Integer modDeviceCd;
     private Date modDateTime;
     private Date modDateTimeSvr;
+    // ----------------
     public String getTableName() {
         return tableName;
     }

@@ -30,7 +30,7 @@ public class Code extends Base{
 	
 	// imageUpload
     
-/*  private MultipartFile[] ifmmUploadedImage;
+  private MultipartFile[] ifmmUploadedImage;
   private MultipartFile[] ifmmUploadedFile;
    
   public MultipartFile[] getIfmmUploadedImage() {
@@ -45,7 +45,7 @@ public class Code extends Base{
   public void setIfmmUploadedFile(MultipartFile[] ifmmUploadedFile) {
       this.ifmmUploadedFile = ifmmUploadedFile;
   }
-  */  
+    
     //	for cache
 	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();
 	

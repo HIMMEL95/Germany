@@ -1,6 +1,10 @@
 package com.spopia.infra.modules.article;
 
-public class Article {
+import org.springframework.web.multipart.MultipartFile;
+
+import com.spopia.infra.common.base.Base;
+
+public class Article extends Base{
 
 	private String aSeq;
 	private String title;
@@ -16,6 +20,17 @@ public class Article {
 	private Integer modifiedBy;
 	private Integer aDelNy;
 	private String email;
+	
+	// imageUpload
+	private MultipartFile[] articleImage;
+	
+	public MultipartFile[] getArticleImage() {
+		return articleImage;
+	}
+	public void setArticleImage(MultipartFile[] articleImage) {
+		this.articleImage = articleImage;
+	}
+	
 	public String getaSeq() {
 		return aSeq;
 	}

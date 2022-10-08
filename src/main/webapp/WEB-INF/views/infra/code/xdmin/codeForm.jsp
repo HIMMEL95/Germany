@@ -139,7 +139,7 @@
     <main>
         <div class="top_space"></div>
         <div class="container">
-            <form method="post" id="myForm"> <!-- enctype="multipart/form-data" -->
+            <form method="post" id="myForm" name="myForm" autocomplete="off" enctype="multipart/form-data"> 
                 <div class="row g-4">
 	                <!-- *Vo.jsp s -->
 					<%@include file="codeVo.jsp"%>		<!-- #-> -->

@@ -19,5 +19,6 @@ public final class Constants {
 	public static final String DATETIME_FORMAT_BASIC = "yyyy-MM-dd HH:mm:ss";
 	
 	public static final String UPLOAD_PATH_PREFIX = "D://factory/ws_sts_4151/Germany/src/main/webapp/resources/uploaded";
-    public static final String UPLOAD_PATH_PREFIX_FOR_VIEW = "/resources/uploaded";
+	public static final String UPLOAD_PATH_PREFIX_MAC = "/Users/haneullee/Documents/factory/Germany/src/main/webapp/resources/uploaded";
+  public static final String UPLOAD_PATH_PREFIX_FOR_VIEW = "/resources/uploaded";
 }

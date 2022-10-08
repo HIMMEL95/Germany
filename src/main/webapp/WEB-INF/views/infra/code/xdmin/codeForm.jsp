@@ -139,7 +139,7 @@
     <main>
         <div class="top_space"></div>
         <div class="container">
-            <form method="post" id="myForm" enctype="multipart/form-data">
+            <form method="post" id="myForm"> <!-- enctype="multipart/form-data" -->
                 <div class="row g-4">
 	                <!-- *Vo.jsp s -->
 					<%@include file="codeVo.jsp"%>		<!-- #-> -->
@@ -460,6 +460,47 @@
 	    	document.getElementById('myForm').submit();
 	    };
 	    
+	    var goUrlList = "/code/codeList";
+	    var goUrlInst = "/code/codeInst";
+        var goUrlUpdt = "/code/codeUpdt";
+        var goUrlUel = "/code/codeUele";
+        var goUrlDel = "/code/codeDele";
+        
+        var seq = $("input:hidden[name=ccSeq]");
+        var form = $("#myForm");
+        var formVo = $("form[name=formVo]");
+        
+        $("#btnSave").on("click", function() {
+        	if (seq.val() == "0" || seq.val() == "") {
+        		form.attr("action", goUrlInst).submit();
+        	} else {
+        		form.attr("action", goUrlUpdt).submit();
+        	}
+		});
+        
+        $("#btnSave1").on("click", function() {
+        	upload('ifmmUploadedImage', 1, 0, 1, 0, 0, 1);
+		})
+        
+        $("#btnList").on("click", function() {
+			formVo.attr("action", goUrlList).submit();
+		});
+		
+		$("#btnUel").on("click", function() {
+			DelValidation("#delBtn", goUrlUel, "선택하신 게시물을 삭제하시겠습니까?");
+		})
+		
+		$("#btnDel").on("click", function() {
+			DelValidation("#delBtn", goUrlDel, "선택하신 게시물을 진짜로 삭제하시겠습니까?");		
+		})
+		
+		DelValidation = function(confirm, url, msg) {
+			$(".modal-body").html(msg);
+			$(confirm).on("click", function() {
+				form.attr("action", url).submit();
+			})
+		}
+		
 		upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
 
 			const MAX_EACH_FILE_SIZE = 5 * 1024 * 1024;		//	5M
@@ -533,7 +574,8 @@
 			allowedTotalFileSize = allowedTotalFileSize == 0 ? MAX_TOTAL_FILE_SIZE : allowedTotalFileSize;
 			
 			if(checkUploadedTotalFileNumber(obj, allowedMaxTotalFileNumber, fileCount) == false) { return false; } 
-			
+			alert("총 " + fileCount + "개 파일을 선택하셨습니다.")
+
 			for (var i = 0 ; i < fileCount ; i++) {
 				if(checkUploadedExt($("#" + objName +"")[0].files[i].name, seq, allowedExtdiv) == false) { return false; }
 				if(checkUploadedEachFileSize($("#" + objName +"")[0].files[i], seq, allowedEachFileSize) == false) { return false; }
@@ -583,49 +625,6 @@
 		delLi = function(seq, index) {
 			$("#li_"+seq+"_"+index).remove();
 		}
-	    
-	    var goUrlList = "/code/codeList";
-	    var goUrlInst = "/code/codeInst";
-        var goUrlUpdt = "/code/codeUpdt";
-        var goUrlUel = "/code/codeUele";
-        var goUrlDel = "/code/codeDele";
-        
-        var seq = $("input:hidden[name=ccSeq]");
-        var form = $("#myForm");
-        var formVo = $("form[name=formVo]");
-        
-        $("#btnSave").on("click", function() {
-        	alert($("#ccgSeq").val())
-        	if (seq.val() == "0" || seq.val() == "") {
-        		form.attr("action", goUrlInst).submit();
-        	} else {
-        		form.attr("action", goUrlUpdt).submit();
-        	}
-		});
-        
-        $("#btnSave1").on("click", function() {
-        	upload('ifmmUploadedImage', 1, 0, 1, 0, 0, 1);
-		})
-        
-        $("#btnList").on("click", function() {
-			formVo.attr("action", goUrlList).submit();
-		});
-		
-		$("#btnUel").on("click", function() {
-			DelValidation("#delBtn", goUrlUel, "선택하신 게시물을 삭제하시겠습니까?");
-		})
-		
-		$("#btnDel").on("click", function() {
-			DelValidation("#delBtn", goUrlDel, "선택하신 게시물을 진짜로 삭제하시겠습니까?");		
-		})
-		
-		DelValidation = function(confirm, url, msg) {
-			$(".modal-body").html(msg);
-			$(confirm).on("click", function() {
-				form.attr("action", url).submit();
-			})
-		}
-		
     </script>
 </body>
 </html>

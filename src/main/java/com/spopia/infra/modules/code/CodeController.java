@@ -51,8 +51,9 @@ public class CodeController {
 	@RequestMapping(value = "codeInst")
 	public String codeInst(Code dto, CodeVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		
-		System.out.println("asdasd: " +  dto.getCcSeq());
+		System.out.println("dto1 : " + dto.getCcSeq());
 		service.insert(dto);
+		System.out.println("dto1 : " + dto.getCcSeq());
 		
 		vo.setCcSeq(dto.getCcSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);

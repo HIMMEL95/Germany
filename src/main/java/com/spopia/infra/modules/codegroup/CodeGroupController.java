@@ -44,7 +44,10 @@ public class CodeGroupController {
 
 	@RequestMapping(value = "codeGroupInst")
 	public String codeGroupInst(CodeGroup dto, CodeGroupVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		
+		System.out.println("dto : " + dto.getCcgSeq());
 		service.insert(dto);
+		System.out.println("dto : " + dto.getCcgSeq());
 
 		vo.setCcgSeq(dto.getCcgSeq());
 		

@@ -34,59 +34,7 @@ public class CodeServiceImpl implements CodeService{
 
 	@Override
 	public int insert(Code dto) throws Exception {
-	    
-	    try {
-	        
-	        setRegMod(dto);
-	        System.out.println("qweqwe");
-	        
-	        System.out.println("seq : " + dto.getCcgSeq());
-	        System.out.println("seq : " + dto.getCcSeq());
-	        dao.insert(dto);
-	        System.out.println("qweqwe11122");
-	        
-	        int j = 0;
-          for(MultipartFile multipartFile : dto.getIfmmUploadedImage() ) {
-                  
-              if(!multipartFile.isEmpty()) {
-              
-                  String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");        
-                  UtilUpload.upload(multipartFile, pathModule, dto);
-                  
-                  dto.setTableName("infrMemberUploaded");
-                  dto.setType(2);
-                  dto.setDefaultNy(j == 0 ? 1 : 0);
-                  dto.setSort(j + 1);
-                  dto.setPseq(dto.getCcSeq());
-  
-                  dao.insertUploaded(dto);
-                  j++;
-              }
-          }
-
-          j = 0;
-          for(MultipartFile multipartFile : dto.getIfmmUploadedFile() ) {
-              
-              if(!multipartFile.isEmpty()) {              
-              
-                  String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");        
-                  UtilUpload.upload(multipartFile, pathModule, dto);
-                  
-                  dto.setTableName("infrMemberUploaded");
-                  dto.setType(3);
-                  dto.setDefaultNy(j == 0 ? 1 : 0);
-                  dto.setSort(j + 1);
-                  dto.setPseq(dto.getCcSeq());
-                  
-                  dao.insertUploaded(dto);
-                  j++;
-              }
-          }  
-          
-          return 1;
-      } catch (Exception e) {
-          throw new Exception();
-      }
+		return dao.insert(dto);
 	}
 
 	@Override

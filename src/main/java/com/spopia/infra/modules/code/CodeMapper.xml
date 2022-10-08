@@ -79,7 +79,6 @@
 			,ifccReferenceI3
 			,codeGroup_ccgSeq
 			,createdAt
-			<include refid="Base.insertRegModColumn" />
 		)
 		VALUES (
 			#{ifccName}
@@ -97,7 +96,6 @@
 			,#{referenceI3}
 			,#{ccgSeq}
 			,now()
-			<include refid="Base.insertRegModValue" />
 		)
 		
 		<selectKey resultType="String" keyProperty="ccSeq" order="AFTER">

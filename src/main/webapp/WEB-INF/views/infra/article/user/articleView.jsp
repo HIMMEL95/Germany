@@ -126,7 +126,7 @@ q<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 	                    </div>
 	                    <div class="col-12">
 	                        <div>
-	                            <p class="fs-5">
+	                            <p class="fs-5" id="content">
 	                            	${item.content }
 	                            </p><br>
 	                        </div>
@@ -363,7 +363,7 @@ q<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
                 </ul>
                 <div class="footer_copy">
                     <a id="fot.naver" target="_blank" href="https://www.navercorp.com">
-                        <img src="../../resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
+                        <img src="/resources/images/SPOPIA1.png" alt="logo" style="width: 45px;">
                     </a>
                     <span class="text">Copyright</span>
                     <span class="corp">© SPOPIA Corp.</span>

@@ -1,16 +1,12 @@
 package com.spopia.infra.modules.main;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.spopia.infra.common.util.UtilSecurity;
 import com.spopia.infra.modules.article.Article;
 import com.spopia.infra.modules.article.ArticleServiceImpl;
 import com.spopia.infra.modules.article.ArticleVo;
@@ -38,18 +34,22 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "sportMain")
-	public String sportMain(Model model, ArticleVo aVo, GameVo gVo) throws Exception {
+	public String sportMain(Model model, ArticleVo aVo, GameVo gVo, Article aDto) throws Exception {
 		
 		List<Article> aList = aService.mainList(aVo);
 		model.addAttribute("aList", aList);
 		
+		List<Article> aImgList = aService.imgList(aVo);
+		model.addAttribute("aImgList", aImgList);
+		
 		List<Game> gList = gService.mainList(gVo);
 		model.addAttribute("gList", gList);
+		
 		return "infra/main/xdmin/sport_main";
 	}
 
 	@RequestMapping(value = "articleView")
-	public String articleView(ArticleVo aVo, Model model, CommentVo cVo) throws Exception {
+	public String articleView(ArticleVo aVo, Model model, CommentVo cVo, Article aDto) throws Exception {
 		
 		Article item = aService.selectOne(aVo);
 		model.addAttribute("item", item);
@@ -57,7 +57,6 @@ public class MainController {
 		aService.articleCommentCount(cVo);
 		List<Comment> comment = aService.articleComment(cVo);
 		model.addAttribute("comment", comment);
-		
 		
 		return "infra/article/user/articleView";
 	}

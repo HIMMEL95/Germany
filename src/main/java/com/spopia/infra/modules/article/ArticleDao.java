@@ -64,4 +64,11 @@ public class ArticleDao {
 	
 	//image Uploaded
 	public int insertUploaded(Article dto) { return sqlSession.insert("Base" + ".insertUploaded", dto); }
+	
+	// article View Img
+	public List<Article> imgList(ArticleVo vo) {
+		return sqlSession.selectList(namespace + ".imgList", vo);
+	}
+	
+	public Article imgSelectOne(ArticleVo vo) { return sqlSession.selectOne(namespace + ".imgSelectOne", vo); }
 }

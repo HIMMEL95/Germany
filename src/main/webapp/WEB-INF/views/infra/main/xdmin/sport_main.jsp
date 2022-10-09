@@ -1543,7 +1543,7 @@
 												<a href="articleView?aSeq=${aList.aSeq }" class="link_today" title="'켈리 16승 다승 1위+홍창기 결승타' LG, NC 꺾고 2위 확보...1위 계속 추격 [잠실 리뷰]" onclick="clickcr(this, 'rnk*r.list', '109_0004709574', '1', event);" data-not-edited="Y">
 													<div class="image_area">
 														<img
-															src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/109/2022/09/30/0004709574_001_20220930212307497.png&amp;type=nf160_95&amp;service=sports"
+															src="<c:out value="${aImgList.path }"/>"
 															onerror="imageOnError(this);" width="160" height="95" alt="">
 													</div>
 													<div class="text_area">

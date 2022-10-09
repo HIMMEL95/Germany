@@ -109,7 +109,7 @@
                     <div class="row">
                         <div class="col-12 mb-4">
                             <label for="content" class="form-label fw-bold">본문</label>
-                            <textarea class="form-control" style="height: 200px;" id="content" name="content" aria-label="content" th:text="${item.content }"></textarea>
+                            <textarea class="form-control" style="height: 200px;" id="content" name="content" aria-label="content">${item.content }</textarea>
                         </div>
                     </div>
                     <div class="row mb-4">

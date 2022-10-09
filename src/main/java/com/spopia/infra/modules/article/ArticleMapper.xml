@@ -196,5 +196,31 @@
 		where 1=1
 			and article_comment_seq = #{aSeq}
 	</select>
+	
+	<!-- img list -->
+	<select id="imgList" resultMap="resultMapObj">
+		select
+			au.seq
+			,au.path
+			,au.originalName
+			,au.uuidName
+			,au.ext
+			,au.pseq
+		from articleUploaded au
+		where 1=1
+	</select>
+	
+	<select id="imgSelectOne" resultMap="resultMapObj">
+		select
+			au.seq
+			,au.path
+			,au.originalName
+			,au.uuidName
+			,au.ext
+			,au.pseq
+		from articleUploaded au
+		where 1=1
+			and pseq = #{aSeq}
+	</select>
 
 </mapper>

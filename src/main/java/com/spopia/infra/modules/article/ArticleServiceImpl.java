@@ -44,6 +44,9 @@ public class ArticleServiceImpl extends BaseServiceImpl implements ArticleServic
     	
 	    	setRegMod(dto);
 	    	
+	    	String str = dto.getContent().replace("\n", "<br>");
+	    	dto.setContent(str);
+	    	
 	    	dao.insert(dto);
 	    	
 	    	int j = 0;
@@ -70,6 +73,20 @@ public class ArticleServiceImpl extends BaseServiceImpl implements ArticleServic
 	    } catch (Exception e) {
 	        throw new Exception();
     }
+	}
+
+	public void setRegMod(Article dto) throws Exception {
+		HttpServletRequest httpServletRequest = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
+		
+		dto.setRegIp(UtilRegMod.getClientIp(httpServletRequest));
+		dto.setRegSeq(UtilRegMod.getSessionSeq(httpServletRequest));
+		dto.setRegDeviceCd(UtilRegMod.getDevice());
+		dto.setRegDateTime(UtilDateTime.nowDate());
+		
+		dto.setModIp(UtilRegMod.getClientIp(httpServletRequest));
+		dto.setModSeq(UtilRegMod.getSessionSeq(httpServletRequest));
+		dto.setModDeviceCd(UtilRegMod.getDevice());
+		dto.setModDateTime(UtilDateTime.nowDate());
 	}
 
 	@Override
@@ -103,18 +120,16 @@ public class ArticleServiceImpl extends BaseServiceImpl implements ArticleServic
 	public int articleCommentCount(CommentVo vo) throws Exception {
 		return dao.articleCommentCount(vo);
 	}
-	
-	public void setRegMod(Article dto) throws Exception {
-	    HttpServletRequest httpServletRequest = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
-	    
-	    dto.setRegIp(UtilRegMod.getClientIp(httpServletRequest));
-	    dto.setRegSeq(UtilRegMod.getSessionSeq(httpServletRequest));
-	    dto.setRegDeviceCd(UtilRegMod.getDevice());
-	    dto.setRegDateTime(UtilDateTime.nowDate());
-	    
-	    dto.setModIp(UtilRegMod.getClientIp(httpServletRequest));
-	    dto.setModSeq(UtilRegMod.getSessionSeq(httpServletRequest));
-	    dto.setModDeviceCd(UtilRegMod.getDevice());
-	    dto.setModDateTime(UtilDateTime.nowDate());
+
+//	article img
+	@Override
+	public List<Article> imgList(ArticleVo vo) throws Exception {
+		return dao.imgList(vo);
 	}
+	
+	@Override
+	public Article imgSelectOne(ArticleVo vo) throws Exception {
+		return dao.imgSelectOne(vo);
+	}
+	
 }

@@ -19,14 +19,14 @@
 	content="width=1080px,maximum-scale=2.0,minimum-scale=0.4,user-scalable=yes">
 <meta property="og:image"
 	content="https://imgsports.pstatic.net/images/mobile/common/NAVERsports.png">
-<meta property="og:title" content="스포츠홈 : 네이버 스포츠">
+<meta property="og:title" content="스포츠홈 : spopia 스포츠">
 <meta property="og:description" content="스포츠의 시작과 끝!">
-<meta name="description" content="스포츠의 모든 것, 네이버 스포츠와 함께 하세요">
+<meta name="description" content="스포츠의 모든 것, spopia 스포츠와 함께 하세요">
 
 <title>SPOPIA</title>
 
-<link rel="stylesheet" type="text/css" href="https://ssl.pstatic.net/static.sports/resources/pc/2022/09/29/130734/css/generated/nsportsCss.css">
-<link rel="stylesheet" type="text/css" href="https://ssl.pstatic.net/static.sports/resources/pc/2022/09/29/130734/css/generated/nsportsHome.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/user/nsportsCss.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/user/nsportsHome.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/user/naver.css">
 <link rel="stylesheet" href="/resources/css/user/sportMain.css">
 
@@ -124,17 +124,14 @@
 			<div id="header" class="header">
 				<div class="sports_header" role="banner">
 					<div class="snb_area">
-						<h1 class="logo_group">
-							<a href="https://www.naver.com" class="logo_naver">
-								<span class="blind">네이버</span>
-							</a> 
-							<a href="https://sports.news.naver.com/" class="logo_sports" onclick="clickcr(this, 'STA.sports', '', '', event);">
+						<a href="/sportMain">
+							<img class="logo" alt="" src="/resources/images/SPOPIA_white.png">
+						</a> 
+						<!-- <h1 class="logo_group">
+							<a href="/sportMain" class="logo_sports">
 								<span class="blind">스포츠</span>
 							</a> 
-							<a href="https://m.sports.naver.com/community/index" class="logo_community" onclick="clickcr(this, 'STA.community', '', '', event);">
-								<span class="blind">커뮤니티</span>
-							</a>
-						</h1>
+						</h1> -->
 					</div>
 					<div class="navigation">
 	                    <ul class="nav_ul">
@@ -409,192 +406,13 @@
 			<div id="container" role="main">
 				<div id="spot">
 					<div class="home_spot">
-						<script id="_section_home_livebox_score_card_template"
-							type="text/x-handlebars-template">
-								<div class="live_box_card {{#if thumbnailImage}}type_live{{/if}}">
-									<div class="category">{{categoryName}}</div>
-									{{#if thumbnailImage}}
-									<div class="image_area">
-										<span class="image"><img src="{{thumbnailImage}}" alt="" width="246" height="132" onerror="imageOnError(this);"></span>
-										<span class="common_live_tag"><span class="blind">LIVE</span></span>
-										{{#if liveTotalView}}<span class="live_viewer"><span class="number">{{numberFormat liveTotalView}}</span> 시청</span>{{/if}}
-									</div>
-									{{/if}}
-									<div class="match_info">
-										<div class="match_status">
-											{{#if liveSchedule}}
-												{{#if thumbnailImage}}
-													<span class="status">{{statusInfo}}</span>
-													<span class="league">{{categoryName}}</span>
-												{{else}}
-													<span class="common_live_tag"><span class="blind">LIVE</span></span>
-													<span class="status">{{statusInfo}}</span>
-												{{/if}}
-											{{else}}
-											<span class="versus">VS</span>
-											<span class="status">{{gameTimeHHmm}} 예정</span>
-											{{/if}}
-										</div>
-										<div class="away_team">
-											{{#if liveSchedule}}
-											<span class="score"><span class="point">{{teamScore1}}</span>
-											{{#ifCond homeTeamPenaltyScore '>=' 0 }}
-												<i class="pso"><span class="blind">승부차기</span>{{homeTeamPenaltyScore}}</i>
-											{{/ifCond}}
-										</span>
-											{{/if}}
-											<span class="team">
-												{{#if teamLogo1}}
-												<span class="emblem"><img src="{{teamLogo1}}" width="30" height="30" alt="{{teamName}}" onerror="imageOnError(this);" ></span>
-												{{/if}}
-											<span class="name">{{teamName1}}</span>
-										</span>
-										</div>
-										<div class="home_team">
-											{{#if liveSchedule}}
-											<span class="score"><span class="point">{{teamScore2}}</span>
-											{{#ifCond awayTeamPenaltyScore '>=' 0 }}
-												<i class="pso"><span class="blind">승부차기</span>{{awayTeamPenaltyScore}}</i>
-											{{/ifCond}}
-										</span>
-											{{/if}}
-											<span class="team">
-												{{#if teamLogo2}}
-												<span class="emblem"><img src="{{teamLogo2}}" width="30" height="30" alt="{{teamName2}}" onerror="imageOnError(this);"></span>
-												{{/if}}
-											<span class="name">{{teamName2}}</span>
-										</span>
-										</div>
-									</div>
-									<a href="{{pcUrl}}" class="link_live" aria-label="새창"
-										onclick="clickcr(this, 'lbx.match', '', '', event);"><span class="blind">영상 보기</span></a>
-								</div>
-							</script>
-
-						<script id="_section_home_livebox_radio_card_template"
-							type="text/x-handlebars-template">
-								<div class="live_box_card type_live">
-									<div class="category">온에어</div>
-									<div class="image_area">
-										<span class="image"><img src="{{thumbnailImage}}" alt="" width="246" height="132" onerror="imageOnError(this);"></span>
-										<span class="common_live_tag"><span class="blind">LIVE</span></span>
-									</div>
-									<div class="onair_info">
-										<div class="onair_title">{{radioTitle}}</div>
-										<div class="onair_press">
-											<span class="channel">{{programTitle}}</span>
-											<span class="cast">{{casters}}</span>
-										</div>
-									</div>
-									<a href="{{pcUrl}}" class="link_live" aria-label="새창"
-										onclick="clickcr(this, 'lbx.match', '', '', event);" {{#ifCond visibleUrlEnable '==' 'Y'}} target="_blank" {{/ifCond}} ><span class="blind">영상 보기</span></a>
-								</div>
-							</script>
-
-						<script id="_section_home_livebox_text_card_template"
-							type="text/x-handlebars-template">
-								<div class="live_box_card {{#if thumbnailImage}}type_live{{/if}}">
-									
-									{{#ifCond categoryId '==' 'beijing2022'}}
-										<div class="category"><span class="beijing2022">{{categoryName}}</span></div>
-										{{#if thumbnailImage}}
-											<div class="image_area">
-												<span class="image"><img src="{{thumbnailImage}}" alt="" width="246" height="132" onerror="imageOnError(this);"></span>
-												<span class="common_live_tag"><span class="blind">LIVE</span></span>
-												{{#if liveTotalView}}<span class="live_viewer"><span class="number">{{numberFormat liveTotalView}}</span> 시청</span>{{/if}}
-											</div>
-										{{/if}}
-										<div class="general_info">
-											{{#unless thumbnailImage}}
-												<div class="match_status">
-													<span class="common_live_tag"><span class="blind">LIVE</span></span>
-												</div>
-											{{/unless}}
-											{{#if thumbnailImage}}
-												{{#if matchTitle}}
-													<div class="sub_title">{{title}}</div>
-													<div class="main_title">{{matchTitle}}</div>
-												{{else}}
-													<div class="main_title">{{title}}</div>
-												{{/if}}
-												<div class="match_press">
-													<span class="beijing2022">{{categoryName}}</span>
-												</div>
-											{{else}}
-												{{#if matchTitle}}
-													<div class="main_title">{{title}}</div>
-													<div class="sub_title">{{matchTitle}}</div>
-												{{else}}
-													<div class="main_title">{{title}}</div>
-												{{/if}}
-											{{/if}}
-										</div>
-										<a href="{{pcUrl}}" class="link_live" aria-label="새창"
-											onclick="clickcr(this, 'lbx.match', '', '', event);"><span class="blind">영상 보기</span></a>
-									{{else}}
-										<div class="category">{{categoryName}}</div>
-											{{#if thumbnailImage}}
-												<div class="image_area">
-													<span class="image"><img src="{{thumbnailImage}}" alt="" width="246" height="132" onerror="imageOnError(this);"></span>
-													<span class="common_live_tag"><span class="blind">LIVE</span></span>
-													{{#if liveTotalView}}<span class="live_viewer"><span class="number">{{numberFormat liveTotalView}}</span> 시청</span>{{/if}}
-												</div>
-											{{/if}}
-										<div class="general_info">
-											{{#unless thumbnailImage}}
-												<div class="match_status">
-													<span class="common_live_tag"><span class="blind">LIVE</span></span>
-												</div>
-											{{/unless}}
-											<div class="match_title">{{title}}</div>
-											{{#if thumbnailImage}}
-												<div class="match_press">
-													<span class="league">{{categoryName}}</span>
-												</div>
-											{{/if}}
-										</div>
-										<a href="{{pcUrl}}" class="link_live" aria-label="새창"
-											onclick="clickcr(this, 'lbx.match', '', '', event);"><span class="blind">영상 보기</span></a>
-									{{/ifCond}}
-								</div>
-							</script>
-
-						<script id="_section_home_livebox_text_before_card_template"
-							type="text/x-handlebars-template">
-								<div class="live_box_card">
-									{{#ifCond categoryId '==' 'beijing2022'}}
-										<div class="category"><span class="beijing2022">{{categoryName}}</span></div>
-										<div class="general_info">
-											<div class="match_status">
-												<span class="status">{{gameTimeHHmm}} 예정</span>
-											</div>
-											<div class="main_title">{{title}}</div>
-											{{#if matchTitle}}
-												<div class="sub_title">{{matchTitle}}</div>
-											{{/if}}
-										</div>
-										<a href="{{pcUrl}}" class="link_live" aria-label="새창"
-											onclick="clickcr(this, 'lbx.match', '', '', event);"><span class="blind">영상 보기</span></a>
-									{{else}}
-										<div class="category">{{categoryName}}</div>
-										<div class="general_info">
-											<div class="match_status">
-												<span class="status">{{gameTimeHHmm}} 예정</span>
-											</div>
-											<div class="match_title">{{title}}</div>
-										</div>
-										<a href="{{pcUrl}}" class="link_live" aria-label="새창"
-											onclick="clickcr(this, 'lbx.match', '', '', event);"><span class="blind">영상 보기</span></a>
-									{{/ifCond}}
-								</div>
-							</script>
-
+						<!--
 						<script id="_section_home_livebox_scroll_pagination_template"
 							type="text/x-handlebars-template">
 								<li class="page_item" {{#ifCond pageIndex
 								'==' 1}} aria-current="location" {{/ifCond}} data-pageNum="{{pageIndex}}" ><span
 									class="blind">{{pageIndex}}</span></li>
-							</script>
+							</script> -->
 
 						<div class="home_live_box" style="display: block"
 							id="_section_home_livebox_root">
@@ -650,106 +468,13 @@
 																</span>
 															</div>
 														</div>
-														<a href="/game/2022100162034172157" class="link_live" aria-label="새창" onclick="clickcr(this, 'lbx.match', '', '', event);">
+														<a href="/gameView?gSeq=${gList.gSeq }" class="link_live" aria-label="새창" onclick="clickcr(this, 'lbx.match', '', '', event);">
 															<span class="blind">영상 보기</span>
 														</a>
 													</div>
 												</c:forEach>
 					                   		</c:otherwise>
 					                   	</c:choose>
-										
-										<div class="live_box_card type_live">
-											<div class="category">당구</div>
-											<div class="image_area">
-												<span class="image"><img
-													src="https://livecloud-thumb.akamaized.net/sports/livecloud/KR/stream/9177418/live/3566960/record/18009441/thumbnail/image_1080.jpg"
-													alt="" width="246" height="132"
-													onerror="imageOnError(this);"></span> <span
-													class="common_live_tag"><span class="blind">LIVE</span></span>
-												<span class="live_viewer"><span class="number">5,088</span>
-													시청</span>
-											</div>
-											<div class="general_info">
-												<div class="match_title">SK렌터카 vs 하나카드 - 웰컴저축은행 PBA팀리그</div>
-												<div class="match_press">
-													<span class="league">당구</span>
-												</div>
-											</div>
-											<a href="/game/20220930PBA4" class="link_live"
-												aria-label="새창"
-												onclick="clickcr(this, 'lbx.match', '', '', event);"><span
-												class="blind">영상 보기</span></a>
-										</div>
-
-										<div class="live_box_card ">
-											<div class="category">리그1</div>
-											<div class="match_info">
-												<div class="match_status">
-													<span class="versus">VS</span> <span class="status">04:00
-														예정</span>
-												</div>
-												<div class="away_team">
-													<span class="team"> <span class="emblem"><img
-															src="https://sports-phinf.pstatic.net/team/wfootball/default/32839.png"
-															width="30" height="30" alt=""
-															onerror="imageOnError(this);"></span> <span class="name">앙제</span>
-													</span>
-												</div>
-												<div class="home_team">
-													<span class="team"> <span class="emblem"><img
-															src="https://sports-phinf.pstatic.net/team/wfootball/default/26344.png"
-															width="30" height="30" alt="마르세유"
-															onerror="imageOnError(this);"></span> <span class="name">마르세유</span>
-													</span>
-												</div>
-											</div>
-											<a href="/game/2022100162034172157" class="link_live"
-												aria-label="새창"
-												onclick="clickcr(this, 'lbx.match', '', '', event);"><span
-												class="blind">영상 보기</span></a>
-										</div>
-
-										<div class="live_box_card">
-											<div class="category">바둑</div>
-											<div class="general_info">
-												<div class="match_status">
-													<span class="status">23:00 예정</span>
-												</div>
-												<div class="match_title">제16회 한세실업배 대학동문전(녹방)</div>
-											</div>
-											<a href="/game/20220930BD3" class="link_live" aria-label="새창"
-												onclick="clickcr(this, 'lbx.match', '', '', event);"><span
-												class="blind">영상 보기</span></a>
-										</div>
-
-										<div class="live_box_card ">
-											<div class="category">분데스</div>
-											<div class="match_info">
-												<div class="match_status">
-													<span class="versus">VS</span> <span class="status">03:30
-														예정</span>
-												</div>
-												<div class="away_team">
-													<span class="team"> <span class="emblem"><img
-															src="https://sports-phinf.pstatic.net/team/wfootball/default/26247.png"
-															width="30" height="30" alt=""
-															onerror="imageOnError(this);"></span> <span class="name">바이에른
-															뮌헨</span>
-													</span>
-												</div>
-												<div class="home_team">
-													<span class="team"> <span class="emblem"><img
-															src="https://sports-phinf.pstatic.net/team/wfootball/default/26256.png"
-															width="30" height="30" alt="레버쿠젠"
-															onerror="imageOnError(this);"></span> <span class="name">레버쿠젠</span>
-													</span>
-												</div>
-											</div>
-											<a href="/game/2022100162534169075" class="link_live"
-												aria-label="새창"
-												onclick="clickcr(this, 'lbx.match', '', '', event);"><span
-												class="blind">영상 보기</span></a>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -1116,7 +841,7 @@
 										}
 
 									});
-							window.livebox = new naver.sports.section.home.LiveBox(
+							/* window.livebox = new naver.sports.section.home.LiveBox(
 									{
 										"liveBoxList" : [
 												{
@@ -1494,7 +1219,7 @@
 													"contentsId" : "schedule.2022100162534169075",
 													"thumbnailImage" : ""
 												} ],
-									});
+									}); */
 						</script>
 					</div>
 				</div>
@@ -3097,381 +2822,60 @@
 						<div id="_sports_home_airs_area" class="news_section">
 							<h3 class="section_title">추천뉴스</h3>
 							<ul class="news_list">
-								<li class="news_item type_top"><a
-									href="/news?oid=117&amp;aid=0003651795" class="link_news_item"
-									onclick="clickcr(this, 'nws*seria', '', '', event);">
-										<div class="image_area">
-
-											<div class="image">
-												<img
-													src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/117/2022/09/30/202209302214635922_1_20220930223103367.jpg&amp;type=nf160_95&amp;service=sports"
-													onerror="imageOnError(this);" width="160" height="95"
-													alt="">
-											</div>
-										</div>
-										<div class="text_area">
-											<strong class="title">"세리에A가 뽑은 9월의 선수 민재!" 나폴리도
-												SNS로 축하!</strong> <span class="press">마이데일리</span>
-										</div>
-								</a></li>
-								<li class="news_item type_top"><a
-									href="/news?oid=477&amp;aid=0000384732" class="link_news_item"
-									onclick="clickcr(this, 'nws*epl', '', '', event);">
-										<div class="image_area">
-
-											<div class="image">
-												<img
-													src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/477/2022/09/30/0000384732_001_20220930222502898.png&amp;type=nf160_95&amp;service=sports"
-													onerror="imageOnError(this);" width="160" height="95"
-													alt="">
-											</div>
-										</div>
-										<div class="text_area">
-											<strong class="title">[오피셜] SON 아쉽다…EPL '9월의 골'은 토니</strong>
-											<span class="press">스포티비뉴스</span>
-										</div>
-								</a></li>
-								<li class="news_item type_top"><a
-									href="/news?oid=477&amp;aid=0000384731" class="link_news_item"
-									onclick="clickcr(this, 'nws*kbo', '', '', event);">
-										<div class="image_area">
-
-											<div class="image">
-												<img
-													src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/477/2022/09/30/0000384731_001_20220930222202625.jpg&amp;type=nf160_95&amp;service=sports"
-													onerror="imageOnError(this);" width="160" height="95"
-													alt="">
-											</div>
-										</div>
-										<div class="text_area">
-											<strong class="title">'2연승' 박진만 대행…"경기 초반 운 따르는 타구들
-												나와"</strong> <span class="press">스포티비뉴스</span>
-										</div>
-								</a></li>
-								<li class="news_item "><a
-									href="/news?oid=109&amp;aid=0004709624" class="link_news_item"
-									onclick="clickcr(this, 'nws*kbo', '', '', event);">
-										<div class="image_area">
-
-											<div class="image">
-												<img
-													src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/109/2022/09/30/0004709624_001_20220930221904347.png&amp;type=nf160_95&amp;service=sports"
-													onerror="imageOnError(this);" width="160" height="95"
-													alt="">
-											</div>
-										</div>
-										<div class="text_area">
-											<strong class="title">데뷔 4년 만에 홀드왕 확정, 155km 필승조 “빨리
-												이뤄져 안 믿긴다. 와 닿지가 않네요” [잠실 톡톡]</strong> <span class="press">OSEN</span>
-										</div>
-								</a></li>
-								<li class="news_item "><a
-									href="/news?oid=347&amp;aid=0000166780" class="link_news_item"
-									onclick="clickcr(this, 'nws*esportsetc', '', '', event);">
-										<div class="image_area">
-
-											<div class="image">
-												<img
-													src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/347/2022/09/30/2022093022164205083a7594bcb2f121130220145_20220930221801548.jpg&amp;type=nf160_95&amp;service=sports"
-													onerror="imageOnError(this);" width="160" height="95"
-													alt="">
-											</div>
-										</div>
-										<div class="text_area">
-											<strong class="title">팀플레이 김성훈 "이번 역올킬로 자신감 생겼다"
-												[eK리그]</strong> <span class="press">데일리e스포츠</span>
-										</div>
-								</a></li>
-								<li class="news_item "><a
-									href="/news?oid=413&amp;aid=0000147424" class="link_news_item"
-									onclick="clickcr(this, 'nws*seria', '', '', event);">
-										<div class="image_area">
-
-											<div class="image">
-												<img
-													src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/413/2022/09/30/0000147424_001_20220930221801630.jpg&amp;type=nf160_95&amp;service=sports"
-													onerror="imageOnError(this);" width="160" height="95"
-													alt="">
-											</div>
-										</div>
-										<div class="text_area">
-											<strong class="title">임모빌레-지루 상대로 '철통 수비', 김민재가 '이달의
-												선수' 된 이유</strong> <span class="press">인터풋볼</span>
-										</div>
-								</a></li>
-								<li class="news_item "><a
-									href="/news?oid=425&amp;aid=0000132955" class="link_news_item"
-									onclick="clickcr(this, 'nws*nba', '', '', event);">
-										<div class="image_area">
-
-											<div class="image">
-												<img
-													src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/425/2022/09/30/20220930221516010075e8e9410871751248331_20220930221701654.jpg&amp;type=nf160_95&amp;service=sports"
-													onerror="imageOnError(this);" width="160" height="95"
-													alt="">
-											</div>
-										</div>
-										<div class="text_area">
-											<strong class="title">2만 관중 앞에서 열린 NBA 일본 시범경기…BTS
-												멤버 슈가 관전</strong> <span class="press">마니아타임즈</span>
-										</div>
-								</a></li>
-								<li class="news_item "><a
-									href="/news?oid=396&amp;aid=0000625187" class="link_news_item"
-									onclick="clickcr(this, 'nws*kbo', '', '', event);">
-										<div class="image_area">
-
-											<div class="image">
-												<img
-													src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/396/2022/09/30/0000625187_001_20220930221401660.jpg&amp;type=nf160_95&amp;service=sports"
-													onerror="imageOnError(this);" width="160" height="95"
-													alt="">
-											</div>
-										</div>
-										<div class="text_area">
-											<strong class="title">9월의 사나이 구자욱</strong> <span
-												class="press">스포츠월드</span>
-										</div>
-								</a></li>
-								<li class="news_item "><a
-									href="/news?oid=032&amp;aid=0003176646" class="link_news_item"
-									onclick="clickcr(this, 'nws*kbo', '', '', event);">
-										<div class="image_area">
-
-											<div class="image">
-												<img
-													src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/032/2022/09/30/0003176646_001_20220930221204602.jpg&amp;type=nf160_95&amp;service=sports"
-													onerror="imageOnError(this);" width="160" height="95"
-													alt="">
-											</div>
-										</div>
-										<div class="text_area">
-											<strong class="title">“이젠 아프지 말고 날아올라야죠”</strong> <span
-												class="press">경향신문</span>
-										</div>
-								</a></li>
-								<li class="news_item "><a
-									href="/news?oid=032&amp;aid=0003176644" class="link_news_item"
-									onclick="clickcr(this, 'nws*amatch', '', '', event);">
-										<div class="image_area">
-
-											<div class="image">
-												<img
-													src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/032/2022/09/30/0003176644_001_20220930221201198.jpg&amp;type=nf160_95&amp;service=sports"
-													onerror="imageOnError(this);" width="160" height="95"
-													alt="">
-											</div>
-										</div>
-										<div class="text_area">
-											<strong class="title">카타르 사막 한가운데 ‘넘사벽’을 쌓자</strong> <span
-												class="press">경향신문</span>
-										</div>
-								</a></li>
-								<li class="news_item "><a
-									href="/news?oid=076&amp;aid=0003922103" class="link_news_item"
-									onclick="clickcr(this, 'nws*kbo', '', '', event);">
-										<div class="image_area">
-
-											<div class="image">
-												<img
-													src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/076/2022/09/30/2022093001002191200135401_20220930220604882.jpg&amp;type=nf160_95&amp;service=sports"
-													onerror="imageOnError(this);" width="160" height="95"
-													alt="">
-											</div>
-										</div>
-										<div class="text_area">
-											<strong class="title">"승리의 원동력이었다" '사구 신경전' 어수선한 틈
-												파고든 박해민의 재치</strong> <span class="press">스포츠조선</span>
-										</div>
-								</a></li>
-								<li class="news_item "><a
-									href="/news?oid=468&amp;aid=0000887335" class="link_news_item"
-									onclick="clickcr(this, 'nws*tennis', '', '', event);">
-										<div class="image_area">
-
-											<div class="image">
-												<img
-													src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/468/2022/09/30/0000887335_001_20220930224901720.jpg&amp;type=nf160_95&amp;service=sports"
-													onerror="imageOnError(this);" width="160" height="95"
-													alt="">
-											</div>
-										</div>
-										<div class="text_area">
-											<strong class="title">정현 "호흡 더 잘맞았다" 권순우 "형 덕분에 주말까지
-												간다" [ATP 코리아오픈 4강행 인터뷰]</strong> <span class="press">스포츠서울</span>
-										</div>
-								</a></li>
+								<c:choose>
+			                  		<c:when test="${fn:length(aList) eq 0}">
+			              				<div class="text-center">There is no data!</div>
+			                  		</c:when>
+			                   		<c:otherwise>
+			                       		<c:forEach items="${aList}" var="aList" varStatus="status">
+											<li class="news_item type_top">
+												<a href="articleView?aSeq=${aList.aSeq }" class="link_news_item">
+													<div class="image_area">
+														<div class="image">
+															<img src="<c:out value="${aList.path }"/><c:out value="${aList.uuidName }"/>" width="160" height="95" border="6" alt="">
+														</div>
+													</div>
+													<div class="text_area">
+														<strong class="title">
+															${aList.title }
+														</strong> 
+														<span class="press">${aList.newspaper }</span>
+													</div>
+												</a>
+											</li>
+										</c:forEach>
+			                   		</c:otherwise>
+			                   	</c:choose>
+			                   	<c:choose>
+			                  		<c:when test="${fn:length(aList) eq 0}">
+			              				<div class="text-center">There is no data!</div>
+			                  		</c:when>
+			                   		<c:otherwise>
+			                       		<c:forEach items="${aList}" var="aList" varStatus="status">
+											<li class="news_item">
+												<a href="articleView?aSeq=${aList.aSeq }" class="link_news_item">
+													<div class="image_area">
+														<div class="image">
+															<img src="<c:out value="${aList.path }"/><c:out value="${aList.uuidName }"/>" width="160" height="95" border="6" alt="">
+														</div>
+													</div>
+													<div class="text_area">
+														<strong class="title">
+															${aList.title }
+														</strong> 
+														<span class="press">${aList.newspaper }</span>
+													</div>
+												</a>
+											</li>
+										</c:forEach>
+			                   		</c:otherwise>
+			                   	</c:choose>
 							</ul>
-						</div>
-
-						<script id="_sports_home_airs_template"
-							type="text/x-handlebars-template">
-								<h3 class="section_title">추천뉴스</h3>
-								<ul class="news_list">
-									
-									{{#each this}}
-									<li class="news_item {{#ifCond @index '<' 3}}type_top{{/ifCond}}">
-										<a href="/news?oid={{office_id}}&aid={{article_id}}" class="link_news_item"
-											onclick="clickcr(this, 'nws*{{#if category}}{{category}}{{else}}{{upper_category}}{{/if}}', '', '', event);">
-											<div class="image_area">
-												
-												<div class="image"><img src="https://dthumb-phinf.pstatic.net?src={{image}}&type=nf160_95&service=sports" onerror="imageOnError(this);" width="160" height="95" alt=""></div>
-											</div>
-											<div class="text_area">
-												<strong class="title">{{{title}}}</strong>
-												<span class="press">{{{office_name}}}</span>
-											</div>
-										</a>
-									</li>
-									{{/each}}
-								</ul>
-							</script>
-						<script>
-							$
-									.ajax(
-											"https://proxy-gateway.sports.naver.com/airs/recommends?start=1&display=12",
-											{
-												dataType : 'json',
-												timeout : 3000,
-												xhrFields : {
-													withCredentials : true
-												},
-												success : function(res) {
-													$("#_sports_home_airs_area")
-															.html(
-																	Handlebars
-																			.compile(
-																					$(
-																							"#_sports_home_airs_template")
-																							.html())
-																			(
-																					res.result.recommend));
-												},
-												error : function(res) {
-													JEagleEyeClient
-															.sendError(new Error(
-																	res));
-												},
-												complete : function(res) {
-													if (res.statusText === 'timeout') {
-														console.log('timeout');
-														JEagleEyeClient
-																.sendError(new Error(
-																		res));
-													}
-												}
-											});
-						</script>
-
-						<div class="photo_section">
-							<!-- 생생화보 -->
-							<h3 class="section_title">
-								<a href="/photocenter/albumList?category=kbo" class="link_title"
-									onclick="clickcr(this, 'pho.gopage', '', '', event);"> 생생화보<span
-									class="blind">더보기</span>
-								</a>
-							</h3>
-							<div class="photo_area">
-								<!-- [D] photo_item 큰 버전 type_big, 작은 버전 type_small 클래스 적용 -->
-								<div class="photo_item type_big">
-									<a
-										href="/photocenter/photoList?albumId=119582&amp;category=golf"
-										class="link_photo"
-										onclick="clickcr(this, 'pho.list', '119582', '', event); "
-										title="홍진영 '타깃 보고 선다'">
-										<div class="image_area">
-											<!-- [D] 이미지 alt 값 비워주세요. -->
-											<div class="image">
-												<img
-													src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/018/2022/09/30/0005330897_001_20220930222501081.jpg&amp;type=nf500_330&amp;service=sports"
-													class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/018/2022/09/30/0005330897_001_20220930222501081.jpg&amp;type=nf500_330&amp;service=sports"
-													width="500" height="330" alt=""
-													onerror="imageOnError(this);">
-											</div>
-										</div>
-										<div class="text_area">홍진영 '타깃 보고 선다'</div>
-									</a>
-								</div>
-								<ul class="photo_list">
-									<li class="photo_item type_small"><a
-										href="/photocenter/photoList?albumId=119581&amp;category=golf"
-										class="link_photo"
-										onclick="clickcr(this, 'pho.list', '119581', '', event); "
-										title="드라이버 티샷 하는 최경주">
-											<div class="image_area">
-												<div class="image">
-													<img
-														src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/421/2022/09/30/0006367776_001_20220930221805820.jpg&amp;type=nf250_165&amp;service=sports"
-														class="imageLazyLoad"
-														lazy-src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/421/2022/09/30/0006367776_001_20220930221805820.jpg&amp;type=nf250_165&amp;service=sports"
-														width="250" height="165" alt=""
-														onerror="imageOnError(this);">
-												</div>
-											</div>
-											<div class="text_area">드라이버 티샷 하는 최경주</div>
-									</a></li>
-
-									<li class="photo_item type_small"><a
-										href="/photocenter/photoList?albumId=119580&amp;category=general"
-										class="link_photo"
-										onclick="clickcr(this, 'pho.list', '119580', '', event); "
-										title="경기 펼치는 권순우-정현">
-											<div class="image_area">
-												<div class="image">
-													<img
-														src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/001/2022/09/30/PYH2022093017650001300_P4_20220930192214866.jpg&amp;type=nf250_165&amp;service=sports"
-														class="imageLazyLoad"
-														lazy-src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/001/2022/09/30/PYH2022093017650001300_P4_20220930192214866.jpg&amp;type=nf250_165&amp;service=sports"
-														width="250" height="165" alt=""
-														onerror="imageOnError(this);">
-												</div>
-											</div>
-											<div class="text_area">경기 펼치는 권순우-정현</div>
-									</a></li>
-
-									<li class="photo_item type_small"><a
-										href="/photocenter/photoList?albumId=119579&amp;category=golf"
-										class="link_photo"
-										onclick="clickcr(this, 'pho.list', '119579', '', event); "
-										title="홍란,강춘자 부회장 '우리는 당신을 기억합니다'">
-											<div class="image_area">
-												<div class="image">
-													<img
-														src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/018/2022/09/30/0005330477_001_20220930163203677.jpg&amp;type=nf250_165&amp;service=sports"
-														class="imageLazyLoad"
-														lazy-src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/018/2022/09/30/0005330477_001_20220930163203677.jpg&amp;type=nf250_165&amp;service=sports"
-														width="250" height="165" alt=""
-														onerror="imageOnError(this);">
-												</div>
-											</div>
-											<div class="text_area">홍란,강춘자 부회장 '우리는 당신을 기억합니다'</div>
-									</a></li>
-
-									<li class="photo_item type_small"><a
-										href="/photocenter/photoList?albumId=119572&amp;category=kbo"
-										class="link_photo"
-										onclick="clickcr(this, 'pho.list', '119572', '', event); "
-										title=" 삼성, 두산에 11-3 완승">
-											<div class="image_area">
-												<div class="image">
-													<img
-														src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/109/2022/09/30/0004709616_001_20220930220806390.jpg&amp;type=nf250_165&amp;service=sports"
-														class="imageLazyLoad"
-														lazy-src="https://dthumb-phinf.pstatic.net?src=http://imgnews.naver.net/image/109/2022/09/30/0004709616_001_20220930220806390.jpg&amp;type=nf250_165&amp;service=sports"
-														width="250" height="165" alt=""
-														onerror="imageOnError(this);">
-												</div>
-											</div>
-											<div class="text_area">삼성, 두산에 11-3 완승</div>
-									</a></li>
-								</ul>
-							</div>
 						</div>
 
 						<div class="shopping_section">
 							<h3 class="section_title">
-								<a href="https://shopping.naver.com/" class="link_title">네이버
+								<a href="https://shopping.naver.com/" class="link_title">spopia
 									쇼핑<span class="blind">더보기</span>
 								</a>
 							</h3>
@@ -4352,7 +3756,7 @@
 					<strong class="title">공지</strong>
 					<div class="inner">
 						<a href="https://blog.naver.com/naver_sports/222881414395"
-							onclick="clickcr(this, 'not.noti', '1663864014207', '', event);"><span>네이버스포츠의
+							onclick="clickcr(this, 'not.noti', '1663864014207', '', event);"><span>spopia스포츠의
 								새로운 '커뮤니티'를 만나보세요</span></a> <a
 							href="https://blog.naver.com/naver_sports/222879538415"
 							onclick="clickcr(this, 'not.noti', '1663864062389', '', event);"><span>스포츠
@@ -4366,7 +3770,7 @@
 				<ul>
 					<li class="first"><a
 						onclick="clickcr(this, 'fot.service', '', '', event);"
-						target="_blank" href="https://www.naver.com/rules/service.html">네이버
+						target="_blank" href="https://www.naver.com/rules/service.html">spopia
 							이용약관</a></li>
 					<li><a href="https://news.naver.com/main/principle.nhn"
 						target="_blank"
@@ -4387,15 +3791,14 @@
 						onclick="OPS.viewOPS('ops', {url : 'https://help.naver.com/alias/contents2/sports/sports_2.naver'}); clickcr(this, 'fot.shelp', '', '', event); return false;"
 						href="#">스포츠 고객센터</a></li>
 				</ul>
-				<p class="copyr">본 콘텐츠의 저작권은 네이버 및 제공처에 있으며, 이를 이용하는 경우 저작권법 등에
+				<p class="copyr">본 콘텐츠의 저작권은 spopia 및 제공처에 있으며, 이를 이용하는 경우 저작권법 등에
 					따라 법적책임을 질 수 있습니다.</p>
 				<address>
-					<a href="http://www.navercorp.com/" target="_blank"
-						onclick="clickcr(this, 'fot.nhn', '', '', event);" class="logo"><img
-						src="https://ssl.pstatic.net/static/common/footer/ci_naver.gif"
-						width="63" height="11" alt="NAVER"></a> <em>Copyright ©</em> <a
-						href="http://www.navercorp.com/" target="_blank"
-						onclick="clickcr(this, 'fot.nhn', '', '', event);">NAVER Corp.</a>
+					<a href="#" target="_blank" class="logo">
+						<img src="/resources/images/SPOPIA1.png" width="63" height="11" alt="SPOPIA"
+					</a> 
+					<em>Copyright ©</em> 
+					<a href="#" target="_blank">SPOPIA Corp.</a>
 					<span>All Rights Reserved.</span>
 				</address>
 			</div>

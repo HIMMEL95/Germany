@@ -124,4 +124,14 @@ public class LoginController {
 	public String kakaoLogin() throws Exception {
 		return "/sportMain";
 	}
+
+	@RequestMapping(value = "naverLogin")
+	public Map<String, Object> naverLogin(Member dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
+		Member result = service.xdminLoginCheck(dto);
+		
+		return returnMap;
+	}
 }

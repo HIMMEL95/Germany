@@ -136,21 +136,6 @@
 							</a>
 						</h1>
 					</div>
-					<!-- GNB -->
-					<!-- <div class="gnb_area">
-						<div class="gnb_one" id="gnb">
-							<strong class="blind">사용자 링크</strong>
-							<ul class="gnb_lst" id="gnb_lst" style="display: block;">
-								<li class="gnb_login_li" id="gnb_login_layer" style="display: inline-block;">
-									<a class="gnb_btn_login" href="https://nid.naver.com/nidlogin.login?url=https%3A%2F%2Fsports.news.naver.com%2Findex" id="gnb_login_button"> 
-										<span class="gnb_bg"></span> 
-										<span class="gnb_bdr"></span> 
-										<span class="gnb_txt">로그인</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div> -->
 					<div class="navigation">
 	                    <ul class="nav_ul">
 	                    	<c:choose>

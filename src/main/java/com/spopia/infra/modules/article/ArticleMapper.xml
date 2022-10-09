@@ -86,8 +86,11 @@
 			,a.aCreatedAt
 			,a.aModifiedAt
 			,u.email as email
+			,au.path as path
+			,au.uuidName as uuidName
 		from article a
 			inner join user u on u.seq = a.createdBy
+			inner join articleUploaded au on au.pseq = a.aSeq
 		where 1=1
 			and a.aSeq = #{aSeq}
 	</select>
@@ -198,20 +201,6 @@
 			inner join user u on u.seq = ac.createdBy
 		where 1=1
 			and article_comment_seq = #{aSeq}
-	</select>
-	
-	<!-- img list -->
-	<select id="imgSelectOne" resultMap="resultMapObj">
-		select
-			au.seq
-			,au.path
-			,au.originalName
-			,au.uuidName
-			,au.ext
-			,au.pseq
-		from articleUploaded au
-		where 1=1
-			and pseq = #{aSeq}
 	</select>
 
 </mapper>

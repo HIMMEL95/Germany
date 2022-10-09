@@ -1,4 +1,4 @@
-q<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -59,14 +59,14 @@ q<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
                                                 style="width: 30px;">
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="#">이하늘</a>
-                                            <p class="small m-0">himmel@gmail.com</p>
+                                            <a class="fs-6 fw-bold" href="/member/memberUView?seq=${sessSeq }"><c:out value="${sessName }"/></a>
+                                            <p class="small m-0"><c:out value="${sessEmail}"/></p>
                                         </div>
                                     </div>
                                 </li>
                                 <!-- Links -->
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/member/memberUView?seq=${sessSeq }">
                                         <i class="fa-solid fa-user me-2"></i>
                                         Edit Profile
                                     </a>
@@ -121,11 +121,12 @@ q<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 	                        <hr>
 	                    </div>
 	                    <div class="col-12 mb-3">
-	                        <img class="pb-2" src="/resources/images/user/baseball.jpg" alt="야구"
-	                            style="width: 100%; height: 300px; float: left;">
+	                        <img class="pb-2" src='<c:out value="${item.path }"/><c:out value="${item.uuidName }"/> ' alt=""
+	                            style="width: 100%; height: 350px; float: left;">
 	                    </div>
 	                    <div class="col-12">
 	                        <div>
+	                        	<br>
 	                            <p class="fs-5" id="content">
 	                            	${item.content }
 	                            </p><br>
@@ -140,7 +141,7 @@ q<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 	                        <div class="u_cbox_wrap u_cbox_type_select u_cbox_ko">
 	                            <div class="u_cbox_head">
 	                                <h5 class="u_cbox_title">응원톡</h5>
-	                                <span class="u_cbox_count">34,632Total : ${vo.totalRows }</span>
+	                                <span class="u_cbox_count">Total : ${vo.totalRows }</span>
 	                                <button type="button" class="u_cbox_btn_refresh" data-action="count#refresh" data-log="RPO.refresh">
 	                                    <span class="u_cbox_ico_refresh"></span>
 	                                    <span class="u_cbox_txt_refresh">새로고침</span>

@@ -1540,13 +1540,14 @@
 			                   		<c:otherwise>
 			                       		<c:forEach items="${aList}" var="aList" varStatus="status">
 											<li class="today_item">
-												<a href="articleView?aSeq=${aList.aSeq }" class="link_today" title="'켈리 16승 다승 1위+홍창기 결승타' LG, NC 꺾고 2위 확보...1위 계속 추격 [잠실 리뷰]" onclick="clickcr(this, 'rnk*r.list', '109_0004709574', '1', event);" data-not-edited="Y">
+												<a href="articleView?aSeq=${aList.aSeq }" class="link_today" title="${aList.title }" onclick="clickcr(this, 'rnk*r.list', '109_0004709574', '1', event);" data-not-edited="Y">
 													<div class="image_area">
-														<img
-															src="<c:out value="${aImgList.path }"/>"
-															onerror="imageOnError(this);" width="160" height="95" alt="">
+														<img src="<c:out value="${aList.path }"/><c:out value="${aList.uuidName }"/>" width="160" height="95" border="6" alt="">
 													</div>
 													<div class="text_area">
+														<c:forEach items="${aImgList}" var="aImgList" varStatus="status">
+															${aImgList.path }${aImgList.uuidName }
+														</c:forEach>
 														<strong class="title">${aList.title } </strong>
 														<!-- [D] 내용 두줄 말줄임 적용해주세요. -->
 														<p class="news">${aList.content }</p>

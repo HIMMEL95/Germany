@@ -123,11 +123,6 @@ public class ArticleServiceImpl extends BaseServiceImpl implements ArticleServic
 
 //	article img
 	@Override
-	public List<Article> imgList(ArticleVo vo) throws Exception {
-		return dao.imgList(vo);
-	}
-	
-	@Override
 	public Article imgSelectOne(ArticleVo vo) throws Exception {
 		return dao.imgSelectOne(vo);
 	}

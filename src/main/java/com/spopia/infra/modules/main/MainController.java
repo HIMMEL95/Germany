@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spopia.infra.modules.article.Article;
@@ -34,13 +35,10 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "sportMain")
-	public String sportMain(Model model, ArticleVo aVo, GameVo gVo, Article aDto) throws Exception {
+	public String sportMain(Model model, @ModelAttribute("aVo") ArticleVo aVo, @ModelAttribute("gVo") GameVo gVo, Article aDto) throws Exception {
 		
 		List<Article> aList = aService.mainList(aVo);
 		model.addAttribute("aList", aList);
-		
-		List<Article> aImgList = aService.imgList(aVo);
-		model.addAttribute("aImgList", aImgList);
 		
 		List<Game> gList = gService.mainList(gVo);
 		model.addAttribute("gList", gList);

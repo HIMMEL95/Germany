@@ -167,8 +167,11 @@
 	    		,a.aCreatedAt
 	    		,a.aModifiedAt
 	    		,u.email as email
+	    		,au.path as path
+	    		,au.uuidName as uuidName
 	   		FROM article a
 				inner join user u on u.seq = a.createdBy
+				inner join articleUploaded au on au.pseq = a.aSeq
 			WHERE 1=1
    			ORDER BY a.aSeq DESC
 			limit 99999999999
@@ -198,18 +201,6 @@
 	</select>
 	
 	<!-- img list -->
-	<select id="imgList" resultMap="resultMapObj">
-		select
-			au.seq
-			,au.path
-			,au.originalName
-			,au.uuidName
-			,au.ext
-			,au.pseq
-		from articleUploaded au
-		where 1=1
-	</select>
-	
 	<select id="imgSelectOne" resultMap="resultMapObj">
 		select
 			au.seq

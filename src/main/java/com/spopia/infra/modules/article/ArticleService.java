@@ -23,6 +23,5 @@ public interface ArticleService {
 	public int articleCommentCount(CommentVo vo) throws Exception;
 	
 //	article img
-	public List<Article> imgList(ArticleVo vo) throws Exception;
 	public Article imgSelectOne(ArticleVo vo) throws Exception;
 }

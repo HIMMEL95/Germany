@@ -41,59 +41,98 @@
                         style="width: 90px;">
                 </a>
                 <!-- Profile START -->
-                <div class="dropdown">
-                    <ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
-                        <li class="me-2">
-                            <a class="p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
-                                data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar"
-                                    style="width: 30px;">
-                            </a>
-                            <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
-                                <!-- Profile info -->
-                                <li class="px-3 mb-2 border-bottom">
-                                    <div class="d-flex align-items-center pb-2">
-                                        <!-- Avatar -->
-                                        <div class="avatar pt-2">
-                                            <img class="avatar-img rounded-circle shadow" src="/resources/images/diano.jpg" alt="avatar"
-                                                style="width: 30px;">
-                                        </div>
-                                        <div>
-                                            <a class="fs-6 fw-bold" href="/member/memberUView?seq=${sessSeq }"><c:out value="${sessName }"/></a>
-                                            <p class="small m-0"><c:out value="${sessEmail}"/></p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- Links -->
-                                <li>
-                                    <a class="dropdown-item" href="/member/memberUView?seq=${sessSeq }">
-                                        <i class="fa-solid fa-user me-2"></i>
-                                        Edit Profile
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fa-solid fa-gear me-2"></i>
-                                        Account Settings
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fa-solid fa-circle-info me-2"></i>
-                                        Help
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item bg-danger-soft-hover" href="/">
-                                        <i class="fa-solid fa-power-off me-2"></i>
-                                        Sign Out
-                                    </a>
-                                </li>
-                                <!-- Dark mode switch START -->
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                <c:choose>
+                	<c:when test="${empty sessSeq }">
+                		<ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
+	                        <li class="nav_li">
+                   				<div class="login_po">
+		                            <a class="login" href="/userLogin">
+		                                <i class="fa-solid fa-right-to-bracket"></i>
+		                            </a>	                    					
+                   				</div>
+	                        </li>
+	                    </ul>
+                	</c:when>
+                	<c:otherwise>
+                		<div class="dropdown">
+		                    <ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
+		                        <li class="me-2">
+		                            <a class="p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
+		                                data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+		                                <img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar"
+		                                    style="width: 30px;">
+		                            </a>
+		                            <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
+		                                <!-- Profile info -->
+		                                <li class="px-3 mb-2 border-bottom">
+		                                    <div class="d-flex align-items-center pb-2">
+		                                        <!-- Avatar -->
+		                                        <div class="avatar pt-2">
+		                                            <img class="avatar-img rounded-circle shadow" src="/resources/images/diano.jpg" alt="avatar"
+		                                                style="width: 30px;">
+		                                        </div>
+		                                        <div>
+		                                            <a class="fs-6 fw-bold" href="/member/memberUView?seq=${sessSeq }"><c:out value="${sessName }"/></a>
+		                                            <p class="small m-0"><c:out value="${sessEmail}"/></p>
+		                                        </div>
+		                                    </div>
+		                                </li>
+		                                <!-- Links -->
+		                                <c:choose>
+		                                	<c:when test="${sessUser eq 25 }">
+		                                		<li>
+				                                    <a class="dropdown-item" href="/member/memberUView?seq=${sessSeq }">
+				                                        <i class="fa-solid fa-user me-2"></i>
+				                                        Edit Profile
+				                                    </a>
+				                                </li>
+				                                <li>
+				                                    <a class="dropdown-item" href="#">
+				                                        <i class="fa-solid fa-circle-info me-2"></i>
+				                                        Help
+				                                    </a>
+				                                </li>
+				                                <li>
+				                                    <a class="dropdown-item bg-danger-soft-hover" href="/">
+				                                        <i class="fa-solid fa-power-off me-2"></i>
+				                                        Sign Out
+				                                    </a>
+				                                </li>
+		                                	</c:when>
+		                                	<c:otherwise>
+			                                	<li>
+				                                    <a class="dropdown-item" href="/member/memberUView?seq=${sessSeq }">
+				                                        <i class="fa-solid fa-user me-2"></i>
+				                                        Edit Profile
+				                                    </a>
+				                                </li>
+				                                <li>
+				                                    <a class="dropdown-item" href="#">
+				                                        <i class="fa-solid fa-gear me-2"></i>
+				                                        Account Settings
+				                                    </a>
+				                                </li>
+				                                <li>
+				                                    <a class="dropdown-item" href="#">
+				                                        <i class="fa-solid fa-circle-info me-2"></i>
+				                                        Help
+				                                    </a>
+				                                </li>
+				                                <li>
+				                                    <a class="dropdown-item bg-danger-soft-hover" href="/">
+				                                        <i class="fa-solid fa-power-off me-2"></i>
+				                                        Sign Out
+				                                    </a>
+				                                </li>
+			                                </c:otherwise>
+		                                </c:choose>
+		                                <!-- Dark mode switch START -->
+		                            </ul>
+		                        </li>
+		                    </ul>
+		                </div>					
+                	</c:otherwise>
+                </c:choose>
                 <!-- Profile START -->
             </div>
         </nav>

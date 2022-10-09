@@ -163,20 +163,6 @@
 			                                	</div>
 			                                    <ul class="pro_ul">
 				                                    <c:choose>
-														<c:when test="${empty sessUser}">
-															<li class="pro_li">
-					                                            <a class="pro_a" id="signOutBtn" href="/userLogin">
-					                                                <i class="fa-solid fa-power-off me-2"></i>
-					                                                Sign In
-					                                            </a>
-					                                        </li>
-															<li class="pro_li">
-					                                            <a class="pro_a" id="signOutBtn" href="/signUp">
-					                                                <i class="fa-solid fa-power-off me-2"></i>
-					                                                Sign Up
-					                                            </a>
-					                                        </li>
-														</c:when>
 														<c:when test="${sessUser eq 25}">
 															<li class="pro_li">
 					                                            <a class="pro_a" role="button" id="editBtn" href="/member/memberUView?seq=${sessSeq }" style="cursor: pointer;">

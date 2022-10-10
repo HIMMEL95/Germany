@@ -48,7 +48,7 @@
 			    ,t2.teamName as team_away
 		    <include refid="selectCommon"></include>
 		    ORDER BY 
-		    	g.gameDate ASC
+		    	g.gameDate DESC
 		    	,g.gameDuration ASC
 		   	<include refid="Base.orderByLimitForMysql" />
 	   	<include refid="Base.selectListLowerForMysql" />
@@ -235,6 +235,7 @@
 			,t.event
 			,t.league
 			,t.teamName
+			,t.stadium
 		from team t
 		group by abroadNy
 	</select>
@@ -246,7 +247,10 @@
 			,t.event
 			,t.league
 			,t.teamName
+			,t.stadium
 		from team t
+		where 1=1
+			and abroadNy = #{abroadNy}
 		group by event
 	</select>
 	
@@ -257,6 +261,7 @@
 			,t.event
 			,t.league
 			,t.teamName
+			,t.stadium
 		from team t
 		where 1=1
 			and abroadNy = #{gAbroadNy}
@@ -271,11 +276,29 @@
 			,t.event
 			,t.league
 			,t.teamName
+			,t.stadium
 		from team t
 		where 1=1
 			and abroadNy = #{gAbroadNy}
 			and event = #{event}
 			and league = #{league}
 		group by teamName
+	</select>
+
+	<select id="stadium" resultMap="resultMapObj">
+		select
+			t.teamSeq
+			,t.abroadNy
+			,t.event
+			,t.league
+			,t.teamName
+			,t.stadium
+		from team t
+		where 1=1
+			and abroadNy = #{gAbroadNy}
+			and event = #{event}
+			and league = #{league}
+			and teamName = #{teamName}
+		group by stadium
 	</select>
 </mapper>

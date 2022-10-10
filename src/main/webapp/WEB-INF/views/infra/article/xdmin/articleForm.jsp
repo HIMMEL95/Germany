@@ -118,37 +118,51 @@
                             <input type="text" class="form-control" id="newspaper" name="newspaper" value='<c:out value="${item.newspaper }"/>'>
                         </div>
                         <div class="col">
+                        	<c:set var="listCodeAbroad" value="${CodeServiceImpl.selectListCachedCode('4') }" />
                             <label for="aAbroadNy" class="form-label fw-bold">해외여부</label>
                             <select id="aAbroadNy" class="form-select form-select fw-bold" name="aAbroadNy" aria-label=".form-select example">
                                 <option value="">선택</option>
-                                <option value="9" <c:if test="${item.aAbroadNy eq 9 }">selected</c:if>>국내</option>
-                                <option value="10" <c:if test="${item.aAbroadNy eq 10 }">selected</c:if>>해외</option>
+                                <c:choose>
+                                	<c:when test="${empty item.gSeq }">
+                                		<c:forEach items="${listCodeAbroad}" var="listAbroad" varStatus="statusAborad">
+											<option value="${listAbroad.ccSeq }" <c:if test="${gItem.gAbroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
+										</c:forEach>
+                                	</c:when>
+                                	<c:otherwise>
+                                		<c:forEach items="${listCodeAbroad}" var="listAborad" varStatus="statusAborad">
+											<option value="${item.gAbroadNy }" <c:if test="${gItem.gAbroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
+										</c:forEach>
+                                	</c:otherwise>
+                                </c:choose>
                             </select>
                         </div>
                         <div class="col">
+                        	<c:set var="listCodeEvent" value="${CodeServiceImpl.selectListCachedCode('5') }" />
                             <label for="aEvent" class="form-label fw-bold">종목</label>
                             <select id="aEvent" class="form-select form-select fw-bold" name="aEvent" aria-label=".form-select example">
                                 <option value="">선택</option>
-                                <option value="10" <c:if test="${item.aEvent eq 10 }">selected</c:if>>야구</option>
-                                <option value="11" <c:if test="${item.aEvent eq 11 }">selected</c:if>>축구</option>
+                                <c:choose>
+                                	<c:when test="${empty item.gSeq }">
+                                		<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
+											<option class="select" value="${listEvent.ccSeq }" <c:if test="${gItem.gEvent eq listEvent.ccSeq}">selected</c:if>><c:out value="${listEvent.ifccName }"/></option>
+										</c:forEach>
+                                	</c:when>
+                                	<c:otherwise>
+                                		<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
+											<option class="select" value="${item.gEvent }" <c:if test="${gItem.gEvent eq listEvent.ccSeq}">selected</c:if>><c:out value="${listEvent.ifccName }"/></option>
+										</c:forEach>
+                                	</c:otherwise>
+                                </c:choose>
                             </select>
                         </div>
                         <div class="col">
+                        	<c:set var="listCodeLeague" value="${CodeServiceImpl.selectListCachedCode('6') }" />
                             <label for="aLeague" class="form-label fw-bold">리그</label>
                             <select id="aLeague" class="form-select form-select fw-bold" name="aLeague" aria-label=".form-select example">
                                 <option value="" selected>선택</option>
-                                <option value="13" <c:if test="${item.aLeague eq 13 }">selected</c:if>>KBO</option>
-                                <option value="14" <c:if test="${item.aLeague eq 14 }">selected</c:if>>메이저리그</option>
-                                <option value="15" <c:if test="${item.aLeague eq 15 }">selected</c:if>>아메리칸리그</option>
-                                <option value="16" <c:if test="${item.aLeague eq 16 }">selected</c:if>>센트럴리그</option>
-                                <option value="17" <c:if test="${item.aLeague eq 17 }">selected</c:if>>퍼시픽리그</option>
-                                <option value="18" <c:if test="${item.aLeague eq 18 }">selected</c:if>>K리그 1</option>
-                                <option value="19" <c:if test="${item.aLeague eq 19 }">selected</c:if>>K리그 2</option>
-                                <option value="20" <c:if test="${item.aLeague eq 20 }">selected</c:if>>프리미어리그</option>
-                                <option value="21" <c:if test="${item.aLeague eq 21 }">selected</c:if>>라리가</option>
-                                <option value="22" <c:if test="${item.aLeague eq 22 }">selected</c:if>>분데스리가</option>
-                                <option value="23" <c:if test="${item.aLeague eq 23 }">selected</c:if>>세리에 A</option>
-                                <option value="24" <c:if test="${item.aLeague eq 24 }">selected</c:if>>리그 1</option>
+                                <c:forEach items="${listCodeLeague}" var="listLeague" varStatus="statusLeague">
+									<option class="select1" value="${listLeague.ccSeq }" <c:if test="${gItem.gLeague eq listLeague.ccSeq}">selected</c:if>><c:out value="${listLeague.ifccName }"/></option>
+								</c:forEach>
                             </select>
                         </div>
                         <div class="col">

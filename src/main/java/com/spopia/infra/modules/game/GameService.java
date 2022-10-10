@@ -20,9 +20,9 @@ public interface GameService {
 	
 	/* select test */
 	public List<Game> gameList(Game dto) throws Exception;
-    public List<Game> abroad(Game dto) throws Exception;
-    public List<Game> event(Game dto) throws Exception;
-    public List<Game> league(Game dto) throws Exception;
-    public List<Game> teamName(Game dto) throws Exception;
-	
+  public List<Game> abroad(Game dto) throws Exception;
+  public List<Game> event(Game dto) throws Exception;
+  public List<Game> league(Game dto) throws Exception;
+  public List<Game> teamName(Game dto) throws Exception;
+  public List<Game> stadium(Game dto) throws Exception;	
 }

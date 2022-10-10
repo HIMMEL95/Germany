@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 @Controller
 @RequestMapping(value = "/game/")
 public class GameController {
@@ -57,6 +56,9 @@ public class GameController {
 
 		List<Game> team = service.teamName(dto);
 		model.addAttribute("team", team);
+		
+		List<Game> stadium = service.stadium(dto);
+		model.addAttribute("stadium", stadium);
 		
 		return "infra/game/xdmin/gameForm";
 	}
@@ -104,7 +106,7 @@ public class GameController {
 	
 	@ResponseBody
     @RequestMapping(value = "abroad")
-    public Map<String, Object> abroad(Game dto, Model model) throws Exception {
+    public Map<String, Object> abroad(Game dto) throws Exception {
         Map<String, Object> returnMap = new HashMap<String, Object>();
        
         System.out.println("etestt");
@@ -123,7 +125,7 @@ public class GameController {
     
     @ResponseBody
     @RequestMapping(value = "event")
-    public Map<String, Object> event(Game dto, Model model) throws Exception {
+    public Map<String, Object> event(Game dto) throws Exception {
         Map<String, Object> returnMap = new HashMap<String, Object>();
 
         List<Game> league = service.league(dto);
@@ -140,7 +142,7 @@ public class GameController {
     
     @ResponseBody
     @RequestMapping(value = "league")
-    public Map<String, Object> league(Game dto, Model model) throws Exception {
+    public Map<String, Object> league(Game dto) throws Exception {
         Map<String, Object> returnMap = new HashMap<String, Object>();
         
         List<Game> teamName = service.teamName(dto);
@@ -153,6 +155,23 @@ public class GameController {
         }
         
         return returnMap;
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "teamName")
+    public Map<String, Object> teamName(Game dto) throws Exception {
+    	Map<String, Object> returnMap = new HashMap<String, Object >();
+    	
+    	List<Game> stadium = service.stadium(dto);
+    	
+    	if (stadium != null) {
+    		returnMap.put("rt", "success");
+    		returnMap.put("stadium", stadium);
+    	} else {
+    		returnMap.put("rt", "fail");
+    	}
+    	
+    	return returnMap;
     }
 	
 }

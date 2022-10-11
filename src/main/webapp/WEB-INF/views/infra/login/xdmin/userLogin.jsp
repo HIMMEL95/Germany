@@ -123,7 +123,7 @@
                                             <a type="button" class="btn_login" id="naverIdLogin_loginButton" href="javascript:void(0)" style="background-color: #03c75a;">
                                                 <span class="btn_text">
                                                 	<!-- <img src="/resources/images/user/naver.png" style="width: 25px;" class="me-3"> -->
-                                               		네이버 로그인
+                                               			네이버 로그인
                                            		</span>
                                             </a>
                                         </div>
@@ -131,7 +131,7 @@
                                             <button type="button" class="btn_login" id="kakaoBtn" style="background-color: #fceb00;">
                                                 <span class="btn_text text-black">
                                                 	<img src="/resources/images/user/kakao.png" style="width: 25px;" class="me-3">
-                                               		카카오 로그인
+                                               			카카오 로그인
                                            		</span>
                                             </button>
                                         </div>
@@ -140,7 +140,7 @@
                                                 style="background-color: #dc462f;">
                                                 <span class="btn_text">
                                                 	<i class="fa-brands fa-google text-white pe-3 fa-lg"></i>
-                                                	구글 로그인
+                                                			구글 로그인
                                                 </span>
                                             </button>
                                         </div>
@@ -149,7 +149,7 @@
                                                 style="background-color: #304e9c;">
                                                 <span class="btn_text">
                                                 	<i class="fa-brands fa-square-facebook text-white pe-3 fa-lg"></i>
-                                                	페이스북 로그인
+                                                			페이스북 로그인
                                                 </span>
                                             </button>
                                         </div>
@@ -316,6 +316,8 @@
         			console.log(email)
         			console.log(id)
         			
+        			
+        			return false;
         			$.ajax({
         				async: true
         				,cache: false

@@ -3,6 +3,7 @@ package com.spopia.infra.modules.login;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,12 +126,22 @@ public class LoginController {
 		return "/sportMain";
 	}
 
+	@ResponseBody
 	@RequestMapping(value = "naverLogin")
-	public Map<String, Object> naverLogin(Member dto, HttpSession httpSession) throws Exception {
+	public Map<String, Object> naverLogin(Member dto, HttpSession httpSession, HttpServletRequest request) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
-		Member result = service.xdminLoginCheck(dto);
+		
+		if (dto.getName() != null) {		    
+		    httpSession.setAttribute("sessName", dto.getName());
+		    httpSession.setAttribute("sessEmail", dto.getEmail());
+		    httpSession.setAttribute("sessId", dto.getId());
+		    
+		    returnMap.put("rt", "success");
+		} else {
+		    returnMap.put("rt", "fail");
+		}
+		
 		
 		return returnMap;
 	}

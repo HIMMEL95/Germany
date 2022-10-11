@@ -192,6 +192,9 @@
             </div>
         </div>
     </div>
+    <input type="hidden" name="naverId" value="1253">
+    <input type="hidden" name="name" value="">
+    <input type="hidden" name="email" value="">
     <script type="text/javascript" async="" src="https://ssl.pstatic.net/tveta/libs/glad/prod/gfp-core.js"></script>
     <script type="text/javascript" src="/login/js/v2/default/common_202201.js?v=20220322"></script>
     <script type="text/javascript" src="/login/js/v2/default/default_202105.js?v=20210910"></script>
@@ -256,53 +259,148 @@
    		    })
 		});
     	/* kakao login e */
-		
-    	/* naver login s */
-    	var naverLogin = new naver.LoginWithNaverId(
-    			{
-    				clientId: "lV6KfB2eFPQ18h0lZcFB", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
-    				callbackUrl: "http://localhost:8080/userLogin", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
-    				isPopup: false,
-    				callbackHandle: true
-    			}
-    		);	
+    	
+   		naverLogin = function() {
+			
+    		var naverLoginNy = 0;
+    		
+			/* naver login s */
+        	var naverLogin = new naver.LoginWithNaverId(
+        			{
+        				clientId: "uzhH9KK0z5vHprqIybHE", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
+        				callbackUrl: "http://localhost:8080/userLogin", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
+        				isPopup: false,
+        				callbackHandle: true
+        			}
+        		);	
 
-    	naverLogin.init();
+        	naverLogin.init();
 
-    	window.addEventListener('load', function () {
-    		naverLogin.getLoginStatus(function (status) {
-    			if (status) {
-    				var email = naverLogin.user.getEmail(); // 필수로 설정할것을 받아와 아래처럼 조건문을 줍니다.
-    	    		
-    				console.log(naverLogin.user); 
-    	    		
-    	            if( email == undefined || email == null) {
-    					alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
-    					naverLogin.reprompt();
-    					return;
+       		naverLogin.getLoginStatus(function (status) {
+       			alert("test1")
+       			if (status) {
+	       			alert("test2")
+   					naverLoginNy = 1;
+       				var email = naverLogin.user.getEmail(); // 필수로 설정할것을 받아와 아래처럼 조건문을 줍니다.
+       	    		
+       				console.log(naverLogin.user); 
+       				
+       				$("input[name=name]").val(naverLogin.user.name);
+       				$("input[name=naverId]").val(naverLogin.user.id);
+       				$("input[name=email]").val(naverLogin.user.email);
+       	    		
+       	            if( email == undefined || email == null) {
+       					alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
+       					naverLogin.reprompt();
+       					return true;
+       				}
+       			} else {
+       				alert("test3")
+       				return false;
+       				console.log("callback 처리에 실패하였습니다.");
+       			}
+       		});
+       		
+       		alert("naverLoginNy : " + naverLoginNy);
+       		
+       		if (naverLoginNy == 1) {
+       			if ($("input[name=name]").val() != null && $("input[name=name]").val() != "") {
+        			console.log("test3");
+    	    		alert("test3");
+        			var name = $("input[name=name]").val()
+        			var email = $("input[name=email]").val()
+        			var id = $("input[name=naverId]").val()
+        			alert("test4")
+        			
+        			console.log(name)
+        			console.log(email)
+        			console.log(id)
+        			
+        			$.ajax({
+        				async: true
+        				,cache: false
+        				,type:"POST"
+        				,url: "naverLogin"
+        				,data: {"name": name, "email" : email, "id" : id}
+        				,success : function(response) {
+        					if (response.rt == "fail") {
+        						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+        						return false;
+        					} else {
+        						window.location.href = "/sportMain";
+        						alert("네이버 로그인 시도중");
+        					}
+        				},
+        				error : function(jqXHR, status, error) {
+        					alert("알 수 없는 에러 [ " + error + " ]");
+        				}
+        			});
+        		}
+       		} else {
+       			return false;
+       		}
+  		}
+       		
+        	var testPopUp;
+        	function openPopUp() {
+        	    testPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
+        	}
+        	
+        	function closePopUp(){
+        	    testPopUp.close();
+        	}
+
+        	function naverLogout() {
+        		openPopUp();
+        		setTimeout(function() {
+        			closePopUp();
+        			}, 1000);
+        	}
+        	/* naver login e */
+    	
+    	$("#naverIdLogin_loginButton").on("click", function() {
+    		naverLogin();
+    		
+    		/* alert("test1");
+			naverLogin();
+    		alert("test2");
+    		
+    		console.log($("input[name=name]").val());
+    		
+    		if ($("input[name=name]").val() != null && $("input[name=name]").val() != "") {
+    			console.log("test3");
+	    		alert("test3");
+    			var name = $("input[name=name]").val()
+    			var email = $("input[name=email]").val()
+    			var id = $("input[name=naverId]").val()
+    			alert("test4")
+    			
+    			console.log(name)
+    			console.log(email)
+    			console.log(id)
+    			
+    			$.ajax({
+    				async: true
+    				,cache: false
+    				,type:"POST"
+    				,url: "naverLogin"
+    				,data: {"name": name, "email" : email, "id" : id}
+    				,success : function(response) {
+    					if (response.rt == "fail") {
+    						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+    						return false;
+    					} else {
+    						window.location.href = "/sportMain";
+    						alert("네이버 로그인 시도중");
+    					}
+    				},
+    				error : function(jqXHR, status, error) {
+    					alert("알 수 없는 에러 [ " + error + " ]");
     				}
-    			} else {
-    				console.log("callback 처리에 실패하였습니다.");
-    			}
-    		});
-    	});
+    			});
+    		} */
 
-
-    	var testPopUp;
-    	function openPopUp() {
-    	    testPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
-    	}
-    	function closePopUp(){
-    	    testPopUp.close();
-    	}
-
-    	function naverLogout() {
-    		openPopUp();
-    		setTimeout(function() {
-    			closePopUp();
-    			}, 1000);
-    	}
-    	/* naver login e */
+		})
     	</script>
     </script>
 </body>

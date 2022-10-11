@@ -136,7 +136,7 @@
 					<div class="navigation">
 	                    <ul class="nav_ul">
 	                    	<c:choose>
-	                    		<c:when test="${empty sessSeq }">
+	                    		<c:when test="${empty sessId }">
 	                    			<li class="nav_li">
 	                    				<div class="login_po">
 				                            <a class="login" href="/userLogin">
@@ -154,7 +154,7 @@
 			                                <div class="menu">
 			                                	<div>
 				                                    <h3>
-				                                    	<c:out value="${sessId }"/><br>
+				                                    	<c:out value="${sessName }"/><br>
 				                                    </h3>			                                	
 			                                        <p href="/member/memberUView?seq=${sessSeq }" style="text-transform: none;"><c:out value="${sessEmail }"/></p>
 			                                	</div>
@@ -222,7 +222,7 @@
 						<ul class="main_menu_list" role="menubar">
 
 							<li class="main_menu_item" role="presentation"><a
-								href="/index" class="link_main_menu" role="menuitem"
+								href="/sportMain" class="link_main_menu" role="menuitem"
 								aria-current="page"
 								onclick="clickcr(this,
 																														'LNB.sportshome',
@@ -232,7 +232,7 @@
 								</ul></li>
 
 							<li class="main_menu_item" role="presentation"><a
-								href="/kbaseball/index" class="link_main_menu" role="menuitem"
+								href="#" class="link_main_menu" role="menuitem"
 								onclick="clickcr(this,
 																														'LNB.baseball',
 																														'baseball', '',
@@ -286,7 +286,7 @@
 								</ul></li>
 
 							<li class="main_menu_item" role="presentation"><a
-								href="/wbaseball/index" class="link_main_menu" role="menuitem"
+								href="#" class="link_main_menu" role="menuitem"
 								onclick="clickcr(this,
 																														'LNB.worldbaseball',
 																														'worldbaseball', '',
@@ -320,7 +320,7 @@
 								</ul></li>
 
 							<li class="main_menu_item" role="presentation"><a
-								href="/kfootball/index" class="link_main_menu" role="menuitem"
+								href="#" class="link_main_menu" role="menuitem"
 								onclick="clickcr(this,
 																														'LNB.soccer',
 																														'soccer', '',
@@ -358,7 +358,7 @@
 								</ul></li>
 
 							<li class="main_menu_item" role="presentation"><a
-								href="/wfootball/index" class="link_main_menu" role="menuitem"
+								href="#" class="link_main_menu" role="menuitem"
 								onclick="clickcr(this,
 																														'LNB.worldfootball',
 																														'worldfootball', '',
@@ -1285,7 +1285,7 @@
 								</div>
 								<ul class="creator_list">
 									<li class="creator_item" data-group="1"
-										style="display: list-item;"><a href="/video?id=991431"
+										style="display: list-item;"><a href="#"
 										class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
@@ -1304,7 +1304,7 @@
 											</div>
 									</a></li>
 									<li class="creator_item" data-group="1"
-										style="display: list-item;"><a href="/video?id=990231"
+										style="display: list-item;"><a href="#"
 										class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
@@ -1323,7 +1323,7 @@
 											</div>
 									</a></li>
 									<li class="creator_item" data-group="1"
-										style="display: list-item;"><a href="/video?id=991804"
+										style="display: list-item;"><a href="#"
 										class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
@@ -1342,7 +1342,7 @@
 											</div>
 									</a></li>
 									<li class="creator_item" data-group="1"
-										style="display: list-item;"><a href="/video?id=990012"
+										style="display: list-item;"><a href="#"
 										class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
@@ -1361,7 +1361,7 @@
 											</div>
 									</a></li>
 									<li class="creator_item" data-group="1"
-										style="display: list-item;"><a href="/video?id=991722"
+										style="display: list-item;"><a href="#"
 										class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
@@ -1380,7 +1380,7 @@
 											</div>
 									</a></li>
 									<li class="creator_item" data-group="1"
-										style="display: list-item;"><a href="/video?id=991064"
+										style="display: list-item;"><a href="#"
 										class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
@@ -1399,7 +1399,7 @@
 											</div>
 									</a></li>
 									<li class="creator_item" data-group="1"
-										style="display: list-item;"><a href="/video?id=991496"
+										style="display: list-item;"><a href="#"
 										class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
@@ -1418,7 +1418,7 @@
 											</div>
 									</a></li>
 									<li class="creator_item" data-group="2" style="display: none;">
-										<a href="/video?id=991611" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1437,7 +1437,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="2" style="display: none;">
-										<a href="/video?id=991474" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1456,7 +1456,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="2" style="display: none;">
-										<a href="/video?id=991731" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1475,7 +1475,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="2" style="display: none;">
-										<a href="/video?id=991079" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1494,7 +1494,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="2" style="display: none;">
-										<a href="/video?id=990183" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1512,7 +1512,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="2" style="display: none;">
-										<a href="/video?id=990143" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1531,7 +1531,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="2" style="display: none;">
-										<a href="/video?id=990362" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1550,7 +1550,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="3" style="display: none;">
-										<a href="/video?id=991563" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1569,7 +1569,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="3" style="display: none;">
-										<a href="/video?id=991454" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1588,7 +1588,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="3" style="display: none;">
-										<a href="/video?id=990891" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1607,7 +1607,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="3" style="display: none;">
-										<a href="/video?id=991554" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1625,7 +1625,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="3" style="display: none;">
-										<a href="/video?id=991892" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1644,7 +1644,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="3" style="display: none;">
-										<a href="/video?id=989841" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1663,7 +1663,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="3" style="display: none;">
-										<a href="/video?id=991801" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1682,7 +1682,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="4" style="display: none;">
-										<a href="/video?id=991565" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1700,7 +1700,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="4" style="display: none;">
-										<a href="/video?id=990949" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1718,7 +1718,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="4" style="display: none;">
-										<a href="/video?id=990964" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1737,7 +1737,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="4" style="display: none;">
-										<a href="/video?id=991575" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1755,7 +1755,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="4" style="display: none;">
-										<a href="/video?id=990785" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1773,7 +1773,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="4" style="display: none;">
-										<a href="/video?id=990259" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1792,7 +1792,7 @@
 									</a>
 									</li>
 									<li class="creator_item" data-group="4" style="display: none;">
-										<a href="/video?id=991295" class="link_creator"
+										<a href="#" class="link_creator"
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
@@ -1813,7 +1813,7 @@
 								</ul>
 							</div>
 
-							<script id="_video_item_template"
+							<!-- <script id="_video_item_template"
 								type="text/x-handlebars-template">
 									{{#each this}}
 									<li class="creator_item" data-group="{{group}}">
@@ -1841,7 +1841,7 @@
 										<button type="button" class="button_prev" disabled data-first="1"  onClick="clickcr(this, 'crv.paging', '', '', event);"><span class="blind">이전</span></button>
 										<button type="button" class="button_next" data-last="{{pageNum}}"  onClick="clickcr(this, 'crv.paging', '', '', event);"><span class="blind">다음</span></button>
 									</div>
-								</script>
+								</script> -->
 
 							<script>
 								naver = window.naver || {};
@@ -2037,7 +2037,7 @@
 											}
 										});
 
-								new naver.sports.home.SelectedCategoryVideo(
+								/* new naver.sports.home.SelectedCategoryVideo(
 										{
 											"config" : {
 												"dataId" : 1596085512913,
@@ -2350,7 +2350,7 @@
 														"videoMasterId" : "991575",
 														"title" : "한국에서 함께 연습한 남자테니스 세계 2위와 12위"
 													} ]
-										});
+										}); */
 
 								//# sourceURL=sportsHomeSelectedCategoryVideo.js
 							</script>
@@ -2369,7 +2369,7 @@
 								누적수와는 다를 수 있습니다.</p>
 
 							<ul class="vod_list">
-								<li class="vod_item"><a href="/video?id=991928"
+								<li class="vod_item"><a href="#"
 									class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '991928', '1', event); "
 									title="'드디어 터졌다!' 스트라이크 판정에 뿔난 푸이그! [7AM]">
@@ -2390,7 +2390,7 @@
 											뿔난 푸이그! [7AM]</div>
 								</a></li>
 
-								<li class="vod_item"><a href="/video?id=992002"
+								<li class="vod_item"><a href="#"
 									class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '992002', '2', event); "
 									title="'주의 요망' 자꾸 보고 싶은 KBO 짤 모음! [크보.GIF]">
@@ -2411,7 +2411,7 @@
 											짤 모음! [크보.GIF]</div>
 								</a></li>
 
-								<li class="vod_item"><a href="/video?id=992032"
+								<li class="vod_item"><a href="#"
 									class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '992032', '3', event); "
 									title="손흥민 해트트릭을 지켜본 케인 &quot;난 그를 믿고 있었다&quot; [스포츠타임]">
@@ -2432,7 +2432,7 @@
 											그를 믿고 있었다" [스포츠타임]</div>
 								</a></li>
 
-								<li class="vod_item"><a href="/video?id=992219"
+								<li class="vod_item"><a href="#"
 									class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '992219', '4', event); "
 									title="이대호, 마지막 대전 원정에서 때려낸 선제 투런포">
@@ -2453,7 +2453,7 @@
 											선제 투런포</div>
 								</a></li>
 
-								<li class="vod_item"><a href="/video?id=992210"
+								<li class="vod_item"><a href="#"
 									class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '992210', '5', event); "
 									title="송진우-장종훈-김태균, 이글스 레전드들의 합동 시구">
@@ -2474,7 +2474,7 @@
 											레전드들의 합동 시구</div>
 								</a></li>
 
-								<li class="vod_item"><a href="/video?id=992054"
+								<li class="vod_item"><a href="#"
 									class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '992054', '6', event); "
 									title="’손-케-샬 출격 대기’ 북런던 더비 앞둔 콘테의 선발 라인업은? [스포츠타임]">
@@ -2496,7 +2496,7 @@
 											앞둔 콘테의 선발 라인업은...</div>
 								</a></li>
 
-								<li class="vod_item"><a href="/video?id=991935"
+								<li class="vod_item"><a href="#"
 									class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '991935', '7', event); "
 									title="[9/29] '1OUT 남았는데...' 완봉 직전 교체되는 뷰캐넌">
@@ -2517,7 +2517,7 @@
 											남았는데...' 완봉 직전 교체되는 뷰캐넌</div>
 								</a></li>
 
-								<li class="vod_item"><a href="/video?id=992063"
+								<li class="vod_item"><a href="#"
 									class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '992063', '8', event); "
 									title="아.. 감독님....이강인...은 써야죠.... 【옐카3】 196회ㅣKBS 방송">
@@ -2538,7 +2538,7 @@
 											써야죠.... 【옐카3】 196회ㅣKBS 방송</div>
 								</a></li>
 
-								<li class="vod_item"><a href="/video?id=991905"
+								<li class="vod_item"><a href="#"
 									class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '991905', '9', event); "
 									title="[전체HL] '고종욱 결승타+불펜 역투' KIA, 롯데에 5-4 승리">
@@ -2559,7 +2559,7 @@
 											역투' KIA, 롯데에 5-4 승리</div>
 								</a></li>
 
-								<li class="vod_item"><a href="/video?id=992059"
+								<li class="vod_item"><a href="#"
 									class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '992059', '10', event); "
 									title="2022 K리그 9월 이달의 골 / TOP 10 Goals of September 2022">
@@ -2581,7 +2581,7 @@
 								</a></li>
 
 								<li class="vod_item" style="display: none;"><a
-									href="/video?id=991923" class="link_vod"
+									href="#" class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '991923', '11', event); "
 									title="[전체HL] '이정후+송성문 11타점 합작' 키움, SSG에 14-9 역전승">
 
@@ -2602,7 +2602,7 @@
 								</a></li>
 
 								<li class="vod_item" style="display: none;"><a
-									href="/video?id=992262" class="link_vod"
+									href="#" class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '992262', '12', event); "
 									title="피렐라, 라이온즈 파크에 수놓은 솔로 홈런">
 
@@ -2623,7 +2623,7 @@
 								</a></li>
 
 								<li class="vod_item" style="display: none;"><a
-									href="/video?id=992297" class="link_vod"
+									href="#" class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '992297', '13', event); "
 									title="홍창기, 역전을 만들어내는 행운의 내야 안타">
 
@@ -2644,7 +2644,7 @@
 								</a></li>
 
 								<li class="vod_item" style="display: none;"><a
-									href="/video?id=991929" class="link_vod"
+									href="#" class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '991929', '14', event); "
 									title="'양보 못할 타격왕 2연패' 이정후의 불방망이쇼 [7AM]">
 
@@ -2665,7 +2665,7 @@
 								</a></li>
 
 								<li class="vod_item" style="display: none;"><a
-									href="/video?id=991832" class="link_vod"
+									href="#" class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '991832', '15', event); "
 									title="이정후, 김광현 상대로 만들어낸 동점 스리런포">
 
@@ -2686,7 +2686,7 @@
 								</a></li>
 
 								<li class="vod_item" style="display: none;"><a
-									href="/video?id=992078" class="link_vod"
+									href="#" class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '992078', '16', event); "
 									title="[하이라이트] 2018년 이날 니스전에 있었던 네이마르 선수의 브레이스!!">
 
@@ -2707,7 +2707,7 @@
 								</a></li>
 
 								<li class="vod_item" style="display: none;"><a
-									href="/video?id=991991" class="link_vod"
+									href="#" class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '991991', '17', event); "
 									title="전북현대 떠나 포르투갈 1부로...K리그 크랙이었던 '왜인 루니' 쿠니모토 근황">
 
@@ -2728,7 +2728,7 @@
 								</a></li>
 
 								<li class="vod_item" style="display: none;"><a
-									href="/video?id=992283" class="link_vod"
+									href="#" class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '992283', '18', event); "
 									title="약간 신경이 날카로워진 홍창기">
 
@@ -2748,7 +2748,7 @@
 								</a></li>
 
 								<li class="vod_item" style="display: none;"><a
-									href="/video?id=992104" class="link_vod"
+									href="#" class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '992104', '19', event); "
 									title="'이제 안녕~' 홍란의 은퇴 무대를 축하해주는 동료들 [하나금융그룹 2R]">
 
@@ -2769,7 +2769,7 @@
 								</a></li>
 
 								<li class="vod_item" style="display: none;"><a
-									href="/video?id=992273" class="link_vod"
+									href="#" class="link_vod"
 									onclick="clickcr(this, 'rnk*m.list', '992273', '20', event); "
 									title="스트라이크 판정에 불만을 표출하는 홍창기">
 

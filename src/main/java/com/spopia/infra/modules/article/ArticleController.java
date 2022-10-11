@@ -43,7 +43,8 @@ public class ArticleController {
 		Article item = service.selectOne(vo);
 		model.addAttribute("item", item);
 		
-		model.addAttribute("gItem", gService.selectOne(gVo));
+		Game gItem = gService.selectOne(gVo);
+		model.addAttribute("gItem", gItem);
 		
 		model.addAttribute("abroad", gService.gameList(gDto));
 		model.addAttribute("event", gService.event(gDto));

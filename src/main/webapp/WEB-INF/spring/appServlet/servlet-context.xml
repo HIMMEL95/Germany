@@ -36,7 +36,7 @@
 			<exclude-mapping path="/idCheck" />
 			<exclude-mapping path="/articleView" />
 			<exclude-mapping path="/gameView" />
-			<exclude-mapping path="/naver" />
+			<exclude-mapping path="/naverLogin" />
 			<exclude-mapping path="/testPage" />
 			<exclude-mapping path="/abroad" />
 			<exclude-mapping path="/event" />

@@ -10,8 +10,8 @@
     
    <sql id ="selectCommon">
 		from game g
-			inner join team t1 on t1.teamSeq = g.team_home
-			inner join team t2 on t2.teamSeq = g.team_away
+			inner join team t1 on t1.teamName = g.team_home
+			inner join team t2 on t2.teamName = g.team_away
 		where 1=1
 			and g.gcDelNy = 0
 		    <if test="shDelNy != null and !shDelNy.equals('')">AND gcDelNy = #{shDelNy}</if>

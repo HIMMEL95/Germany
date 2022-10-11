@@ -270,12 +270,11 @@
                                         <th>종목</th>
                                         <th>홈팀</th>
                                         <th>원정팀</th>
-                                        <th>홈팀 스코어</th>
-                                        <th>원정팀 스코어</th>
+                                        <th>홈</th>
+                                        <th>원정</th>
                                         <th>경기장</th>
                                         <th>경기 일자</th>
                                         <th>경기 시작 시간</th>
-                                        <th>등록일</th>
                                         <th>수정일</th>
                                     </tr>
                                 </thead>
@@ -302,7 +301,6 @@
 														</c:forEach>
 			                                        </td>
 			                                        <td>
-			                                        	${list.team_home }
 			                                        	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
 															<c:if test="${list.team_home eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
 														</c:forEach>
@@ -321,7 +319,6 @@
 			                                        </td>
 			                                        <td>${list.gameDate}</td>
 			                                        <td>${list.gameDuration}</td>
-			                                        <td>${list.gCreatedAt}</td>
 			                                        <td>${list.gModifiedAt}</td>
 			                                    </tr>
 											</c:forEach>

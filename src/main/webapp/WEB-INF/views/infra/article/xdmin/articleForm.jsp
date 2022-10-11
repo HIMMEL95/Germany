@@ -123,7 +123,7 @@
                             <select id="aAbroadNy" class="form-select form-select fw-bold" name="aAbroadNy" aria-label=".form-select example">
                                 <option value="">선택</option>
                                 <c:choose>
-                                	<c:when test="${empty item.gSeq }">
+                                	<c:when test="${empty item.aSeq }">
                                 		<c:forEach items="${listCodeAbroad}" var="listAbroad" varStatus="statusAborad">
 											<option value="${listAbroad.ccSeq }" <c:if test="${gItem.gAbroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
 										</c:forEach>

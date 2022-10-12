@@ -132,16 +132,17 @@ public class LoginController {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		
-		if (dto.getName() != null) {		    
-		    httpSession.setAttribute("sessName", dto.getName());
-		    httpSession.setAttribute("sessEmail", dto.getEmail());
-		    httpSession.setAttribute("sessId", dto.getId());
-		    
-		    returnMap.put("rt", "success");
-		} else {
-		    returnMap.put("rt", "fail");
-		}
-		
+        /*
+         * if (dto.getName() != null) {
+         * httpSession.setAttribute("sessName", dto.getName());
+         * httpSession.setAttribute("sessEmail", dto.getEmail());
+         * httpSession.setAttribute("sessId", dto.getId());
+         * 
+         * returnMap.put("rt", "success");
+         * } else {
+         * returnMap.put("rt", "fail");
+         * }
+         */
 		
 		return returnMap;
 	}

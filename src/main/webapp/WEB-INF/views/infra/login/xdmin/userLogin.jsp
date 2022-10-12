@@ -22,7 +22,7 @@
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="/resources/css/user/login.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="/login/css/global/desktop/w_20220216.css?20210812">
-
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -120,12 +120,15 @@
                                             <span class="btn_text">로그인</span>
                                         </button>
                                         <div class="btn_login_wrap">
-                                            <a type="button" class="btn_login" id="naverIdLogin_loginButton" href="javascript:void(0)" style="background-color: #03c75a;">
+                                            <!-- <a type="button" class="btn_login" id="naverIdLogin_loginButton" href="javascript:void(0)" style="background-color: #03c75a;">
                                                 <span class="btn_text">
-                                                	<!-- <img src="/resources/images/user/naver.png" style="width: 25px;" class="me-3"> -->
+                                                	<img src="/resources/images/user/naver.png" style="width: 25px;" class="me-3">
                                                			네이버 로그인
                                            		</span>
-                                            </a>
+                                            </a> -->
+                                            		<!-- 네이버 로그인 버튼 노출 영역 -->
+											<div id="naver_id_login"></div>
+											<!-- //네이버 로그인 버튼 노출 영역 -->
                                         </div>
                                         <div class="btn_login_wrap">
                                             <button type="button" class="btn_login" id="kakaoBtn" style="background-color: #fceb00;">
@@ -260,11 +263,38 @@
 		});
     	/* kakao login e */
     	
-   		naverLogin = function() {
+		<!-- 네이버아디디로로그인 초기화 Script -->
+		var naver_id_login = new naver_id_login("uzhH9KK0z5vHprqIybHE", "http://localhost:8080/naverLogin");
+		var state = naver_id_login.getUniqState();
+		naver_id_login.setButton("green", 2,54);
+		naver_id_login.setDomain("http://localhost:8080/userLogin");
+		naver_id_login.setState(state);
+		naver_id_login.setPopup();
+		naver_id_login.init_naver_id_login();
+		<!-- //네이버아디디로로그인 초기화 Script -->
+		
+		
+		<!-- 네이버아디디로로그인 Callback페이지 처리 Script -->
+		// 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+		function naverSignInCallback() {
+			// naver_id_login.getProfileData('프로필항목명');
+			// 프로필 항목은 개발가이드를 참고하시기 바랍니다.
+			alert(naver_id_login.getProfileData('email'));
+			alert(naver_id_login.getProfileData('nickname'));
+		}
+	
+		// 네이버 사용자 프로필 조회
+		naver_id_login.get_naver_userprofile("naverSignInCallback()");
+		
+		var email = naver_id_login.getProfileData('email');
+		console.log(email);
+		$("input[name=email]").val(naver_id_login.getProfileData("email"));
+		$("input[name=name]").val("asjkd");
+    	
+   		/* naverLogin = function() {
 			
     		var naverLoginNy = 0;
     		
-			/* naver login s */
         	var naverLogin = new naver.LoginWithNaverId(
         			{
         				clientId: "uzhH9KK0z5vHprqIybHE", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
@@ -277,6 +307,7 @@
         	naverLogin.init();
 
        		naverLogin.getLoginStatus(function (status) {
+       			alert("status : " + status)
        			alert("test1")
        			if (status) {
 	       			alert("test2")
@@ -358,12 +389,11 @@
         			closePopUp();
         			}, 1000);
         	}
-        	/* naver login e */
     	
     	$("#naverIdLogin_loginButton").on("click", function() {
     		naverLogin();
     		
-    		/* alert("test1");
+    		alert("test1");
 			naverLogin();
     		alert("test2");
     		
@@ -400,9 +430,9 @@
     					alert("알 수 없는 에러 [ " + error + " ]");
     				}
     			});
-    		} */
+    		}
 
-		})
+		}) */
     	</script>
     </script>
 </body>

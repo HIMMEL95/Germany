@@ -1,0 +1,88 @@
+.comment_input {
+	margin: 10px 5px;
+}
+
+.comment_input_title {
+	font-size: 16px;
+	font-weight: 800;
+	margin: 5px 0;
+}
+
+.comments_input textarea{
+	border: 1px solid black;
+	border-radius: 10px;
+	width: 600px;
+	resize: none;
+	position: relative;
+}
+
+.upper_input {
+	z-index: 3;
+	position: absolute;
+	top: -10px;
+}
+
+.u_cbox .u_cbox_focus .u_cbox_inbox, .u_cbox .u_cbox_type_logged_out .u_cbox_inbox, .u_cbox .u_cbox_writing .u_cbox_inbox {
+    margin-right: 0;
+}
+
+.u_cbox .u_cbox_write .u_cbox_inbox {
+    position: relative;
+    padding: 14px 14px 11px;
+}
+
+.u_cbox .u_cbox_write .u_cbox_inbox .u_cbox_text {
+    color: var(--color-comment-title);
+}
+
+.u_cbox .u_cbox_type_logged_in .u_cbox_inbox .u_cbox_text, .u_cbox .u_cbox_type_logged_out .u_cbox_inbox .u_cbox_text {
+    height: 20px;
+}
+
+.u_cbox .u_cbox_write .u_cbox_inbox .u_cbox_text {
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 20px;
+    border: none;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    background-color: transparent;
+    font-family: HelveticaNeue,Helvetica,sans-serif;
+    font-size: 15px;
+    line-height: 1.34;
+    letter-spacing: -.5px;
+    color: #222;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    resize: none;
+}
+
+.CommentModule_comp_comment__18nvt .u_cbox .u_cbox_write .u_cbox_inbox .u_cbox_guide {
+    left: 12px;
+    height: 20px;
+}
+
+.u_cbox .u_cbox_write .u_cbox_inbox .u_cbox_guide {
+    color: var(--color-comment-info-base);
+}
+
+.u_cbox .u_cbox_write .u_cbox_inbox .u_cbox_guide {
+    overflow: hidden;
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    right: 14px;
+    z-index: 10;
+    border: none;
+    font-size: 15px;
+    line-height: 1.34;
+    color: #999;
+    letter-spacing: -.5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

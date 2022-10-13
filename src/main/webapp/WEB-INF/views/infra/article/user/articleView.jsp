@@ -273,29 +273,6 @@
 	                                </div>
 	                                <div class="u_cbox_sticker"></div>
 	                            </div>
-	                            <div class="u_cbox_notice u_cbox_notice_none" style="display: none;"></div>
-	                            <div class="u_cbox_refresh_wrap">
-	                                <strong class="u_vc">자동업데이트 설정</strong>
-	                                <div class="u_cbox_refresh_area">
-	                                    <button data-action="refresh#toggle" type="button"
-	                                        class="u_cbox_btn_refresh_auto u_cbox_btn_refresh_auto_on" title="자동 업데이트"
-	                                        data-log="RPO.autoon#RPO.autooff">
-	                                        <span class="u_cbox_bg_wrap">
-	                                            <span class="u_cbox_bg_left"></span>
-	                                            <span class="u_cbox_bg_right"></span>
-	                                        </span>
-	                                        <span class="u_cbox_ico_refresh_auto">ON</span>
-	                                    </button>
-	                                    <span class="u_cbox_txt_refresh">자동 업데이트</span>
-	                                </div>
-	                                <div class="u_cbox_refresh_box">
-	                                    <span class="u_cbox_refresh_time">2 초 후</span>
-	                                    <button data-action="refresh#request" type="button" class="u_cbox_btn_refresh_man" title="새로고침">
-	                                        <span class="u_cbox_ico_refresh_man"></span>
-	                                        <span class="u_cbox_txt_refresh_man">새로고침</span>
-	                                    </button>
-	                                </div>
-	                            </div>
 	                            <div id="cbox_module_wai_u_cbox_content_wrap_tabpanel" tabindex="0" class="u_cbox_content_wrap"
 	                                style="outline: 0">
 	                                <ul class="u_cbox_list">

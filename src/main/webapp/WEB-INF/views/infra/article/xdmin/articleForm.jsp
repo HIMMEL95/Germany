@@ -125,12 +125,12 @@
                                 <c:choose>
                                 	<c:when test="${empty item.aSeq }">
                                 		<c:forEach items="${listCodeAbroad}" var="listAbroad" varStatus="statusAborad">
-											<option value="${listAbroad.ccSeq }" <c:if test="${gItem.gAbroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
+											<option value="${listAbroad.ccSeq }" <c:if test="${item.gAbroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
 										</c:forEach>
                                 	</c:when>
                                 	<c:otherwise>
                                 		<c:forEach items="${listCodeAbroad}" var="listAborad" varStatus="statusAborad">
-											<option value="${item.gAbroadNy }" <c:if test="${gItem.gAbroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
+											<option value="${item.gAbroadNy }" <c:if test="${item.gAbroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
 										</c:forEach>
                                 	</c:otherwise>
                                 </c:choose>

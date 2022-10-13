@@ -426,7 +426,7 @@
 						 		 num = arr[j].num
 							 }
 						 }
-						 $("#gEvent").append('<option value="' + num +'" <c:if test="${'+ list.event +'eq '+ num + ' }">selected</c:if>>'+ list.event+'</option>')
+						 $("#gEvent").append('<option class="select" value="' + num +'" <c:if test="${'+ list.event +'eq '+ num + ' }">selected</c:if>>'+ list.event+'</option>')
 					}                                                                                                                                                                              
    				}
    				,error : function(jqXHR, textStatus, errorThrown){
@@ -471,7 +471,7 @@
 						 		 num = arr[j].num
 							 }
 						 }
-						 $("#gLeague").append('<option value="' + num +'" <c:if test="${'+ list.league +'eq '+ num + ' }">selected</c:if>>'+ list.league+'</option>')
+						 $("#gLeague").append('<option class="select1" value="' + num +'" <c:if test="${'+ list.league +'eq '+ num + ' }">selected</c:if>>'+ list.league+'</option>')
 					}   
    				}
    				,error : function(jqXHR, textStatus, errorThrown){
@@ -515,8 +515,8 @@
 						 		 num = arr[j].num
 							 }
 						 }
-						 $("#team_home").append('<option value="' + num +'" <c:if test="${'+ list.teamName +'eq '+ num + ' }">selected</c:if>>'+ list.teamName+'</option>')
-						 $("#team_away").append('<option value="' + num +'" <c:if test="${'+ list.teamName +'eq '+ num + ' }">selected</c:if>>'+ list.teamName+'</option>')
+						 $("#team_home").append('<option class="select2" value="' + num +'" <c:if test="${'+ list.teamName +'eq '+ num + ' }">selected</c:if>>'+ list.teamName+'</option>')
+						 $("#team_away").append('<option class="select2" value="' + num +'" <c:if test="${'+ list.teamName +'eq '+ num + ' }">selected</c:if>>'+ list.teamName+'</option>')
 					}  
    				}
    				,error : function(jqXHR, textStatus, errorThrown){
@@ -559,7 +559,7 @@
 						 		 num = arr[j].num
 							 }
 						 }
-						 $("#stadium").append('<option value="' + num +'" <c:if test="${'+ list.stadium +'eq '+ num + ' }">selected</c:if>>'+ list.stadium+'</option>')
+						 $("#stadium").append('<option class="select3" value="' + num +'" <c:if test="${'+ list.stadium +'eq '+ num + ' }">selected</c:if>>'+ list.stadium+'</option>')
 					}  
    				}
    				,error : function(jqXHR, textStatus, errorThrown){

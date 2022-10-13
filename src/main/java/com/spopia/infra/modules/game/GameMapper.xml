@@ -10,8 +10,8 @@
     
    <sql id ="selectCommon">
 		from game g
-			inner join team t1 on t1.teamName = g.team_home
-			inner join team t2 on t2.teamName = g.team_away
+			inner join team t1 on t1.teamSeq = g.team_home
+			inner join team t2 on t2.teamSeq = g.team_away
 		where 1=1
 			and g.gcDelNy = 0
 		    <if test="shDelNy != null and !shDelNy.equals('')">AND gcDelNy = #{shDelNy}</if>
@@ -71,8 +71,8 @@
 			    ,g.gCreatedAt
 			    ,g.gModifiedAt
 			    ,g.gcDelNy
-			    ,t1.teamName as team_home
-			    ,t2.teamName as team_away
+			    ,t1.teamName+24 as team_home
+			    ,t2.teamName+24 as team_away
 		    <include refid="selectCommon"></include>
 		    ORDER BY 
 		    	g.gameDate DESC
@@ -101,8 +101,8 @@
 		    ,g.gCreatedAt
 		    ,g.gModifiedAt
 		    ,g.gcDelNy
-		    ,t1.teamSeq as team_home
-		    ,t2.teamSeq as team_away
+		    ,t1.teamSeq+24 as team_home
+		    ,t2.teamSeq+24 as team_away
 		from game g
 			inner join team t1 on t1.teamSeq = g.team_home
 			inner join team t2 on t2.teamSeq = g.team_away
@@ -132,8 +132,8 @@
 			#{gAbroadNy}
 			,#{gEvent}
 			,#{gLeague}
-			,#{team_home}
-			,#{team_away}
+			,#{team_home}-24
+			,#{team_away}-24
 			,#{score_home}
 			,#{score_away}
 			,#{player_home}
@@ -163,8 +163,8 @@
 			,stadium = #{stadium}
 			,gameDate = #{gameDate}
 			,gameDuration = #{gameDuration}
-			,team_home = #{team_home}
-			,team_away = #{team_away}
+			,team_home = #{team_home}-24
+			,team_away = #{team_away}-24
 			,gModifiedAt = now()
 		WHERE 1=1
 			and gSeq = #{gSeq}
@@ -215,8 +215,6 @@
 		   	limit 99999999999
 	   	)aa
 	</select>
-	
-	
 	
 	<select id="gameList" resultMap="resultMapObj">
 		select

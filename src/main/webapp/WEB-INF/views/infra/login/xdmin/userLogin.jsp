@@ -264,32 +264,15 @@
     	/* kakao login e */
     	
 		<!-- 네이버아디디로로그인 초기화 Script -->
-		var naver_id_login = new naver_id_login("uzhH9KK0z5vHprqIybHE", "http://localhost:8080/naverLogin");
+		var naver_id_login = new naver_id_login("uzhH9KK0z5vHprqIybHE", "http://localhost:8080/callback");
 		var state = naver_id_login.getUniqState();
 		naver_id_login.setButton("green", 2,54);
 		naver_id_login.setDomain("http://localhost:8080/userLogin");
 		naver_id_login.setState(state);
-		naver_id_login.setPopup();
+		/* naver_id_login.setPopup(); */
 		naver_id_login.init_naver_id_login();
 		<!-- //네이버아디디로로그인 초기화 Script -->
 		
-		
-		<!-- 네이버아디디로로그인 Callback페이지 처리 Script -->
-		// 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-		function naverSignInCallback() {
-			// naver_id_login.getProfileData('프로필항목명');
-			// 프로필 항목은 개발가이드를 참고하시기 바랍니다.
-			alert(naver_id_login.getProfileData('email'));
-			alert(naver_id_login.getProfileData('nickname'));
-		}
-	
-		// 네이버 사용자 프로필 조회
-		naver_id_login.get_naver_userprofile("naverSignInCallback()");
-		
-		var email = naver_id_login.getProfileData('email');
-		console.log(email);
-		$("input[name=email]").val(naver_id_login.getProfileData("email"));
-		$("input[name=name]").val("asjkd");
     	
    		/* naverLogin = function() {
 			

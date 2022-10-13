@@ -146,4 +146,9 @@ public class LoginController {
 		
 		return returnMap;
 	}
+	
+	@RequestMapping(value = "callback")
+	public String callback() throws Exception {
+	    return "infra/login/xdmin/callback";
+	}
 }

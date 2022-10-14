@@ -400,7 +400,7 @@
     <script type="text/javascript">
     
     	var goUrlLogin = "/userLogin";
-    	var goUrlInst = "/gameInst";
+    	var goUrlInst = "/articleInsert";
     	var form = $("#myForm");
     	
 	    $(".login_link").on("click", function() {

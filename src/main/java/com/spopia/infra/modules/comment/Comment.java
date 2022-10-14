@@ -7,12 +7,27 @@ public class Comment {
 	private Integer createdBy;
 	private String modifiedAt;
 	private Integer modifiedBy;
-	private Integer game_seq;
-	private Integer article_seq;
+	private String game_seq;
+	private String article_seq;
 	private Integer DelNy;
 	private String name;
 	private String Id;
 	private Integer gender;
+	private String mSeq;
+	private String aSeq;
+	
+	public String getaSeq() {
+		return aSeq;
+	}
+	public void setaSeq(String aSeq) {
+		this.aSeq = aSeq;
+	}
+	public String getmSeq() {
+		return mSeq;
+	}
+	public void setmSeq(String mSeq) {
+		this.mSeq = mSeq;
+	}
 	public String getSeq() {
 		return seq;
 	}
@@ -49,16 +64,16 @@ public class Comment {
 	public void setModifiedBy(Integer modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
-	public Integer getGame_seq() {
+	public String getGame_seq() {
 		return game_seq;
 	}
-	public void setGame_seq(Integer game_seq) {
+	public void setGame_seq(String game_seq) {
 		this.game_seq = game_seq;
 	}
-	public Integer getArticle_seq() {
+	public String getArticle_seq() {
 		return article_seq;
 	}
-	public void setArticle_seq(Integer article_seq) {
+	public void setArticle_seq(String article_seq) {
 		this.article_seq = article_seq;
 	}
 	public Integer getDelNy() {

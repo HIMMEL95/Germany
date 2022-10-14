@@ -13,4 +13,7 @@ public interface CommentService {
 	
 	public int selectOneCount1(CommentVo vo) throws Exception;
 	
+	public int articleInsert(Comment dto) throws Exception;
+	public int gameInsert(Comment dto) throws Exception;
+	
 }

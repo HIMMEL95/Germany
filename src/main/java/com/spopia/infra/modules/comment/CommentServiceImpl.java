@@ -36,4 +36,15 @@ public class CommentServiceImpl implements CommentService {
 		return dao.selectOneCount1(vo);
 	}
 
+	@Override
+	public int articleInsert(Comment dto) throws Exception {
+		return dao.articleInsert(dto);
+	}
+
+	@Override
+	public int gameInsert(Comment dto) throws Exception {
+		return dao.gameInsert(dto);
+	}
+
+	
 }

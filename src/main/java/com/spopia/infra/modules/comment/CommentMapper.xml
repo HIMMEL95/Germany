@@ -221,7 +221,7 @@
 		) aa	
 	</select>
 	
-	<insert id="insert">
+	<insert id="articleInsert">
 		INSERT INTO article_comment (
 			comment
 			,DelNy
@@ -237,6 +237,28 @@
 			,#{mSeq}
 			,now()
 			,#{aSeq}
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+
+	<insert id="gameInsert">
+		INSERT INTO game_comment (
+			comment
+			,DelNy
+			,createdAt
+			,createdBy
+			,modifiedAt
+			,game_seq
+		)
+		VALUES (
+			#{comment}
+			,0
+			,now()
+			,#{mSeq}
+			,now()
+			,#{article_seq}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()

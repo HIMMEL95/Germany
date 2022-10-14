@@ -37,4 +37,11 @@ public class CommentDao {
 		return sqlSession.selectOne(namespace + ".selectOneCount1", vo);
 	}
 	
+	public int articleInsert(Comment dto) {
+		return sqlSession.insert(namespace + ".articleInsert", dto);
+	}
+	
+	public int gameInsert(Comment dto) {
+		return sqlSession.insert(namespace + ".gameInsert", dto);
+	}
 }

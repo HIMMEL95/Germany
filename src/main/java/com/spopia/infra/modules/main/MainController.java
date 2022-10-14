@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spopia.infra.modules.article.Article;
 import com.spopia.infra.modules.article.ArticleServiceImpl;
@@ -50,7 +51,7 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "articleView")
-	public String articleView(ArticleVo aVo, Model model, CommentVo cVo, Article aDto) throws Exception {
+	public String articleView(ArticleVo aVo, Model model, CommentVo cVo) throws Exception {
 		
 		Article item = aService.selectOne(aVo);
 		model.addAttribute("item", item);
@@ -91,6 +92,13 @@ public class MainController {
 	public String pwdUpdt(Member dto) throws Exception {
 	    mService.pwdUpdt(dto);
 	   return "infra/member/user/changePwd";
+	}
+	
+	@RequestMapping(value = "articleInsert") 
+	public String articleInsert(Comment cDto, RedirectAttributes redirectAttributes) throws Exception {
+		cService.articleInsert(cDto);
+		
+		return "redirect:/articleView";
 	}
 	
 }

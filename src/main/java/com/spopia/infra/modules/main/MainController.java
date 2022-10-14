@@ -93,10 +93,4 @@ public class MainController {
 	   return "infra/member/user/changePwd";
 	}
 	
-	
-	@RequestMapping(value = "gameInst")
-	public String gameInst() throws Exception {
-	    cService
-	    return "redirect:/gameView;";
-	}
 }

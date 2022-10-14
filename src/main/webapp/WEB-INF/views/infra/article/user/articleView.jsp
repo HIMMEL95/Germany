@@ -140,7 +140,7 @@
     </header>
 
     <main>
-    	<form method="post">
+    	<form method="post" name="myForm" id="myForm">
           	<!-- *Vo.jsp s -->
 			<%@include file="articleVo.jsp"%>		<!-- #-> -->
 			<!-- *Vo.jsp e -->
@@ -400,7 +400,8 @@
     <script type="text/javascript">
     
     	var goUrlLogin = "/userLogin";
-    	var goUrlInst = "";
+    	var goUrlInst = "/gameInst";
+    	var form = $("#myForm");
     	
 	    $(".login_link").on("click", function() {
 	    	swAlert("로그인", "로그인 하시겠습니까?", "success");
@@ -440,6 +441,10 @@
 	    		alert("글자수는 최대 500자 까지 입력 가능합니다.!!!");
 	    	};
 		};
+		
+		$("#saveBtn").on("click", function() {
+			form.attr("action", goUrlInst).submit();
+		})
 
     </script>
 </body>

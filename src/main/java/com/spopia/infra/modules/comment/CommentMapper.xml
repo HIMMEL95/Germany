@@ -229,7 +229,7 @@
 			,createdBy
 			,modifiedAt
 			,article_seq
-		) 
+		)
 		VALUES (
 			#{comment}
 			,0

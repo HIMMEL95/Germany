@@ -27,6 +27,7 @@
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="/resources/css/user/game.css" rel="stylesheet" type="text/css">
     <link href="/resources/css/user/gameView.css" rel="stylesheet" type="text/css">
+    <link href="/resources/css/user/comment.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -186,93 +187,89 @@
 	                                    <span class="u_cbox_txt_refresh">새로고침</span>
 	                                </button>
 	                            </div>
-	                            <div class="u_cbox_write_wrap">
-	                                <div class="u_cbox_write_box u_cbox_type_logged_out">
-	                                    <form>
-	                                        <fieldset>
-	                                            <legend class="u_vc">댓글 쓰기</legend>
-	                                            <div class="u_cbox_write">
-	                                                <div class="u_cbox_write_inner">
-	                                                    <div class="u_cbox_write_area">
-	                                                        <strong class="u_vc">댓글 입력</strong>
-	                                                        <div class="u_cbox_inbox">
-	                                                            <textarea title="응원톡" id="cbox_module__write_textarea" name="content" class="u_cbox_text"
-	                                                                rows="3" cols="30" data-log="RPC.input"></textarea>
-	                                                            <label for="cbox_module__write_textarea" class="u_cbox_guide"
-	                                                                data-action="write#placeholder" data-param="@event">
-	                                                                댓글을 작성하려면
-	                                                                <button class="btn" type="button" data-bs-toggle="modal"
-	                                                                    data-bs-target="#modal">로그인</button>
-	                                                                해주세요
-	                                                            </label>
-	                                                            <div class="modal fade" id="modal" tabindex="-1"
-	                                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-	                                                                <div class="modal-dialog">
-	                                                                    <div class="modal-content">
-	                                                                        <div class="modal-header">
-	                                                                            <h5 class="modal-title" id="exampleModalLabel">로그인 여부</h5>
-	                                                                            <button type="button" class="btn-close text-black"
-	                                                                                data-bs-dismiss="modal" aria-label="Close">
-	                                                                                <i class="fa-solid fa-xmark"></i>
-	                                                                            </button>
-	                                                                        </div>
-	                                                                        <div class="modal-body">
-	                                                                            로그인 하시겠습니까?
-	                                                                        </div>
-	                                                                        <div class="modal-footer">
-	                                                                            <button type="button" class="btn btn-secondary"
-	                                                                                data-bs-dismiss="modal">Close</button>
-	                                                                            <a role="button" class="btn bg-white"
-	                                                                                href="/userLogin">Login</a>
-	                                                                        </div>
-	                                                                    </div>
-	                                                                </div>
-	                                                            </div>
-	                                                        </div>
-	                                                    </div>
-	                                                    <div class="u_cbox_upload_image" style="display:none">
-	                                                        <span class="u_cbox_upload_image_wrap fileButton browsebutton _cboxImageSelect">
-	                                                            <span class="u-cbox-browse-box">
-	                                                                <input class="u-cbox-browse-file-input" type="file" name="browse"
-	                                                                    accept="image/*" title="이미지 추가">
-	                                                            </span>
-	                                                            <a href="#" class="u_cbox_upload_thumb_link u-cbox-browse-button"
-	                                                                data-log="RPP.add">
-	                                                                <span class="u_cbox_upload_thumb_add">이미지 추가</span>
-	                                                                <span class="u_cbox_upload_thumb_mask"></span>
-	                                                            </a>
-	                                                        </span>
-	                                                    </div>
-	                                                    <div class="u_cbox_upload_sticker" style="display:none"></div>
-	                                                    <div class="u_cbox_write_count">
-	                                                        <span class="u_vc">현재 입력한 글자수</span>
-	                                                        <strong class="u_cbox_count_num">0</strong>
-	                                                        /
-	                                                        <span class="u_vc">전체 입력 가능한 글자수</span>
-	                                                        <span class="u_cbox_write_total">300</span>
-	                                                    </div>
-	                                                    <div class="u_cbox_upload">
-	                                                        <div class="u_cbox_addition">
-	                                                            <button type="button" class="u_cbox_btn_upload_sticker"
-	                                                                data-action="write#beforeToggleSticker" data-log="RPO.sticker">
-	                                                                <span class="u_cbox_ico_upload_sticker"></span>
-	                                                                <span class="u_cbox_txt_upload_sticker">스티커</span>
-	                                                                <span class="u_cbox_ico_arrow"></span>
-	                                                            </button>
-	                                                        </div>
-	                                                        <button type="button" class="u_cbox_btn_upload" data-action="write#request"
-	                                                            data-log="RPC.write#RPC.reply">
-	                                                            <span class="u_cbox_ico_upload"></span>
-	                                                            <span class="u_cbox_txt_upload">등록</span>
-	                                                        </button>
-	                                                    </div>
-	                                                </div>
-	                                            </div>
-	                                        </fieldset>
-	                                    </form>
-	                                </div>
-	                                <div class="u_cbox_sticker"></div>
-	                            </div>
+                                <c:choose>
+	                               	<c:when test="${empty sessName}">
+			                            <div class="u_cbox_write_wrap">
+											<div class="u_cbox_write_box u_cbox_type_logged_out">
+												<form>
+													<fieldset>
+														<legend class="u_vc">댓글 쓰기</legend>
+														<div class="u_cbox_write">
+															<div class="u_cbox_write_inner">
+																<div class="u_cbox_write_area">
+																	<strong class="u_vc">댓글 입력</strong>
+																	<div class="u_cbox_inbox">
+																		<textarea title="댓글" id="cbox_module__write_textarea" class="u_cbox_text" rows="3" cols="30" data-log="RPC.input"></textarea>
+																		<label for="cbox_module__write_textarea" class="u_cbox_guide" data-action="write#placeholder" data-param="@event">댓글을 작성하려면 <a class="login_link">로그인</a> 해주세요</label>
+																	</div>
+																</div>
+																<div class="u_cbox_write_count">
+																	<span class="u_vc">현재 입력한 글자수</span>
+																	<strong class="u_cbox_count_num">0</strong>/
+																	<span class="u_vc">전체 입력 가능한 글자수</span>
+																	<span class="u_cbox_write_total">300</span>
+																</div>
+																<div class="u_cbox_upload">
+																	<div class="u_cbox_addition"></div>
+																	<button type="button" class="u_cbox_btn_upload" data-action="write#request" data-log="RPC.write#RPC.reply">
+																		<span class="u_cbox_ico_upload"></span>
+																		<span class="u_cbox_txt_upload">등록</span>
+																	</button>
+																</div>
+															</div>
+														</div>
+													</fieldset>
+												</form>
+											</div>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="u_cbox_write_wrap u_cbox_focus">
+											<div class="u_cbox_write_box u_cbox_type_logged_in">
+												<form>
+													<fieldset>
+														<legend class="u_vc">댓글 쓰기</legend>
+														<div class="u_cbox_write">
+															<div class="u_cbox_write_inner">
+																<div class="u_cbox_profile_area">
+																	<div class="u_cbox_profile">
+																		<strong class="u_vc">로그인 정보</strong>
+																		<div class="u_cbox_thumb">
+																			<img src="https://static.nid.naver.com/images/web/user/default.png?type=f132_132" alt="bbluesky7738" class="u_cbox_img_profile" onerror="cbox.Util.onImageError(this);">
+																		</div>
+																		<div class="u_cbox_box_name">
+																			<span class="u_cbox_write_name">${sessId }</span>
+																		</div>
+																	</div>
+																</div>
+																<div class="u_cbox_write_area">
+																	<strong class="u_vc">댓글 입력</strong>
+																	<div class="u_cbox_inbox">
+																		<textarea title="댓글" id="cbox_module__write_textarea" name="comment" class="u_cbox_text form-control" rows="3" cols="30" oninput="change_text()"></textarea>
+																		<label for="cbox_module__write_textarea" id="label_guide" class="u_cbox_guide" data-action="write#placeholder" data-param="@event">저작권 등 다른 사람의 권리를 침해하거나 명예를 훼손하는 게시물은 이용약관 및 관련 법률에 의해 제재를 받을 수 있습니다. 건전한 토론문화와 양질의 댓글 문화를 위해, 타인에게 불쾌감을 주는 욕설 또는 특정 계층/민족, 종교 등을 비하하는 단어들은 표시가 제한됩니다.</label>
+																	</div>
+																</div>
+																<div class="u_cbox_write_count">
+																	<span class="u_vc">현재 입력한 글자수</span>
+																	<strong class="u_cbox_count_num">0</strong>/
+																	<span class="u_vc">전체 입력 가능한 글자수</span>
+																	<span class="u_cbox_write_total">500</span>
+																</div>
+																<div class="u_cbox_upload">
+																	<div class="u_cbox_addition"></div>
+																	<button type="button" class="u_cbox_btn_upload" id="saveBtn">
+																		<span class="u_cbox_ico_upload"></span>
+																		<span class="u_cbox_txt_upload">등록</span>
+																	</button>
+																</div>
+															</div>
+														</div>
+													</fieldset>
+												</form>
+											</div>
+										</div>
+									</c:otherwise>
+                                </c:choose>
 	                            <div id="cbox_module_wai_u_cbox_content_wrap_tabpanel" tabindex="0" class="u_cbox_content_wrap"
 	                                style="outline: 0">
 	                                <ul class="u_cbox_list">
@@ -395,6 +392,56 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script> -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+    
+    	var goUrlLogin = "/userLogin";
+    	var goUrlInst = "";
+    	
+	    $(".login_link").on("click", function() {
+	    	swAlert("로그인", "로그인 하시겠습니까?", "success");
+		});
+	    
+	    function swAlert(title, text, icon) {
+			swal({
+				title: title
+				,text: text
+				,icon: icon
+				,buttons: "로그인"
+			}).then((value) => {
+				if (value) {
+					location.href = goUrlLogin;
+				}
+			})
+		}
+	    
+	    change_text = function() {
+	    	var content = $("#cbox_module__write_textarea").val();
+
+	    	if (content != null || content != "") {
+	    		$(".u_cbox_write_wrap").addClass('u_cbox_writing');
+	    		$("label[for=cbox_module__write_textarea]").text("")
+	    	} else if ($("#cbox_module__write_textarea").length == 0) {
+	    		$("label[for=cbox_module__write_textarea]").text("저작권 등 다른 사람의 권리를 침해하거나 명예를 훼손하는 게시물은 이용약관 및 관련 법률에 의해 제재를 받을 수 있습니다. 건전한 토론문화와 양질의 댓글 문화를 위해, 타인에게 불쾌감을 주는 욕설 또는 특정 계층/민족, 종교 등을 비하하는 단어들은 표시가 제한됩니다.")
+	    	}
+	    	
+	    	if (content.length == 0 || content == '') {
+	    		$(".u_cbox_count_num").text("0");
+	    	} else {
+	    		$(".u_cbox_count_num").text(content.length)
+	    	}
+	    	
+	    	if (content.length > 500) {
+	    		$(".u_cbox_count_num").val($(".u_cbox_count_num").val().substring(0, 500));
+	    		alert("글자수는 최대 500자 까지 입력 가능합니다.!!!");
+	    	};
+		};
+
+    </script>
 </body>
 
 </html>

@@ -12,4 +12,6 @@ public interface CommentService {
 	public List<Comment> selectList1(CommentVo vo) throws Exception;
 	
 	public int selectOneCount1(CommentVo vo) throws Exception;
+	
+	public int insert(Comment dto) throws Exception;
 }

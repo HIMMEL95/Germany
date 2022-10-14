@@ -221,4 +221,26 @@
 		) aa	
 	</select>
 	
+	<insert id="insert">
+		INSERT INTO article_comment (
+			comment
+			,DelNy
+			,createdAt
+			,createdBy
+			,modifiedAt
+			,article_seq
+		) 
+		VALUES (
+			#{comment}
+			,0
+			,now()
+			,#{mSeq}
+			,now()
+			,#{aSeq}
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
 </mapper>	

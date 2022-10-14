@@ -12,6 +12,7 @@ import com.spopia.infra.modules.article.Article;
 import com.spopia.infra.modules.article.ArticleServiceImpl;
 import com.spopia.infra.modules.article.ArticleVo;
 import com.spopia.infra.modules.comment.Comment;
+import com.spopia.infra.modules.comment.CommentServiceImpl;
 import com.spopia.infra.modules.comment.CommentVo;
 import com.spopia.infra.modules.game.Game;
 import com.spopia.infra.modules.game.GameServiceImpl;
@@ -28,6 +29,8 @@ public class MainController {
 	GameServiceImpl gService;
 	@Autowired
 	MemberServiceImpl mService;
+	@Autowired
+	CommentServiceImpl cService;
 	
 	@RequestMapping(value = "/")
 	public String main() throws Exception {
@@ -90,4 +93,10 @@ public class MainController {
 	   return "infra/member/user/changePwd";
 	}
 	
+	
+	@RequestMapping(value = "gameInst")
+	public String gameInst() throws Exception {
+	    cService
+	    return "redirect:/gameView;";
+	}
 }

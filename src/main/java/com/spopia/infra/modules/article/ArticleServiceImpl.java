@@ -72,7 +72,7 @@ public class ArticleServiceImpl extends BaseServiceImpl implements ArticleServic
 	
 	    } catch (Exception e) {
 	        throw new Exception();
-    }
+	    }
 	}
 
 	public void setRegMod(Article dto) throws Exception {

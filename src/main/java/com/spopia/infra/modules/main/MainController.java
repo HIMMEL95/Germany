@@ -1,13 +1,15 @@
 package com.spopia.infra.modules.main;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spopia.infra.modules.article.Article;
 import com.spopia.infra.modules.article.ArticleServiceImpl;
@@ -51,12 +53,12 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "articleView")
-	public String articleView(ArticleVo aVo, Model model, CommentVo cVo) throws Exception {
+	public String articleView(@ModelAttribute("aVo") ArticleVo aVo, Model model, @ModelAttribute("cVo") CommentVo cVo, Comment cDto) throws Exception {
 		
 		Article item = aService.selectOne(aVo);
 		model.addAttribute("item", item);
 		
-		aService.articleCommentCount(cVo);
+		cVo.setParamsPaging(aService.articleCommentCount(cVo));
 		List<Comment> comment = aService.articleComment(cVo);
 		model.addAttribute("comment", comment);
 		
@@ -71,18 +73,6 @@ public class MainController {
 		return "infra/game/user/gameView";
 	}
 	
-	@RequestMapping(value = "naver")
-	public String naver(Model model, ArticleVo aVo, GameVo gVo) throws Exception {
-		
-		List<Article> aList = aService.mainList(aVo);
-		model.addAttribute("aList", aList);
-		
-		List<Game> gList = gService.mainList(gVo);
-		model.addAttribute("gList", gList);
-		
-		return "infra/main/xdmin/naver";
-	}
-	
 	@RequestMapping(value = "changePw")
 	public String changePw(Member dto) throws Exception {
 		return "infra/member/user/changePwd";
@@ -94,11 +84,24 @@ public class MainController {
 	   return "infra/member/user/changePwd";
 	}
 	
+	@ResponseBody
 	@RequestMapping(value = "articleInsert") 
-	public String articleInsert(Comment cDto, RedirectAttributes redirectAttributes) throws Exception {
+	public Map<String, Object> articleInsert(Comment cDto, @ModelAttribute("vo") ArticleVo vo) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
 		cService.articleInsert(cDto);
+		returnMap.put("rt", "success");
 		
-		return "redirect:/articleView";
+		return returnMap;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "articleCommentUelete")
+	public Map<String, Object> articleCommentUelete(Comment dto) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		cService.articleCommentUelete(dto);
+		returnMap.put("rt", "success");
+		
+		return returnMap;
 	}
 	
 }

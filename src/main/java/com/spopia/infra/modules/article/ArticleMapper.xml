@@ -188,19 +188,20 @@
 			,ac.comment
 			,ac.modifiedAt
 			,u.id as id
-			,u.gender as gender
-		from article_comments ac
+		from article_comment ac
 			inner join user u on u.seq = ac.createdBy
 		where 1=1
-			and article_comment_seq = #{aSeq}
+			and article_seq = #{aSeq}
+			and DelNy = 0
 	</select>
 	
 	<select id="articleCommentCount" resultType="Integer">
 		SELECT COUNT(*)
-		from article_comments ac
+		from article_comment ac
 			inner join user u on u.seq = ac.createdBy
 		where 1=1
-			and article_comment_seq = #{aSeq}
+			and article_seq = #{aSeq}
+			and DelNy = 0
 	</select>
 
 </mapper>

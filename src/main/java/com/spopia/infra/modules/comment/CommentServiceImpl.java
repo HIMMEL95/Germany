@@ -42,8 +42,28 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
+	public int articleCommentUelete(Comment dto) throws Exception {
+		return dao.articleCommentUelete(dto);
+	}
+
+	@Override
+	public int articleCommentDelete(Comment dto) throws Exception {
+		return dao.articleCommentDelete(dto);
+	}
+
+	@Override
 	public int gameInsert(Comment dto) throws Exception {
 		return dao.gameInsert(dto);
+	}
+
+	@Override
+	public int gameCommentUelete(Comment dto) throws Exception {
+		return dao.gameCommentUelete(dto);
+	}
+
+	@Override
+	public int gameCommentDelete(Comment dto) throws Exception {
+		return dao.gameCommentDelete(dto);
 	}
 
 	

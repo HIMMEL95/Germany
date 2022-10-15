@@ -243,6 +243,20 @@
 		</selectKey>
 	</insert>
 
+	<update id="articleCommentUelete">
+		UPDATE article_comment
+		SET
+			DelNy = 1 
+			,modifiedAt = now()
+		WHERE 1=1
+			and seq = #{seq}
+	</update>
+	
+	<delete id="articleCommentDelete">
+		DELETE
+		FROM article_comment where seq = #{seq}
+	</delete>
+
 	<insert id="gameInsert">
 		INSERT INTO game_comment (
 			comment
@@ -258,11 +272,25 @@
 			,now()
 			,#{mSeq}
 			,now()
-			,#{article_seq}
+			,#{aSeq}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	
+	<update id="gameCommentUelete">
+		UPDATE game_comment
+		SET
+			DelNy = 1 
+			,modifiedAt = now()
+		WHERE 1=1
+			and seq = #{seq}
+	</update>
+	
+	<delete id="gameCommentDelete">
+		DELETE
+		FROM game_comment where seq = #{seq}
+	</delete>
 	
 </mapper>	

@@ -13,7 +13,16 @@ public interface CommentService {
 	
 	public int selectOneCount1(CommentVo vo) throws Exception;
 	
+//	article comment s 
 	public int articleInsert(Comment dto) throws Exception;
+	public int articleCommentUelete(Comment dto) throws Exception;
+	public int articleCommentDelete(Comment dto) throws Exception;
+//	article comment e
+	
+//	game comment s
 	public int gameInsert(Comment dto) throws Exception;
+	public int gameCommentUelete(Comment dto) throws Exception;
+	public int gameCommentDelete(Comment dto) throws Exception;
+//	game comment e
 	
 }

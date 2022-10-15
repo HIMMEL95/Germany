@@ -11,23 +11,9 @@ public class Comment {
 	private String article_seq;
 	private Integer DelNy;
 	private String name;
-	private String Id;
-	private Integer gender;
+	private String id;
 	private String mSeq;
 	private String aSeq;
-	
-	public String getaSeq() {
-		return aSeq;
-	}
-	public void setaSeq(String aSeq) {
-		this.aSeq = aSeq;
-	}
-	public String getmSeq() {
-		return mSeq;
-	}
-	public void setmSeq(String mSeq) {
-		this.mSeq = mSeq;
-	}
 	public String getSeq() {
 		return seq;
 	}
@@ -89,15 +75,22 @@ public class Comment {
 		this.name = name;
 	}
 	public String getId() {
-		return Id;
+		return id;
 	}
 	public void setId(String id) {
-		Id = id;
+		this.id = id;
 	}
-	public Integer getGender() {
-		return gender;
+	public String getmSeq() {
+		return mSeq;
 	}
-	public void setGender(Integer gender) {
-		this.gender = gender;
+	public void setmSeq(String mSeq) {
+		this.mSeq = mSeq;
 	}
+	public String getaSeq() {
+		return aSeq;
+	}
+	public void setaSeq(String aSeq) {
+		this.aSeq = aSeq;
+	}
+	
 }

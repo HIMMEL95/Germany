@@ -204,4 +204,45 @@
 			and DelNy = 0
 	</select>
 
+	<select id="abroad" resultMap="resultMapObj">
+		select
+			t.teamSeq
+			,t.abroadNy
+			,t.event
+			,t.league
+			,t.teamName
+			,t.stadium
+		from team t
+		group by abroadNy
+	</select>
+	
+	<select id="event" resultMap="resultMapObj">
+		select
+			t.teamSeq
+			,t.abroadNy
+			,t.event
+			,t.league
+			,t.teamName
+			,t.stadium
+		from team t
+		where 1=1
+			and abroadNy = #{abroadNy}
+		group by event
+	</select>
+	
+	<select id="league" resultMap="resultMapObj">
+		select
+			t.teamSeq
+			,t.abroadNy
+			,t.event
+			,t.league
+			,t.teamName
+			,t.stadium
+		from team t
+		where 1=1
+			and abroadNy = #{gAbroadNy}
+			and event = #{event}
+		group by league
+	</select>
+
 </mapper>

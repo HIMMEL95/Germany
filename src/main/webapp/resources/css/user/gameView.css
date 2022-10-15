@@ -78,7 +78,6 @@ header {
 
 a {
     text-decoration: none;
-    cursor: pointer;
 }
 
 a:hover {
@@ -87,7 +86,6 @@ a:hover {
 
 a:-webkit-any-link {
     color: #132144;
-    cursor: pointer;
 }
 
 /* main */
@@ -894,7 +892,6 @@ a {
 
 a.active,
 a:hover {
-  border: 1px solid white;
   transition: .5s;
 }
 
@@ -908,27 +905,10 @@ a:hover {
   cursor: pointer;
 }
 
+.nav-item {
+	font-weight: 700;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.nav-link:hover {
+	border-bottom: 5px solid #2565d0;
+}

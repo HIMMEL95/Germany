@@ -406,7 +406,7 @@
    				/* ,dataType:"json" */
    				,url: "/game/abroad"
    				/* ,data : $("#formLogin").serialize() */
-   				,data : { "abroadNy" : code }
+   				,data : { "gAbroadNy" : code }
    				,success: function(response) {
    					   					
    					<c:set var="listCodeEvent" value="${CodeServiceImpl.selectListCachedCode('5') }" />

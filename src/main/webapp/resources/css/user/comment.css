@@ -339,7 +339,6 @@ label {
     content: '';
 }
 
-
 #cbox_module .u_cbox_focus .u_cbox_btn_upload, #cbox_module .u_cbox_reply_area .u_cbox_focus .u_cbox_btn_upload, #cbox_module .u_cbox_reply_area .u_cbox_writing .u_cbox_btn_upload, #cbox_module .u_cbox_writing .u_cbox_btn_upload {
     display: block;
     height: 30px;
@@ -398,4 +397,13 @@ button {
     text-shadow: none;
     align-items: flex-start;
     box-sizing: border-box;
+}
+
+.u_cbox .u_cbox_info {
+    position: relative;
+    z-index: 1;
+    margin-right: 168px;
+    font-size: 0;
+    line-height: 0;
+    left: 30px;
 }

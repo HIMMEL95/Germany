@@ -122,18 +122,21 @@
                             <label for="aAbroadNy" class="form-label fw-bold">해외여부</label>
                             <select id="aAbroadNy" class="form-select form-select fw-bold" name="aAbroadNy" aria-label=".form-select example">
                                 <option value="">선택</option>
-                                <c:choose>
-                                	<c:when test="${empty item.aSeq }">
+                                <c:forEach items="${listCodeAbroad }" var="listAbroad" varStatus="statusAbroad">
+                                	<option value="${abroad.abroadNy }" <c:if test="${abroad.abroadNy eq listAbroad.ccSeq }">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
+                                </c:forEach>
+                                <%-- <c:choose>
+                                	<c:when test="${empty gItem.gSeq }">
                                 		<c:forEach items="${listCodeAbroad}" var="listAbroad" varStatus="statusAborad">
-											<option value="${listAbroad.ccSeq }" <c:if test="${item.gAbroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
+											<option value="${listAbroad.ccSeq }" <c:if test="${abroad.AbroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
 										</c:forEach>
                                 	</c:when>
                                 	<c:otherwise>
                                 		<c:forEach items="${listCodeAbroad}" var="listAborad" varStatus="statusAborad">
-											<option value="${item.gAbroadNy }" <c:if test="${item.gAbroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
+											<option value="${item.gAbroadNy }" <c:if test="${abroad.AbroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
 										</c:forEach>
                                 	</c:otherwise>
-                                </c:choose>
+                                </c:choose> --%>
                             </select>
                         </div>
                         <div class="col">

@@ -12,6 +12,7 @@ public interface GameService {
 	
 	public int insert(Game dto) throws Exception; 
 	public Game selectOne(GameVo vo) throws Exception;
+	public Game mainSelectOne(GameVo vo) throws Exception;
 	
 	public int update(Game dto) throws Exception;
 	public int uelete(Game dto) throws Exception;
@@ -23,13 +24,13 @@ public interface GameService {
 	
 	/* select test */
 	public List<Game> gameList(Game dto) throws Exception;
-  public List<Game> abroad(Game dto) throws Exception;
-  public List<Game> event(Game dto) throws Exception;
-  public List<Game> league(Game dto) throws Exception;
-  public List<Game> teamName(Game dto) throws Exception;
-  public List<Game> stadium(Game dto) throws Exception;	
-  
-//  game comment
-  public List<Comment> gameComment(CommentVo vo) throws Exception;
-  public int gameCommentCount(CommentVo vo) throws Exception;
+    public List<Game> abroad(Game dto) throws Exception;
+    public List<Game> event(Game dto) throws Exception;
+    public List<Game> league(Game dto) throws Exception;
+    public List<Game> teamName(Game dto) throws Exception;
+    public List<Game> stadium(Game dto) throws Exception;	
+      
+    //  game comment
+    public List<Comment> gameComment(CommentVo vo) throws Exception;
+    public int gameCommentCount(CommentVo vo) throws Exception;
 }

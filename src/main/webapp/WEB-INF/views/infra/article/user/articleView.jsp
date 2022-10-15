@@ -143,9 +143,9 @@
        				<span class="navbar-toggler-icon"></span>
        			</button>
 			   	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			   		<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			   		<ul class="navbar-nav me-auto mb-2 ms-4 mb-lg-0">
 			   			<li class="nav-item">
-			   				<a class="nav-link active" aria-current="page" href="#">스포츠홈</a>
+			   				<a class="nav-link active" aria-current="page" href="/sportMain">스포츠홈</a>
 		   				</li>
 	   					<li class="nav-item">
 	   						<a class="nav-link" href="#">야구</a>

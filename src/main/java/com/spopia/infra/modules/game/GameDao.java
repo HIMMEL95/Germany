@@ -41,7 +41,11 @@ public class GameDao {
 	}
 	
 	public Game selectOne(GameVo vo) {
-		return sqlSession.selectOne(namespace + ".selectOne", vo);
+	    return sqlSession.selectOne(namespace + ".selectOne", vo);
+	}
+
+	public Game mainSelectOne(GameVo vo) {
+	    return sqlSession.selectOne(namespace + ".mainSelectOne", vo);
 	}
 	
 	public int update(Game dto) {

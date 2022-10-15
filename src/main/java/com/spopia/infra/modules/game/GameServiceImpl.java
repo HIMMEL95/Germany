@@ -40,8 +40,13 @@ public class GameServiceImpl implements GameService{
 	}
 	
 	@Override
+	public Game mainSelectOne(GameVo vo) throws Exception {
+		return dao.mainSelectOne(vo);
+	}
+
+	@Override
 	public Game selectOne(GameVo vo) throws Exception {
-		return dao.selectOne(vo);
+	    return dao.selectOne(vo);
 	}
 	
 	@Override

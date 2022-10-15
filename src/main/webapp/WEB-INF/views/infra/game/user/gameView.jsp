@@ -144,6 +144,32 @@
                 <!-- Profile START -->
             </div>
         </nav>
+        <nav class="navbar navbar-expand-lg bg-white">
+        	<div class="container">
+       			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       				<span class="navbar-toggler-icon"></span>
+       			</button>
+			   	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			   		<ul class="navbar-nav me-auto mb-2 ms-4 mb-lg-0">
+			   			<li class="nav-item">
+			   				<a class="nav-link active" aria-current="page" href="/sportMain">스포츠홈</a>
+		   				</li>
+	   					<li class="nav-item">
+	   						<a class="nav-link" href="#">야구</a>
+	   					</li>
+	   					<li class="nav-item">
+	   						<a class="nav-link" href="#">해외야구</a>
+	   					</li>
+	   					<li class="nav-item">
+	   						<a class="nav-link" href="#">축구</a>
+	   					</li>
+	   					<li class="nav-item">
+	   						<a class="nav-link" href="#">해외축구</a>
+	   					</li>
+   					</ul>
+				</div>
+			</div>
+		</nav>
     </header>
 
     <main>
@@ -168,24 +194,24 @@
 	            <div class="mb-3 rounded shadow MatchBox_comp_match_box__1oRmr MatchBox_type_ready__2Q2dm">
 	                <div class="MatchBox_info__2l4DE">
 	                    <span class="MatchBox_state__2AzL_">경기전</span>
-	                    <span class="MatchBox_date__1bJ9G mb-2">${item.gameDate }<span class="MatchBox_time__2z_nB">${item.gameDuration }</span></span>
+	                    <span class="MatchBox_date__1bJ9G mb-2">${item.gameDate } <span class="MatchBox_time__2z_nB">${item.gameDuration }</span></span>
 	                    <c:set var="listCodeStadium" value="${CodeServiceImpl.selectListCachedCode('8') }" />
-	                    <span class="MatchBox_stadium__17mQ4">${item.stadium }
+	                    <span class="MatchBox_stadium__17mQ4">
 	                    	<c:forEach items="${listCodeStadium}" var="listStadium" varStatus="statusStadium">
-								<c:if test="${list.stadium eq listStadium.ccSeq}"><c:out value="${listStadium.ifccName }"/></c:if>
+								<c:if test="${item.stadium eq listStadium.ccSeq}"><c:out value="${listStadium.ifccName }"/></c:if>
 							</c:forEach>
 	                    </span>
 	                </div>
 	                <div class="MatchBox_home__MPL6D pt-2">
 	                    <div class="MatchBox_team_area__a9Jet">
 	                        <div class="MatchBox_image__3CcVt"><img
-	                                src="https://sports-phinf.pstatic.net/team/kbo/default/OB.png?type=f108_108" alt="" width="72"
+	                                src="https://sports-phinf.pstatic.net/team/kbo/default/HT.png?type=f108_108" alt="" width="72"
 	                                height="72"></div>
 	                        <div class="MatchBox_text__22e-R text-center">
 	                        	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
-	                            <em class="MatchBox_name__11AyG">${item.team_away }
+	                            <em class="MatchBox_name__11AyG">
 	                            	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
-										<c:if test="${list.team_away eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+										<c:if test="${item.team_away eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
 									</c:forEach>
 	                            </em>
 	                            <p class="MatchBox_pitcher__2Krgp">선-${item.player_away }</p>
@@ -195,11 +221,15 @@
 	                <div class="MatchBox_away__1rDsC pt-2">
 	                    <div class="MatchBox_team_area__a9Jet">
 	                        <div class="MatchBox_image__3CcVt"><img
-	                                src="https://sports-phinf.pstatic.net/team/kbo/default/HT.png?type=f108_108" alt="" width="72"
+	                                src="https://sports-phinf.pstatic.net/team/kbo/default/OB.png?type=f108_108" alt="" width="72"
 	                                height="72"></div>
 	                        <div class="MatchBox_text__22e-R text-center">
 	                            <em class="MatchBox_name__11AyG">
-	                            <i class="MatchBox_badge__p5jYW">홈</i>${item.team_home }</em>
+	                            	<i class="MatchBox_badge__p5jYW">홈</i>
+	                            	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+										<c:if test="${item.team_home eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+									</c:forEach>
+                            	</em>
 	                            <p class="MatchBox_pitcher__2Krgp">선-${item.player_home }</p>
 	                        </div>
 	                    </div>

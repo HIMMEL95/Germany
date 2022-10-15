@@ -109,6 +109,30 @@
 		where 1=1
 			AND g.gSeq = #{gSeq}
 	</select>
+
+	<select id="mainSelectOne" resultMap="resultMapObj">
+		select
+			g.gAbroadNy
+		    ,g.gEvent
+		    ,g.gLeague
+		    ,g.score_home
+		    ,g.score_away
+		    ,g.player_home
+		    ,g.player_away
+		    ,g.stadium
+		    ,DATE_FORMAT(g.gameDate, '%m-%d') as gameDate
+		    ,DATE_FORMAT(g.gameDuration, '%H:%i') as gameDuration
+		    ,g.gCreatedAt
+		    ,g.gModifiedAt
+		    ,g.gcDelNy
+		    ,t1.teamSeq+24 as team_home
+		    ,t2.teamSeq+24 as team_away
+		from game g
+			inner join team t1 on t1.teamSeq = g.team_home
+			inner join team t2 on t2.teamSeq = g.team_away
+		where 1=1
+			AND g.gSeq = #{gSeq}
+	</select>
 	
 	<insert id="insert">
 		INSERT INTO game (
@@ -270,7 +294,7 @@
 			,t.stadium
 		from team t
 		where 1=1
-			and abroadNy = #{abroadNy}
+			and abroadNy = #{gAbroadNy}
 		group by event
 	</select>
 	

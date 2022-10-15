@@ -12,6 +12,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.spopia.infra.modules.game.Game;
 import com.spopia.infra.modules.game.GameServiceImpl;
 import com.spopia.infra.modules.game.GameVo;
+import com.spopia.infra.modules.team.Team;
+import com.spopia.infra.modules.team.TeamServiceImpl;
 
 @Controller
 @RequestMapping(value = "/article/")
@@ -21,6 +23,8 @@ public class ArticleController {
 	ArticleServiceImpl service;
 	@Autowired
 	GameServiceImpl gService;
+	@Autowired
+	TeamServiceImpl tService;
 	
 	public void setSearchAndPaging(ArticleVo vo) throws Exception {
 		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
@@ -38,17 +42,14 @@ public class ArticleController {
 	}
 
 	@RequestMapping(value = "articleForm")
-	public String articleForm(@ModelAttribute("vo") ArticleVo vo, Model model, Game gDto, GameVo gVo) throws Exception {
+	public String articleForm(@ModelAttribute("vo") ArticleVo vo, Model model, Team tDto, GameVo gVo) throws Exception {
 		
 		Article item = service.selectOne(vo);
 		model.addAttribute("item", item);
 		
-		Game gItem = gService.selectOne(gVo);
-		model.addAttribute("gItem", gItem);
-		
-		model.addAttribute("abroad", gService.gameList(gDto));
-		model.addAttribute("event", gService.event(gDto));
-		model.addAttribute("league", gService.league(gDto));
+		System.out.println("abroad");
+		List<Team> abroad = tService.abroad(tDto);
+		model.addAttribute("abroad", abroad);
 		
 		return "infra/article/xdmin/articleForm";
 	}

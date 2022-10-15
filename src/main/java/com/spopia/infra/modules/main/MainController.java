@@ -68,7 +68,7 @@ public class MainController {
 	@RequestMapping(value = "gameView")
 	public String gameView(@ModelAttribute("gVo") GameVo gVo, Model model, @ModelAttribute("cVo") CommentVo cVo) throws Exception {
 
-		Game item = gService.selectOne(gVo);
+		Game item = gService.mainSelectOne(gVo);
 		model.addAttribute("item", item);
 		
 		cVo.setParamsPaging(gService.gameCommentCount(cVo));

@@ -216,6 +216,28 @@
 	   	)aa
 	</select>
 	
+	<select id="gameComment" resultMap="resultMapObj">
+		select
+			gc.seq
+			,gc.comment
+			,gc.modifiedAt
+			,u.id as id
+		from game_comment gc
+			inner join user u on u.seq = gc.createdBy
+		where 1=1
+			and game_seq = #{gSeq}
+			and DelNy = 0
+	</select>
+	
+	<select id="gameCommentCount" resultType="Integer">
+		SELECT COUNT(*)
+		from game_comment gc
+			inner join user u on u.seq = gc.createdBy
+		where 1=1
+			and game_seq = #{gSeq}
+			and DelNy = 0
+	</select>	
+	
 	<select id="gameList" resultMap="resultMapObj">
 		select
 			t.teamSeq

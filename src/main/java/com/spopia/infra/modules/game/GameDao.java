@@ -8,6 +8,9 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.spopia.infra.modules.comment.Comment;
+import com.spopia.infra.modules.comment.CommentVo;
+
 @Repository
 public class GameDao {
 
@@ -81,5 +84,14 @@ public class GameDao {
   
   public List<Game> stadium(Game dto) {
   		return sqlSession.selectList(namespace + ".stadium", dto);
+  }
+  
+  // game comment
+  public List<Comment> gameComment(CommentVo vo) {
+  	return sqlSession.selectList(namespace + ".gameComment", vo);
+  }
+  
+  public int gameCommentCount(CommentVo vo) {
+  	return sqlSession.selectOne(namespace + ".gameCommentCount", vo);
   }
 }

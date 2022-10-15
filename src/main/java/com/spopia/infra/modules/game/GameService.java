@@ -2,6 +2,9 @@ package com.spopia.infra.modules.game;
 
 import java.util.List;
 
+import com.spopia.infra.modules.comment.Comment;
+import com.spopia.infra.modules.comment.CommentVo;
+
 public interface GameService {
 	public List<Game> selectList() throws Exception;
 	public List<Game> selectList(GameVo vo) throws Exception;
@@ -25,4 +28,8 @@ public interface GameService {
   public List<Game> league(Game dto) throws Exception;
   public List<Game> teamName(Game dto) throws Exception;
   public List<Game> stadium(Game dto) throws Exception;	
+  
+//  game comment
+  public List<Comment> gameComment(CommentVo vo) throws Exception;
+  public int gameCommentCount(CommentVo vo) throws Exception;
 }

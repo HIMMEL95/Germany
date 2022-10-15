@@ -272,7 +272,7 @@
 			,now()
 			,#{mSeq}
 			,now()
-			,#{aSeq}
+			,#{gSeq}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()

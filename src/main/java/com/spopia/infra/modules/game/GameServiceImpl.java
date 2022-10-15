@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spopia.infra.modules.comment.Comment;
+import com.spopia.infra.modules.comment.CommentVo;
+
 @Service
 public class GameServiceImpl implements GameService{
 
@@ -92,4 +95,16 @@ public class GameServiceImpl implements GameService{
 	public List<Game> stadium(Game dto) throws Exception {
 		return dao.stadium(dto);
 	}
+	
+//	commet
+	@Override
+	public List<Comment> gameComment(CommentVo vo) throws Exception {
+		return dao.gameComment(vo);
+	}
+	
+	@Override
+	public int gameCommentCount(CommentVo vo) throws Exception {
+		return dao.gameCommentCount(vo);
+	}
+	
 }

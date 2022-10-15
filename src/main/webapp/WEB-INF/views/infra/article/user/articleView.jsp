@@ -182,7 +182,7 @@
 	                            <div class="u_cbox_head">
 	                                <h5 class="u_cbox_title">응원톡</h5>
 	                                <span class="u_cbox_count">Total : ${cVo.totalRows }</span>
-	                                <button type="button" class="u_cbox_btn_refresh">
+	                                <button type="button" class="u_cbox_btn_refresh" onclick="refresh()">
 	                                    <span class="u_cbox_ico_refresh"></span>
 	                                    <span class="u_cbox_txt_refresh">새로고침</span>
 	                                </button>
@@ -207,7 +207,7 @@
 																	<span class="u_vc">현재 입력한 글자수</span>
 																	<strong class="u_cbox_count_num">0</strong>/
 																	<span class="u_vc">전체 입력 가능한 글자수</span>
-																	<span class="u_cbox_write_total">300</span>
+																	<span class="u_cbox_write_total">500</span>
 																</div>
 																<div class="u_cbox_upload">
 																	<div class="u_cbox_addition"></div>
@@ -270,8 +270,7 @@
 										</div>
 									</c:otherwise>
                                 </c:choose>
-	                            <div id="cbox_module_wai_u_cbox_content_wrap_tabpanel" tabindex="0" class="u_cbox_content_wrap"
-	                                style="outline: 0">
+	                            <div id="cbox_module_wai_u_cbox_content_wrap_tabpanel" tabindex="0" class="u_cbox_content_wrap" style="outline: 0">
 	                                <ul class="u_cbox_list">
 		                                <c:choose>
 					                  		<c:when test="${fn:length(comment) eq 0}">
@@ -313,7 +312,7 @@
 						                                                <div class="u_cbox_info_base">
 						                                                    <span class="u_cbox_date" data-value="2022-08-07T07:27:39+0900">21분 전</span>
 						                                                    <span class="u_cbox_work_main">
-						                                                        <button type="button" class="u_cbox_btn_report" onclick="commentUelete()">
+						                                                        <button type="button" class="u_cbox_btn_report" onclick="commentUelete(<c:out value="${comment.seq }"/>)">
 						                                                            <span class="u_cbox_ico_bar"></span>
 						                                                            <span class="u_cbox_ico_report"></span>
 						                                                            <span class="u_cbox_in_report"><i class="fa-solid fa-trash"></i></span>
@@ -523,11 +522,7 @@
    			});
 		}
 		
-		function commentUelete() {
-			
-			alert($("input[name=seq]").val());
-			
-			return false;
+		function commentUelete(seq) {
 			
 			$.ajax({
    				async: true 
@@ -536,13 +531,33 @@
    				/* ,dataType:"json" */
    				,url: "articleCommentUelete"
    				/* ,data : $("#formLogin").serialize() */
-   				,data : {"seq" : $("input[name=seq]").val() , "mSeq" : $("input[name=mSeq]").val(), "aSeq" : $("input[name=aSeq]").val()}
+   				,data : {"seq" : seq, "mSeq" : $("input[name=mSeq]").val(), "aSeq" : $("input[name=aSeq]").val()}
    				,success: function(response) {
    					if (response.rt == "success") {
    						location.href = "/articleView?aSeq="+ $("input[name=aSeq]").val();
    					} else {
    						alert("댓글을 입력하시오!!");
    					}
+   				}
+   				,error : function(jqXHR, textStatus, errorThrown){
+   					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+   				}
+   			});
+		}
+		
+		function refresh() {
+			$.ajax({
+   				async: true 
+   				,cache: false
+   				,type: "post"
+   				/* ,dataType:"json" */
+   				,url: "articleRefresh"
+   				/* ,data : $("#formLogin").serialize() */
+   				,data : {"aSeq" : $("input[name=aSeq]").val()}
+   				,success: function(response) {
+   					if (response.rt != "success") {
+   						location.href = "/articleView?aSeq="+ $("input[name=aSeq]").val();
+   					} 
    				}
    				,error : function(jqXHR, textStatus, errorThrown){
    					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);

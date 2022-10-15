@@ -35,6 +35,7 @@
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="/resources/css/user/game.css" rel="stylesheet" type="text/css">
     <link href="/resources/css/user/gameView.css" rel="stylesheet" type="text/css">
+    <link href="/resources/css/user/comment.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -44,7 +45,7 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container px-3 px-xl-5 pt-1">
                 <!-- Logo START -->
-                <a class="navbar-brand" href="./main_page.html">
+                <a class="navbar-brand" href="/sportMain">
                     <img class="light-mode-item navbar-brand-item" src="/resources/images/SPOPIA_white.png" alt="logo"
                         style="width: 90px;">
                 </a>
@@ -109,7 +110,7 @@
     </header>
 
     <main>
-    	<form method="post">
+    	<form method="post" name="myForm" id="myForm">
        	<!-- *Vo.jsp s -->
 		<%@include file="gameVo.jsp"%>		<!-- #-> -->
 		<!-- *Vo.jsp e -->
@@ -172,9 +173,6 @@
 	                <div class="CheerVS_comp_cheer__2Ko7V is_cheer">
 	                    <div class="CheerVS_cheer_box__1oy_U">
 	                        <h3 class="blind">당신의 팀을 응원하세요!</h3>
-	                        <div class="CheerVS_cheer_alert__3ioWG" style="display: block;">
-	                            <p class="CheerVS_alert_text__1ms91">응원팀을 터치하세요</p>
-	                        </div>
 	                        <div class="CheerVS_cheer_area__1jVle">
 	                            <div class="CheerVS_left_team__3uqU9" style="width: 53.8574%; color: rgb(255, 255, 255);">
 	                                <div class="CheerVS_team_cover__2Fb3h"
@@ -204,659 +202,243 @@
 	                    </div>
 	                </div>
 	            </div>
-	            <!-- 댓글 -->
-	            <div class="card CommentModule_comp_comment__18nvt CommentModule_is_pc__2froM p-3">
-	                <div class="u_cbox" id="cbox_module">
-	                    <div class="u_cbox_wrap u_cbox_type_select u_cbox_ko">
-	                        <div class="u_cbox_head">
-	                            <h5 class="u_cbox_title">응원톡</h5>
-	                            <span class="u_cbox_count">34,632</span>
-	                            <button type="button" class="u_cbox_btn_refresh" data-action="count#refresh" data-log="RPO.refresh">
-	                                <span class="u_cbox_ico_refresh"></span>
-	                                <span class="u_cbox_txt_refresh">새로고침</span>
-	                            </button>
-	                        </div>
-	                        <div class="u_cbox_write_wrap">
-	                            <div class="u_cbox_write_box u_cbox_type_logged_out">
-	                                <fieldset>
-	                                    <legend class="u_vc">댓글 쓰기</legend>
-	                                    <div class="u_cbox_write">
-	                                        <div class="u_cbox_write_inner">
-	                                            <div class="u_cbox_write_area">
-	                                                <strong class="u_vc">댓글 입력</strong>
-	                                                <div class="u_cbox_inbox">
-	                                                    <textarea title="응원톡" id="cbox_module__write_textarea" class="u_cbox_text"
-	                                                        rows="3" cols="30" data-log="RPC.input">
-	                                                                </textarea>
-	                                                    <label for="cbox_module__write_textarea" class="u_cbox_guide"
-	                                                        data-action="write#placeholder" data-param="@event">
-	                                                        댓글을 작성하려면
-	                                                        <a href="#" class="u_cbox_link">로그인</a>
-	                                                        해주세요
-	                                                    </label>
-	                                                </div>
-	                                            </div>
-	                                            <div class="u_cbox_upload_image" style="display:none">
-	                                                <span class="u_cbox_upload_image_wrap fileButton browsebutton _cboxImageSelect">
-	                                                    <span class="u-cbox-browse-box">
-	                                                        <input class="u-cbox-browse-file-input" type="file" name="browse"
-	                                                            accept="image/*" title="이미지 추가">
-	                                                    </span>
-	                                                    <a href="#" class="u_cbox_upload_thumb_link u-cbox-browse-button"
-	                                                        data-log="RPP.add">
-	                                                        <span class="u_cbox_upload_thumb_add">이미지 추가</span>
-	                                                        <span class="u_cbox_upload_thumb_mask"></span>
-	                                                    </a>
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_upload_sticker" style="display:none"></div>
-	                                            <div class="u_cbox_write_count">
-	                                                <span class="u_vc">현재 입력한 글자수</span>
-	                                                <strong class="u_cbox_count_num">0</strong>
-	                                                /
-	                                                <span class="u_vc">전체 입력 가능한 글자수</span>
-	                                                <span class="u_cbox_write_total">300</span>
-	                                            </div>
-	                                            <div class="u_cbox_upload">
-	                                                <div class="u_cbox_addition">
-	                                                    <button type="button" class="u_cbox_btn_upload_sticker"
-	                                                        data-action="write#beforeToggleSticker" data-log="RPO.sticker">
-	                                                        <span class="u_cbox_ico_upload_sticker"></span>
-	                                                        <span class="u_cbox_txt_upload_sticker">스티커</span>
-	                                                        <span class="u_cbox_ico_arrow"></span>
-	                                                    </button>
-	                                                </div>
-	                                                <button type="button" class="u_cbox_btn_upload" data-action="write#request"
-	                                                    data-log="RPC.write#RPC.reply">
-	                                                    <span class="u_cbox_ico_upload"></span>
-	                                                    <span class="u_cbox_txt_upload">등록</span>
-	                                                </button>
-	                                            </div>
-	                                        </div>
-	                                    </div>
-	                                </fieldset>
-	                            </div>
-	                            <div class="u_cbox_sticker"></div>
-	                        </div>
-	                        <div class="u_cbox_notice u_cbox_notice_none" style="display: none;"></div>
-	                        <div class="u_cbox_refresh_wrap">
-	                            <strong class="u_vc">자동업데이트 설정</strong>
-	                            <div class="u_cbox_refresh_area">
-	                                <button data-action="refresh#toggle" type="button"
-	                                    class="u_cbox_btn_refresh_auto u_cbox_btn_refresh_auto_on" title="자동 업데이트"
-	                                    data-log="RPO.autoon#RPO.autooff">
-	                                    <span class="u_cbox_bg_wrap">
-	                                        <span class="u_cbox_bg_left"></span>
-	                                        <span class="u_cbox_bg_right"></span>
-	                                    </span>
-	                                    <span class="u_cbox_ico_refresh_auto">ON</span>
-	                                </button>
-	                                <span class="u_cbox_txt_refresh">자동 업데이트</span>
-	                            </div>
-	                            <div class="u_cbox_refresh_box">
-	                                <span class="u_cbox_refresh_time">2 초 후</span>
-	                                <button data-action="refresh#request" type="button" class="u_cbox_btn_refresh_man" title="새로고침">
-	                                    <span class="u_cbox_ico_refresh_man"></span>
-	                                    <span class="u_cbox_txt_refresh_man">새로고침</span>
-	                                </button>
-	                            </div>
-	                        </div>
-	                        <div id="cbox_module_wai_u_cbox_content_wrap_tabpanel" tabindex="0" class="u_cbox_content_wrap"
-	                            style="outline: 0">
-	                            <ul class="u_cbox_list">
-	                                <li class="u_cbox_comment cbox_module__comment_765728306778603670 _user_id_no_3MkTI"
-	                                    data-info="commentNo:'765728306778603670',deleted:false,best:false,visible:true,secret:false,manager:false,mine:false,report:undefined,blindReport:false,objectId:'20220806OBHT02022',replyLevel:1,parentCommentNo:'765728306778603670',pick:false">
-	                                    <div class="u_cbox_comment_box">
-	                                        <div class="u_cbox_area">
-	                                            <div class="u_cbox_info">
-	                                                <span class="u_cbox_info_main">
-	                                                    <span class="u_cbox_name">
-	                                                        <span class="u_cbox_name_area">
-	                                                            <span class="u_cbox_nick_area">
-	                                                                <span class="u_cbox_nick">pkw9****</span>
-	                                                            </span>
-	                                                        </span>
-	                                                    </span>
-	                                                </span>
-	                                                <span class="u_cbox_info_sub"></span>
-	                                            </div>
-	                                            <div class="u_cbox_pic">
-	                                                <span class="u_cbox_pic_wrap">
-	                                                    <img src="https://ssl.pstatic.net/static/sports/2021/m/12/07/no_emblem_baseball.png"
-	                                                        class="u_cbox_img_contents" alt="댓글 이미지"
-	                                                        onerror="cbox.Util.leave(this, '.u_cbox_pic');">
-	                                                    <span class="u_cbox_pic_mask"></span>
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_text_wrap">
-	                                                <span class="u_cbox_contents" data-lang="ko">
-	                                                    구종도 없는 정해영좀 쓰지마라 볼때마다 안맞엇던게 신기하다
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_info_base">
-	                                                <span class="u_cbox_date" data-value="2022-08-07T07:27:39+0900">21분 전</span>
-	                                                <span class="u_cbox_work_main">
-	                                                    <a href="#" class="u_cbox_btn_report" data-action="report#openLayer"
-	                                                        data-param="objectId:'20220806OBHT02022',commentNo:'765728306778603670'"
-	                                                        data-log="RPC.fold">
-	                                                        <span class="u_cbox_ico_bar"></span>
-	                                                        <span class="u_cbox_ico_report"></span>
-	                                                        <span class="u_cbox_in_report">신고</span>
-	                                                    </a>
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_tool"></div>
-	                                            <span class="u_cbox_comment_frame">
-	                                                <span class="u_cbox_ico_tip"></span>
-	                                                <span class="u_cbox_comment_frame_top">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                                <span class="u_cbox_comment_frame_bottom">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                            </span>
-	                                        </div>
-	                                    </div>
-	                                    <div class="u_cbox_reply_area" style="display:none;"></div>
-	                                </li>
-	                                <li class="u_cbox_comment cbox_module__comment_765727927965843622 _user_id_no_27w2P"
-	                                    data-info="commentNo:'765727927965843622',deleted:false,best:false,visible:true,secret:false,manager:false,mine:false,report:undefined,blindReport:false,objectId:'20220806OBHT02022',replyLevel:1,parentCommentNo:'765727927965843622',pick:false">
-	                                    <div class="u_cbox_comment_box">
-	                                        <div class="u_cbox_area">
-	                                            <div class="u_cbox_info">
-	                                                <span class="u_cbox_info_main">
-	                                                    <span class="u_cbox_name">
-	                                                        <span class="u_cbox_name_area">
-	                                                            <span class="u_cbox_nick_area">
-	                                                                <span class="u_cbox_nick">KT Wiz</span>
-	                                                            </span>
-	                                                        </span>
-	                                                    </span>
-	                                                </span>
-	                                                <span class="u_cbox_info_sub"></span>
-	                                            </div>
-	                                            <div class="u_cbox_pic">
-	                                                <span class="u_cbox_pic_wrap">
-	                                                    <img src="https://ssl.pstatic.net/static/sports/2021/m/12/07/no_emblem_baseball.png"
-	                                                        class="u_cbox_img_contents" alt="댓글 이미지"
-	                                                        onerror="cbox.Util.leave(this, '.u_cbox_pic');">
-	                                                    <span class="u_cbox_pic_mask"></span>
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_text_wrap">
-	                                                <span class="u_cbox_contents" data-lang="ko">
-	                                                    호식이 횽들 정신 안차려? ㅋ 뒷덜미 잡힐라
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_info_base">
-	                                                <span class="u_cbox_date" data-value="2022-08-07T07:21:45+0900">27분 전</span>
-	                                                <span class="u_cbox_work_main">
-	                                                    <a href="#" class="u_cbox_btn_report" data-action="report#openLayer"
-	                                                        data-param="objectId:'20220806OBHT02022',commentNo:'765727927965843622'"
-	                                                        data-log="RPC.fold">
-	                                                        <span class="u_cbox_ico_bar"></span>
-	                                                        <span class="u_cbox_ico_report"></span>
-	                                                        <span class="u_cbox_in_report">신고</span>
-	                                                    </a>
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_tool"></div>
-	                                            <span class="u_cbox_comment_frame">
-	                                                <span class="u_cbox_ico_tip"></span>
-	                                                <span class="u_cbox_comment_frame_top">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                                <span class="u_cbox_comment_frame_bottom">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                            </span>
-	                                        </div>
-	                                    </div>
-	                                    <div class="u_cbox_reply_area" style="display:none;"></div>
-	                                </li>
-	                                <li class="u_cbox_comment cbox_module__comment_765726323392905369 _user_id_no_1lOcb"
-	                                    data-info="commentNo:'765726323392905369',deleted:false,best:false,visible:true,secret:false,manager:false,mine:false,report:undefined,blindReport:false,objectId:'20220806OBHT02022',replyLevel:1,parentCommentNo:'765726323392905369',pick:false">
-	                                    <div class="u_cbox_comment_box">
-	                                        <div class="u_cbox_area">
-	                                            <div class="u_cbox_info">
-	                                                <span class="u_cbox_info_main">
-	                                                    <span class="u_cbox_name">
-	                                                        <span class="u_cbox_name_area">
-	                                                            <span class="u_cbox_nick_area">
-	                                                                <span class="u_cbox_nick">hand****</span>
-	                                                            </span>
-	                                                        </span>
-	                                                    </span>
-	                                                </span>
-	                                                <span class="u_cbox_info_sub"></span>
-	                                            </div>
-	                                            <div class="u_cbox_pic">
-	                                                <span class="u_cbox_pic_wrap">
-	                                                    <img src="https://ssl.pstatic.net/static/sports/2021/m/12/07/no_emblem_baseball.png"
-	                                                        class="u_cbox_img_contents" alt="댓글 이미지"
-	                                                        onerror="cbox.Util.leave(this, '.u_cbox_pic');">
-	                                                    <span class="u_cbox_pic_mask"></span>
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_text_wrap">
-	                                                <span class="u_cbox_cleanbot_contents" style="display:block;">
-	                                                    <em>클린봇</em>이 부적절한 표현을 감지한 댓글입니다.
-	                                                </span>
-	                                                <span class="u_cbox_ico_exclamation" style="display:none;"></span>
-	                                                <span class="u_cbox_delete_contents" style="display:none;">내가 차단한 이용자의 댓글입니다.</span>
-	                                            </div>
-	                                            <div class="u_cbox_info_base">
-	                                                <span class="u_cbox_date" data-value="2022-08-07T06:56:51+0900">52분 전</span>
-	                                            </div>
-	                                            <div class="u_cbox_tool"></div>
-	                                            <span class="u_cbox_comment_frame">
-	                                                <span class="u_cbox_ico_tip"></span>
-	                                                <span class="u_cbox_comment_frame_top">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                                <span class="u_cbox_comment_frame_bottom">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                            </span>
-	                                        </div>
-	                                    </div>
-	                                    <div class="u_cbox_reply_area" style="display:none;"></div>
-	                                </li>
-	                                <li class="u_cbox_comment cbox_module__comment_765726310709330030 _user_id_no_3GjHx"
-	                                    data-info="commentNo:'765726310709330030',deleted:false,best:false,visible:true,secret:false,manager:false,mine:false,report:undefined,blindReport:false,objectId:'20220806OBHT02022',replyLevel:1,parentCommentNo:'765726310709330030',pick:false">
-	                                    <div class="u_cbox_comment_box">
-	                                        <div class="u_cbox_area">
-	                                            <div class="u_cbox_info">
-	                                                <span class="u_cbox_info_main">
-	                                                    <span class="u_cbox_name">
-	                                                        <span class="u_cbox_name_area">
-	                                                            <span class="u_cbox_nick_area">
-	                                                                <span class="u_cbox_nick">이게무슨일</span>
-	                                                            </span>
-	                                                        </span>
-	                                                    </span>
-	                                                </span>
-	                                                <span class="u_cbox_info_sub"></span>
-	                                            </div>
-	                                            <div class="u_cbox_pic">
-	                                                <span class="u_cbox_pic_wrap">
-	                                                    <img src="https://sports-phinf.pstatic.net/team/kbo/default/HT.png?type=f108_108"
-	                                                        class="u_cbox_img_contents" alt="댓글 이미지"
-	                                                        onerror="cbox.Util.leave(this, '.u_cbox_pic');">
-	                                                    <span class="u_cbox_pic_mask"></span>
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_text_wrap">
-	                                                <span class="u_cbox_contents" data-lang="ko">
-	                                                    무쌍이 고객센터 민원 넣은다니까 쫄려서 만지셨잖아요로 닉변했네?
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_info_base">
-	                                                <span class="u_cbox_date" data-value="2022-08-07T06:56:40+0900">52분 전</span>
-	                                                <span class="u_cbox_work_main">
-	                                                    <a href="#" class="u_cbox_btn_report" data-action="report#openLayer"
-	                                                        data-param="objectId:'20220806OBHT02022',commentNo:'765726310709330030'"
-	                                                        data-log="RPC.fold">
-	                                                        <span class="u_cbox_ico_bar"></span>
-	                                                        <span class="u_cbox_ico_report"></span>
-	                                                        <span class="u_cbox_in_report">신고</span>
-	                                                    </a>
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_tool"></div>
-	                                            <span class="u_cbox_comment_frame">
-	                                                <span class="u_cbox_ico_tip"></span>
-	                                                <span class="u_cbox_comment_frame_top">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                                <span class="u_cbox_comment_frame_bottom">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                            </span>
-	                                        </div>
-	                                    </div>
-	                                    <div class="u_cbox_reply_area" style="display:none;"></div>
-	                                </li>
-	                                <li class="u_cbox_comment cbox_module__comment_765726323392905369 _user_id_no_1lOcb"
-	                                    data-info="commentNo:'765726323392905369',deleted:false,best:false,visible:true,secret:false,manager:false,mine:false,report:undefined,blindReport:false,objectId:'20220806OBHT02022',replyLevel:1,parentCommentNo:'765726323392905369',pick:false">
-	                                    <div class="u_cbox_comment_box">
-	                                        <div class="u_cbox_area">
-	                                            <div class="u_cbox_info">
-	                                                <span class="u_cbox_info_main">
-	                                                    <span class="u_cbox_name">
-	                                                        <span class="u_cbox_name_area">
-	                                                            <span class="u_cbox_nick_area">
-	                                                                <span class="u_cbox_nick">hand****</span>
-	                                                            </span>
-	                                                        </span>
-	                                                    </span>
-	                                                </span>
-	                                                <span class="u_cbox_info_sub"></span>
-	                                            </div>
-	                                            <div class="u_cbox_pic">
-	                                                <span class="u_cbox_pic_wrap">
-	                                                    <img src="https://ssl.pstatic.net/static/sports/2021/m/12/07/no_emblem_baseball.png"
-	                                                        class="u_cbox_img_contents" alt="댓글 이미지"
-	                                                        onerror="cbox.Util.leave(this, '.u_cbox_pic');">
-	                                                    <span class="u_cbox_pic_mask"></span>
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_text_wrap">
-	                                                <span class="u_cbox_cleanbot_contents" style="display:block;">
-	                                                    <em>클린봇</em>이 부적절한 표현을 감지한 댓글입니다.
-	                                                </span>
-	                                                <span class="u_cbox_ico_exclamation" style="display:none;"></span>
-	                                                <span class="u_cbox_delete_contents" style="display:none;">내가 차단한 이용자의 댓글입니다.</span>
-	                                            </div>
-	                                            <div class="u_cbox_info_base">
-	                                                <span class="u_cbox_date" data-value="2022-08-07T06:56:51+0900">52분 전</span>
-	                                            </div>
-	                                            <div class="u_cbox_tool"></div>
-	                                            <span class="u_cbox_comment_frame">
-	                                                <span class="u_cbox_ico_tip"></span>
-	                                                <span class="u_cbox_comment_frame_top">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                                <span class="u_cbox_comment_frame_bottom">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                            </span>
-	                                        </div>
-	                                    </div>
-	                                    <div class="u_cbox_reply_area" style="display:none;"></div>
-	                                </li>
-	                                <li class="u_cbox_comment cbox_module__comment_765726091733106739 _user_id_no_1p8oq"
-	                                    data-info="commentNo:'765726091733106739',deleted:false,best:false,visible:true,secret:false,manager:false,mine:false,report:undefined,blindReport:false,objectId:'20220806OBHT02022',replyLevel:1,parentCommentNo:'765726091733106739',pick:false">
-	                                    <div class="u_cbox_comment_box">
-	                                        <div class="u_cbox_area">
-	                                            <div class="u_cbox_info">
-	                                                <span class="u_cbox_info_main">
-	                                                    <span class="u_cbox_name">
-	                                                        <span class="u_cbox_name_area">
-	                                                            <span class="u_cbox_nick_area">
-	                                                                <span class="u_cbox_nick">rkwkqlgod</span>
-	                                                            </span>
-	                                                        </span>
-	                                                    </span>
-	                                                </span>
-	                                                <span class="u_cbox_info_sub"></span>
-	                                            </div>
-	                                            <div class="u_cbox_pic">
-	                                                <span class="u_cbox_pic_wrap">
-	                                                    <img src="https://ssl.pstatic.net/static/sports/2021/m/12/07/no_emblem_baseball.png"
-	                                                        class="u_cbox_img_contents" alt="댓글 이미지"
-	                                                        onerror="cbox.Util.leave(this, '.u_cbox_pic');">
-	                                                    <span class="u_cbox_pic_mask"></span>
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_text_wrap">
-	                                                <span class="u_cbox_contents" data-lang="ko">
-	                                                    감독 이러다가 책임지고 사퇴하겠다하겠지. 정해영투수는 돈과 빽이 좋은가봐. 몇년를 말아먹어도 나오는거 보면. 프로야구?? 프로 뜻이나
-	                                                    공부하셔</span>
-	                                            </div>
-	                                            <div class="u_cbox_info_base">
-	                                                <span class="u_cbox_date" data-value="2022-08-07T06:53:16+0900">55분 전</span>
-	                                                <span class="u_cbox_work_main">
-	                                                    <a href="#" class="u_cbox_btn_report" data-action="report#openLayer"
-	                                                        data-param="objectId:'20220806OBHT02022',commentNo:'765726091733106739'"
-	                                                        data-log="RPC.fold">
-	                                                        <span class="u_cbox_ico_bar"></span>
-	                                                        <span class="u_cbox_ico_report"></span>
-	                                                        <span class="u_cbox_in_report">신고</span>
-	                                                    </a>
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_tool"></div>
-	                                            <span class="u_cbox_comment_frame">
-	                                                <span class="u_cbox_ico_tip"></span>
-	                                                <span class="u_cbox_comment_frame_top">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                                <span class="u_cbox_comment_frame_bottom">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                            </span>
-	                                        </div>
-	                                    </div>
-	                                    <div class="u_cbox_reply_area" style="display:none;"></div>
-	                                </li>
-	                                <li class="u_cbox_comment cbox_module__comment_765726323392905369 _user_id_no_1lOcb"
-	                                    data-info="commentNo:'765726323392905369',deleted:false,best:false,visible:true,secret:false,manager:false,mine:false,report:undefined,blindReport:false,objectId:'20220806OBHT02022',replyLevel:1,parentCommentNo:'765726323392905369',pick:false">
-	                                    <div class="u_cbox_comment_box">
-	                                        <div class="u_cbox_area">
-	                                            <div class="u_cbox_info">
-	                                                <span class="u_cbox_info_main">
-	                                                    <span class="u_cbox_name">
-	                                                        <span class="u_cbox_name_area">
-	                                                            <span class="u_cbox_nick_area">
-	                                                                <span class="u_cbox_nick">hand****</span>
-	                                                            </span>
-	                                                        </span>
-	                                                    </span>
-	                                                </span>
-	                                                <span class="u_cbox_info_sub"></span>
-	                                            </div>
-	                                            <div class="u_cbox_pic">
-	                                                <span class="u_cbox_pic_wrap">
-	                                                    <img src="https://ssl.pstatic.net/static/sports/2021/m/12/07/no_emblem_baseball.png"
-	                                                        class="u_cbox_img_contents" alt="댓글 이미지"
-	                                                        onerror="cbox.Util.leave(this, '.u_cbox_pic');">
-	                                                    <span class="u_cbox_pic_mask"></span>
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_text_wrap">
-	                                                <span class="u_cbox_cleanbot_contents" style="display:block;">
-	                                                    <em>클린봇</em>이 부적절한 표현을 감지한 댓글입니다.
-	                                                </span>
-	                                                <span class="u_cbox_ico_exclamation" style="display:none;"></span>
-	                                                <span class="u_cbox_delete_contents" style="display:none;">내가 차단한 이용자의 댓글입니다.</span>
-	                                            </div>
-	                                            <div class="u_cbox_info_base">
-	                                                <span class="u_cbox_date" data-value="2022-08-07T06:56:51+0900">52분 전</span>
-	                                            </div>
-	                                            <div class="u_cbox_tool"></div>
-	                                            <span class="u_cbox_comment_frame">
-	                                                <span class="u_cbox_ico_tip"></span>
-	                                                <span class="u_cbox_comment_frame_top">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                                <span class="u_cbox_comment_frame_bottom">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                            </span>
-	                                        </div>
-	                                    </div>
-	                                    <div class="u_cbox_reply_area" style="display:none;"></div>
-	                                </li>
-	                                <li class="u_cbox_comment cbox_module__comment_765726323392905369 _user_id_no_1lOcb"
-	                                    data-info="commentNo:'765726323392905369',deleted:false,best:false,visible:true,secret:false,manager:false,mine:false,report:undefined,blindReport:false,objectId:'20220806OBHT02022',replyLevel:1,parentCommentNo:'765726323392905369',pick:false">
-	                                    <div class="u_cbox_comment_box">
-	                                        <div class="u_cbox_area">
-	                                            <div class="u_cbox_info">
-	                                                <span class="u_cbox_info_main">
-	                                                    <span class="u_cbox_name">
-	                                                        <span class="u_cbox_name_area">
-	                                                            <span class="u_cbox_nick_area">
-	                                                                <span class="u_cbox_nick">hand****</span>
-	                                                            </span>
-	                                                        </span>
-	                                                    </span>
-	                                                </span>
-	                                                <span class="u_cbox_info_sub"></span>
-	                                            </div>
-	                                            <div class="u_cbox_pic">
-	                                                <span class="u_cbox_pic_wrap">
-	                                                    <img src="https://ssl.pstatic.net/static/sports/2021/m/12/07/no_emblem_baseball.png"
-	                                                        class="u_cbox_img_contents" alt="댓글 이미지"
-	                                                        onerror="cbox.Util.leave(this, '.u_cbox_pic');">
-	                                                    <span class="u_cbox_pic_mask"></span>
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_text_wrap">
-	                                                <span class="u_cbox_cleanbot_contents" style="display:block;">
-	                                                    <em>클린봇</em>이 부적절한 표현을 감지한 댓글입니다.
-	                                                </span>
-	                                                <span class="u_cbox_ico_exclamation" style="display:none;"></span>
-	                                                <span class="u_cbox_delete_contents" style="display:none;">내가 차단한 이용자의 댓글입니다.</span>
-	                                            </div>
-	                                            <div class="u_cbox_info_base">
-	                                                <span class="u_cbox_date" data-value="2022-08-07T06:56:51+0900">52분 전</span>
-	                                            </div>
-	                                            <div class="u_cbox_tool"></div>
-	                                            <span class="u_cbox_comment_frame">
-	                                                <span class="u_cbox_ico_tip"></span>
-	                                                <span class="u_cbox_comment_frame_top">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                                <span class="u_cbox_comment_frame_bottom">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                            </span>
-	                                        </div>
-	                                    </div>
-	                                    <div class="u_cbox_reply_area" style="display:none;"></div>
-	                                </li>
-	                                <li class="u_cbox_comment cbox_module__comment_765726323392905369 _user_id_no_1lOcb"
-	                                    data-info="commentNo:'765726323392905369',deleted:false,best:false,visible:true,secret:false,manager:false,mine:false,report:undefined,blindReport:false,objectId:'20220806OBHT02022',replyLevel:1,parentCommentNo:'765726323392905369',pick:false">
-	                                    <div class="u_cbox_comment_box">
-	                                        <div class="u_cbox_area">
-	                                            <div class="u_cbox_info">
-	                                                <span class="u_cbox_info_main">
-	                                                    <span class="u_cbox_name">
-	                                                        <span class="u_cbox_name_area">
-	                                                            <span class="u_cbox_nick_area">
-	                                                                <span class="u_cbox_nick">hand****</span>
-	                                                            </span>
-	                                                        </span>
-	                                                    </span>
-	                                                </span>
-	                                                <span class="u_cbox_info_sub"></span>
-	                                            </div>
-	                                            <div class="u_cbox_pic">
-	                                                <span class="u_cbox_pic_wrap">
-	                                                    <img src="https://ssl.pstatic.net/static/sports/2021/m/12/07/no_emblem_baseball.png"
-	                                                        class="u_cbox_img_contents" alt="댓글 이미지"
-	                                                        onerror="cbox.Util.leave(this, '.u_cbox_pic');">
-	                                                    <span class="u_cbox_pic_mask"></span>
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_text_wrap">
-	                                                <span class="u_cbox_cleanbot_contents" style="display:block;">
-	                                                    <em>클린봇</em>이 부적절한 표현을 감지한 댓글입니다.
-	                                                </span>
-	                                                <span class="u_cbox_ico_exclamation" style="display:none;"></span>
-	                                                <span class="u_cbox_delete_contents" style="display:none;">내가 차단한 이용자의 댓글입니다.</span>
-	                                            </div>
-	                                            <div class="u_cbox_info_base">
-	                                                <span class="u_cbox_date" data-value="2022-08-07T06:56:51+0900">52분 전</span>
-	                                            </div>
-	                                            <div class="u_cbox_tool"></div>
-	                                            <span class="u_cbox_comment_frame">
-	                                                <span class="u_cbox_ico_tip"></span>
-	                                                <span class="u_cbox_comment_frame_top">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                                <span class="u_cbox_comment_frame_bottom">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                            </span>
-	                                        </div>
-	                                    </div>
-	                                    <div class="u_cbox_reply_area" style="display:none;"></div>
-	                                </li>
-	                                <li class="u_cbox_comment cbox_module__comment_765723804411363477 _user_id_no_16S6N"
-	                                    data-info="commentNo:'765723804411363477',deleted:false,best:false,visible:true,secret:false,manager:false,mine:false,report:undefined,blindReport:false,objectId:'20220806OBHT02022',replyLevel:1,parentCommentNo:'765723804411363477',pick:false">
-	                                    <div class="u_cbox_comment_box">
-	                                        <div class="u_cbox_area">
-	                                            <div class="u_cbox_info">
-	                                                <span class="u_cbox_info_main">
-	                                                    <span class="u_cbox_name">
-	                                                        <span class="u_cbox_name_area">
-	                                                            <span class="u_cbox_nick_area">
-	                                                                <span class="u_cbox_nick">대천사</span>
-	                                                            </span>
-	                                                        </span>
-	                                                    </span>
-	                                                </span>
-	                                                <span class="u_cbox_info_sub"></span>
-	                                            </div>
-	                                            <div class="u_cbox_pic">
-	                                                <span class="u_cbox_pic_wrap">
-	                                                    <img src="https://ssl.pstatic.net/static/sports/2021/m/12/07/no_emblem_baseball.png"
-	                                                        class="u_cbox_img_contents" alt="댓글 이미지"
-	                                                        onerror="cbox.Util.leave(this, '.u_cbox_pic');">
-	                                                    <span class="u_cbox_pic_mask"></span>
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_text_wrap">
-	                                                <span class="u_cbox_contents" data-lang="ko">
-	                                                    욕 나올수밖에..돌감독 사퇴해라
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_info_base">
-	                                                <span class="u_cbox_date" data-value="2022-08-07T06:17:44+0900">1시간 전</span>
-	                                                <span class="u_cbox_work_main">
-	                                                    <a href="#" class="u_cbox_btn_report" data-action="report#openLayer"
-	                                                        data-param="objectId:'20220806OBHT02022',commentNo:'765723804411363477'"
-	                                                        data-log="RPC.fold">
-	                                                        <span class="u_cbox_ico_bar"></span>
-	                                                        <span class="u_cbox_ico_report"></span>
-	                                                        <span class="u_cbox_in_report">신고</span>
-	                                                    </a>
-	                                                </span>
-	                                            </div>
-	                                            <div class="u_cbox_tool"></div>
-	                                            <span class="u_cbox_comment_frame">
-	                                                <span class="u_cbox_ico_tip"></span>
-	                                                <span class="u_cbox_comment_frame_top">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                                <span class="u_cbox_comment_frame_bottom">
-	                                                    <span class="u_cbox_comment_bg_r"></span>
-	                                                    <span class="u_cbox_comment_bg_l"></span>
-	                                                </span>
-	                                            </span>
-	                                        </div>
-	                                    </div>
-	                                    <div class="u_cbox_reply_area" style="display:none;"></div>
-	                                </li>
-	                            </ul>
-	                        </div>
-	                        <div class="u_cbox_paginate">
-	                            <a href="#" class="u_cbox_btn_more" data-action="page#more" data-log="RPC.more">
-	                                <span class="u_cbox_more_wrap">
-	                                    <span class="u_cbox_box_more">
-	                                        <span class="u_cbox_page_more">더보기</span>
-	                                        <span class="u_cbox_ico_more"></span>
-	                                    </span>
-	                                </span>
-	                            </a>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="Toast_comp_toast__1Tz2f">
-	                    <p class="Toast_text__2Q22E">더보기해서 자동 업데이트가 멈췄습니다.</p>
-	                </div>
-	            </div>
+	            <!-- 댓글 --> 
+	            <div class="CommentModule_comp_comment__18nvt CommentModule_is_pc__2froM">
+                    <div class="u_cbox" id="cbox_module" style="padding: 30px;">
+                        <div class="u_cbox_wrap u_cbox_type_select u_cbox_ko">
+                            <div class="u_cbox_head">
+                                <h5 class="u_cbox_title">응원톡</h5>
+                                <span class="u_cbox_count">Total : ${cVo.totalRows }</span>
+                                <button type="button" class="u_cbox_btn_refresh" onclick="refresh()">
+                                    <span class="u_cbox_ico_refresh"></span>
+                                    <span class="u_cbox_txt_refresh">새로고침</span>
+                                </button>
+                            </div>
+                               <c:choose>
+                               	<c:when test="${empty sessName}">
+		                            <div class="u_cbox_write_wrap">
+										<div class="u_cbox_write_box u_cbox_type_logged_out">
+											<form>
+												<fieldset>
+													<legend class="u_vc">댓글 쓰기</legend>
+													<div class="u_cbox_write">
+														<div class="u_cbox_write_inner">
+															<div class="u_cbox_write_area">
+																<strong class="u_vc">댓글 입력</strong>
+																<div class="u_cbox_inbox">
+																	<textarea title="댓글" id="comment" class="u_cbox_text" rows="3" cols="30"></textarea>
+																	<label for="comment" class="u_cbox_guide">댓글을 작성하려면 <a class="login_link">로그인</a> 해주세요</label>
+																</div>
+															</div>
+															<div class="u_cbox_write_count">
+																<span class="u_vc">현재 입력한 글자수</span>
+																<strong class="u_cbox_count_num">0</strong>/
+																<span class="u_vc">전체 입력 가능한 글자수</span>
+																<span class="u_cbox_write_total">500</span>
+															</div>
+															<div class="u_cbox_upload">
+																<div class="u_cbox_addition"></div>
+																<button type="button" class="u_cbox_btn_upload">
+																	<span class="u_cbox_ico_upload"></span>
+																	<span class="u_cbox_txt_upload">등록</span>
+																</button>
+															</div>
+														</div>
+													</div>
+												</fieldset>
+											</form>
+										</div>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="u_cbox_write_wrap u_cbox_focus">
+										<div class="u_cbox_write_box u_cbox_type_logged_in">
+											<form>
+												<fieldset>
+													<legend class="u_vc">댓글 쓰기</legend>
+													<div class="u_cbox_write">
+														<div class="u_cbox_write_inner">
+															<div class="u_cbox_profile_area">
+																<div class="u_cbox_profile">
+																	<strong class="u_vc">로그인 정보</strong>
+																	<div class="u_cbox_thumb">
+																		<img src="https://static.nid.naver.com/images/web/user/default.png?type=f132_132" alt="bbluesky7738" class="u_cbox_img_profile" onerror="cbox.Util.onImageError(this);">
+																	</div>
+																	<div class="u_cbox_box_name">
+																		<span class="u_cbox_write_name">${sessId }</span>
+																	</div>
+																</div>
+															</div>
+															<div class="u_cbox_write_area">
+																<strong class="u_vc">댓글 입력</strong>
+																<div class="u_cbox_inbox">
+																	<textarea title="댓글" id="comment" name="comment" class="u_cbox_text form-control" rows="3" cols="30" oninput="change_text()"></textarea>
+																	<label for="comment" id="label_guide" class="u_cbox_guide">저작권 등 다른 사람의 권리를 침해하거나 명예를 훼손하는 게시물은 이용약관 및 관련 법률에 의해 제재를 받을 수 있습니다. 건전한 토론문화와 양질의 댓글 문화를 위해, 타인에게 불쾌감을 주는 욕설 또는 특정 계층/민족, 종교 등을 비하하는 단어들은 표시가 제한됩니다.</label>
+																</div>
+															</div>
+															<div class="u_cbox_write_count">
+																<span class="u_vc">현재 입력한 글자수</span>
+																<strong class="u_cbox_count_num">0</strong>/
+																<span class="u_vc">전체 입력 가능한 글자수</span>
+																<span class="u_cbox_write_total">500</span>
+															</div>
+															<div class="u_cbox_upload">
+																<div class="u_cbox_addition"></div>
+																<button type="button" class="u_cbox_btn_upload" id="saveBtn" onclick="commentSave()">
+																	<span class="u_cbox_ico_upload"></span>
+																	<span class="u_cbox_txt_upload">등록</span>
+																</button>
+															</div>
+														</div>
+													</div>
+												</fieldset>
+											</form>
+										</div>
+									</div>
+								</c:otherwise>
+                               </c:choose>
+                            <div id="cbox_module_wai_u_cbox_content_wrap_tabpanel" tabindex="0" class="u_cbox_content_wrap" style="outline: 0">
+                                <ul class="u_cbox_list">
+	                                <c:choose>
+				                  		<c:when test="${fn:length(comment) eq 0}">
+				              				<div class="text-center">댓글을 입력하시오!!</div>
+				                  		</c:when>
+				                   		<c:otherwise>
+				                       		<c:forEach items="${comment}" var="comment" varStatus="status">
+					                   			<c:choose>
+					                   				<c:when test="${sessId eq comment.id }">
+					                   				${comment.seq }
+					                   					<%-- <input type="hidden" name="seq" value="<c:out value="${comment.seq}"/>"/> --%>
+					                   					<li class="u_cbox_comment cbox_module__comment_765728306778603670 _user_id_no_3MkTI">
+					                                        <div class="u_cbox_comment_box">
+					                                            <div class="u_cbox_area">
+					                                                <div class="u_cbox_info">
+					                                                    <span class="u_cbox_info_main">
+					                                                        <span class="u_cbox_name">
+					                                                            <span class="u_cbox_name_area">
+					                                                                <span class="u_cbox_nick_area">
+					                                                                    <span class="u_cbox_nick"><c:out value="${comment.id }"/></span>
+					                                                                </span>
+					                                                            </span>
+					                                                        </span>
+					                                                    </span>
+					                                                    <span class="u_cbox_info_sub"></span>
+					                                                </div>
+					                                                <div class="u_cbox_pic">
+					                                                    <span class="u_cbox_pic_wrap">
+					                                                        <img src="https://ssl.pstatic.net/static/sports/2021/m/12/07/no_emblem_baseball.png"
+					                                                            class="u_cbox_img_contents" alt="댓글 이미지"
+					                                                            onerror="cbox.Util.leave(this, '.u_cbox_pic');">
+					                                                        <span class="u_cbox_pic_mask"></span>
+					                                                    </span>
+					                                                </div>
+					                                                <div class="u_cbox_text_wrap">
+					                                                    <span class="u_cbox_contents" data-lang="ko">
+					                                                        ${comment.comment }
+					                                                    </span>
+					                                                </div>
+					                                                <div class="u_cbox_info_base">
+					                                                    <span class="u_cbox_date" data-value="2022-08-07T07:27:39+0900">21분 전</span>
+					                                                    <span class="u_cbox_work_main">
+					                                                        <button type="button" class="u_cbox_btn_report" onclick="commentUelete(<c:out value="${comment.seq }"/>)">
+					                                                            <span class="u_cbox_ico_bar"></span>
+					                                                            <span class="u_cbox_ico_report"></span>
+					                                                            <span class="u_cbox_in_report"><i class="fa-solid fa-trash"></i></span>
+					                                                        </button>
+					                                                    </span>
+					                                                </div>
+					                                                <div class="u_cbox_tool"></div>
+					                                                <span class="u_cbox_comment_frame">
+					                                                    <span class="u_cbox_ico_tip"></span>
+					                                                    <span class="u_cbox_comment_frame_top">
+					                                                        <span class="u_cbox_comment_bg_r"></span>
+					                                                        <span class="u_cbox_comment_bg_l"></span>
+					                                                    </span>
+					                                                    <span class="u_cbox_comment_frame_bottom">
+					                                                        <span class="u_cbox_comment_bg_r"></span>
+					                                                        <span class="u_cbox_comment_bg_l"></span>
+					                                                    </span>
+					                                                </span>
+					                                            </div>
+					                                        </div>
+					                                        <div class="u_cbox_reply_area" style="display:none;"></div>
+					                                    </li>
+					                   				</c:when>
+					                   				<c:otherwise>
+					                   					<li class="u_cbox_comment cbox_module__comment_765728306778603670 _user_id_no_3MkTI">
+					                                        <div class="u_cbox_comment_box">
+					                                            <div class="u_cbox_area">
+					                                                <div class="u_cbox_info">
+					                                                    <span class="u_cbox_info_main">
+					                                                        <span class="u_cbox_name">
+					                                                            <span class="u_cbox_name_area">
+					                                                                <span class="u_cbox_nick_area">
+					                                                                    <span class="u_cbox_nick">${comment.id }</span>
+					                                                                </span>
+					                                                            </span>
+					                                                        </span>
+					                                                    </span>
+					                                                    <span class="u_cbox_info_sub"></span>
+					                                                </div>
+					                                                <div class="u_cbox_pic">
+					                                                    <span class="u_cbox_pic_wrap">
+					                                                        <img src="https://ssl.pstatic.net/static/sports/2021/m/12/07/no_emblem_baseball.png"
+					                                                            class="u_cbox_img_contents" alt="댓글 이미지"
+					                                                            onerror="cbox.Util.leave(this, '.u_cbox_pic');">
+					                                                        <span class="u_cbox_pic_mask"></span>
+					                                                    </span>
+					                                                </div>
+					                                                <div class="u_cbox_text_wrap">
+					                                                    <span class="u_cbox_contents" data-lang="ko">
+					                                                        ${comment.comment }
+					                                                    </span>
+					                                                </div>
+					                                                <div class="u_cbox_info_base">
+					                                                    <span class="u_cbox_date" data-value="2022-08-07T07:27:39+0900">21분 전</span>
+					                                                    <span class="u_cbox_work_main">
+					                                                        <button type="button" class="u_cbox_btn_report" >
+					                                                            <span class="u_cbox_ico_bar"></span>
+					                                                            <span class="u_cbox_ico_report"></span>
+					                                                            <span class="u_cbox_in_report"></span>
+					                                                        </button>
+					                                                    </span>
+					                                                </div>
+					                                                <div class="u_cbox_tool"></div>
+					                                                <span class="u_cbox_comment_frame">
+					                                                    <span class="u_cbox_ico_tip"></span>
+					                                                    <span class="u_cbox_comment_frame_top">
+					                                                        <span class="u_cbox_comment_bg_r"></span>
+					                                                        <span class="u_cbox_comment_bg_l"></span>
+					                                                    </span>
+					                                                    <span class="u_cbox_comment_frame_bottom">
+					                                                        <span class="u_cbox_comment_bg_r"></span>
+					                                                        <span class="u_cbox_comment_bg_l"></span>
+					                                                    </span>
+					                                                </span>
+					                                            </div>
+					                                        </div>
+					                                        <div class="u_cbox_reply_area" style="display:none;"></div>
+					                                    </li>
+					                   				</c:otherwise>
+					                   			</c:choose>
+											</c:forEach>
+				                   		</c:otherwise>
+				                   	</c:choose>
+                                </ul>
+                            </div>
+                            <div class="u_cbox_paginate">
+                                <a href="#" class="u_cbox_btn_more" data-action="page#more" data-log="RPC.more">
+                                    <span class="u_cbox_more_wrap">
+                                        <span class="u_cbox_box_more">
+                                            <span class="u_cbox_page_more">더보기</span>
+                                            <span class="u_cbox_ico_more"></span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 	        </div>
 	        <div style="height: 40px;"></div>
         </form>
@@ -896,6 +478,7 @@
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript">
 	    $("#signOutBtn").on("click", function() {
 			$.ajax({
@@ -909,6 +492,115 @@
 				}
 			});
 		});
+	    
+	    var goUrlLogin = "/userLogin";
+    	var goUrlInst = "/gameInsert";
+    	var form = $("#myForm");
+    	
+    	$(".login_link").on("click", function() {
+	    	swAlert("로그인", "로그인 하시겠습니까?", "success");
+		});
+	    
+	    function swAlert(title, text, icon) {
+			swal({
+				title: title
+				,text: text
+				,icon: icon
+				,buttons: "로그인"
+			}).then((value) => {
+				if (value) {
+					location.href = goUrlLogin;
+				}
+			})
+		}
+	    
+	    change_text = function() {
+	    	var content = $("#comment").val();
+
+	    	if (content != null || content != "") {
+	    		$(".u_cbox_write_wrap").addClass('u_cbox_writing');
+	    		$("label[for=comment]").text("")
+	    	} else if ($("#comment").length == 0) {
+	    		$("label[for=comment]").text("저작권 등 다른 사람의 권리를 침해하거나 명예를 훼손하는 게시물은 이용약관 및 관련 법률에 의해 제재를 받을 수 있습니다. 건전한 토론문화와 양질의 댓글 문화를 위해, 타인에게 불쾌감을 주는 욕설 또는 특정 계층/민족, 종교 등을 비하하는 단어들은 표시가 제한됩니다.")
+	    	}
+	    	
+	    	if (content.length == 0 || content == '') {
+	    		$(".u_cbox_count_num").text("0");
+	    	} else {
+	    		$(".u_cbox_count_num").text(content.length)
+	    	}
+	    	
+	    	if (content.length > 500) {
+	    		$(".u_cbox_count_num").val($(".u_cbox_count_num").val().substring(0, 500));
+	    		alert("글자수는 최대 500자 까지 입력 가능합니다.!!!");
+	    	};
+		};
+		
+		function commentSave() {
+			
+			$.ajax({
+   				async: true 
+   				,cache: false
+   				,type: "post"
+   				/* ,dataType:"json" */
+   				,url: "gameInsert"
+   				/* ,data : $("#formLogin").serialize() */
+   				,data : { "comment" : $("#comment").val(), "mSeq" : $("input[name=mSeq]").val(), "gSeq" : $("input[name=gSeq]").val()}
+   				,success: function(response) {
+   					if (response.rt == "success") {
+   						location.href = "/gameView?gSeq="+ $("input[name=gSeq]").val();
+   					} else {
+   						alert("댓글을 입력하시오!!");
+   					}
+   				}
+   				,error : function(jqXHR, textStatus, errorThrown){
+   					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+   				}
+   			});
+		}
+		
+		function commentUelete(seq) {
+			
+			$.ajax({
+   				async: true 
+   				,cache: false
+   				,type: "post"
+   				/* ,dataType:"json" */
+   				,url: "gameCommentUelete"
+   				/* ,data : $("#formLogin").serialize() */
+   				,data : {"seq" : seq, "mSeq" : $("input[name=mSeq]").val(), "gSeq" : $("input[name=gSeq]").val()}
+   				,success: function(response) {
+   					if (response.rt == "success") {
+   						location.href = "/gameView?gSeq="+ $("input[name=gSeq]").val();
+   					} else {
+   						alert("댓글을 입력하시오!!");
+   					}
+   				}
+   				,error : function(jqXHR, textStatus, errorThrown){
+   					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+   				}
+   			});
+		}
+		
+		function refresh() {
+			$.ajax({
+   				async: true 
+   				,cache: false
+   				,type: "post"
+   				/* ,dataType:"json" */
+   				,url: "gameRefresh"
+   				/* ,data : $("#formLogin").serialize() */
+   				,data : {"gSeq" : $("input[name=gSeq]").val()}
+   				,success: function(response) {
+   					if (response.rt != "success") {
+   						location.href = "/gameView?gSeq="+ $("input[name=gSeq]").val();
+   					} 
+   				}
+   				,error : function(jqXHR, textStatus, errorThrown){
+   					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+   				}
+   			});
+		}
     </script>
 </body>
 

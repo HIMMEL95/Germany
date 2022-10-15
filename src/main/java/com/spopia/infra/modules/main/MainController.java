@@ -53,7 +53,7 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "articleView")
-	public String articleView(@ModelAttribute("aVo") ArticleVo aVo, Model model, @ModelAttribute("cVo") CommentVo cVo, Comment cDto) throws Exception {
+	public String articleView(@ModelAttribute("aVo") ArticleVo aVo, Model model, @ModelAttribute("cVo") CommentVo cVo) throws Exception {
 		
 		Article item = aService.selectOne(aVo);
 		model.addAttribute("item", item);
@@ -66,10 +66,15 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "gameView")
-	public String gameView(GameVo gVo, Model model) throws Exception {
+	public String gameView(@ModelAttribute("gVo") GameVo gVo, Model model, @ModelAttribute("cVo") CommentVo cVo) throws Exception {
 
 		Game item = gService.selectOne(gVo);
 		model.addAttribute("item", item);
+		
+		cVo.setParamsPaging(gService.gameCommentCount(cVo));
+		List<Comment> comment = gService.gameComment(cVo);
+		model.addAttribute("comment", comment);
+		
 		return "infra/game/user/gameView";
 	}
 	
@@ -99,6 +104,44 @@ public class MainController {
 	public Map<String, Object> articleCommentUelete(Comment dto) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		cService.articleCommentUelete(dto);
+		returnMap.put("rt", "success");
+		
+		return returnMap;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "articleRefresh")
+	public Map<String, Object> articleRefresh() throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		returnMap.put("rt", "success");
+		
+		return returnMap;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "gameInsert") 
+	public Map<String, Object> gameInsert(Comment cDto, @ModelAttribute("vo") GameVo vo) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		cService.gameInsert(cDto);
+		returnMap.put("rt", "success");
+		
+		return returnMap;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "gameCommentUelete")
+	public Map<String, Object> gameCommentUelete(Comment dto) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		cService.gameCommentUelete(dto);
+		returnMap.put("rt", "success");
+		
+		return returnMap;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "gameRefresh")
+	public Map<String, Object> gameRefresh() throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
 		returnMap.put("rt", "success");
 		
 		return returnMap;

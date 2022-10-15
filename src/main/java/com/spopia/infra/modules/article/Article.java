@@ -48,7 +48,38 @@ public class Article extends Base{
 		this.articleImage = articleImage;
 	}
 	
-	public String getaSeq() {
+	private String teamSeq;
+	private Integer abroadNy;
+	private Integer event;
+	private Integer league;
+	
+	public String getTeamSeq() {
+        return teamSeq;
+    }
+    public void setTeamSeq(String teamSeq) {
+        this.teamSeq = teamSeq;
+    }
+    public Integer getAbroadNy() {
+        return abroadNy;
+    }
+    public void setAbroadNy(Integer abroadNy) {
+        this.abroadNy = abroadNy;
+    }
+    public Integer getEvent() {
+        return event;
+    }
+    public void setEvent(Integer event) {
+        this.event = event;
+    }
+    public Integer getLeague() {
+        return league;
+    }
+    public void setLeague(Integer league) {
+        this.league = league;
+    }
+    
+    
+    public String getaSeq() {
 		return aSeq;
 	}
 	public void setaSeq(String aSeq) {

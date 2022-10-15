@@ -71,31 +71,31 @@ public class GameDao {
 	}
 
 	public List<Game> abroad(Game dto) {
-      return sqlSession.selectList(namespace + ".abroad", dto);
-  }
+	    return sqlSession.selectList(namespace + ".abroad", dto);
+    }
   
-  public List<Game> event(Game dto) {
-      return sqlSession.selectList(namespace + ".event", dto);
-  }
+	public List<Game> event(Game dto) {
+	    return sqlSession.selectList(namespace + ".event", dto);
+	}
   
-  public List<Game> league(Game dto) {
-      return sqlSession.selectList(namespace + ".league", dto);
-  }
+	public List<Game> league(Game dto) {
+	    return sqlSession.selectList(namespace + ".league", dto);
+	}
   
-  public List<Game> teamName(Game dto) {
-      return sqlSession.selectList(namespace + ".teamName", dto);
-  }
+	public List<Game> teamName(Game dto) {
+	    return sqlSession.selectList(namespace + ".teamName", dto);
+	}
   
-  public List<Game> stadium(Game dto) {
-  		return sqlSession.selectList(namespace + ".stadium", dto);
-  }
+	public List<Game> stadium(Game dto) {
+	    return sqlSession.selectList(namespace + ".stadium", dto);
+	}
   
-  // game comment
-  public List<Comment> gameComment(CommentVo vo) {
-  	return sqlSession.selectList(namespace + ".gameComment", vo);
-  }
+	// game comment
+	public List<Comment> gameComment(CommentVo vo) {
+	    return sqlSession.selectList(namespace + ".gameComment", vo);
+	}
   
-  public int gameCommentCount(CommentVo vo) {
-  	return sqlSession.selectOne(namespace + ".gameCommentCount", vo);
-  }
+	public int gameCommentCount(CommentVo vo) {
+	    return sqlSession.selectOne(namespace + ".gameCommentCount", vo);
+	}
 }

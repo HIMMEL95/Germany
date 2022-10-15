@@ -42,9 +42,6 @@ public class GameController {
 		Game item = service.selectOne(vo);
 		model.addAttribute("item", item);
 		
-		List<Game> gameList = service.gameList(dto);
-		model.addAttribute("gameList", gameList);
-		
 		List<Game> abroad = service.abroad(dto);
 		model.addAttribute("abroad", abroad);
 

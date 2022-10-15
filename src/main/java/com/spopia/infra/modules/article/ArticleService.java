@@ -22,6 +22,11 @@ public interface ArticleService {
 	public List<Comment> articleComment(CommentVo vo) throws Exception;
 	public int articleCommentCount(CommentVo vo) throws Exception;
 	
-//	article img
+	//	article img
 	public Article imgSelectOne(ArticleVo vo) throws Exception;
+	
+    /* article select */
+	public List<Article> abroad(Article dto) throws Exception;
+	public List<Article> event(Article dto) throws Exception;
+	public List<Article> league(Article dto) throws Exception;
 }

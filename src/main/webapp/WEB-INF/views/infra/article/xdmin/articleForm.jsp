@@ -122,21 +122,15 @@
                             <label for="aAbroadNy" class="form-label fw-bold">해외여부</label>
                             <select id="aAbroadNy" class="form-select form-select fw-bold" name="aAbroadNy" aria-label=".form-select example">
                                 <option value="">선택</option>
-                                <c:forEach items="${listCodeAbroad }" var="listAbroad" varStatus="statusAbroad">
-                                	<option value="${abroad.abroadNy }" <c:if test="${abroad.abroadNy eq listAbroad.ccSeq }">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
-                                </c:forEach>
-                                <%-- <c:choose>
-                                	<c:when test="${empty gItem.gSeq }">
-                                		<c:forEach items="${listCodeAbroad}" var="listAbroad" varStatus="statusAborad">
-											<option value="${listAbroad.ccSeq }" <c:if test="${abroad.AbroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
-										</c:forEach>
-                                	</c:when>
-                                	<c:otherwise>
-                                		<c:forEach items="${listCodeAbroad}" var="listAborad" varStatus="statusAborad">
-											<option value="${item.gAbroadNy }" <c:if test="${abroad.AbroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
-										</c:forEach>
-                                	</c:otherwise>
-                                </c:choose> --%>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <%-- <c:forEach items="${listCodeAbroad}" var="listAbroad" varStatus="statusAborad">
+									<option value="${listAbroad.ccSeq }" <c:if test="${abroad.abroadNY eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
+								</c:forEach>  --%>         
+								<c:forEach items="${listCodeAbroad}" var="listAborad" varStatus="statusAborad">
+									<option value="${item.gAbroadNy }" <c:if test="${item.gAbroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
+								</c:forEach>                   
                             </select>
                         </div>
                         <div class="col">
@@ -144,18 +138,9 @@
                             <label for="aEvent" class="form-label fw-bold">종목</label>
                             <select id="aEvent" class="form-select form-select fw-bold" name="aEvent" aria-label=".form-select example">
                                 <option value="">선택</option>
-                                <c:choose>
-                                	<c:when test="${empty item.gSeq }">
-                                		<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
-											<option class="select" value="${listEvent.ccSeq }" <c:if test="${gItem.gEvent eq listEvent.ccSeq}">selected</c:if>><c:out value="${listEvent.ifccName }"/></option>
-										</c:forEach>
-                                	</c:when>
-                                	<c:otherwise>
-                                		<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
-											<option class="select" value="${item.gEvent }" <c:if test="${gItem.gEvent eq listEvent.ccSeq}">selected</c:if>><c:out value="${listEvent.ifccName }"/></option>
-										</c:forEach>
-                                	</c:otherwise>
-                                </c:choose>
+                             	<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
+									<option class="select" value="${listEvent.ccSeq }" <c:if test="${item.gEvent eq listEvent.ccSeq}">selected</c:if>><c:out value="${listEvent.ifccName }"/></option>
+								</c:forEach>
                             </select>
                         </div>
                         <div class="col">
@@ -164,7 +149,7 @@
                             <select id="aLeague" class="form-select form-select fw-bold" name="aLeague" aria-label=".form-select example">
                                 <option value="" selected>선택</option>
                                 <c:forEach items="${listCodeLeague}" var="listLeague" varStatus="statusLeague">
-									<option class="select1" value="${listLeague.ccSeq }" <c:if test="${gItem.gLeague eq listLeague.ccSeq}">selected</c:if>><c:out value="${listLeague.ifccName }"/></option>
+									<option class="select1" value="${listLeague.ccSeq }" <c:if test="${item.gLeague eq listLeague.ccSeq}">selected</c:if>><c:out value="${listLeague.ifccName }"/></option>
 								</c:forEach>
                             </select>
                         </div>

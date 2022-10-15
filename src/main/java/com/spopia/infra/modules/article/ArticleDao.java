@@ -67,4 +67,17 @@ public class ArticleDao {
 	
 	// article View Img
 	public Article imgSelectOne(ArticleVo vo) { return sqlSession.selectOne(namespace + ".imgSelectOne", vo); }
+
+    /* select article */
+	public List<Article> abroad(Article dto) {
+	    return sqlSession.selectList(namespace + ".abroad", dto);
+	}
+	
+	public List<Article> event(Article dto) {
+	    return sqlSession.selectList(namespace + ".event", dto);
+	}
+
+	public List<Article> league(Article dto) {
+	    return sqlSession.selectList(namespace + ".league", dto);
+	}
 }

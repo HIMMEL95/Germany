@@ -126,5 +126,21 @@ public class ArticleServiceImpl extends BaseServiceImpl implements ArticleServic
 	public Article imgSelectOne(ArticleVo vo) throws Exception {
 		return dao.imgSelectOne(vo);
 	}
+
+    /* article select */
+	@Override
+	public List<Article> abroad(Article dto) throws Exception {
+	    return dao.abroad(dto);
+	}
+	
+	@Override
+	public List<Article> event(Article dto) throws Exception {
+	    return dao.event(dto);
+	}
+	
+	@Override
+	public List<Article> league(Article dto) throws Exception {
+	    return dao.league(dto);
+	}
 	
 }

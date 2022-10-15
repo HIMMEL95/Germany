@@ -94,7 +94,7 @@
 				                                    </a>
 				                                </li>
 				                                <li>
-				                                    <a class="dropdown-item bg-danger-soft-hover" href="/">
+				                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" >
 				                                        <i class="fa-solid fa-power-off me-2"></i>
 				                                        Sign Out
 				                                    </a>
@@ -120,7 +120,7 @@
 				                                    </a>
 				                                </li>
 				                                <li>
-				                                    <a class="dropdown-item bg-danger-soft-hover" href="/">
+				                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" >
 				                                        <i class="fa-solid fa-power-off me-2"></i>
 				                                        Sign Out
 				                                    </a>
@@ -137,6 +137,32 @@
                 <!-- Profile START -->
             </div>
         </nav>
+        <nav class="navbar navbar-expand-lg bg-white">
+        	<div class="container">
+       			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       				<span class="navbar-toggler-icon"></span>
+       			</button>
+			   	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			   		<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			   			<li class="nav-item">
+			   				<a class="nav-link active" aria-current="page" href="#">스포츠홈</a>
+		   				</li>
+	   					<li class="nav-item">
+	   						<a class="nav-link" href="#">야구</a>
+	   					</li>
+	   					<li class="nav-item">
+	   						<a class="nav-link" href="#">해외야구</a>
+	   					</li>
+	   					<li class="nav-item">
+	   						<a class="nav-link" href="#">축구</a>
+	   					</li>
+	   					<li class="nav-item">
+	   						<a class="nav-link" href="#">해외축구</a>
+	   					</li>
+   					</ul>
+				</div>
+			</div>
+		</nav>
     </header>
 
     <main>
@@ -144,7 +170,7 @@
           	<!-- *Vo.jsp s -->
 			<%@include file="articleVo.jsp"%>		<!-- #-> -->
 			<!-- *Vo.jsp e -->
-	        <div style="height: 80px;"></div>
+	        <div style="height: 120px;"></div>
 	        <div class="container" style="max-width: 900px;">
 	            <div class="card ps-5 pe-5 pt-4 pb-4 mb-3 shadow">
 	                <div class="row">
@@ -455,6 +481,18 @@
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script> -->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript">
+	    $("#signOutBtn").on("click", function() {
+			$.ajax({
+				type: "POST"
+				,url: "logoutProc"
+				,data: {}
+				,success : function(response) {
+					if (response.rt == "success") {
+						window.location.href = "/";
+					}
+				}
+			});
+		});
     
     	var goUrlLogin = "/userLogin";
     	var goUrlInst = "/articleInsert";

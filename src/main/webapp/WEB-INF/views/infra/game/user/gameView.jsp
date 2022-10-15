@@ -46,64 +46,101 @@
             <div class="container px-3 px-xl-5 pt-1">
                 <!-- Logo START -->
                 <a class="navbar-brand" href="/sportMain">
-                    <img class="light-mode-item navbar-brand-item" src="/resources/images/SPOPIA_white.png" alt="logo"
-                        style="width: 90px;">
+                    <img class="light-mode-item navbar-brand-item" src="/resources/images/SPOPIA_white.png" alt="logo" style="width: 90px;">
                 </a>
                 <!-- Profile START -->
-                <div class="dropdown">
-                    <ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
-                        <li class="me-2">
-                            <a class="p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
-                                data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar"
-                                    style="width: 30px;">
-                            </a>
-                            <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
-                                aria-labelledby="profileDropdown">
-                                <!-- Profile info -->
-                                <li class="px-3 mb-2 border-bottom">
-                                    <div class="d-flex align-items-center pb-2">
-                                        <!-- Avatar -->
-                                        <div class="avatar pt-2">
-                                            <img class="avatar-img rounded-circle shadow" src="/resources/images/diano.jpg"
-                                                alt="avatar" style="width: 30px;">
-                                        </div>
-                                        <div>
-                                            <a class="fs-6 fw-bold" href="#"><c:out value="${sessName }"/></a>
-                                            <p class="small m-0"><c:out value="${sessEmail }"/></p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- Links -->
-                                <li>
-                                    <a class="dropdown-item" href="/member/memberUView?seq=${sessSeq }">
-                                        <i class="fa-solid fa-user me-2"></i>
-                                        Edit Profile
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fa-solid fa-gear me-2"></i>
-                                        Account Settings
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fa-solid fa-circle-info me-2"></i>
-                                        Help
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" >
-                                        <i class="fa-solid fa-power-off me-2"></i>
-                                        Sign Out
-                                    </a>
-                                </li>
-                                <!-- Dark mode switch START -->
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                <c:choose>
+                	<c:when test="${empty sessSeq }">
+                		<ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
+	                        <li class="nav_li">
+                   				<div class="login_po">
+		                            <a class="login" href="/userLogin">
+		                                <i class="fa-solid fa-right-to-bracket"></i>
+		                            </a>	                    					
+                   				</div>
+	                        </li>
+	                    </ul>
+                	</c:when>
+                	<c:otherwise>
+                		<div class="dropdown">
+		                    <ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
+		                        <li class="me-2">
+		                            <a class="p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
+		                                data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+		                                <img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar"
+		                                    style="width: 30px;">
+		                            </a>
+		                            <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
+		                                <!-- Profile info -->
+		                                <li class="px-3 mb-2 border-bottom">
+		                                    <div class="d-flex align-items-center pb-2">
+		                                        <!-- Avatar -->
+		                                        <div class="avatar pt-2">
+		                                            <img class="avatar-img rounded-circle shadow" src="/resources/images/diano.jpg" alt="avatar"
+		                                                style="width: 30px;">
+		                                        </div>
+		                                        <div>
+		                                            <a class="fs-6 fw-bold" href="/member/memberUView?seq=${sessSeq }"><c:out value="${sessName }"/></a>
+		                                            <p class="small m-0"><c:out value="${sessEmail}"/></p>
+		                                        </div>
+		                                    </div>
+		                                </li>
+		                                <!-- Links -->
+		                                <c:choose>
+		                                	<c:when test="${sessUser eq 25 }">
+		                                		<li>
+				                                    <a class="dropdown-item" href="/member/memberUView?seq=${sessSeq }">
+				                                        <i class="fa-solid fa-user me-2"></i>
+				                                        Edit Profile
+				                                    </a>
+				                                </li>
+				                                <li>
+				                                    <a class="dropdown-item" href="#">
+				                                        <i class="fa-solid fa-circle-info me-2"></i>
+				                                        Help
+				                                    </a>
+				                                </li>
+				                                <li>
+				                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" >
+				                                        <i class="fa-solid fa-power-off me-2"></i>
+				                                        Sign Out
+				                                    </a>
+				                                </li>
+		                                	</c:when>
+		                                	<c:otherwise>
+			                                	<li>
+				                                    <a class="dropdown-item" href="/member/memberUView?seq=${sessSeq }">
+				                                        <i class="fa-solid fa-user me-2"></i>
+				                                        Edit Profile
+				                                    </a>
+				                                </li>
+				                                <li>
+				                                    <a class="dropdown-item" href="#">
+				                                        <i class="fa-solid fa-gear me-2"></i>
+				                                        Account Settings
+				                                    </a>
+				                                </li>
+				                                <li>
+				                                    <a class="dropdown-item" href="#">
+				                                        <i class="fa-solid fa-circle-info me-2"></i>
+				                                        Help
+				                                    </a>
+				                                </li>
+				                                <li>
+				                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" >
+				                                        <i class="fa-solid fa-power-off me-2"></i>
+				                                        Sign Out
+				                                    </a>
+				                                </li>
+			                                </c:otherwise>
+		                                </c:choose>
+		                                <!-- Dark mode switch START -->
+		                            </ul>
+		                        </li>
+		                    </ul>
+		                </div>					
+                	</c:otherwise>
+                </c:choose>
                 <!-- Profile START -->
             </div>
         </nav>
@@ -116,8 +153,6 @@
 		<!-- *Vo.jsp e -->
 	        <div style="height: 80px;"></div>
 	        <div class="container" style="max-width: 1000px;">
-	        	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
-	        	<c:set var="listCodeStadium" value="${CodeServiceImpl.selectListCachedCode('8') }" />
 	            <div class="card shadow position-relative">
 	                <!-- <img class="card-img" src="../../image/background.jpg" alt="background" style="height: 300px;"> -->
 	                <img src="https://ssl.pstatic.net/static/sports/common/livecenter/new/bg_live_baseball.jpg"
@@ -134,6 +169,7 @@
 	                <div class="MatchBox_info__2l4DE">
 	                    <span class="MatchBox_state__2AzL_">경기전</span>
 	                    <span class="MatchBox_date__1bJ9G mb-2">${item.gameDate }<span class="MatchBox_time__2z_nB">${item.gameDuration }</span></span>
+	                    <c:set var="listCodeStadium" value="${CodeServiceImpl.selectListCachedCode('8') }" />
 	                    <span class="MatchBox_stadium__17mQ4">${item.stadium }
 	                    	<c:forEach items="${listCodeStadium}" var="listStadium" varStatus="statusStadium">
 								<c:if test="${list.stadium eq listStadium.ccSeq}"><c:out value="${listStadium.ifccName }"/></c:if>
@@ -146,6 +182,7 @@
 	                                src="https://sports-phinf.pstatic.net/team/kbo/default/OB.png?type=f108_108" alt="" width="72"
 	                                height="72"></div>
 	                        <div class="MatchBox_text__22e-R text-center">
+	                        	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
 	                            <em class="MatchBox_name__11AyG">${item.team_away }
 	                            	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
 										<c:if test="${list.team_away eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
@@ -202,7 +239,7 @@
 	                    </div>
 	                </div>
 	            </div>
-	            <!-- 댓글 --> 
+	            	<!-- 댓글 --> 
 	            <div class="CommentModule_comp_comment__18nvt CommentModule_is_pc__2froM">
                     <div class="u_cbox" id="cbox_module" style="padding: 30px;">
                         <div class="u_cbox_wrap u_cbox_type_select u_cbox_ko">
@@ -296,7 +333,7 @@
 										</div>
 									</div>
 								</c:otherwise>
-                               </c:choose>
+                            </c:choose>
                             <div id="cbox_module_wai_u_cbox_content_wrap_tabpanel" tabindex="0" class="u_cbox_content_wrap" style="outline: 0">
                                 <ul class="u_cbox_list">
 	                                <c:choose>
@@ -307,8 +344,7 @@
 				                       		<c:forEach items="${comment}" var="comment" varStatus="status">
 					                   			<c:choose>
 					                   				<c:when test="${sessId eq comment.id }">
-					                   				${comment.seq }
-					                   					<%-- <input type="hidden" name="seq" value="<c:out value="${comment.seq}"/>"/> --%>
+					                   					<input type="hidden" name="seq" value="<c:out value="${comment.seq}"/>"/>
 					                   					<li class="u_cbox_comment cbox_module__comment_765728306778603670 _user_id_no_3MkTI">
 					                                        <div class="u_cbox_comment_box">
 					                                            <div class="u_cbox_area">

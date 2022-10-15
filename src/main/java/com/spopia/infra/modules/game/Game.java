@@ -24,8 +24,15 @@ public class Game extends BaseVo{
 	// comment
 	private String id;
 	private String comment;
+	private String seq;
 	
-	public String getId() {
+	public String getSeq() {
+        return seq;
+    }
+    public void setSeq(String seq) {
+        this.seq = seq;
+    }
+    public String getId() {
 		return id;
 	}
 	public void setId(String id) {

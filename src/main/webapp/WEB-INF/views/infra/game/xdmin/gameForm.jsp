@@ -124,9 +124,6 @@
 										</c:forEach>
                                 	</c:otherwise>
                                 </c:choose>
- 								<%-- <c:forEach items="${listCodeAbroad}" var="listAborad" varStatus="statusAborad">
-									<option value="${item.gAbroadNy }" <c:if test="${item.gAbroadNy eq listAborad.ccSeq}">selected</c:if>><c:out value="${listAborad.ifccName }"/></option>
-								</c:forEach> --%>
                             </select>
                         </div>
                         <div class="col mb-4">

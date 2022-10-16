@@ -106,8 +106,6 @@ public class GameController {
     public Map<String, Object> abroad(Game dto) throws Exception {
         Map<String, Object> returnMap = new HashMap<String, Object>();
        
-        System.out.println("etestt");
-        
         List<Game> event = service.event(dto);
         
         if (event != null) {

@@ -2,6 +2,8 @@ package com.spopia.infra.modules.article;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.spopia.infra.modules.comment.Comment;
 import com.spopia.infra.modules.comment.CommentVo;
 
@@ -24,6 +26,7 @@ public interface ArticleService {
 	
 	//	article img
 	public Article imgSelectOne(ArticleVo vo) throws Exception;
+	public void uploadFiles(MultipartFile[] multipartFiles, Article dto, String tableName, int type) throws Exception;
 	
     /* article select */
 	public List<Article> abroad(Article dto) throws Exception;

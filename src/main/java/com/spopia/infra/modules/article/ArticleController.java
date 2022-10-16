@@ -1,12 +1,15 @@
 package com.spopia.infra.modules.article;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spopia.infra.modules.game.GameServiceImpl;
@@ -82,6 +85,40 @@ public class ArticleController {
 		vo.setaSeq(dto.getaSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/article/articleList";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "abroad")
+	public Map<String, Object> abroad(Article dto) throws Exception {
+	    Map<String, Object> returnMap = new HashMap<String, Object>();
+	    
+	    List<Article> event = service.event(dto);
+	    
+	    if (event != null) {
+	        returnMap.put("rt", "success");
+	        returnMap.put("event", event);
+	    } else {
+	        returnMap.put("rt", "fail");
+	    }
+	    
+	    return returnMap;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "event")
+	public Map<String, Object> event(Article dto) throws Exception {
+	    Map<String, Object> returnMap = new HashMap<String, Object>();
+	    
+	    List<Article> league = service.league(dto);
+	    
+	    if (league != null ) {
+	        returnMap.put("rt", "success");
+	        returnMap.put("league", league);
+	    } else {
+	        returnMap.put("rt", "fail");
+	    }
+	    
+	    return returnMap;
 	}
 	
 }

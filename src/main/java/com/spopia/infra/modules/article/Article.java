@@ -40,6 +40,9 @@ public class Article extends Base{
 	
 	// imageUpload
 	private MultipartFile[] articleImage;
+	private Integer[] process;
+	private String[] pathFile;
+	private String[] fileSeq;
 	
 	public MultipartFile[] getArticleImage() {
 		return articleImage;
@@ -47,8 +50,27 @@ public class Article extends Base{
 	public void setArticleImage(MultipartFile[] articleImage) {
 		this.articleImage = articleImage;
 	}
-	
-	private String teamSeq;
+	public Integer[] getProcess() {
+        return process;
+    }
+    public void setProcess(Integer[] process) {
+        this.process = process;
+    }
+    public String[] getPathFile() {
+        return pathFile;
+    }
+    public void setPathFile(String[] pathFile) {
+        this.pathFile = pathFile;
+    }
+    public String[] getFileSeq() {
+        return fileSeq;
+    }
+    public void setFileSeq(String[] fileSeq) {
+        this.fileSeq = fileSeq;
+    }
+
+    
+    private String teamSeq;
 	private Integer abroadNy;
 	private Integer event;
 	private Integer league;

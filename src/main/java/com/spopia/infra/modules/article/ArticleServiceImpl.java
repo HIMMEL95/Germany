@@ -1,6 +1,8 @@
 package com.spopia.infra.modules.article;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,10 +12,10 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.spopia.infra.common.constants.Constants;
 import com.spopia.infra.common.base.BaseServiceImpl;
 import com.spopia.infra.common.util.UtilDateTime;
 import com.spopia.infra.common.util.UtilRegMod;
-import com.spopia.infra.common.util.UtilUpload;
 import com.spopia.infra.modules.comment.Comment;
 import com.spopia.infra.modules.comment.CommentVo;
 
@@ -39,6 +41,55 @@ public class ArticleServiceImpl extends BaseServiceImpl implements ArticleServic
 	}
 	
 	@Override
+    public void uploadFiles(MultipartFile[] multipartFiles, Article dto, String tableName, int type) throws Exception {
+        
+        int j = 0;
+        for(MultipartFile multipartFile : multipartFiles) {
+                
+            if(!multipartFile.isEmpty()) {
+            
+                String className = dto.getClass().getSimpleName().toString().toLowerCase();     
+                String fileName = multipartFile.getOriginalFilename();
+                String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
+                String uuid = UUID.randomUUID().toString();
+                String uuidFileName = uuid + "." + ext;
+                String pathModule = className;
+                String nowString = UtilDateTime.nowString();
+                String pathDate = nowString.substring(0,4) + "/" + nowString.substring(5,7) + "/" + nowString.substring(8,10); 
+                String path = Constants.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";
+                String pathForView = Constants.UPLOAD_PATH_PREFIX_FOR_VIEW + "/" + pathModule + "/" + pathDate + "/";
+                
+                System.out.println("path: " + path);
+                
+                File uploadPath = new File(path);
+                
+                if (!uploadPath.exists()) {
+                    uploadPath.mkdir();
+                } else {
+                    // by pass
+                }
+                  
+                multipartFile.transferTo(new File(path + uuidFileName));
+                
+                dto.setPath(pathForView);
+                dto.setOriginalName(fileName);
+                dto.setUuidName(uuidFileName);
+                dto.setExt(ext);
+                dto.setSize(multipartFile.getSize());
+                
+                dto.setTableName(tableName);
+                dto.setType(type);
+                dto.setDefaultNy(j == 0 ? 1 : 0);
+                dto.setSort(j + 1);
+                dto.setPseq(dto.getaSeq());
+
+                dao.insertUploaded(dto);
+                j++;
+            }
+        }
+    }
+	
+	@Override
 	public int insert(Article dto) throws Exception {
 		try {
     	
@@ -49,24 +100,7 @@ public class ArticleServiceImpl extends BaseServiceImpl implements ArticleServic
 	    	
 	    	dao.insert(dto);
 	    	
-	    	int j = 0;
-	    	for(MultipartFile multipartFile : dto.getArticleImage() ) {
-	    			
-	    		if(!multipartFile.isEmpty()) {
-	    		
-	    			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");		
-	    			UtilUpload.upload(multipartFile, pathModule, dto);
-	    			
-		    		dto.setTableName("articleUploaded");
-		    		dto.setType(2);
-		    		dto.setDefaultNy(j == 0 ? 1 : 0);
-		    		dto.setSort(j + 1);
-		    		dto.setPseq(dto.getaSeq());
-	
-					dao.insertUploaded(dto);
-					j++;
-	    		}
-	    	}
+	    	uploadFiles(dto.getArticleImage(), dto, "articleUploaded", 2);
 	
 			return 1;
 	
@@ -91,7 +125,11 @@ public class ArticleServiceImpl extends BaseServiceImpl implements ArticleServic
 
 	@Override
 	public int update(Article dto) throws Exception {
-		return dao.update(dto);
+	    setRegMod(dto);
+	    dao.update(dto);
+	    
+	    uploadFiles(dto.getArticleImage(), dto, "articleUploaded", 2);
+        return 1;
 	}
 
 	@Override

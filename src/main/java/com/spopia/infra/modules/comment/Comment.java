@@ -16,7 +16,15 @@ public class Comment {
 	private String aSeq;
 	private String gSeq;
 	
-	public String getSeq() {
+	private Integer gender;
+	public Integer getGender() {
+        return gender;
+    }
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
+    
+    public String getSeq() {
 		return seq;
 	}
 	public void setSeq(String seq) {

@@ -142,11 +142,6 @@
 						<a href="/sportMain">
 							<img class="logo" alt="" src="/resources/images/SPOPIA_white.png">
 						</a> 
-						<!-- <h1 class="logo_group">
-							<a href="/sportMain" class="logo_sports">
-								<span class="blind">스포츠</span>
-							</a> 
-						</h1> -->
 					</div>
 					<div class="navigation">
 	                    <ul class="nav_ul">
@@ -215,7 +210,7 @@
 					                                            </a>
 					                                        </li>
 					                                        <li class="pro_li">
-					                                            <a class="pro_a" id="signOutBtn" href="/userLogin">
+					                                            <a class="pro_a" id="signOutBtn">
 					                                                <i class="fa-solid fa-power-off me-2"></i>
 					                                                Sign Out
 					                                            </a>
@@ -2374,7 +2369,7 @@
 						<div class="vod_section">
 							<!-- 많이 본 영상 -->
 							<h3 class="section_title">
-								<a href="/ranking/index?type=vod" class="link_title"
+								<a href="#" class="link_title"
 									onclick="clickcr(this, 'rnk*m.gopage', '', '', event);"> 많이
 									본 영상<span class="blind">더보기</span>
 								</a>

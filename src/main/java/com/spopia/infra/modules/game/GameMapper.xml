@@ -198,7 +198,6 @@
 		UPDATE game
 		SET
 			gcDelNy = 1
-			,modifiedAt = now()
 		where 1=1
 			and gSeq = #{gSeq}
 	</update>

@@ -44,6 +44,14 @@ public class ArticleDao {
 		return sqlSession.update(namespace + ".update", dto);
 	}
 	
+	public int uelete(Article dto) {
+        return sqlSession.update(namespace + ".uelete", dto);
+    }
+    
+    public int delete(ArticleVo vo) {
+        return sqlSession.delete(namespace + ".delete", vo);
+    }
+	
 	public int selectOneCount(ArticleVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}

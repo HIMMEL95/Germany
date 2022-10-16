@@ -56,7 +56,7 @@ public class ArticleServiceImpl extends BaseServiceImpl implements ArticleServic
                 String pathModule = className;
                 String nowString = UtilDateTime.nowString();
                 String pathDate = nowString.substring(0,4) + "/" + nowString.substring(5,7) + "/" + nowString.substring(8,10); 
-                String path = Constants.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";
+                String path = Constants.UPLOAD_PATH_PREFIX_LINUX + "/" + pathModule + "/" + pathDate + "/";
                 String pathForView = Constants.UPLOAD_PATH_PREFIX_FOR_VIEW + "/" + pathModule + "/" + pathDate + "/";
                 
                 System.out.println("path: " + path);
@@ -125,13 +125,24 @@ public class ArticleServiceImpl extends BaseServiceImpl implements ArticleServic
 
 	@Override
 	public int update(Article dto) throws Exception {
+	    System.out.println("dto.getAEvent1 : " + dto.getaEvent());
 	    setRegMod(dto);
+	    System.out.println("dto.getAEvent2 : " + dto.getaEvent());
 	    dao.update(dto);
-	    
 	    uploadFiles(dto.getArticleImage(), dto, "articleUploaded", 2);
         return 1;
 	}
 
+	@Override
+    public int uelete(Article dto) throws Exception {
+        return dao.uelete(dto);
+    }
+
+    @Override
+    public int delete(ArticleVo vo) throws Exception {
+        return dao.delete(vo);
+    }
+	
 	@Override
 	public Article selectOne(ArticleVo vo) throws Exception {
 		return dao.selectOne(vo);

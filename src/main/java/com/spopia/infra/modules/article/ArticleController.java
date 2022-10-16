@@ -80,12 +80,25 @@ public class ArticleController {
 	
 	@RequestMapping(value = "articleUpdt")
 	public String articleUpdt(Article dto, ArticleVo vo, RedirectAttributes redirectAttributes) throws Exception {
+	    System.out.println("test : " + dto.getaEvent());
 		service.update(dto);
 		
 		vo.setaSeq(dto.getaSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/article/articleList";
 	}
+	
+	@RequestMapping(value = "articleUele")
+    public String gameUele(Article dto) throws Exception {
+        service.uelete(dto);
+        return "redirect:/article/articleList";
+    }
+    
+    @RequestMapping(value = "articleDele")
+    public String gameDele(ArticleVo vo) throws Exception {
+        service.delete(vo);
+        return "redirect:/article/articleList";
+    }
 	
 	@ResponseBody
 	@RequestMapping(value = "abroad")

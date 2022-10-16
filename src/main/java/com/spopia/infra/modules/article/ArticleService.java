@@ -14,6 +14,8 @@ public interface ArticleService {
 	public List<Article> selectList1() throws Exception;
 	public int insert(Article dto) throws Exception;
 	public int update(Article dto) throws Exception;
+	public int uelete(Article dto) throws Exception;
+    public int delete(ArticleVo vo) throws Exception;
 	public Article selectOne(ArticleVo vo) throws Exception;
 	public int selectOneCount(ArticleVo vo) throws Exception;
 

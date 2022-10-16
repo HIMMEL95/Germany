@@ -228,45 +228,63 @@
                         </div>
                     </div>
                     <!-- 리스트 -->
-                    <div class="row align-items-center">
-                        <div class="col-1">
-                            <button class="border-0 btn btn-sm bg-secondary shadow" id="btnList" type="button">
-                                <i class="fa-solid fa-bars" style="color: white;"></i>
-                            </button> 
-                        </div>
-                        <div class="col-3 offset-8" align="right">
-                            <button id="btnUel" value="Uel" class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal">
-                                <i class="fa-solid fa-xmark" style="color: white;"></i>
-                            </button>
-                            <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false"
-                                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title fw-bold" id="staticBackdropLabel">게시물 삭제</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body fs-6">
-                                       		선택하신 게시물을 정말로 삭제하시겠습니까?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                                            <button id="delBtn" type="button" class="btn btn-primary">삭제</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button id="btnDel" value="Del" class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal">
-                                <i class="fa-solid fa-trash-can" style="color: white;"></i>
-                            </button>
-                            <button id="btnSave" class="border-0 btn btn-sm bg-success shadow" type="button">
-                                <i class="fa-regular fa-bookmark" style="color: white;"></i>
-                            </button>
-                        </div>
-                    </div>
+                    <c:choose>
+                    	<c:when test="${empty vo.gSeq }">
+                    		<div class="row align-items-center">
+		                        <div class="col-1">
+		                            <button class="border-0 btn btn-sm bg-secondary shadow" id="btnList" type="button">
+		                                <i class="fa-solid fa-bars" style="color: white;"></i>
+		                            </button> 
+		                        </div>
+		                        <div class="col-3 offset-8" align="right">
+		                            <button id="btnSave" class="border-0 btn btn-sm bg-success shadow" type="button">
+		                                <i class="fa-regular fa-bookmark" style="color: white;"></i>
+		                            </button>
+		                        </div>
+		                    </div>
+                    	</c:when>
+                    	<c:otherwise>
+                    		<div class="row align-items-center">
+		                        <div class="col-1">
+		                            <button class="border-0 btn btn-sm bg-secondary shadow" id="btnList" type="button">
+		                                <i class="fa-solid fa-bars" style="color: white;"></i>
+		                            </button> 
+		                        </div>
+		                        <div class="col-3 offset-8" align="right">
+		                            <button id="btnUel" value="Uel" class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
+		                                data-bs-target="#deleteModal">
+		                                <i class="fa-solid fa-xmark" style="color: white;"></i>
+		                            </button>
+		                            <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false"
+		                                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		                                <div class="modal-dialog">
+		                                    <div class="modal-content">
+		                                        <div class="modal-header">
+		                                            <h5 class="modal-title fw-bold" id="staticBackdropLabel">게시물 삭제</h5>
+		                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+		                                                aria-label="Close"></button>
+		                                        </div>
+		                                        <div class="modal-body fs-6">
+		                                       		선택하신 게시물을 정말로 삭제하시겠습니까?
+		                                        </div>
+		                                        <div class="modal-footer">
+		                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+		                                            <button id="delBtn" type="button" class="btn btn-primary">삭제</button>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                            <button id="btnDel" value="Del" class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
+		                                data-bs-target="#deleteModal">
+		                                <i class="fa-solid fa-trash-can" style="color: white;"></i>
+		                            </button>
+		                            <button id="btnSave" class="border-0 btn btn-sm bg-success shadow" type="button">
+		                                <i class="fa-regular fa-bookmark" style="color: white;"></i>
+		                            </button>
+		                        </div>
+		                    </div>
+                    	</c:otherwise>
+                    </c:choose>
                 </div>
             </form>
         </div>
@@ -353,7 +371,7 @@
         var goUrlInst = "/game/gameInst";
         var goUrlUpdt = "/game/gameUpdt";
         var goUrlUel = "/game/gameUele";
-        var goUrlDel = "/game/gameDele"
+        var goUrlDel = "/game/gameDele";
         
         var seq = $("input:hidden[name=gSeq]");
         var form = $("#myForm");
@@ -386,7 +404,6 @@
 			})
 		}
 	 	
-		
 		/* select ajax */
 		function setComboBox1(o){
 			var code = o.value;

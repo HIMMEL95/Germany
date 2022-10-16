@@ -121,8 +121,8 @@
 			,0
 			,now()
 			,now()
-			,1
-			,1
+			,#{createdBy}
+			,#{createdBy}
 		)
 		<selectKey resultType="String" keyProperty="aSeq" order="AFTER">
 			SELECT last_insert_id()
@@ -143,6 +143,19 @@
 		where 1=1
 			and aSeq = #{aSeq}
 	</update>
+	
+	<update id="uelete">
+		UPDATE article
+		SET
+			aDelNy = 1
+		where 1=1
+			and aSeq = #{aSeq}
+	</update>
+
+	<delete id="delete">
+		DELETE
+		FROM article where aSeq = #{aSeq}
+	</delete>
 
 	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
 		SELECT 

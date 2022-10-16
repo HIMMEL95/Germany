@@ -77,7 +77,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item bg-danger-soft-hover" href="/">
+                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" >
                                         <i class="fa-solid fa-power-off me-2"></i>
                                         Sign Out
                                     </a>
@@ -439,6 +439,19 @@
 	    	seq.val(keyValue);
 			form.attr("action", goUrlForm).submit();
 		};
+		
+		$("#signOutBtn").on("click", function() {
+			$.ajax({
+				type: "POST"
+				,url: "/logoutProc"
+				,data: {}
+				,success : function(response) {
+					if (response.rt == "success") {
+						window.location.href = "/";
+					}
+				}
+			});
+		});
     </script>
 </body>
 </html>

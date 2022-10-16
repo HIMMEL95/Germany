@@ -17,6 +17,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="/resources/css/xdmin/article/articleForm.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -151,7 +153,7 @@
                                 	</c:when>
                                 	<c:otherwise>
                                 		<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
-											<option class="select" value="${listEvent.ccSeq} }" <c:if test="${item.aEvent eq listEvent.ccSeq}">selected</c:if>><c:out value="${listEvent.ifccName }"/></option>
+											<option class="select" value="${listEvent.ccSeq }" <c:if test="${item.aEvent eq listEvent.ccSeq}">selected</c:if>><c:out value="${listEvent.ifccName }"/></option>
 										</c:forEach>
                                 	</c:otherwise>
                                 </c:choose>
@@ -179,15 +181,63 @@
                             <input type="file" id="articleImage" name="articleImage" multiple="multiple" class="form-control" aria-label="file example" onChange="upload('articleImage', 1, 0, 1, 0, 0, 1);">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-2">
-                            <a class="btn btn-primary btn-sm text-white fw-bold shadow" href="/article/articleList"
-                                role="button">취소</a>
-                        </div>
-                        <div class="col-2 offset-8" align="right">
-                            <button class="btn btn-primary btn-sm text-white fw-bold shadow" type="button" id="btnSave" >등록</button>
-                        </div>
-                    </div>
+                    <c:choose>
+                    	<c:when test="${empty vo.aSeq }">
+                    		<div class="row align-items-center">
+		                        <div class="col-1">
+		                            <button class="border-0 btn btn-sm bg-secondary shadow" id="btnList" type="button">
+		                                <i class="fa-solid fa-bars" style="color: white;"></i>
+		                            </button> 
+		                        </div>
+		                        <div class="col-3 offset-8" align="right">
+		                            <button id="btnSave" class="border-0 btn btn-sm bg-success shadow" type="button">
+		                                <i class="fa-regular fa-bookmark" style="color: white;"></i>
+		                            </button>
+		                        </div>
+		                    </div>
+                    	</c:when>
+                    	<c:otherwise>
+                    		<div class="row align-items-center">
+		                        <div class="col-1">
+		                            <button class="border-0 btn btn-sm bg-secondary shadow" id="btnList" type="button">
+		                                <i class="fa-solid fa-bars" style="color: white;"></i>
+		                            </button> 
+		                        </div>
+		                        <div class="col-3 offset-8" align="right">
+		                            <button id="btnUel" value="Uel" class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
+		                                data-bs-target="#deleteModal">
+		                                <i class="fa-solid fa-xmark" style="color: white;"></i>
+		                            </button>
+		                            <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false"
+		                                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		                                <div class="modal-dialog">
+		                                    <div class="modal-content">
+		                                        <div class="modal-header">
+		                                            <h5 class="modal-title fw-bold" id="staticBackdropLabel">게시물 삭제</h5>
+		                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+		                                                aria-label="Close"></button>
+		                                        </div>
+		                                        <div class="modal-body fs-6">
+		                                       		선택하신 게시물을 정말로 삭제하시겠습니까?
+		                                        </div>
+		                                        <div class="modal-footer">
+		                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+		                                            <button id="delBtn" type="button" class="btn btn-primary">삭제</button>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                            <button id="btnDel" value="Del" class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="modal"
+		                                data-bs-target="#deleteModal">
+		                                <i class="fa-solid fa-trash-can" style="color: white;"></i>
+		                            </button>
+		                            <button id="btnSave" class="border-0 btn btn-sm bg-success shadow" type="button">
+		                                <i class="fa-regular fa-bookmark" style="color: white;"></i>
+		                            </button>
+		                        </div>
+		                    </div>
+                    	</c:otherwise>
+                    </c:choose>
                 </div>
             </div>
             <div style="height: 50px;"></div>
@@ -233,27 +283,12 @@
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- <script type="text/javascript">
-        // 이미지 미리보기
-		const reader = new FileReader();
-
-        reader.onload = (readerEvent) => {
-            document.querySelector("#preview").setAttribute("src", readerEvent.target.result);
-        };
-
-        document.querySelector("#ex_file").addEventListener("change", (changeEvent) => {
-
-            const imgFile = changeEvent.target.files[0];
-            reader.readAsDataURL(imgFile);
-            document.getElementById("text").innerHTML = " ";
-        })
-    </script> -->
     <script type="text/javascript">
     	var goUrlList = "/article/articleList";
         var goUrlInst = "/article/articleInst";
         var goUrlUpdt = "/article/articleUpdt";
         var goUrlUel = "/article/articleUele";
-        var goUrlDel = "/article/articleDele"
+        var goUrlDel = "/article/articleDele";
         
         var seq = $("input:hidden[name=aSeq]");
         var form = $("#myForm");
@@ -266,6 +301,25 @@
         		form.attr("action", goUrlUpdt).submit();
         	}
 		});
+        
+        $("#btnList").on("click", function(){
+    		formVo.attr("action", goUrlList).submit();
+    	});        
+
+		$("#btnUel").on("click", function() {
+			DelValidation("#delBtn", goUrlUel, "선택하신 게시물을 삭제하시겠습니까?");
+		})
+		
+		$("#btnDel").on("click", function() {
+			DelValidation("#delBtn", goUrlDel, "선택하신 게시물을 진짜로 삭제하시겠습니까?");		
+		})
+		
+		DelValidation = function(confirm, url, msg) {
+			$(".modal-body").html(msg);
+			$(confirm).on("click", function() {
+				form.attr("action", url).submit();
+			})
+		}
 		
 		upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
 
@@ -424,7 +478,7 @@
 			var abroadNy = $("#aAbroadNy").val();
 			
 			$("option").remove(".select1");
-
+			
    			$.ajax({
    				async: true 
    				,cache: false
@@ -432,7 +486,7 @@
    				/* ,dataType:"json" */
    				,url: "/article/event"
    				/* ,data : $("#formLogin").serialize() */
-   				,data : { "aEvent" : code, "aAbroadNy" : abroadNy }
+   				,data : { "event" : code, "aAbroadNy" : abroadNy }
    				,success: function(response) {
    					
    					<c:set var="listCodeLeague" value="${CodeServiceImpl.selectListCachedCode('6') }" />

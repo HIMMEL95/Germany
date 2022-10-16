@@ -38,7 +38,6 @@
 			<exclude-mapping path="/gameView" />
 			<exclude-mapping path="/naverLogin" />
 			<exclude-mapping path="/callback" />
-			<exclude-mapping path="/testPage" />
 			<exclude-mapping path="/abroad" />
 			<exclude-mapping path="/event" />
 			<exclude-mapping path="/league" />

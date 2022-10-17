@@ -284,6 +284,19 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
+	 	// 이미지 미리보기
+		const reader = new FileReader();
+	
+	    reader.onload = (readerEvent) => {
+	        document.querySelector("#preview").setAttribute("src", readerEvent.target.result);
+	    };
+	
+	    document.querySelector("#articleImage").addEventListener("change", (changeEvent) => {
+	
+	        const imgFile = changeEvent.target.files[0];
+	        reader.readAsDataURL(imgFile);
+	    })	
+    
     	var goUrlList = "/article/articleList";
         var goUrlInst = "/article/articleInst";
         var goUrlUpdt = "/article/articleUpdt";

@@ -340,7 +340,6 @@
 
             const imgFile = changeEvent.target.files[0];
             reader.readAsDataURL(imgFile);
-            document.getElementById("text").innerHTML = " ";
         })
         
         $(function() {

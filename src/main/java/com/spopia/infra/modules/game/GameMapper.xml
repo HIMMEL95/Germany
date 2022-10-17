@@ -120,7 +120,7 @@
 		    ,g.player_home
 		    ,g.player_away
 		    ,g.stadium
-		    ,DATE_FORMAT(g.gameDate, '%m-%d') as gameDate
+		    ,DATE_FORMAT(g.gameDate, '%m.%d') as gameDate
 		    ,DATE_FORMAT(g.gameDuration, '%H:%i') as gameDuration
 		    ,g.gCreatedAt
 		    ,g.gModifiedAt

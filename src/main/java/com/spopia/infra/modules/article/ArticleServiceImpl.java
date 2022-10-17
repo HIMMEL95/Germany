@@ -56,7 +56,13 @@ public class ArticleServiceImpl extends BaseServiceImpl implements ArticleServic
                 String pathModule = className;
                 String nowString = UtilDateTime.nowString();
                 String pathDate = nowString.substring(0,4) + "/" + nowString.substring(5,7) + "/" + nowString.substring(8,10); 
-                String path = Constants.UPLOAD_PATH_PREFIX_LINUX + "/" + pathModule + "/" + pathDate + "/";
+                String path = Constants.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";
+                /*
+                 String path = Constants.UPLOAD_PATH_PREFIX_LINUX + "/" + pathModule + "/" +
+                 pathDate + "/";
+                 String path = Constants.UPLOAD_PATH_PREFIX_MAC + "/" + pathModule + "/" +
+                 pathDate + "/";
+                 */
                 String pathForView = Constants.UPLOAD_PATH_PREFIX_FOR_VIEW + "/" + pathModule + "/" + pathDate + "/";
                 
                 System.out.println("path: " + path);
@@ -122,13 +128,46 @@ public class ArticleServiceImpl extends BaseServiceImpl implements ArticleServic
 		dto.setModDeviceCd(UtilRegMod.getDevice());
 		dto.setModDateTime(UtilDateTime.nowDate());
 	}
+	
+	@Override
+    public void deleteFiles(String[] deleteSeq, String[] deletePathFile, Article dto, String tableName) throws Exception{
+        
+        for (int i=0; i<deleteSeq.length; i++) {
+            File file = new File(Constants.UPLOAD_PATH_PREFIX_EXTERNAL + deletePathFile[i]);
+            boolean result = file.delete();
+            
+            if(result) {
+                dto.setSeq(deleteSeq[i]);
+                dto.setTableName(tableName);
+                dao.deleteUploaded(dto);
+            }
+        }
+    }
+    
+    
+    @Override
+    public void ueleteFiles(String[] deleteSeq, String[] deletePathFile, Article dto, String tableName) throws Exception{
+        
+        for (int i=0; i<deleteSeq.length; i++) {
+//          File file = new File(Constants.UPLOAD_PATH_PREFIX_EXTERNAL + deletePathFile[i]);
+//          boolean result = file.delete();
+            
+//          if(result) {
+                dto.setSeq(deleteSeq[i]);
+                dto.setTableName(tableName);
+                dao.ueleteUploaded(dto);
+//          }
+        }
+    }
 
 	@Override
 	public int update(Article dto) throws Exception {
-	    System.out.println("dto.getAEvent1 : " + dto.getaEvent());
 	    setRegMod(dto);
-	    System.out.println("dto.getAEvent2 : " + dto.getaEvent());
 	    dao.update(dto);
+        /*
+         * deleteFiles(dto.getUploadImgDeleteSeq(), dto.getUploadImgDeletePathFile(),
+         * dto, "infrMemberUploaded");
+         */
 	    uploadFiles(dto.getArticleImage(), dto, "articleUploaded", 2);
         return 1;
 	}

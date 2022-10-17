@@ -6,6 +6,9 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <jsp:useBean id="CodeServiceImpl" class="com.spopia.infra.modules.code.CodeServiceImpl"/>
+<jsp:useBean id="now" class="java.util.Date" />
+<fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="nowfmtTime" scope="request"/>
+<fmt:parseNumber value="${list.gameDuration.time / (1000*60*60*24)}" integerOnly="true" var="dbDtParse" scope="request"/>
 
 <!doctype html>
 <html lang="ko">
@@ -186,7 +189,7 @@
 	                <div class="card-img-overlay align-bottom text-white">
 	                    <span class="blind">남은 시간</span>
 	                    <div class="position-absolute top-50 start-50 translate-middle text-center">
-	                        <time datetime="03:43:02">03:43:02</time>
+	                        <time datetime="03:43:02">03:43:02 ${dbDtParse - nowfmtTime }</time>
 	                        <p class="LiveGuide_text__sQNRi ">라이브가 곧 시작됩니다.</p>
 	                    </div>
 	                </div>
@@ -194,7 +197,13 @@
 	            <div class="mb-3 rounded shadow MatchBox_comp_match_box__1oRmr MatchBox_type_ready__2Q2dm">
 	                <div class="MatchBox_info__2l4DE">
 	                    <span class="MatchBox_state__2AzL_">경기전</span>
-	                    <span class="MatchBox_date__1bJ9G mb-2">${item.gameDate } <span class="MatchBox_time__2z_nB">${item.gameDuration }</span></span>
+	                    <span class="MatchBox_date__1bJ9G mb-2">
+	                    	${item.gameDate } 
+	                    	<span class="MatchBox_time__2z_nB">
+	                    		<input type="hidden" name="gameDuration" value='<c:out value="${item.gameDuration }"/>'/>
+	                    		${item.gameDuration }
+                    		</span>
+                   		</span>
 	                    <c:set var="listCodeStadium" value="${CodeServiceImpl.selectListCachedCode('8') }" />
 	                    <span class="MatchBox_stadium__17mQ4">
 	                    	<c:forEach items="${listCodeStadium}" var="listStadium" varStatus="statusStadium">
@@ -667,6 +676,41 @@
    				}
    			});
 		}
+		
+		
+		var output = $(".MatchBox_time__2z_nB");
+		var countDown = () => {
+			var input = $("input[name=gameDuration]");
+			
+			var countDownDate = new Date(input.value).getTime();
+			var now = new Date().getTime();
+			console.log(countDownDate)
+			console.log(now)
+			
+			var distance = countDownDate - now;
+			
+			var hh = Math.floor(
+				(distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+			);
+			
+			var mm = Math.floor(
+				(distance % (1000 * 60 * 60)) / (1000 * 60)
+			);
+
+			var ss = Math.floor(
+				(distance % (1000 * 60)) / 1000
+			);
+			
+			output.innerText = `${hh}h:${mm}m:${ss}s`;
+			
+			
+			if (distance < 0) {
+				output.innerText = "경기 중";
+			}
+		};
+		
+		countDown();
+		setInterval(countDown, 1000);
     </script>
 </body>
 

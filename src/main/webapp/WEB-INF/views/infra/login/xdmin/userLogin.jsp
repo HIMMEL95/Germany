@@ -266,7 +266,7 @@
 		<!-- 네이버아디디로로그인 초기화 Script -->
 		var naver_id_login = new naver_id_login("uzhH9KK0z5vHprqIybHE", "http://localhost:8080/callback");
 		var state = naver_id_login.getUniqState();
-		naver_id_login.setButton("green", 2,54);
+		naver_id_login.setButton("green", 3, 70);
 		naver_id_login.setDomain("http://localhost:8080/userLogin");
 		naver_id_login.setState(state);
 		/* naver_id_login.setPopup(); */

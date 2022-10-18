@@ -3907,10 +3907,8 @@
 				/* alert(naver_id_login.oauthParams.access_token); */
 				// 네이버 사용자 프로필 조회
 				naver_id_login.get_naver_userprofile("naverSignInCallback()");
-				alert("wqewq");
 			  	// 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
 			  	function naverSignInCallback() {
-			  		alert("sadas");
 				    $("input[name=naverId]").val(naver_id_login.getProfileData('id'));
 				    $("input[name=name]").val(naver_id_login.getProfileData('name'));
 				    $("input[name=nickName]").val(naver_id_login.getProfileData('nickname'));

@@ -27,39 +27,7 @@
 	
 	<script type="text/javascript">
 	
-		var naverLogin = new naver.LoginWithNaverId(
-	        {
-	            clientId: "uzhH9KK0z5vHprqIybHE", // 내꺼
-	            callbackUrl: "http://localhost:8080/callback",
-	            /* callback 페이지가 분리되었을 경우에 callback 페이지에서는 callback처리를 해줄수 있도록 설정합니다. */
-	        }
-	    );
-
-	    /* (3) 네아로 로그인 정보를 초기화하기 위하여 init을 호출 */
-		naverLogin.init();
-
-	    /* (4) Callback의 처리. 정상적으로 Callback 처리가 완료될 경우 main page로 redirect(또는 Popup close) */
-        naverLogin.getLoginStatus(function (status) {
-	      if (status) {
-	    	  alert("adsad");
-	          const nickName=naverLogin.user.getNickName();
-	          const age=naverLogin.user.getAge();
-	          const birthday=naverLogin.user.getBirthday();
-	          
-	          alert(nickName)
-	          alert(age)
-	          alert(birthday)
-	
-	        //닉네임을 선택하지 않으면 선택창으로 돌아갑니다.
-	          if(nickName===null||nickName===undefined ){ 
-	            alert("별명이 필요합니다. 정보제공을 동의해주세요.");
-	            naverLogin.reprompt(); 
-	            return ;  
-	         }else{
-	          setLoginStatus(); //모든 필수 정보 제공 동의하면 실행하는 함수
-	         }
-	      }
-	    });
+		
 
 		/* alert("1");
 		var naver_id_login = new naver_id_login("uzhH9KK0z5vHprqIybHE", "http://localhost:8080/callback");
@@ -123,7 +91,7 @@
 			naver_id_login.get_naver_userprofile("naverSignInCallback()");
 		}) */
 	
-	/* alert("1");
+	alert("1");
 	naver_id_login = new naver_id_login("uzhH9KK0z5vHprqIybHE", "http://localhost:8080/callback");
 	// 접근 토큰 값 출력
 alert("2");
@@ -148,7 +116,7 @@ alert("3");
 	    $("input[name=mobile]").val(naver_id_login.getProfileData('mobile'));
   	}
 	
-	alert("4"); */
+	alert("4");
 	
 	</script>
 </body>

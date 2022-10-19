@@ -144,29 +144,16 @@ public class LoginController {
 		return "/sportMain";
 	}
 
-	@ResponseBody
-	@RequestMapping(value = "naverLogin")
-	public Map<String, Object> naverLogin(Member dto, HttpSession httpSession, HttpServletRequest request) throws Exception {
-		Map<String, Object> returnMap = new HashMap<String, Object>();
-		
-		
-        /*
-         * if (dto.getName() != null) {
-         * httpSession.setAttribute("sessName", dto.getName());
-         * httpSession.setAttribute("sessEmail", dto.getEmail());
-         * httpSession.setAttribute("sessId", dto.getId());
-         * 
-         * returnMap.put("rt", "success");
-         * } else {
-         * returnMap.put("rt", "fail");
-         * }
-         */
-		
-		return returnMap;
+	@RequestMapping(value = "naverLoginProc")
+	public String naverLoginProc() throws Exception {
+	    System.out.println("naverLoginProc");
+	    
+	    return "redirect:/sportMain";
 	}
 	
-	@RequestMapping(value = "callback")
+	
+	@RequestMapping(value = "naverCallback")
 	public String callback() throws Exception {
-	    return "infra/login/xdmin/callback";
+	    return "infra/login/xdmin/naverCallback";
 	}
 }

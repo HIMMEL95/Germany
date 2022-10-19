@@ -9,50 +9,45 @@
 <html lang="ko">
 <head>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
 
 	<form id="myForm" name="myForm">
-		<input type="hidden" name="naverId" value="">
-	    <input type="hidden" name="name" value="">
-	    <input type="hidden" name="nickName" value="">
-		<input type="hidden" name="profileImg" value="">
-	    <input type="hidden" name="email" value="">
-	    <input type="hidden" name="dob" value="">
-		<input type="hidden" name="age" value="">
-	    <input type="hidden" name="gender" value="">
-	    <input type="hidden" name="birthyear" value="">
-	    <input type="hidden" name="mobile" value="">
+	    <input type="hidden" name="name">
+	    <input type="hidden" name="id">
+	    <input type="hidden" name="email">
+	    <input type="hidden" name="dob">
+	    <input type="hidden" name="gender">
+	    <input type="hidden" name="phone">
 	</form>
 	
 	<script type="text/javascript">
 	
-		naver_id_login = new naver_id_login("uzhH9KK0z5vHprqIybHE", "http://localhost:8080/naverCallback");
+		var naver_id_login = new naver_id_login("z69jjnmkMQ88W2owra4t", "http://localhost:8080/member/naverCallback");
 		// 접근 토큰 값 출력
 		// 네이버 사용자 프로필 조회
 		naver_id_login.get_naver_userprofile("naverSignInCallback()");
 	  	// 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
 	  	function naverSignInCallback() {
-			console.log(naver_id_login.getProfileData('birthyear'));
-	  		
-	  		alert(naver_id_login.getProfileData("name"));
-	  		alert(naver_id_login.getProfileData("nickname"));
+	  		/* alert(naver_id_login.getProfileData("name"));
+	  		alert(naver_id_login.getProfileData("nickname")); */
 		    
-		    $("input[name=naverId]").val(naver_id_login.getProfileData('id'));
 		    $("input[name=name]").val(naver_id_login.getProfileData('name'));
-		    $("input[name=nickName]").val(naver_id_login.getProfileData('nickname'));
-		    $("input[name=profileImg]").val(naver_id_login.getProfileData('profile_image'));
+		    $("input[name=id]").val(naver_id_login.getProfileData('id'));
 		    $("input[name=email]").val(naver_id_login.getProfileData('email'));
 		    $("input[name=dob]").val(naver_id_login.getProfileData('birthday'));
-		    $("input[name=age]").val(naver_id_login.getProfileData('age'));
 		    $("input[name=gender]").val(naver_id_login.getProfileData('gender'));
-		    $("input[name=birthyear]").val(naver_id_login.getProfileData('birthyear'));
-		    $("input[name=mobile]").val(naver_id_login.getProfileData('mobile'));
+		    $("input[name=phone]").val(naver_id_login.getProfileData('mobile'));
+		    
+		    /* console.log($("input[name=name]").val());
+		    console.log($("input[name=id]").val());
+		    console.log($("input[name=email]").val());
+		    console.log($("input[name=dob]").val());
+		    console.log($("input[name=gender]").val());
+		    console.log($("input[name=phone]").val()); */
 	  	}
-	  	
-	  	$("#myForm").attr("action", "/naverLoginProc").submit();
+	  	$("#myForm").attr("action", "/member/naverLoginProc").submit();
 		
 	  	/* var naverLogin = new naver.LoginWithNaverId(
 				{
@@ -70,7 +65,7 @@
 				if (status) {
 					var email = naverLogin.user.getEmail(); // 필수로 설정할것을 받아와 아래처럼 조건문을 줍니다.
 		    		
-					console.log(naverLogin.user); 
+					alert(naverLogin.user); 
 		    		
 		            if( email == undefined || email == null) {
 						alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");

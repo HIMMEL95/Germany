@@ -85,4 +85,20 @@ public class MemberController {
 		
 		return "infra/member/user/memberUModForm";
 	}
+	
+	@RequestMapping(value = "naverLoginProc")
+    public String naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
+        System.out.println("naverLoginProc");
+        
+        System.out.println("id : " + dto.getName());
+        System.out.println("id : " + dto.getEmail());
+        
+        return "redirect:/userLogin";
+    }
+    
+    @RequestMapping(value = "naverCallback")
+    public String callback() throws Exception {
+        
+        return "infra/login/xdmin/naverCallback";
+    }
 }

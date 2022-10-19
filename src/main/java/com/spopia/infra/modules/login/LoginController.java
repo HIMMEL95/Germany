@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -144,16 +145,4 @@ public class LoginController {
 		return "/sportMain";
 	}
 
-	@RequestMapping(value = "naverLoginProc")
-	public String naverLoginProc() throws Exception {
-	    System.out.println("naverLoginProc");
-	    
-	    return "redirect:/sportMain";
-	}
-	
-	
-	@RequestMapping(value = "naverCallback")
-	public String callback() throws Exception {
-	    return "infra/login/xdmin/naverCallback";
-	}
 }

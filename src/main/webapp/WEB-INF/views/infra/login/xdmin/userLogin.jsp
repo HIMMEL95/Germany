@@ -23,6 +23,7 @@
     <link href="/resources/css/user/login.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="/login/css/global/desktop/w_20220216.css?20210812">
 	<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 
 <body>
@@ -207,9 +208,6 @@
     <!-- kakao login s -->
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <!-- kakao login e -->
-    <!-- Naver login s -->
-    <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
-    <!-- Naver login e -->
     <script type="text/javascript">
     
     	$("#loginBtn").on("click", function() {
@@ -261,7 +259,7 @@
     	/* kakao login e */
     	
 		<!-- 네이버아디디로로그인 초기화 Script -->
-		var naver_id_login = new naver_id_login("z69jjnmkMQ88W2owra4t", "http://localhost:8080/naverCallback");
+		var naver_id_login = new naver_id_login("z69jjnmkMQ88W2owra4t", "http://localhost:8080/member/naverCallback");
 		var state = naver_id_login.getUniqState();
 		naver_id_login.setButton("green", 3, 70);
 		naver_id_login.setDomain("http://localhost:8080");

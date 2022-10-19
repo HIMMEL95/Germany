@@ -74,27 +74,27 @@
 									</c:when>
 									<c:when test="${sessUser eq 25}">
 										<li class="ms-3">
-                                            <a class="pro_a" role="button" id="editBtn" onclick="goForm(<c:out value="${sessSeq }"/>)" style="cursor: pointer;">
+                                            <a class="dropdown-item" role="button" id="editBtn" onclick="goForm(<c:out value="${sessSeq }"/>)" style="cursor: pointer;">
                                                 <i class="fa-solid fa-user me-2"></i>
                                                 Edit Profile
                                             </a>
                                         </li>
                                         <li class="ms-3">
-                                            <a class="pro_a" href="#">
+                                            <a class="dropdown-item" href="#">
                                                 <i class="fa-solid fa-circle-info me-2"></i>
                                                 Help
                                             </a>
                                         </li>
                                         <li class="ms-3">
-                                            <a class="pro_a" id="signOutBtn" href="/">
+                                            <button class="dropdown-item" id="signOutBtn">
                                                 <i class="fa-solid fa-power-off me-2"></i>
                                                 Sign Out
-                                            </a>
+                                            </button>
                                         </li>
 									</c:when>
 									<c:otherwise>
 										<li>
-		                                    <a class="pro_a" role="button" id="editBtn" onclick="goForm(<c:out value="${sessSeq }"/>)" style="cursor: pointer;">
+		                                    <a class="pro_a dropdown-item" role="button" id="editBtn" onclick="goForm(<c:out value="${sessSeq }"/>)" style="cursor: pointer;">
                                                 <i class="fa-solid fa-user me-2"></i>
                                                 Edit Profile
                                             </a>
@@ -112,10 +112,10 @@
 		                                    </a>
 		                                </li>
 		                                <li>
-		                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" href="/">
+		                                    <button class="dropdown-item bg-danger-soft-hover" id="signOutBtn">
 		                                        <i class="fa-solid fa-power-off me-2"></i>
 		                                        Sign Out
-		                                    </a>
+		                                    </button>
 		                                </li>
 									</c:otherwise>
 								</c:choose>
@@ -374,6 +374,8 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript">
     	
     	var goUrlList = "/member/memberList";
@@ -393,21 +395,12 @@
 		$("#signOutBtn").on("click", function() {
 			$.ajax({
 				type: "POST"
-				,url: "logout"
+				,url: "/logoutProc"
 				,data: {}
 				,success : function(response) {
-					location.reload();
-				}
-			});
-		});
-    	
-    	$("#signOutBtn1").on("click", function() {
-			$.ajax({
-				type: "POST"
-				,url: "logout"
-				,data: {}
-				,success : function(response) {
-					location.reload();
+					if (response.rt == "success") {
+						window.location.href = "/";
+					}
 				}
 			});
 		});

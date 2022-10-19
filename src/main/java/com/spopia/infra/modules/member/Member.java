@@ -28,42 +28,6 @@ public class Member {
 	private Integer defaultNY;
 	private Integer deleteNY;
 	
-	public String getNewPassword() {
-	    return newPassword;
-	}
-	public void setNewPassword(String newPassword) {
-	    this.newPassword = newPassword;
-	}
-	public String getTuSeq() {
-		return tuSeq;
-	}
-	public void setTuSeq(String tuSeq) {
-		this.tuSeq = tuSeq;
-	}
-	public Integer getDefaultNY() {
-		return defaultNY;
-	}
-	public void setDefaultNY(Integer defaultNY) {
-		this.defaultNY = defaultNY;
-	}
-	public Integer getDeleteNY() {
-		return deleteNY;
-	}
-	public void setDeleteNY(Integer deleteNY) {
-		this.deleteNY = deleteNY;
-	}
-	public Integer getuDelNy() {
-		return uDelNy;
-	}
-	public void setuDelNy(Integer uDelNy) {
-		this.uDelNy = uDelNy;
-	}
-	public Integer getTeam() {
-		return team;
-	}
-	public void setTeam(Integer team) {
-		this.team = team;
-	}
 	public String getSeq() {
 		return seq;
 	}
@@ -160,4 +124,41 @@ public class Member {
 	public void setUser_div(Integer user_div) {
 		this.user_div = user_div;
 	}
+	public Integer getTeam() {
+		return team;
+	}
+	public void setTeam(Integer team) {
+		this.team = team;
+	}
+	public Integer getuDelNy() {
+		return uDelNy;
+	}
+	public void setuDelNy(Integer uDelNy) {
+		this.uDelNy = uDelNy;
+	}
+	public String getNewPassword() {
+		return newPassword;
+	}
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+	public String getTuSeq() {
+		return tuSeq;
+	}
+	public void setTuSeq(String tuSeq) {
+		this.tuSeq = tuSeq;
+	}
+	public Integer getDefaultNY() {
+		return defaultNY;
+	}
+	public void setDefaultNY(Integer defaultNY) {
+		this.defaultNY = defaultNY;
+	}
+	public Integer getDeleteNY() {
+		return deleteNY;
+	}
+	public void setDeleteNY(Integer deleteNY) {
+		this.deleteNY = deleteNY;
+	}
+	
 }

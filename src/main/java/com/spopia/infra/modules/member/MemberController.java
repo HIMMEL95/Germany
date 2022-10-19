@@ -86,19 +86,29 @@ public class MemberController {
 		return "infra/member/user/memberUModForm";
 	}
 	
+	@RequestMapping(value = "naverCallback")
+	public String naverCallback() throws Exception {
+		System.out.println("passing");
+		return "infra/login/xdmin/naverCallback";
+	}
+
 	@RequestMapping(value = "naverLoginProc")
-    public String naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
-        System.out.println("naverLoginProc");
-        
-        System.out.println("id : " + dto.getName());
-        System.out.println("id : " + dto.getEmail());
-        
-        return "redirect:/userLogin";
-    }
+  public String naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
+      System.out.println("naverLoginProc");
+      
+      System.out.println("id : " + dto.getId());
+      System.out.println("id : " + dto.getName());
+      System.out.println("id : " + dto.getEmail());
+      
+      if (dto.getId() == null) {
+      	return "redirect:/userLogin";
+      } else {
+      	httpSession.setAttribute("sessId", dto.getId());
+      	httpSession.setAttribute("sessName", dto.getName());
+      	httpSession.setAttribute("sessEmail", dto.getEmail());
+      }
+      
+      return "redirect:/sportMain";
+  }
     
-    @RequestMapping(value = "naverCallback")
-    public String callback() throws Exception {
-        
-        return "infra/login/xdmin/naverCallback";
-    }
 }

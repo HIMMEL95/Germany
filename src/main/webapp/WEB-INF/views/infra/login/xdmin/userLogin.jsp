@@ -22,8 +22,6 @@
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="/resources/css/user/login.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="/login/css/global/desktop/w_20220216.css?20210812">
-	<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 
 <body>
@@ -208,6 +206,10 @@
     <!-- kakao login s -->
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <!-- kakao login e -->
+    <!-- naver login s -->
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- naver login e -->
     <script type="text/javascript">
     
     	$("#loginBtn").on("click", function() {

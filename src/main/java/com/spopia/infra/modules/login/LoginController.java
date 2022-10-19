@@ -48,6 +48,24 @@ public class LoginController {
 	public String findId() throws Exception {
 		return "infra/login/xdmin/findId";
 	}
+	
+    @ResponseBody
+    @RequestMapping(value = "findID")
+    public Map<String, Object> findID(MemberVo vo, Member dto) throws Exception {
+        Map<String, Object> returnMap = new HashMap<String, Object>();
+        
+        Member id = service.findId(dto);
+
+        if (id != null) {
+            returnMap.put("rt", "success");
+            returnMap.put("id", id);
+        } else {
+            returnMap.put("rt", "fail");
+        }
+        
+        return returnMap;
+    }
+
 
 	@ResponseBody
 	@RequestMapping(value = "idCheck")

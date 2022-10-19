@@ -26,4 +26,8 @@ public interface MemberService {
 	
     /* change Password */
 	public int pwdUpdt(Member dto) throws Exception;
+	
+	/* findId & pwd */
+    Member findId(Member dto) throws Exception;
+    int findPwd(Member dto) throws Exception;
 }

@@ -31,53 +31,12 @@
                 <!-- Profile START -->
                 <div class="dropdown">
                     <ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
-                        <li class="me-2">
-                            <a class="p-0" href="../member/memberView.html" id="profileDropdown" role="button"
-                                data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar"
-                                    style="width: 30px;">
-                            </a>
-                            <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
-                                aria-labelledby="profileDropdown">
-                                <!-- Profile info -->
-                                <li class="px-3">
-                                    <div class="d-flex align-items-center">
-                                        <!-- Avatar -->
-                                        <div class="avatar mt-2">
-                                            <img class="avatar-img rounded-circle shadow" src="/resources/images/diano.jpg"
-                                                alt="avatar" style="width: 30px;">
-                                        </div>
-                                        <div>
-                                            <a class="fs-6 fw-bold" href="../member/memberView.html">이하늘</a>
-                                            <p class="small m-0">himmel@gmail.com</p>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                </li>
-                                <!-- Links -->
-                                <li><a class="dropdown-item" href="../member/memberView.html"><i
-                                            class="fa-solid fa-user me-2"></i>Edit
-                                        Profile</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-gear me-2"></i>Account
-                                        Settings</a></li>
-                                <li><a class="dropdown-item" href="#"><i
-                                            class="fa-solid fa-circle-info me-2"></i>Help</a></li>
-                                <li><a class="dropdown-item bg-danger-soft-hover" href="../member/main_page.html"><i
-                                            class="fa-solid fa-power-off me-2"></i>Sign Out</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="../login/loginForm.html"><i
-                                            class="fa-solid fa-arrow-right-to-bracket me-2"></i>Sign In</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="../login/singUpForm.html"><i
-                                            class="fa-solid fa-user-plus me-2"></i>Sign Up</a>
-                                </li>
-                                <!-- Dark mode switch START -->
-                            </ul>
+                        <li class="nav_li">
+               				<div class="login_po">
+	                            <a class="login" href="/userLogin">
+	                                <i class="fa-solid fa-right-to-bracket"></i>
+	                            </a>	                    					
+               				</div>
                         </li>
                     </ul>
                 </div>
@@ -108,24 +67,43 @@
                         <!-- 아이디 찾기 영역 -->
                         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
                             tabindex="0">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                                    value="option1">
-                                <label class="form-check-label fw-bold" for="inlineRadio1">본인확인 후 찾기</label>
+                            <div class="border rounded p-3">
+                                <span><i class="fa-solid fa-check"></i> 아이디를 찾기 위해서는 등록된 <strong>이름, 생년월일 그리고 전화번호</strong>를 정확하게 입력하시오.</span><br>
                             </div>
-                            <div class="form-check form-check-inline mb-4">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                                    value="option2">
-                                <label class="form-check-label fw-bold" for="inlineRadio2">등록된 휴대폰 번호로 찾기</label>
-                            </div>
-                            <div class="row border rounded align-items-center" style="height: 350px;">
-                                <div class="col-5 col-lg-3 offset-4 offset-lg-4">
-                                    <div class="row mb-3 fw-bold text-center">
-                                        <a class="btn btn-primary text-white shadow fw-bold mb-3" href="#" role="button">
-                                            본인명의 휴대폰으로 인증
-                                        </a>
-                                        <span class="fs-6">회원님의 명의로 등록된<br>휴대폰으로 본인확인을 진행합니다.</span>
-                                    </div>
+                            <div class="row rounded align-items-center" style="height: 350px;">
+                                <table class="table text-center align-middle">
+                                    <tr>
+                                        <td>
+                                            <label for="name" class="form-label fs-4 fw-bolds">이 름</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" id="name" name="name" value="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="dob" class="form-label fs-4 fw-bolds">생년월일</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" id="dob" name="dob" placeholder="1900-01-01" value="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="phone" class="form-label fs-4 fw-bolds">전화번호</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" id="phone" name="phone" placeholder="010-0000-0000" value="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td colspan="2">
+                                    		<h4>회원님의 아이디는 <strong class="personerId"></strong> 입니다. </h4>
+                                    	</td>
+                                    </tr>
+                                </table>
+                                <div class="text-center">
+                                    <button class="btn btn-primary" type="button" id="findId">아이디  찾기</button>
                                 </div>
                             </div>
                         </div>
@@ -145,7 +123,7 @@
                                             <label for="name" class="form-label fs-4 fw-bolds">이 름</label>
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control" id="name" value="" required>
+                                            <input type="text" class="form-control" id="name" name="name" value="">
                                         </td>
                                     </tr>
                                     <tr>
@@ -153,27 +131,31 @@
                                             <label for="id" class="form-label fs-4 fw-bolds">아이디</label>
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control" id="id" value="" required>
-                                            <span class="fs-6s"><strong>SPOPIA</strong>에 가입된 계정 아이디를 정확히 기입해주시길
-                                                바랍니다.</span>
+                                            <input type="text" class="form-control" id="id" name="id" value="">
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">
-                                            <span class="fs-6"><i class="fa-solid fa-exclamation"></i> 비밀번호 찾기 방법을
-                                                선택해주세요.</span><br>
-                                            <div class="form-check form-check-inline fs-6">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="emailAddress" value="option1">
-                                                <label class="form-check-label fw-bold" for="emailAddress">email
-                                                    주소</label>
-                                            </div>
-                                            <div class="form-check form-check-inline fs-6">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="tel" value="option2">
-                                                <label class="form-check-label fw-bold" for="tel">등록된
-                                                    휴대폰</label>
-                                            </div>
+                                        <td>
+                                            <label for="dob" class="form-label fs-4 fw-bolds">생년월일</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" id="dob" name="dob" value="">
+                                        </td>
+                                    </tr>
+                                    <tr class="updatePwd" hidden>
+                                        <td>
+                                            <label for="dob" class="form-label fs-4 fw-bolds">새로운 비밀번호</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" id="pwd" name="pwd" value="">
+                                        </td>
+                                    </tr>
+                                    <tr class="updatePwd" hidden>
+                                        <td>
+                                            <label for="dob" class="form-label fs-4 fw-bolds">새로운 비밀번호 확인</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" id="pwdCheck" value="">
                                         </td>
                                     </tr>
                                 </table>
@@ -235,7 +217,33 @@
     	$("#backBtn").on("click", function() {
 			form.attr("action", goUrlBack).submit();
 		})
-    </script>
+		
+		$("#findId").on("click", function() {
+			
+			$.ajax({
+				async: true
+				,cache: false
+				,type:"POST"
+				,url: "findID"
+				,data: {"name": $("#name").val(), "dob": $("#dob").val(), "phone" : $("#phone").val()}
+				,success : function(response) {
+					if (response.rt == "success") {
+						$(".personerId").html(response.id.id);
+					} else {
+						alert("정확한 정보를 입력해주세요!!!");
+					}
+				},
+				error : function(jqXHR, status, error) {
+					alert("알 수 없는 에러 [ " + error + " ]");
+				}
+			});
+		})
+		
+		$("#dob").on("focusout", function(event) {
+			alert("sadsadd");
+		})
+		
+	</script>
 </body>
 
 </html>

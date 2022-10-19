@@ -72,4 +72,12 @@ public class MemberDao {
 	public int pwdUpdt(Member dto) {
 	    return sqlSession.update(namespace + ".pwdUpdt", dto);
 	}
+	
+	/* findId & pwd */
+    public Member findId(Member dto) {
+        return sqlSession.selectOne(namespace + ".findId", dto);
+    }
+    public int findPwd(Member dto) {
+        return sqlSession.update(namespace + ".findPwd", dto);
+    }
 }

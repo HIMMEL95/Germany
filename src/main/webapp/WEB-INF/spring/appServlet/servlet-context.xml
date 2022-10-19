@@ -44,6 +44,7 @@
 			<exclude-mapping path="/" />
 			<exclude-mapping path="/signUp" />
 			<exclude-mapping path="/findId" />
+			<exclude-mapping path="/findID" />
 			<exclude-mapping path="/xdminLoginCheck" />
 			<exclude-mapping path="/test/**" />
 			<exclude-mapping path="/rest/**" />

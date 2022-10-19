@@ -175,7 +175,7 @@
 				gc.game_seq
 			    ,gc.createdAt)
 			order by
-				createdAt
+				createdAt ASC
 			<include refid="Base.orderByLimitForMysql" />
 		<include refid="Base.selectListLowerForMysql" />
 	</select>

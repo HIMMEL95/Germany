@@ -97,5 +97,27 @@ public class MemberServiceImpl implements MemberService {
     public int pwdUpdt(Member dto) throws Exception {
         return dao.pwdUpdt(dto);
     }	
+    
+    //find id & pwd
+    @Override
+    public Member findId(Member dto) throws Exception {
+        
+        Member id = dao.findId(dto);
+        System.out.println("id : " + id.getId());
+        
+        String myId = id.getId().substring(0, id.getId().length()-3);
+        myId += "***";
+        
+        dto.setId(myId);
+        
+        return dto;
+    }
+
+    @Override
+    public int findPwd(Member dto) throws Exception {
+        dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
+        dao.findPwd(dto);
+        return 1;
+    }
 	
 }

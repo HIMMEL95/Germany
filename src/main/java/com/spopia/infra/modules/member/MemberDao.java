@@ -80,4 +80,13 @@ public class MemberDao {
     public int findPwd(Member dto) {
         return sqlSession.update(namespace + ".findPwd", dto);
     }
+    
+    // naver insert
+    public int naverInst(Member dto) {
+        return sqlSession.insert(namespace + ".naverInst", dto);
+    }
+    
+    public Member naverSelectOne(Member dto) {
+        return sqlSession.selectOne(namespace + ".naverCheck", dto);
+    }
 }

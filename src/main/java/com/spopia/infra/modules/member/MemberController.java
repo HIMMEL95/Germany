@@ -96,17 +96,29 @@ public class MemberController {
   public String naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
       System.out.println("naverLoginProc");
       
-      System.out.println("id : " + dto.getId());
-      System.out.println("id : " + dto.getName());
-      System.out.println("id : " + dto.getEmail());
       
-      if (dto.getId() == null) {
-      	return "redirect:/userLogin";
+      // id 값 있는지 체크 
+      Member naver = service.naverSelectOne(dto);
+      
+      if (naver == null) {
+          service.naverInst(dto);
       } else {
-      	httpSession.setAttribute("sessId", dto.getId());
-      	httpSession.setAttribute("sessName", dto.getName());
-      	httpSession.setAttribute("sessEmail", dto.getEmail());
+          System.out.println("id : " + dto.getId());
+          System.out.println("id : " + dto.getName());
+          System.out.println("id : " + dto.getEmail());
+          System.out.println("id : " + dto.getSeq());
+          
+          httpSession.setAttribute("sessSeq", dto.getSeq());
+          httpSession.setAttribute("sessNaverId", dto.getId());
+          httpSession.setAttribute("sessName", dto.getName());
+          httpSession.setAttribute("sessEmail", dto.getEmail());
+          httpSession.setAttribute("sessGender", dto.getGender());
+          httpSession.setAttribute("sessBirth", dto.getDob());
       }
+      
+      // 있으면 로그인 세션 등록
+      
+      // 없으면 가입시키고 세션 등록
       
       return "redirect:/sportMain";
   }

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -15,17 +17,23 @@
 	</form>
 <script type="text/javascript">
   var naver_id_login = new naver_id_login("z69jjnmkMQ88W2owra4t", "http://localhost:8080/member/naverCallback");
-  // 접근 토큰 값 출력
+  // ì ê·¼ í í° ê° ì¶ë ¥
   /* alert(naver_id_login.oauthParams.access_token); */
-  // 네이버 사용자 프로필 조회
+  // ë¤ì´ë² ì¬ì©ì íë¡í ì¡°í
   naver_id_login.get_naver_userprofile("naverSignInCallback()");
-  // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+  // ë¤ì´ë² ì¬ì©ì íë¡í ì¡°í ì´í íë¡í ì ë³´ë¥¼ ì²ë¦¬í  callback function
   function naverSignInCallback() {
 	  $("input[name=id]").val(naver_id_login.getProfileData('id'));
 	  $("input[name=name]").val(naver_id_login.getProfileData('name'));
 	  $("input[name=phone]").val(naver_id_login.getProfileData('mobile'));
 	  $("input[name=email]").val(naver_id_login.getProfileData('email'));
-	  $("input[name=dob]").val(naver_id_login.getProfileData('birthyear') + "-" + naver_id_login.getProfileData('birthday'));
+	  $("input[name=dob]").val(naver_id_login.getProfileData('birthday'));
+	  
+	  if (naver_id_login.getProfileData('gender') == 'M'){
+			$("input[name=gender]").val(5);
+		} else {
+			$("input[name=gender]").val(6);
+		} 
 	  
 	  $("form[name=form]").attr("action", "/member/naverLoginProc").submit();
   }

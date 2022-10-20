@@ -119,5 +119,17 @@ public class MemberServiceImpl implements MemberService {
         dao.findPwd(dto);
         return 1;
     }
-	
+    
+    // naver insert & check 
+
+    @Override
+    public Member naverSelectOne(Member dto) throws Exception {
+        return dao.naverSelectOne(dto);
+    }
+
+    @Override
+    public int naverInst(Member dto) throws Exception {
+        return dao.naverInst(dto);
+    }
+    
 }

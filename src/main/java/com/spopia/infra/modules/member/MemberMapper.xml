@@ -298,5 +298,55 @@
 			and name = #{name}
 			and dob = #{dob}
 	</update>
+	
+	<select id="naverCheck" resultMap="resultMapObj">
+		select
+			u.seq
+		    ,u.name
+		    ,u.id
+		    ,u.email
+		    ,u.gender
+		    ,u.dob
+		    ,u.radio_operator
+		    ,u.phone
+		    ,u.zip
+		    ,u.address
+		    ,u.address_detail
+		    ,u.job
+		    ,date_format(u.createdAt, '%Y-%m-%d %H:%i:%s') as createdAt
+		    ,date_format(u.modifiedAt, '%Y-%m-%d %H:%i:%s') as modifiedAt
+		    ,u.user_div
+		    ,u.uDelNy
+		from user u
+		where 1=1
+			and email = #{email}
+			and name = #{name}
+	</select>
+	
+	<insert id="naverInst">
+		INSERT INTO user (
+			id
+			,name
+			,email
+			,gender
+			,dob
+			,createdAt
+			,user_div
+			,sns_type
+		)
+		VALUES (
+			#{id}
+			,#{name}
+			,#{email}
+			,#{gender}
+			,#{dob}
+			,now()
+			,25
+			,1
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
 
 </mapper>

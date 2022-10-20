@@ -119,6 +119,7 @@
 		<input type="hidden" name="rowNumToShow" value='<c:out value="${vo.rowNumToShow }"/>'> 
 		<input type="hidden" name="gSeq" value='<c:out value="${vo.gSeq }"></c:out>'>
 		<input type="hidden" name="aSeq" value='<c:out value="${vo.aSeq }"></c:out>'>
+		<input type="hidden" name="mSeq" value='<c:out value="${sessSeq }"></c:out>'>
 		<!-- 사이드 광고 -->
 		<div id="veta_skin_left" data-veta-preview="p_sports_dpl"></div>
 		<div id="veta_skin_right" data-veta-preview="p_sports_dpl"></div>
@@ -134,7 +135,7 @@
 					<div class="navigation">
 	                    <ul class="nav_ul">
 	                    	<c:choose>
-	                    		<c:when test="${empty sessId }">
+	                    		<c:when test="${empty sessName }">
 	                    			<li class="nav_li">
 	                    				<div class="login_po">
 				                            <a class="login" href="/userLogin">
@@ -3820,32 +3821,46 @@
 				lazyloadjs("https://ssl.pstatic.net/static/common/js/cs_ops_webncc.js");
 			</script>
 		</div>
-		<script type="text/javascript">
-			 function menuToggle() {
-		            const toggleMenu = document.querySelector('.menu');
-		            toggleMenu.classList.toggle('active')
-	        };
-			 
-			$("#signOutBtn").on("click", function() {
-				$.ajax({
-					type: "POST"
-					,url: "/logoutProc"
-					,data: {}
-					,success : function(response) {
-						if (response.rt == "success") {
-							window.location.href = "/";
-						}
-					}
-				});
-			});
-			
-		</script>
-		<script>
-			lazyloadjs('https://ssl.pstatic.net/static.sports/resources/pc/2022/09/29/130734/js/generated/baseJsBottomLazy.js');
-		</script>
-		<script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
-		
-		
 	</form>
+	<script>
+		lazyloadjs('https://ssl.pstatic.net/static.sports/resources/pc/2022/09/29/130734/js/generated/baseJsBottomLazy.js');
+	</script>
+	<script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
+   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		 function menuToggle() {
+	            const toggleMenu = document.querySelector('.menu');
+	            toggleMenu.classList.toggle('active')
+        };
+		 
+		$("#signOutBtn").on("click", function() {
+			$.ajax({
+				type: "POST"
+				,url: "/logoutProc"
+				,data: {}
+				,success : function(response) {
+					if (response.rt == "success") {
+						window.location.href = "/";
+					}
+				}
+			});
+		});
+		
+		var form = $("#myForm");
+		var goUrlUView = "/member/memberUView";
+		var mSeq = $("input[name=mSeq]").val();
+		alert(mSeq);
+		
+		$("#editBtn").on("click", function() {
+			form.attr("action", goUrlUView).submit();
+		});
+		
+		goForm = function(keyValue) {
+	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+			form.attr("action", goUrlUView).submit();
+		}
+		
+	</script>
 </body>
 </html>

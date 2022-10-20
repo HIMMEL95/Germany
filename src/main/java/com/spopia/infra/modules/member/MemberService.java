@@ -28,6 +28,10 @@ public interface MemberService {
 	public int pwdUpdt(Member dto) throws Exception;
 	
 	/* findId & pwd */
-    Member findId(Member dto) throws Exception;
-    int findPwd(Member dto) throws Exception;
+	public Member findId(Member dto) throws Exception;
+    public int findPwd(Member dto) throws Exception;
+
+    // naver insert & check
+    public Member naverSelectOne(Member dto) throws Exception;
+    public int naverInst(Member dto) throws Exception;
 }

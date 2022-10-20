@@ -11,6 +11,7 @@ public class ArticleVo extends BaseVo{
 	private String startDate;
 	private String endDate;	
 	private String aSeq;
+	
 	public String getShOption() {
 		return shOption;
 	}

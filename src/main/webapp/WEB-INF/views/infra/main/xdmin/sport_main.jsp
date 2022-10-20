@@ -119,7 +119,7 @@
 		<input type="hidden" name="rowNumToShow" value='<c:out value="${vo.rowNumToShow }"/>'> 
 		<input type="hidden" name="gSeq" value='<c:out value="${vo.gSeq }"></c:out>'>
 		<input type="hidden" name="aSeq" value='<c:out value="${vo.aSeq }"></c:out>'>
-		<input type="hidden" name="mSeq" value='<c:out value="${sessSeq }"></c:out>'>
+		<input type="hidden" name="seq" value='<c:out value="${sessSeq }"></c:out>'>
 		<!-- 사이드 광고 -->
 		<div id="veta_skin_left" data-veta-preview="p_sports_dpl"></div>
 		<div id="veta_skin_right" data-veta-preview="p_sports_dpl"></div>
@@ -3849,8 +3849,8 @@
 		
 		var form = $("#myForm");
 		var goUrlUView = "/member/memberUView";
-		var mSeq = $("input[name=mSeq]").val();
-		alert(mSeq);
+		var seq = $("input[name=seq]").val();
+		alert(seq);
 		
 		$("#editBtn").on("click", function() {
 			form.attr("action", goUrlUView).submit();

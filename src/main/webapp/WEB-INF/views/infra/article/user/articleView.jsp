@@ -43,7 +43,7 @@
                 </a>
                 <!-- Profile START -->
                 <c:choose>
-                	<c:when test="${empty sessSeq }">
+                	<c:when test="${empty sessName }">
                 		<ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
 	                        <li class="nav_li">
                    				<div class="login_po">
@@ -94,10 +94,10 @@
 				                                    </a>
 				                                </li>
 				                                <li>
-				                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" >
+				                                    <button type="button" class="dropdown-item bg-danger-soft-hover" id="signOutBtn" >
 				                                        <i class="fa-solid fa-power-off me-2"></i>
 				                                        Sign Out
-				                                    </a>
+				                                    </button>
 				                                </li>
 		                                	</c:when>
 		                                	<c:otherwise>
@@ -120,10 +120,10 @@
 				                                    </a>
 				                                </li>
 				                                <li>
-				                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" >
+				                                    <button type="button" class="dropdown-item bg-danger-soft-hover" id="signOutBtn" >
 				                                        <i class="fa-solid fa-power-off me-2"></i>
 				                                        Sign Out
-				                                    </a>
+				                                    </button>
 				                                </li>
 			                                </c:otherwise>
 		                                </c:choose>
@@ -480,19 +480,21 @@
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script> -->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script type="text/javascript">
-	    $("#signOutBtn").on("click", function() {
+	<script type="text/javascript">
+		$("#signOutBtn").on("click", function() {
 			$.ajax({
 				type: "POST"
-				,url: "logoutProc"
+				,url: "/logoutProc"
 				,data: {}
 				,success : function(response) {
 					if (response.rt == "success") {
-						window.location.href = "/";
+						location.href = "/";
 					}
 				}
 			});
 		});
+	</script>
+    <script type="text/javascript">
     
     	var goUrlLogin = "/userLogin";
     	var goUrlInst = "/articleInsert";

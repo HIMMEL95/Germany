@@ -102,11 +102,6 @@ public class MemberController {
       
       if (naver == null) {
           service.naverInst(dto);
-      } else {
-          System.out.println("id : " + dto.getId());
-          System.out.println("id : " + dto.getName());
-          System.out.println("id : " + dto.getEmail());
-          System.out.println("id : " + dto.getSeq());
           
           httpSession.setAttribute("sessSeq", dto.getSeq());
           httpSession.setAttribute("sessNaverId", dto.getId());
@@ -114,6 +109,22 @@ public class MemberController {
           httpSession.setAttribute("sessEmail", dto.getEmail());
           httpSession.setAttribute("sessGender", dto.getGender());
           httpSession.setAttribute("sessBirth", dto.getDob());
+          httpSession.setAttribute("sessUser", dto.getUser_div());
+      } else {
+          System.out.println("id : " + dto.getId());
+          System.out.println("id : " + dto.getName());
+          System.out.println("id : " + dto.getEmail());
+          System.out.println("id : " + dto.getGender());
+          System.out.println("id : " + dto.getDob());
+          System.out.println("id : " + dto.getUser_div());
+          
+          httpSession.setAttribute("sessSeq", dto.getSeq());
+          httpSession.setAttribute("sessNaverId", dto.getId());
+          httpSession.setAttribute("sessName", dto.getName());
+          httpSession.setAttribute("sessEmail", dto.getEmail());
+          httpSession.setAttribute("sessGender", dto.getGender());
+          httpSession.setAttribute("sessBirth", dto.getDob());
+          httpSession.setAttribute("sessUser", dto.getUser_div());
       }
       
       // 있으면 로그인 세션 등록

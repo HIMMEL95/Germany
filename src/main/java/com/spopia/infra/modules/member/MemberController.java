@@ -68,9 +68,19 @@ public class MemberController {
 	@RequestMapping(value = "memberUView")
 	public String memberUView(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 
-		Member item = service.selectOne(vo);
+		Member naverItem = service.naverSelectOne(vo);
 		
-	   model.addAttribute("item", item);
+		System.out.println("item : " + naverItem.getId());
+		
+		if (naverItem.getId().equals("네이버로그인")) {
+		    System.out.println("네이버 로그인 중");
+		    Member item = service.naverSelectOne(vo);
+		    model.addAttribute("item", item);
+		} else {
+		    System.out.println("일반 로그인 중");
+		    Member item = service.selectOne(vo);
+		    model.addAttribute("item", item);
+		}
 
 		return "infra/member/user/memberView";
 	}
@@ -91,40 +101,40 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "naverLoginProc")
-      public String naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
-          System.out.println("naverLoginProc");
+	public String naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
+	    System.out.println("naverLoginProc");
           
+	    // id 값 있는지 체크 
+	    Member naverLogin = service.loginCheck(dto);
           
-          // id 값 있는지 체크 
-          Member naver = service.loginCheck(dto);
-          
-          if (naver == null) {
-              
-              System.out.println("여기는 : " + null);
-              
-              service.naverInst(dto);
-              
-              httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
-              httpSession.setAttribute("sessSeq", naver.getSeq());
-              httpSession.setAttribute("sessId", "네이버 로그인");
-              httpSession.setAttribute("sessName", naver.getName());
-              httpSession.setAttribute("sessEmail", naver.getEmail());
-          } else {
-              
-              System.out.println("여기는 :  not " + null);
-              
-              httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
-              httpSession.setAttribute("sessSeq", naver.getSeq());
-              httpSession.setAttribute("sessId", "네이버 로그인");
-              httpSession.setAttribute("sessName", naver.getName());
-              httpSession.setAttribute("sessEmail", naver.getEmail());
-          }
-          
-          // 있으면 로그인 세션 등록
-          
-          // 없으면 가입시키고 세션 등록
-          
-          return "redirect:/sportMain";
-      }
-    
+	    if (naverLogin == null) {
+	        System.out.println("여기는 : " + null);
+	        service.naverInst(dto);
+	        Member naver = service.loginCheck(dto);
+	        System.out.println("seq : " + naver.getSeq());
+  
+	        httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
+	        httpSession.setAttribute("sessSeq", naver.getSeq());
+	        httpSession.setAttribute("sessId", naver.getId());
+	        httpSession.setAttribute("sessName", naver.getName());
+	        httpSession.setAttribute("sessEmail", naver.getEmail());
+	        httpSession.setAttribute("sessUser", naver.getUser_div());
+	    } else {
+	        System.out.println("여기는 :  not " + null);
+  
+	        httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
+	        httpSession.setAttribute("sessSeq", naverLogin.getSeq());
+	        httpSession.setAttribute("sessId", naverLogin.getId());
+	        httpSession.setAttribute("sessName", naverLogin.getName());
+	        httpSession.setAttribute("sessEmail", naverLogin.getEmail());
+	        httpSession.setAttribute("sessUser", naverLogin.getUser_div());
+	    }
+	    return "redirect:/sportMain";
+	}
+	
+	@RequestMapping(value = "kakaoCallback")
+	public String kakaoCallback() throws Exception {
+	    return "infra/login";
+	}
+	
 }

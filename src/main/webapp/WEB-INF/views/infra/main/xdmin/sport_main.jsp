@@ -171,7 +171,7 @@
 					                                            </a>
 					                                        </li>
 					                                        <li class="pro_li">
-					                                            <button class="pro_a" id="signOutBtn">
+					                                            <button class="pro_a" id="signOutBtn" style="background: none;">
 					                                                <i class="fa-solid fa-power-off me-2"></i>
 					                                                Sign Out
 					                                            </button>
@@ -1287,7 +1287,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220928_119/Ki6MF_166435811045142VPt_PNG/1664358107257.png"
+													src="https://phinf.pstatic.net/tvcast/20220928_119/Ki6MF_166435811045142VPt_PNG/1664358107257.png"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>09:39</span>
@@ -1306,7 +1306,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220924_163/H8xjd_16639978287168I4PL_JPEG/1663997721323.jpg"
+													src="https://phinf.pstatic.net/tvcast/20220924_163/H8xjd_16639978287168I4PL_JPEG/1663997721323.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>04:23</span>
@@ -1325,7 +1325,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220929_291/6edhc_1664431690658ghUEd_JPEG/1664431477455.jpg"
+													src="https://phinf.pstatic.net/tvcast/20220929_291/6edhc_1664431690658ghUEd_JPEG/1664431477455.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>08:14</span>
@@ -1344,7 +1344,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220923_158/mIsJp_1663924565028papeq_JPEG/1663924270327.jpg"
+													src="https://phinf.pstatic.net/tvcast/20220923_158/mIsJp_1663924565028papeq_JPEG/1663924270327.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>00:59</span>
@@ -1363,7 +1363,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220929_244/aoqtp_16644363575375ntvi_JPEG/1664436305680.jpg"
+													src="https://phinf.pstatic.net/tvcast/20220929_244/aoqtp_16644363575375ntvi_JPEG/1664436305680.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>17:38</span>
@@ -1382,7 +1382,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220927_73/uXxhH_1664264800362EIlIG_JPEG/1664264744762.jpg"
+													src="https://phinf.pstatic.net/tvcast/20220927_73/uXxhH_1664264800362EIlIG_JPEG/1664264744762.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>12:47</span>
@@ -1401,7 +1401,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220928_95/DY9tQ_1664365912795pP6jU_PNG/1664365689628.png"
+													src="https://phinf.pstatic.net/tvcast/20220928_95/DY9tQ_1664365912795pP6jU_PNG/1664365689628.png"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>09:14</span>
@@ -1419,7 +1419,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220929_28/7I2ov_1664420304322Mc72t_JPEG/1664420222114.jpg"
+													src="https://phinf.pstatic.net/tvcast/20220929_28/7I2ov_1664420304322Mc72t_JPEG/1664420222114.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>10:50</span>
@@ -1438,7 +1438,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220928_296/XL1mN_1664360249473iChWO_JPEG/1664359953080.jpg"
+													src="https://phinf.pstatic.net/tvcast/20220928_296/XL1mN_1664360249473iChWO_JPEG/1664359953080.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>12:13</span>
@@ -1457,7 +1457,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220923_233/vGg94_1663895823012Gbkz8_JPEG/1663895715037.jpg"
+													src="https://phinf.pstatic.net/tvcast/20220923_233/vGg94_1663895823012Gbkz8_JPEG/1663895715037.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>08:02</span>
@@ -1476,7 +1476,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220927_253/Tqd2R_1664268482913eSV5I_PNG/1664268341164.png"
+													src="https://phinf.pstatic.net/tvcast/20220927_253/Tqd2R_1664268482913eSV5I_PNG/1664268341164.png"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>10:47</span>
@@ -1495,7 +1495,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220924_172/vVVk8_1663989999119p7onO_PNG/1663989926426.png"
+													src="https://phinf.pstatic.net/tvcast/20220924_172/vVVk8_1663989999119p7onO_PNG/1663989926426.png"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>00:43</span>
@@ -1513,7 +1513,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220924_79/quvU3_1663956351943dPh9y_JPEG/1663956285620.jpg"
+													src="https://phinf.pstatic.net/tvcast/20220924_79/quvU3_1663956351943dPh9y_JPEG/1663956285620.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>04:55</span>
@@ -1532,7 +1532,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220924_47/KGRWN_1664008682620EQWQ3_JPEG/1664008527564.jpg"
+													src="https://phinf.pstatic.net/tvcast/20220924_47/KGRWN_1664008682620EQWQ3_JPEG/1664008527564.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>00:59</span>
@@ -1551,7 +1551,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220928_156/skSa1_16643700431197BMzs_JPEG/1664368941413.jpg"
+													src="https://phinf.pstatic.net/tvcast/20220928_156/skSa1_16643700431197BMzs_JPEG/1664368941413.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>17:34</span>
@@ -1570,7 +1570,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220928_145/FFduZ_1664338213590kbD1o_PNG/1664338081343.png"
+													src="https://phinf.pstatic.net/tvcast/20220928_145/FFduZ_1664338213590kbD1o_PNG/1664338081343.png"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>08:39</span>
@@ -1589,7 +1589,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220926_55/7cRbT_1664182830185WEKH8_JPEG/1664182695621.jpg"
+													src="https://phinf.pstatic.net/tvcast/20220926_55/7cRbT_1664182830185WEKH8_JPEG/1664182695621.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>10:06</span>
@@ -1608,7 +1608,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220928_189/DwXlD_16643732302381EDlQ_PNG/1664373224454.png"
+													src="https://phinf.pstatic.net/tvcast/20220928_189/DwXlD_16643732302381EDlQ_PNG/1664373224454.png"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>14:38</span>
@@ -1626,7 +1626,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220929_215/nXPJc_16644552564509q2lj_JPEG/1664455233291.jpg"
+													src="https://phinf.pstatic.net/tvcast/20220929_215/nXPJc_16644552564509q2lj_JPEG/1664455233291.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>00:55</span>
@@ -1645,7 +1645,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220923_138/Tzhgx_1663862357254vhnuG_JPEG/1663862112787.jpg"
+													src="https://phinf.pstatic.net/tvcast/20220923_138/Tzhgx_1663862357254vhnuG_JPEG/1663862112787.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>02:07</span>
@@ -1664,7 +1664,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220929_210/HeQ3i_1664441485624eiNdU_PNG/1664441351772.png"
+													src="https://phinf.pstatic.net/tvcast/20220929_210/HeQ3i_1664441485624eiNdU_PNG/1664441351772.png"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>10:34</span>
@@ -1683,7 +1683,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220928_11/41oCG_1664357203406Peun0_JPEG/1664357089876.jpg"
+													src="https://phinf.pstatic.net/tvcast/20220928_11/41oCG_1664357203406Peun0_JPEG/1664357089876.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>04:12</span>
@@ -1701,7 +1701,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220926_117/scwZ0_1664196394960SqHKA_JPEG/1664196357712.jpg"
+													src="https://phinf.pstatic.net/tvcast/20220926_117/scwZ0_1664196394960SqHKA_JPEG/1664196357712.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>00:53</span>
@@ -1719,7 +1719,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220921_239/lLKAX_1663763974752wmOoq_JPEG/1663763880528.jpg"
+													src="https://phinf.pstatic.net/tvcast/20220921_239/lLKAX_1663763974752wmOoq_JPEG/1663763880528.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>27:08</span>
@@ -1738,7 +1738,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220929_174/ir6dL_166437869958486aGt_JPEG/1664378546634.jpg"
+													src="https://phinf.pstatic.net/tvcast/20220929_174/ir6dL_166437869958486aGt_JPEG/1664378546634.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>03:42</span>
@@ -1756,7 +1756,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220926_102/qc3d0_1664170175207cRDWB_PNG/1664169460912.png"
+													src="https://phinf.pstatic.net/tvcast/20220926_102/qc3d0_1664170175207cRDWB_PNG/1664169460912.png"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>11:45</span>
@@ -1774,7 +1774,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://phinf.pstatic.net/tvcast/20220921_174/XuGMp_1663763758001JR8SJ_JPEG/1663763667210.jpg"
+													src="https://phinf.pstatic.net/tvcast/20220921_174/XuGMp_1663763758001JR8SJ_JPEG/1663763667210.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>25:59</span>
@@ -1793,7 +1793,7 @@
 										onclick="clickcr(this, 'crv.list', '', '', event);">
 											<div class="image_area">
 												<span class="image"><img
-													src="https://dthumb-phinf.pstatic.net/?type=nf246_146&amp;opts=12&amp;qlt=70&amp;sharpen=true&amp;src=https://sports-phinf.pstatic.net//20220928_152/1664325119483pacvm_JPEG/Mct1664323350980-1280-0.jpg"
+													src="https://sports-phinf.pstatic.net//20220928_152/1664325119483pacvm_JPEG/Mct1664323350980-1280-0.jpg"
 													onerror="imageOnError(this);" width="110" height="68"
 													alt=""></span> <span class="common_video_length"><span
 													class="blind">재생시간</span>10:03</span>
@@ -2376,9 +2376,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>01:48</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_129/1664482825721IBsuL_JPEG/%27%B5%E5%B5%F0%BE%EE_%C5%CD%C1%B3%B4%D9%27_%BD%BA%C6%AE%B6%F3%C0%CC%C5%A9_%C6%C7%C1%A4%BF%A1_%BB%D4%B3%AD_%C7%AA%C0%CC%B1%D7_7AM.jpg&amp;type=nf194_112&amp;service=sports"
+													src="https://sports-phinf.pstatic.net/20220930_129/1664482825721IBsuL_JPEG/%27%B5%E5%B5%F0%BE%EE_%C5%CD%C1%B3%B4%D9%27_%BD%BA%C6%AE%B6%F3%C0%CC%C5%A9_%C6%C7%C1%A4%BF%A1_%BB%D4%B3%AD_%C7%AA%C0%CC%B1%D7_7AM.jpg&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_129/1664482825721IBsuL_JPEG/%27%B5%E5%B5%F0%BE%EE_%C5%CD%C1%B3%B4%D9%27_%BD%BA%C6%AE%B6%F3%C0%CC%C5%A9_%C6%C7%C1%A4%BF%A1_%BB%D4%B3%AD_%C7%AA%C0%CC%B1%D7_7AM.jpg&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://sports-phinf.pstatic.net/20220930_129/1664482825721IBsuL_JPEG/%27%B5%E5%B5%F0%BE%EE_%C5%CD%C1%B3%B4%D9%27_%BD%BA%C6%AE%B6%F3%C0%CC%C5%A9_%C6%C7%C1%A4%BF%A1_%BB%D4%B3%AD_%C7%AA%C0%CC%B1%D7_7AM.jpg&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -2397,9 +2397,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>02:27</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220929_39/1664434938965vHDva_JPEG/%27%C1%D6%C0%C7_%BF%E4%B8%C1%27_%C0%DA%B2%D9_%BA%B8%B0%ED_%BD%CD%C0%BA_KBO_%C2%A9_%B8%F0%C0%BD_%C5%A9%BA%B8.GIF.jpg&amp;type=nf194_112&amp;service=sports"
+													src="https://sports-phinf.pstatic.net/20220929_39/1664434938965vHDva_JPEG/%27%C1%D6%C0%C7_%BF%E4%B8%C1%27_%C0%DA%B2%D9_%BA%B8%B0%ED_%BD%CD%C0%BA_KBO_%C2%A9_%B8%F0%C0%BD_%C5%A9%BA%B8.GIF.jpg&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220929_39/1664434938965vHDva_JPEG/%27%C1%D6%C0%C7_%BF%E4%B8%C1%27_%C0%DA%B2%D9_%BA%B8%B0%ED_%BD%CD%C0%BA_KBO_%C2%A9_%B8%F0%C0%BD_%C5%A9%BA%B8.GIF.jpg&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://sports-phinf.pstatic.net/20220929_39/1664434938965vHDva_JPEG/%27%C1%D6%C0%C7_%BF%E4%B8%C1%27_%C0%DA%B2%D9_%BA%B8%B0%ED_%BD%CD%C0%BA_KBO_%C2%A9_%B8%F0%C0%BD_%C5%A9%BA%B8.GIF.jpg&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -2418,9 +2418,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>03:24</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_150/1664512577577JMg0E_JPEG/%C4%C9%C0%CE-%B3%AA%BF%EC.jpg&amp;type=nf194_112&amp;service=sports"
+													src="https://sports-phinf.pstatic.net/20220930_150/1664512577577JMg0E_JPEG/%C4%C9%C0%CE-%B3%AA%BF%EC.jpg&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_150/1664512577577JMg0E_JPEG/%C4%C9%C0%CE-%B3%AA%BF%EC.jpg&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://sports-phinf.pstatic.net/20220930_150/1664512577577JMg0E_JPEG/%C4%C9%C0%CE-%B3%AA%BF%EC.jpg&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -2439,9 +2439,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>03:44</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_210/1664531712056OKvRN_JPEG/3_%B7%D4%B5%A5_vs_%C7%D1%C8%AD1%C8%B8%C3%CA_%C0%CC%B4%EB%C8%A3%2C_%B8%B6%C1%F6%B8%B7_%B4%EB%C0%FC_%BF%F8%C1%A4%BF%A1%BC%AD_%B6%A7%B7%C1%B3%BD_%BC%B1%C1%A6_%C5%F5%B7%B1%C6%F7.jpg&amp;type=nf194_112&amp;service=sports"
+													src="https://sports-phinf.pstatic.net/20220930_210/1664531712056OKvRN_JPEG/3_%B7%D4%B5%A5_vs_%C7%D1%C8%AD1%C8%B8%C3%CA_%C0%CC%B4%EB%C8%A3%2C_%B8%B6%C1%F6%B8%B7_%B4%EB%C0%FC_%BF%F8%C1%A4%BF%A1%BC%AD_%B6%A7%B7%C1%B3%BD_%BC%B1%C1%A6_%C5%F5%B7%B1%C6%F7.jpg&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_210/1664531712056OKvRN_JPEG/3_%B7%D4%B5%A5_vs_%C7%D1%C8%AD1%C8%B8%C3%CA_%C0%CC%B4%EB%C8%A3%2C_%B8%B6%C1%F6%B8%B7_%B4%EB%C0%FC_%BF%F8%C1%A4%BF%A1%BC%AD_%B6%A7%B7%C1%B3%BD_%BC%B1%C1%A6_%C5%F5%B7%B1%C6%F7.jpg&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://sports-phinf.pstatic.net/20220930_210/1664531712056OKvRN_JPEG/3_%B7%D4%B5%A5_vs_%C7%D1%C8%AD1%C8%B8%C3%CA_%C0%CC%B4%EB%C8%A3%2C_%B8%B6%C1%F6%B8%B7_%B4%EB%C0%FC_%BF%F8%C1%A4%BF%A1%BC%AD_%B6%A7%B7%C1%B3%BD_%BC%B1%C1%A6_%C5%F5%B7%B1%C6%F7.jpg&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -2460,9 +2460,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>01:45</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_218/1664530832131QEqFH_JPEG/2_%B7%D4%B5%A5_vs_%C7%D1%C8%AD1%C8%B8%C3%CA_%BC%DB%C1%F8%BF%EC-%C0%E5%C1%BE%C8%C6-%B1%E8%C5%C2%B1%D5%2C_%C0%CC%B1%DB%BD%BA_%B7%B9%C0%FC%B5%E5%B5%E9%C0%C7_%C7%D5%B5%BF_%BD%C3%B1%B8.jpg&amp;type=nf194_112&amp;service=sports"
+													src="https://sports-phinf.pstatic.net/20220930_218/1664530832131QEqFH_JPEG/2_%B7%D4%B5%A5_vs_%C7%D1%C8%AD1%C8%B8%C3%CA_%BC%DB%C1%F8%BF%EC-%C0%E5%C1%BE%C8%C6-%B1%E8%C5%C2%B1%D5%2C_%C0%CC%B1%DB%BD%BA_%B7%B9%C0%FC%B5%E5%B5%E9%C0%C7_%C7%D5%B5%BF_%BD%C3%B1%B8.jpg&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_218/1664530832131QEqFH_JPEG/2_%B7%D4%B5%A5_vs_%C7%D1%C8%AD1%C8%B8%C3%CA_%BC%DB%C1%F8%BF%EC-%C0%E5%C1%BE%C8%C6-%B1%E8%C5%C2%B1%D5%2C_%C0%CC%B1%DB%BD%BA_%B7%B9%C0%FC%B5%E5%B5%E9%C0%C7_%C7%D5%B5%BF_%BD%C3%B1%B8.jpg&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://sports-phinf.pstatic.net/20220930_218/1664530832131QEqFH_JPEG/2_%B7%D4%B5%A5_vs_%C7%D1%C8%AD1%C8%B8%C3%CA_%BC%DB%C1%F8%BF%EC-%C0%E5%C1%BE%C8%C6-%B1%E8%C5%C2%B1%D5%2C_%C0%CC%B1%DB%BD%BA_%B7%B9%C0%FC%B5%E5%B5%E9%C0%C7_%C7%D5%B5%BF_%BD%C3%B1%B8.jpg&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -2481,9 +2481,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>01:41</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_228/1664516660987JXOnb_JPEG/%B3%D7%C0%CC%B9%F6%B3%AA%BF%EC_%BD%E6%B3%D7%C0%CF.jpg&amp;type=nf194_112&amp;service=sports"
+													src="https://sports-phinf.pstatic.net/20220930_228/1664516660987JXOnb_JPEG/%B3%D7%C0%CC%B9%F6%B3%AA%BF%EC_%BD%E6%B3%D7%C0%CF.jpg&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_228/1664516660987JXOnb_JPEG/%B3%D7%C0%CC%B9%F6%B3%AA%BF%EC_%BD%E6%B3%D7%C0%CF.jpg&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://sports-phinf.pstatic.net/20220930_228/1664516660987JXOnb_JPEG/%B3%D7%C0%CC%B9%F6%B3%AA%BF%EC_%BD%E6%B3%D7%C0%CF.jpg&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -2503,9 +2503,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>05:01</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_88/1664472944817F6fyR_JPEG/2.jpg&amp;type=nf194_112&amp;service=sports"
+													src="https://sports-phinf.pstatic.net/20220930_88/1664472944817F6fyR_JPEG/2.jpg&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_88/1664472944817F6fyR_JPEG/2.jpg&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://sports-phinf.pstatic.net/20220930_88/1664472944817F6fyR_JPEG/2.jpg&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -2524,9 +2524,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>31:25</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://phinf.pstatic.net/tvcast/20220930_15/ImoUq_1664516279995ikRIM_JPEG/zSRQTcbxEC2R.jpg&amp;type=nf194_112&amp;service=sports"
+													src="https://phinf.pstatic.net/tvcast/20220930_15/ImoUq_1664516279995ikRIM_JPEG/zSRQTcbxEC2R.jpg&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://phinf.pstatic.net/tvcast/20220930_15/ImoUq_1664516279995ikRIM_JPEG/zSRQTcbxEC2R.jpg&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://phinf.pstatic.net/tvcast/20220930_15/ImoUq_1664516279995ikRIM_JPEG/zSRQTcbxEC2R.jpg&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -2545,9 +2545,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>10:47</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220929_283/1664457094222A37mQ_JPEG/%C0%FC%C3%BCHL_-_%27%B0%ED%C1%BE%BF%ED_%B0%E1%BD%C2%C5%B8%2B%BA%D2%C6%E6_%BF%AA%C5%F5%27_KIA%2C_%B7%D4%B5%A5%BF%A1_5-4_%BD%C2%B8%AE.jpg&amp;type=nf194_112&amp;service=sports"
+													src="https://sports-phinf.pstatic.net/20220929_283/1664457094222A37mQ_JPEG/%C0%FC%C3%BCHL_-_%27%B0%ED%C1%BE%BF%ED_%B0%E1%BD%C2%C5%B8%2B%BA%D2%C6%E6_%BF%AA%C5%F5%27_KIA%2C_%B7%D4%B5%A5%BF%A1_5-4_%BD%C2%B8%AE.jpg&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220929_283/1664457094222A37mQ_JPEG/%C0%FC%C3%BCHL_-_%27%B0%ED%C1%BE%BF%ED_%B0%E1%BD%C2%C5%B8%2B%BA%D2%C6%E6_%BF%AA%C5%F5%27_KIA%2C_%B7%D4%B5%A5%BF%A1_5-4_%BD%C2%B8%AE.jpg&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://sports-phinf.pstatic.net/20220929_283/1664457094222A37mQ_JPEG/%C0%FC%C3%BCHL_-_%27%B0%ED%C1%BE%BF%ED_%B0%E1%BD%C2%C5%B8%2B%BA%D2%C6%E6_%BF%AA%C5%F5%27_KIA%2C_%B7%D4%B5%A5%BF%A1_5-4_%BD%C2%B8%AE.jpg&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -2566,9 +2566,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>02:53</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://phinf.pstatic.net/tvcast/20220930_249/Lb1kc_1664512766999UHcjm_PNG/1664512732203.png&amp;type=nf194_112&amp;service=sports"
+													src="https://phinf.pstatic.net/tvcast/20220930_249/Lb1kc_1664512766999UHcjm_PNG/1664512732203.png&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://phinf.pstatic.net/tvcast/20220930_249/Lb1kc_1664512766999UHcjm_PNG/1664512732203.png&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://phinf.pstatic.net/tvcast/20220930_249/Lb1kc_1664512766999UHcjm_PNG/1664512732203.png&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -2587,9 +2587,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>13:29</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220929_162/16644612987158BQE3_JPEG/%C0%FC%C3%BCHL_-_%27%C0%CC%C1%A4%C8%C4%2B%BC%DB%BC%BA%B9%AE_11%C5%B8%C1%A1_%C7%D5%C0%DB%27_%C5%B0%BF%F2%2C_SSG%BF%A1_14-9_%BF%AA%C0%FC%BD%C2.jpg&amp;type=nf194_112&amp;service=sports"
+													src="https://sports-phinf.pstatic.net/20220929_162/16644612987158BQE3_JPEG/%C0%FC%C3%BCHL_-_%27%C0%CC%C1%A4%C8%C4%2B%BC%DB%BC%BA%B9%AE_11%C5%B8%C1%A1_%C7%D5%C0%DB%27_%C5%B0%BF%F2%2C_SSG%BF%A1_14-9_%BF%AA%C0%FC%BD%C2.jpg&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220929_162/16644612987158BQE3_JPEG/%C0%FC%C3%BCHL_-_%27%C0%CC%C1%A4%C8%C4%2B%BC%DB%BC%BA%B9%AE_11%C5%B8%C1%A1_%C7%D5%C0%DB%27_%C5%B0%BF%F2%2C_SSG%BF%A1_14-9_%BF%AA%C0%FC%BD%C2.jpg&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://sports-phinf.pstatic.net/20220929_162/16644612987158BQE3_JPEG/%C0%FC%C3%BCHL_-_%27%C0%CC%C1%A4%C8%C4%2B%BC%DB%BC%BA%B9%AE_11%C5%B8%C1%A1_%C7%D5%C0%DB%27_%C5%B0%BF%F2%2C_SSG%BF%A1_14-9_%BF%AA%C0%FC%BD%C2.jpg&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -2608,9 +2608,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>01:58</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_247/16645340760497Ei4U_JPEG/7_%B5%CE%BB%EA_vs_%BB%EF%BC%BA2%C8%B8%B8%BB_%C7%C7%B7%BC%B6%F3%2C_%B6%F3%C0%CC%BF%C2%C1%EE_%C6%C4%C5%A9%BF%A1_%BC%F6%B3%F5%C0%BA_%BC%D6%B7%CE_%C8%A8%B7%B1.jpg&amp;type=nf194_112&amp;service=sports"
+													src="https://sports-phinf.pstatic.net/20220930_247/16645340760497Ei4U_JPEG/7_%B5%CE%BB%EA_vs_%BB%EF%BC%BA2%C8%B8%B8%BB_%C7%C7%B7%BC%B6%F3%2C_%B6%F3%C0%CC%BF%C2%C1%EE_%C6%C4%C5%A9%BF%A1_%BC%F6%B3%F5%C0%BA_%BC%D6%B7%CE_%C8%A8%B7%B1.jpg&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_247/16645340760497Ei4U_JPEG/7_%B5%CE%BB%EA_vs_%BB%EF%BC%BA2%C8%B8%B8%BB_%C7%C7%B7%BC%B6%F3%2C_%B6%F3%C0%CC%BF%C2%C1%EE_%C6%C4%C5%A9%BF%A1_%BC%F6%B3%F5%C0%BA_%BC%D6%B7%CE_%C8%A8%B7%B1.jpg&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://sports-phinf.pstatic.net/20220930_247/16645340760497Ei4U_JPEG/7_%B5%CE%BB%EA_vs_%BB%EF%BC%BA2%C8%B8%B8%BB_%C7%C7%B7%BC%B6%F3%2C_%B6%F3%C0%CC%BF%C2%C1%EE_%C6%C4%C5%A9%BF%A1_%BC%F6%B3%F5%C0%BA_%BC%D6%B7%CE_%C8%A8%B7%B1.jpg&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -2629,9 +2629,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>01:21</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_158/1664537806089P9NB9_JPEG/11_NC_vs_LG6%C8%B8%B8%BB_%C8%AB%C3%A2%B1%E2%2C_%BF%AA%C0%FC%C0%BB_%B8%B8%B5%E9%BE%EE%B3%BB%B4%C2_%C7%E0%BF%EE%C0%C7_%B3%BB%BE%DF_%BE%C8%C5%B8.jpg&amp;type=nf194_112&amp;service=sports"
+													src="https://sports-phinf.pstatic.net/20220930_158/1664537806089P9NB9_JPEG/11_NC_vs_LG6%C8%B8%B8%BB_%C8%AB%C3%A2%B1%E2%2C_%BF%AA%C0%FC%C0%BB_%B8%B8%B5%E9%BE%EE%B3%BB%B4%C2_%C7%E0%BF%EE%C0%C7_%B3%BB%BE%DF_%BE%C8%C5%B8.jpg&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_158/1664537806089P9NB9_JPEG/11_NC_vs_LG6%C8%B8%B8%BB_%C8%AB%C3%A2%B1%E2%2C_%BF%AA%C0%FC%C0%BB_%B8%B8%B5%E9%BE%EE%B3%BB%B4%C2_%C7%E0%BF%EE%C0%C7_%B3%BB%BE%DF_%BE%C8%C5%B8.jpg&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://sports-phinf.pstatic.net/20220930_158/1664537806089P9NB9_JPEG/11_NC_vs_LG6%C8%B8%B8%BB_%C8%AB%C3%A2%B1%E2%2C_%BF%AA%C0%FC%C0%BB_%B8%B8%B5%E9%BE%EE%B3%BB%B4%C2_%C7%E0%BF%EE%C0%C7_%B3%BB%BE%DF_%BE%C8%C5%B8.jpg&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -2650,9 +2650,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>02:38</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_89/1664478154034vO3Iz_JPEG/%27%BE%E7%BA%B8_%B8%F8%C7%D2_%C5%B8%B0%DD%BF%D5_2%BF%AC%C6%D0%27_%C0%CC%C1%A4%C8%C4%C0%C7_%BA%D2%B9%E6%B8%C1%C0%CC%BC%EE_7AM.jpg&amp;type=nf194_112&amp;service=sports"
+													src="https://sports-phinf.pstatic.net/20220930_89/1664478154034vO3Iz_JPEG/%27%BE%E7%BA%B8_%B8%F8%C7%D2_%C5%B8%B0%DD%BF%D5_2%BF%AC%C6%D0%27_%C0%CC%C1%A4%C8%C4%C0%C7_%BA%D2%B9%E6%B8%C1%C0%CC%BC%EE_7AM.jpg&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_89/1664478154034vO3Iz_JPEG/%27%BE%E7%BA%B8_%B8%F8%C7%D2_%C5%B8%B0%DD%BF%D5_2%BF%AC%C6%D0%27_%C0%CC%C1%A4%C8%C4%C0%C7_%BA%D2%B9%E6%B8%C1%C0%CC%BC%EE_7AM.jpg&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://sports-phinf.pstatic.net/20220930_89/1664478154034vO3Iz_JPEG/%27%BE%E7%BA%B8_%B8%F8%C7%D2_%C5%B8%B0%DD%BF%D5_2%BF%AC%C6%D0%27_%C0%CC%C1%A4%C8%C4%C0%C7_%BA%D2%B9%E6%B8%C1%C0%CC%BC%EE_7AM.jpg&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -2671,9 +2671,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>03:20</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220929_265/1664447971763IePGn_JPEG/7_%C5%B0%BF%F2_vs_SSG3%C8%B8%C3%CA_%C0%CC%C1%A4%C8%C4%2C_%B1%E8%B1%A4%C7%F6_%BB%F3%B4%EB%B7%CE_%B8%B8%B5%E9%BE%EE%B3%BD_%B5%BF%C1%A1_%BD%BA%B8%AE%B7%B1%C6%F7.jpg&amp;type=nf194_112&amp;service=sports"
+													src="https://sports-phinf.pstatic.net/20220929_265/1664447971763IePGn_JPEG/7_%C5%B0%BF%F2_vs_SSG3%C8%B8%C3%CA_%C0%CC%C1%A4%C8%C4%2C_%B1%E8%B1%A4%C7%F6_%BB%F3%B4%EB%B7%CE_%B8%B8%B5%E9%BE%EE%B3%BD_%B5%BF%C1%A1_%BD%BA%B8%AE%B7%B1%C6%F7.jpg&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220929_265/1664447971763IePGn_JPEG/7_%C5%B0%BF%F2_vs_SSG3%C8%B8%C3%CA_%C0%CC%C1%A4%C8%C4%2C_%B1%E8%B1%A4%C7%F6_%BB%F3%B4%EB%B7%CE_%B8%B8%B5%E9%BE%EE%B3%BD_%B5%BF%C1%A1_%BD%BA%B8%AE%B7%B1%C6%F7.jpg&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://sports-phinf.pstatic.net/20220929_265/1664447971763IePGn_JPEG/7_%C5%B0%BF%F2_vs_SSG3%C8%B8%C3%CA_%C0%CC%C1%A4%C8%C4%2C_%B1%E8%B1%A4%C7%F6_%BB%F3%B4%EB%B7%CE_%B8%B8%B5%E9%BE%EE%B3%BD_%B5%BF%C1%A1_%BD%BA%B8%AE%B7%B1%C6%F7.jpg&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -2692,9 +2692,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>00:44</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://phinf.pstatic.net/tvcast/20220930_108/tdyjx_1664517689170RUhpN_PNG/1664517687241.png&amp;type=nf194_112&amp;service=sports"
+													src="https://phinf.pstatic.net/tvcast/20220930_108/tdyjx_1664517689170RUhpN_PNG/1664517687241.png&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://phinf.pstatic.net/tvcast/20220930_108/tdyjx_1664517689170RUhpN_PNG/1664517687241.png&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://phinf.pstatic.net/tvcast/20220930_108/tdyjx_1664517689170RUhpN_PNG/1664517687241.png&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -2713,9 +2713,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>05:07</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://phinf.pstatic.net/tvcast/20220930_237/RkM0U_1664466350567IYGLW_JPEG/1664466145356.jpg&amp;type=nf194_112&amp;service=sports"
+													src="https://phinf.pstatic.net/tvcast/20220930_237/RkM0U_1664466350567IYGLW_JPEG/1664466145356.jpg&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://phinf.pstatic.net/tvcast/20220930_237/RkM0U_1664466350567IYGLW_JPEG/1664466145356.jpg&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://phinf.pstatic.net/tvcast/20220930_237/RkM0U_1664466350567IYGLW_JPEG/1664466145356.jpg&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -2734,9 +2734,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>02:02</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_102/16645362865508NS5l_JPEG/8_NC_vs_LG5%C8%B8%B8%BB_%BE%E0%B0%A3_%BD%C5%B0%E6%C0%CC_%B3%AF%C4%AB%B7%CE%BF%F6%C1%F8_%C8%AB%C3%A2%B1%E2.jpg&amp;type=nf194_112&amp;service=sports"
+													src="https://sports-phinf.pstatic.net/20220930_102/16645362865508NS5l_JPEG/8_NC_vs_LG5%C8%B8%B8%BB_%BE%E0%B0%A3_%BD%C5%B0%E6%C0%CC_%B3%AF%C4%AB%B7%CE%BF%F6%C1%F8_%C8%AB%C3%A2%B1%E2.jpg&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_102/16645362865508NS5l_JPEG/8_NC_vs_LG5%C8%B8%B8%BB_%BE%E0%B0%A3_%BD%C5%B0%E6%C0%CC_%B3%AF%C4%AB%B7%CE%BF%F6%C1%F8_%C8%AB%C3%A2%B1%E2.jpg&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://sports-phinf.pstatic.net/20220930_102/16645362865508NS5l_JPEG/8_NC_vs_LG5%C8%B8%B8%BB_%BE%E0%B0%A3_%BD%C5%B0%E6%C0%CC_%B3%AF%C4%AB%B7%CE%BF%F6%C1%F8_%C8%AB%C3%A2%B1%E2.jpg&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -2754,9 +2754,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>05:01</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_278/16645218806023CbxT_JPEG/bandicam_2022-09-30_16-11-08-296.jpg&amp;type=nf194_112&amp;service=sports"
+													src="https://sports-phinf.pstatic.net/20220930_278/16645218806023CbxT_JPEG/bandicam_2022-09-30_16-11-08-296.jpg&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_278/16645218806023CbxT_JPEG/bandicam_2022-09-30_16-11-08-296.jpg&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://sports-phinf.pstatic.net/20220930_278/16645218806023CbxT_JPEG/bandicam_2022-09-30_16-11-08-296.jpg&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -2775,9 +2775,9 @@
 											<span class="common_video_length"><span class="blind">재생시간</span>01:14</span>
 											<div class="image">
 												<img
-													src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_124/1664534600062fIoRR_JPEG/7_NC_vs_LG3%C8%B8%B8%BB_%BD%BA%C6%AE%B6%F3%C0%CC%C5%A9_%C6%C7%C1%A4%BF%A1_%BA%D2%B8%B8%C0%BB_%C7%A5%C3%E2%C7%CF%B4%C2_%C8%AB%C3%A2%B1%E2.jpg&amp;type=nf194_112&amp;service=sports"
+													src="https://sports-phinf.pstatic.net/20220930_124/1664534600062fIoRR_JPEG/7_NC_vs_LG3%C8%B8%B8%BB_%BD%BA%C6%AE%B6%F3%C0%CC%C5%A9_%C6%C7%C1%A4%BF%A1_%BA%D2%B8%B8%C0%BB_%C7%A5%C3%E2%C7%CF%B4%C2_%C8%AB%C3%A2%B1%E2.jpg&amp;type=nf194_112&amp;service=sports"
 													width="194" height="112" alt="" class="imageLazyLoad"
-													lazy-src="https://dthumb-phinf.pstatic.net?src=https://sports-phinf.pstatic.net/20220930_124/1664534600062fIoRR_JPEG/7_NC_vs_LG3%C8%B8%B8%BB_%BD%BA%C6%AE%B6%F3%C0%CC%C5%A9_%C6%C7%C1%A4%BF%A1_%BA%D2%B8%B8%C0%BB_%C7%A5%C3%E2%C7%CF%B4%C2_%C8%AB%C3%A2%B1%E2.jpg&amp;type=nf194_112&amp;service=sports"
+													lazy-src="https://sports-phinf.pstatic.net/20220930_124/1664534600062fIoRR_JPEG/7_NC_vs_LG3%C8%B8%B8%BB_%BD%BA%C6%AE%B6%F3%C0%CC%C5%A9_%C6%C7%C1%A4%BF%A1_%BA%D2%B8%B8%C0%BB_%C7%A5%C3%E2%C7%CF%B4%C2_%C8%AB%C3%A2%B1%E2.jpg&amp;type=nf194_112&amp;service=sports"
 													onerror="imageOnError(this);">
 											</div>
 										</div>
@@ -3848,7 +3848,6 @@
 	</script>
 	<script type="text/javascript">
 	
-		alert($("input[name=seq]").val())
 		var form = $("#myForm");
 		var goUrlUView = "/member/memberUView";
 		

@@ -23,7 +23,7 @@
   naver_id_login.get_naver_userprofile("naverSignInCallback()");
   // ë¤ì´ë² ì¬ì©ì íë¡í ì¡°í ì´í íë¡í ì ë³´ë¥¼ ì²ë¦¬í  callback function
   function naverSignInCallback() {
-	  $("input[name=id]").val(naver_id_login.getProfileData('id'));
+	  $("input[name=id]").val("네이버로그인");
 	  $("input[name=name]").val(naver_id_login.getProfileData('name'));
 	  $("input[name=phone]").val(naver_id_login.getProfileData('mobile'));
 	  $("input[name=email]").val(naver_id_login.getProfileData('email'));

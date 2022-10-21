@@ -291,7 +291,7 @@
                                 </button>
                             </div>
                                <c:choose>
-                               	<c:when test="${empty sessName}">
+                               	<c:when test="${empty sessSeq}">
 		                            <div class="u_cbox_write_wrap">
 										<div class="u_cbox_write_box u_cbox_type_logged_out">
 											<form>
@@ -382,7 +382,7 @@
 				                   		<c:otherwise>
 				                       		<c:forEach items="${comment}" var="comment" varStatus="status">
 					                   			<c:choose>
-					                   				<c:when test="${sessId eq comment.id }">
+					                   				<c:when test="${sessSeq eq comment.createdBy }">
 					                   					<input type="hidden" name="seq" value="<c:out value="${comment.seq}"/>"/>
 					                   					<li class="u_cbox_comment cbox_module__comment_765728306778603670 _user_id_no_3MkTI">
 					                                        <div class="u_cbox_comment_box">

@@ -37,6 +37,10 @@ public class MemberDao {
 	public Member selectOne(MemberVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOne", vo);
 	}
+
+	public Member naverSelectOne(MemberVo vo) {
+	    return sqlSession.selectOne(namespace + ".naverSelectOne", vo);
+	}
 	
 	public int userUpdt(Member dto) {
 		return sqlSession.update(namespace + ".userUpdate", dto);

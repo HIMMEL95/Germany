@@ -15,7 +15,7 @@ public class Article extends Base{
 	private Integer aLeague;
 	private String reporter;
 	private String aCreatedAt;
-	private Integer createdBy;
+	private Integer aCreatedBy;
 	private String aModifiedAt;
 	private Integer modifiedBy;
 	private Integer aDelNy;
@@ -24,8 +24,19 @@ public class Article extends Base{
 	// comment
 	private String id;
 	private String comment;
+	private String createdAt;
+	private String createdBy;
 	
-	public String getId() {
+	public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+    public String getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+    public String getId() {
 		return id;
 	}
 	public void setId(String id) {
@@ -156,10 +167,10 @@ public class Article extends Base{
 		this.aCreatedAt = aCreatedAt;
 	}
 	public Integer getCreatedBy() {
-		return createdBy;
+		return aCreatedBy;
 	}
-	public void setCreatedBy(Integer createdBy) {
-		this.createdBy = createdBy;
+	public void setCreatedBy(Integer aCreatedBy) {
+		this.aCreatedBy = aCreatedBy;
 	}
 	public String getaModifiedAt() {
 		return aModifiedAt;

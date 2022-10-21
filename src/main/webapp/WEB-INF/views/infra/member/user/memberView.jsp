@@ -133,9 +133,7 @@
         <div style="height: 100px;"></div>
         <div class="container">
             <form method="post" id="myForm" name="myForm">
-            	<!-- *Vo.jsp s -->
-				<%@include file="memberVo.jsp"%>		<!-- #-> -->
-				<!-- *Vo.jsp e -->
+				<input type="hidden" name="seq" value="<c:out value="${sessSeq}"/>"/>
 				<c:set var="listCodeTeam" value="${CodeServiceImpl.selectOneCachedCode(30) }" />
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->

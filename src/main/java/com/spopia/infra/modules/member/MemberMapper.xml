@@ -143,6 +143,28 @@
 			and tu.defaultNY = 0
 	</select>
 	
+	<select id="naverSelectOne" resultMap="resultMapObj">
+		select 
+			u.seq
+		    ,u.name
+		    ,u.id
+		    ,u.email
+		    ,u.gender
+		    ,u.dob
+		    ,u.radio_operator
+		    ,u.phone
+		    ,u.zip
+		    ,u.address
+		    ,u.address_detail
+		    ,u.job
+		    ,date_format(u.createdAt, '%Y-%m-%d %H:%i:%s') as createdAt
+		    ,date_format(u.modifiedAt, '%Y-%m-%d %H:%i:%s') as modifiedAt
+		    ,u.user_div
+		    ,u.uDelNy
+		from user u
+		where 1=1
+			and u.seq = #{seq}
+	</select>
 	
 	<!-- user insert -->
 	<insert id="userInsert">
@@ -253,7 +275,6 @@
 		from user u
 		where 1=1 
 			and id = #{id} 
-			and pwd = #{pwd}
 	</select>
 
 	<select id="xdminLoginCheck" resultMap="resultMapObj">
@@ -333,6 +354,7 @@
 			,createdAt
 			,user_div
 			,sns_type
+			,uDelNy
 		)
 		VALUES (
 			#{id}
@@ -343,6 +365,7 @@
 			,now()
 			,25
 			,1
+			,0
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()

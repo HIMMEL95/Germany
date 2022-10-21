@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spopia.infra.common.constants.Constants;
+
 @Controller
 @RequestMapping(value = "/member/")
 public class MemberController {
@@ -64,16 +66,12 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "memberUView")
-	public String memberUView(@ModelAttribute("vo") MemberVo vo, Model model,  HttpSession httpSession) throws Exception {
+	public String memberUView(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 
-		String seq = (String) httpSession.getAttribute("sessSeq");
-		vo.setSeq(seq);
-		
 		Member item = service.selectOne(vo);
-		model.addAttribute("item", item);
 		
-		List<Member> list = service.selectList(vo);
-		model.addAttribute("list", list);
+	   model.addAttribute("item", item);
+
 		return "infra/member/user/memberView";
 	}
  
@@ -93,45 +91,40 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "naverLoginProc")
-  public String naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
-      System.out.println("naverLoginProc");
-      
-      
-      // id 값 있는지 체크 
-      Member naver = service.naverSelectOne(dto);
-      
-      if (naver == null) {
-          service.naverInst(dto);
+      public String naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
+          System.out.println("naverLoginProc");
           
-          httpSession.setAttribute("sessSeq", dto.getSeq());
-          httpSession.setAttribute("sessNaverId", dto.getId());
-          httpSession.setAttribute("sessName", dto.getName());
-          httpSession.setAttribute("sessEmail", dto.getEmail());
-          httpSession.setAttribute("sessGender", dto.getGender());
-          httpSession.setAttribute("sessBirth", dto.getDob());
-          httpSession.setAttribute("sessUser", dto.getUser_div());
-      } else {
-          System.out.println("id : " + dto.getId());
-          System.out.println("id : " + dto.getName());
-          System.out.println("id : " + dto.getEmail());
-          System.out.println("id : " + dto.getGender());
-          System.out.println("id : " + dto.getDob());
-          System.out.println("id : " + dto.getUser_div());
           
-          httpSession.setAttribute("sessSeq", dto.getSeq());
-          httpSession.setAttribute("sessNaverId", dto.getId());
-          httpSession.setAttribute("sessName", dto.getName());
-          httpSession.setAttribute("sessEmail", dto.getEmail());
-          httpSession.setAttribute("sessGender", dto.getGender());
-          httpSession.setAttribute("sessBirth", dto.getDob());
-          httpSession.setAttribute("sessUser", dto.getUser_div());
+          // id 값 있는지 체크 
+          Member naver = service.loginCheck(dto);
+          
+          if (naver == null) {
+              
+              System.out.println("여기는 : " + null);
+              
+              service.naverInst(dto);
+              
+              httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
+              httpSession.setAttribute("sessSeq", naver.getSeq());
+              httpSession.setAttribute("sessId", "네이버 로그인");
+              httpSession.setAttribute("sessName", naver.getName());
+              httpSession.setAttribute("sessEmail", naver.getEmail());
+          } else {
+              
+              System.out.println("여기는 :  not " + null);
+              
+              httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
+              httpSession.setAttribute("sessSeq", naver.getSeq());
+              httpSession.setAttribute("sessId", "네이버 로그인");
+              httpSession.setAttribute("sessName", naver.getName());
+              httpSession.setAttribute("sessEmail", naver.getEmail());
+          }
+          
+          // 있으면 로그인 세션 등록
+          
+          // 없으면 가입시키고 세션 등록
+          
+          return "redirect:/sportMain";
       }
-      
-      // 있으면 로그인 세션 등록
-      
-      // 없으면 가입시키고 세션 등록
-      
-      return "redirect:/sportMain";
-  }
     
 }

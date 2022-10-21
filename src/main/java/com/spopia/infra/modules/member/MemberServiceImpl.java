@@ -40,6 +40,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public Member naverSelectOne(MemberVo vo) throws Exception {
+	    return dao.naverSelectOne(vo);
+	}
+
+	@Override
 	public int userUpdt(Member dto) throws Exception {
 		return dao.userUpdt(dto);
 	}

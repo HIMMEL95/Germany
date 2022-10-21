@@ -10,7 +10,7 @@
     
     <sql id ="selectCommon">
 		FROM article a
-			inner join user u on u.seq = a.createdBy
+			inner join user u on u.seq = a.aCreatedBy
 		WHERE 1=1
 		<if test="shDelNy != null and !shDelNy.equals('')">AND aDelNy = #{shDelNy}</if>
 		<choose>
@@ -89,7 +89,7 @@
 			,au.path as path
 			,au.uuidName as uuidName
 		from article a
-			inner join user u on u.seq = a.createdBy
+			inner join user u on u.seq = a.aCreatedBy
 			inner join articleUploaded au on au.pseq = a.aSeq
 		where 1=1
 			and a.aSeq = #{aSeq}
@@ -121,8 +121,8 @@
 			,0
 			,now()
 			,now()
-			,#{createdBy}
-			,#{createdBy}
+			,#{aCreatedBy}
+			,#{aCreatedBy}
 		)
 		<selectKey resultType="String" keyProperty="aSeq" order="AFTER">
 			SELECT last_insert_id()
@@ -186,7 +186,7 @@
 	    		,au.path as path
 	    		,au.uuidName as uuidName
 	   		FROM article a
-				inner join user u on u.seq = a.createdBy
+				inner join user u on u.seq = a.aCreatedBy
 				inner join articleUploaded au on au.pseq = a.aSeq
 			WHERE 1=1
    			ORDER BY a.aSeq DESC
@@ -200,6 +200,8 @@
 			ac.seq
 			,ac.comment
 			,ac.modifiedAt
+			,ac.createdAt
+			,ac.createdBy
 			,u.id as id
 		from article_comment ac
 			inner join user u on u.seq = ac.createdBy

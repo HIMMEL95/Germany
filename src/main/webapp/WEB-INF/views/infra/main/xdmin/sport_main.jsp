@@ -1,6 +1,4 @@
-
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -115,10 +113,10 @@
 
 <body class="sports_home">
 	<form method="post" id="myForm" name="myForm">
-		<input type="hidden" name="thisPage" value='<c:out value="${vo.thisPage }" default="1"/>'> 
-		<input type="hidden" name="rowNumToShow" value='<c:out value="${vo.rowNumToShow }"/>'> 
-		<input type="hidden" name="gSeq" value='<c:out value="${vo.gSeq }"></c:out>'>
-		<input type="hidden" name="aSeq" value='<c:out value="${vo.aSeq }"></c:out>'>
+		<input type="hidden" name="thisPage" value='<c:out value="${mVo.thisPage }" default="1"/>'> 
+		<input type="hidden" name="rowNumToShow" value='<c:out value="${mVo.rowNumToShow }"/>'> 
+		<input type="hidden" name="gSeq" value='<c:out value="${gVo.gSeq }"></c:out>'>
+		<input type="hidden" name="aSeq" value='<c:out value="${aVo.aSeq }"></c:out>'>
 		<input type="hidden" name="seq" value='<c:out value="${sessSeq }"></c:out>'>
 		<!-- 사이드 광고 -->
 		<div id="veta_skin_left" data-veta-preview="p_sports_dpl"></div>
@@ -135,7 +133,7 @@
 					<div class="navigation">
 	                    <ul class="nav_ul">
 	                    	<c:choose>
-	                    		<c:when test="${empty sessName }">
+	                    		<c:when test="${empty sessSeq }">
 	                    			<li class="nav_li">
 	                    				<div class="login_po">
 				                            <a class="login" href="/userLogin">
@@ -161,10 +159,10 @@
 				                                    <c:choose>
 														<c:when test="${sessUser eq 25}">
 															<li class="pro_li">
-					                                            <a class="pro_a" role="button" id="editBtn" href="/member/memberUView?seq=${sessSeq }" style="cursor: pointer;">
+					                                            <button class="pro_a" type="button" id="editBtn" style="cursor: pointer; background: none;" onclick="goView()">
 					                                                <i class="fa-solid fa-user me-2"></i>
 					                                                Edit Profile
-					                                            </a>
+					                                            </button>
 					                                        </li>
 					                                        <li class="pro_li">
 					                                            <a class="pro_a" href="#">
@@ -181,10 +179,10 @@
 														</c:when>
 														<c:otherwise>
 															<li class="pro_li">
-					                                            <a class="pro_a" role="button" id="editBtn" href="/member/memberUView?seq=${sessSeq }" style="cursor: pointer;">
+					                                            <button class="pro_a" type="button" id="editBtn" style="cursor: pointer; background: none" onclick="goView()">
 					                                                <i class="fa-solid fa-user me-2"></i>
 					                                                Edit Profile
-					                                            </a>
+					                                            </button>
 					                                        </li>
 					                                        <li class="pro_li">
 					                                            <a class="pro_a" href="/dashboard">
@@ -3847,20 +3845,16 @@
 			});
 		});
 		
+	</script>
+	<script type="text/javascript">
+	
+		alert($("input[name=seq]").val())
 		var form = $("#myForm");
 		var goUrlUView = "/member/memberUView";
-		var seq = $("input[name=seq]").val();
-		alert(seq);
 		
-		$("#editBtn").on("click", function() {
-			form.attr("action", goUrlUView).submit();
-		});
-		
-		goForm = function(keyValue) {
-	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+		goView = function() {
 			form.attr("action", goUrlUView).submit();
 		}
-		
 	</script>
 </body>
 </html>

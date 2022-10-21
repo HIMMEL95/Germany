@@ -11,8 +11,16 @@ public class ArticleVo extends BaseVo{
 	private String startDate;
 	private String endDate;	
 	private String aSeq;
+	private String seq;
 	
-	public String getShOption() {
+	
+	public String getSeq() {
+        return seq;
+    }
+    public void setSeq(String seq) {
+        this.seq = seq;
+    }
+    public String getShOption() {
 		return shOption;
 	}
 	public void setShOption(String shOption) {

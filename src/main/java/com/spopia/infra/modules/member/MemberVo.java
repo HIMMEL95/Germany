@@ -11,8 +11,6 @@ public class MemberVo extends BaseVo{
 	private String startDate;
 	private String endDate;	
 	private String seq;
-	private String aSeq;
-	private String gSeq;
 	
     public String getShOption() {
         return shOption;
@@ -55,17 +53,5 @@ public class MemberVo extends BaseVo{
     }
     public void setSeq(String seq) {
         this.seq = seq;
-    }
-    public String getaSeq() {
-        return aSeq;
-    }
-    public void setaSeq(String aSeq) {
-        this.aSeq = aSeq;
-    }
-    public String getgSeq() {
-        return gSeq;
-    }
-    public void setgSeq(String gSeq) {
-        this.gSeq = gSeq;
     }
 }

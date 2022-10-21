@@ -22,6 +22,7 @@ import com.spopia.infra.modules.game.GameServiceImpl;
 import com.spopia.infra.modules.game.GameVo;
 import com.spopia.infra.modules.member.Member;
 import com.spopia.infra.modules.member.MemberServiceImpl;
+import com.spopia.infra.modules.member.MemberVo;
 
 @Controller
 public class MainController {
@@ -41,7 +42,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "sportMain")
-	public String sportMain(Model model, @ModelAttribute("aVo") ArticleVo aVo, @ModelAttribute("gVo") GameVo gVo, Article aDto) throws Exception {
+	public String sportMain(Model model, @ModelAttribute("aVo") ArticleVo aVo, @ModelAttribute("gVo") GameVo gVo, @ModelAttribute("mVo") MemberVo mVo) throws Exception {
 		
 		List<Article> aList = aService.mainList(aVo);
 		model.addAttribute("aList", aList);

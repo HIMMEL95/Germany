@@ -134,7 +134,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "kakaoCallback")
 	public String kakaoCallback() throws Exception {
-	    return "infra/login";
+	    return "infra/login/xdmin/kakaoCallback";
 	}
 	
 }

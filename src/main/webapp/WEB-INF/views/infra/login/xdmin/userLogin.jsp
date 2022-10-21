@@ -130,15 +130,16 @@
 											<!-- //네이버 로그인 버튼 노출 영역 -->
                                         </div>
                                         <div class="btn_login_wrap">
-                                            <!-- <button type="button" class="btn_login" id="kakaoBtn" style="background-color: #fceb00;">
+                                            <button type="button" class="btn_login" id="kakaoBtn" style="background-color: #fceb00;">
                                                 <span class="btn_text text-black">
                                                 	<img src="/resources/images/user/kakao.png" style="width: 25px;" class="me-3">
                                                			카카오 로그인
                                            		</span>
-                                            </button> -->
-                                            <a id="kakao-login-btn" href="javascript:loginWithKakao()">
+                                            </button>
+                                            <!-- <a id="kakao-login-btn" href="javascript:loginWithKakao()">
 												<img src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="322" height="60" alt="카카오 로그인 버튼" />
 											</a>
+											<p id="token-result"></p> -->
                                         </div>
                                         <div class="btn_login_wrap">
                                             <button type="button" class="btn_login" id="log.login"
@@ -208,7 +209,7 @@
     <script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
     <!-- kakao login s -->
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js" integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL" crossorigin="anonymous"></script>
+    <!-- <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js" integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL" crossorigin="anonymous"></script> -->
     <!-- kakao login e -->
     <!-- naver login s -->
     <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
@@ -241,28 +242,19 @@
 		});
     	
     	/* kakao login s */
-    	
     	Kakao.init('ec2655da82c3779d622f0aff959060e6');
-    	console.log(Kakao.isInitialized());
-    	
-    	function loginWithKakao() {
-    	    Kakao.Auth.authorize({
-    	      redirectUri: 'https://developers.kakao.com/tool/demo/oauth',
-    	    });
-    	}
-
-    	/* Kakao.init('ec2655da82c3779d622f0aff959060e6');
     	console.log(Kakao.isInitialized());
     	$("#kakaoBtn").on("click", function() {
     		Kakao.Auth.login({
    		      success: function (response) {
    		        Kakao.API.request({
-   		          url: 'kakaoLogin',
+   		          url: '/v2/user/me',
    		          success: function (response) {
-   		        	  console.log(response);
+   		        	  console.log(response)
+   		        	  window.location.href = "http://localhost:8080/member/kakaoCallback";
    		          },
    		          fail: function (error) {
-   		            console.log(error);
+   		            console.log(error)
    		          },
    		        })
    		      },
@@ -270,7 +262,7 @@
    		        console.log(error)
    		      },
    		    })
-		}); */
+		});
     	/* kakao login e */
     	
 		<!-- 네이버아디디로로그인 초기화 Script -->

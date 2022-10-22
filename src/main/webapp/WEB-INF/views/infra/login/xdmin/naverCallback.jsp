@@ -14,7 +14,7 @@
 		<input type="hidden" name="email"/>
 		<input type="hidden" name="gender"/>
 		<input type="hidden" name="dob"/>
-		<input type="hidden" name="img"/>
+		<input type="hidden" name="memberImage"/>
 	</form>
 <script type="text/javascript">
   var naver_id_login = new naver_id_login("z69jjnmkMQ88W2owra4t", "http://localhost:8080/member/naverCallback");

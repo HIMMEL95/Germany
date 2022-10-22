@@ -147,8 +147,10 @@ public class MemberServiceImpl implements MemberService {
     public int naverInst(Member dto) throws Exception {
     	
     	try {
-    		dao.naverInst(dto);
+//    		dao.naverInst(dto);
+    		System.out.println("etest1");
     		uploadFiles(dto.getMemberImage(), dto, "memberUploaded", 1);
+    		System.out.println("etest2");
     		
     		return 1;
     	} catch (Exception e) {
@@ -159,14 +161,18 @@ public class MemberServiceImpl implements MemberService {
 //    image Upload
 		@Override
 		public void uploadFiles(MultipartFile[] multipartFiles, Member dto, String tableName, int type) throws Exception {
+			System.out.println("ewrerw");
 			int j = 0;
       for(MultipartFile multipartFile : multipartFiles) {
               
           if(!multipartFile.isEmpty()) {
           
-              String className = dto.getClass().getSimpleName().toString().toLowerCase();     
+              String className = dto.getClass().getSimpleName().toString().toLowerCase();   
+              System.out.println("className : "+ className);
               String fileName = multipartFile.getOriginalFilename();
+              System.out.println("className : "+ fileName);
               String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
+              System.out.println("className : "+ ext);
               String uuid = UUID.randomUUID().toString();
               String uuidFileName = uuid + "." + ext;
               String pathModule = className;

@@ -20,25 +20,31 @@
 		Kakao.init('ec2655da82c3779d622f0aff959060e6');
 		console.log(Kakao.isInitialized());
 		
-		Kakao.API.request({
-			url: '/v2/user/me',
-			data: {
-				property_keys: ['kakao_account.emnail', 'kakao_account.gender'],
-			},
-		})
-			.then(function(response) {
-				console.log(response);
-			})
-			.catch(function(error) {
-				console.log(error);
-			});
-	
-		$("input[name=name]").val(naver_id_login.getProfileData('name'));
-		$("input[name=name]").val(naver_id_login.getProfileData('name'));
-		$("input[name=name]").val(naver_id_login.getProfileData('name'));
-		$("input[name=name]").val(naver_id_login.getProfileData('name'));
-		$("input[name=name]").val(naver_id_login.getProfileData('name'));
-		$("input[name=name]").val(naver_id_login.getProfileData('name'));
+		Kakao.Auth.login({
+	      success: function (response) {
+	        Kakao.API.request({
+	          url: '/v2/user/me',
+	          success: function (response) {
+	        	  
+	        	  var account = response.kakao_account;
+	        	  
+	        	  console.log(response)
+	        	  console.log("email : " + account.email);
+	        	  console.log("name : " + account.name);
+	        	  console.log("nickname : " + account.profile.nickname);
+	        	  console.log("picture : " + account.profile.thumbnail_image_url);
+	        	  window.location.href = "http://localhost:8080/member/kakaoCallback";
+	          },
+	          fail: function (error) {
+	            console.log(error)
+	          },
+	        })
+	      },
+	      fail: function (error) {
+	        console.log(error)
+	      },
+	    })
+		
 	</script>
 </body>
 </html>

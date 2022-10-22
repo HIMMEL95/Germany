@@ -240,17 +240,40 @@
 				}
 			});
 		});
+
+    	<!-- 네이버아디디로로그인 초기화 Script -->
+		var naver_id_login = new naver_id_login("z69jjnmkMQ88W2owra4t", "http://localhost:8080/member/naverCallback");
+		var state = naver_id_login.getUniqState();
+		naver_id_login.setButton("green", 3, 70);
+		naver_id_login.setDomain("http://localhost:8080");
+		naver_id_login.setState(state);
+		naver_id_login.init_naver_id_login();
+		<!-- //네이버아디디로로그인 초기화 Script -->
     	
     	/* kakao login s */
     	Kakao.init('ec2655da82c3779d622f0aff959060e6');
     	console.log(Kakao.isInitialized());
+    	
     	$("#kakaoBtn").on("click", function() {
+    		Kakao.Auth.authorize({
+   		      redirectUri: 'http://localhost:8080/member/kakaoCallback',
+   		    });
+		});
+    	
+    	/* $("#kakaoBtn").on("click", function() {
     		Kakao.Auth.login({
    		      success: function (response) {
    		        Kakao.API.request({
    		          url: '/v2/user/me',
    		          success: function (response) {
+   		        	  
+   		        	  var account = response.kakao_account;
+   		        	  
    		        	  console.log(response)
+   		        	  console.log("email : " + account.email);
+   		        	  console.log("name : " + account.name);
+   		        	  console.log("nickname : " + account.profile.nickname);
+   		        	  console.log("picture : " + account.profile.thumbnail_image_url);
    		        	  window.location.href = "http://localhost:8080/member/kakaoCallback";
    		          },
    		          fail: function (error) {
@@ -262,17 +285,8 @@
    		        console.log(error)
    		      },
    		    })
-		});
+		}); */
     	/* kakao login e */
-    	
-		<!-- 네이버아디디로로그인 초기화 Script -->
-		var naver_id_login = new naver_id_login("z69jjnmkMQ88W2owra4t", "http://localhost:8080/member/naverCallback");
-		var state = naver_id_login.getUniqState();
-		naver_id_login.setButton("green", 3, 70);
-		naver_id_login.setDomain("http://localhost:8080");
-		naver_id_login.setState(state);
-		naver_id_login.init_naver_id_login();
-		<!-- //네이버아디디로로그인 초기화 Script -->
     	
     	</script>
     </script>

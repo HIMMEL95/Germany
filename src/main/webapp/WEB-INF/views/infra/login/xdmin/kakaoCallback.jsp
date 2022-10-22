@@ -14,6 +14,7 @@
 		<input type="hidden" name="email"/>
 		<input type="hidden" name="gender"/>
 		<input type="hidden" name="dob"/>
+		<input type="hidden" name="profile_img"/>
 	</form>
 	
 	<script type="text/javascript">
@@ -28,12 +29,21 @@
 	        	  
 	        	  var account = response.kakao_account;
 	        	  
-	        	  console.log(response)
-	        	  console.log("email : " + account.email);
-	        	  console.log("name : " + account.name);
-	        	  console.log("nickname : " + account.profile.nickname);
-	        	  console.log("picture : " + account.profile.thumbnail_image_url);
-	        	  window.location.href = "http://localhost:8080/member/kakaoCallback";
+	        	  console.log(response);
+	        	  
+	        	  $("input[name=id]").val("카카오로그인");
+	        	  $("input[name=name]").val(account.profile.nickname);
+	        	  $("input[name=phone]").val(account.profile.phone_number);
+	        	  $("input[name=email]").val(account.profile.email);
+	        	  $("input[name=dob]").val(account.profile.birthday);
+	        	  
+	        	  if (account.gender.equals("male")) {
+	        		  $("input[name=gender]").val(5);
+        		  } else {
+        			  $("input[name=gender]").val(6);
+       			  } 
+	        	  
+	        	  $("form[name=form]").attr("action", "/member/naverLoginProc").submit();
 	          },
 	          fail: function (error) {
 	            console.log(error)

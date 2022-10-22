@@ -171,6 +171,15 @@
                 </ul>
             </div>
         </div>
+        <form name="form">
+			<input type="hidden" name="name"/>
+			<input type="hidden" name="id"/>
+			<input type="hidden" name="phone"/>
+			<input type="hidden" name="email"/>
+			<input type="hidden" name="gender"/>
+			<input type="hidden" name="dob"/>
+			<input type="hidden" name="profile_img"/>
+		</form>
 
         <!-- footer -->
         <div class="footer">
@@ -255,9 +264,49 @@
     	console.log(Kakao.isInitialized());
     	
     	$("#kakaoBtn").on("click", function() {
-    		Kakao.Auth.authorize({
+    		/* Kakao.Auth.authorize({
    		      redirectUri: 'http://localhost:8080/member/kakaoCallback',
-   		    });
+   		    }); */
+    		
+    		Kakao.Auth.login({
+   		      success: function (response) {
+   		        Kakao.API.request({
+   		          url: '/v2/user/me',
+   		          success: function (response) {
+   		        	  
+   		        	  var account = response.kakao_account;
+   		        	  
+   		        	  console.log(response)
+   		        	  console.log("email : " + account.email);
+   		        	  console.log("name : " + account.name);
+   		        	  console.log("nickname : " + account.profile.nickname);
+   		        	  console.log("picture : " + account.profile.thumbnail_image_url);
+   		        	  console.log("picture : " + account.gender);
+   		        	  console.log("picture : " + account.birthday);
+  	        	  
+	  	        	  $("input[name=id]").val("카카오로그인");
+	  	        	  $("input[name=name]").val(account.profile.nickname);
+	  	        	  $("input[name=phone]").val(account.profile.phone_number);
+	  	        	  $("input[name=email]").val(account.email);
+	  	        	  $("input[name=dob]").val(account.profile.birthday);
+	  	        	  
+	  	        	  if (account.gender === "male") {
+	  	        		  $("input[name=gender]").val(5);
+	          		  } else {
+	          			  $("input[name=gender]").val(6);
+         			  } 
+	  	        	  
+	  	        	  /* $("form[name=form]").attr("action", "/member/naverLoginProc").submit(); */
+   		          },
+   		          fail: function (error) {
+   		            console.log(error)
+   		          },
+   		        })
+   		      },
+   		      fail: function (error) {
+   		        console.log(error)
+   		      },
+   		    })
 		});
     	
     	/* $("#kakaoBtn").on("click", function() {

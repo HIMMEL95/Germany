@@ -2,6 +2,8 @@ package com.spopia.infra.modules.member;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public interface MemberService {
 
 	/* Member 관련 */
@@ -30,9 +32,14 @@ public interface MemberService {
 	
 	/* findId & pwd */
 	public Member findId(Member dto) throws Exception;
-    public int findPwd(Member dto) throws Exception;
+  public int findPwd(Member dto) throws Exception;
 
-    // naver insert & check
-    public Member naverSelectOne(Member dto) throws Exception;
-    public int naverInst(Member dto) throws Exception;
+  // naver insert & check
+  public Member naverSelectOne(Member dto) throws Exception;
+  public int naverInst(Member dto) throws Exception;
+  
+  // image upload
+	public void uploadFiles(MultipartFile[] multipartFiles, Member dto, String tableName, int type) throws Exception;
+	public void deleteFiles(String[] deleteSeq, String[] deletePathFile, Member dto, String tableName) throws Exception;
+  public void ueleteFiles(String[] deleteSeq, String[] deletePathFile, Member dto, String tableName) throws Exception;
 }

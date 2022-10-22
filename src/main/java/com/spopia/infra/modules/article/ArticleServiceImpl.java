@@ -209,12 +209,6 @@ public class ArticleServiceImpl extends BaseServiceImpl implements ArticleServic
 		return dao.articleCommentCount(vo);
 	}
 
-//	article img
-	@Override
-	public Article imgSelectOne(ArticleVo vo) throws Exception {
-		return dao.imgSelectOne(vo);
-	}
-
     /* article select */
 	@Override
 	public List<Article> abroad(Article dto) throws Exception {

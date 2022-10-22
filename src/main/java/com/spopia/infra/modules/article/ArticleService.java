@@ -27,10 +27,9 @@ public interface ArticleService {
 	public int articleCommentCount(CommentVo vo) throws Exception;
 	
 	//	article img
-	public Article imgSelectOne(ArticleVo vo) throws Exception;
 	public void uploadFiles(MultipartFile[] multipartFiles, Article dto, String tableName, int type) throws Exception;
 	public void deleteFiles(String[] deleteSeq, String[] deletePathFile, Article dto, String tableName) throws Exception;
-    public void ueleteFiles(String[] deleteSeq, String[] deletePathFile, Article dto, String tableName) throws Exception;
+  public void ueleteFiles(String[] deleteSeq, String[] deletePathFile, Article dto, String tableName) throws Exception;
 	
     /* article select */
 	public List<Article> abroad(Article dto) throws Exception;

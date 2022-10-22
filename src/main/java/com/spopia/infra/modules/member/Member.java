@@ -1,6 +1,10 @@
 package com.spopia.infra.modules.member;
 
-public class Member {
+import org.springframework.web.multipart.MultipartFile;
+
+import com.spopia.infra.common.base.Base;
+
+public class Member extends Base {
 	
 	// member Dto
 	private String seq;
@@ -29,7 +33,39 @@ public class Member {
 	private Integer defaultNY;
 	private Integer deleteNY;
 	
-    public String getSeq() {
+	//image upload
+	private MultipartFile[] memberImage;
+	private Integer[] process;
+	private String[] pathFile;
+	private String[] fileSeq;
+
+  public MultipartFile[] getMemberImage() {
+		return memberImage;
+	}
+	public void setMemberImage(MultipartFile[] memberImage) {
+		this.memberImage = memberImage;
+	}
+	public Integer[] getProcess() {
+		return process;
+	}
+	public void setProcess(Integer[] process) {
+		this.process = process;
+	}
+	public String[] getPathFile() {
+		return pathFile;
+	}
+	public void setPathFile(String[] pathFile) {
+		this.pathFile = pathFile;
+	}
+	public String[] getFileSeq() {
+		return fileSeq;
+	}
+	public void setFileSeq(String[] fileSeq) {
+		this.fileSeq = fileSeq;
+	}
+	
+	
+		public String getSeq() {
         return seq;
     }
     public void setSeq(String seq) {

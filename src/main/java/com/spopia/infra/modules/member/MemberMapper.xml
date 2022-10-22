@@ -135,9 +135,12 @@
 		    ,u.user_div
 		    ,u.uDelNy
 			,t.teamName as team
+			,uu.path as path
+			,uu.uuidName as uuidName
 		from user u
 			inner join teamUser tu on tu.user_seq = u.seq
 			inner join team t on t.teamSeq = tu.team_seq
+			inner join userUploaded uu on uu.pseq = u.seq
 		where 1=1
 			and u.seq = #{seq}
 			and tu.defaultNY = 0

@@ -283,12 +283,13 @@
    		        	  console.log("picture : " + account.profile.thumbnail_image_url);
    		        	  console.log("picture : " + account.gender);
    		        	  console.log("picture : " + account.birthday);
+   		        	  console.log("picture : " + account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
   	        	  
 	  	        	  $("input[name=id]").val("카카오로그인");
 	  	        	  $("input[name=name]").val(account.profile.nickname);
 	  	        	  $("input[name=phone]").val(account.profile.phone_number);
 	  	        	  $("input[name=email]").val(account.email);
-	  	        	  $("input[name=dob]").val(account.profile.birthday);
+	  	        	  $("input[name=dob]").val(account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
 	  	        	  
 	  	        	  if (account.gender === "male") {
 	  	        		  $("input[name=gender]").val(5);
@@ -308,33 +309,6 @@
    		      },
    		    })
 		});
-    	
-    	/* $("#kakaoBtn").on("click", function() {
-    		Kakao.Auth.login({
-   		      success: function (response) {
-   		        Kakao.API.request({
-   		          url: '/v2/user/me',
-   		          success: function (response) {
-   		        	  
-   		        	  var account = response.kakao_account;
-   		        	  
-   		        	  console.log(response)
-   		        	  console.log("email : " + account.email);
-   		        	  console.log("name : " + account.name);
-   		        	  console.log("nickname : " + account.profile.nickname);
-   		        	  console.log("picture : " + account.profile.thumbnail_image_url);
-   		        	  window.location.href = "http://localhost:8080/member/kakaoCallback";
-   		          },
-   		          fail: function (error) {
-   		            console.log(error)
-   		          },
-   		        })
-   		      },
-   		      fail: function (error) {
-   		        console.log(error)
-   		      },
-   		    })
-		}); */
     	/* kakao login e */
     	
     	</script>

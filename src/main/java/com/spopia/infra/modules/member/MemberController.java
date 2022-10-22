@@ -120,6 +120,8 @@ public class MemberController {
 	        httpSession.setAttribute("sessName", naver.getName());
 	        httpSession.setAttribute("sessEmail", naver.getEmail());
 	        httpSession.setAttribute("sessUser", naver.getUser_div());
+	        session(naver.getSeq(), naver.getId(), naver.getName(), naver.getEmail(), naver.getUser_div(), naver.getPath()+ naver.getUuidName(), httpSession);
+	        
 	    } else {
 	        System.out.println("여기는 :  not " + null);
   
@@ -142,5 +144,14 @@ public class MemberController {
 	public String kakaoLoginProc() throws Exception {
 		return "redirect:/sportMain";
 	}
+	
+	 public void session(String seq, String id, String name, String email, Integer user, String img, HttpSession httpSession) {
+		 httpSession.setAttribute("sessSeq", seq);
+		 httpSession.setAttribute("sessId", id);
+		 httpSession.setAttribute("sessName", name);
+		 httpSession.setAttribute("sessEmail", email);
+		 httpSession.setAttribute("sessUser", user);
+		 httpSession.setAttribute("sessImg", img);
+	 }
 	
 }

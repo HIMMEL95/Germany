@@ -78,19 +78,24 @@ public class MemberDao {
 	}
 	
 	/* findId & pwd */
-    public Member findId(Member dto) {
-        return sqlSession.selectOne(namespace + ".findId", dto);
-    }
-    public int findPwd(Member dto) {
-        return sqlSession.update(namespace + ".findPwd", dto);
-    }
+  public Member findId(Member dto) {
+      return sqlSession.selectOne(namespace + ".findId", dto);
+  }
+  public int findPwd(Member dto) {
+      return sqlSession.update(namespace + ".findPwd", dto);
+  }
+  
+  // naver insert
+  public int naverInst(Member dto) {
+      return sqlSession.insert(namespace + ".naverInst", dto);
+  }
+  
+  public Member naverSelectOne(Member dto) {
+      return sqlSession.selectOne(namespace + ".naverCheck", dto);
+  }
     
-    // naver insert
-    public int naverInst(Member dto) {
-        return sqlSession.insert(namespace + ".naverInst", dto);
-    }
-    
-    public Member naverSelectOne(Member dto) {
-        return sqlSession.selectOne(namespace + ".naverCheck", dto);
-    }
+  // image Uploaded
+  public int insertUploaded(Member dto) {return sqlSession.insert("Base" + ".insertUploaded", dto); }
+  public int ueleteUploaded(Member dto) { return sqlSession.insert("Base" + ".ueleteUploaded", dto); }
+  public int deleteUploaded(Member dto) { return sqlSession.insert("Base" + ".deleteUploaded", dto); }
 }

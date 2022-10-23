@@ -171,14 +171,14 @@
                 </ul>
             </div>
         </div>
-        <form name="form">
+        <form name="form" enctype="multipart/form-data">
 			<input type="hidden" name="name"/>
 			<input type="hidden" name="id"/>
 			<input type="hidden" name="phone"/>
 			<input type="hidden" name="email"/>
 			<input type="hidden" name="gender"/>
 			<input type="hidden" name="dob"/>
-			<input type="hidden" name="snsImage"/>
+			<input type="file" name="snsImage" hidden/>
 		</form>
 
         <!-- footer -->
@@ -290,6 +290,7 @@
 	  	        	  $("input[name=phone]").val(account.profile.phone_number);
 	  	        	  $("input[name=email]").val(account.email);
 	  	        	  $("input[name=dob]").val(account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
+	  	        	  
 	  	        	  
 	  	        	  if (account.gender === "male") {
 	  	        		  $("input[name=gender]").val(5);

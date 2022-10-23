@@ -147,10 +147,10 @@ public class MemberServiceImpl implements MemberService {
     public int naverInst(Member dto) throws Exception {
     	
     	try {
-    		dao.naverInst(dto);
-    		System.out.println("etest1");
-    		uploadSnsFile(dto, "userUploaded", 1);
-    		System.out.println("etest2");
+    		//dao.naverInst(dto);
+    		System.out.println("eteest");
+    		uploadSnsFile(dto.getSnsImage() ,dto, "userUploaded", 1);
+    		System.out.println("eq1312t");
     		
     		return 1;
     	} catch (Exception e) {
@@ -161,7 +161,6 @@ public class MemberServiceImpl implements MemberService {
 //    image Upload
 		@Override
 		public void uploadFiles(MultipartFile[] multipartFiles, Member dto, String tableName, int type) throws Exception {
-			System.out.println("ewrerw");
     	for(int j=0; j < multipartFiles.length; j++) {
               
           if(!multipartFiles[j].isEmpty()) {
@@ -185,6 +184,8 @@ public class MemberServiceImpl implements MemberService {
               System.out.println("path: " + path);
               
               File uploadPath = new File(path);
+              
+              System.out.println("uploadPath: " + uploadPath);
               
               if (!uploadPath.exists()) {
                   uploadPath.mkdir();
@@ -212,11 +213,11 @@ public class MemberServiceImpl implements MemberService {
       }
 		}
 
-		public void uploadSnsFile(Member dto, String tableName, int type) throws Exception {
+		public void uploadSnsFile(MultipartFile multipartFiles ,Member dto, String tableName, int type) throws Exception {
 					
 					String className = dto.getClass().getSimpleName().toString().toLowerCase();   
 					System.out.println("className : "+ className);
-					String fileName = dto.getSnsImage();
+					String fileName = dto.getSnsImg();
 					System.out.println("className : "+ fileName);
 					String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
 					System.out.println("className : "+ ext);
@@ -240,6 +241,8 @@ public class MemberServiceImpl implements MemberService {
 						// by pass
 					}
 					
+					multipartFiles.transferTo(new File(path + uuidFileName));
+					
 					dto.setPath(pathForView);
 					dto.setOriginalName(fileName);
 					dto.setUuidName(uuidFileName);
@@ -253,6 +256,7 @@ public class MemberServiceImpl implements MemberService {
 					dto.setPseq(dto.getSeq());
 					
 					dao.insertUploaded(dto);
+				
 		}
 
 		@Override

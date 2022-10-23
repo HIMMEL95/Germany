@@ -112,6 +112,7 @@ public class MemberController {
 	        System.out.println("여기는 : " + null);
 	        dto.setSns_type(1);
 	        service.naverInst(dto);
+	        
 	        Member naver = service.loginCheck(dto);
 	        System.out.println("seq : " + naver.getSeq());
   

@@ -38,12 +38,19 @@ public class Member extends Base {
 	private Integer[] process;
 	private String[] pathFile;
 	private String[] fileSeq;
-	private String snsImage;
+	private MultipartFile snsImage;
+	private String snsImg;
 
-  public String getSnsImage() {
+	public String getSnsImg() {
+		return snsImg;
+	}
+	public void setSnsImg(String snsImg) {
+		this.snsImg = snsImg;
+	}
+	public MultipartFile getSnsImage() {
 		return snsImage;
 	}
-	public void setSnsImage(String snsImage) {
+	public void setSnsImage(MultipartFile snsImage) {
 		this.snsImage = snsImage;
 	}
 	public MultipartFile[] getMemberImage() {

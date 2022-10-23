@@ -7,16 +7,17 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
-	<form name="form">
+	<form name="form" enctype="multipart/form-data">
 		<input type="hidden" name="name"/>
 		<input type="hidden" name="id"/>
 		<input type="hidden" name="phone"/>
 		<input type="hidden" name="email"/>
 		<input type="hidden" name="gender"/>
 		<input type="hidden" name="dob"/>
-		<input type="hidden" name="snsImage"/>
+		<input type="hidden" name="snsImg"/>
 	</form>
 <script type="text/javascript">
+
   var naver_id_login = new naver_id_login("z69jjnmkMQ88W2owra4t", "http://localhost:8080/member/naverCallback");
   // ì ê·¼ í í° ê° ì¶ë ¥
   /* alert(naver_id_login.oauthParams.access_token); */
@@ -29,7 +30,7 @@
 	  $("input[name=phone]").val(naver_id_login.getProfileData('mobile'));
 	  $("input[name=email]").val(naver_id_login.getProfileData('email'));
 	  $("input[name=dob]").val(naver_id_login.getProfileData('birthday'));
-	  $("input[name=snsImage]").val(naver_id_login.getProfileData('profile_image'));
+	  $("input[name=snsImg]").val(naver_id_login.getProfileData('profile_image'));
 	  
 	  if (naver_id_login.getProfileData('gender') == 'M'){
 			$("input[name=gender]").val(5);

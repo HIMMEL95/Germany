@@ -146,7 +146,14 @@
 	                    			<li class="nav_li">
 			                            <div class="action">
 			                                <div class="profile" onclick="menuToggle();">
-			                                    <img class="pro_img" src="/resources/images/diano.jpg" width="35">
+			                                	<c:choose>
+			                                		<c:when test="${empty sessImg }">
+					                                    <img class="pro_img" src="/resources/images/diano.jpg" width="35">
+			                                		</c:when>
+			                                		<c:otherwise>
+					                                    <img class="pro_img" src="${sessImg }" width="35">			                                		
+			                                		</c:otherwise>
+			                                	</c:choose>
 			                                </div>
 			                                <div class="menu">
 			                                	<div>

@@ -178,7 +178,7 @@
 			<input type="hidden" name="email"/>
 			<input type="hidden" name="gender"/>
 			<input type="hidden" name="dob"/>
-			<input type="hidden" name="profile_img"/>
+			<input type="hidden" name="snsImage"/>
 		</form>
 
         <!-- footer -->

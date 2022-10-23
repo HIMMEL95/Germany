@@ -107,7 +107,7 @@
 			,aDelNy
 			,aCreatedAt
 			,aModifiedAt
-			,createdBy
+			,aCreatedBy
 			,modifiedBy
 		) 
 		VALUES (

@@ -43,26 +43,22 @@ public class ArticleServiceImpl extends BaseServiceImpl implements ArticleServic
 	@Override
     public void uploadFiles(MultipartFile[] multipartFiles, Article dto, String tableName, int type) throws Exception {
         
-        int j = 0;
-        for(MultipartFile multipartFile : multipartFiles) {
+        for(int j=0; j < multipartFiles.length; j++) {
                 
-            if(!multipartFile.isEmpty()) {
+            if(!multipartFiles[j].isEmpty()) {
             
                 String className = dto.getClass().getSimpleName().toString().toLowerCase();     
-                String fileName = multipartFile.getOriginalFilename();
+                String fileName = multipartFiles[j].getOriginalFilename();
                 String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
                 String uuid = UUID.randomUUID().toString();
                 String uuidFileName = uuid + "." + ext;
                 String pathModule = className;
                 String nowString = UtilDateTime.nowString();
                 String pathDate = nowString.substring(0,4) + "/" + nowString.substring(5,7) + "/" + nowString.substring(8,10); 
-                String path = Constants.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";
-                /*
-                 String path = Constants.UPLOAD_PATH_PREFIX_LINUX + "/" + pathModule + "/" +
-                 pathDate + "/";
-                 String path = Constants.UPLOAD_PATH_PREFIX_MAC + "/" + pathModule + "/" +
-                 pathDate + "/";
-                 */
+                //String path = Constants.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";
+                //String path = Constants.UPLOAD_PATH_PREFIX_LINUX + "/" + pathModule + "/" + pathDate + "/";
+                String path = Constants.UPLOAD_PATH_PREFIX_MAC + "/" + pathModule + "/" + pathDate + "/";
+
                 String pathForView = Constants.UPLOAD_PATH_PREFIX_FOR_VIEW + "/" + pathModule + "/" + pathDate + "/";
                 
                 System.out.println("path: " + path);
@@ -75,13 +71,13 @@ public class ArticleServiceImpl extends BaseServiceImpl implements ArticleServic
                     // by pass
                 }
                   
-                multipartFile.transferTo(new File(path + uuidFileName));
+                multipartFiles[j].transferTo(new File(path + uuidFileName));
                 
                 dto.setPath(pathForView);
                 dto.setOriginalName(fileName);
                 dto.setUuidName(uuidFileName);
                 dto.setExt(ext);
-                dto.setSize(multipartFile.getSize());
+                dto.setSize(multipartFiles[j].getSize());
                 
                 dto.setTableName(tableName);
                 dto.setType(type);

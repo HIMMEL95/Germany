@@ -110,27 +110,19 @@ public class MemberController {
           
 	    if (naverLogin == null) {
 	        System.out.println("여기는 : " + null);
+	        dto.setSns_type(1);
 	        service.naverInst(dto);
 	        Member naver = service.loginCheck(dto);
 	        System.out.println("seq : " + naver.getSeq());
   
 	        httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
-	        httpSession.setAttribute("sessSeq", naver.getSeq());
-	        httpSession.setAttribute("sessId", naver.getId());
-	        httpSession.setAttribute("sessName", naver.getName());
-	        httpSession.setAttribute("sessEmail", naver.getEmail());
-	        httpSession.setAttribute("sessUser", naver.getUser_div());
 	        session(naver.getSeq(), naver.getId(), naver.getName(), naver.getEmail(), naver.getUser_div(), naver.getPath()+ naver.getUuidName(), httpSession);
 	        
 	    } else {
 	        System.out.println("여기는 :  not " + null);
   
 	        httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
-	        httpSession.setAttribute("sessSeq", naverLogin.getSeq());
-	        httpSession.setAttribute("sessId", naverLogin.getId());
-	        httpSession.setAttribute("sessName", naverLogin.getName());
-	        httpSession.setAttribute("sessEmail", naverLogin.getEmail());
-	        httpSession.setAttribute("sessUser", naverLogin.getUser_div());
+	        session(naverLogin.getSeq(), naverLogin.getId(), naverLogin.getName(), naverLogin.getEmail(), naverLogin.getUser_div(), naverLogin.getPath()+ naverLogin.getUuidName(), httpSession);
 	    }
 	    return "redirect:/sportMain";
 	}

@@ -147,9 +147,9 @@ public class MemberServiceImpl implements MemberService {
     public int naverInst(Member dto) throws Exception {
     	
     	try {
-//    		dao.naverInst(dto);
+    		dao.naverInst(dto);
     		System.out.println("etest1");
-    		uploadFiles(dto.getMemberImage(), dto, "memberUploaded", 1);
+    		uploadSnsFile(dto, "userUploaded", 1);
     		System.out.println("etest2");
     		
     		return 1;
@@ -162,14 +162,13 @@ public class MemberServiceImpl implements MemberService {
 		@Override
 		public void uploadFiles(MultipartFile[] multipartFiles, Member dto, String tableName, int type) throws Exception {
 			System.out.println("ewrerw");
-			int j = 0;
-      for(MultipartFile multipartFile : multipartFiles) {
+    	for(int j=0; j < multipartFiles.length; j++) {
               
-          if(!multipartFile.isEmpty()) {
+          if(!multipartFiles[j].isEmpty()) {
           
               String className = dto.getClass().getSimpleName().toString().toLowerCase();   
               System.out.println("className : "+ className);
-              String fileName = multipartFile.getOriginalFilename();
+              String fileName = multipartFiles[j].getOriginalFilename();
               System.out.println("className : "+ fileName);
               String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
               System.out.println("className : "+ ext);
@@ -193,13 +192,13 @@ public class MemberServiceImpl implements MemberService {
                   // by pass
               }
                 
-              multipartFile.transferTo(new File(path + uuidFileName));
+              multipartFiles[j].transferTo(new File(path + uuidFileName));
               
               dto.setPath(pathForView);
               dto.setOriginalName(fileName);
               dto.setUuidName(uuidFileName);
               dto.setExt(ext);
-              dto.setSize(multipartFile.getSize());
+              dto.setSize(multipartFiles[j].getSize());
               
               dto.setTableName(tableName);
               dto.setType(type);
@@ -211,6 +210,49 @@ public class MemberServiceImpl implements MemberService {
               j++;
           }
       }
+		}
+
+		public void uploadSnsFile(Member dto, String tableName, int type) throws Exception {
+					
+					String className = dto.getClass().getSimpleName().toString().toLowerCase();   
+					System.out.println("className : "+ className);
+					String fileName = dto.getSnsImage();
+					System.out.println("className : "+ fileName);
+					String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
+					System.out.println("className : "+ ext);
+					String uuid = UUID.randomUUID().toString();
+					String uuidFileName = uuid + "." + ext;
+					String pathModule = className;
+					String nowString = UtilDateTime.nowString();
+					String pathDate = nowString.substring(0,4) + "/" + nowString.substring(5,7) + "/" + nowString.substring(8,10); 
+					// String path = Constants.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";
+					//String path = Constants.UPLOAD_PATH_PREFIX_LINUX + "/" + pathModule + "/" + pathDate + "/";
+					String path = Constants.UPLOAD_PATH_PREFIX_MAC + "/" + pathModule + "/" + pathDate + "/";
+					String pathForView = Constants.UPLOAD_PATH_PREFIX_FOR_VIEW + "/" + pathModule + "/" + pathDate + "/";
+					
+					System.out.println("path: " + path);
+					
+					File uploadPath = new File(path);
+					
+					if (!uploadPath.exists()) {
+						uploadPath.mkdir();
+					} else {
+						// by pass
+					}
+					
+					dto.setPath(pathForView);
+					dto.setOriginalName(fileName);
+					dto.setUuidName(uuidFileName);
+					dto.setExt(ext);
+					dto.setSize(dto.getSize());
+					
+					dto.setTableName(tableName);
+					dto.setType(type);
+					dto.setDefaultNy(0);
+					dto.setSort(1);
+					dto.setPseq(dto.getSeq());
+					
+					dao.insertUploaded(dto);
 		}
 
 		@Override

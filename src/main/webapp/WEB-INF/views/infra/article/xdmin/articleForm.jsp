@@ -489,7 +489,7 @@
 		function setComboBox2(o){
 			var code = o.value;
 			var abroadNy = $("#aAbroadNy").val();
-			
+
 			$("option").remove(".select1");
 			
    			$.ajax({
@@ -499,7 +499,7 @@
    				/* ,dataType:"json" */
    				,url: "/article/event"
    				/* ,data : $("#formLogin").serialize() */
-   				,data : { "event" : code, "aAbroadNy" : abroadNy }
+   				,data : { "aEvent" : code, "aAbroadNy" : abroadNy }
    				,success: function(response) {
    					
    					<c:set var="listCodeLeague" value="${CodeServiceImpl.selectListCachedCode('6') }" />

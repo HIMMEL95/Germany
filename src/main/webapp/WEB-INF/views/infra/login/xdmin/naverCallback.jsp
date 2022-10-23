@@ -14,7 +14,7 @@
 		<input type="hidden" name="email"/>
 		<input type="hidden" name="gender"/>
 		<input type="hidden" name="dob"/>
-		<input type="hidden" name="memberImage"/>
+		<input type="hidden" name="snsImage"/>
 	</form>
 <script type="text/javascript">
   var naver_id_login = new naver_id_login("z69jjnmkMQ88W2owra4t", "http://localhost:8080/member/naverCallback");
@@ -29,7 +29,7 @@
 	  $("input[name=phone]").val(naver_id_login.getProfileData('mobile'));
 	  $("input[name=email]").val(naver_id_login.getProfileData('email'));
 	  $("input[name=dob]").val(naver_id_login.getProfileData('birthday'));
-	  $("input[name=img]").val(naver_id_login.getProfileData('profile_image'));
+	  $("input[name=snsImage]").val(naver_id_login.getProfileData('profile_image'));
 	  
 	  if (naver_id_login.getProfileData('gender') == 'M'){
 			$("input[name=gender]").val(5);

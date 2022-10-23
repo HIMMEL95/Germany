@@ -69,15 +69,19 @@ public class MemberController {
 	@RequestMapping(value = "memberUView")
 	public String memberUView(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 
-		Member naverItem = service.naverSelectOne(vo);
+		Member snsItem = service.snsSelectOne(vo);
 		
-		System.out.println("item : " + naverItem.getId());
+		System.out.println("item : " + snsItem.getId());
 		
-		if (naverItem.getId().equals("네이버로그인")) {
+		if (snsItem.getId().equals("네이버로그인")) {
 		    System.out.println("네이버 로그인 중");
-		    Member item = service.naverSelectOne(vo);
+		    Member item = service.snsSelectOne(vo);
 		    model.addAttribute("item", item);
-		} else {
+		} else if (snsItem.getId().equals("카카오로그인")) {
+				System.out.println("카카오 로그인 중");
+				Member item = service.snsSelectOne(vo);
+				model.addAttribute("item", item);			
+		}	else {
 		    System.out.println("일반 로그인 중");
 		    Member item = service.selectOne(vo);
 		    model.addAttribute("item", item);
@@ -110,7 +114,6 @@ public class MemberController {
           
 	    if (naverLogin == null) {
 	        System.out.println("여기는 : " + null);
-	        dto.setSns_type(1);
 	        service.naverInst(dto);
 	        
 	        Member naver = service.loginCheck(dto);
@@ -134,7 +137,21 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "kakaoLoginProc")
-	public String kakaoLoginProc() throws Exception {
+	public String kakaoLoginProc(Member dto, HttpSession httpSession) throws Exception {
+		Member kakaoLogin = service.loginCheck(dto);
+		
+		if (kakaoLogin == null) {
+			service.kakaoInst(dto);
+			
+			Member kakao = service.loginCheck(dto);
+			
+			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+			session(kakao.getSeq(), kakao.getId(), kakao.getName(), kakao.getEmail(), kakao.getUser_div(), kakao.getPath() + kakao.getUuidName(), httpSession);
+		} else {
+			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+			
+			session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getPath() + kakaoLogin.getUuidName(), httpSession);
+		}
 		return "redirect:/sportMain";
 	}
 	

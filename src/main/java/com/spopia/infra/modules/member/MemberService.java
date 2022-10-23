@@ -11,7 +11,7 @@ public interface MemberService {
 	public List<Member> selectList1() throws Exception;
 	public List<Member> selectList() throws Exception;
 	public Member selectOne(MemberVo vo) throws Exception;
-	public Member naverSelectOne(MemberVo vo) throws Exception;
+	public Member snsSelectOne(MemberVo vo) throws Exception;
 	public int selectOneCount(MemberVo vo) throws Exception;
 	public int userInst(Member dto) throws Exception;
 	public int userUpdt(Member dto) throws Exception;
@@ -34,9 +34,11 @@ public interface MemberService {
 	public Member findId(Member dto) throws Exception;
   public int findPwd(Member dto) throws Exception;
 
-  // naver insert & check
-  public Member naverSelectOne(Member dto) throws Exception;
+  // naver insert
   public int naverInst(Member dto) throws Exception;
+  
+  // kakao insert
+  public int kakaoInst(Member dto) throws Exception;
   
   // image upload
 	public void uploadFiles(MultipartFile[] multipartFiles, Member dto, String tableName, int type) throws Exception;

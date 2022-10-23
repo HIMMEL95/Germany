@@ -51,8 +51,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public Member naverSelectOne(MemberVo vo) throws Exception {
-	    return dao.naverSelectOne(vo);
+	public Member snsSelectOne(MemberVo vo) throws Exception {
+	    return dao.snsSelectOne(vo);
 	}
 
 	@Override
@@ -136,22 +136,26 @@ public class MemberServiceImpl implements MemberService {
         return 1;
     }
     
-    // naver insert & check 
-
-    @Override
-    public Member naverSelectOne(Member dto) throws Exception {
-        return dao.naverSelectOne(dto);
-    }
-
+    // naver insert
     @Override
     public int naverInst(Member dto) throws Exception {
     	
     	try {
-    		//dao.naverInst(dto);
-    		System.out.println("eteest");
-    		uploadSnsFile(dto.getSnsImage() ,dto, "userUploaded", 1);
-    		System.out.println("eq1312t");
+    		dao.naverInst(dto);
+//    		uploadSnsFile(dto.getSnsImage() ,dto, "userUploaded", 1);
+//    		System.out.println("eq1312t");
     		
+    		return 1;
+    	} catch (Exception e) {
+    		throw new Exception();
+			}
+    }
+    
+    // kakao insert
+    @Override
+    public int kakaoInst(Member dto) throws Exception {
+    	try {
+    		dao.kakaoInst(dto);
     		return 1;
     	} catch (Exception e) {
     		throw new Exception();

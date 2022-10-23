@@ -38,8 +38,8 @@ public class MemberDao {
 		return sqlSession.selectOne(namespace + ".selectOne", vo);
 	}
 
-	public Member naverSelectOne(MemberVo vo) {
-	    return sqlSession.selectOne(namespace + ".naverSelectOne", vo);
+	public Member snsSelectOne(MemberVo vo) {
+	    return sqlSession.selectOne(namespace + ".snsSelectOne", vo);
 	}
 	
 	public int userUpdt(Member dto) {
@@ -89,11 +89,11 @@ public class MemberDao {
   public int naverInst(Member dto) {
       return sqlSession.insert(namespace + ".naverInst", dto);
   }
-  
-  public Member naverSelectOne(Member dto) {
-      return sqlSession.selectOne(namespace + ".naverCheck", dto);
+
+  // kakao insert
+  public int kakaoInst(Member dto) {
+  	return sqlSession.insert(namespace + ".kakaoInst", dto);
   }
-    
   // image Uploaded
   public int insertUploaded(Member dto) {return sqlSession.insert("Base" + ".insertUploaded", dto); }
   public int ueleteUploaded(Member dto) { return sqlSession.insert("Base" + ".ueleteUploaded", dto); }

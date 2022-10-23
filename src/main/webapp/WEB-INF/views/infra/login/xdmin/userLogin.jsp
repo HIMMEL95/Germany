@@ -17,6 +17,9 @@
     <meta property="og:description" content="안전한 로그인을 위해 주소창의 URL과 자물쇠 마크를 확인하세요!">
     <meta property="og:image" content="https://ssl.pstatic.net/sstatic/search/common/og_v3.png">
     <meta property="og:image:type" content="image/png">
+    <!-- google login s -->
+    <meta name="google-signin-client_id" content="402814991050-lmirn43sog26rhj93ekee2h31dlvlncu.apps.googleusercontent.com">
+    <!-- google login e -->
     <title>SPOPIA : 로그인</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -171,14 +174,14 @@
                 </ul>
             </div>
         </div>
-        <form name="form" enctype="multipart/form-data">
+        <form name="form">
 			<input type="hidden" name="name"/>
 			<input type="hidden" name="id"/>
 			<input type="hidden" name="phone"/>
 			<input type="hidden" name="email"/>
 			<input type="hidden" name="gender"/>
 			<input type="hidden" name="dob"/>
-			<input type="file" name="snsImage" hidden/>
+			<!-- <input type="file" name="snsImage" hidden/> -->
 		</form>
 
         <!-- footer -->
@@ -224,6 +227,9 @@
     <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <!-- naver login e -->
+    <!-- google login s  -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- google login e  -->
     <script type="text/javascript">
     
     	$("#loginBtn").on("click", function() {
@@ -298,7 +304,7 @@
 	          			  $("input[name=gender]").val(6);
          			  } 
 	  	        	  
-	  	        	  /* $("form[name=form]").attr("action", "/member/naverLoginProc").submit(); */
+	  	        	  $("form[name=form]").attr("action", "/member/naverLoginProc").submit();
    		          },
    		          fail: function (error) {
    		            console.log(error)

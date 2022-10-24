@@ -84,12 +84,6 @@ public class MainController {
 		return "infra/member/user/changePwd";
 	}
 	
-	@RequestMapping(value = "pwdUpdt")
-	public String pwdUpdt(Member dto) throws Exception {
-	    mService.pwdUpdt(dto);
-	   return "infra/member/user/changePwd";
-	}
-	
 	@ResponseBody
 	@RequestMapping(value = "articleInsert") 
 	public Map<String, Object> articleInsert(Comment cDto, @ModelAttribute("vo") ArticleVo vo) throws Exception {

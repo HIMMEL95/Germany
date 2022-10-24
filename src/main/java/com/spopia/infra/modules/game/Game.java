@@ -25,8 +25,15 @@ public class Game extends BaseVo{
 	private String id;
 	private String comment;
 	private String seq;
+	private String createdBy;
 	
-	public String getSeq() {
+	public String getCreatedBy() {
+        return createdBy;
+    }
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+    public String getSeq() {
         return seq;
     }
     public void setSeq(String seq) {

@@ -36,8 +36,14 @@
                             <a class="p-0" href="/member/memberView" id="profileDropdown" role="button"
                                 data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                <img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar"
-                                    style="width: 30px;">
+                                <c:choose>
+                               		<c:when test="${empty sessImg }">
+	                                	<img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar" style="width: 35px;">
+                               		</c:when>
+                               		<c:otherwise>
+	                                    <img class="avatar-img rounded-circle" src="${sessImg }" alt="avatar" style="width: 35px;">		                                		
+                               		</c:otherwise>
+                               	</c:choose>
                             </a>
                             <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
                                 aria-labelledby="profileDropdown">
@@ -46,8 +52,14 @@
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
                                         <div class="avatar ps-1 pt-2">
-                                            <img class="avatar-img rounded-circle shadow" src="/resources/images/diano.jpg"
-                                                alt="avatar" style="width: 30px;">
+                                        	<c:choose>
+                                        		<c:when test="${empty sessImg }">
+                                        			<img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar" style="width: 35px;">
+                                        		</c:when>
+                                        		<c:otherwise>
+		                                            <img class="avatar-img rounded-circle shadow" src="${sessImg }" alt="avatar" style="width: 35px;">
+                                        		</c:otherwise>
+                                        	</c:choose>
                                         </div>
                                         <div>
                                             <a class="fs-6 fw-bold" href="/member/memberUView"><c:out value="${sessName }"/><br></a>
@@ -163,8 +175,16 @@
                                             <div class="card-body pt-0">
                                                 <div class="text-center">
                                                     <div class="avatar avatar-lg mt-n5 mb-3">
-                                                        <a href="#"><img class="avatar-img rounded border border-white border-3"
-                                                                src="/resources/images/diano.jpg" style="width: 50px;" alt=""></a>
+                                                        <a href="#">
+                                                        	<c:choose>
+				                                        		<c:when test="${empty sessImg }">
+		                                                        	<img class="avatar-img rounded border border-white border-3" src="/resources/images/diano.jpg" style="width: 50px;" alt="">
+				                                        		</c:when>
+				                                        		<c:otherwise>
+		                                                        	<img class="avatar-img rounded border border-white border-3" src="${sessImg }" style="width: 50px;" alt="">
+				                                        		</c:otherwise>
+				                                        	</c:choose>
+                                                        </a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
                                                         <span class="mb-0"><a href="#"><c:out value="${sessName }"/><br></a></span>
@@ -235,7 +255,14 @@
                         <span class="fs-1 fw-bold text-center">회원 정보</span>
                         <div class="row mb-4">
                             <div class="col-12 shadow rounded pt-3 ps-4" style="height: 100px; background-color: #f7f7fc;">
-                                <img src="/resources/images/diano.jpg" class="rounded-circle avatar-img shadow" style="width: 60px;">
+                            	<c:choose>
+                            		<c:when test="${empty sessImg }">
+		                                <img src="/resources/images/diano.jpg" class="rounded-circle avatar-img shadow" style="width: 60px;">
+                            		</c:when>
+                            		<c:otherwise>
+		                                <img src="${sessImg }" class="rounded-circle avatar-img shadow" style="width: 60px;">
+                            		</c:otherwise>
+                            	</c:choose>
                                 <div class="form-attachment-btn btn btn-primary btn-sm ms-3" hidden>
                                     <i class="fa-solid fa-arrows-rotate me-2"></i>Upload photo
                                     <input type="file" class="js-file-attach form-attachment-btn-label" id="avatarUploader">

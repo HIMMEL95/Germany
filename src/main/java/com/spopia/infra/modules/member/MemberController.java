@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spopia.infra.common.constants.Constants;
@@ -117,16 +116,14 @@ public class MemberController {
 	        service.naverInst(dto);
 	        
 	        Member naver = service.loginCheck(dto);
-	        System.out.println("seq : " + naver.getSeq());
   
 	        httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
-	        session(naver.getSeq(), naver.getId(), naver.getName(), naver.getEmail(), naver.getUser_div(), naver.getPath()+ naver.getUuidName(), httpSession);
-	        
+	        session(naver.getSeq(), naver.getId(), naver.getName(), naver.getEmail(), naver.getUser_div(), naver.getSnsImg(), httpSession);
 	    } else {
 	        System.out.println("여기는 :  not " + null);
   
 	        httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
-	        session(naverLogin.getSeq(), naverLogin.getId(), naverLogin.getName(), naverLogin.getEmail(), naverLogin.getUser_div(), naverLogin.getPath()+ naverLogin.getUuidName(), httpSession);
+	        session(naverLogin.getSeq(), naverLogin.getId(), naverLogin.getName(), naverLogin.getEmail(), naverLogin.getUser_div(), naverLogin.getSnsImg(), httpSession);
 	    }
 	    return "redirect:/sportMain";
 	}
@@ -146,11 +143,11 @@ public class MemberController {
 			Member kakao = service.loginCheck(dto);
 			
 			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
-			session(kakao.getSeq(), kakao.getId(), kakao.getName(), kakao.getEmail(), kakao.getUser_div(), kakao.getPath() + kakao.getUuidName(), httpSession);
+			session(kakao.getSeq(), kakao.getId(), kakao.getName(), kakao.getEmail(), kakao.getUser_div(), kakao.getSnsImg(), httpSession);
 		} else {
 			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
 			
-			session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getPath() + kakaoLogin.getUuidName(), httpSession);
+			session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), httpSession);
 		}
 		return "redirect:/sportMain";
 	}

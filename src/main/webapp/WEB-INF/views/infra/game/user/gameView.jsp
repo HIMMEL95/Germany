@@ -70,8 +70,14 @@
 		                        <li class="me-2">
 		                            <a class="p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
 		                                data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-		                                <img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar"
-		                                    style="width: 30px;">
+		                                <c:choose>
+                                       		<c:when test="${empty sessImg }">
+                                       			<img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar" style="width: 35px;">
+                                       		</c:when>
+                                       		<c:otherwise>
+	                                            <img class="avatar-img rounded-circle shadow" src="${sessImg }" alt="avatar" style="width: 35px;">
+                                       		</c:otherwise>
+                                       	</c:choose>
 		                            </a>
 		                            <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
 		                                <!-- Profile info -->
@@ -79,8 +85,14 @@
 		                                    <div class="d-flex align-items-center pb-2">
 		                                        <!-- Avatar -->
 		                                        <div class="avatar pt-2">
-		                                            <img class="avatar-img rounded-circle shadow" src="/resources/images/diano.jpg" alt="avatar"
-		                                                style="width: 30px;">
+		                                            <c:choose>
+		                                        		<c:when test="${empty sessImg }">
+		                                        			<img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar" style="width: 35px;">
+		                                        		</c:when>
+		                                        		<c:otherwise>
+				                                            <img class="avatar-img rounded-circle shadow" src="${sessImg }" alt="avatar" style="width: 35px;">
+		                                        		</c:otherwise>
+		                                        	</c:choose>
 		                                        </div>
 		                                        <div>
 		                                            <a class="fs-6 fw-bold" href="/member/memberUView?seq=${sessSeq }"><c:out value="${sessName }"/></a>
@@ -189,7 +201,7 @@
 	                <div class="card-img-overlay align-bottom text-white">
 	                    <span class="blind">남은 시간</span>
 	                    <div class="position-absolute top-50 start-50 translate-middle text-center">
-	                        <time datetime="03:43:02">03:43:02 ${dbDtParse - nowfmtTime }</time>
+	                        <time datetime="03:43:02">03:43:02</time>
 	                        <p class="LiveGuide_text__sQNRi ">라이브가 곧 시작됩니다.</p>
 	                    </div>
 	                </div>

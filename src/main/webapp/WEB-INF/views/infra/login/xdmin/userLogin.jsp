@@ -181,7 +181,7 @@
 			<input type="hidden" name="email"/>
 			<input type="hidden" name="gender"/>
 			<input type="hidden" name="dob"/>
-			<!-- <input type="file" name="snsImage" hidden/> -->
+			<input type="hidden" name="snsImg"/>
 		</form>
 
         <!-- footer -->
@@ -296,6 +296,7 @@
 	  	        	  $("input[name=phone]").val(account.profile.phone_number);
 	  	        	  $("input[name=email]").val(account.email);
 	  	        	  $("input[name=dob]").val(account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
+	  	        	  $("input[name=snsImg]").val(account.profile.thumbnail_image_url);
 	  	        	  
 	  	        	  
 	  	        	  if (account.gender === "male") {
@@ -304,7 +305,7 @@
 	          			  $("input[name=gender]").val(6);
          			  } 
 	  	        	  
-	  	        	  $("form[name=form]").attr("action", "/member/naverLoginProc").submit();
+	  	        	  $("form[name=form]").attr("action", "/member/kakaoLoginProc").submit();
    		          },
    		          fail: function (error) {
    		            console.log(error)

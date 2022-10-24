@@ -188,6 +188,7 @@
 			,modifiedAt
 			,user_div
 			,uDelNy
+			,sns_type
 		)
 		VALUES (
 			#{name}
@@ -205,6 +206,7 @@
 			,now()
 			,now()
 			,25
+			,0
 			,0
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
@@ -248,6 +250,8 @@
 			,modifiedAt = now()
 			,user_div = #{user_div}
 		where 1=1
+		
+		
 			and seq = #{seq}
 	</update>
 	
@@ -275,6 +279,7 @@
 			,u.email
 			,u.pwd
 			,u.user_div
+			,u.snsImg
 		from user u
 		where 1=1 
 			and id = #{id} 
@@ -334,6 +339,7 @@
 			,user_div
 			,sns_type
 			,uDelNy
+			,snsImg
 		)
 		VALUES (
 			#{id}
@@ -345,6 +351,7 @@
 			,25
 			,1
 			,0
+			,#{snsImg}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
@@ -362,6 +369,7 @@
 			,user_div
 			,sns_type
 			,uDelNy
+			,snsImg
 		)
 		VALUES (
 			#{id}
@@ -373,6 +381,7 @@
 			,25
 			,2
 			,0
+			,#{snsImg}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()

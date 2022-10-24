@@ -37,6 +37,7 @@
 			<exclude-mapping path="/articleView" />
 			<exclude-mapping path="/gameView" />
 			<exclude-mapping path="/member/naverLoginProc" />
+			<exclude-mapping path="/member/kakaoLoginProc" />
 			<exclude-mapping path="/member/naverCallback" />
 			<exclude-mapping path="/abroad" />
 			<exclude-mapping path="/event" />

@@ -233,15 +233,19 @@
 						alert("정확한 정보를 입력해주세요!!!");
 					}
 				},
-				error : function(jqXHR, status, error) {
+				/* error : function(jqXHR, status, error) {
 					alert("알 수 없는 에러 [ " + error + " ]");
+				} */
+				error : function(jqXHR, status, error) {
+					$(".personerId").html("없는 정보");
+					alert("등록된 회원 정보가 없습니다.!!");
 				}
 			});
 		})
 		
-		$("#dob").on("focusout", function(event) {
+		/* $("#dob").on("focusout", function(event) {
 			alert("sadsadd");
-		})
+		}) */
 		
 	</script>
 </body>

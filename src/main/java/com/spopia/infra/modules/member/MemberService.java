@@ -27,12 +27,10 @@ public interface MemberService {
 	public Member loginCheck(Member dto) throws Exception;
 	public Member xdminLoginCheck(Member dto) throws Exception;
 	
-    /* change Password */
-	public int pwdUpdt(Member dto) throws Exception;
-	
 	/* findId & pwd */
 	public Member findId(Member dto) throws Exception;
-  public int findPwd(Member dto) throws Exception;
+	public int findPwd(Member dto) throws Exception;
+	public int changePwd(Member dto) throws Exception;
 
   // naver insert
   public int naverInst(Member dto) throws Exception;

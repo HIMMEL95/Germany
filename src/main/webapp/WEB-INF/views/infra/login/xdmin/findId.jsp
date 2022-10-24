@@ -96,7 +96,7 @@
                                             <input type="text" class="form-control" id="phone" name="phone" placeholder="010-0000-0000" value="">
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr id="idHidden" style="display: none;">
                                     	<td colspan="2">
                                     		<h4>회원님의 아이디는 <strong class="personerId"></strong> 입니다. </h4>
                                     	</td>
@@ -123,7 +123,7 @@
                                             <label for="name" class="form-label fs-4 fw-bolds">이 름</label>
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control" id="name" name="name" value="">
+                                            <input type="text" class="form-control" id="pwdName" name="name" value="">
                                         </td>
                                     </tr>
                                     <tr>
@@ -131,7 +131,7 @@
                                             <label for="id" class="form-label fs-4 fw-bolds">아이디</label>
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control" id="id" name="id" value="">
+                                            <input type="text" class="form-control" id="pwdId" name="id" value="">
                                         </td>
                                     </tr>
                                     <tr>
@@ -139,28 +139,28 @@
                                             <label for="dob" class="form-label fs-4 fw-bolds">생년월일</label>
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control" id="dob" name="dob" value="">
+                                            <input type="text" class="form-control" id="pwdDob" name="dob" value="">
                                         </td>
                                     </tr>
-                                    <tr class="updatePwd" hidden>
+                                    <tr class="updatePwd" style="display: none;">
                                         <td>
-                                            <label for="dob" class="form-label fs-4 fw-bolds">새로운 비밀번호</label>
+                                            <label for="pwd" class="form-label fs-4 fw-bolds">새로운 비밀번호</label>
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control" id="pwd" name="pwd" value="">
+                                            <input type="password" class="form-control" id="pwd" name="pwd" value="">
                                         </td>
                                     </tr>
-                                    <tr class="updatePwd" hidden>
+                                    <tr class="updatePwd" style="display: none;">
                                         <td>
-                                            <label for="dob" class="form-label fs-4 fw-bolds">새로운 비밀번호 확인</label>
+                                            <label for="pwdCheck" class="form-label fs-4 fw-bolds">새로운 비밀번호 확인</label>
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control" id="pwdCheck" value="">
+                                            <input type="password" class="form-control" id="pwdCheck" value="">
                                         </td>
                                     </tr>
                                 </table>
                                 <div class="text-center">
-                                    <button class="btn btn-primary" type="submit">비밀번호 찾기</button>
+                                    <button class="btn btn-primary" type="button" id="findPwd">비밀번호 수정</button>
                                 </div>
                             </div>
                         </div>
@@ -228,6 +228,7 @@
 				,data: {"name": $("#name").val(), "dob": $("#dob").val(), "phone" : $("#phone").val()}
 				,success : function(response) {
 					if (response.rt == "success") {
+						$("#idHidden").css("display", "")
 						$(".personerId").html(response.id.id);
 					} else {
 						alert("정확한 정보를 입력해주세요!!!");
@@ -243,6 +244,56 @@
 			});
 		})
 		
+		$("#pwdDob").focusout(function() {
+			$.ajax({
+				async: true
+				,cache: false
+				,type:"POST"
+				,url: "findPwd"
+				,data: {"name": $("#pwdName").val(), "id": $("#pwdId").val(), "dob" : $("#pwdDob").val()}
+				,success : function(response) {
+					if (response.rt == "success") {
+						$(".updatePwd").css("display", "");
+						$("#profile-tab-pane").prop("aria-selected", true);
+					} else {
+						alert("정확한 정보를 입력해주세요!!!");
+					}
+				},
+				/* error : function(jqXHR, status, error) {
+					alert("알 수 없는 에러 [ " + error + " ]");
+				} */
+				error : function(jqXHR, status, error) {
+					$(".personerId").html("없는 정보");
+					alert("등록된 회원 정보가 없습니다.!!");
+				}
+			});
+		});
+
+		$("#findPwd").on("click", function() {
+			
+			$.ajax({
+				async: true
+				,cache: false
+				,type:"POST"
+				,url: "changePwd"
+				,data: {"name": $("#pwdName").val(), "id": $("#pwdId").val(), "dob" : $("#pwdDob").val(), "pwd": $("#pwd").val()}
+				,success : function(response) {
+					if (response.rt == "success") {
+						alert("비밀번호 수정이 완료되었습니다.");
+						location.href="/userLogin";
+					} else {
+						alert("정확한 정보를 입력해주세요!!!");
+					}
+				},
+				/* error : function(jqXHR, status, error) {
+					alert("알 수 없는 에러 [ " + error + " ]");
+				} */
+				error : function(jqXHR, status, error) {
+					$(".personerId").html("없는 정보");
+					alert("등록된 회원 정보가 없습니다.!!");
+				}
+			});
+		})
 		/* $("#dob").on("focusout", function(event) {
 			alert("sadsadd");
 		}) */

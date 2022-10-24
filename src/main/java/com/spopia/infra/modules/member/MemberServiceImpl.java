@@ -108,12 +108,6 @@ public class MemberServiceImpl implements MemberService {
 		return dao.xdminLoginCheck(dto);
 	}
 
-	/* change Password */
-    @Override
-    public int pwdUpdt(Member dto) throws Exception {
-        return dao.pwdUpdt(dto);
-    }	
-    
     //find id & pwd
     @Override
     public Member findId(Member dto) throws Exception {
@@ -131,9 +125,13 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public int findPwd(Member dto) throws Exception {
+        return dao.findPwd(dto);
+    }
+
+    @Override
+    public int changePwd(Member dto) throws Exception {
         dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
-        dao.findPwd(dto);
-        return 1;
+        return dao.changePwd(dto);
     }
     
     // naver insert

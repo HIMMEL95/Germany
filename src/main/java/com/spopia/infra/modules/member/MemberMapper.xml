@@ -300,14 +300,6 @@
 			and user_div = 24
 	</select>
 
-	<update id="pwdUpdt">
-		UPDATE user
-		SET
-			pwd = #{pwd}
-		where 1=1
-			and seq = #{seq}
-	</update>
-	
 	<select id="findId" resultMap="resultMapObj">
 		select
 			u.id
@@ -318,7 +310,17 @@
 			and phone = #{phone}
 	</select>
 	
-	<update id="findPwd">
+	<select id="findPwd" parameterType="String" resultType="int">
+		select 
+			count(*)
+		from user u
+		where 1=1
+			and id = #{id}
+			and name = #{name}
+			and dob = #{dob}
+	</select>
+
+	<update id="changePwd">
 		UPDATE user
 		SET
 			pwd = #{pwd}

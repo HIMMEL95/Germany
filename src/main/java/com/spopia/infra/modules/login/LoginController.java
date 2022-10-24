@@ -51,7 +51,7 @@ public class LoginController {
 	
     @ResponseBody
     @RequestMapping(value = "findID")
-    public Map<String, Object> findID(MemberVo vo, Member dto) throws Exception {
+    public Map<String, Object> findID(Member dto) throws Exception {
         Map<String, Object> returnMap = new HashMap<String, Object>();
         
         Member id = service.findId(dto);
@@ -59,6 +59,39 @@ public class LoginController {
         if (id != null) {
             returnMap.put("rt", "success");
             returnMap.put("id", id);
+        } else {
+            returnMap.put("rt", "fail");
+        }
+        
+        return returnMap;
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "findPwd")
+    public Map<String, Object> findPwd(Member dto) throws Exception {
+        Map<String, Object> returnMap = new HashMap<String, Object >();
+        
+        int pwd = service.findPwd(dto);
+        
+        if (pwd == 1) {
+            returnMap.put("rt", "success");
+        } else {
+            returnMap.put("rt", "fail");
+        }
+        
+        return returnMap;
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "changePwd")
+    public Map<String, Object> changePwd(Member dto) throws Exception {
+        Map<String, Object> returnMap = new HashMap<String, Object>();
+        
+        int pwd = service.findPwd(dto);
+        
+        if (pwd == 1) {
+            returnMap.put("rt", "success");
+            service.changePwd(dto);
         } else {
             returnMap.put("rt", "fail");
         }

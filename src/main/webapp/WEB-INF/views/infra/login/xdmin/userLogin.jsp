@@ -210,9 +210,6 @@
             </div>
         </div>
     </div>
-    <input type="hidden" name="naverId" value="1253">
-    <input type="hidden" name="name" value="">
-    <input type="hidden" name="email" value="">
     <script type="text/javascript" async="" src="https://ssl.pstatic.net/tveta/libs/glad/prod/gfp-core.js"></script>
     <script type="text/javascript" src="/login/js/v2/default/common_202201.js?v=20220322"></script>
     <script type="text/javascript" src="/login/js/v2/default/default_202105.js?v=20210910"></script>

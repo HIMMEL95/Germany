@@ -7,7 +7,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 <body>
-	<form name="form" enctype="multipart/form-data">
+	<form name="form">
 		<input type="hidden" name="name"/>
 		<input type="hidden" name="id"/>
 		<input type="hidden" name="phone"/>

@@ -16,7 +16,7 @@
             integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <title>Sign Up</title>
         <link rel="stylesheet" href="/resources/css/xdmin/login/signUp.css">
-        <script defer type="text/javascript" src="/resources/js/signValidation.js"></script>
+        <script defer type="text/javascript" src="/resources/js/xdmin/signValidation.js"></script>
     </head>
 <body>
 

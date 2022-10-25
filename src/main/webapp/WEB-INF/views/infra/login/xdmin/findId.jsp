@@ -15,6 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="/resources/css/user/findId.css" rel="stylesheet" type="text/css">
+    <script defer type="text/javascript" src="/resources/js/xdmin/signValidation.js"></script>
 </head>
 
 <body>
@@ -143,19 +144,21 @@
                                         </td>
                                     </tr>
                                     <tr class="updatePwd" style="display: none;">
-                                        <td>
-                                            <label for="pwd" class="form-label fs-4 fw-bolds">새로운 비밀번호</label>
-                                        </td>
-                                        <td>
-                                            <input type="password" class="form-control" id="pwd" name="pwd" value="">
+                                        <td colspan="2">
+				                            <label for="pwd" class="form-label fs-4 fw-bolds col-4 col-form-label" style="float: left;">새로운 비밀번호</label>
+                                        	<div class="input-control col">
+					                            <input id="pwd" name="pwd" class="form-control" type="password" onkeypress="validationUpdt()" autocomplete="off">
+					                            <div class="msg" id="pwd_msg" name="pwd_msg" style="display: none;"></div>
+					                        </div>
                                         </td>
                                     </tr>
                                     <tr class="updatePwd" style="display: none;">
-                                        <td>
-                                            <label for="pwdCheck" class="form-label fs-4 fw-bolds">새로운 비밀번호 확인</label>
-                                        </td>
-                                        <td>
-                                            <input type="password" class="form-control" id="pwdCheck" value="">
+                                        <td colspan="2">
+				                            <label for="pwdCheck" class="form-label fs-4 fw-bolds col-4 col-form-label" style="float: left;">새로운 비밀번호 확인</label>
+                                        	<div class="input-control col">
+					                            <input id="pwdCheck" class="form-control" type="password" onkeypress="validationUpdt()" autocomplete="off">
+					                            <div class="msg" id="pwdCheck_msg" name="pwdCheck_msg" style="display: none;"></div>
+					                        </div>
                                         </td>
                                     </tr>
                                 </table>
@@ -294,9 +297,21 @@
 				}
 			});
 		})
-		/* $("#dob").on("focusout", function(event) {
-			alert("sadsadd");
-		}) */
+		
+		
+	</script>
+	<script type="text/javascript">
+        validationUpdt = function() {
+        	alert("123123");
+            if(!pwd_regex($('input[name=pwd]'), $('input[name=pwd]').val(), "비밀번호를 입력하세요!", $('#pwd_msg'))) {
+                return false;
+            } else if(!pwd2_regex($('#pwdCheck')), $('#pwdCheck').val(), "비밀번호를 입력하세요!", $('#pwdCheck_msg'))) {
+                return false;
+            } else {
+                return true;
+            }
+           	alert("회원가입이 완료 되었습니다.");
+        };
 		
 	</script>
 </body>

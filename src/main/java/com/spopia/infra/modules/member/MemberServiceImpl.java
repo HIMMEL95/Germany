@@ -104,6 +104,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public Member snsLoginCheck(Member dto) throws Exception {
+	    return dao.snsLoginCheck(dto);
+	}
+
+	@Override
 	public Member xdminLoginCheck(Member dto) throws Exception {
 		return dao.xdminLoginCheck(dto);
 	}
@@ -116,7 +121,11 @@ public class MemberServiceImpl implements MemberService {
         System.out.println("id : " + id.getId());
         
         String myId = id.getId().substring(0, id.getId().length()-3);
-        myId += "***";
+        int starLength = id.getId().length()- myId.length();
+        
+        for (int i=0; i<starLength; i++) {
+            myId += "*";
+        }
         
         dto.setId(myId);
         

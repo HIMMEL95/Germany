@@ -69,6 +69,10 @@ public class MemberDao {
 		return sqlSession.selectOne(namespace + ".loginCheck", dto);
 	}
 
+	public Member snsLoginCheck(Member dto) {
+	    return sqlSession.selectOne(namespace + ".snsLoginCheck", dto);
+	}
+
 	public Member xdminLoginCheck(Member dto) {
 		return sqlSession.selectOne(namespace + ".xdminLoginCheck", dto);
 	}

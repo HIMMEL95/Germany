@@ -109,13 +109,13 @@ public class MemberController {
 	    System.out.println("naverLoginProc");
           
 	    // id 값 있는지 체크 
-	    Member naverLogin = service.loginCheck(dto);
+	    Member naverLogin = service.snsLoginCheck(dto);
           
 	    if (naverLogin == null) {
 	        System.out.println("여기는 : " + null);
 	        service.naverInst(dto);
 	        
-	        Member naver = service.loginCheck(dto);
+	        Member naver = service.snsLoginCheck(dto);
   
 	        httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
 	        session(naver.getSeq(), naver.getId(), naver.getName(), naver.getEmail(), naver.getUser_div(), naver.getSnsImg(), httpSession);
@@ -135,12 +135,12 @@ public class MemberController {
 	
 	@RequestMapping(value = "kakaoLoginProc")
 	public String kakaoLoginProc(Member dto, HttpSession httpSession) throws Exception {
-		Member kakaoLogin = service.loginCheck(dto);
+		Member kakaoLogin = service.snsLoginCheck(dto);
 		
 		if (kakaoLogin == null) {
 			service.kakaoInst(dto);
 			
-			Member kakao = service.loginCheck(dto);
+			Member kakao = service.snsLoginCheck(dto);
 			
 			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
 			session(kakao.getSeq(), kakao.getId(), kakao.getName(), kakao.getEmail(), kakao.getUser_div(), kakao.getSnsImg(), httpSession);

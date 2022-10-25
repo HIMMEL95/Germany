@@ -285,6 +285,21 @@
 			and id = #{id} 
 	</select>
 
+	<select id="snsLoginCheck" resultMap="resultMapObj">
+		select 
+			u.seq
+			,u.id
+			,u.name
+			,u.email
+			,u.pwd
+			,u.user_div
+			,u.snsImg
+		from user u
+		where 1=1 
+			and id = #{id} 
+			and name = #{name}
+	</select>
+
 	<select id="xdminLoginCheck" resultMap="resultMapObj">
 		select 
 			u.seq

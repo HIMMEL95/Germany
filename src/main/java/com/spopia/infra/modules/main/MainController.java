@@ -142,4 +142,9 @@ public class MainController {
 		return returnMap;
 	}
 	
+	@RequestMapping(value = "chat")
+	public String chat() throws Exception {
+	    return "infra/chat/chat";
+	}
+	
 }

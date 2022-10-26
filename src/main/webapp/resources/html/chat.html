@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://www.gstatic.com/firebasejs/7.2/firebase.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        파이어베이스 실시간으로 웹페이지 연동하기 </br>
+        Firebase + Realtime + Web 
+        <p id="demo">A Paragraph.</p>
+        <pre id="object"></pre>
+        <input type="text" id="text" value="">
+        <button type="button" onclick="myFunction()">데이터 쓰기</button>
+
+        <script>
+        	var firebaseConfig = {
+        	    apiKey: "AIzaSyBZfYveiWzk6udLtVHT2HrRljPrrPEpajk",
+        	    authDomain: "spopia.firebaseapp.com",
+        	    databaseURL: "https://spopia-default-rtdb.firebaseio.com",
+        	    projectId: "spopia",
+        	    storageBucket: "spopia.appspot.com",
+        	    messagingSenderId: "402814991050",
+        	    appId: "1:402814991050:web:f8450ff374c915c1bb9233",
+        	    measurementId: "G-GTD02LTBV8"
+        	};
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            // firebase에서 읽기
+            var demo = document.getElementById("demo");
+            var preObject = document.getElementById("object");
+            var dbRef = firebase.database().ref().child("object");
+            dbRef.on('value',snap => demo.innerHTML = snap.val());
+            dbRef.on('value',snap => {
+                preObject.innerText = JSON.stringify(snap.val(),null,3);
+            });
+        </script>
+
+        <script>
+            function myFunction() {
+                document.getElementById("demo").innerHTML = "쓰기를 완료";
+                alert("쓰기 완료");
+                
+                //firebase에 쓰기
+                var dbRefObject = firebase.database().ref();
+                dbRefObject.child("object").set($("#text").val());
+            }
+        </script>
+    </body>
+</html>

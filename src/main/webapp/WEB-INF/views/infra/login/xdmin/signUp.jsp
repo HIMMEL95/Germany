@@ -312,7 +312,6 @@
             } else {
                 return true;
             }
-           	alert("회원가입이 완료 되었습니다.");
         };
         
         function daumPostCode() {
@@ -388,7 +387,10 @@
         
         $("#btnSave").on("click", function() {
         	if (validationUpdt() == false) return false;
-        	else swAlert("회원가입", "회원가입을 축하합니다.!!!", "success");
+        	else {
+        		form.attr("action", goUrlInst).submit();
+        		swAlert("회원가입", "회원가입을 축하합니다.!!!", "success");
+        	}
 		});
         
         function swAlert(title, text, icon) {
@@ -399,7 +401,7 @@
 				,buttons: "확인"
 			}).then((value) => {
 				if (value) {
-					location.href = goUrlInst;
+					loaction.href = "/userLogin";
 				}
 			})
 		}

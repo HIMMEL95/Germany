@@ -316,6 +316,35 @@
 		});
     	/* kakao login e */
     	
+    	
+    	/* naver login test s */
+		
+		/* var naverLogin = new naver.LoginWithNaverId(
+			{
+				clientId: "z69jjnmkMQ88W2owra4t", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
+				callbackUrl: "http://localhost:8080/sportMain", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
+				isPopup: false,
+				callbackHandle: true
+			}
+		);
+
+    	var state = naver_id_login.getUniqState();
+		naver_id_login.setButton("green", 3, 70);
+		naver_id_login.setDomain("http://localhost:8080");
+		naver_id_login.setState(state);
+		naver_id_login.init_naver_id_login();
+		
+		$("#naver_id_login").on('click', function () {
+			naver_id_login.getStatus(function (status) {
+				if (status) {
+					console.log(naver_id_login.user); 
+		    		
+				} else {
+					console.log("callback 처리에 실패하였습니다.");
+				}
+			});
+		}); */
+    	/* naver login test e */
     	</script>
     </script>
 </body>

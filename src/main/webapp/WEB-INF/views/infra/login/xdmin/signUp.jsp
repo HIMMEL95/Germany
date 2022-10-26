@@ -17,6 +17,10 @@
         <title>Sign Up</title>
         <link rel="stylesheet" href="/resources/css/xdmin/login/signUp.css">
         <script defer type="text/javascript" src="/resources/js/xdmin/signValidation.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="/resources/demos/style.css">
     </head>
 <body>
 
@@ -64,7 +68,7 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="pwd2">Password again<span style="color: red;">*</span></label>
-                            <input id="pwd2" name="pwd2" type="password" onkeypress="validationUpdt()" onfocusout="validationUpdt()" autocomplete="off">
+                            <input id="pwd2" name="pwd2" type="password" onkeyup="validationUpdt()" onfocusout="validationUpdt()" autocomplete="off">
                             <div class="msg" id="pwd2_msg" name="pwd2_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -73,7 +77,7 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="dob">생년월일<span style="color: red;">*</span></label>
-                            <input id="dob" name="dob" type="text" placeholder="1900-01-01" autocomplete="off" onfocusout="validationUpdt()">
+                            <input id="dob" name="dob" class="datepicker" type="text" placeholder="1900-01-01" autocomplete="off" onfocusout="validationUpdt()">
                             <div class="msg" id="dob_msg" name="dob_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -450,7 +454,6 @@
    				}
    			});
     	});
-		
     </script>
 </body>
 </html> 

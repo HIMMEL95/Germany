@@ -65,17 +65,17 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/member/memberList">
                                         <i class="fa-solid fa-gear me-2"></i>
-                                        Account Settings
+                                        Admin Settings
                                     </a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a class="dropdown-item" href="#">
                                         <i class="fa-solid fa-circle-info me-2"></i>
                                         Help
                                     </a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a class="dropdown-item bg-danger-soft-hover" href="/">
                                         <i class="fa-solid fa-power-off me-2"></i>
@@ -149,7 +149,7 @@
                                                                 <span>작성 글</span>
                                                             </a>
                                                         </li>
-                                                        <li class="nav-item">
+                                                        <!-- <li class="nav-item">
                                                             <a class="nav-link" href="/comment/userCommentList">
                                                                 <i class="fa-solid fa-users pe-3"></i>
                                                                 <span>비밀번호 변경</span>
@@ -160,7 +160,7 @@
                                                                 <i class="fa-solid fa-users pe-3"></i>
                                                                 <span>탈퇴하기</span>
                                                             </a>
-                                                        </li>
+                                                        </li> -->
                                                     </ul>
                                                 </div>
                                             </div>

@@ -1120,3 +1120,7 @@ strong {
 .fa-right-to-bracket {
 	font-size: 20px;
 }
+
+#spot {
+	overflow: auto;
+}

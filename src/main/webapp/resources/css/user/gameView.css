@@ -469,8 +469,8 @@ option {
 }
 
 .MatchBox_image__3CcVt img {
-    width: 40px;
-    height: 40px;
+    width: 80px;
+    height: 60px;
     vertical-align: top;
 }
 
@@ -546,12 +546,6 @@ i {
 
 .MatchBox_team_area__a9Jet .MatchBox_image__3CcVt {
     text-align: center;
-}
-
-.MatchBox_image__3CcVt img {
-    width: 40px;
-    height: 40px;
-    vertical-align: top;
 }
 
 fieldset,

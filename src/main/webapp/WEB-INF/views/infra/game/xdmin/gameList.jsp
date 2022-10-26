@@ -64,12 +64,12 @@
                                         Edit Profile
                                     </a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a class="dropdown-item" href="#">
                                         <i class="fa-solid fa-gear me-2"></i>
                                         Account Settings
                                     </a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a class="dropdown-item" href="#">
                                         <i class="fa-solid fa-circle-info me-2"></i>
@@ -137,12 +137,12 @@
                                                     </div>
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
-                                                        <li class="nav-item">
+                                                       <!--  <li class="nav-item">
                                                             <a class="nav-link" href="/dashboard">
                                                                 <i class="fa-solid fa-chart-line pe-3"></i>
                                                                 <span>Dashboard</span>
                                                             </a>
-                                                        </li>
+                                                        </li> -->
                                                         <li class="nav-item">
                                                             <a class="nav-link" href="/member/memberList">
                                                                 <i class="fa-solid fa-users pe-3"></i>

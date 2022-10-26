@@ -166,17 +166,17 @@
 				                                    <c:choose>
 														<c:when test="${sessUser eq 25}">
 															<li class="pro_li">
-					                                            <button class="pro_a" type="button" id="editBtn" style="cursor: pointer; background: none;" onclick="goView()">
+					                                            <button class="pro_a" type="button" id="editBtn" style="cursor: pointer; background: none;" onclick="goView(${sessSeq})">
 					                                                <i class="fa-solid fa-user me-2"></i>
 					                                                Edit Profile
 					                                            </button>
 					                                        </li>
-					                                        <li class="pro_li">
+					                                        <!-- <li class="pro_li">
 					                                            <a class="pro_a" href="#">
 					                                                <i class="fa-solid fa-circle-info me-2"></i>
 					                                                Help
 					                                            </a>
-					                                        </li>
+					                                        </li> -->
 					                                        <li class="pro_li">
 					                                            <button class="pro_a" id="signOutBtn" style="background: none;">
 					                                                <i class="fa-solid fa-power-off me-2"></i>
@@ -186,23 +186,23 @@
 														</c:when>
 														<c:otherwise>
 															<li class="pro_li">
-					                                            <button class="pro_a" type="button" id="editBtn" style="cursor: pointer; background: none" onclick="goView()">
+					                                            <button class="pro_a" type="button" id="editBtn" style="cursor: pointer; background: none" onclick="goView(${sessSeq})">
 					                                                <i class="fa-solid fa-user me-2"></i>
 					                                                Edit Profile
 					                                            </button>
 					                                        </li>
 					                                        <li class="pro_li">
-					                                            <a class="pro_a" href="/dashboard">
+					                                            <a class="pro_a" href="/member/memberList">
 					                                                <i class="fa-solid fa-gear me-2"></i>
 					                                                Admin Page
 					                                            </a>
 					                                        </li>
-					                                        <li class="pro_li">
+					                                        <!-- <li class="pro_li">
 					                                            <a class="pro_a" href="#">
 					                                                <i class="fa-solid fa-circle-info me-2"></i>
 					                                                Help
 					                                            </a>
-					                                        </li>
+					                                        </li> -->
 					                                        <li class="pro_li">
 					                                            <button class="pro_a" id="signOutBtn" style="background: none;">
 					                                                <i class="fa-solid fa-power-off me-2"></i>
@@ -235,7 +235,7 @@
 								<ul class="sub_menu_list" role="menubar">
 								</ul></li>
 
-							<li class="main_menu_item" role="presentation"><a
+							<!-- <li class="main_menu_item" role="presentation"><a
 								href="#" class="link_main_menu" role="menuitem"
 								onclick="clickcr(this,
 																														'LNB.baseball',
@@ -401,7 +401,7 @@
 											src="https://sports-phinf.pstatic.net/20220107_20/1641522453127ianDL_PNG/7cc53600-6fac-11ec-8738-ecfde1d86295.png"
 											width="58" height="36" alt="승부예측">
 									</a></li>
-								</ul></li>
+								</ul></li> -->
 						</ul>
 					</div>
 				</div>
@@ -450,7 +450,7 @@
 															<div class="away_team">
 																<span class="team"> 
 																	<span class="emblem">
-																		<img src="https://sports-phinf.pstatic.net/team/wfootball/default/32839.png" width="30" height="30" alt="" onerror="imageOnError(this);">
+																		<img src="${gList.away_img }" width="30" height="30" alt="" onerror="imageOnError(this);">
 																	</span> 
 																	<span class="name">
 																		<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
@@ -462,7 +462,7 @@
 															<div class="home_team">
 																<span class="team"> 
 																	<span class="emblem">
-																		<img src="https://sports-phinf.pstatic.net/team/wfootball/default/26344.png" width="30" height="30" alt="마르세유" onerror="imageOnError(this);">
+																		<img src="${gList.home_img }" width="30" height="30" alt="마르세유" onerror="imageOnError(this);">
 																	</span> 
 																	<span class="name">
 																		<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
@@ -3835,8 +3835,8 @@
    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		 function menuToggle() {
-	            const toggleMenu = document.querySelector('.menu');
-	            toggleMenu.classList.toggle('active')
+            const toggleMenu = document.querySelector('.menu');
+            toggleMenu.classList.toggle('active')
         };
 		 
 		$("#signOutBtn").on("click", function() {
@@ -3858,9 +3858,17 @@
 		var form = $("#myForm");
 		var goUrlUView = "/member/memberUView";
 		
-		goView = function() {
+		goView = function(keyValue) {
 			form.attr("action", goUrlUView).submit();
 		}
+		
+		$(".link_creator").on("click", function() {
+			alert("준비 중인 항목입니다!!!");
+		})
+		
+		$(".link_vod").on("click", function() {
+			alert("준비 중인 항목입니다!!!");
+		})
 	</script>
 </body>
 </html>

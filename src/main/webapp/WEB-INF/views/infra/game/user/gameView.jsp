@@ -109,12 +109,12 @@
 				                                        Edit Profile
 				                                    </a>
 				                                </li>
-				                                <li>
+				                                <!-- <li>
 				                                    <a class="dropdown-item" href="#">
 				                                        <i class="fa-solid fa-circle-info me-2"></i>
 				                                        Help
 				                                    </a>
-				                                </li>
+				                                </li> -->
 				                                <li>
 				                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" >
 				                                        <i class="fa-solid fa-power-off me-2"></i>
@@ -130,17 +130,17 @@
 				                                    </a>
 				                                </li>
 				                                <li>
-				                                    <a class="dropdown-item" href="#">
+				                                    <a class="dropdown-item" href="/member/memberList">
 				                                        <i class="fa-solid fa-gear me-2"></i>
-				                                        Account Settings
+				                                        Admin Settings
 				                                    </a>
 				                                </li>
-				                                <li>
+				                                <!-- <li>
 				                                    <a class="dropdown-item" href="#">
 				                                        <i class="fa-solid fa-circle-info me-2"></i>
 				                                        Help
 				                                    </a>
-				                                </li>
+				                                </li> -->
 				                                <li>
 				                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" >
 				                                        <i class="fa-solid fa-power-off me-2"></i>
@@ -169,7 +169,7 @@
 			   			<li class="nav-item">
 			   				<a class="nav-link active" aria-current="page" href="/sportMain">스포츠홈</a>
 		   				</li>
-	   					<li class="nav-item">
+	   					<!-- <li class="nav-item">
 	   						<a class="nav-link" href="#">야구</a>
 	   					</li>
 	   					<li class="nav-item">
@@ -180,7 +180,7 @@
 	   					</li>
 	   					<li class="nav-item">
 	   						<a class="nav-link" href="#">해외축구</a>
-	   					</li>
+	   					</li> -->
    					</ul>
 				</div>
 			</div>
@@ -226,8 +226,8 @@
 	                <div class="MatchBox_home__MPL6D pt-2">
 	                    <div class="MatchBox_team_area__a9Jet">
 	                        <div class="MatchBox_image__3CcVt"><img
-	                                src="https://sports-phinf.pstatic.net/team/kbo/default/HT.png?type=f108_108" alt="" width="72"
-	                                height="72"></div>
+	                                src="${item.away_img }" alt="" width="80"
+	                                height="60"></div>
 	                        <div class="MatchBox_text__22e-R text-center">
 	                        	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
 	                            <em class="MatchBox_name__11AyG">
@@ -235,15 +235,22 @@
 										<c:if test="${item.team_away eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
 									</c:forEach>
 	                            </em>
-	                            <p class="MatchBox_pitcher__2Krgp">선-${item.player_away }</p>
+	                            <c:choose>
+                            		<c:when test="${empty item.player_away }">
+                            			
+                            		</c:when>
+                            		<c:otherwise>
+			                            <p class="MatchBox_pitcher__2Krgp">선-${item.player_away }</p>
+                            		</c:otherwise>
+                            	</c:choose>
 	                        </div>
 	                    </div>
 	                </div>
 	                <div class="MatchBox_away__1rDsC pt-2">
 	                    <div class="MatchBox_team_area__a9Jet">
 	                        <div class="MatchBox_image__3CcVt"><img
-	                                src="https://sports-phinf.pstatic.net/team/kbo/default/OB.png?type=f108_108" alt="" width="72"
-	                                height="72"></div>
+	                                src="${item.home_img }" alt="" width="80"
+	                                height="60"></div>
 	                        <div class="MatchBox_text__22e-R text-center">
 	                            <em class="MatchBox_name__11AyG">
 	                            	<i class="MatchBox_badge__p5jYW">홈</i>
@@ -251,7 +258,14 @@
 										<c:if test="${item.team_home eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
 									</c:forEach>
                             	</em>
-	                            <p class="MatchBox_pitcher__2Krgp">선-${item.player_home }</p>
+                            	<c:choose>
+                            		<c:when test="${empty item.player_home }">
+                            			
+                            		</c:when>
+                            		<c:otherwise>
+			                            <p class="MatchBox_pitcher__2Krgp">선-${item.player_home }</p>
+                            		</c:otherwise>
+                            	</c:choose>
 	                        </div>
 	                    </div>
 	                </div>
@@ -265,7 +279,7 @@
 	                            <div class="CheerVS_left_team__3uqU9" style="width: 53.8574%; color: rgb(255, 255, 255);">
 	                                <div class="CheerVS_team_cover__2Fb3h"
 	                                    style="background: linear-gradient(to right, rgb(19, 18, 48), rgb(19, 18, 48));"><img
-	                                        src="https://sports-phinf.pstatic.net/team/kbo/default/OB.png" class="CheerVS_emblem__2zXNQ"
+	                                        src="${item.home_img }" class="CheerVS_emblem__2zXNQ"
 	                                        alt="" width="50" height="50">
 	                                    <div class="CheerVS_message__A0q9j">
 	                                        <div class="CheerVS_team__5OZFJ">두산</div>
@@ -278,7 +292,7 @@
 	                                <div class="CheerVS_versus__xXspg">종료</div>
 	                                <div class="CheerVS_team_cover__2Fb3h"
 	                                    style="background: linear-gradient(to right, rgb(163, 37, 37), rgb(163, 37, 37));"><img
-	                                        src="https://sports-phinf.pstatic.net/team/kbo/default/HT.png" class="CheerVS_emblem__2zXNQ"
+	                                        src="${item.away_img }" class="CheerVS_emblem__2zXNQ"
 	                                        alt="" width="50" height="50">
 	                                    <div class="CheerVS_message__A0q9j">
 	                                        <div class="CheerVS_team__5OZFJ">KIA</div>

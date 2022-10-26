@@ -91,12 +91,12 @@
                                                 Edit Profile
                                             </a>
                                         </li>
-                                        <li class="ms-3">
+                                        <!-- <li class="ms-3">
                                             <a class="dropdown-item" href="#">
                                                 <i class="fa-solid fa-circle-info me-2"></i>
                                                 Help
                                             </a>
-                                        </li>
+                                        </li> -->
                                         <li class="ms-3">
                                             <button class="dropdown-item" id="signOutBtn">
                                                 <i class="fa-solid fa-power-off me-2"></i>
@@ -112,17 +112,17 @@
                                             </a>
 		                                </li>
 		                                <li>
-		                                    <a class="dropdown-item" href="#">
+		                                    <a class="dropdown-item" href="/member/memberList">
 		                                        <i class="fa-solid fa-gear me-2"></i>
-		                                        Account Settings
+		                                        Admin Settings
 		                                    </a>
 		                                </li>
-		                                <li>
+		                               <!--  <li>
 		                                    <a class="dropdown-item" href="#">
 		                                        <i class="fa-solid fa-circle-info me-2"></i>
 		                                        Help
 		                                    </a>
-		                                </li>
+		                                </li> -->
 		                                <li>
 		                                    <button class="dropdown-item bg-danger-soft-hover" id="signOutBtn">
 		                                        <i class="fa-solid fa-power-off me-2"></i>
@@ -205,7 +205,7 @@
                                                                 <span>작성 글</span>
                                                             </a>
                                                         </li>
-                                                        <li class="nav-item">
+                                                        <!-- <li class="nav-item">
                                                             <a class="nav-link" href="/changePw">
                                                                 <i class="fa-solid fa-users pe-3"></i>
                                                                 <span>비밀번호 변경</span>
@@ -216,7 +216,7 @@
                                                                 <i class="fa-solid fa-users pe-3"></i>
                                                                 <span>탈퇴하기</span>
                                                             </a>
-                                                        </li>
+                                                        </li> -->
                                                     </ul>
                                                 </div>
                                             </div>
@@ -350,8 +350,7 @@
                         </div>
                         <div class="row">
                             <div class="col-2 offset-10" align="right">
-                                <button class="btn btn-primary text-white fw-bold btn-sm shadow" id="btnMod" href="/member/memberUMod?seq=<c:out value="${item.seq }"/>"
-                                    type="button">수정</button>
+                                <button class="btn btn-primary text-white fw-bold btn-sm shadow" id="btnMod" type="button" onclick="goView()">수정</button>
                             </div>
                         </div>
                     </div>
@@ -413,9 +412,9 @@
 			formVo.attr("action", goUrlList).submit();
 		})
 		
-		$("#btnMod").on("click", function() {
+		goView = function() {
 			form.attr("action", goUrlMod).submit();
-		})
+		}
 		
 		$("#signOutBtn").on("click", function() {
 			$.ajax({

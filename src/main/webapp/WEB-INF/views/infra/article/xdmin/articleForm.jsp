@@ -65,12 +65,12 @@
                                         Edit Profile
                                     </a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a class="dropdown-item" href="#">
                                         <i class="fa-solid fa-gear me-2"></i>
                                         Account Settings
                                     </a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a class="dropdown-item" href="#">
                                         <i class="fa-solid fa-circle-info me-2"></i>

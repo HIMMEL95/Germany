@@ -21,7 +21,23 @@ public class Game extends BaseVo{
 	private String gModifiedAt;
 	private Integer gcDelNy;
 	
-	// comment
+	private String home_img;
+	private String away_img;
+	
+	public String getHome_img() {
+        return home_img;
+    }
+    public void setHome_img(String home_img) {
+        this.home_img = home_img;
+    }
+    public String getAway_img() {
+        return away_img;
+    }
+    public void setAway_img(String away_img) {
+        this.away_img = away_img;
+    }
+
+    // comment
 	private String id;
 	private String comment;
 	private String seq;

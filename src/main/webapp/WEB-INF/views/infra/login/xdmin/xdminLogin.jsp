@@ -176,7 +176,7 @@
 						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
 						return false;
 					} else {
-						window.location.href = "/dashboard";
+						window.location.href = "/member/memberList";
 					}
 				},
 				error : function(jqXHR, status, error) {

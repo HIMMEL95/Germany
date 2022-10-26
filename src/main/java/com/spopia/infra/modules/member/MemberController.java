@@ -92,8 +92,16 @@ public class MemberController {
 	@RequestMapping(value = "memberUMod")
 	public String memberUMod(MemberVo vo, Model model) throws Exception {
 		
-		Member item = service.selectOne(vo);
+		Member item = service.snsSelectOne(vo);
 		model.addAttribute("item", item);
+//		System.out.println("test : " + item.getTeam());
+//		
+//		if (item.getTeam() == null) {
+//		    Member snsItem = service.snsSelectOne(vo);
+//		    model.addAttribute("item", snsItem);
+//		} else {
+//		    model.addAttribute("item", item);
+//		}
 		
 		return "infra/member/user/memberUModForm";
 	}

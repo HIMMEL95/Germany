@@ -173,9 +173,4 @@ public class LoginController {
 		return returnMap;
 	}
 	
-	@RequestMapping(value = "kakaoLogin")
-	public String kakaoLogin() throws Exception {
-		return "/sportMain";
-	}
-
 }

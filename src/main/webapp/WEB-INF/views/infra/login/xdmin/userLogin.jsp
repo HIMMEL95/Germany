@@ -320,16 +320,84 @@
     	
     	
     	/* naver login test s */
+   		
+   		var naverLogin = new naver.LoginWithNaverId(
+			{
+				clientId: "z69jjnmkMQ88W2owra4t",
+				callbackUrl: "http://localhost:8080/userLogin",
+				isPopup: false,
+				callbackHandle: false
+				loginButton: {color: "green", type: 3, height: 70} 
+				/* callback 페이지가 분리되었을 경우에 callback 페이지에서는 callback처리를 해줄수 있도록 설정합니다. */
+			}
+		);
+    	naverLogin.init();
     	
-    	var naver_id_login = new naver_id_login("z69jjnmkMQ88W2owra4t", "http://localhost:8080/userLogin");
-		var state = naver_id_login.getUniqState();
-		naver_id_login.setButton("green", 3, 70);
-		naver_id_login.setDomain("http://localhost:8080");
-		naver_id_login.setState(state);
-		naver_id_login.init_naver_id_login();
+    	$("#naver_id_login").on("click", function() {
+    		
+    		$.ajax({
+				async: true
+				,cache: false
+				,type:"POST"
+				,url: "/member/naverCallback"
+				,data: {}
+				,success : function(response) {
+					if (response.rt == "success") {
+						window.addEventListener('load', function () {
+							naverLogin.getLoginStatus(function (status) {
+								if (status) {
+									naver_id_login.get_naver_userprofile("naverSignInCallback()");
+									function naverSignInCallback() {
+										$("input[name=id]").val("네이버로그인");
+										$("input[name=name]").val(naver_id_login.getProfileData('name'));
+										$("input[name=phone]").val(naver_id_login.getProfileData('mobile'));
+										$("input[name=email]").val(naver_id_login.getProfileData('email'));
+										$("input[name=dob]").val(naver_id_login.getProfileData('birthday'));
+										$("input[name=snsImg]").val(naver_id_login.getProfileData('profile_image'));
+							 
+										if (naver_id_login.getProfileData('gender') == 'M'){
+											$("input[name=gender]").val(5);
+										} else {
+											$("input[name=gender]").val(6);
+										} 
+							 
+										$("form[name=form]").attr("action", "/member/naverLoginProc").submit();
+									}
+								} else {
+									console.log("callback 처리에 실패하였습니다.");
+								}
+							});
+						});
+					} else {
+						alert("네이버 로그인을 해주세요!!!");
+					}
+				},
+				error : function(jqXHR, status, error) {
+					alert("알 수 없는 에러 [ " + error + " ]");
+				}
+			});
+		})
 		
+	/* 	naver_id_login.get_naver_userprofile("naverSignInCallback()");
+		function naverSignInCallback() {
+			$("input[name=id]").val("네이버로그인");
+			$("input[name=name]").val(naver_id_login.getProfileData('name'));
+			$("input[name=phone]").val(naver_id_login.getProfileData('mobile'));
+			$("input[name=email]").val(naver_id_login.getProfileData('email'));
+			$("input[name=dob]").val(naver_id_login.getProfileData('birthday'));
+			$("input[name=snsImg]").val(naver_id_login.getProfileData('profile_image'));
+ 
+			if (naver_id_login.getProfileData('gender') == 'M'){
+				$("input[name=gender]").val(5);
+			} else {
+				$("input[name=gender]").val(6);
+			} 
+ 
+			$("form[name=form]").attr("action", "/member/naverLoginProc").submit();
+		} */
+
 		  /* alert(naver_id_login.oauthParams.access_token); */
-		 /*  naver_id_login.get_naver_userprofile("naverSignInCallback()");
+	/* 	  naver_id_login.get_naver_userprofile("naverSignInCallback()");
 		  function naverSignInCallback() {
 			  $("input[name=id]").val("네이버로그인");
 			  $("input[name=name]").val(naver_id_login.getProfileData('name'));
@@ -345,7 +413,7 @@
 				} 
 			  
 			  $("form[name=form]").attr("action", "/member/naverLoginProc").submit();
-		  } */
+		  }  */
     	/* naver login test e */
     	</script>
     </script>

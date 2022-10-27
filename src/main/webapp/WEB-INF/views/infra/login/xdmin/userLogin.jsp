@@ -321,12 +321,31 @@
     	
     	/* naver login test s */
     	
-    	var naver_id_login = new naver_id_login("z69jjnmkMQ88W2owra4t", "http://localhost:8080/sportMain");
+    	var naver_id_login = new naver_id_login("z69jjnmkMQ88W2owra4t", "http://localhost:8080/userLogin");
 		var state = naver_id_login.getUniqState();
 		naver_id_login.setButton("green", 3, 70);
 		naver_id_login.setDomain("http://localhost:8080");
 		naver_id_login.setState(state);
 		naver_id_login.init_naver_id_login();
+		
+		  /* alert(naver_id_login.oauthParams.access_token); */
+		 /*  naver_id_login.get_naver_userprofile("naverSignInCallback()");
+		  function naverSignInCallback() {
+			  $("input[name=id]").val("네이버로그인");
+			  $("input[name=name]").val(naver_id_login.getProfileData('name'));
+			  $("input[name=phone]").val(naver_id_login.getProfileData('mobile'));
+			  $("input[name=email]").val(naver_id_login.getProfileData('email'));
+			  $("input[name=dob]").val(naver_id_login.getProfileData('birthday'));
+			  $("input[name=snsImg]").val(naver_id_login.getProfileData('profile_image'));
+			  
+			  if (naver_id_login.getProfileData('gender') == 'M'){
+					$("input[name=gender]").val(5);
+				} else {
+					$("input[name=gender]").val(6);
+				} 
+			  
+			  $("form[name=form]").attr("action", "/member/naverLoginProc").submit();
+		  } */
     	/* naver login test e */
     	</script>
     </script>

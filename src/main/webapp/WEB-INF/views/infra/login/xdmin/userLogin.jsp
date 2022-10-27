@@ -321,7 +321,7 @@
     	
     	/* naver login test s */
    		
-   		var naverLogin = new naver.LoginWithNaverId(
+   		var naver_id_login = new naver.LoginWithNaverId(
 			{
 				clientId: "z69jjnmkMQ88W2owra4t",
 				callbackUrl: "http://localhost:8080/userLogin",
@@ -331,7 +331,7 @@
 				/* callback 페이지가 분리되었을 경우에 callback 페이지에서는 callback처리를 해줄수 있도록 설정합니다. */
 			}
 		);
-    	naverLogin.init();
+   		naver_id_login.init();
     	
     	$("#naver_id_login").on("click", function() {
     		
@@ -344,7 +344,7 @@
 				,success : function(response) {
 					if (response.rt == "success") {
 						window.addEventListener('load', function () {
-							naverLogin.getLoginStatus(function (status) {
+							naver_id_login.getLoginStatus(function (status) {
 								if (status) {
 									naver_id_login.get_naver_userprofile("naverSignInCallback()");
 									function naverSignInCallback() {

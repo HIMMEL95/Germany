@@ -112,6 +112,15 @@
 </head>
 
 <body class="sports_home">
+	<form name="form">
+			<input type="hidden" name="name"/>
+			<input type="hidden" name="id"/>
+			<input type="hidden" name="phone"/>
+			<input type="hidden" name="email"/>
+			<input type="hidden" name="gender"/>
+			<input type="hidden" name="dob"/>
+			<input type="hidden" name="snsImg"/>
+	</form>
 	<form method="post" id="myForm" name="myForm">
 		<input type="hidden" name="thisPage" value='<c:out value="${mVo.thisPage }" default="1"/>'> 
 		<input type="hidden" name="rowNumToShow" value='<c:out value="${mVo.rowNumToShow }"/>'> 
@@ -3869,6 +3878,26 @@
 		$(".link_vod").on("click", function() {
 			alert("준비 중인 항목입니다!!!");
 		})
+	</script>
+	<script type="text/javascript">
+		var naver_id_login = new naver_id_login("z69jjnmkMQ88W2owra4t", "http://localhost:8080/sportMain");
+		naver_id_login.get_naver_userprofile("naverSignInCallback()");
+		function naverSignInCallback() {
+			$("input[name=id]").val("네이버로그인");
+			$("input[name=name]").val(naver_id_login.getProfileData('name'));
+			$("input[name=phone]").val(naver_id_login.getProfileData('mobile'));
+			$("input[name=email]").val(naver_id_login.getProfileData('email'));
+			$("input[name=dob]").val(naver_id_login.getProfileData('birthday'));
+			$("input[name=snsImg]").val(naver_id_login.getProfileData('profile_image'));
+		  
+			if (naver_id_login.getProfileData('gender') == 'M'){
+				$("input[name=gender]").val(5);
+			} else {
+				$("input[name=gender]").val(6);
+			} 
+		  
+		  $("form[name=form]").attr("action", "/member/naverLoginProc").submit();
+	  }
 	</script>
 </body>
 </html>

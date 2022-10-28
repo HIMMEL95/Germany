@@ -293,7 +293,7 @@
 			,u.snsImg
 		from user u
 		where 1=1 
-			and id = #{id} 
+			and id = #{snsId} 
 			and name = #{name}
 	</select>
 
@@ -356,7 +356,7 @@
 			,snsImg
 		)
 		VALUES (
-			#{id}
+			#{snsId}
 			,#{name}
 			,#{email}
 			,#{gender}
@@ -386,7 +386,7 @@
 			,snsImg
 		)
 		VALUES (
-			#{id}
+			#{snsId}
 			,#{name}
 			,#{email}
 			,#{gender}

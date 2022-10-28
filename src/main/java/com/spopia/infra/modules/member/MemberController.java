@@ -109,22 +109,25 @@ public class MemberController {
 		return "infra/member/user/memberUModForm";
 	}
 	
+
+	@RequestMapping(value = "naverCallback")
+	    public String naverCallback() throws Exception {
+	    System.out.println("passing");
+	    return "infra/login/xdmin/naverCallback";
+    }
+     
+
     /*
+     * @ResponseBody
+     * 
      * @RequestMapping(value = "naverCallback")
-     * public String naverCallback() throws Exception {
-     * System.out.println("passing");
-     * return "infra/login/xdmin/naverCallback";
+     * public Map<String, Object> naverCallback() throws Exception {
+     * Map<String, Object> returnMap = new HashMap<String, Object>();
+     * 
+     * returnMap.put("rt", "success");
+     * return returnMap;
      * }
      */
-
-	@ResponseBody
-	@RequestMapping(value = "naverCallback")
-	public Map<String, Object> naverCallback() throws Exception {
-	    Map<String, Object> returnMap = new HashMap<String, Object>();
-	    
-	    returnMap.put("rt", "success");
-	    return returnMap;
-	}
 
 	@RequestMapping(value = "naverLoginProc")
 	public String naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
@@ -150,28 +153,26 @@ public class MemberController {
 	    return "redirect:/sportMain";
 	}
 	
-	@RequestMapping(value = "kakaoCallback")
-	public String kakaoCallback() throws Exception {
-	    return "infra/login/xdmin/kakaoCallback";
-	}
-	
+	@ResponseBody
 	@RequestMapping(value = "kakaoLoginProc")
-	public String kakaoLoginProc(Member dto, HttpSession httpSession) throws Exception {
+	public Map<String, Object> kakaoLoginProc(Member dto, HttpSession httpSession) throws Exception {
+	    Map<String, Object> returnMap = new HashMap<String, Object>();
+	    
 		Member kakaoLogin = service.snsLoginCheck(dto);
 		
 		if (kakaoLogin == null) {
 			service.kakaoInst(dto);
 			
-			Member kakao = service.snsLoginCheck(dto);
-			
 			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
-			session(kakao.getSeq(), kakao.getId(), kakao.getName(), kakao.getEmail(), kakao.getUser_div(), kakao.getSnsImg(), httpSession);
+			session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), httpSession);
+			returnMap.put("rt", "success");
 		} else {
 			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
 			
 			session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), httpSession);
+			returnMap.put("rt", "success");
 		}
-		return "redirect:/sportMain";
+		return returnMap;
 	}
 	
 	 public void session(String seq, String id, String name, String email, Integer user, String img, HttpSession httpSession) {

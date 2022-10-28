@@ -39,8 +39,15 @@ public class Member extends Base {
 	private String[] pathFile;
 	private String[] fileSeq;
 	private String snsImg;
+	private String snsId;
 
-	public String getSnsImg() {
+	public String getSnsId() {
+        return snsId;
+    }
+    public void setSnsId(String snsId) {
+        this.snsId = snsId;
+    }
+    public String getSnsImg() {
 		return snsImg;
 	}
 	public void setSnsImg(String snsImg) {

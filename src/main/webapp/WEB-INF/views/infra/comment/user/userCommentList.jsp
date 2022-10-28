@@ -64,7 +64,7 @@
                                         	</c:choose>
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="#"><c:out value="${sessName }"/><br></a>
+                                            <a class="fs-6 fw-bold" onclick="goForm(${sessSeq})"><c:out value="${sessName }"/><br></a>
                                             <p class="small m-0"><c:out value="${sessEmail }"/><br></p>
                                         </div>
                                     </div>
@@ -72,20 +72,6 @@
                                 </li>
                                 <!-- Links -->
                                 <c:choose>
-									<c:when test="${empty sessUser}">
-										<li>
-		                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" href="/">
-		                                        <i class="fa-solid fa-power-off me-2"></i>
-		                                        Sign in
-		                                    </a>
-		                                </li>
-										<li>
-		                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" href="/">
-		                                        <i class="fa-solid fa-power-off me-2"></i>
-		                                        Sign up
-		                                    </a>
-		                                </li>
-									</c:when>
 									<c:when test="${sessUser eq 25}">
 										<li class="ms-3">
                                             <a class="pro_a" role="button" id="editBtn" onclick="goForm(<c:out value="${sessSeq }"/>)" style="cursor: pointer;">
@@ -100,21 +86,21 @@
                                             </a>
                                         </li> -->
                                         <li class="ms-3">
-                                            <a class="pro_a" id="signOutBtn" href="/">
+                                            <button type="button" class="pro_a" id="signOutBtn" name="signOutBtn">
                                                 <i class="fa-solid fa-power-off me-2"></i>
                                                 Sign Out
-                                            </a>
+                                            </button>
                                         </li>
 									</c:when>
 									<c:otherwise>
 										<li>
-		                                    <a class="dropdown-item" href="#">
+		                                    <a class="dropdown-item" onclick="goForm(${sessSeq})">
 		                                        <i class="fa-solid fa-user me-2"></i>
 		                                        Edit Profile
 		                                    </a>
 		                                </li>
 		                                <li>
-		                                    <a class="dropdown-item" href="#">
+		                                    <a class="dropdown-item" href="/member/memberList">
 		                                        <i class="fa-solid fa-gear me-2"></i>
 		                                        Admin Setting
 		                                    </a>
@@ -126,10 +112,10 @@
 		                                    </a>
 		                                </li> -->
 		                                <li>
-		                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" href="/">
+		                                    <button type="button" class="dropdown-item bg-danger-soft-hover" id="signOutBtn" name="signOutBtn">
 		                                        <i class="fa-solid fa-power-off me-2"></i>
 		                                        Sign Out
-		                                    </a>
+		                                    </button>
 		                                </li>
 									</c:otherwise>
 								</c:choose>
@@ -149,7 +135,7 @@
             <form method="post" id="myForm" name="myForm">
             	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
                	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
-               	<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/><br>">
+               	<input type="hidden" name="seq" value="<c:out value="${sessSeq}"/><br>">
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -178,7 +164,7 @@
                                             <div class="card-body pt-0">
                                                 <div class="text-center">
                                                     <div class="avatar avatar-lg mt-n5 mb-3">
-                                                        <a href="#">
+                                                        <a onclick="goForm(${sessSeq})">
                                                         	<c:choose>
 				                                        		<c:when test="${empty sessImg }">
 		                                                        	<img class="avatar-img rounded border border-white border-3" src="/resources/images/diano.jpg" style="width: 50px;" alt="">
@@ -190,20 +176,20 @@
                                                         </a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
-                                                        <span class="mb-0"><a href="#"><c:out value="${sessName }"/><br></a></span>
+                                                        <span class="mb-0"><a onclick="goForm(${sessSeq})"><c:out value="${sessName }"/><br></a></span>
                                                         <small><c:out value="${sessId }"/><br></small>
                                                         <small><c:out value="${sessEmail }"/><br></small>
                                                     </div>
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/member/memberUView">
+                                                            <a class="nav-link" onclick="goForm(${sessSeq})">
                                                                 <i class="fa-solid fa-chart-line pe-3"></i>
                                                                 <span>계정 정보 상세</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/comment/userCommentList">
+                                                            <a class="nav-link" onclick="goComment(${sessSeq})">
                                                                 <i class="fa-solid fa-users pe-3"></i>
                                                                 <span>작성 글</span>
                                                             </a>
@@ -428,11 +414,20 @@
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
 	   	var goUrlList = "/comment/userCommentList";
+	   	var goUrlMy = "/member/memberUView";
 	    var form = $("form[name=myForm]");
 		
 		$("#refresh").on("click", function() {
 			$(location).attr("href", goUrlList);
 		});
+		
+		goComment = function(keyValue) {
+			form.attr("action", goUrlList).submit();
+		}
+		
+		goForm = function(keyValue) {
+			form.attr("action", goUrlMy).submit();
+		}
 		
 		$(function() {
 	   		$("#startDate").datepicker({

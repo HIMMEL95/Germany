@@ -245,10 +245,8 @@
 			,address = #{address}
 			,address_detail = #{address_detail}
 			,modifiedAt = now()
-			,user_div = #{user_div}
+			,user_div = 25
 		where 1=1
-		
-		
 			and seq = #{seq}
 	</update>
 	

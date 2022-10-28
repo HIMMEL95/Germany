@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spopia.infra.common.constants.Constants;
+import com.spopia.infra.modules.game.Game;
+import com.spopia.infra.modules.game.GameServiceImpl;
+import com.spopia.infra.modules.game.GameVo;
 
 @Controller
 @RequestMapping(value = "/member/")
@@ -22,6 +25,8 @@ public class MemberController {
 	
 	@Autowired
 	MemberServiceImpl service;
+	@Autowired
+	GameServiceImpl gService;
 	
 	public void setSearchAndPaging(MemberVo vo) throws Exception {
 		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
@@ -50,13 +55,6 @@ public class MemberController {
 		return "infra/member/xdmin/memberXdminView";
 	}
 	
-	@RequestMapping(value = "memberModForm")
-	public String memberModFrom(Model model, @ModelAttribute("vo") MemberVo vo) throws Exception {
-		Member item = service.selectOne(vo); 
-		model.addAttribute("item", item);
-		return "infra/member/xdmin/memberModForm";
-	}
-	
 	@RequestMapping(value = "memberUpdt")
 	public String memberUpdt(Member dto, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		/* service.userUpdt(dto); */
@@ -65,15 +63,13 @@ public class MemberController {
 		vo.setSeq(dto.getSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "redirect:/member/memberModForm";
+		return "redirect:/member/memberUMod";
 	}
 	
 	@RequestMapping(value = "memberUView")
 	public String memberUView(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 
 		Member snsItem = service.snsSelectOne(vo);
-		
-		System.out.println("item : " + snsItem.getId());
 		
 		if (snsItem.getId().equals("네이버로그인")) {
 		    System.out.println("네이버 로그인 중");
@@ -93,18 +89,18 @@ public class MemberController {
 	}
  
 	@RequestMapping(value = "memberUMod")
-	public String memberUMod(MemberVo vo, Model model) throws Exception {
+	public String memberUMod(@ModelAttribute("vo") MemberVo vo, Model model, GameVo gVo, Member dto) throws Exception {
 		
-		Member item = service.snsSelectOne(vo);
-		model.addAttribute("item", item);
-//		System.out.println("test : " + item.getTeam());
-//		
-//		if (item.getTeam() == null) {
-//		    Member snsItem = service.snsSelectOne(vo);
-//		    model.addAttribute("item", snsItem);
-//		} else {
-//		    model.addAttribute("item", item);
-//		}
+	    
+	    if (dto.getId() == "카카오로그인" || dto.getId() == "네이버로그인") {
+	        System.out.println("sns Login");
+	        Member item = service.snsSelectOne(vo);
+	        model.addAttribute("item", item);
+	    } else {
+	        System.out.println("normal Login");
+	        Member item = service.selectOne(vo);
+	        model.addAttribute("item", item);
+	    }
 		
 		return "infra/member/user/memberUModForm";
 	}

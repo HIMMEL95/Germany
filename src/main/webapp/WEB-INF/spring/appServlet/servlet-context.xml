@@ -39,6 +39,9 @@
 			<exclude-mapping path="/member/naverLoginProc" />
 			<exclude-mapping path="/member/kakaoLoginProc" />
 			<exclude-mapping path="/member/naverCallback" />
+			<exclude-mapping path="/game/abroad" />
+			<exclude-mapping path="/game/event" />
+			<exclude-mapping path="/game/league" />
 			<exclude-mapping path="/abroad" />
 			<exclude-mapping path="/event" />
 			<exclude-mapping path="/league" />

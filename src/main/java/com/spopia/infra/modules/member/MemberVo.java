@@ -11,8 +11,8 @@ public class MemberVo extends BaseVo{
 	private String startDate;
 	private String endDate;	
 	private String seq;
-	
-    public String getShOption() {
+
+	public String getShOption() {
         return shOption;
     }
     public void setShOption(String shOption) {

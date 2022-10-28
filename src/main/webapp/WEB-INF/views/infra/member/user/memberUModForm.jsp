@@ -34,7 +34,7 @@
                 <div class="dropdown">
                     <ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
                         <li class="me-2">
-                            <a class="p-0" href="/member/memberView" id="profileDropdown" role="button"
+                            <a class="p-0" onclick="goUrlList(${sessSeq})" id="profileDropdown" role="button"
                                 data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 <img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar"
@@ -51,37 +51,61 @@
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="/member/memberUView?seq=${sessSeq }"><c:out value="${sessName }"/></a>
+                                            <a class="fs-6 fw-bold" onclick="goUrlList(${sessSeq})"><c:out value="${sessName }"/></a>
                                             <p class="small m-0"><c:out value="${sessEmail }"/></p>
                                         </div>
                                     </div>
                                     <hr>
                                 </li>
                                 <!-- Links -->
-                                <li>
-                                    <a class="dropdown-item" href="/member/memberUView?seq=${sessSeq }">
-                                        <i class="fa-solid fa-user me-2"></i>
-                                        Edit Profile
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/member/memberList">
-                                        <i class="fa-solid fa-gear me-2"></i>
-                                        Admin Settings
-                                    </a>
-                                </li>
-                                <!-- <li>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fa-solid fa-circle-info me-2"></i>
-                                        Help
-                                    </a>
-                                </li> -->
-                                <li>
-                                    <a class="dropdown-item bg-danger-soft-hover" href="/">
-                                        <i class="fa-solid fa-power-off me-2"></i>
-                                        Sign Out
-                                    </a>
-                                </li>
+                                <c:choose>
+									<c:when test="${sessUser eq 25}">
+										<li class="ms-3">
+                                            <a class="dropdown-item" role="button" id="editBtn" onclick="goForm(${sessSeq })" style="cursor: pointer;">
+                                                <i class="fa-solid fa-user me-2"></i>
+                                                Edit Profile
+                                            </a>
+                                        </li>
+                                        <!-- <li class="ms-3">
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fa-solid fa-circle-info me-2"></i>
+                                                Help
+                                            </a>
+                                        </li> -->
+                                        <li class="ms-3">
+                                            <button class="dropdown-item" id="signOutBtn">
+                                                <i class="fa-solid fa-power-off me-2"></i>
+                                                Sign Out
+                                            </button>
+                                        </li>
+									</c:when>
+									<c:otherwise>
+										<li>
+		                                    <a class="pro_a dropdown-item" role="button" id="editBtn" onclick="goForm(${sessSeq })" style="cursor: pointer;">
+                                                <i class="fa-solid fa-user me-2"></i>
+                                                Edit Profile
+                                            </a>
+		                                </li>
+		                                <li>
+		                                    <a class="dropdown-item" href="/member/memberList">
+		                                        <i class="fa-solid fa-gear me-2"></i>
+		                                        Admin Settings
+		                                    </a>
+		                                </li>
+		                               <!--  <li>
+		                                    <a class="dropdown-item" href="#">
+		                                        <i class="fa-solid fa-circle-info me-2"></i>
+		                                        Help
+		                                    </a>
+		                                </li> -->
+		                                <li>
+		                                    <button class="dropdown-item bg-danger-soft-hover" id="signOutBtn">
+		                                        <i class="fa-solid fa-power-off me-2"></i>
+		                                        Sign Out
+		                                    </button>
+		                                </li>
+									</c:otherwise>
+								</c:choose>
                                 <!-- Dark mode switch START -->
                             </ul>
                         </li>
@@ -96,9 +120,7 @@
         <div style="height: 100px;"></div>
         <div class="container">
             <form method="post" id="myForm" name="myForm">
-            	<!-- *Vo.jsp s -->
-				<%@include file="memberVo.jsp"%>		<!-- #-> -->
-				<!-- *Vo.jsp e -->
+				<input type="hidden" name="seq" value='<c:out value="${sessSeq}"></c:out>'>
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -127,24 +149,24 @@
                                             <div class="card-body pt-0">
                                                 <div class="text-center">
                                                     <div class="avatar avatar-lg mt-n5 mb-3">
-                                                        <a href="#"><img class="avatar-img rounded border border-white border-3"
+                                                        <a onclick="goUrlList(${sessSeq})"><img class="avatar-img rounded border border-white border-3"
                                                                 src="/resources/images/diano.jpg" style="width: 50px;" alt=""></a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
-                                                        <span class="mb-0"><a href="#"><c:out value="${sessName }"/></a></span>
+                                                        <span class="mb-0"><a onclick="goUrlList(${sessSeq})"><c:out value="${sessName }"/></a></span>
                                                         <small><c:out value="${sessId }"/></small><br>
                                                         <small><c:out value="${sessEmail }"/></small>
                                                     </div>
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/member/memberUView">
+                                                            <a class="nav-link" onclick="goUrlList(${sessSeq})">
                                                                 <i class="fa-solid fa-chart-line pe-3"></i>
                                                                 <span>계정 정보 상세</span>
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/comment/userCommentList">
+                                                            <a class="nav-link" onclick="goComment(${sessSeq})">
                                                                 <i class="fa-solid fa-users pe-3"></i>
                                                                 <span>작성 글</span>
                                                             </a>
@@ -238,39 +260,93 @@
                             </div>
                             <div class="col">
                                 <label for="gender" class="form-label fw-bold">성별</label>
-                                <select class="form-select form-select-lg fs-6 bg-white" id="gender" name="gender" aria-label=".form-select-lg example" disabled>
+                                <select class="form-select form-select-lg fs-6 bg-white" id="gender" name="gender" aria-label=".form-select-lg example">
                                     <option value="5" <c:if test="${item.gender eq 5 }">selected</c:if>>남성</option>
                                     <option value="6" <c:if test="${item.gender eq 6 }">selected</c:if>>여성</option>
                                 </select>
                             </div>
                         </div>
                         <div class="row mb-4">
-                            <div class="col">
+                            <div class="col-6">
                                 <label for="job" class="form-label fw-bold">직업</label>
                                 <input type="text" class="form-control bg-white" id="job" name="job" value="<c:out value="${item.job }"/>">
                             </div>
-                            <div class="col">
-                            	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
-                                <label for="team" class="form-label fw-bold">좋아하는 팀</label>
-                                <select class="form-select" id="team" name="team" aria-label=".form-select example">
-	                                <option value="">선택</option>
-	                                <c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
-										<option class="select2" value="${item.team }" <c:if test="${item.team eq listTeam.ccSeq}">selected</c:if>><c:out value="${listTeam.ifccName }"/></option>
-									</c:forEach>
-	                            </select>
-                                
-                            </div>
                         </div>
-                        <div class="row mb-4" hidden>
-                            <div class="col">
-                                <label for="password" class="form-label fw-bold">비밀번호</label>
-                                <input type="password" class="form-control bg-white" id="password" value="">
-                            </div>
-                            <div class="col">
-                                <label for="password_confirm" class="form-label fw-bold">비밀번호 확인</label>
-                                <input type="password" class="form-control bg-white" id="password_confirm" value="">
-                            </div>
-                        </div>
+                        <div class="row">
+		               		<h3 class="text-bold mb-3">좋아하는 팀 <span style="color: red;">*</span></h3>
+		               		<div class="col-6">
+		                        <div class="input-control">
+		                        	<c:set var="listCodeAbroad" value="${CodeServiceImpl.selectListCachedCode('4') }" />
+		                            <label for="gAbroadNy" class="form-label fw-bold">해외여부</label>
+		                            <select class="form-select" id="gAbroadNy" name="gAbroadNy" onchange="setComboBox1(this)" aria-label=".form-select example">
+		                                <option value="" >선택</option>
+		                                <c:choose>
+		                                	<c:when test="${empty gItem.gSeq }">
+		                                		<c:forEach items="${listCodeAbroad}" var="listAbroad" varStatus="statusAborad">
+													<option value="${listAbroad.ccSeq }" <c:if test="${gItem.gAbroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
+												</c:forEach>
+		                                	</c:when>
+		                                	<c:otherwise>
+		                                		<c:forEach items="${listCodeAbroad}" var="listAborad" varStatus="statusAborad">
+													<option value="${gItem.gAbroadNy }" <c:if test="${gItem.gAbroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
+												</c:forEach>
+		                                	</c:otherwise>
+		                                </c:choose>
+		                            </select>
+		                            <div class="msg" id="gAbroadNy_msg" name="gAbroadNy_msg" style="display: none;"></div>
+		                        </div>
+		                    </div>
+		               		<div class="col-6">
+		                        <div class="input-control">
+		                        	<c:set var="listCodeEvent" value="${CodeServiceImpl.selectListCachedCode('5') }" />
+		                            <label for="gEvent" class="form-label fw-bold">종목</label>
+		                            <select class="form-select" id="gEvent" name="gEvent" onchange="setComboBox2(this)" aria-label=".form-select example">
+		                                <option value="" >선택</option>
+		                                <c:choose>
+		                                	<c:when test="${empty gItem.gSeq }">
+		                                		<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
+													<option class="select" value="${listEvent.ccSeq }" <c:if test="${gItem.gEvent eq listEvent.ccSeq}">selected</c:if>><c:out value="${listEvent.ifccName }"/></option>
+												</c:forEach>
+		                                	</c:when>
+		                                	<c:otherwise>
+		                                		<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
+													<option class="select" value="${gItem.gEvent }" <c:if test="${gItem.gEvent eq listEvent.ccSeq}">selected</c:if>><c:out value="${listEvent.ifccName }"/></option>
+												</c:forEach>
+		                                	</c:otherwise>
+		                                </c:choose>
+		                            </select>
+		                            <div class="msg" id="gEvent_msg" name="gEvent_msg" style="display: none;"></div>
+		                        </div>
+		                    </div>
+		               	</div>
+		               	<div class="row">
+		               		<div class="col-6">
+		                        <div class="input-control">
+		                        	<c:set var="listCodeLeague" value="${CodeServiceImpl.selectListCachedCode('6') }" />
+		                            <label for="gLeague" class="form-label fw-bold">리그</label>
+		                            <select class="form-select" id="gLeague" name="gLeague" onchange="setComboBox3(this)" aria-label=".form-select example">
+		                                <option value="">선택</option>
+		                                <c:forEach items="${listCodeLeague}" var="listLeague" varStatus="statusLeague">
+											<option class="select1" value="${listLeague.ccSeq }" <c:if test="${gItem.gLeague eq listLeague.ccSeq}">selected</c:if>><c:out value="${listLeague.ifccName }"/></option>
+										</c:forEach>
+		                            </select>
+		                            <div class="msg" id="gLeague_msg" name="gLeague_msg" style="display: none;"></div>
+		                        </div>
+		                    </div>
+		               		<div class="col-6">
+		                        <div class="input-control">
+		                        	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
+		                            <label for="team_home" class="form-label fw-bold">팀</label>
+		                            <select class="form-select" id="team" name="team" onchange="setComboBox4(this)" aria-label=".form-select example">
+		                                <option value="">선택</option>
+		                                <c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+											<option class="select2" value="${item.team }" <c:if test="${item.team eq listTeam.ccSeq}">selected</c:if>><c:out value="${listTeam.ifccName }"/></option>
+										</c:forEach>
+		                            </select>
+		                            <div class="msg" id="team_msg" name="team_msg" style="display: none;"></div>
+		                        </div>
+		                    </div>
+		               	</div>
                         <hr>
                         <div class="row mb-4">
                             <div class="col-6">
@@ -337,12 +413,22 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
-    	var goUrlList = "/member/memberUView?seq=<c:out value="${item.seq }"/>";
+    	alert($("input[name=seq]").val());
+    
+    	var goUrlList = "/member/memberUView";
     	var goUrlUpdt = "/member/memberUpdt";
+    	var goUrlComment = "/comment/userCommentList";
     	var form = $("#myForm");
     	
+    	goForm = function(keyValue) {
+			form.attr("action", goUrlList).submit();
+		}
+    	
+    	goComment = function(keyValue) {
+			form.attr("action", goUrlComment).submit();
+		}
     	$("#btnSave").on("click", function() {
 			form.attr("action", goUrlUpdt).submit();
 		});
@@ -350,6 +436,149 @@
     	$("#btnList").on("click", function() {
 			window.history.back();
 		});
+    	
+    	$("#signOutBtn").on("click", function() {
+			$.ajax({
+				type: "POST"
+				,url: "/logoutProc"
+				,data: {}
+				,success : function(response) {
+					if (response.rt == "success") {
+						window.location.href = "/";
+					}
+				}
+			});
+		});
+    	
+    	function setComboBox1(o){
+			var code = o.value;
+			
+			$("option").remove(".select");
+			$("option").remove(".select1");
+			$("option").remove(".select2");
+			$("option").remove(".select3");
+
+   			$.ajax({
+   				async: true 
+   				,cache: false
+   				,type: "post"
+   				/* ,dataType:"json" */
+   				,url: "/game/abroad"
+   				/* ,data : $("#formLogin").serialize() */
+   				,data : { "gAbroadNy" : code }
+   				,success: function(response) {
+   					<c:set var="listCodeEvent" value="${CodeServiceImpl.selectListCachedCode('5') }" />
+					var arr = new Array();
+					<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
+						arr.push({
+							num : "${listEvent.ccSeq}"
+							,name : "${listEvent.ifccName}"
+						});
+					</c:forEach>
+					for(var i=0; i<response.event.length; i++){
+						 var list = response.event[i];
+						 var num =0;
+						 for(var j=0; j<arr.length; j++){
+							 if(list.event == arr[j].num){
+						 		 list.event = arr[j].name;
+						 		 num = arr[j].num
+							 }
+						 }
+						 $("#gEvent").append('<option class="select" value="' + num +'" <c:if test="${'+ list.event +'eq '+ num + ' }">selected</c:if>>'+ list.event+'</option>')
+					}                                                                                                                                                                              
+   				}
+   				,error : function(jqXHR, textStatus, errorThrown){
+   					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+   				}
+   			});
+		}
+
+		function setComboBox2(o){
+			var code = o.value;
+			var abroadNy = $("#gAbroadNy").val();
+			
+			$("option").remove(".select1");
+			$("option").remove(".select2");
+			$("option").remove(".select3");
+
+   			$.ajax({
+   				async: true 
+   				,cache: false
+   				,type: "post"
+   				/* ,dataType:"json" */
+   				,url: "/game/event"
+   				/* ,data : $("#formLogin").serialize() */
+   				,data : { "event" : code, "gAbroadNy" : abroadNy }
+   				,success: function(response) {
+   					
+   					<c:set var="listCodeLeague" value="${CodeServiceImpl.selectListCachedCode('6') }" />
+					var arr = new Array();
+					<c:forEach items="${listCodeLeague}" var="listLeague" varStatus="statusLeague">
+						arr.push({
+							num : "${listLeague.ccSeq}"
+							,name : "${listLeague.ifccName}"
+						});
+					</c:forEach>
+					for(var i=0; i<response.league.length; i++){
+						 var list = response.league[i];
+						 var num =0;
+						 for(var j=0; j<arr.length; j++){
+							 if(list.league == arr[j].num){
+						 		 list.league = arr[j].name;
+						 		 num = arr[j].num
+							 }
+						 }
+						 $("#gLeague").append('<option class="select1" value="' + num +'" <c:if test="${'+ list.league +'eq '+ num + ' }">selected</c:if>>'+ list.league+'</option>')
+					}   
+   				}
+   				,error : function(jqXHR, textStatus, errorThrown){
+   					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+   				}
+   			});
+		}
+
+		function setComboBox3(o){
+			var code = o.value;
+			var abroadNy = $("#gAbroadNy").val();
+			var event = $("#gEvent").val();
+			
+			$("option").remove(".select3");
+
+			$.ajax({
+   				async: true 
+   				,cache: false
+   				,type: "post"
+   				/* ,dataType:"json" */
+   				,url: "/game/league"
+   				/* ,data : $("#formLogin").serialize() */
+   				,data : { "league" : code, "event" : event, "gAbroadNy" : abroadNy  }
+   				,success: function(response) {
+   					
+   					<c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
+					var arr = new Array();
+					<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+						arr.push({
+							num : "${listTeam.ccSeq}"
+							,name : "${listTeam.ifccName}"
+						});
+					</c:forEach>
+					for(var i=0; i<response.teamName.length; i++){
+						 var list = response.teamName[i];
+						 var num =0;
+						 for(var j=0; j<arr.length; j++){
+							 if(list.teamName == arr[j].num){
+						 		 list.teamName = arr[j].name;
+						 		 num = arr[j].num
+							 }
+						 }
+						 $("#team").append('<option class="select2" value="' + num +'" <c:if test="${'+ list.teamName +'eq '+ num + ' }">selected</c:if>>'+ list.teamName+'</option>')
+					}  
+   				}
+   				,error : function(jqXHR, textStatus, errorThrown){
+   					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+   				}
+   			});
+		}
     </script>
 </body>
 

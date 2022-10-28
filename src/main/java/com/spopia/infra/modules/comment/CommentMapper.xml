@@ -140,7 +140,7 @@
 					<otherwise></otherwise>
 				</choose>
 				<choose>
-					<when test="shDate == 1">AND createdAt BETWEEN #{startDate} AND #{endDate}</when>
+					<when test="shDate == 1">AND ac.createdAt BETWEEN #{startDate} AND #{endDate}</when>
 					<otherwise></otherwise>
 				</choose>
 			order by
@@ -168,7 +168,7 @@
 					<otherwise></otherwise>
 				</choose>
 				<choose>
-					<when test="shDate == 1">AND createdAt BETWEEN #{startDate} AND #{endDate}</when>
+					<when test="shDate == 1">AND gc.createdAt BETWEEN #{startDate} AND #{endDate}</when>
 					<otherwise></otherwise>
 				</choose>
 			order by 

@@ -100,12 +100,6 @@
 				                                    </a>
 				                                </li>
 				                                <li>
-				                                    <a class="dropdown-item" href="#">
-				                                        <i class="fa-solid fa-circle-info me-2"></i>
-				                                        Help
-				                                    </a>
-				                                </li>
-				                                <li>
 				                                    <button type="button" class="dropdown-item bg-danger-soft-hover" id="signOutBtn" >
 				                                        <i class="fa-solid fa-power-off me-2"></i>
 				                                        Sign Out
@@ -123,12 +117,6 @@
 				                                    <a class="dropdown-item" href="#">
 				                                        <i class="fa-solid fa-gear me-2"></i>
 				                                        Account Settings
-				                                    </a>
-				                                </li>
-				                                <li>
-				                                    <a class="dropdown-item" href="#">
-				                                        <i class="fa-solid fa-circle-info me-2"></i>
-				                                        Help
 				                                    </a>
 				                                </li>
 				                                <li>
@@ -159,7 +147,7 @@
 			   			<li class="nav-item">
 			   				<a class="nav-link active" aria-current="page" href="/sportMain">스포츠홈</a>
 		   				</li>
-	   					<li class="nav-item">
+	   					<!-- <li class="nav-item">
 	   						<a class="nav-link" href="#">야구</a>
 	   					</li>
 	   					<li class="nav-item">
@@ -170,7 +158,7 @@
 	   					</li>
 	   					<li class="nav-item">
 	   						<a class="nav-link" href="#">해외축구</a>
-	   					</li>
+	   					</li> -->
    					</ul>
 				</div>
 			</div>

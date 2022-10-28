@@ -276,19 +276,20 @@
 		               		<h3 class="text-bold mb-3">좋아하는 팀 <span style="color: red;">*</span></h3>
 		               		<div class="col-6">
 		                        <div class="input-control">
+		                        ${item.abroadNy }
 		                        	<c:set var="listCodeAbroad" value="${CodeServiceImpl.selectListCachedCode('4') }" />
 		                            <label for="gAbroadNy" class="form-label fw-bold">해외여부</label>
 		                            <select class="form-select" id="gAbroadNy" name="gAbroadNy" onchange="setComboBox1(this)" aria-label=".form-select example">
 		                                <option value="" >선택</option>
 		                                <c:choose>
-		                                	<c:when test="${empty gItem.gSeq }">
+		                                	<c:when test="${empty item.seq }">
 		                                		<c:forEach items="${listCodeAbroad}" var="listAbroad" varStatus="statusAborad">
-													<option value="${listAbroad.ccSeq }" <c:if test="${gItem.gAbroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
+													<option value="${listAbroad.ccSeq }" <c:if test="${item.abroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
 												</c:forEach>
 		                                	</c:when>
 		                                	<c:otherwise>
 		                                		<c:forEach items="${listCodeAbroad}" var="listAborad" varStatus="statusAborad">
-													<option value="${gItem.gAbroadNy }" <c:if test="${gItem.gAbroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
+													<option value="${item.abroadNy }" <c:if test="${item.abroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
 												</c:forEach>
 		                                	</c:otherwise>
 		                                </c:choose>
@@ -340,7 +341,7 @@
 		                            <select class="form-select" id="team" name="team" onchange="setComboBox4(this)" aria-label=".form-select example">
 		                                <option value="">선택</option>
 		                                <c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
-											<option class="select2" value="${item.team }" <c:if test="${item.team eq listTeam.ccSeq}">selected</c:if>><c:out value="${listTeam.ifccName }"/></option>
+											<option class="select2" value="${gItem.team }" <c:if test="${gItem.team eq listTeam.ccSeq}">selected</c:if>><c:out value="${listTeam.ifccName }"/></option>
 										</c:forEach>
 		                            </select>
 		                            <div class="msg" id="team_msg" name="team_msg" style="display: none;"></div>
@@ -415,8 +416,6 @@
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
-    	alert($("input[name=seq]").val());
-    
     	var goUrlList = "/member/memberUView";
     	var goUrlUpdt = "/member/memberUpdt";
     	var goUrlComment = "/comment/userCommentList";

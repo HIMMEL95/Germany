@@ -134,6 +134,9 @@
 		    ,date_format(u.modifiedAt, '%Y-%m-%d %H:%i:%s') as modifiedAt
 		    ,u.user_div
 		    ,u.uDelNy
+		    ,t.abroadNy as abroadNy
+            ,t.event as event
+            ,t.league as league
 			,t.teamName as team
 		from user u
 			inner join teamUser tu on tu.user_seq = u.seq

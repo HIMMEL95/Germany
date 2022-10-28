@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spopia.infra.common.constants.Constants;
-import com.spopia.infra.modules.game.Game;
-import com.spopia.infra.modules.game.GameServiceImpl;
-import com.spopia.infra.modules.game.GameVo;
 
 @Controller
 @RequestMapping(value = "/member/")
@@ -25,8 +22,6 @@ public class MemberController {
 	
 	@Autowired
 	MemberServiceImpl service;
-	@Autowired
-	GameServiceImpl gService;
 	
 	public void setSearchAndPaging(MemberVo vo) throws Exception {
 		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
@@ -89,8 +84,7 @@ public class MemberController {
 	}
  
 	@RequestMapping(value = "memberUMod")
-	public String memberUMod(@ModelAttribute("vo") MemberVo vo, Model model, GameVo gVo, Member dto) throws Exception {
-		
+	public String memberUMod(@ModelAttribute("vo") MemberVo vo, Model model, Member dto) throws Exception {
 	    
 	    if (dto.getId() == "카카오로그인" || dto.getId() == "네이버로그인") {
 	        System.out.println("sns Login");
@@ -104,7 +98,6 @@ public class MemberController {
 		
 		return "infra/member/user/memberUModForm";
 	}
-	
 
 	@RequestMapping(value = "naverCallback")
 	    public String naverCallback() throws Exception {

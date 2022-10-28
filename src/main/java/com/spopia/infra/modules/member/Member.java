@@ -27,8 +27,11 @@ public class Member extends Base {
 	private Integer uDelNy;
 	private String newPassword;
 	private Integer sns_type;
+	private Integer abroadNy;
+	private Integer event;
+	private Integer league;
 	
-    // teamUser Dto
+	// teamUser Dto
 	private String tuSeq;
 	private Integer defaultNY;
 	private Integer deleteNY;
@@ -41,13 +44,31 @@ public class Member extends Base {
 	private String snsImg;
 	private String snsId;
 
+	public Integer getAbroadNy() {
+		return abroadNy;
+	}
+	public void setAbroadNy(Integer abroadNy) {
+		this.abroadNy = abroadNy;
+	}
+	public Integer getEvent() {
+		return event;
+	}
+	public void setEvent(Integer event) {
+		this.event = event;
+	}
+	public Integer getLeague() {
+		return league;
+	}
+	public void setLeague(Integer league) {
+		this.league = league;
+	}
 	public String getSnsId() {
         return snsId;
     }
-    public void setSnsId(String snsId) {
+  public void setSnsId(String snsId) {
         this.snsId = snsId;
     }
-    public String getSnsImg() {
+  public String getSnsImg() {
 		return snsImg;
 	}
 	public void setSnsImg(String snsImg) {

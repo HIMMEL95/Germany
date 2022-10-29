@@ -362,7 +362,7 @@
    		
    		function setLoginStatus() {
    			
-   			$("input[name=id]").val("네이버로그인");
+   			$("input[name=snsId]").val("네이버로그인");
 			$("input[name=name]").val(naverLogin.user.name);
 			$("input[name=phone]").val(naverLogin.user.mobile);
 			$("input[name=email]").val(naverLogin.user.email);
@@ -375,47 +375,43 @@
 				$("input[name=gender]").val(6);
 			} 
 			
-			alert(naverLogin.user.nickname)
-			alert($("input[name=gender]").val());
+			alert($("input[name=phone]").val())
+			
+			$.ajax({
+				async: true
+				,cache: false
+				,type:"POST"
+				,url: "/member/naverLoginProc"
+				,data: {"name": $("input[name=name]").val(), "snsId": $("input[name=snsId]").val(), "phone": $("input[name=phone]").val(), "email": $("input[name=email]").val(), "gender": $("input[name=gender]").val(), "dob": $("input[name=dob]").val(), "snsImg": $("input[name=snsImg]").val()}
+				,success : function(response) {
+					if (response.rt == "fail") {
+						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+						return false;
+					} else {
+						window.location.href = "/sportMain";
+					}
+				},
+				error : function(jqXHR, status, error) {
+					alert("알 수 없는 에러 [ " + error + " ]");
+				}
+			});
 		}
-		
-	/* 	naver_id_login.get_naver_userprofile("naverSignInCallback()");
-		function naverSignInCallback() {
-			$("input[name=id]").val("네이버로그인");
-			$("input[name=name]").val(naver_id_login.getProfileData('name'));
-			$("input[name=phone]").val(naver_id_login.getProfileData('mobile'));
-			$("input[name=email]").val(naver_id_login.getProfileData('email'));
-			$("input[name=dob]").val(naver_id_login.getProfileData('birthday'));
-			$("input[name=snsImg]").val(naver_id_login.getProfileData('profile_image'));
- 
-			if (naver_id_login.getProfileData('gender') == 'M'){
-				$("input[name=gender]").val(5);
-			} else {
-				$("input[name=gender]").val(6);
-			} 
- 
-			$("form[name=form]").attr("action", "/member/naverLoginProc").submit();
-		} */
-
-		  /* alert(naver_id_login.oauthParams.access_token); */
-	/* 	  naver_id_login.get_naver_userprofile("naverSignInCallback()");
-		  function naverSignInCallback() {
-			  $("input[name=id]").val("네이버로그인");
-			  $("input[name=name]").val(naver_id_login.getProfileData('name'));
-			  $("input[name=phone]").val(naver_id_login.getProfileData('mobile'));
-			  $("input[name=email]").val(naver_id_login.getProfileData('email'));
-			  $("input[name=dob]").val(naver_id_login.getProfileData('birthday'));
-			  $("input[name=snsImg]").val(naver_id_login.getProfileData('profile_image'));
-			  
-			  if (naver_id_login.getProfileData('gender') == 'M'){
-					$("input[name=gender]").val(5);
-				} else {
-					$("input[name=gender]").val(6);
-				} 
-			  
-			  $("form[name=form]").attr("action", "/member/naverLoginProc").submit();
-		  }  */
     	/* naver login test e */
+    	
+    	/* google Login s */
+    	function init() {
+			gapi.load('auth2', function() {
+				gapi.auth2.init();
+				options = new gapi.auth2.SigninOptionsBuilder();
+				options.setPrompt('select_account');
+		        // 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
+				options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
+		        // 인스턴스의 함수 호출 - element에 로그인 기능 추가
+		        // GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
+				gapi.auth2.getAuthInstance().attachClickHandler('GgCustomLogin', options, onSignIn, onSignInFailure);
+			})
+		}
+    	/* google Login e */
     	</script>
     </script>
 </body>

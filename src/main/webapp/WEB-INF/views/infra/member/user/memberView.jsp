@@ -51,7 +51,7 @@
                                 <li class="px-3">
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
-                                        <div class="avatar ps-1 pt-2">
+                                        <div class="avatar ps-1 me-3">
                                         	<c:choose>
                                         		<c:when test="${empty sessImg }">
                                         			<img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar" style="width: 35px;">

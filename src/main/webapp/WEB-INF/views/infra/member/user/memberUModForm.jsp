@@ -160,7 +160,7 @@
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                                                         <li class="nav-item">
-                                                            <a class="nav-link" onclick="goUrlList(${sessSeq})">
+                                                            <a class="nav-link" onclick="goForm(${sessSeq})">
                                                                 <i class="fa-solid fa-chart-line pe-3"></i>
                                                                 <span>계정 정보 상세</span>
                                                             </a>
@@ -235,7 +235,7 @@
                         <div class="card ps-5 pe-5 pt-4 pb-4 shadow" style="background-color: #f7f7fc;"">
                                         <div class=" row mb-4">
                             <div class="col">
-                                <label for="name" class="form-label fw-bold">이름</label>
+                                <label for="name" class="form-label fw-bold">이름 ${item.name }</label>
                                 <input type="text" class="form-control bg-white" id="name" name="name" value="<c:out value="${item.name }"/>">
                             </div>
                             <div class="col">

@@ -201,10 +201,10 @@
 					                                            </button>
 					                                        </li>
 					                                        <li class="pro_li">
-					                                            <a class="pro_a" href="/member/memberList">
+					                                            <button class="pro_a" href="/member/memberList" style="background: none;">
 					                                                <i class="fa-solid fa-gear me-2"></i>
 					                                                Admin Page
-					                                            </a>
+					                                            </button>
 					                                        </li>
 					                                        <!-- <li class="pro_li">
 					                                            <a class="pro_a" href="#">
@@ -3842,12 +3842,13 @@
 	<script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   	<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 	<script type="text/javascript">
 		 function menuToggle() {
             const toggleMenu = document.querySelector('.menu');
             toggleMenu.classList.toggle('active')
         };
-		 
+        
 		$("#signOutBtn").on("click", function() {
 			$.ajax({
 				type: "POST"
@@ -3878,26 +3879,6 @@
 		$(".link_vod").on("click", function() {
 			alert("준비 중인 항목입니다!!!");
 		})
-	</script>
-	<script type="text/javascript">
-		var naver_id_login = new naver_id_login("z69jjnmkMQ88W2owra4t", "http://localhost:8080/sportMain");
-		naver_id_login.get_naver_userprofile("naverSignInCallback()");
-		function naverSignInCallback() {
-			$("input[name=id]").val("네이버로그인");
-			$("input[name=name]").val(naver_id_login.getProfileData('name'));
-			$("input[name=phone]").val(naver_id_login.getProfileData('mobile'));
-			$("input[name=email]").val(naver_id_login.getProfileData('email'));
-			$("input[name=dob]").val(naver_id_login.getProfileData('birthday'));
-			$("input[name=snsImg]").val(naver_id_login.getProfileData('profile_image'));
-		  
-			if (naver_id_login.getProfileData('gender') == 'M'){
-				$("input[name=gender]").val(5);
-			} else {
-				$("input[name=gender]").val(6);
-			} 
-		  
-		  $("form[name=form]").attr("action", "/member/naverLoginProc").submit();
-	  }
 	</script>
 </body>
 </html>

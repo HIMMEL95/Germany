@@ -355,6 +355,7 @@
 			,sns_type
 			,uDelNy
 			,snsImg
+			,phone
 		)
 		VALUES (
 			#{snsId}
@@ -367,6 +368,7 @@
 			,1
 			,0
 			,#{snsImg}
+			,#{phone}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()

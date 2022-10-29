@@ -53,7 +53,7 @@
                                 <li class="px-3">
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
-                                        <div class="avatar ps-1 pt-2">
+                                        <div class="avatar ps-1 me-3">
                                             <c:choose>
                                         		<c:when test="${empty sessImg }">
                                         			<img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar" style="width: 35px;">
@@ -73,7 +73,7 @@
                                 <!-- Links -->
                                 <c:choose>
 									<c:when test="${sessUser eq 25}">
-										<li class="ms-3">
+										<li class="ms-3 ps-3">
                                             <a class="pro_a" role="button" id="editBtn" onclick="goForm(<c:out value="${sessSeq }"/>)" style="cursor: pointer;">
                                                 <i class="fa-solid fa-user me-2"></i>
                                                 Edit Profile
@@ -86,10 +86,10 @@
                                             </a>
                                         </li> -->
                                         <li class="ms-3">
-                                            <button type="button" class="pro_a" id="signOutBtn" name="signOutBtn">
-                                                <i class="fa-solid fa-power-off me-2"></i>
-                                                Sign Out
-                                            </button>
+                                            <button class="dropdown-item bg-danger-soft-hover" id="signOutBtn">
+		                                        <i class="fa-solid fa-power-off me-2"></i>
+		                                        Sign Out
+		                                    </button>
                                         </li>
 									</c:when>
 									<c:otherwise>
@@ -112,7 +112,7 @@
 		                                    </a>
 		                                </li> -->
 		                                <li>
-		                                    <button type="button" class="dropdown-item bg-danger-soft-hover" id="signOutBtn" name="signOutBtn">
+		                                    <button class="dropdown-item bg-danger-soft-hover" id="signOutBtn">
 		                                        <i class="fa-solid fa-power-off me-2"></i>
 		                                        Sign Out
 		                                    </button>
@@ -450,10 +450,12 @@
 		$("button[name=signOutBtn]").on("click", function() {
 			$.ajax({
 				type: "POST"
-				,url: "logout"
+				,url: "/logoutProc"
 				,data: {}
 				,success : function(response) {
-					location.reload();
+					if (response.rt == "success") {
+						window.location.href = "/";
+					}
 				}
 			});
 		});

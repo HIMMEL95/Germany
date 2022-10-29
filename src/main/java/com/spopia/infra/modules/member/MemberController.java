@@ -84,12 +84,13 @@ public class MemberController {
 	}
  
 	@RequestMapping(value = "memberUMod")
-	public String memberUMod(@ModelAttribute("vo") MemberVo vo, Model model, Member dto) throws Exception {
-	    
-	    if (dto.getId() == "카카오로그인" || dto.getId() == "네이버로그인") {
+	public String memberUMod(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+	  
+			Member snsItem = service.snsSelectOne(vo);
+		
+	    if (snsItem.getId().equals("카카오로그인") || snsItem.getId().equals("네이버로그인")) {
 	        System.out.println("sns Login");
-	        Member item = service.snsSelectOne(vo);
-	        model.addAttribute("item", item);
+	        model.addAttribute("item", snsItem);
 	    } else {
 	        System.out.println("normal Login");
 	        Member item = service.selectOne(vo);
@@ -104,19 +105,6 @@ public class MemberController {
 	    System.out.println("passing");
 	    return "infra/login/xdmin/naverCallback";
     }
-     
-
-    /*
-     * @ResponseBody
-     * 
-     * @RequestMapping(value = "naverCallback")
-     * public Map<String, Object> naverCallback() throws Exception {
-     * Map<String, Object> returnMap = new HashMap<String, Object>();
-     * 
-     * returnMap.put("rt", "success");
-     * return returnMap;
-     * }
-     */
 
 	@RequestMapping(value = "naverLoginProc")
 	public String naverLoginProc(Member dto, HttpSession httpSession) throws Exception {

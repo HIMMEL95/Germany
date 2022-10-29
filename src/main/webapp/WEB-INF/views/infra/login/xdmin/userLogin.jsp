@@ -42,7 +42,7 @@
                         <li class="menu_item" role="presentation">
                             <!--[주] 탭메뉴 활성화시(=선택시) "on"을 추가해주세요. 접근성: aria-selected는 탭 선택시 true, 미선택시 false로 적용-->
                             <!--[주:접근성] 탭메뉴의 id 값과 탭내용의 aria-controls를 연결하고 있습니다. -->
-                            <a href="./loginForm.html" id="loinid" class="menu_id on" role="tab" aria-selected="true">
+                            <a href="/userLogin" id="loinid" class="menu_id on" role="tab" aria-selected="true">
                                 <span class="menu_text"><span class="text">ID 로그인</span></span>
                             </a>
                         </li>
@@ -129,8 +129,9 @@
                                            		</span>
                                             </a> -->
                                             		<!-- 네이버 로그인 버튼 노출 영역 -->
-											<div id="naver_id_login"></div>
+											<!-- <div id="naver_id_login"></div> -->
 											<!-- <div id="naverIdLogin"></div> -->
+											<div id="naverIdLogin"></div>
 											<!-- //네이버 로그인 버튼 노출 영역 -->
                                         </div>
                                         <div class="btn_login_wrap">
@@ -222,9 +223,8 @@
     <!-- <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js" integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL" crossorigin="anonymous"></script> -->
     <!-- kakao login e -->
     <!-- naver login s -->
-    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-    <!-- <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script> -->
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script> -->
+    <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
     <!-- naver login e -->
     <!-- google login s  -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -256,12 +256,12 @@
 		});
 
     	<!-- 네이버아디디로로그인 초기화 Script -->
-		var naver_id_login = new naver_id_login("z69jjnmkMQ88W2owra4t", "http://localhost:8080/member/naverCallback");
+		/* var naver_id_login = new naver_id_login("z69jjnmkMQ88W2owra4t", "http://localhost:8080/member/naverCallback");
 		var state = naver_id_login.getUniqState();
 		naver_id_login.setButton("green", 3, 70);
 		naver_id_login.setDomain("http://localhost:8080");
 		naver_id_login.setState(state);
-		naver_id_login.init_naver_id_login();
+		naver_id_login.init_naver_id_login(); */
 		<!-- //네이버아디디로로그인 초기화 Script -->
     	
     	/* kakao login s */
@@ -340,61 +340,44 @@
     	
     	/* naver login test s */
    		
-   		/* var naverLogin = new naver.LoginWithNaverId(
+   		var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "z69jjnmkMQ88W2owra4t",
 				callbackUrl: "http://localhost:8080/userLogin",
 				isPopup: false,
-				callbackHandle: false
+				callbackHandle: true,
 				loginButton: {color: "green", type: 3, height: 70} 
 			}
 		);
     	naverLogin.init();
     	
-    	$("#naver_id_login").on("click", function() {
-    		
-    		$.ajax({
-				async: true
-				,cache: false
-				,type:"POST"
-				,url: "/member/naverCallback"
-				,data: {}
-				,success : function(response) {
-					if (response.rt == "success") {
-						window.addEventListener('load', function () {
-							naverLogin.getLoginStatus(function (status) {
-								if (status) {
-									naver_id_login.get_naver_userprofile("naverSignInCallback()");
-									function naverSignInCallback() {
-										$("input[name=id]").val("네이버로그인");
-										$("input[name=name]").val(naver_id_login.getProfileData('name'));
-										$("input[name=phone]").val(naver_id_login.getProfileData('mobile'));
-										$("input[name=email]").val(naver_id_login.getProfileData('email'));
-										$("input[name=dob]").val(naver_id_login.getProfileData('birthday'));
-										$("input[name=snsImg]").val(naver_id_login.getProfileData('profile_image'));
-							 
-										if (naver_id_login.getProfileData('gender') == 'M'){
-											$("input[name=gender]").val(5);
-										} else {
-											$("input[name=gender]").val(6);
-										} 
-							 
-										$("form[name=form]").attr("action", "/member/naverLoginProc").submit();
-									}
-								} else {
-									console.log("callback 처리에 실패하였습니다.");
-								}
-							});
-						});
-					} else {
-						alert("네이버 로그인을 해주세요!!!");
-					}
-				},
-				error : function(jqXHR, status, error) {
-					alert("알 수 없는 에러 [ " + error + " ]");
-				}
-			});
-		}) */
+   		window.addEventListener('load', function () {
+   			naverLogin.getLoginStatus(function (status) {
+   				if (status) {
+   					/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
+   					setLoginStatus();
+   				}
+   			});
+   		});
+   		
+   		function setLoginStatus() {
+   			
+   			$("input[name=id]").val("네이버로그인");
+			$("input[name=name]").val(naverLogin.user.name);
+			$("input[name=phone]").val(naverLogin.user.mobile);
+			$("input[name=email]").val(naverLogin.user.email);
+			$("input[name=dob]").val(naverLogin.user.birthyear + "-" + naverLogin.user.birthday);
+			$("input[name=snsImg]").val(naverLogin.user.profile_image);
+			
+			if (naverLogin.user.gender == 'M'){
+				$("input[name=gender]").val(5);
+			} else {
+				$("input[name=gender]").val(6);
+			} 
+			
+			alert(naverLogin.user.nickname)
+			alert($("input[name=gender]").val());
+		}
 		
 	/* 	naver_id_login.get_naver_userprofile("naverSignInCallback()");
 		function naverSignInCallback() {

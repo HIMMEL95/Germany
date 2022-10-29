@@ -276,7 +276,6 @@
 		               		<h3 class="text-bold mb-3">좋아하는 팀 <span style="color: red;">*</span></h3>
 		               		<div class="col-6">
 		                        <div class="input-control">
-		                        ${item.abroadNy }
 		                        	<c:set var="listCodeAbroad" value="${CodeServiceImpl.selectListCachedCode('4') }" />
 		                            <label for="gAbroadNy" class="form-label fw-bold">해외여부</label>
 		                            <select class="form-select" id="gAbroadNy" name="gAbroadNy" onchange="setComboBox1(this)" aria-label=".form-select example">

@@ -137,7 +137,7 @@
 		    ,t.abroadNy as abroadNy
             ,t.event as event
             ,t.league as league
-			,t.teamName as team
+			,t.teamName-24 as team
 		from user u
 			inner join teamUser tu on tu.user_seq = u.seq
 			inner join team t on t.teamSeq = tu.team_seq

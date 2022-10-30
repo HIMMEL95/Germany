@@ -30,22 +30,7 @@
 <link rel="stylesheet" href="/resources/css/user/sportMain.css">
 
 <link rel="shortcut icon"
-	href="https://www.naver.com/favicon.ico?v=20140228" type="image/x-icon">
-<link rel="apple-touch-icon"
-	href="https://imgsports.pstatic.net/images/mobile/favicon_20180622/ios/iOS6_57X57_iphone3.png">
-<link rel="apple-touch-icon" sizes="76x76"
-	href="https://imgsports.pstatic.net/images/mobile/favicon_20180622/ios/iOS7_76X76_ipad.png">
-<link rel="apple-touch-icon" sizes="120x120"
-	href="https://imgsports.pstatic.net/images/mobile/favicon_20180622/ios/iOS7_120X120_iphone.png">
-<link rel="apple-touch-icon" sizes="152x152"
-	href="https://imgsports.pstatic.net/images/mobile/favicon_20180622/ios/iOS7_152X152_ipad_retina.png">
-<link rel="apple-touch-icon" sizes="167x167"
-	href="https://imgsports.pstatic.net/images/mobile/favicon_20180622/ios/iOS_167X167_iPadPro.png">
-<!-- 레티나 패드 -->
-<link rel="apple-touch-icon" sizes="180x180"
-	href="https://imgsports.pstatic.net/images/mobile/favicon_20180622/ios/iOS_180X180_iPhone.png">
-<!-- 레티나 패드 -->
-<!-- script -->
+	href="https://cdn-icons-png.flaticon.com/512/6646/6646786.png" type="image/x-icon">
 <script type="text/javascript"
 	src="https://ssl.pstatic.net/static.sports/resources/pc/2022/09/29/130734/js/generated/baseJsTop.js"
 	charset="UTF-8"></script>

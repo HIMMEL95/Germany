@@ -85,7 +85,7 @@
                                             <label for="keep" class="keep_text">로그인 상태 유지</label>
                                         </div>
                                         <div class="ip_check">
-                                            <a href="/login/ext/help_ip3.html" target="_blank" id="ipguide"
+                                            <a href="#" target="_blank" id="ipguide"
                                                 title="IP보안"><span class="ip_text">IP보안</span></a>
                                             <span class="switch">
                                                 <input type="checkbox" id="switch" class="switch_checkbox" value="off">

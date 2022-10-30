@@ -38,7 +38,7 @@
                         <div class="input-control">
                             <label for="id">Id<span style="color: red;">*</span></label>
                             <input type="hidden" id="idAllowedNy" name="idAllowedNy" value="0">
-                            <input id="id" name="id" type="text" value="<c:out value="${item.id }"/>" autocomplete="off"> 
+                            <input id="id" name="id" type="text" onfocusout="validationUpdt()" autocomplete="off"> 
                             <div class="msg" id="id_msg" name="id_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -591,6 +591,7 @@
    					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
    				}
    			});
+    		
     	});
     	
     	function setComboBox1(o){

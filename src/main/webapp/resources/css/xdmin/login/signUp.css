@@ -233,3 +233,7 @@ a:-webkit-any-link {
     max-width: 768px;
     min-width: 400px;
 }
+
+.ui-datepicker {
+	margin-top: 100px;
+}

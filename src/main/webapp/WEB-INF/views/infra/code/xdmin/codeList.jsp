@@ -423,9 +423,9 @@
 	   		});
 	   		$("#endDate").datepicker({
 	   			dateFormat: "yy-mm-dd"
-	      			,showMonthAfterYear: true
-	      			,showOtherMonths: true
-	      		});
+      			,showMonthAfterYear: true
+      			,showOtherMonths: true
+      		});
 	   	})
 	   	
 	   	goList = function(thisPage) {

@@ -424,7 +424,7 @@
 					                   	</c:choose>
 	                                </ul>
 	                            </div>
-	                            <div class="u_cbox_paginate">
+	                            <!-- <div class="u_cbox_paginate">
 	                                <a href="#" class="u_cbox_btn_more" data-action="page#more" data-log="RPC.more">
 	                                    <span class="u_cbox_more_wrap">
 	                                        <span class="u_cbox_box_more">
@@ -433,7 +433,7 @@
 	                                        </span>
 	                                    </span>
 	                                </a>
-	                            </div>
+	                            </div> -->
 	                        </div>
 	                    </div>
 	                </div>

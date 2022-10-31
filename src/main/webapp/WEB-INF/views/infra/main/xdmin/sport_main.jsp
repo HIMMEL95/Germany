@@ -186,7 +186,7 @@
 					                                            </button>
 					                                        </li>
 					                                        <li class="pro_li">
-					                                            <button class="pro_a" href="/member/memberList" style="background: none;">
+					                                            <button class="pro_a" style="background: none;" onclick="goXdmin()">
 					                                                <i class="fa-solid fa-gear me-2"></i>
 					                                                Admin Page
 					                                            </button>
@@ -3852,6 +3852,11 @@
 	
 		var form = $("#myForm");
 		var goUrlUView = "/member/memberUView";
+		var goUrlXdmin = "/member/memberList";
+		
+		goXdmin = function() {
+			form.attr("action", goUrlXdmin).submit();
+		}
 		
 		goView = function(keyValue) {
 			form.attr("action", goUrlUView).submit();

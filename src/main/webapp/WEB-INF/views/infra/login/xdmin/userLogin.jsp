@@ -341,9 +341,18 @@
     	
     	/* naver login test s */
    		
-   		var naverLogin = new naver.LoginWithNaverId(
+   		/* var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "z69jjnmkMQ88W2owra4t",
+				callbackUrl: "http://localhost:8080/userLogin",
+				isPopup: false,
+				callbackHandle: true,
+				loginButton: {color: "green", type: 3, height: 70} 
+			}
+		); */
+   		var naverLogin = new naver.LoginWithNaverId(
+			{
+				clientId: "UaAbHqj39XPD9LSwYSmF",
 				callbackUrl: "http://localhost:8080/userLogin",
 				isPopup: false,
 				callbackHandle: true,

@@ -3827,20 +3827,20 @@
 	<script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   	<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 	<script type="text/javascript">
 		 function menuToggle() {
             const toggleMenu = document.querySelector('.menu');
             toggleMenu.classList.toggle('active')
         };
         
-		$("#signOutBtn").on("click", function() {
+        $("#signOutBtn").on("click", function() {
 			$.ajax({
 				type: "POST"
 				,url: "/logoutProc"
 				,data: {}
 				,success : function(response) {
 					if (response.rt == "success") {
+						window.location.href = "http://nid.naver.com/nidlogin.logout";
 						window.location.href = "/";
 					}
 				}

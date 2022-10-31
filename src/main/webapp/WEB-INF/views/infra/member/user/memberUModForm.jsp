@@ -282,14 +282,14 @@
 		                            <select class="form-select" id="gAbroadNy" name="gAbroadNy" onchange="setComboBox1(this)" aria-label=".form-select example">
 		                                <option value="" >선택</option>
 		                                <c:choose>
-		                                	<c:when test="${empty item.seq }">
+		                                	<c:when test="${empty gItem.seq }">
 		                                		<c:forEach items="${listCodeAbroad}" var="listAbroad" varStatus="statusAborad">
-													<option value="${listAbroad.ccSeq }" <c:if test="${item.abroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
+													<option value="${listAbroad.ccSeq }" <c:if test="${gItem.abroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
 												</c:forEach>
 		                                	</c:when>
 		                                	<c:otherwise>
 		                                		<c:forEach items="${listCodeAbroad}" var="listAborad" varStatus="statusAborad">
-													<option value="${item.abroadNy }" <c:if test="${item.abroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
+													<option value="${gItem.abroadNy }" <c:if test="${gItem.abroadNy eq listAbroad.ccSeq}">selected</c:if>><c:out value="${listAbroad.ifccName }"/></option>
 												</c:forEach>
 		                                	</c:otherwise>
 		                                </c:choose>

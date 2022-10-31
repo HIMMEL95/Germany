@@ -132,7 +132,7 @@
                                             		<!-- 네이버 로그인 버튼 노출 영역 -->
 											<!-- <div id="naver_id_login"></div> -->
 											<!-- <div id="naverIdLogin"></div> -->
-											<div id="naverIdLogin"></div>
+											<!-- <div id="naverIdLogin"></div> -->
 											<!-- //네이버 로그인 버튼 노출 영역 -->
                                         </div>
                                         <div class="btn_login_wrap">

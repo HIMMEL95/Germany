@@ -147,7 +147,7 @@
 											</a>
 											<p id="token-result"></p> -->
                                         </div>
-                                        <div class="btn_login_wrap">
+                                        <!-- <div class="btn_login_wrap">
                                             <button type="button" class="btn_login" id="log.login"
                                                 style="background-color: #dc462f;">
                                                 <span class="btn_text">
@@ -164,7 +164,7 @@
                                                 			페이스북 로그인
                                                 </span>
                                             </button>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </li>
@@ -375,8 +375,6 @@
 			} else {
 				$("input[name=gender]").val(6);
 			} 
-			
-			alert($("input[name=phone]").val())
 			
 			$.ajax({
 				async: true

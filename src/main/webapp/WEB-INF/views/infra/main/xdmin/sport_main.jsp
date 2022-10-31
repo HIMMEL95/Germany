@@ -3840,7 +3840,6 @@
 				,data: {}
 				,success : function(response) {
 					if (response.rt == "success") {
-						window.location.href = "http://nid.naver.com/nidlogin.logout";
 						window.location.href = "/";
 					}
 				}

@@ -169,6 +169,18 @@
                                                                 <span>경기 기록 관리</span>
                                                             </a>
                                                         </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="/code/codeList">
+                                                                <i class="fas fa-light fa-comments pe-3"></i>
+                                                                <span>Code</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="/codeGroup/codeGroupList">
+                                                                <i class="fas fa-duotone fa-trophy pe-3"></i>
+                                                                <span>CodeGroup</span>
+                                                            </a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>

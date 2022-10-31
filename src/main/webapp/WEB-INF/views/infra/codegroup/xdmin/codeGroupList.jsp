@@ -41,7 +41,7 @@
                         <li class="me-2">
                             <a class="p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
                                 data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img class="avatar-img rounded-circle" src="../../resources/images/diano.jpg" alt="avatar"
+                                <img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar"
                                     style="width: 30px;">
                             </a>
                             <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
@@ -51,29 +51,29 @@
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
                                         <div class="avatar1 me-3">
-                                            <img class="avatar-img rounded-circle shadow" src="../../resources/images/diano.jpg"
+                                            <img class="avatar-img rounded-circle shadow" src="/resources/images/diano.jpg"
                                                 alt="avatar" style="width: 30px;">
                                         </div>
                                         <div>
-                                            <a class="fs-6 fw-bold" href="#">이하늘</a>
-                                            <p class="small m-0">himmel@gmail.com</p>
+                                            <a class="fs-6 fw-bold" href="#"><c:out value="${sessName }"/></a>
+                                            <p class="small m-0"><c:out value="${sessEmail }"/> </p>
                                         </div>
                                     </div>
                                     <hr>
                                 </li>
                                 <!-- Links -->
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/member/memberUView?seq=${sessSeq }">
                                         <i class="fa-solid fa-user me-2"></i>
                                         Edit Profile
                                     </a>
                                 </li>
-                                <li>
+                               <!--  <li>
                                     <a class="dropdown-item" href="#">
                                         <i class="fa-solid fa-gear me-2"></i>
                                         Account Settings
                                     </a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a class="dropdown-item" href="#">
                                         <i class="fa-solid fa-circle-info me-2"></i>
@@ -81,7 +81,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item bg-danger-soft-hover" href="../../seperate/html/seperatePage.html">
+                                    <a class="dropdown-item bg-danger-soft-hover" id="signOutBtn" >
                                         <i class="fa-solid fa-power-off me-2"></i>
                                         Sign Out
                                     </a>
@@ -94,37 +94,10 @@
                 <!-- Profile START -->
             </div>
         </nav>
-        <div class="nav-scroller py-1 mb-2 bg-info">
-            <div class="container bg-info">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Navbar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">회원관리</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">서비스관리</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">사이트관리</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">로그관리</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">시스템관리</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">시스템관리</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
     </header>
 
     <main>
-        <div style="height: 150px;"></div>
+        <div style="height: 100px;"></div>
         <div class="container">
             <form method="post" id="myForm" name="myForm">
                	<input type="hidden" name="mainkey">
@@ -155,44 +128,61 @@
                 
                                     <div class="offcanvas-body d-block px-2 px-lg-0">
                                         <div class="card overflow-hidden">
-                                            <img src="../../resources/images//mountains.png" class="card-img-top" alt="background"
+                                            <img src="/resources/images/mountains.png" class="card-img-top" alt="background"
                                                 style="height: 50px; background-position: center; background-size: cover; background-repeat: no-repeat;">
                                             <div class="card-body pt-0">
                                                 <div class="text-center">
                                                     <div class="avatar avatar-lg mt-n5 mb-3">
                                                         <a href="#"><img class="avatar-img rounded border border-white border-3"
-                                                                src="../../resources/images/diano.jpg" style="width: 50px;" alt=""></a>
+                                                                src="/resources/images/diano.jpg" style="width: 50px;" alt=""></a>
                                                     </div>
                                                     <div class="mt-2 mb-4">
-                                                        <span class="mb-0"><a href="#">이하늘</a></span>
-                                                        <small>Himmel</small><br>
-                                                        <small>himmel@gmail.com</small>
+                                                        <span class="mb-0"><a href="/member/memberUView"><c:out value="${sessName }"/></a></span>
+                                                        <small><c:out value="${sessId }"/></small><br>
+                                                        <small><c:out value="${sessEmail }"/></small>
                                                     </div>
                                                     <hr>
                                                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="../Dashboard/Dashboard.html">
+                                                        <!-- <li class="nav-item">
+                                                            <a class="nav-link" href="/dashboard">
                                                                 <i class="fa-solid fa-chart-line pe-3"></i>
-                                                                <span>Home</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="../user/userList.html">
-                                                                <i class="fa-solid fa-users pe-3"></i>
                                                                 <span>Dashboard</span>
                                                             </a>
-                                                        </li>
+                                                        </li> -->
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="../article/articleList.html">
-                                                                <i class="fas fa-light fa-newspaper pe-3"></i>
-                                                                <span>Orders</span>
+                                                            <a class="nav-link" href="/member/memberList">
+                                                                <i class="fa-solid fa-users pe-3"></i>
+                                                                <span>회원관리</span>
                                                             </a>
                                                         </li>
-                                                        <hr>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="../articleComment/articleCommentList.html">
+                                                            <a class="nav-link" href="/article/articleList">
+                                                                <i class="fas fa-light fa-newspaper pe-3"></i>
+                                                                <span>게시물 관리</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="/comment/commentList">
                                                                 <i class="fas fa-light fa-comments pe-3"></i>
-                                                                <span>Account</span>
+                                                                <span>댓글 리스트</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="/game/gameList">
+                                                                <i class="fas fa-duotone fa-trophy pe-3"></i>
+                                                                <span>경기 기록 관리</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="/code/codeList">
+                                                                <i class="fas fa-light fa-comments pe-3"></i>
+                                                                <span>Code</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="/codeGroup/codeGroupList">
+                                                                <i class="fas fa-duotone fa-trophy pe-3"></i>
+                                                                <span>CodeGroup</span>
                                                             </a>
                                                         </li>
                                                     </ul>
@@ -221,8 +211,7 @@
                                             </li>
                                         </ul>
                                         <p class="small text-center mt-1">©2022 <a class="text-body" target="_blank" href="#"> SPOPIA
-                                            </a>
-                                        </p>
+                                            </a></p>
                                     </div>
                                 </div>
                             </nav>
@@ -400,6 +389,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
   	<script type="text/javascript">	
     	var goUrlForm = "/codeGroup/codeGroupForm";
     	var goUrlList = "/codeGroup/codeGroupList";

@@ -277,6 +277,7 @@
 			,u.pwd
 			,u.user_div
 			,u.snsImg
+			,u.sns_type
 		from user u
 		where 1=1 
 			and id = #{id} 
@@ -291,6 +292,7 @@
 			,u.pwd
 			,u.user_div
 			,u.snsImg
+			,u.sns_type
 		from user u
 		where 1=1 
 			and id = #{snsId} 

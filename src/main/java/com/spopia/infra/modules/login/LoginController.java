@@ -131,6 +131,7 @@ public class LoginController {
 			httpSession.setAttribute("sessName", result.getName());
 			httpSession.setAttribute("sessEmail", result.getEmail());
 			httpSession.setAttribute("sessUser", result.getUser_div());
+			httpSession.setAttribute("sessSns", result.getSns_type());
 	
 			returnMap.put("rt", "success");
 		} else {
@@ -167,8 +168,16 @@ public class LoginController {
 	@RequestMapping(value = "logoutProc")
 	public Map<String, Object> logoutProc(HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-		httpSession.invalidate();
-		returnMap.put("rt", "success");
+		
+		String sns = httpSession.getAttribute("sessSns").toString();
+		
+		if (sns.equals("1")) {
+		    httpSession.invalidate();
+		    returnMap.put("rt", "naver");
+		} else {
+		    httpSession.invalidate();
+		    returnMap.put("rt", "success");
+		}
 		return returnMap;
 	}
 	

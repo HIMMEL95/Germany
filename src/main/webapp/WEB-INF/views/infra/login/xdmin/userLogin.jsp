@@ -123,25 +123,16 @@
                                             <span class="btn_text">로그인</span>
                                         </button>
                                         <div class="btn_login_wrap">
-                                            <!-- <a type="button" class="btn_login" id="naverIdLogin_loginButton" href="javascript:void(0)" style="background-color: #03c75a;">
-                                                <span class="btn_text">
-                                                	<img src="/resources/images/user/naver.png" style="width: 25px;" class="me-3">
-                                           		</span>
-                                            </a> -->
-											<!-- <div id="naverIdLogin"></div> -->
-                                        </div>
-                                        <div class="btn_login_wrap">
                                             <button type="button" class="btn_login" id="kakaoBtn" style="background-color: #fceb00;">
                                                 <span class="btn_text text-black">
                                                 	<img src="/resources/images/user/kakao.png" style="width: 25px;" class="me-3">
                                                			카카오 로그인
                                            		</span>
                                             </button>
-                                            <!-- <a id="kakao-login-btn" href="javascript:loginWithKakao()">
-												<img src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="322" height="60" alt="카카오 로그인 버튼" />
-											</a>
-											<p id="token-result"></p> -->
                                         </div>
+                                        <!-- <div class="btn_login_wrap">
+											<div id="naverIdLogin"></div>
+                                        </div> -->
                                         <!-- <div class="btn_login_wrap">
                                             <button type="button" class="btn_login" id="log.login"
                                                 style="background-color: #dc462f;">
@@ -241,6 +232,8 @@
 					if (response.rt == "fail") {
 						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
 						return false;
+					} else if (response.rt == "naver") {
+						window.location.href = "http://nid.naver.com/nidlogin.logout";
 					} else {
 						window.location.href = "/sportMain";
 					}
@@ -339,7 +332,7 @@
    		var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "z69jjnmkMQ88W2owra4t",
-				callbackUrl: "http://localhost:8080/userLogin",
+				callbackUrl: "http://www.spopia.pe.kr/userLogin",
 				isPopup: false,
 				callbackHandle: true,
 				loginButton: {color: "green", type: 3, height: 70} 

@@ -128,7 +128,7 @@
                                                 	<img src="/resources/images/user/naver.png" style="width: 25px;" class="me-3">
                                            		</span>
                                             </a> -->
-											<div id="naverIdLogin"></div>
+											<!-- <div id="naverIdLogin"></div> -->
                                         </div>
                                         <div class="btn_login_wrap">
                                             <button type="button" class="btn_login" id="kakaoBtn" style="background-color: #fceb00;">

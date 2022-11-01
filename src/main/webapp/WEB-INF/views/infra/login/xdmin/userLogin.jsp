@@ -122,19 +122,14 @@
                                         <button type="button" class="btn_login" id="loginBtn" href="/sportMain">
                                             <span class="btn_text">로그인</span>
                                         </button>
-                                       <!--  <div class="btn_login_wrap">
-                                            <a type="button" class="btn_login" id="naverIdLogin_loginButton" href="javascript:void(0)" style="background-color: #03c75a;">
+                                        <div class="btn_login_wrap">
+                                            <!-- <a type="button" class="btn_login" id="naverIdLogin_loginButton" href="javascript:void(0)" style="background-color: #03c75a;">
                                                 <span class="btn_text">
                                                 	<img src="/resources/images/user/naver.png" style="width: 25px;" class="me-3">
-                                               			네이버 로그인
                                            		</span>
-                                            </a>
-                                            		네이버 로그인 버튼 노출 영역
-											<div id="naver_id_login"></div>
+                                            </a> -->
 											<div id="naverIdLogin"></div>
-											<div id="naverIdLogin"></div>
-											//네이버 로그인 버튼 노출 영역
-                                        </div> -->
+                                        </div>
                                         <div class="btn_login_wrap">
                                             <button type="button" class="btn_login" id="kakaoBtn" style="background-color: #fceb00;">
                                                 <span class="btn_text text-black">

@@ -316,7 +316,7 @@
 						                                                        <span class="u_cbox_name">
 						                                                            <span class="u_cbox_name_area">
 						                                                                <span class="u_cbox_nick_area">
-						                                                                    <span class="u_cbox_nick"><c:out value="${comment.id }"/></span>
+						                                                                    <span class="u_cbox_nick"><c:out value="${comment.id }"/> ${comment.seq }</span>
 						                                                                </span>
 						                                                            </span>
 						                                                        </span>
@@ -339,11 +339,31 @@
 						                                                <div class="u_cbox_info_base">
 						                                                    <span class="u_cbox_date" data-value="2022-08-07T07:27:39+0900">21분 전</span>
 						                                                    <span class="u_cbox_work_main">
-						                                                        <button type="button" class="u_cbox_btn_report" onclick="commentUelete(<c:out value="${comment.seq }"/>)">
+						                                                        <button type="button" class="u_cbox_btn_report" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="${comment.seq }" onclick="test(${comment.seq })">
 						                                                            <span class="u_cbox_ico_bar"></span>
 						                                                            <span class="u_cbox_ico_report"></span>
 						                                                            <span class="u_cbox_in_report"><i class="fa-solid fa-trash"></i></span>
 						                                                        </button>
+						                                                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+																					<input type="hidden" name="acSeq" value=""/>
+																					<div class="modal-dialog">
+																						<div class="modal-content">
+																							<div class="modal-header">
+																				        		<h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+																				        		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+																				        			<i class="fa-solid fa-xmark" style="font-size: 20px; margin-right: 5px;"></i>
+																				        		</button>
+																							</div>
+																							<div class="modal-body">
+																							 정말로 삭제하시겠습니까?
+																							</div>
+																							<div class="modal-footer">
+																						        <button type="button" class="btn" data-bs-dismiss="modal" style="margin-right: 10px;">Close</button>
+																						        <button type="button" class="btn" style="margin-right: 10px;" onclick="commentUelete()">삭제</button>
+																							</div>
+																					    </div>
+																					</div>
+																				</div>
 						                                                    </span>
 						                                                </div>
 						                                                <div class="u_cbox_tool"></div>
@@ -501,6 +521,8 @@
     	var goUrlInst = "/articleInsert";
     	var form = $("#myForm");
     	
+    	var seq = $("input[name=seq]");
+    	
 	    $(".login_link").on("click", function() {
 	    	swAlert("로그인", "로그인 하시겠습니까?", "success");
 		});
@@ -563,7 +585,7 @@
    			});
 		}
 		
-		function commentUelete(seq) {
+		function commentUelete() {
 			
 			$.ajax({
    				async: true 
@@ -572,7 +594,7 @@
    				/* ,dataType:"json" */
    				,url: "articleCommentUelete"
    				/* ,data : $("#formLogin").serialize() */
-   				,data : {"seq" : seq, "mSeq" : $("input[name=mSeq]").val(), "aSeq" : $("input[name=aSeq]").val()}
+   				,data : {"seq" : $("input[name=acSeq]").val(), "mSeq" : $("input[name=mSeq]").val(), "aSeq" : $("input[name=aSeq]").val()}
    				,success: function(response) {
    					if (response.rt == "success") {
    						location.href = "/articleView?aSeq="+ $("input[name=aSeq]").val();
@@ -604,6 +626,10 @@
    					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
    				}
    			});
+		}
+		
+		test = function(seq) {
+			$("input[name=acSeq]").val(seq);
 		}
 
     </script>

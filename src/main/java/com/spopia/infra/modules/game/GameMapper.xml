@@ -247,6 +247,7 @@
 		select
 			gc.seq
 			,gc.comment
+			,gc.createdAt
 			,gc.modifiedAt
 			,u.id as id
 		from game_comment gc
@@ -254,6 +255,8 @@
 		where 1=1
 			and game_seq = #{gSeq}
 			and DelNy = 0
+		order by
+			gc.createdAt DESC
 	</select>
 	
 	<select id="gameCommentCount" resultType="Integer">

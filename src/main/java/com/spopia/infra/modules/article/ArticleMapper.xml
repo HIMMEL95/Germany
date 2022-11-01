@@ -208,6 +208,8 @@
 		where 1=1
 			and article_seq = #{aSeq}
 			and DelNy = 0
+		order by
+			ac.createdAt DESC
 	</select>
 	
 	<select id="articleCommentCount" resultType="Integer">

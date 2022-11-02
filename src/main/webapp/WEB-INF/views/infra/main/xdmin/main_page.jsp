@@ -20,6 +20,8 @@
         <main class="card">
             <div id="img">
                 <img src="/resources/images/SPOPIA_white.png" alt="SPOPIA logo">
+                sessSeq : ${sessSeq }
+                sessName : ${sessName }
             </div>
             <div id="content">
                 <a id="user" href="/sportMain">

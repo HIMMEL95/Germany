@@ -130,9 +130,9 @@
                                            		</span>
                                             </button>
                                         </div>
-                                        <!-- <div class="btn_login_wrap">
+                                        <div class="btn_login_wrap">
 											<div id="naverIdLogin"></div>
-                                        </div> -->
+                                        </div>
                                         <!-- <div class="btn_login_wrap">
                                             <button type="button" class="btn_login" id="log.login"
                                                 style="background-color: #dc462f;">
@@ -232,8 +232,6 @@
 					if (response.rt == "fail") {
 						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
 						return false;
-					} else if (response.rt == "naver") {
-						window.location.href = "http://nid.naver.com/nidlogin.logout";
 					} else {
 						window.location.href = "/sportMain";
 					}
@@ -331,13 +329,21 @@
    		
    		var naverLogin = new naver.LoginWithNaverId(
 			{
+				clientId: "b8EhDTV3tvvAE_gRRBoJ",
+				callbackUrl: "http://localhost:8080/userLogin",
+				isPopup: false,
+				loginButton: {color: "green", type: 3, height: 70} 
+			}
+		);
+/*    		var naverLogin = new naver.LoginWithNaverId(
+			{
 				clientId: "z69jjnmkMQ88W2owra4t",
 				callbackUrl: "http://www.spopia.pe.kr/userLogin",
 				isPopup: false,
 				callbackHandle: true,
 				loginButton: {color: "green", type: 3, height: 70} 
 			}
-		);
+		); */
 
     	naverLogin.init();
     	

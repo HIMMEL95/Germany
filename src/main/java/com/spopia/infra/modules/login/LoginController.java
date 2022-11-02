@@ -24,7 +24,13 @@ public class LoginController {
 	MemberServiceImpl service;
 
 	@RequestMapping(value = "userLogin")
-	public String userLogin() throws Exception {
+	public String userLogin(HttpSession httpSession) throws Exception {
+        /*
+         * String test1 = httpSession.getAttribute("sessSeq").toString();
+         * String test2 = httpSession.getAttribute("sessName").toString();
+         * System.out.println("test1 : " + test1);
+         * System.out.println("test2 : " + test2);
+         */
 		return "infra/login/xdmin/userLogin";
 	}
 	
@@ -168,16 +174,10 @@ public class LoginController {
 	@RequestMapping(value = "logoutProc")
 	public Map<String, Object> logoutProc(HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-		
-		String sns = httpSession.getAttribute("sessSns").toString();
-		
-		if (sns.equals("1")) {
-		    httpSession.invalidate();
-		    returnMap.put("rt", "naver");
-		} else {
-		    httpSession.invalidate();
-		    returnMap.put("rt", "success");
-		}
+
+	    httpSession.invalidate();
+	    returnMap.put("rt", "success");
+
 		return returnMap;
 	}
 	

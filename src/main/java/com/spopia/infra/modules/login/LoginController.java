@@ -3,11 +3,15 @@ package com.spopia.infra.modules.login;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spopia.infra.common.util.UtilCookie;
@@ -22,15 +26,9 @@ public class LoginController {
 	
 	@Autowired
 	MemberServiceImpl service;
-
+	
 	@RequestMapping(value = "userLogin")
-	public String userLogin(HttpSession httpSession) throws Exception {
-        /*
-         * String test1 = httpSession.getAttribute("sessSeq").toString();
-         * String test2 = httpSession.getAttribute("sessName").toString();
-         * System.out.println("test1 : " + test1);
-         * System.out.println("test2 : " + test2);
-         */
+	public String userLogin() throws Exception {
 		return "infra/login/xdmin/userLogin";
 	}
 	
@@ -179,6 +177,17 @@ public class LoginController {
 	    returnMap.put("rt", "success");
 
 		return returnMap;
+	}
+	
+	@GetMapping("remove")
+	public String remove(@RequestParam String token, HttpSession httpSession, HttpServletRequest request, Model model) throws Exception {
+	    System.out.println("토큰 삭제중...");
+	    
+	    String apiUrl = "https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=b8EhDTV3tvvAE_gRRBoJ&client_secret=hMDyTplZOp&access_token=bearer.AAAAPFEl-kO9Y3BtHeXIJ9cqh68QM5luGnpwq69PtsvbaFpmPWOCy86M_0qpQRBxXnf5CuWKIHJrwTyFbxCxTJKwHPA.1667370327&service_provider=NAVER";
+	    
+	    System.out.println("apiUrl : " + apiUrl);
+	    
+	    return "redirect:/";
 	}
 	
 }

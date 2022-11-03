@@ -26,7 +26,12 @@ public final class Constants {
 	public static final String UPLOAD_PATH_PREFIX_FOR_VIEW = "/resources/uploaded";
 	
 	public static final int COOKIE_MAXAGE = 60 * 60 * 24 * 30; //초 * 분 * 시간 * 일 : 30day
-  public static final String COOKIE_DOMAIN = "";
-  public static final String COOKIE_PATH = "/";
-  public static final String COOKIE_NAME_SEQ = "cookieSeq";
+    public static final String COOKIE_DOMAIN = "";
+    public static final String COOKIE_PATH = "/";
+    public static final String COOKIE_NAME_SEQ = "cookieSeq";
+  
+    public static final String NAVER_CLIENT_ID = "b8EhDTV3tvvAE_gRRBoJ";
+    public static final String NAVER_CLIENT_SECRET = "hMDyTplZOp";
+    public static final String KAKAO_CLIENT_ID = "6875fc67f5a6c9e3660d59324e27052a";
+    public static final String KAKAO_LOGOUT_REDIRECT_URI = "http://localhost:8080/sportMain";
 }

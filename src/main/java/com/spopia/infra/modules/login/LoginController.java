@@ -1,5 +1,7 @@
 package com.spopia.infra.modules.login;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -172,13 +174,36 @@ public class LoginController {
 	@RequestMapping(value = "logoutProc")
 	public Map<String, Object> logoutProc(HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		String sns = httpSession.getAttribute("sessSns").toString();
+		System.out.println("test : " + sns);
+		
+		if (sns.equals("0")) {
+		    httpSession.invalidate();
+		    returnMap.put("rt", "success");
+		} else if (sns.equals("1")) {
+		    httpSession.invalidate();
+		    returnMap.put("rt", "naver");
+		} else {
+		    httpSession.invalidate();
+		    returnMap.put("rt", "kakao");
+		}
 
-	    httpSession.invalidate();
-	    returnMap.put("rt", "success");
 
 		return returnMap;
 	}
 	
-	
+	@RequestMapping(value = "naverLogout")
+	public String naverLogout(Member dto) throws Exception {
+	    System.out.println("token : " + dto.getToken());
+	    String url = "https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id="+Constants.NAVER_CLIENT_ID+"&client_secret="+Constants.NAVER_CLIENT_SECRET+"&access_token="+dto.getToken();
+	    return "redirect:" + url;
+	}
+
+	@RequestMapping(value = "kakaoLogout")
+	public String kakaoLogout(Member dto) throws Exception {
+	    String url = "https://kauth.kakao.com/oauth/logout?client_id="+Constants.KAKAO_CLIENT_ID+"&logout_redirect_uri="+Constants.KAKAO_LOGOUT_REDIRECT_URI;
+	    return "redirect:" + url;
+	}
 	
 }

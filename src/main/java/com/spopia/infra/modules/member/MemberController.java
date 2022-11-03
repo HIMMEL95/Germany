@@ -97,7 +97,7 @@ public class MemberController {
 	@RequestMapping(value = "memberUMod")
 	public String memberUMod(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 	  
-			Member snsItem = service.snsSelectOne(vo);
+		Member snsItem = service.snsSelectOne(vo);
 		
 	    if (snsItem.getId().equals("카카오로그인") || snsItem.getId().equals("네이버로그인")) {
 	        System.out.println("sns Login");
@@ -133,12 +133,12 @@ public class MemberController {
 	        Member naver = service.snsLoginCheck(dto);
   
 	        httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
-	        session(naver.getSeq(), naver.getId(), naver.getName(), naver.getEmail(), naver.getUser_div(), naver.getSnsImg(), httpSession);
+	        session(naver.getSeq(), naver.getId(), naver.getName(), naver.getEmail(), naver.getUser_div(), naver.getSnsImg(), naver.getSns_type(), httpSession);
 	    } else {
 	        System.out.println("여기는 :  not " + null);
   
 	        httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
-	        session(naverLogin.getSeq(), naverLogin.getId(), naverLogin.getName(), naverLogin.getEmail(), naverLogin.getUser_div(), naverLogin.getSnsImg(), httpSession);
+	        session(naverLogin.getSeq(), naverLogin.getId(), naverLogin.getName(), naverLogin.getEmail(), naverLogin.getUser_div(), naverLogin.getSnsImg(), naverLogin.getSns_type(), httpSession);
 	    }
 	    return "redirect:/sportMain";
 	}
@@ -150,28 +150,31 @@ public class MemberController {
 	    
 		Member kakaoLogin = service.snsLoginCheck(dto);
 		
+		 System.out.println("test : " + dto.getToken());
+		
 		if (kakaoLogin == null) {
 			service.kakaoInst(dto);
 			
 			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
-			session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), httpSession);
+			session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
 			returnMap.put("rt", "success");
 		} else {
 			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
 			
-			session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), httpSession);
+			session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), kakaoLogin.getSns_type(), httpSession);
 			returnMap.put("rt", "success");
 		}
 		return returnMap;
 	}
 	
-	 public void session(String seq, String id, String name, String email, Integer user, String img, HttpSession httpSession) {
+	 public void session(String seq, String id, String name, String email, Integer user, String img, Integer sns, HttpSession httpSession) {
 		 httpSession.setAttribute("sessSeq", seq);
 		 httpSession.setAttribute("sessId", id);
 		 httpSession.setAttribute("sessName", name);
 		 httpSession.setAttribute("sessEmail", email);
 		 httpSession.setAttribute("sessUser", user);
 		 httpSession.setAttribute("sessImg", img);
+		 httpSession.setAttribute("sessSns", sns);
 	 }
 	
 	 

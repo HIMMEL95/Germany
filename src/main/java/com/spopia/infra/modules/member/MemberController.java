@@ -120,6 +120,8 @@ public class MemberController {
 	@RequestMapping(value = "naverLoginProc")
 	public String naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
 	    System.out.println("naverLoginProc");
+	    
+	    System.out.println("test : " + dto.getToken());
           
 	    // id 값 있는지 체크 
 	    Member naverLogin = service.snsLoginCheck(dto);

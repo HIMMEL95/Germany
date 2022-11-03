@@ -124,6 +124,7 @@
 							<img class="logo" alt="" src="/resources/images/SPOPIA_white.png">
 							sessSeq : ${sessSeq } 
 							sessName : ${sessName }
+							sessSns : ${sessSns }
 						</a> 
 					</div>
 					<div class="navigation">

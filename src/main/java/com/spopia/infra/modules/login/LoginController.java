@@ -179,15 +179,6 @@ public class LoginController {
 		return returnMap;
 	}
 	
-	@GetMapping("remove")
-	public String remove(@RequestParam String token, HttpSession httpSession, HttpServletRequest request, Model model) throws Exception {
-	    System.out.println("토큰 삭제중...");
-	    
-	    String apiUrl = "https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=b8EhDTV3tvvAE_gRRBoJ&client_secret=hMDyTplZOp&access_token=bearer.AAAAPFEl-kO9Y3BtHeXIJ9cqh68QM5luGnpwq69PtsvbaFpmPWOCy86M_0qpQRBxXnf5CuWKIHJrwTyFbxCxTJKwHPA.1667370327&service_provider=NAVER";
-	    
-	    System.out.println("apiUrl : " + apiUrl);
-	    
-	    return "redirect:/";
-	}
+	
 	
 }

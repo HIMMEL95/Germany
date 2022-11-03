@@ -30,8 +30,9 @@ public class Member extends Base {
 	private Integer abroadNy;
 	private Integer event;
 	private Integer league;
+	private String token;
 	
-	// teamUser Dto
+    // teamUser Dto
 	private String tuSeq;
 	private Integer defaultNY;
 	private Integer deleteNY;
@@ -44,6 +45,12 @@ public class Member extends Base {
 	private String snsImg;
 	private String snsId;
 
+	public String getToken() {
+	    return token;
+	}
+	public void setToken(String token) {
+	    this.token = token;
+	}
 	public Integer getAbroadNy() {
 		return abroadNy;
 	}

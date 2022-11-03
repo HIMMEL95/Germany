@@ -8,7 +8,7 @@ public class Test {
 
     public Object body;
     
-    public Object items;
+    public Object[] items;
 
     public Object[] item;
     public String PRDUCT;
@@ -19,7 +19,6 @@ public class Test {
     public String RTRCN_DSCTN_DT;
     public String MDEQ_PRDLST_SN;
     public String TRCK_MNG_TRGT_YN;
-    
     public Object getHeader() {
         return header;
     }
@@ -44,10 +43,10 @@ public class Test {
     public void setBody(Object body) {
         this.body = body;
     }
-    public Object getItems() {
+    public Object[] getItems() {
         return items;
     }
-    public void setItems(Object items) {
+    public void setItems(Object[] items) {
         this.items = items;
     }
     public Object[] getItem() {

@@ -171,6 +171,7 @@
 			<input type="hidden" name="gender"/>
 			<input type="hidden" name="dob"/>
 			<input type="hidden" name="snsImg"/>
+			<input type="hidden" name="token"/>
 		</form>
 
         <!-- footer -->
@@ -364,6 +365,7 @@
 			$("input[name=email]").val(naverLogin.user.email);
 			$("input[name=dob]").val(naverLogin.user.birthyear + "-" + naverLogin.user.birthday);
 			$("input[name=snsImg]").val(naverLogin.user.profile_image);
+			$("input[name=token]").val(naverLogin.accessToken);
 			
 			if (naverLogin.user.gender == 'M'){
 				$("input[name=gender]").val(5);

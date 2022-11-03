@@ -18,11 +18,14 @@ publicCorona1List
 <br>aaa : <c:out value="${fn:length(items) }"/>
 
 <c:forEach items="${items}" var="item" varStatus="status">
-	<c:out value="${item.YYYY }"/>
-	<br><c:out value="${item.MM }"/>	
-	<br><c:out value="${item.KIT_PROD_QTY }"/>	
-	<br><c:out value="${item.KIT_EXPRT_QTY }"/>	
-	<br><c:out value="${item.KIT_STOCK_QTY }"/>	
+	<c:out value="${item.item.PRDUCT }"/>
+	<br><c:out value="${item.item.PRMISN_STTEMNT }"/>	
+	<br><c:out value="${item.item.PRDUCT_PRMISN_NO }"/>	
+	<br><c:out value="${item.item.PRMISN_DT }"/>	
+	<br><c:out value="${item.item.RTRCN_DSCTN_DIVS_CD }"/>	
+	<br><c:out value="${item.item.RTRCN_DSCTN_DT }"/>	
+	<br><c:out value="${item.item.MDEQ_PRDLST_SN }"/>	
+	<br><c:out value="${item.item.TRCK_MNG_TRGT_YN }"/>	
 </c:forEach>
 
 </body>

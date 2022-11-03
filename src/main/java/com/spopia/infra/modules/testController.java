@@ -76,16 +76,14 @@ public class testController {
         Map<String, Object> body = new HashMap<String, Object>();
         body = (Map<String, Object>) map.get("body");
         
-        System.out.println("item : " + body.get("items"));
-        
         List<Test> items = new ArrayList<Test>();
         items = (List<Test>) body.get("items");
-  
+        
         System.out.println("items.size(): " + items.size());
-  
-        // for(Home item : items) {
-        // System.out.println(item.getMM());
-        // }
+        
+//      for(Home item : items) {
+//          System.out.println(item.getMM());
+//      }
   
         model.addAllAttributes(header);
         model.addAllAttributes(body);

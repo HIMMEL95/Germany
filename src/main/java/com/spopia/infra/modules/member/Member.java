@@ -19,7 +19,8 @@ public class Member extends Base {
 	private String zip;
 	private String address;
 	private String address_detail;
-	private String job;
+	private String extraAddress;
+    private String job;
 	private String createdAt;
 	private String modifiedAt;
 	private Integer user_div;
@@ -178,6 +179,12 @@ public class Member extends Base {
     }
     public void setAddress_detail(String address_detail) {
         this.address_detail = address_detail;
+    }
+    public String getExtraAddress() {
+        return extraAddress;
+    }
+    public void setExtraAddress(String extraAddress) {
+        this.extraAddress = extraAddress;
     }
     public String getJob() {
         return job;

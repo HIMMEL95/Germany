@@ -329,7 +329,7 @@
                             <!--  Pagination e -->
                         </div>
                         <div class="row align-items-center">
-                            <div class="col-1">
+                            <div class="col-2">
                                 <button class="border-0 btn btn-sm shadow" type="button" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal">
                                     <i class="fa-solid fa-trash fa-lg text-danger"></i>
@@ -354,6 +354,11 @@
                                     </div>
                                 </div>
                             </div>
+	                        <div class="col-2 offset-8" align="right">
+	                            <button class="border-0 btn btn-sm bg-success shadow" type="button" id="excelBtn">
+	                                <i class="fa-regular fa-file-excel" style="color: white;"></i>
+	                            </button>
+	                        </div>
                         </div>
                     </div>
                 </div>
@@ -424,6 +429,7 @@
     	
     	var goUrlList = "/member/memberList";
     	var goUrlForm = "/member/memberXdminView";
+    	var excelUri = "/member/excelDownload";
     	var seq = $("input:hidden[name=seq]");
     	var form = $("#myForm");
     	
@@ -440,6 +446,10 @@
     	
     	$("#refresh").on("click", function() {
 			$(location).attr("href", goUrlList);
+		});
+    	
+    	$("#excelBtn").on("click", function() {
+			form.attr("action", excelUri).submit();
 		});
     </script>
 </body>

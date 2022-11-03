@@ -4,7 +4,7 @@ import com.spopia.infra.common.base.BaseVo;
 
 public class MemberVo extends BaseVo{
 	
-	private String shOption;
+	private Integer shOption;
 	private String shValue;
 	private Integer shDelNy;
 	private Integer shDate;
@@ -12,10 +12,10 @@ public class MemberVo extends BaseVo{
 	private String endDate;	
 	private String seq;
 
-	public String getShOption() {
+	public Integer getShOption() {
         return shOption;
     }
-    public void setShOption(String shOption) {
+    public void setShOption(Integer shOption) {
         this.shOption = shOption;
     }
     public String getShValue() {

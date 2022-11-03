@@ -350,8 +350,7 @@
                                 </button>
                             </div>
                             <div class="col-2 offset-8" align="right">
-                                <button class="border-0 btn btn-sm bg-success shadow" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">
+                                <button class="border-0 btn btn-sm bg-success shadow" type="button" id="excelBtn">
                                     <i class="fa-regular fa-file-excel" style="color: white;"></i>
                                 </button>
                                 <a class="border-0 btn btn-sm shadow bg-primary" role="button" href="/code/codeForm">
@@ -400,6 +399,7 @@
     <script type="text/javascript">
     	var goUrlForm = "/code/codeForm";
 	    var goUrlList = "/code/codeList";
+	    var excelUri = "/code/excelDownload";
 	    var form = $("form[name=myForm]");
 		
 		$("#refresh").on("click", function() {
@@ -434,6 +434,10 @@
 			seq.val(keyValue);
 			form.attr("action", goUrlForm).submit();
 		}
+		
+		$("#excelBtn").on("click", function() {
+			form.attr("action", excelUri).submit();
+		});
    </script>
 </body>
 </html>

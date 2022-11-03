@@ -311,7 +311,7 @@
 		where 1=1 
 			and id = #{id} 
 			and pwd = #{pwd}
-			and user_div = 24
+			and user_div = 7
 	</select>
 
 	<select id="findId" resultMap="resultMapObj">

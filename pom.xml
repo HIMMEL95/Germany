@@ -221,6 +221,32 @@
 		    <version>8.3.2</version>
 		</dependency>
 		<!-- naver Login e 2022-11-03 -->
+		
+		<!-- excel download s 2022.06.21 -->		
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+				<!-- excel download s 2022.06.21 -->		
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>5.2.2</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>5.2.2</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+		<!-- excel download e 2022.06.21 --> 
+		<!-- excel download e 2022.06.21 -->		
 	</dependencies>
     <build>
         <plugins>

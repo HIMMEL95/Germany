@@ -130,9 +130,9 @@
                                            		</span>
                                             </button>
                                         </div>
-                                        <div class="btn_login_wrap">
+                                        <!-- <div class="btn_login_wrap">
 											<div id="naverIdLogin"></div>
-                                        </div>
+                                        </div> -->
                                         <!-- <div class="btn_login_wrap">
                                             <button type="button" class="btn_login" id="log.login"
                                                 style="background-color: #dc462f;">
@@ -253,10 +253,10 @@
 		<!-- //네이버아디디로로그인 초기화 Script -->
     	
     	/* kakao login s */
-    	Kakao.init('6875fc67f5a6c9e3660d59324e27052a'); // test 용
-    	console.log(Kakao.isInitialized());
-/*     	Kakao.init('ec2655da82c3779d622f0aff959060e6');
+/*     	Kakao.init('6875fc67f5a6c9e3660d59324e27052a'); // test 용
     	console.log(Kakao.isInitialized()); */
+     	Kakao.init('ec2655da82c3779d622f0aff959060e6');
+    	console.log(Kakao.isInitialized());
     	
     	$("#kakaoBtn").on("click", function() {
     		/* Kakao.Auth.authorize({

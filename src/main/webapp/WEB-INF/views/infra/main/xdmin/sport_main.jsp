@@ -123,9 +123,9 @@
 					<div class="snb_area">
 						<a href="/sportMain">
 							<img class="logo" alt="" src="/resources/images/SPOPIA_white.png">
-							sessSeq : ${sessSeq } 
+							<%-- sessSeq : ${sessSeq } 
 							sessName : ${sessName }
-							sessSns : ${sessSns }
+							sessSns : ${sessSns } --%>
 						</a> 
 					</div>
 					<div class="navigation">

@@ -98,13 +98,14 @@
 
 <body class="sports_home">
 	<form name="form">
-			<input type="hidden" name="name"/>
-			<input type="hidden" name="id"/>
-			<input type="hidden" name="phone"/>
-			<input type="hidden" name="email"/>
-			<input type="hidden" name="gender"/>
-			<input type="hidden" name="dob"/>
-			<input type="hidden" name="snsImg"/>
+		<input type="hidden" name="name"/>
+		<input type="hidden" name="id"/>
+		<input type="hidden" name="phone"/>
+		<input type="hidden" name="email"/>
+		<input type="hidden" name="gender"/>
+		<input type="hidden" name="dob"/>
+		<input type="hidden" name="snsImg"/>
+		<input type="hidden" name="token"/>
 	</form>
 	<form method="post" id="myForm" name="myForm">
 		<input type="hidden" name="thisPage" value='<c:out value="${mVo.thisPage }" default="1"/>'> 
@@ -3832,7 +3833,6 @@
    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
 	
-		var form = $("#myForm");
 		 function menuToggle() {
             const toggleMenu = document.querySelector('.menu');
             toggleMenu.classList.toggle('active')
@@ -3846,10 +3846,10 @@
 				,success : function(response) {
 					if (response.rt == "success") {
 						window.location.href = "/";
-					} else if (response.rt == "naver") {
-						window.location.href= "/naverLogout";
 					} else {
-						window.location.href = "/kakaoLogout";
+						alert("네이버");
+						window.location.href = "/naverLogout";
+						alert("되는거 맞음?");
 					}
 				}
 			});
@@ -3857,7 +3857,8 @@
 		
 	</script>
 	<script type="text/javascript">
-	
+		
+		var form = $("#myForm");
 		var goUrlUView = "/member/memberUView";
 		var goUrlXdmin = "/member/memberList";
 		

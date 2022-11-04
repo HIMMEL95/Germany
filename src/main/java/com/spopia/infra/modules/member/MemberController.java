@@ -23,9 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spopia.infra.common.constants.Constants;
-import com.spopia.infra.modules.code.Code;
 import com.spopia.infra.modules.code.CodeServiceImpl;
-import com.spopia.infra.modules.code.CodeVo;
 
 @Controller
 @RequestMapping(value = "/member/")
@@ -130,15 +128,15 @@ public class MemberController {
 	        System.out.println("여기는 : " + null);
 	        service.naverInst(dto);
 	        
-	        Member naver = service.snsLoginCheck(dto);
-  
 	        httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
-	        session(naver.getSeq(), naver.getId(), naver.getName(), naver.getEmail(), naver.getUser_div(), naver.getSnsImg(), naver.getSns_type(), httpSession);
+	        //session(naver.getSeq(), naver.getId(), naver.getName(), naver.getEmail(), naver.getUser_div(), naver.getSnsImg(), naver.getSns_type(), httpSession);
+	        session(dto, httpSession);
 	    } else {
 	        System.out.println("여기는 :  not " + null);
   
 	        httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
-	        session(naverLogin.getSeq(), naverLogin.getId(), naverLogin.getName(), naverLogin.getEmail(), naverLogin.getUser_div(), naverLogin.getSnsImg(), naverLogin.getSns_type(), httpSession);
+	        //session(naverLogin.getSeq(), naverLogin.getId(), naverLogin.getName(), naverLogin.getEmail(), naverLogin.getUser_div(), naverLogin.getSnsImg(), naverLogin.getSns_type(), httpSession);
+	        session(naverLogin, httpSession);
 	    }
 	    return "redirect:/sportMain";
 	}
@@ -156,12 +154,14 @@ public class MemberController {
 			service.kakaoInst(dto);
 			
 			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
-			session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
+			// session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
+            session(dto, httpSession); 
 			returnMap.put("rt", "success");
 		} else {
 			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
 			
-			session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), kakaoLogin.getSns_type(), httpSession);
+			// session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), kakaoLogin.getSns_type(), httpSession);
+			session(kakaoLogin, httpSession);
 			returnMap.put("rt", "success");
 		}
 		return returnMap;
@@ -176,7 +176,16 @@ public class MemberController {
 		 httpSession.setAttribute("sessImg", img);
 		 httpSession.setAttribute("sessSns", sns);
 	 }
-	
+     
+	 public void session(Member dto, HttpSession httpSession) {
+	     httpSession.setAttribute("sessSeq", dto.getSeq());    
+	     httpSession.setAttribute("sessId", dto.getId());
+	     httpSession.setAttribute("sessName", dto.getName());
+	     httpSession.setAttribute("sessEmail", dto.getEmail());
+	     httpSession.setAttribute("sessUser", dto.getUser_div());
+	     httpSession.setAttribute("sessImg", dto.getSnsImg());
+	     httpSession.setAttribute("sessSns", dto.getSns_type());
+	 }
 	 
      /* excel Download s */
 	 public void setSearch(MemberVo vo) throws Exception {

@@ -372,6 +372,8 @@
 			$("input[name=snsImg]").val(naverLogin.user.profile_image);
 			$("input[name=token]").val(naverLogin.accessToken);
 			
+			alert($("input[name=token]").val());
+			
 			if (naverLogin.user.gender == 'M'){
 				$("input[name=gender]").val(5);
 			} else {

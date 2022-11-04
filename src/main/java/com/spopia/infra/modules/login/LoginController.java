@@ -178,32 +178,27 @@ public class LoginController {
 		String sns = httpSession.getAttribute("sessSns").toString();
 		System.out.println("test : " + sns);
 		
-		if (sns.equals("0")) {
-		    httpSession.invalidate();
-		    returnMap.put("rt", "success");
-		} else if (sns.equals("1")) {
-		    httpSession.invalidate();
+		if (sns.equals("1")) {
+		    System.out.println("네이버 로그아웃 왜 안됨?");
 		    returnMap.put("rt", "naver");
 		} else {
 		    httpSession.invalidate();
-		    returnMap.put("rt", "kakao");
+		    returnMap.put("rt", "success");
 		}
-
 
 		return returnMap;
 	}
 	
 	@RequestMapping(value = "naverLogout")
-	public String naverLogout(Member dto) throws Exception {
-	    System.out.println("token : " + dto.getToken());
-	    String url = "https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id="+Constants.NAVER_CLIENT_ID+"&client_secret="+Constants.NAVER_CLIENT_SECRET+"&access_token="+dto.getToken();
-	    return "redirect:" + url;
+	public String naverLogout(Member dto, HttpSession httpSession) throws Exception {
+	    System.out.println("token11 : " + dto.getToken());
+	    //String url = "https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id="+Constants.NAVER_CLIENT_ID+"&client_secret="+Constants.NAVER_CLIENT_SECRET+"&access_token="+dto.getToken(); //bearer.AAAAPJvabDOI1hrIOzUfRDs8cTTiu5pmCRYXvuED08InFUcLAt7gvybq86te3489uX7teuLP1DShGTiZ5094reDXfSg.1667521683
+	    String url = "https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id="+Constants.NAVER_CLIENT_ID+"&client_secret="+Constants.NAVER_CLIENT_SECRET+"&access_token="+"bearer.AAAAPJvabDOI1hrIOzUfRDs8cTTiu5pmCRYXvuED08InFUcLAt7gvybq86te3489uX7teuLP1DShGTiZ5094reDXfSg.1667521683"+"&service_provider=NAVER";
+	    
+	    
+	    httpSession.invalidate();
+	    return "redirect:/sportMain";
 	}
 
-	@RequestMapping(value = "kakaoLogout")
-	public String kakaoLogout(Member dto) throws Exception {
-	    String url = "https://kauth.kakao.com/oauth/logout?client_id="+Constants.KAKAO_CLIENT_ID+"&logout_redirect_uri="+Constants.KAKAO_LOGOUT_REDIRECT_URI;
-	    return "redirect:" + url;
-	}
 	
 }

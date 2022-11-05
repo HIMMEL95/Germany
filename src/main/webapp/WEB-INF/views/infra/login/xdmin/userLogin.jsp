@@ -130,9 +130,9 @@
                                            		</span>
                                             </button>
                                         </div>
-                                        <!-- <div class="btn_login_wrap">
+                                        <div class="btn_login_wrap">
 											<div id="naverIdLogin"></div>
-                                        </div> -->
+                                        </div>
                                         <!-- <div class="btn_login_wrap">
                                             <button type="button" class="btn_login" id="log.login"
                                                 style="background-color: #dc462f;">
@@ -274,22 +274,7 @@
 
    		        	  var account = response.kakao_account;
    		        	  
-   		        	  console.log(response)
-   		        	  console.log("email : " + account.email);
-   		        	  console.log("name : " + account.name);
-   		        	  console.log("nickname : " + account.profile.nickname);
-   		        	  console.log("picture : " + account.profile.thumbnail_image_url);
-   		        	  console.log("picture : " + account.gender);
-   		        	  console.log("picture : " + account.birthday);
-   		        	  console.log("picture : " + account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
-  	        	  
-	  	        	  $("input[name=snsId]").val("카카오로그인");
-	  	        	  $("input[name=name]").val(account.profile.nickname);
-	  	        	  $("input[name=phone]").val(account.profile.phone_number);
-	  	        	  $("input[name=email]").val(account.email);
-	  	        	  $("input[name=dob]").val(account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
-	  	        	  $("input[name=snsImg]").val(account.profile.thumbnail_image_url);
-	  	        	  $("input[name=token]").val(accessToken);
+   		        	  console.log(response);
 	  	        	  
 	  	        	  if (account.gender === "male") {
 	  	        		  $("input[name=gender]").val(5);
@@ -304,7 +289,7 @@
 						,cache: false
 						,type:"POST"
 						,url: "/member/kakaoLoginProc"
-						,data: {"name": $("input[name=name]").val(), "snsId": $("input[name=snsId]").val(), "phone": $("input[name=phone]").val(), "email": $("input[name=email]").val(), "gender": $("input[name=gender]").val(), "dob": $("input[name=dob]").val(), "snsImg": $("input[name=snsImg]").val(), "token": $("input[name=token]").val()}
+						,data: {"name": account.name, "snsId": "카카오로그인", "phone": account.profile.phone_number, "email": account.email, "gender": $("input[name=gender]").val(), "dob": account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length), "snsImg": account.profile.thumbnail_image_url, "token": accessToken}
 						,success : function(response) {
 							if (response.rt == "fail") {
 								alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");

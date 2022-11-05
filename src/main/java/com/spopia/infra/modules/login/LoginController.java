@@ -1,22 +1,15 @@
 package com.spopia.infra.modules.login;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.spopia.infra.common.util.UtilCookie;
 import com.spopia.infra.common.constants.Constants;
 import com.spopia.infra.common.util.UtilSecurity;
 import com.spopia.infra.modules.member.Member;
@@ -180,6 +173,7 @@ public class LoginController {
 		
 		if (sns.equals("1")) {
 		    System.out.println("네이버 로그아웃 왜 안됨?");
+		    httpSession.invalidate();
 		    returnMap.put("rt", "naver");
 		} else {
 		    httpSession.invalidate();
@@ -194,7 +188,6 @@ public class LoginController {
 	    System.out.println("token11 : " + dto.getToken());
 	    //String url = "https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id="+Constants.NAVER_CLIENT_ID+"&client_secret="+Constants.NAVER_CLIENT_SECRET+"&access_token="+dto.getToken(); //bearer.AAAAPJvabDOI1hrIOzUfRDs8cTTiu5pmCRYXvuED08InFUcLAt7gvybq86te3489uX7teuLP1DShGTiZ5094reDXfSg.1667521683
 	    String url = "https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id="+Constants.NAVER_CLIENT_ID+"&client_secret="+Constants.NAVER_CLIENT_SECRET+"&access_token="+"bearer.AAAAPJvabDOI1hrIOzUfRDs8cTTiu5pmCRYXvuED08InFUcLAt7gvybq86te3489uX7teuLP1DShGTiZ5094reDXfSg.1667521683"+"&service_provider=NAVER";
-	    
 	    
 	    httpSession.invalidate();
 	    return "redirect:/sportMain";

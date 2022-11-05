@@ -3848,7 +3848,9 @@
 						window.location.href = "/";
 					} else {
 						alert("네이버");
-						window.location.href = "/naverLogout";
+						window.localStorage.removeItem("com.naver.nid.access_token");
+						window.location.href = "/";
+						/* window.location.href = "/naverLogout"; */
 						alert("되는거 맞음?");
 					}
 				}

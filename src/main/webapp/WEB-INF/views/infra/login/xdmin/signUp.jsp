@@ -24,6 +24,15 @@
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	<style type="text/css">
+		.input-file-button{
+			padding: 4px 25px;
+			background-color:#FF6600;
+			border-radius: 4px;
+			color: white;
+			cursor: pointer;
+		}
+	</style>
 </head>
 <body>
 
@@ -34,6 +43,42 @@
             <form id="form" name="form" method="post">
                 <img src="/resources/images/SPOPIA1.png">
                 <h1>필수 사항</h1>
+                <%-- <div class="row mt-sm-4 ">
+			        <div class="col-sm-12 text-center">
+			      		<c:set var="type" value="1"/>		<!-- #-> -->
+			        	<c:set var="name" value="uploadImgProfile"/>		<!-- #-> -->
+						<c:choose>
+							<c:when test="${ifmmSeq eq 0 }">
+								<img id="<c:out value="${name }"/>Preview" src="/resources/xdmin/image/default_100_100.png" class="rounded-circle mx-auto d-block" width="100" height="100">
+							</c:when>
+							<c:otherwise>
+								<c:choose>
+									<c:when test="${fn:length(listUploaded) eq 0 }">
+										<img id="<c:out value="${name }"/>Preview" src="/resources/xdmin/image/default_100_100.png" class="rounded-circle mx-auto d-block" width="100" height="100">
+									</c:when>
+									<c:otherwise>
+										<c:set var="GetNy" value="0"/>
+										<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
+											<c:if test="${listUploaded.type eq type }">
+									        	<input type="hidden" id="<c:out value="${name }"/>DeleteSeq" name="<c:out value="${name }"/>DeleteSeq" value="<c:out value="${listUploaded.seq }"/>"/>
+									        	<input type="hidden" id="<c:out value="${name }"/>DeletePathFile" name="<c:out value="${name }"/>DeletePathFile" value="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>"/>  
+												<img id="<c:out value="${name }"/>Preview" src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="rounded-circle mx-auto d-block" width="100" height="100">
+												<c:set var="GetNy" value="1"/>		
+											</c:if>
+										</c:forEach>
+										<c:if test="${GetNy eq 0 }">
+											<img id="<c:out value="${name }"/>Preview" src="/resources/xdmin/image/default_100_100.png" class="rounded-circle mx-auto d-block" width="100" height="100">
+										</c:if>
+									</c:otherwise>
+								</c:choose>
+							</c:otherwise>
+						</c:choose>
+						<input type="hidden" id="<c:out value="${name }"/>Type" name="<c:out value="${name }"/>Type" value="<c:out value="${type }"/>"/>
+						<input type="hidden" id="<c:out value="${name }"/>MaxNumber" name="<c:out value="${name }"/>MaxNumber" value="0"/>
+						<label for="<c:out value="${name }"/>" class="form-label input-file-button"><b>+</b></label>
+			 			<input class="form-control form-control-sm" id="<c:out value="${name }"/>" name="<c:out value="${name }"/>" type="file" multiple="multiple" style="display: none;" onChange="upload('<c:out value="${name }"/>', <c:out value="${type }"/>, 1, 1, 0, 0, 3);">
+			        </div>
+			    </div> --%>
                 <div class="row">
                     <div class="col-6">
                         <div class="input-control">

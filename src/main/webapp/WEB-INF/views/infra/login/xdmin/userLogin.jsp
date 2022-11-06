@@ -311,15 +311,15 @@
     	
     	/* naver login test s */
    		
-   		var naverLogin = new naver.LoginWithNaverId(
+   		/* var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "b8EhDTV3tvvAE_gRRBoJ",
 				callbackUrl: "http://localhost:8080/userLogin",
 				isPopup: false,
 				loginButton: {color: "green", type: 3, height: 70} 
 			}
-		);
-/*    		var naverLogin = new naver.LoginWithNaverId(
+		); */
+   		var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "z69jjnmkMQ88W2owra4t",
 				callbackUrl: "http://www.spopia.pe.kr/userLogin",
@@ -327,7 +327,7 @@
 				callbackHandle: true,
 				loginButton: {color: "green", type: 3, height: 70} 
 			}
-		); */
+		);
 
     	naverLogin.init();
     	

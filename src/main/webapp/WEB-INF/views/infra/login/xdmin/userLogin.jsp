@@ -164,14 +164,7 @@
             </div>
         </div>
         <form name="form">
-			<input type="hidden" name="name"/>
-			<input type="hidden" name="snsId"/>
-			<input type="hidden" name="phone"/>
-			<input type="hidden" name="email"/>
 			<input type="hidden" name="gender"/>
-			<input type="hidden" name="dob"/>
-			<input type="hidden" name="snsImg"/>
-			<input type="hidden" name="token"/>
 		</form>
 
         <!-- footer -->
@@ -349,16 +342,6 @@
    		
    		function setLoginStatus() {
    			
-   			$("input[name=snsId]").val("네이버로그인");
-			$("input[name=name]").val(naverLogin.user.name);
-			$("input[name=phone]").val(naverLogin.user.mobile);
-			$("input[name=email]").val(naverLogin.user.email);
-			$("input[name=dob]").val(naverLogin.user.birthyear + "-" + naverLogin.user.birthday);
-			$("input[name=snsImg]").val(naverLogin.user.profile_image);
-			$("input[name=token]").val(naverLogin.accessToken);
-			
-			alert($("input[name=token]").val());
-			
 			if (naverLogin.user.gender == 'M'){
 				$("input[name=gender]").val(5);
 			} else {
@@ -370,7 +353,8 @@
 				,cache: false
 				,type:"POST"
 				,url: "/member/naverLoginProc"
-				,data: {"name": $("input[name=name]").val(), "snsId": $("input[name=snsId]").val(), "phone": $("input[name=phone]").val(), "email": $("input[name=email]").val(), "gender": $("input[name=gender]").val(), "dob": $("input[name=dob]").val(), "snsImg": $("input[name=snsImg]").val(), "token": $("input[name=token]").val()}
+				/* ,data: {"name": $("input[name=name]").val(), "snsId": $("input[name=snsId]").val(), "phone": $("input[name=phone]").val(), "email": $("input[name=email]").val(), "gender": $("input[name=gender]").val(), "dob": $("input[name=dob]").val(), "snsImg": $("input[name=snsImg]").val(), "token": $("input[name=token]").val()} */
+				,data: {"name": naverLogin.user.name, "snsId": "네이버로그인", "phone": naverLogin.user.mobile, "email": naverLogin.user.email, "gender": $("input[name=gender]").val(), "dob": naverLogin.user.birthyear+"-"+naverLogin.user.birthday, "snsImg": naverLogin.user.profile_image}
 				,success : function(response) {
 					if (response.rt == "fail") {
 						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");

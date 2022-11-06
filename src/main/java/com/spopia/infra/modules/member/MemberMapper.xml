@@ -223,7 +223,7 @@
 			,defaultNY
 		)
 		VALUES (
-			#{team}
+			#{team}-24
 			,#{seq}
 			,0
 			,0
@@ -256,7 +256,7 @@
 	<update id="teamUpdate">
 		UPDATE teamUser
 		SET
-			team_seq = #{team}
+			team_seq = #{team}-24
 		where 1=1
 			and user_seq = #{seq}
 		    and defaultNY = 0

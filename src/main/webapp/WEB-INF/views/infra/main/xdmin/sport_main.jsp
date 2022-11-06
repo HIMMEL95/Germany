@@ -3847,11 +3847,9 @@
 					if (response.rt == "success") {
 						window.location.href = "/";
 					} else {
-						alert("네이버");
-						window.localStorage.removeItem("com.naver.nid.access_token");
+						localStorage.clear();
 						window.location.href = "/";
 						/* window.location.href = "/naverLogout"; */
-						alert("되는거 맞음?");
 					}
 				}
 			});

@@ -62,7 +62,16 @@ public class MemberController {
 	@RequestMapping(value = "memberUpdt")
 	public String memberUpdt(Member dto, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		/* service.userUpdt(dto); */
-		service.update(dto);
+		
+		Member user = service.snsSelectOne(vo);
+		
+		System.out.println(user.getId().equals("네이버로그인"));
+		
+		if (user.getId().equals("네이버로그인") || user.getId().equals("카카오로그인")) {
+			service.snsFirst(dto);
+		} else {
+			service.update(dto);
+		}
 		
 		vo.setSeq(dto.getSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);

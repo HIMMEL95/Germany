@@ -83,6 +83,11 @@ public class MemberServiceImpl implements MemberService {
 		teamUpdt(dto);
 	}
 	
+	public void snsFirst(Member dto) throws Exception {
+		userUpdt(dto);
+		teamInst(dto);
+	}
+	
 	public void insert(Member dto) throws Exception {
 	    System.out.println(1);
 	    System.out.println("pwd1 : " + dto.getPwd());

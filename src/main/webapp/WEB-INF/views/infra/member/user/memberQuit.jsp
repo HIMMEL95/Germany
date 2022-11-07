@@ -238,7 +238,7 @@
                     <!-- 중앙 메인 영역 -->
                     <div class="col-md-8 col-lg-9 vstack gap-4">
                         <span class="fs-1 fw-bold text-center mb-4 mt-2">탈퇴하기</span>
-                        <div class="row mb-4"  style="height: 450px;">
+                        <div class="row mb-4"  style="height: 400px;">
                             <div class="col-12 shadow rounded pt-3 ps-4" style="height: 400px; background-color: #f7f7fc;">
 		                       	<h3 class="text-center mt-5 fw-bold">정말로 SPOPIA를 탈퇴하시겠습니까?</h3>
                                 <button class="btn btn-lg btn-primary text-white fw-bold shadow" id="btnMod" type="button" style="height: 75px;" onclick="goView()">회원탈퇴</button>

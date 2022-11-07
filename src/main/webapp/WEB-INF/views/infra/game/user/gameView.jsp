@@ -585,11 +585,17 @@
 	    $("#signOutBtn").on("click", function() {
 			$.ajax({
 				type: "POST"
-				,url: "logoutProc"
+				,url: "/logoutProc"
 				,data: {}
 				,success : function(response) {
 					if (response.rt == "success") {
 						window.location.href = "/";
+					} else if (response.rt == "kakao") {
+						window.location.href = "/";
+					} else {
+						localStorage.clear();
+						window.location.href = "/";
+						/* window.location.href = "/naverLogout"; */
 					}
 				}
 			});

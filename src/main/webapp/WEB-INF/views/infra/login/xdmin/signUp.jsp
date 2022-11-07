@@ -166,7 +166,7 @@
                         <div class="row">
                             <div class="col">
                                 <button type="button" class="btn fw-bold text-white certification"
-                                    style="background-color: #03c75a;">인증번호</button>
+                                    style="background-color: #03c75a;" id="phone_confirm">인증번호</button>
                             </div>
                         </div>
                     </div>
@@ -778,6 +778,10 @@
 	   			,showOtherMonths: true
 	   		});
 	   	})
+	   	
+	   	$("#phone_confirm").on("click", function() {
+			alert("준비중입니다!!");
+		})
     </script>
 </body>
 </html> 

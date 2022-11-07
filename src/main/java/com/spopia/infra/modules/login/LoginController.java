@@ -175,6 +175,10 @@ public class LoginController {
 		    System.out.println("네이버 로그아웃 왜 안됨?");
 		    httpSession.invalidate();
 		    returnMap.put("rt", "naver");
+		} else if (sns.equals("2")) {
+		    System.out.println("카카오 로그아웃 중");
+		    httpSession.invalidate();
+		    returnMap.put("rt", "kakao");
 		} else {
 		    httpSession.invalidate();
 		    returnMap.put("rt", "success");

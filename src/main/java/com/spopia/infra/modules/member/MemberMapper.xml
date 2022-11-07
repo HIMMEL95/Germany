@@ -289,7 +289,6 @@
 			,u.id
 			,u.name
 			,u.email
-			,u.pwd
 			,u.user_div
 			,u.snsImg
 			,u.sns_type

@@ -246,7 +246,7 @@
 		<!-- //네이버아디디로로그인 초기화 Script -->
     	
     	/* kakao login s */
-/*     	Kakao.init('6875fc67f5a6c9e3660d59324e27052a'); // test 용
+     	/* Kakao.init('6875fc67f5a6c9e3660d59324e27052a'); // test 용
     	console.log(Kakao.isInitialized()); */
      	Kakao.init('ec2655da82c3779d622f0aff959060e6');
     	console.log(Kakao.isInitialized());
@@ -276,13 +276,12 @@
          			  } 
 	  	        	  
 	  	        	 /*  $("form[name=form]").attr("action", "/member/kakaoLoginProc").submit(); */
-					
 	  	        	  $.ajax({
 						async: true
 						,cache: false
 						,type:"POST"
 						,url: "/member/kakaoLoginProc"
-						,data: {"name": account.name, "snsId": "카카오로그인", "phone": account.profile.phone_number, "email": account.email, "gender": $("input[name=gender]").val(), "dob": account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length), "snsImg": account.profile.thumbnail_image_url, "token": accessToken}
+						,data: {"name": account.profile.nickname, "snsId": "카카오로그인", "phone": account.profile.phone_number, "email": account.email, "gender": $("input[name=gender]").val(), "dob": account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length), "snsImg": account.profile.thumbnail_image_url}
 						,success : function(response) {
 							if (response.rt == "fail") {
 								alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");

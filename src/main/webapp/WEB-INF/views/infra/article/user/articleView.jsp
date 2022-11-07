@@ -509,7 +509,13 @@
 				,data: {}
 				,success : function(response) {
 					if (response.rt == "success") {
-						location.href = "/";
+						window.location.href = "/";
+					} else if (response.rt == "kakao") {
+						window.location.href = "/";
+					} else {
+						localStorage.clear();
+						window.location.href = "/";
+						/* window.location.href = "/naverLogout"; */
 					}
 				}
 			});

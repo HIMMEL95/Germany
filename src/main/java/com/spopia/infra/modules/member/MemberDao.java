@@ -50,6 +50,10 @@ public class MemberDao {
 		return sqlSession.insert(namespace + ".userInsert", dto);
 	}
 	
+	public int memberUele(Member dto) {
+	    return sqlSession.update(namespace + ".memberUele", dto);
+	}
+	
 	// team 관련
 	public int teamInst(Member dto) {
 		return sqlSession.insert(namespace + ".teamInsert", dto);

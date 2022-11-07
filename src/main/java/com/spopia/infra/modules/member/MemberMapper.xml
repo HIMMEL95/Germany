@@ -262,6 +262,14 @@
 		    and defaultNY = 0
 	</update>
 	
+	<update id="memberUele">
+		UPDATE user
+		SET
+			uDelNy = 1
+		where 1=1
+			and seq = #{seq}
+	</update>
+	
 	<!-- id중복 관련 -->
 	<select id="idCheck" parameterType="String" resultType="int">
 		select count(*) from user where id = #{id}
@@ -281,6 +289,7 @@
 		from user u
 		where 1=1 
 			and id = #{id} 
+			and uDelNy = 0
 	</select>
 
 	<select id="snsLoginCheck" resultMap="resultMapObj">
@@ -296,6 +305,7 @@
 		where 1=1 
 			and id = #{snsId} 
 			and name = #{name}
+			and uDelNy = 0
 	</select>
 
 	<select id="xdminLoginCheck" resultMap="resultMapObj">
@@ -311,6 +321,7 @@
 			and id = #{id} 
 			and pwd = #{pwd}
 			and user_div = 7
+			and uDelNy = 0
 	</select>
 
 	<select id="findId" resultMap="resultMapObj">

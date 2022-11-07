@@ -122,6 +122,13 @@ public class MemberController {
 	public String memberQuit() throws Exception {
 	    return "infra/member/user/memberQuit";
 	}
+	
+	@RequestMapping(value = "quit")
+	public String quit(Member dto, HttpSession httpSession) throws Exception {
+	    service.memberUele(dto);
+	    httpSession.invalidate();
+	    return "redirect:/";
+	}
 
 	@RequestMapping(value = "naverCallback")
 	    public String naverCallback() throws Exception {

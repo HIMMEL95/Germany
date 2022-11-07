@@ -65,7 +65,12 @@ public class MemberServiceImpl implements MemberService {
 		return dao.userInst(dto);
 	}
 	
-	/* team 관련 */
+	@Override
+    public int memberUele(Member dto) throws Exception {
+        return dao.memberUele(dto);
+    }
+
+    /* team 관련 */
 	@Override
 	public int teamInst(Member dto) throws Exception {
 		return dao.teamInst(dto);

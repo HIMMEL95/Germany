@@ -145,7 +145,6 @@
                                     <span class="h6 mb-0 fw-bold d-lg-none ms-2">항목</span>
                                 </button>
                             </div>
-                
                             <nav class="navbar navbar-expand-lg mx-0">
                                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar"
                                     style="visibility: visible; width:250px;" aria-modal="true" role="dialog">
@@ -241,7 +240,25 @@
                         <div class="row mb-4"  style="height: 400px;">
                             <div class="col-12 shadow rounded pt-3 ps-4" style="height: 400px; background-color: #f7f7fc;">
 		                       	<h3 class="text-center mt-5 fw-bold">정말로 SPOPIA를 탈퇴하시겠습니까?</h3>
-                                <button class="btn btn-lg btn-primary text-white fw-bold shadow" id="btnMod" type="button" style="height: 75px;" onclick="goView()">회원탈퇴</button>
+                                <button class="btn btn-lg btn-danger text-white fw-bold shadow" type="button" style="height: 75px; margin: 80px auto; display: block;"
+                               		data-bs-toggle="modal" data-bs-target="#exampleModal">회원탈퇴</button>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+												<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<div class="modal-body">
+											  SPOPIA를 정말로 탈퇴하시겠습니까?
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+												<button type="button" id="quitBtn" class="btn btn-danger">탈퇴하기</button>
+											</div>
+										</div>
+									</div>			
+								</div>
                             </div>
                         </div>
                     </div>
@@ -292,11 +309,11 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript">
-    	
     	var goUrlList = "/member/memberList";
     	var goUrlMy = "/member/memberUView";
     	var goUrlComment = "/comment/userCommentList";
     	var goUrlQuit = "/member/memberQuit";
+    	var goUrlDel = "/member/quit";
     	
     	var form = $("form[name=myForm]");
     	var formVo = $("form[name=formVo]");
@@ -335,6 +352,10 @@
 				}
 			});
 		});
+    	
+    	$("#quitBtn").on("click", function() {
+			form.attr("action", goUrlDel).submit();
+		})
     </script>
 </body>
 

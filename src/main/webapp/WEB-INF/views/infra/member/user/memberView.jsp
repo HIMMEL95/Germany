@@ -197,13 +197,13 @@
                                                                 <i class="fa-solid fa-users pe-3"></i>
                                                                 <span>비밀번호 변경</span>
                                                             </a>
-                                                        </li>
+                                                        </li> -->
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/comment/userCommentList">
+                                                            <a class="nav-link" onclick="goQuit(${sessSeq})">
                                                                 <i class="fa-solid fa-users pe-3"></i>
                                                                 <span>탈퇴하기</span>
                                                             </a>
-                                                        </li> -->
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -257,88 +257,89 @@
                             </div>
                         </div>
                         <div class="card ps-5 pe-5 pt-4 pb-4 shadow" style="background-color: #f7f7fc;"">
-                                        <div class=" row mb-4">
-                            <div class="col">
-                                <label for="name" class="form-label fw-bold">이름</label>
-                                <p>${item.name }</p>
-                            </div>
-                            <div class="col">
-                                <label for="id" class="form-label fw-bold">아이디</label>
-                                <p>${item.id }</p>
-                            </div>
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col">
-                                <label for="dob" class="form-label fw-bold">생년월일</label>
-                                <p>${item.dob }</p>
-                            </div>
-                            <div class="col">
-                                <label for="email" class="form-label fw-bold">이메일</label>
-                                <p>${item.email }</p>
-                            </div>
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col">
-                                <label for="tel" class="form-label fw-bold">전화번호</label>
-                                <p>${item.phone }</p>
-                            </div>
-                            <div class="col">
-                                <label for="gender" class="form-label fw-bold">성별</label>
-                                <p>
-                                	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2') }" />
-                                	<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
-										<c:if test="${item.gender eq listGender.ccSeq}"><c:out value="${listGender.ifccName }"/></c:if>
-									</c:forEach>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col">
-                                <label for="job" class="form-label fw-bold">직업</label>
-                                <p>${item.job }</p>
-                            </div>
-                            <div class="col">
-                            	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
-                                <label for="team" class="form-label fw-bold">좋아하는 팀</label>
-                                <p>
-                                	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
-										<c:if test="${item.team eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
-									</c:forEach>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row mb-4" hidden>
-                            <div class="col">
-                                <label for="password" class="form-label fw-bold">비밀번호</label>
-                                <input type="password" class="form-control bg-white" id="password" value="" readonly>
-                            </div>
-                            <div class="col">
-                                <label for="password_confirm" class="form-label fw-bold">비밀번호 확인</label>
-                                <input type="password" class="form-control bg-white" id="password_confirm" value="" readonly>
-                            </div> 
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col-6">
-                                <label for="zip" class="form-label fw-bold">우편번호</label>
-                                <p>${item.zip }</p>
-                            </div>
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col">
-                                <label for="address" class="form-label fw-bold">주소</label>
-                                <p>${item.address }</p>
-                            </div>
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col">
-                                <label for="addressDetail" class="form-label fw-bold">상세주소</label>
-                                <p>${item.address_detail }</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-2 offset-10" align="right">
-                                <button class="btn btn-primary text-white fw-bold btn-sm shadow" id="btnMod" type="button" onclick="goView()">수정</button>
-                            </div>
+                            <div class=" row mb-4">
+	                            <div class="col">
+	                                <label for="name" class="form-label fw-bold">이름</label>
+	                                <p>${item.name }</p>
+	                            </div>
+	                            <div class="col">
+	                                <label for="id" class="form-label fw-bold">아이디</label>
+	                                <p>${item.id }</p>
+	                            </div>
+	                        </div>
+	                        <div class="row mb-4">
+	                            <div class="col">
+	                                <label for="dob" class="form-label fw-bold">생년월일</label>
+	                                <p>${item.dob }</p>
+	                            </div>
+	                            <div class="col">
+	                                <label for="email" class="form-label fw-bold">이메일</label>
+	                                <p>${item.email }</p>
+	                            </div>
+	                        </div>
+	                        <div class="row mb-4">
+	                            <div class="col">
+	                                <label for="tel" class="form-label fw-bold">전화번호</label>
+	                                <p>${item.phone }</p>
+	                            </div>
+	                            <div class="col">
+	                                <label for="gender" class="form-label fw-bold">성별</label>
+	                                <p>
+	                                	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2') }" />
+	                                	<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
+											<c:if test="${item.gender eq listGender.ccSeq}"><c:out value="${listGender.ifccName }"/></c:if>
+										</c:forEach>
+	                                </p>
+	                            </div>
+	                        </div>
+	                        <div class="row mb-4">
+	                            <div class="col">
+	                                <label for="job" class="form-label fw-bold">직업</label>
+	                                <p>${item.job }</p>
+	                            </div>
+	                            <div class="col">
+	                            	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
+	                                <label for="team" class="form-label fw-bold">좋아하는 팀</label>
+	                                <p>
+	                                	<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+											<c:if test="${item.team eq listTeam.ccSeq}"><c:out value="${listTeam.ifccName }"/></c:if>
+										</c:forEach>
+	                                </p>
+	                            </div>
+	                        </div>
+	                        <div class="row mb-4" hidden>
+	                            <div class="col">
+	                                <label for="password" class="form-label fw-bold">비밀번호</label>
+	                                <input type="password" class="form-control bg-white" id="password" value="" readonly>
+	                            </div>
+	                            <div class="col">
+	                                <label for="password_confirm" class="form-label fw-bold">비밀번호 확인</label>
+	                                <input type="password" class="form-control bg-white" id="password_confirm" value="" readonly>
+	                            </div> 
+	                        </div>
+	                        <div class="row mb-4">
+	                            <div class="col-6">
+	                                <label for="zip" class="form-label fw-bold">우편번호</label>
+	                                <p>${item.zip }</p>
+	                            </div>
+	                        </div>
+	                        <div class="row mb-4">
+	                            <div class="col">
+	                                <label for="address" class="form-label fw-bold">주소</label>
+	                                <p>${item.address }</p>
+	                            </div>
+	                        </div>
+	                        <div class="row mb-4">
+	                            <div class="col">
+	                                <label for="addressDetail" class="form-label fw-bold">상세주소</label>
+	                                <p>${item.address_detail }</p>
+	                            </div>
+	                        </div>
+	                        <div class="row">
+	                            <div class="col-2 offset-10" align="right">
+	                                <button class="btn btn-primary text-white fw-bold btn-sm shadow" id="btnMod" type="button" onclick="goView()">수정</button>
+	                            </div>
+	                        </div>
                         </div>
                     </div>
                 </div>
@@ -393,6 +394,7 @@
     	var goUrlMod = "/member/memberUMod";
     	var goUrlMy = "/member/memberUView";
     	var goUrlComment = "/comment/userCommentList";
+    	var goUrlQuit = "/member/memberQuit";
     	
     	var form = $("form[name=myForm]");
     	var formVo = $("form[name=formVo]");
@@ -411,6 +413,10 @@
     	
     	goForm = function(keyValue) {
 			form.attr("action", goUrlMy).submit();
+		}
+    	
+    	goQuit = function(keyValue) {
+			form.attr("action", goUrlQuit).submit();
 		}
 		
     	$("#signOutBtn").on("click", function() {

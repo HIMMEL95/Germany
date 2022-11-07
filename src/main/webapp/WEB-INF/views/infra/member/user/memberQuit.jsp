@@ -13,14 +13,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>유저 댓글 리스트</title>
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/6646/6646786.png" type="image/x-icon">
+    <title>회원탈퇴</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="/resources/css/xdmin/commentList.css" rel="stylesheet" type="text/css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="/resources/css/xdmin/dashboard.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -37,8 +34,9 @@
                 <div class="dropdown">
                     <ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
                         <li class="me-2">
-                            <a class="p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
-                                data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="p-0" href="/member/memberView" id="profileDropdown" role="button"
+                                data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 <c:choose>
                                		<c:when test="${empty sessImg }">
 	                                	<img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar" style="width: 35px;">
@@ -55,7 +53,7 @@
                                     <div class="d-flex align-items-center">
                                         <!-- Avatar -->
                                         <div class="avatar ps-1 me-3">
-                                            <c:choose>
+                                        	<c:choose>
                                         		<c:when test="${empty sessImg }">
                                         			<img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar" style="width: 35px;">
                                         		</c:when>
@@ -74,39 +72,39 @@
                                 <!-- Links -->
                                 <c:choose>
 									<c:when test="${sessUser eq 25}">
-										<li class="ms-3 ps-3">
-                                            <a class="pro_a" role="button" id="editBtn" onclick="goForm(<c:out value="${sessSeq }"/>)" style="cursor: pointer;">
+										<li class="ms-3">
+                                            <a class="dropdown-item" role="button" id="editBtn" onclick="goForm(${sessSeq })" style="cursor: pointer;">
                                                 <i class="fa-solid fa-user me-2"></i>
                                                 Edit Profile
                                             </a>
                                         </li>
                                         <!-- <li class="ms-3">
-                                            <a class="pro_a" href="#">
+                                            <a class="dropdown-item" href="#">
                                                 <i class="fa-solid fa-circle-info me-2"></i>
                                                 Help
                                             </a>
                                         </li> -->
                                         <li class="ms-3">
-                                            <button class="dropdown-item bg-danger-soft-hover" id="signOutBtn">
-		                                        <i class="fa-solid fa-power-off me-2"></i>
-		                                        Sign Out
-		                                    </button>
+                                            <button class="dropdown-item" id="signOutBtn">
+                                                <i class="fa-solid fa-power-off me-2"></i>
+                                                Sign Out
+                                            </button>
                                         </li>
 									</c:when>
 									<c:otherwise>
 										<li>
-		                                    <a class="dropdown-item" onclick="goForm(${sessSeq})">
-		                                        <i class="fa-solid fa-user me-2"></i>
-		                                        Edit Profile
-		                                    </a>
+		                                    <a class="pro_a dropdown-item" role="button" id="editBtn" onclick="goForm(${sessSeq })" style="cursor: pointer;">
+                                                <i class="fa-solid fa-user me-2"></i>
+                                                Edit Profile
+                                            </a>
 		                                </li>
 		                                <li>
 		                                    <a class="dropdown-item" href="/member/memberList">
 		                                        <i class="fa-solid fa-gear me-2"></i>
-		                                        Admin Setting
+		                                        Admin Settings
 		                                    </a>
 		                                </li>
-		                                <!-- <li>
+		                               <!--  <li>
 		                                    <a class="dropdown-item" href="#">
 		                                        <i class="fa-solid fa-circle-info me-2"></i>
 		                                        Help
@@ -134,9 +132,7 @@
         <div style="height: 100px;"></div>
         <div class="container">
             <form method="post" id="myForm" name="myForm">
-            	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
-               	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
-               	<input type="hidden" name="seq" value="<c:out value="${sessSeq}"/><br>">
+				<input type="hidden" name="seq" value="<c:out value="${sessSeq}"/>"/>
                 <div class="row g-4">
                     <!-- 좌측 목록 탭 -->
                     <div class="col-lg-3">
@@ -157,7 +153,6 @@
                                         <button type="button" class="btn-close text-reset ms-auto" data-bs-dismiss="offcanvas"
                                             aria-label="Close"></button>
                                     </div>
-                
                                     <div class="offcanvas-body d-block px-2 px-lg-0">
                                         <div class="card overflow-hidden">
                                             <img src="/resources/images/mountains.png" class="card-img-top" alt="background"
@@ -233,7 +228,8 @@
                                             </li>
                                         </ul>
                                         <p class="small text-center mt-1">©2022 <a class="text-body" target="_blank" href="#"> SPOPIA
-                                            </a></p>
+                                            </a>
+                                        </p>
                                     </div>
                                 </div>
                             </nav>
@@ -241,143 +237,22 @@
                     </div>
                     <!-- 중앙 메인 영역 -->
                     <div class="col-md-8 col-lg-9 vstack gap-4">
-                        <!-- 게시물 사진 -->
-                        <div class="row">
-                            <div class="col-12 ">
-                                <div class="card text-white position-relative shadow-lg">
-                                    <img src="/resources/images/xdmin/listBack.jpg" class="card-img" style="height: 200px;"
-                                        alt="...">
-                                    <div class="card-img-overlay text-center p-4 position-absoulte top-50 start-50 translate-middle">
-                                        <span class="card-title align-middle fw-bold fs-3">댓글 관리</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 검색 -->
-                        <div class="card p-3 shadow">
-                            <div class="row align-items-center pb-2">
-                            	<div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" id="shDelNy" name="shDelNy" aria-label=".form-select-sm example">
-                                        <option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
-                                        <option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option>
-                                    </select>
-                                </div>
-                                <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" id="shDate" name="shDate" aria-label=".form-select-sm example">
-                                        <option value="" <c:if test="${empty vo.shDate }">selected</c:if> selected>선택</option>
-                                        <option value="1" <c:if test="${vo.shDate eq 1 }">selected</c:if>>등록일</option>
-                                        <option value="2" <c:if test="${vo.shDate eq 2 }">selected</c:if>>수정일</option>
-                                    </select>
-                                </div>
-                                <div class="col-3">
-                                    <input type="text" class="form-control datepicker" id="startDate" name="startDate" value="<c:out value="${vo.startDate }"/>" placeholder="시작일" autocomplete="off">
-                                </div>
-                                <div class="col-3">
-                                    <input type="text" class="form-control datepicker" id="endDate" name="endDate" value="<c:out value="${vo.endDate }"/>" placeholder="종료일" autocomplete="off"s>
-                                </div>
-                            </div>
-                            <div class="row align-items-center">
-                                <div class="col-2">
-                                    <select class="form-select form-select-sm fw-bold" name="shOption" aria-label=".form-select-sm example">
-                                        <option value="" <c:if test="${empty vo.shOption }"> selected</c:if>>선택</option>
-                                        <option value="1" <c:if test="${vo.shOption eq 1}"> selected</c:if>>이름</option>
-                                        <option value="2" <c:if test="${vo.shOption eq 2}"> selected</c:if>>아이디</option>
-                                    </select>
-                                </div>
-                                <div class="col-2">
-                                    <input type="text" class="form-control" id="validationCustom01" name="shValue" value="<c:out value="${vo.shValue }"/>" autocomplete="off">
-                                </div>
-                                <div class="col-2">
-                                    <button class="btn btn-warning fw-bold btn-sm shadow" type="submit">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </button>
-                                    <button id="refresh" class="btn btn-danger fw-bold btn-sm shadow" type="button">
-                                        <i class="fa-solid fa-arrow-rotate-right"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 리스트 -->
-                        <span style="margin: 0; padding: 0; font-weight: 800;">Total : ${vo.totalRows }</span>
-                        <div class="card ps-3 pt-3 pe-3 shadow">
-                            <table class="table text-center align-middle">
-                                <thead>
-                                    <tr>
-                                        <th style="font-size: small;"><input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault"></th>
-                                        <th>번호</th>
-                                        <th>이름</th>
-                                        <th>성별</th>
-                                        <th>아이디</th>
-                                        <th>내용</th>
-                                        <th>등록일</th>
-                                        <th>수정일</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2') }" />
-                                	<c:choose>
-                                		<c:when test="${fn:length(list) eq 0}">
-                                			<tr>
-                                				<td class="text-center" colspan="8">There is no data!</td>
-                                			</tr>
-                                		</c:when>
-                                		<c:otherwise>
-	                                		<c:forEach items="${list}" var="list" varStatus="status">
-												<tr>
-			                                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-			                                        </td>
-			                                        <td><c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/></td>
-			                                        <td><a href="/article/articleXdminView?seq=<c:out value="${list.seq }"/>">${list.name }</a></td>
-			                                        <td>
-			                                        	<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
-															<c:if test="${list.gender eq listGender.ccSeq}"><c:out value="${listGender.ifccName }"/></c:if>
-														</c:forEach>
-			                                        </td>
-			                                        <td>${list.id }</td>
-			                                        <td>${list.comment }</td>
-			                                        <td>${list.createdAt }</td>
-			                                        <td>${list.modifiedAt }</td>
-			                                    </tr>		
-											</c:forEach>
-                                		</c:otherwise>
-                                	</c:choose>
-                                </tbody>
-                            </table>
-                            <%@include file="../../common/xdmin/includeV1/pagination.jsp" %>
-                        </div>
-                        <div class="row align-items-center">
-                            <div class="col-1">
-                                <button class="border-0 btn btn-sm shadow" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">
-                                    <i class="fa-solid fa-trash fa-lg text-danger"></i>
-                                </button>
-                                <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false"
-                                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title fw-bold" id="staticBackdropLabel">게시물 삭제</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body fs-6">
-                                                선택하신 게시물을 정말로 삭제하시겠습니까?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                                                <button type="button" class="btn btn-primary">삭제</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        <span class="fs-1 fw-bold text-center mb-4 mt-2">탈퇴하기</span>
+                        <div class="row mb-4"  style="height: 450px;">
+                            <div class="col-12 shadow rounded pt-3 ps-4" style="height: 400px; background-color: #f7f7fc;">
+		                       	<h3 class="text-center mt-5 fw-bold">정말로 SPOPIA를 탈퇴하시겠습니까?</h3>
+                                <button class="btn btn-lg btn-primary text-white fw-bold shadow" id="btnMod" type="button" style="height: 75px;" onclick="goView()">회원탈퇴</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
+        <form name="formVo" id="formVo" method="post">
+		<!-- *Vo.jsp s -->
+		<%@include file="memberVo.jsp"%>		<!-- #-> -->
+		<!-- *Vo.jsp e -->
+		</form>
         <div style="height: 50px;">
         </div>
     </main>
@@ -413,60 +288,36 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1d32d56af5.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript">
-	   	var goUrlList = "/comment/userCommentList";
-	   	var goUrlMy = "/member/memberUView";
-	   	var goUrlQuit = "/member/memberQuit";
-	    var form = $("form[name=myForm]");
-		
-		$("#refresh").on("click", function() {
-			$(location).attr("href", goUrlList);
-		});
-		
-		goComment = function(keyValue) {
-			form.attr("action", goUrlList).submit();
+    	
+    	var goUrlList = "/member/memberList";
+    	var goUrlMy = "/member/memberUView";
+    	var goUrlComment = "/comment/userCommentList";
+    	var goUrlQuit = "/member/memberQuit";
+    	
+    	var form = $("form[name=myForm]");
+    	var formVo = $("form[name=formVo]");
+    	
+    	$("#btnList").on("click", function() {
+			formVo.attr("action", goUrlList).submit();
+		})
+    	
+    	goComment = function(keyValue) {
+			form.attr("action", goUrlComment).submit();
 		}
-		
-		goForm = function(keyValue) {
+    	
+    	goForm = function(keyValue) {
 			form.attr("action", goUrlMy).submit();
 		}
-		
-		goQuit = function(keyValue) {
+    	
+    	goQuit = function(keyValue) {
 			form.attr("action", goUrlQuit).submit();
 		}
 		
-		$(function() {
-	   		$("#startDate").datepicker({
-	   			dateFormat: "yy-mm-dd"
-	   			,showMonthAfterYear: true
-	   			,showOtherMonths: true
-	   		});
-	   		$("#endDate").datepicker({
-	   			dateFormat: "yy-mm-dd"
-	      			,showMonthAfterYear: true
-	      			,showOtherMonths: true
-	      		});
-	   	});
-	   	
-	   	goList = function(thisPage) {
-			$("input:hidden[name=thisPage]").val(thisPage);
-			form.attr("action", goUrlList).submit();			
-		};
-		
-		$("button[name=signOutBtn]").on("click", function() {
-			$.ajax({
-				type: "POST"
-				,url: "/logoutProc"
-				,data: {}
-				,success : function(response) {
-					if (response.rt == "success") {
-						window.location.href = "/";
-					}
-				}
-			});
-		});
-		
-		$("#signOutBtn").on("click", function() {
+    	$("#signOutBtn").on("click", function() {
 			$.ajax({
 				type: "POST"
 				,url: "/logoutProc"
@@ -484,8 +335,7 @@
 				}
 			});
 		});
-		
-   </script>
+    </script>
 </body>
 
 </html>

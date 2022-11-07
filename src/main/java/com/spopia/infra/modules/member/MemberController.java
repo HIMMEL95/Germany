@@ -117,6 +117,11 @@ public class MemberController {
 		
 		return "infra/member/user/memberUModForm";
 	}
+	
+	@RequestMapping(value = "memberQuit")
+	public String memberQuit() throws Exception {
+	    return "infra/member/user/memberQuit";
+	}
 
 	@RequestMapping(value = "naverCallback")
 	    public String naverCallback() throws Exception {

@@ -25,7 +25,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="/resources/css/user/login.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="/login/css/global/desktop/w_20220216.css?20210812">
 </head>
 
 <body>
@@ -133,16 +132,11 @@
                                         <div class="btn_login_wrap">
 											<div id="naverIdLogin"></div>
                                         </div>
-                                        <!-- <div class="btn_login_wrap">
-                                            <button type="button" class="btn_login" id="log.login"
-                                                style="background-color: #dc462f;">
-                                                <span class="btn_text">
-                                                	<i class="fa-brands fa-google text-white pe-3 fa-lg"></i>
-                                                			구글 로그인
-                                                </span>
-                                            </button>
-                                        </div>
                                         <div class="btn_login_wrap">
+                                        	<div id="my-signin2"></div>
+	                                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                                        </div>
+                                        <!-- <div class="btn_login_wrap">
                                             <button type="button" class="btn_login" id="log.login"
                                                 style="background-color: #304e9c;">
                                                 <span class="btn_text">
@@ -193,9 +187,6 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" async="" src="https://ssl.pstatic.net/tveta/libs/glad/prod/gfp-core.js"></script>
-    <script type="text/javascript" src="/login/js/v2/default/common_202201.js?v=20220322"></script>
-    <script type="text/javascript" src="/login/js/v2/default/default_202105.js?v=20210910"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
@@ -208,7 +199,8 @@
     <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
     <!-- naver login e -->
     <!-- google login s  -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     <!-- google login e  -->
     <script type="text/javascript">
     
@@ -370,20 +362,27 @@
     	/* naver login test e */
     	
     	/* google Login s */
-    	function init() {
-			gapi.load('auth2', function() {
-				gapi.auth2.init();
-				options = new gapi.auth2.SigninOptionsBuilder();
-				options.setPrompt('select_account');
-		        // 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
-				options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
-		        // 인스턴스의 함수 호출 - element에 로그인 기능 추가
-		        // GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
-				gapi.auth2.getAuthInstance().attachClickHandler('GgCustomLogin', options, onSignIn, onSignInFailure);
-			})
-		}
     	/* google Login e */
-    	</script>
+    </script>
+    <script type="text/javascript">
+
+		function onSuccess(googleUser) {
+			console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+		}
+		function onFailure(error) {
+			console.log(error);
+		}
+		function renderButton() {
+			gapi.signin2.render('my-signin2', {
+				'scope': 'profile email',
+				'width': 240,
+				'height': 50,
+				'longtitle': true,
+				'theme': 'dark',
+				'onsuccess': onSuccess,
+				'onfailure': onFailure
+			});
+		}
     </script>
 </body>
 

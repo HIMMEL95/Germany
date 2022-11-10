@@ -132,10 +132,10 @@
                                         <div class="btn_login_wrap">
 											<div id="naverIdLogin"></div>
                                         </div>
-                                        <div class="btn_login_wrap">
+                                        <!-- <div class="btn_login_wrap">
                                         	<div id="my-signin2"></div>
 	                                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                                        </div>
+                                        </div> -->
                                         <!-- <div class="btn_login_wrap">
                                             <button type="button" class="btn_login" id="log.login"
                                                 style="background-color: #304e9c;">

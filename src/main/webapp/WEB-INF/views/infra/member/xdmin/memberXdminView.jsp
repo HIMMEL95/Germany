@@ -275,16 +275,6 @@
 								</select>
                             </div>
                         </div>
-                        <div class="row mb-4" hidden>
-                            <div class="col">
-                                <label for="password" class="form-label fw-bold">비밀번호</label>
-                                <input type="password" class="form-control bg-white" id="password" value="" readonly>
-                            </div>
-                            <div class="col">
-                                <label for="password_confirm" class="form-label fw-bold">비밀번호 확인</label>
-                                <input type="password" class="form-control bg-white" id="password_confirm" value="" readonly>
-                            </div> 
-                        </div>
                         <hr>
                         <div class="row mb-4">
                             <div class="col-6">

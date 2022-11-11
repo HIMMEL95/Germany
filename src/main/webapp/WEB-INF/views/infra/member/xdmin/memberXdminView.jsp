@@ -266,7 +266,13 @@
                             </div>
                             <div class="col">
                                 <label for="team" class="form-label fw-bold">좋아하는 팀</label>
-                                <input type="text" class="form-control bg-white" id="team" value="<c:out value="${listCodeTeam }"/>" readonly>
+                                <c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
+                                <select class="form-select" id="ifrtDayArray" name="ifrtDayArray" readonly>
+									<option value="">선택</option>
+									<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+										<option value="${listTeam.ccSeq }" <c:if test="${item.team eq listTeam.ccSeq}">selected</c:if>><c:out value="${listTeam.ifccName }"/></option>
+									</c:forEach>
+								</select>
                             </div>
                         </div>
                         <div class="row mb-4" hidden>

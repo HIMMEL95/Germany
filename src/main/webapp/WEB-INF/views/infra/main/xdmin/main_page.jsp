@@ -11,7 +11,7 @@
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/6646/6646786.png" type="image/x-icon">
-    <title>userTest</title>
+    <title>SPOPIA MAIN</title>
     <link rel="stylesheet" href="/resources/css/seperate/seperatePage.css">
 </head>
 <body>

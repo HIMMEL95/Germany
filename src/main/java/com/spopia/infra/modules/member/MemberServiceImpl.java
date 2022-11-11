@@ -61,6 +61,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
+	public int userXUpdt(Member dto) throws Exception {
+	    return dao.userXUpdt(dto);
+	}
+	
+	@Override
 	public int userInst(Member dto) throws Exception {
 		return dao.userInst(dto);
 	}

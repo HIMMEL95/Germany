@@ -226,31 +226,31 @@
                                         <div class=" row mb-4">
                             <div class="col">
                                 <label for="name" class="form-label fw-bold">이름</label>
-                                <input type="text" class="form-control bg-white" id="name" name="name" value="<c:out value="${item.name }"/>">
+                                <input type="text" class="form-control bg-white" id="name" name="name" value="<c:out value="${item.name }"/>" readonly>
                             </div>
                             <div class="col">
                                 <label for="id" class="form-label fw-bold">아이디</label>
-                                <input type="text" class="form-control bg-white" id="id" name="id" value="<c:out value="${item.id }"/>">
+                                <input type="text" class="form-control bg-white" id="id" name="id" value="<c:out value="${item.id }"/>" readonly>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="dob" class="form-label fw-bold">생년월일</label>
-                                <input type="text" class="form-control bg-white" id="dob" name="dob" value="<c:out value="${item.dob }"/>">
+                                <input type="text" class="form-control bg-white" id="dob" name="dob" value="<c:out value="${item.dob }"/>" readonly>
                             </div>
                             <div class="col">
                                 <label for="email" class="form-label fw-bold">이메일</label>
-                                <input type="email" class="form-control bg-white" id="email" name="email" value="<c:out value="${item.email }"/>">
+                                <input type="email" class="form-control bg-white" id="email" name="email" value="<c:out value="${item.email }"/>" readonly>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="tel" class="form-label fw-bold">전화번호</label>
-                                <input type="tel" class="form-control bg-white" id="tel" name="phone" value="<c:out value="${item.phone }"/>">
+                                <input type="tel" class="form-control bg-white" id="tel" name="phone" value="<c:out value="${item.phone }"/>" readonly>
                             </div>
                             <div class="col">
                                 <label for="gender" class="form-label fw-bold">성별</label>
-                                <select class="form-select form-select-lg fs-6 bg-white" id="gender" name="gender" aria-label=".form-select-lg example">
+                                <select class="form-select form-select-lg fs-6 bg-white" id="gender" name="gender" aria-label=".form-select-lg example" readonly>
                                     <option value="5" <c:if test="${item.gender eq 5 }">selected</c:if>>남성</option>
                                     <option value="6" <c:if test="${item.gender eq 6 }">selected</c:if>>여성</option>
                                 </select>
@@ -259,41 +259,36 @@
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="job" class="form-label fw-bold">직업</label>
-                                <input type="text" class="form-control bg-white" id="job" name="job" value="<c:out value="${item.job }"/>">
+                                <input type="text" class="form-control bg-white" id="job" name="job" value="<c:out value="${item.job }"/>" readonly>
                             </div>
                             <div class="col">
-                            	<c:set var="listCodeTeam" value="${CodeServiceImpl.selectOneCachedCode(10) }" />
                                 <label for="team" class="form-label fw-bold">좋아하는 팀</label>
-                                <input type="text" class="form-control bg-white" id="team" name="team" value="<c:out value="${listCodeTeam }"/>">
-                            </div>
-                        </div>
-                        <div class="row mb-4" hidden>
-                            <div class="col">
-                                <label for="password" class="form-label fw-bold">비밀번호</label>
-                                <input type="password" class="form-control bg-white" id="password" value="">
-                            </div>
-                            <div class="col">
-                                <label for="password_confirm" class="form-label fw-bold">비밀번호 확인</label>
-                                <input type="password" class="form-control bg-white" id="password_confirm" value="">
+                                <c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
+                                <select class="form-select" id="ifrtDayArray" name="ifrtDayArray" readonly>
+									<option value="">선택</option>
+									<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
+										<option value="${listTeam.ccSeq }" <c:if test="${item.team eq listTeam.ccSeq}">selected</c:if>><c:out value="${listTeam.ifccName }"/></option>
+									</c:forEach>
+								</select>
                             </div>
                         </div>
                         <hr>
                         <div class="row mb-4">
                             <div class="col-6">
                                 <label for="zip" class="form-label fw-bold">우편번호</label>
-                                <input type="text" class="form-control bg-white" id="zip" name="zip" value="<c:out value="${item.zip }"/>">
+                                <input type="text" class="form-control bg-white" id="zip" name="zip" value="<c:out value="${item.zip }"/>" readonly>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="address" class="form-label fw-bold">주소</label>
-                                <input type="text" class="form-control bg-white" id="address" name="address" value="<c:out value="${item.address }"/>">
+                                <input type="text" class="form-control bg-white" id="address" name="address" value="<c:out value="${item.address }"/>" readonly>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <div class="col">
                                 <label for="addressDetail" class="form-label fw-bold">상세주소</label>
-                                <input type="text" class="form-control bg-white" id="addressDetail" name="address_detail" value="<c:out value="${item.address_detail }"/>">
+                                <input type="text" class="form-control bg-white" id="addressDetail" name="address_detail" value="<c:out value="${item.address_detail }"/>" readonly>
                             </div>
                         </div>
                         <div class="row">
@@ -346,7 +341,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script type="text/javascript">
     	var goUrlList = "/member/memberList";
-    	var goUrlUpdt = "/member/memberUpdt";
+    	var goUrlUpdt = "/member/memberXUpdt";
     	var form = $("#myForm");
     	
     	$("#btnSave").on("click", function() {

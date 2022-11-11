@@ -45,6 +45,10 @@ public class MemberDao {
 	public int userUpdt(Member dto) {
 		return sqlSession.update(namespace + ".userUpdate", dto);
 	}
+
+	public int userXUpdt(Member dto) {
+	    return sqlSession.update(namespace + ".userXUpdate", dto);
+	}
 	
 	public int userInst(Member dto) {
 		return sqlSession.insert(namespace + ".userInsert", dto);

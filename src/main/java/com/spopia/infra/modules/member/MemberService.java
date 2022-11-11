@@ -15,6 +15,7 @@ public interface MemberService {
 	public int selectOneCount(MemberVo vo) throws Exception;
 	public int userInst(Member dto) throws Exception;
 	public int userUpdt(Member dto) throws Exception;
+	public int userXUpdt(Member dto) throws Exception;
 	public int memberUele(Member dto) throws Exception;
 	
 	/* team 관련 */

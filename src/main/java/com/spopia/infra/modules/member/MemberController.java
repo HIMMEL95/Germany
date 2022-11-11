@@ -59,6 +59,23 @@ public class MemberController {
 		return "infra/member/xdmin/memberXdminView";
 	}
 	
+	@RequestMapping(value = "memberModForm")
+    public String memberModFrom(Model model, @ModelAttribute("vo") MemberVo vo) throws Exception {
+        Member item = service.selectOne(vo); 
+        model.addAttribute("item", item);
+        return "infra/member/xdmin/memberModForm";
+    }
+	
+	@RequestMapping(value = "memberXUpdt")
+    public String memberXUpdt(Member dto, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+        service.userXUpdt(dto);
+        
+        vo.setSeq(dto.getSeq());
+        redirectAttributes.addFlashAttribute("vo", vo);
+
+        return "redirect:/member/memberModForm";
+    }
+	
 	@RequestMapping(value = "memberUpdt")
 	public String memberUpdt(Member dto, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		/* service.userUpdt(dto); */

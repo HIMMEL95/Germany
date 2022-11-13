@@ -14,6 +14,9 @@ public class BaseVo {
 
 	private int startRnumForMysql = 0;
 	
+	// list
+	private String[] checkboxSeqArray;
+
 	public void setParamsPaging(int totalRows) {
 		setTotalRows(totalRows);
 		
@@ -92,5 +95,13 @@ public class BaseVo {
 	}
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
+	}
+
+	public String[] getCheckboxSeqArray() {
+		return checkboxSeqArray;
+	}
+
+	public void setCheckboxSeqArray(String[] checkboxSeqArray) {
+		this.checkboxSeqArray = checkboxSeqArray;
 	}
 }

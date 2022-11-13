@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.spopia.infra.common.util.UtilDateTime;
 import com.spopia.infra.modules.codegroup.CodeGroup;
 import com.spopia.infra.modules.codegroup.CodeGroupServiceImpl;
 
@@ -102,6 +101,31 @@ public class CodeController {
 	public void setSearch(CodeVo vo) throws Exception {
 	    vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
 	    vo.setShOption(vo.getShOption() == null ? 0 : vo.getShOption());
+	}
+	
+	@RequestMapping(value = "codeMultiUele")
+	public String codeMultiUele(CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
+		for (String checkboxSeq : vo.getCheckboxSeqArray()) {
+			dto.setCcSeq(checkboxSeq);
+			System.out.println("실행중!!");
+			service.uelete(dto);
+		}
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/code/codeList";
+	}
+
+	@RequestMapping(value = "codeMultiDele")
+	public String codeMultiDele(CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
+		for (String checkboxSeq : vo.getCheckboxSeqArray()) {
+			dto.setCcSeq(checkboxSeq);
+			service.delete(vo);
+		}
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/code/codeList";
 	}
 	
     /* excel Download s */

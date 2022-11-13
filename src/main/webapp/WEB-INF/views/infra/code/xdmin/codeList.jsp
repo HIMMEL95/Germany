@@ -100,7 +100,6 @@
         <div style="height: 100px;"></div>
         <div class="container">
             <form method="post" id="myForm" name="myForm">
-            	<input type="hidden" name="mainkey">
              	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
              	<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }"/>">
              	<input type="hidden" name="ccSeq" value='<c:out value="${vo.ccSeq }"></c:out>'>
@@ -413,7 +412,12 @@
 		});
 		
 		$(function() {
-	   		$("#startDate, #endDate").datepicker({
+	   		$("#startDate").datepicker({
+	   			dateFormat: "yy-mm-dd"
+	   			,showMonthAfterYear: true
+	   			,showOtherMonths: true
+	   		});
+	   		$("#endDate").datepicker({
 	   			dateFormat: "yy-mm-dd"
 	   			,showMonthAfterYear: true
 	   			,showOtherMonths: true
@@ -441,16 +445,27 @@
 		});
 		
 		$("#btnUel").on("click", function() {
-			DelValidation("#delBtn", goUrlMultiUele, "선택하신 게시물을 삭제하시겠습니까?");
+			if ($("input[name=checkboxSeq]:checked").length > 0) {
+				DelValidation("#delBtn", goUrlMultiUele, "선택하신 게시물을 삭제하시겠습니까?");
+			} else {
+				DelValidation("#delBtn", goUrlMultiUele, "데이터를 선택해 주세요!!");
+				$("#delBtn").hide();
+			}
 		})
 		
 		$("#btnDel").on("click", function() {
-			DelValidation("#delBtn", goUrlMultiDele, "선택하신 게시물을 진짜로 삭제하시겠습니까?");	
+			if ($("input[name=checkboxSeq]:checked").length > 0) {
+				DelValidation("#delBtn", goUrlMultiDele, "선택하신 게시물을 진짜로 삭제하시겠습니까?");	
+			} else {
+				DelValidation("#delBtn", goUrlMultiDele, "데이터를 선택해 주세요!!");
+				$("#delBtn").hide();
+			}
 		})
 		
 		DelValidation = function(confirm, url, msg) {
 			$(".modal-body").html(msg);
 			$(confirm).on("click", function() {
+				alert("asas");
 				form.attr("action", url).submit();
 			})
 		}

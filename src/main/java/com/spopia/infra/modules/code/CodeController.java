@@ -98,34 +98,29 @@ public class CodeController {
 		return "redirect:/code/codeList";
 	}
 	
-	public void setSearch(CodeVo vo) throws Exception {
-	    vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
-	    vo.setShOption(vo.getShOption() == null ? 0 : vo.getShOption());
-	}
-	
 	@RequestMapping(value = "codeMultiUele")
 	public String codeMultiUele(CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
 		for (String checkboxSeq : vo.getCheckboxSeqArray()) {
 			dto.setCcSeq(checkboxSeq);
-			System.out.println("실행중!!");
 			service.uelete(dto);
 		}
-		
 		redirectAttributes.addFlashAttribute("vo", vo);
-		
 		return "redirect:/code/codeList";
 	}
 
 	@RequestMapping(value = "codeMultiDele")
 	public String codeMultiDele(CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
 		for (String checkboxSeq : vo.getCheckboxSeqArray()) {
-			dto.setCcSeq(checkboxSeq);
+			vo.setCcSeq(checkboxSeq);
 			service.delete(vo);
 		}
-		
 		redirectAttributes.addFlashAttribute("vo", vo);
-		
 		return "redirect:/code/codeList";
+	}
+
+	public void setSearch(CodeVo vo) throws Exception {
+	    vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
+	    vo.setShOption(vo.getShOption() == null ? 0 : vo.getShOption());
 	}
 	
     /* excel Download s */

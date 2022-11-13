@@ -271,8 +271,9 @@
                             <table class="table text-center align-middle">
                                 <thead>
                                     <tr>
-                                        <th style="font-size: small;"><input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault"></th>
+                                        <th style="font-size: small;">
+                                        	<input class="form-check-input" type="checkbox" value="" id="checkboxAll">
+                                       	</th>
                                         <th>#</th>
                                         <th>코드그룹 코드</th>
                                         <th>코드그룹 이름(한글)</th>
@@ -293,7 +294,7 @@
 	                                		<c:forEach items="${list}" var="list" varStatus="status">
 												<tr onclick="goForm(<c:out value="${list.ccgSeq }"/>)" style="cursor: pointer;">
 			                                        <td onclick="event.cancelBubble=true">
-			                                        	<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+			                                        	<input class="form-check-input" type="checkbox" value="${list.ccgSeq }" id="checkboxSeq" name="checkboxSeq">
 			                                        </td>
 			                                        <td><c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/></td>
 			                                        <td>${list.ccgSeq}</td>
@@ -314,42 +315,43 @@
                         </div>
                         <div class="row align-items-center">
                             <div class="col-2">
-                                <button class="border-0 btn btn-sm shadow" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">
-                                    <i class="fa-solid fa-trash fa-lg text-danger"></i>
-                                </button>
+                            	<span data-bs-toggle="modal" data-bs-target="#deleteModal">
+	                                <button id="btnUel" value="" class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Uelete">
+		                                <i class="fa-solid fa-xmark" style="color: white;"></i>
+		                            </button>
+                            	</span>
                                 <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false"
-                                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title fw-bold" id="staticBackdropLabel">게시물 삭제</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body fs-6">
-                                                선택하신 게시물을 정말로 삭제하시겠습니까?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                                                <button type="button" class="btn btn-primary">삭제</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="border-0 btn btn-sm shadow" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">
-                                    <i class="fa-solid fa-xmark"></i>
-                                </button>
+	                                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	                                <div class="modal-dialog">
+	                                    <div class="modal-content">
+	                                        <div class="modal-header">
+	                                            <h5 class="modal-title fw-bold" id="staticBackdropLabel">게시물 삭제</h5>
+	                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+	                                                aria-label="Close"></button>
+	                                        </div>
+	                                        <div class="modal-body fs-6">
+	                                       			선택하신 게시물을 정말로 삭제하시겠습니까?
+	                                        </div>
+	                                        <div class="modal-footer">
+	                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+	                                            <button id="delBtn" type="button" class="btn btn-primary">삭제</button>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <span data-bs-toggle="modal" data-bs-target="#deleteModal">
+	                                <button id="btnDel" value="Del" class="border-0 btn btn-sm bg-danger shadow" type="button" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete">
+		                                <i class="fa-solid fa-trash-can" style="color: white;"></i>
+		                            </button>
+                            	</span>
                             </div>
                             <div class="col-2 offset-8" align="right">
-                                <button class="border-0 btn btn-sm bg-success shadow" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">
+                                <button class="border-0 btn btn-sm bg-success shadow" type="button" id="excelBtn" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Excel">
                                     <i class="fa-regular fa-file-excel" style="color: white;"></i>
                                 </button>
-                                <button class="border-0 btn btn-sm shadow bg-primary" id="btnForm" type="button">
+                                <a class="border-0 btn btn-sm shadow bg-primary" role="button" href="/code/codeForm" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add">
                                     <i class="fa-regular fa-plus fa-1x" style="color: white;"></i>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -393,6 +395,9 @@
   	<script type="text/javascript">	
     	var goUrlForm = "/codeGroup/codeGroupForm";
     	var goUrlList = "/codeGroup/codeGroupList";
+    	var goUrlMultiUele = "/codeGroup/codeGroupMultiUele";
+	    var goUrlMultiDele = "/codeGroup/codeGroupMultiDele";
+	    var excelUri = "/codeGroup/excelDownload";
     	var form = $("#myForm");
     	
     	$("#refresh").on("click", function() {
@@ -429,6 +434,64 @@
 			form.attr("action", goUrlForm).submit();
 		}
 
+		$("#excelBtn").on("click", function() {
+			form.attr("action", excelUri).submit();
+		});
+		
+		$("#btnUel").on("click", function() {
+			if ($("input[name=checkboxSeq]:checked").length > 0) {
+				DelValidation("#delBtn", goUrlMultiUele, "선택하신 게시물을 삭제하시겠습니까?");
+				$("#delBtn").show();
+			} else {
+				DelValidation("#delBtn", goUrlMultiUele, "데이터를 선택해 주세요!!");
+				$("#delBtn").hide();
+			}
+		})
+		
+		$("#btnDel").on("click", function() {
+			if ($("input[name=checkboxSeq]:checked").length > 0) {
+				DelValidation("#delBtn", goUrlMultiDele, "선택하신 게시물을 진짜로 삭제하시겠습니까?");	
+				$("#delBtn").show();
+			} else {
+				DelValidation("#delBtn", goUrlMultiDele, "데이터를 선택해 주세요!!");
+				$("#delBtn").hide();
+			}
+		})
+		
+		DelValidation = function(confirm, url, msg) {
+			$(".modal-body").html(msg);
+			$(confirm).on("click", function() {
+				$("input[name=checkboxSeq]:checked").each(function() { 
+					checkboxSeqArray.push($(this).val());
+				});
+				
+				$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray);
+				
+				form.attr("action", url).submit();
+			})
+		}
+		
+		/* checkbox delete s */
+		var checkboxSeqArray = [];
+		
+		$("#checkboxAll").click(function() {
+			if($("#checkboxAll").is(":checked")) $("input[name=checkboxSeq]").prop("checked", true);
+			else $("input[name=checkboxSeq]").prop("checked", false);
+		});
+		
+		$("input[name=checkboxSeq]").click(function() {
+			var total = $("input[name=checkboxSeq]").length;
+			var checked = $("input[name=checkboxSeq]:checked").length;
+			
+			if(total != checked) $("#checkboxAll").prop("checked", false);
+			else $("#checkboxAll").prop("checked", true); 
+		});
+		/* checkbox delete e */
+		
+		/* tooltip s */
+		const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+		const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+		/* tooltip e */
     </script>
 </body>
 </html>

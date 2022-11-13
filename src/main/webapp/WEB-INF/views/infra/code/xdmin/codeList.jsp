@@ -237,10 +237,10 @@
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control datepicker" id="startDate" name="startDate" value="<c:out value="${vo.startDate }"/>" placeholder="2022-01-01" autocomplete="off">
+                                    <input type="text" class="form-control" id="startDate" name="startDate" value="<c:out value="${vo.startDate }"/>" placeholder="2022-01-01" autocomplete="off">
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control datepicker" id="endDate" name="endDate" value="<c:out value="${vo.endDate }"/>" placeholder="2022-12-31" autocomplete="off">
+                                    <input type="text" class="form-control" id="endDate" name="endDate" value="<c:out value="${vo.endDate }"/>" placeholder="2022-12-31" autocomplete="off">
                                 </div>
                             </div>
                             <div class="row align-items-center">
@@ -335,7 +335,7 @@
 	                                                aria-label="Close"></button>
 	                                        </div>
 	                                        <div class="modal-body fs-6">
-	                                       		선택하신 게시물을 정말로 삭제하시겠습니까?
+	                                       			선택하신 게시물을 정말로 삭제하시겠습니까?
 	                                        </div>
 	                                        <div class="modal-footer">
 	                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
@@ -465,7 +465,12 @@
 		DelValidation = function(confirm, url, msg) {
 			$(".modal-body").html(msg);
 			$(confirm).on("click", function() {
-				alert("asas");
+				$("input[name=checkboxSeq]:checked").each(function() { 
+					checkboxSeqArray.push($(this).val());
+				});
+				
+				$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray);
+				
 				form.attr("action", url).submit();
 			})
 		}

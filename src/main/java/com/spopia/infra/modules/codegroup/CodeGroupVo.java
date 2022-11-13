@@ -1,8 +1,9 @@
 package com.spopia.infra.modules.codegroup;
 
+import com.spopia.infra.common.base.BaseVo;
 import com.spopia.infra.common.constants.Constants;
 
-public class CodeGroupVo {
+public class CodeGroupVo extends BaseVo{
 
 	private Integer shOption;
 	private String shValue;

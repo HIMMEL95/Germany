@@ -169,7 +169,7 @@
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="/code/codeList">
+                                                            <a class="nav-link" href="/code/codeAjaxList">
                                                                 <i class="fas fa-light fa-comments pe-3"></i>
                                                                 <span>Code</span>
                                                             </a>

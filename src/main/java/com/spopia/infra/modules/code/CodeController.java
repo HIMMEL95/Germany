@@ -30,20 +30,40 @@ public class CodeController {
 	@Autowired
 	CodeGroupServiceImpl cgService;
 	
-	public void setSearchAndPaging(CodeVo vo) throws Exception {
-		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
-		
-		vo.setParamsPaging(service.selectOneCount(vo));
-	}
+	public void setSearch(CodeVo vo) throws Exception {
+        vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
+        vo.setShOption(vo.getShOption() == null ? 0 : vo.getShOption());
+    }
 	
 	@RequestMapping(value = "codeList")
 	public String codeList(Model model, @ModelAttribute("vo") CodeVo vo) throws Exception {
 		
-		setSearchAndPaging(vo);
+		setSearch(vo);
 
 		List<Code> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		return "infra/code/xdmin/codeList";
+	}
+	
+	
+	@RequestMapping(value = "codeAjaxList")
+	public String codeAjaxList(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
+	    setSearch(vo);
+	    return "infra/code/xdmin/codeAjaxList";
+	}
+	
+	@RequestMapping(value = "codeAjaxLita")
+	public String codeAjaxLita(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
+	    
+	    System.out.println(service.selectOneCount(vo));
+	    System.out.println(vo.getTotalRows());
+	    vo.setParamsPaging(service.selectOneCount(vo));
+	    
+	    if (vo.getTotalRows() > 0) {
+	        List<Code> list = service.selectList(vo);
+	        model.addAttribute("list", list);
+	    }
+	    return "infra/code/xdmin/codeAjaxLita";
 	}
 	
 	@RequestMapping(value = "codeForm")
@@ -105,7 +125,7 @@ public class CodeController {
 			service.uelete(dto);
 		}
 		redirectAttributes.addFlashAttribute("vo", vo);
-		return "redirect:/code/codeList";
+		return "redirect:/code/codeAjaxList";
 	}
 
 	@RequestMapping(value = "codeMultiDele")
@@ -115,14 +135,9 @@ public class CodeController {
 			service.delete(vo);
 		}
 		redirectAttributes.addFlashAttribute("vo", vo);
-		return "redirect:/code/codeList";
+		return "redirect:/code/codeAjaxList";
 	}
 
-	public void setSearch(CodeVo vo) throws Exception {
-	    vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
-	    vo.setShOption(vo.getShOption() == null ? 0 : vo.getShOption());
-	}
-	
     /* excel Download s */
 	@RequestMapping("excelDownload")
     public void excelDownload(CodeVo vo, HttpServletResponse httpServletResponse) throws Exception {

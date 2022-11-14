@@ -259,8 +259,6 @@
 
    		        	  var account = response.kakao_account;
    		        	  
-   		        	  console.log(response);
-	  	        	  
 	  	        	  if (account.gender === "male") {
 	  	        		  $("input[name=gender]").val(5);
 	          		  } else {
@@ -273,7 +271,7 @@
 						,cache: false
 						,type:"POST"
 						,url: "/member/kakaoLoginProc"
-						,data: {"name": account.profile.nickname, "snsId": "카카오로그인", "phone": account.profile.phone_number, "email": account.email, "gender": $("input[name=gender]").val(), "dob": account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length), "snsImg": account.profile.thumbnail_image_url, "snsId" : response.id}
+						,data: {"name": account.profile.nickname, "snsId": "카카오로그인", "phone": account.profile.phone_number, "email": account.email, "gender": $("input[name=gender]").val(), "dob": account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length), "snsImg": account.profile.thumbnail_image_url, "sns_id" : response.id}
 						,success : function(response) {
 							if (response.rt == "fail") {
 								alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
@@ -339,16 +337,12 @@
 				$("input[name=gender]").val(6);
 			} 
 			
-			console.log(naverLogin)
-			return false;
-			
 			$.ajax({
 				async: true
 				,cache: false
 				,type:"POST"
 				,url: "/member/naverLoginProc"
-				/* ,data: {"name": $("input[name=name]").val(), "snsId": $("input[name=snsId]").val(), "phone": $("input[name=phone]").val(), "email": $("input[name=email]").val(), "gender": $("input[name=gender]").val(), "dob": $("input[name=dob]").val(), "snsImg": $("input[name=snsImg]").val(), "token": $("input[name=token]").val()} */
-				,data: {"name": naverLogin.user.name, "snsId": "네이버로그인", "phone": naverLogin.user.mobile, "email": naverLogin.user.email, "gender": $("input[name=gender]").val(), "dob": naverLogin.user.birthyear+"-"+naverLogin.user.birthday, "snsImg": naverLogin.user.profile_image, "snsId": naverLogin.user.id}
+				,data: {"name": naverLogin.user.name, "snsId": "네이버로그인", "phone": naverLogin.user.mobile, "email": naverLogin.user.email, "gender": $("input[name=gender]").val(), "dob": naverLogin.user.birthyear+"-"+naverLogin.user.birthday, "snsImg": naverLogin.user.profile_image, "sns_id": naverLogin.user.id}
 				,success : function(response) {
 					if (response.rt == "fail") {
 						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");

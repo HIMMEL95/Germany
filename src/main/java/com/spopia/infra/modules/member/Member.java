@@ -46,8 +46,15 @@ public class Member extends Base {
 	private String[] fileSeq;
 	private String snsImg;
 	private String snsId;
+	private String sns_id;
 
-	public String getToken() {
+	public String getSns_id() {
+        return sns_id;
+    }
+    public void setSns_id(String sns_id) {
+        this.sns_id = sns_id;
+    }
+    public String getToken() {
 	    return token;
 	}
 	public void setToken(String token) {

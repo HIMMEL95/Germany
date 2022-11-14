@@ -184,15 +184,4 @@ public class LoginController {
 		return returnMap;
 	}
 	
-	@RequestMapping(value = "naverLogout")
-	public String naverLogout(Member dto, HttpSession httpSession) throws Exception {
-	    System.out.println("token11 : " + dto.getToken());
-	    //String url = "https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id="+Constants.NAVER_CLIENT_ID+"&client_secret="+Constants.NAVER_CLIENT_SECRET+"&access_token="+dto.getToken(); //bearer.AAAAPJvabDOI1hrIOzUfRDs8cTTiu5pmCRYXvuED08InFUcLAt7gvybq86te3489uX7teuLP1DShGTiZ5094reDXfSg.1667521683
-	    String url = "https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id="+Constants.NAVER_CLIENT_ID+"&client_secret="+Constants.NAVER_CLIENT_SECRET+"&access_token="+"bearer.AAAAPJvabDOI1hrIOzUfRDs8cTTiu5pmCRYXvuED08InFUcLAt7gvybq86te3489uX7teuLP1DShGTiZ5094reDXfSg.1667521683"+"&service_provider=NAVER";
-	    
-	    httpSession.invalidate();
-	    return "redirect:/sportMain";
-	}
-
-	
 }

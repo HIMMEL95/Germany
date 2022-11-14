@@ -85,7 +85,7 @@ public class MemberController {
 		System.out.println(user.getId().equals("네이버로그인"));
 		
 		if (user.getId().equals("네이버로그인") || user.getId().equals("카카오로그인")) {
-			service.snsFirst(dto);
+			service.update(dto);
 		} else {
 			service.update(dto);
 		}
@@ -106,9 +106,9 @@ public class MemberController {
 		    Member item = service.snsSelectOne(vo);
 		    model.addAttribute("item", item);
 		} else if (snsItem.getId().equals("카카오로그인")) {
-				System.out.println("카카오 로그인 중");
-				Member item = service.snsSelectOne(vo);
-				model.addAttribute("item", item);			
+			System.out.println("카카오 로그인 중");
+			Member item = service.snsSelectOne(vo);
+			model.addAttribute("item", item);			
 		}	else {
 		    System.out.println("일반 로그인 중");
 		    Member item = service.selectOne(vo);
@@ -157,8 +157,6 @@ public class MemberController {
 	public String naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
 	    System.out.println("naverLoginProc");
 	    
-	    System.out.println("test : " + dto.getToken());
-          
 	    // id 값 있는지 체크 
 	    Member naverLogin = service.snsLoginCheck(dto);
           
@@ -186,10 +184,8 @@ public class MemberController {
 	    
 		Member kakaoLogin = service.snsLoginCheck(dto);
 		
-		 System.out.println("test : " + dto.getToken());
-		
 		if (kakaoLogin == null) {
-			service.kakaoInst(dto);
+			service.kakao(dto);
 			
 			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
 			// session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
@@ -205,16 +201,6 @@ public class MemberController {
 		return returnMap;
 	}
 	
-	 public void session(String seq, String id, String name, String email, Integer user, String img, Integer sns, HttpSession httpSession) {
-		 httpSession.setAttribute("sessSeq", seq);
-		 httpSession.setAttribute("sessId", id);
-		 httpSession.setAttribute("sessName", name);
-		 httpSession.setAttribute("sessEmail", email);
-		 httpSession.setAttribute("sessUser", user);
-		 httpSession.setAttribute("sessImg", img);
-		 httpSession.setAttribute("sessSns", sns);
-	 }
-     
 	 public void session(Member dto, HttpSession httpSession) {
 	     httpSession.setAttribute("sessSeq", dto.getSeq());    
 	     httpSession.setAttribute("sessId", dto.getId());
@@ -223,6 +209,7 @@ public class MemberController {
 	     httpSession.setAttribute("sessUser", dto.getUser_div());
 	     httpSession.setAttribute("sessImg", dto.getSnsImg());
 	     httpSession.setAttribute("sessSns", dto.getSns_type());
+	     System.out.println("test : " + dto.getSns_type());
 	 }
 	 
      /* excel Download s */

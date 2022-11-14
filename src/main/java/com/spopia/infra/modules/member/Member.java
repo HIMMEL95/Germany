@@ -32,6 +32,7 @@ public class Member extends Base {
 	private Integer event;
 	private Integer league;
 	private String token;
+	private String team_seq;
 	
     // teamUser Dto
 	private String tuSeq;
@@ -73,10 +74,10 @@ public class Member extends Base {
 	public String getSnsId() {
         return snsId;
     }
-  public void setSnsId(String snsId) {
+	public void setSnsId(String snsId) {
         this.snsId = snsId;
     }
-  public String getSnsImg() {
+	public String getSnsImg() {
 		return snsImg;
 	}
 	public void setSnsImg(String snsImg) {
@@ -251,5 +252,11 @@ public class Member extends Base {
     }
     public void setDeleteNY(Integer deleteNY) {
         this.deleteNY = deleteNY;
+    }
+    public String getTeam_seq() {
+        return team_seq;
+    }
+    public void setTeam_seq(String team_seq) {
+        this.team_seq = team_seq;
     }
 }

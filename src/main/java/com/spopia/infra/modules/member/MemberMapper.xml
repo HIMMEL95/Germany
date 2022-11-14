@@ -134,10 +134,11 @@
 		    ,date_format(u.modifiedAt, '%Y-%m-%d %H:%i:%s') as modifiedAt
 		    ,u.user_div
 		    ,u.uDelNy
+		    ,u.sns_type
 		    ,t.abroadNy as abroadNy
             ,t.event as event
             ,t.league as league
-			,t.teamName-24 as team
+			,t.teamName as team
 		from user u
 			inner join teamUser tu on tu.user_seq = u.seq
 			inner join team t on t.teamSeq = tu.team_seq
@@ -164,9 +165,17 @@
 		    ,date_format(u.modifiedAt, '%Y-%m-%d %H:%i:%s') as modifiedAt
 		    ,u.user_div
 		    ,u.uDelNy
+		    ,u.sns_type
+			,t.abroadNy as abroadNy
+            ,t.event as event
+            ,t.league as league
+			,t.teamName as team
 		from user u
+			inner join teamUser tu on tu.user_seq = u.seq
+			inner join team t on t.teamSeq = tu.team_seq
 		where 1=1
 			and u.seq = #{seq}
+			and tu.defaultNY = 0
 	</select>
 	
 	<!-- user insert -->
@@ -223,7 +232,10 @@
 			,defaultNY
 		)
 		VALUES (
-			#{team}-24
+			<choose>
+				<when test="team_seq == null">1</when>
+				<otherwise>#{team}-24</otherwise>
+			</choose>
 			,#{seq}
 			,0
 			,0
@@ -309,10 +321,12 @@
 			,u.user_div
 			,u.snsImg
 			,u.sns_type
+			,u.snsId
 		from user u
 		where 1=1 
-			and id = #{snsId} 
+			and snsId = #{snsId} 
 			and name = #{name}
+			and email = #{email}
 			and uDelNy = 0
 	</select>
 
@@ -324,6 +338,7 @@
 			,u.email
 			,u.pwd
 			,u.user_div
+			,u.sns_type
 		from user u
 		where 1=1 
 			and id = #{id} 

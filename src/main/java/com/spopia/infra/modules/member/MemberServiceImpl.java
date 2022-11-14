@@ -87,26 +87,13 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	public void update(Member dto) throws Exception {
-		System.out.println(dto.getSeq());
 		userUpdt(dto);
-		System.out.println(dto.getSeq());
 		teamUpdt(dto);
 	}
 	
-	public void snsFirst(Member dto) throws Exception {
-		userUpdt(dto);
-		teamInst(dto);
-	}
-	
 	public void insert(Member dto) throws Exception {
-	    System.out.println(1);
-	    System.out.println("pwd1 : " + dto.getPwd());
-	    System.out.println("pwd1 : " + dto.getName());
 	    dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
-	    System.out.println("pwd2 : " + dto.getPwd());
-      	System.out.println(2);
 		userInst(dto);
-		System.out.println(3);
 		teamInst(dto);
 	}
 
@@ -166,24 +153,23 @@ public class MemberServiceImpl implements MemberService {
     // naver insert
     @Override
     public int naverInst(Member dto) throws Exception {
-    	
-    	try {
-    		dao.naverInst(dto);
-    		return 1;
-    	} catch (Exception e) {
-    		throw new Exception();
-			}
+		return dao.naverInst(dto);
     }
     
     // kakao insert
     @Override
     public int kakaoInst(Member dto) throws Exception {
-    	try {
-    		dao.kakaoInst(dto);
-    		return 1;
-    	} catch (Exception e) {
-    		throw new Exception();
-		}
+		return dao.kakaoInst(dto);
+    }
+    
+    public void kakao(Member dto) throws Exception {
+        kakaoInst(dto);
+        teamInst(dto);
+    }
+
+    public void naver(Member dto) throws Exception {
+        naverInst(dto);
+        teamInst(dto);
     }
 
 //    image Upload

@@ -134,7 +134,7 @@
 											<div id="naverIdLogin"></div>
                                         </div> -->
                                         <div class="a col-3 btn_login_wrap">
-											<button class='btn btn-success' type="button" name="naverIdLogin" id="naverIdLogin"  onclick="btnNaverLogin();">카카오 로그인</button>
+											<button class='btn btn-success' type="button" name="naverIdLogin" id="naverIdLogin" onclick="naverLogic()">네이버 로그인</button>
 										</div>
                                         <!-- <div class="btn_login_wrap">
                                         	<div id="my-signin2"></div>
@@ -163,6 +163,7 @@
         </div>
         <form name="form">
 			<input type="hidden" name="gender"/>
+			<input type="hidden" name="naver"/>
 		</form>
 
         <!-- footer -->
@@ -314,8 +315,8 @@
 			{
 				clientId: "b8EhDTV3tvvAE_gRRBoJ",
 				callbackUrl: "http://localhost:8080/userLogin",
-				isPopup: true,
-				callbackHandle: true
+				isPopup: false,
+				loginButton: {color: "green", type: 3, height: 70} 
 			}
 		); 
    		/* var naverLogin = new naver.LoginWithNaverId(
@@ -327,29 +328,69 @@
 			}
 		); */
 
-    	naverLogin.init();
-		function btnNaverLogin() {
-			
-			naverLogin.getLoginStatus(function (status) {
-				
-				if(!status) {
-					alert(status)
-					naverLogin.authorize();
-				}
-				else
-	                setLoginStatus();  //하늘님 메소드 실행 -> Ajax
-			});
-				
-   				/* if (!status) {
-   					naverLogin.authorize();
-					setLoginStatus();
+    	/* naverLogin.init(); */
+		/* window.addEventListener('load', function () {
+   			naverLogin.getLoginStatus(function (status) {
+   				if (status) {
+   					setLoginStatus();
    				}
-				setLoginStatus();
-   			}); */
+   			});
+   		}); */
+   		
+   		if ($("input[name=gender]").val() == null || $("input[name=gender]").val() == "") {
+   			$("input[name=naver]").val("0");
+   		}
+   		
+   		naverLogic = function() {
+   			naverLogin.getLoginStatus(function (status) {
+   				if (status) {
+   					setLoginStatus();
+   				}
+   			});
+   			$("input[name=naver]").val("1");
 		}
+		
+   		naverLogin.getLoginStatus(function (status) {
+			if(status && $("input[name=naver]").val() == 1) {
+				window.addEventListener('load', function () {
+		   			naverLogin.getLoginStatus(function (status) {
+		   				if (status) {
+		   					setLoginStatus();
+		   				}
+		   			});
+		   		});
+			}
+		})
+   		
+		naverLogin.init();
+		$("#naverIdLogin").on("click", function() {
+			$.ajax({
+				async: true
+				,cache: false
+				,type:"POST"
+				,url: "/member/load"
+				,data: {}
+				,success : function(response) {
+					if (response.rt == "fail") {
+						alert("로그인을 재시도 해주세요!!");
+						return false;
+					} else {
+						window.addEventListener('load', function () {
+				   			naverLogin.getLoginStatus(function (status) {
+				   				if (status) {
+				   					setLoginStatus();
+				   				}
+				   			});
+				   		});
+					}
+				},
+				error : function(jqXHR, status, error) {
+					alert("알 수 없는 에러 [ " + error + " ]");
+				}
+			});
+		})
     	
    		function setLoginStatus() {
-   			
 			if (naverLogin.user.gender == 'M'){
 				$("input[name=gender]").val(5);
 			} else {

@@ -153,13 +153,47 @@ public class MemberController {
 	    return "infra/login/xdmin/naverCallback";
     }
 
+    /*
+     * @RequestMapping(value = "naverLoginProc")
+     * public String naverLoginProc(Member dto, HttpSession httpSession) throws
+     * Exception {
+     * System.out.println("naverLoginProc");
+     * 
+     * // id 값 있는지 체크
+     * Member naverLogin = service.snsLoginCheck(dto);
+     * 
+     * if (naverLogin == null) {
+     * System.out.println("여기는 : " + null);
+     * service.naverInst(dto);
+     * 
+     * httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); //
+     * 60second * 30 = 30minute
+     * //session(naver.getSeq(), naver.getId(), naver.getName(), naver.getEmail(),
+     * naver.getUser_div(), naver.getSnsImg(), naver.getSns_type(), httpSession);
+     * session(dto, httpSession);
+     * } else {
+     * System.out.println("여기는 :  not " + null);
+     * 
+     * httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); //
+     * 60second * 30 = 30minute
+     * //session(naverLogin.getSeq(), naverLogin.getId(), naverLogin.getName(),
+     * naverLogin.getEmail(), naverLogin.getUser_div(), naverLogin.getSnsImg(),
+     * naverLogin.getSns_type(), httpSession);
+     * session(naverLogin, httpSession);
+     * }
+     * return "redirect:/sportMain";
+     * }
+     */
+
+	@ResponseBody
 	@RequestMapping(value = "naverLoginProc")
-	public String naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
+	public Map<String, Object> naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
 	    System.out.println("naverLoginProc");
+	    Map<String, Object> returnMap = new HashMap<>();
 	    
 	    // id 값 있는지 체크 
 	    Member naverLogin = service.snsLoginCheck(dto);
-          
+	    
 	    if (naverLogin == null) {
 	        System.out.println("여기는 : " + null);
 	        service.naverInst(dto);
@@ -167,14 +201,16 @@ public class MemberController {
 	        httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
 	        //session(naver.getSeq(), naver.getId(), naver.getName(), naver.getEmail(), naver.getUser_div(), naver.getSnsImg(), naver.getSns_type(), httpSession);
 	        session(dto, httpSession);
+	        returnMap.put("rt", "success");
 	    } else {
 	        System.out.println("여기는 :  not " + null);
-  
+	        
 	        httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
 	        //session(naverLogin.getSeq(), naverLogin.getId(), naverLogin.getName(), naverLogin.getEmail(), naverLogin.getUser_div(), naverLogin.getSnsImg(), naverLogin.getSns_type(), httpSession);
 	        session(naverLogin, httpSession);
+	        returnMap.put("rt", "success");
 	    }
-	    return "redirect:/sportMain";
+	    return returnMap;
 	}
 	
 	@ResponseBody

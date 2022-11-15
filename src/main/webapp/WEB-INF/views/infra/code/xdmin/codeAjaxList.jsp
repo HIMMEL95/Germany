@@ -12,18 +12,12 @@
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-	<!-- Bootstrap CSS -->
-	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap extra CSS -->    
-    <link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
-    <!-- jquery ui CSS -->    
-    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">    
+    <!-- <link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet"> -->
     <!-- user css -->
     <link rel="stylesheet" href="/resources/css/xdmin/cc.css" />
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<!-- datepicker s -->
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 	<!-- datepicker e -->
@@ -516,6 +510,13 @@
 					page++; */
 					/* window.history.back() */
 		
+					$(".page-item").on("click", function() {
+						console.log("text : "+$(this).text())
+						console.log("thisPage : "+$("input[name=thisPage]").val())
+						pageSeqArray.push($(this).text())
+						console.log(pageSeqArray);
+					})
+					
 				 	window.history.pushState(null, '', location.href);
  
 					window.onpopstate = function() {
@@ -529,10 +530,6 @@
 						}
 					}
 					
-					$(".page-item").on("click", function() {
-						pageSeqArray.push($(this).text())
-						console.log(pageSeqArray);
-					})
 					
 					/* window.onpopstate = function(event) {  //뒤로가기 이벤트를 캐치합니다.
 						alert("sdasdasda");

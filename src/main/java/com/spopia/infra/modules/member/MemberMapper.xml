@@ -321,10 +321,8 @@
 			,u.user_div
 			,u.snsImg
 			,u.sns_type
-			,u.snsId
 		from user u
 		where 1=1 
-			and snsId = #{sns_id} 
 			and name = #{name}
 			and email = #{email}
 			and uDelNy = 0
@@ -390,7 +388,6 @@
 			,uDelNy
 			,snsImg
 			,phone
-			,snsId
 		)
 		VALUES (
 			#{snsId}
@@ -404,7 +401,6 @@
 			,0
 			,#{snsImg}
 			,#{phone}
-			,#{sns_id}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
@@ -423,7 +419,6 @@
 			,sns_type
 			,uDelNy
 			,snsImg
-			,snsId
 		)
 		VALUES (
 			#{snsId}
@@ -436,7 +431,6 @@
 			,2
 			,0
 			,#{snsImg}
-			,#{sns_id}
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()

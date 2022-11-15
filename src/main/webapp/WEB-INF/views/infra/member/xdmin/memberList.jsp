@@ -17,9 +17,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="/resources/css/xdmin/memberList.css" />
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- jquery ui CSS -->    
+    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">    
+	<!-- datepicker s -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	<!-- datepicker e -->
 </head>
 <body>
 	<header class="navbar-light fixed-top header-static bg-mode align-items-center">
@@ -244,10 +249,10 @@
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control datepicker" id="startDate" name="startDate" value="<c:out value="${vo.startDate }"/>" placeholder="2022-01-01">
+                                    <input type="text" class="form-control" id="startDate" name="startDate" value="<c:out value="${vo.startDate }"/>" placeholder="2022-01-01" autocomplete="off">
                                 </div>
                                 <div class="col-2">
-                                    <input type="text" class="form-control datepicker" id="endDate" name="endDate" value="<c:out value="${vo.endDate }"/>" placeholder="2022-12-31">
+                                    <input type="text" class="form-control" id="endDate" name="endDate" value="<c:out value="${vo.endDate }"/>" placeholder="2022-12-31" autocomplete="off">
                                 </div>
                             </div>
                             <div class="row align-items-center">
@@ -398,8 +403,6 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
 	    $("#signOutBtn").on("click", function() {
 			$.ajax({
@@ -413,19 +416,14 @@
 				}
 			});
 		});
-    
-    	$(function() {
-    		$("#date_st").datepicker({
-    			dateFormat: "yy-mm-dd"
-    			,showMonthAfterYear: true
-    			,showOtherMonths: true
-    		});
-    		$("#date_end").datepicker({
-    			dateFormat: "yy-mm-dd"
-       			,showMonthAfterYear: true
-       			,showOtherMonths: true
-       		});
-    	});
+
+	    $(function() {
+	   		$("#startDate, #endDate").datepicker({
+	   			dateFormat: "yy-mm-dd"
+	   			,showMonthAfterYear: true
+	   			,showOtherMonths: true
+	   		});
+	   	})
     	
     	var goUrlList = "/member/memberList";
     	var goUrlForm = "/member/memberXdminView";

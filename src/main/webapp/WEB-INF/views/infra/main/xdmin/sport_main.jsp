@@ -3847,7 +3847,7 @@
 					if (response.rt == "success") {
 						window.location.href = "/";
 					} else {
-						localStorage.clear();
+						/* localStorage.clear(); */
 						window.location.href = "/";
 					}
 				}

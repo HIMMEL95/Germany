@@ -25,6 +25,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="/resources/css/user/login.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -129,9 +130,12 @@
                                            		</span>
                                             </button>
                                         </div>
-                                        <div class="btn_login_wrap">
+                                        <!-- <div class="btn_login_wrap">
 											<div id="naverIdLogin"></div>
-                                        </div>
+                                        </div> -->
+                                        <div class="a col-3 btn_login_wrap">
+											<button class='btn btn-success' type="button" name="naverIdLogin" id="naverIdLogin"  onclick="btnNaverLogin();">카카오 로그인</button>
+										</div>
                                         <!-- <div class="btn_login_wrap">
                                         	<div id="my-signin2"></div>
 	                                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
@@ -300,42 +304,57 @@
     	
     	/* naver login test s */
    		
-   		/* var naverLogin = new naver.LoginWithNaverId(
+    	/* naver login test e */
+    	
+    	/* google Login s */
+    	/* google Login e */
+    </script>
+    <script type="text/javascript">
+   		var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "b8EhDTV3tvvAE_gRRBoJ",
 				callbackUrl: "http://localhost:8080/userLogin",
-				isPopup: false,
-				loginButton: {color: "green", type: 3, height: 70} 
+				isPopup: true,
+				callbackHandle: true
 			}
-		); */
-   		var naverLogin = new naver.LoginWithNaverId(
+		); 
+   		/* var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "z69jjnmkMQ88W2owra4t",
 				callbackUrl: "http://www.spopia.pe.kr/userLogin",
 				isPopup: false,
 				callbackHandle: true,
-				loginButton: {color: "green", type: 3, height: 70} 
 			}
-		);
+		); */
 
     	naverLogin.init();
-    	
-   		window.addEventListener('load', function () {
-   			naverLogin.getLoginStatus(function (status) {
-   				if (status) {
-   					/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
-   					setLoginStatus();
+		function btnNaverLogin() {
+			
+			naverLogin.getLoginStatus(function (status) {
+				
+				if(!status) {
+					alert(status)
+					naverLogin.authorize();
+				}
+				else
+	                setLoginStatus();  //하늘님 메소드 실행 -> Ajax
+			});
+				
+   				/* if (!status) {
+   					naverLogin.authorize();
+					setLoginStatus();
    				}
-   			});
-   		});
-   		
+				setLoginStatus();
+   			}); */
+		}
+    	
    		function setLoginStatus() {
    			
 			if (naverLogin.user.gender == 'M'){
 				$("input[name=gender]").val(5);
 			} else {
 				$("input[name=gender]").val(6);
-			} 
+			}
 			
 			$.ajax({
 				async: true
@@ -356,10 +375,6 @@
 				}
 			});
 		}
-    	/* naver login test e */
-    	
-    	/* google Login s */
-    	/* google Login e */
     </script>
     <script type="text/javascript">
 

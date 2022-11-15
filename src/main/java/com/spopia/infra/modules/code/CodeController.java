@@ -33,7 +33,7 @@ public class CodeController {
 	public void setSearch(CodeVo vo) throws Exception {
         vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
         vo.setShOption(vo.getShOption() == null ? 0 : vo.getShOption());
-    }
+    } 
 	
 	@RequestMapping(value = "codeList")
 	public String codeList(Model model, @ModelAttribute("vo") CodeVo vo) throws Exception {

@@ -25,7 +25,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="/resources/css/user/login.css" rel="stylesheet" type="text/css">
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+   <!--  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> -->
 </head>
 
 <body>
@@ -134,7 +134,7 @@
 											<div id="naverIdLogin"></div>
                                         </div> -->
                                         <div class="a col-3 btn_login_wrap">
-											<button class='btn btn-success' type="button" name="naverIdLogin" id="naverIdLogin" onclick="naverLogic()">네이버 로그인</button>
+											<button class='btn btn-success' type="button" name="naverIdLogin" id="naverIdLogin">네이버 로그인</button>
 										</div>
                                         <!-- <div class="btn_login_wrap">
                                         	<div id="my-signin2"></div>
@@ -163,7 +163,7 @@
         </div>
         <form name="form">
 			<input type="hidden" name="gender"/>
-			<input type="hidden" name="naver"/>
+			<input type="hidden" name="naver" value="${sessSeq }"/>
 		</form>
 
         <!-- footer -->
@@ -208,7 +208,6 @@
     <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     <!-- google login e  -->
     <script type="text/javascript">
-    
     	$("#loginBtn").on("click", function() {
     		var id = $("#id").val();
 			var pwd = $("#pwd").val();
@@ -311,12 +310,12 @@
     	/* google Login e */
     </script>
     <script type="text/javascript">
+    
    		var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "b8EhDTV3tvvAE_gRRBoJ",
 				callbackUrl: "http://localhost:8080/userLogin",
 				isPopup: false,
-				loginButton: {color: "green", type: 3, height: 70} 
 			}
 		); 
    		/* var naverLogin = new naver.LoginWithNaverId(
@@ -337,59 +336,25 @@
    			});
    		}); */
    		
-   		if ($("input[name=gender]").val() == null || $("input[name=gender]").val() == "") {
-   			$("input[name=naver]").val("0");
-   		}
+   		naverLogin.init();
    		
-   		naverLogic = function() {
+   		$("#naverIdLogin").on("click", function() {
    			naverLogin.getLoginStatus(function (status) {
-   				if (status) {
-   					setLoginStatus();
-   				}
-   			});
-   			$("input[name=naver]").val("1");
-		}
-		
-   		naverLogin.getLoginStatus(function (status) {
-			if(status && $("input[name=naver]").val() == 1) {
-				window.addEventListener('load', function () {
-		   			naverLogin.getLoginStatus(function (status) {
-		   				if (status) {
-		   					setLoginStatus();
-		   				}
-		   			});
-		   		});
-			}
+  				if (!status) {
+  					naverLogin.authorize();
+  				}
+ 				setLoginStatus();
+  			});
 		})
    		
-		naverLogin.init();
-		$("#naverIdLogin").on("click", function() {
-			$.ajax({
-				async: true
-				,cache: false
-				,type:"POST"
-				,url: "/member/load"
-				,data: {}
-				,success : function(response) {
-					if (response.rt == "fail") {
-						alert("로그인을 재시도 해주세요!!");
-						return false;
-					} else {
-						window.addEventListener('load', function () {
-				   			naverLogin.getLoginStatus(function (status) {
-				   				if (status) {
-				   					setLoginStatus();
-				   				}
-				   			});
-				   		});
-					}
-				},
-				error : function(jqXHR, status, error) {
-					alert("알 수 없는 에러 [ " + error + " ]");
-				}
-			});
-		})
-    	
+   		if ($("input[name=naver]").val() != null && $("input[name=naver]").val() != "") {
+  			naverLogin.getLoginStatus(function (status) {
+  				if (status) {
+  					setLoginStatus();
+  				}
+  			});
+   		} 
+   		
    		function setLoginStatus() {
 			if (naverLogin.user.gender == 'M'){
 				$("input[name=gender]").val(5);

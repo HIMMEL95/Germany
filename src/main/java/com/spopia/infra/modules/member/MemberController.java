@@ -168,7 +168,7 @@ public class MemberController {
 	    
 	    if (naverLogin == null) {
 	        System.out.println("여기는 : " + null);
-	        service.naverInst(dto);
+	        service.naver(dto);
 	        
 	        httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
 	        //session(naver.getSeq(), naver.getId(), naver.getName(), naver.getEmail(), naver.getUser_div(), naver.getSnsImg(), naver.getSns_type(), httpSession);

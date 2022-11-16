@@ -122,20 +122,12 @@
                                         <button type="button" class="btn_login" id="loginBtn" href="/sportMain">
                                             <span class="btn_text">로그인</span>
                                         </button>
-                                        <div class="btn_login_wrap">
-                                            <button type="button" class="btn_login" id="kakaoBtn" style="background-color: #fceb00;">
-                                                <span class="btn_text text-black">
-                                                	<img src="/resources/images/user/kakao.png" style="width: 25px;" class="me-3">
-                                               			카카오 로그인
-                                           		</span>
+                                        <div class="btn_login_wrap grid">
+                                            <button type="button" class="btn snsBtn " id="kakaoBtn" style="background-color: #F7E600;">
+                                              	<img src="/resources/images/user/kakao.png" style="width: 25px;" class="me-3">
                                             </button>
+											<button class="btn snsBtn" type="button" id="naverIdLogin" >N</button>
                                         </div>
-                                        <!-- <div class="btn_login_wrap">
-											<div id="naverIdLogin"></div>
-                                        </div> -->
-                                        <div class="a col-3 btn_login_wrap">
-											<button class='btn btn-success' type="button" name="naverIdLogin" id="naverIdLogin">네이버 로그인</button>
-										</div>
                                         <!-- <div class="btn_login_wrap">
                                         	<div id="my-signin2"></div>
 	                                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
@@ -163,7 +155,7 @@
         </div>
         <form name="form">
 			<input type="hidden" name="gender"/>
-			<input type="hidden" name="naver" value="${sessSeq }"/>
+			<input type="hidden" name="naver"/>
 		</form>
 
         <!-- footer -->
@@ -343,8 +335,12 @@
    			naverLogin.getLoginStatus(function (status) {
   				if (!status) {
   					naverLogin.authorize();
+  					/* setLoginStatus(); */
   				} 
-				setLoginStatus();
+  				var a = status;
+  				alert(a)
+  				$("input[name=naver]").val(a);
+				alert("status : "+ $('input[name=naver]').val())
   			});
 		})
    		

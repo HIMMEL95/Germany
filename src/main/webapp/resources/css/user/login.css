@@ -1,3 +1,4 @@
+
 /* 상단 헤더 영역 */
 .header .header_inner {
     position: relative;
@@ -569,3 +570,18 @@ strong {
     font-weight: 500;
     color: #000;
 }
+
+.snsBtn {
+	border-radius: 50%; 
+	background: #03C75A; 
+	width: 50px; 
+	height: 50px; 
+	color: white; 
+	font-size: 25px; 
+	font-weight: 900;
+}
+
+.btn_login_wrap button {
+	margin: 0 5px;
+}
+

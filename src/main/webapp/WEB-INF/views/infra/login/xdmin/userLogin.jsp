@@ -336,14 +336,15 @@
    			});
    		}); */
    		
+   		alert($("input[name=naver]").val())
    		naverLogin.init();
    		
    		$("#naverIdLogin").on("click", function() {
    			naverLogin.getLoginStatus(function (status) {
   				if (!status) {
   					naverLogin.authorize();
-  				}
- 				setLoginStatus();
+  				} 
+				setLoginStatus();
   			});
 		})
    		

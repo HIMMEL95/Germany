@@ -155,7 +155,7 @@
         </div>
         <form name="form">
 			<input type="hidden" name="gender"/>
-			<input type="hidden" name="naver"/>
+			<input type="hidden" name="naver" value="${sessSeq }"/>
 		</form>
 
         <!-- footer -->
@@ -302,7 +302,6 @@
     	/* google Login e */
     </script>
     <script type="text/javascript">
-    
    		var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "b8EhDTV3tvvAE_gRRBoJ",
@@ -319,38 +318,28 @@
 			}
 		); */
 
-    	/* naverLogin.init(); */
-		/* window.addEventListener('load', function () {
-   			naverLogin.getLoginStatus(function (status) {
-   				if (status) {
-   					setLoginStatus();
-   				}
-   			});
-   		}); */
-   		
-   		alert($("input[name=naver]").val())
    		naverLogin.init();
    		
    		$("#naverIdLogin").on("click", function() {
    			naverLogin.getLoginStatus(function (status) {
   				if (!status) {
   					naverLogin.authorize();
-  					/* setLoginStatus(); */
-  				} 
-  				var a = status;
-  				alert(a)
-  				$("input[name=naver]").val(a);
-				alert("status : "+ $('input[name=naver]').val())
+  				} else {
+					setLoginStatus();
+  				}
   			});
 		})
    		
-   		if ($("input[name=naver]").val() != null && $("input[name=naver]").val() != "") {
-  			naverLogin.getLoginStatus(function (status) {
-  				if (status) {
-  					setLoginStatus();
-  				}
-  			});
-   		} 
+		window.addEventListener('load', function () {
+			if (naverLogin.accessToken != null) { 
+	  			naverLogin.getLoginStatus(function (status) {
+	  				if (status) {
+	  					setLoginStatus();
+	  				}
+  				});
+			}
+   		});
+		
    		
    		function setLoginStatus() {
 			if (naverLogin.user.gender == 'M'){
@@ -358,7 +347,6 @@
 			} else {
 				$("input[name=gender]").val(6);
 			}
-			
 			$.ajax({
 				async: true
 				,cache: false

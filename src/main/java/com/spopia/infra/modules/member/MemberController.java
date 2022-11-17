@@ -166,6 +166,8 @@ public class MemberController {
 	    // id 값 있는지 체크 
 	    Member naverLogin = service.snsLoginCheck(dto);
 	    
+	    System.out.println("id : "+dto.getId());
+	    
 	    if (naverLogin == null) {
 	        System.out.println("여기는 : " + null);
 	        service.naver(dto);

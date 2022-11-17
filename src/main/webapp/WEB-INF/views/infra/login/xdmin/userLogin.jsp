@@ -234,10 +234,10 @@
 		<!-- //네이버아디디로로그인 초기화 Script -->
     	
     	/* kakao login s */
-     	/* Kakao.init('6875fc67f5a6c9e3660d59324e27052a'); // test 용
-    	console.log(Kakao.isInitialized()); */
-     	Kakao.init('ec2655da82c3779d622f0aff959060e6');
+     	Kakao.init('6875fc67f5a6c9e3660d59324e27052a'); // test 용
     	console.log(Kakao.isInitialized());
+     	/* Kakao.init('ec2655da82c3779d622f0aff959060e6');
+    	console.log(Kakao.isInitialized()); */
     	
     	$("#kakaoBtn").on("click", function() {
     		/* Kakao.Auth.authorize({
@@ -340,7 +340,6 @@
 			}
    		});
 		
-   		
    		function setLoginStatus() {
 			if (naverLogin.user.gender == 'M'){
 				$("input[name=gender]").val(5);

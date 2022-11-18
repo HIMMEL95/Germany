@@ -312,7 +312,7 @@ public class MemberController {
                 cell = row.createCell(8);
                 cellStyle.setAlignment(HorizontalAlignment.CENTER);
                 cell.setCellStyle(cellStyle);
-                cell.setCellValue(Integer.parseInt(list.get(i).getZip()));
+                cell.setCellValue(list.get(i).getZip());
 
                 cell = row.createCell(9);
                 cellStyle.setAlignment(HorizontalAlignment.CENTER);

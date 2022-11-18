@@ -30,8 +30,4 @@ public final class Constants {
     public static final String COOKIE_PATH = "/";
     public static final String COOKIE_NAME_SEQ = "cookieSeq";
   
-    public static final String NAVER_CLIENT_ID = "b8EhDTV3tvvAE_gRRBoJ";
-    public static final String NAVER_CLIENT_SECRET = "hMDyTplZOp";
-    public static final String KAKAO_CLIENT_ID = "6875fc67f5a6c9e3660d59324e27052a";
-    public static final String KAKAO_LOGOUT_REDIRECT_URI = "http://localhost:8080";
 }

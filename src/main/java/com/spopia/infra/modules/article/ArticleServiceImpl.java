@@ -98,6 +98,9 @@ public class ArticleServiceImpl extends BaseServiceImpl implements ArticleServic
     	
 	    	setRegMod(dto);
 	    	
+	    	String str = dto.getContent().replace("\n", "<br>");
+	    	dto.setContent(str);
+	    	
 	    	dao.insert(dto);
 	    	
 	    	uploadFiles(dto.getArticleImage(), dto, "articleUploaded", 2);

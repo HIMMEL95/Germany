@@ -150,7 +150,7 @@ public class MemberController {
 	@ResponseBody
 	@RequestMapping(value = "load")
 	public Map<String, Object> load() throws Exception {
-	    Map<String, Object> returnMap = new HashMap<>();
+	    Map<String, Object> returnMap = new HashMap<String, Object>();
 	    
 	    returnMap.put("rt", "success");
 	    
@@ -161,7 +161,7 @@ public class MemberController {
 	@RequestMapping(value = "naverLoginProc")
 	public Map<String, Object> naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
 	    System.out.println("naverLoginProc");
-	    Map<String, Object> returnMap = new HashMap<>();
+	    Map<String, Object> returnMap = new HashMap<String, Object>();
 	    
 	    // id 값 있는지 체크 
 	    Member naverLogin = service.snsLoginCheck(dto);

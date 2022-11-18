@@ -90,7 +90,7 @@
 			,au.uuidName as uuidName
 		from article a
 			inner join user u on u.seq = a.aCreatedBy
-			inner join articleUploaded au on au.pseq = a.aSeq
+			left join articleUploaded au on au.pseq = a.aSeq
 		where 1=1
 			and a.aSeq = #{aSeq}
 	</select>

@@ -6,6 +6,7 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <jsp:useBean id="CodeServiceImpl" class="com.spopia.infra.modules.code.CodeServiceImpl"/>
+<% pageContext.setAttribute("br", "\n"); %>
 
 <!doctype html>
 <html lang="ko" data-theme="light">
@@ -114,8 +115,16 @@
                     <div class="row">
                         <div class="col-12 mb-4">
                             <label for="content" class="form-label fw-bold">본문</label>
-                            <textarea class="form-control" style="height: 200px;" id="content" name="content" aria-label="content">${item.content }</textarea>
+                            <textarea class="form-control" style="height: 200px;" id="content" name="content" aria-label="content">
+                            	${fn:replace(item.content, br, '<br/>') }
+                            </textarea>
                         </div>
+                       <%--  <div class="col-sm-6 mt-3 mt-sm-0">
+				        	<label for="ifmmDesc" class="form-label">설명</label>
+				        	<textarea id="ifmmDesc" name="ifmmDesc" class="form-control" rows="4"><c:out value="${item.ifmmDesc }"/></textarea>
+				        	<p><c:out value="${fn:replace(item.ifmmDesc, br, '<br/>')}" escapeXml = "false"/></p> 
+							<p><c:out value="${item.ifmmDesc}" /></p>
+				        </div> --%>
                     </div>
                     <div class="row mb-4">
                         <div class="col">

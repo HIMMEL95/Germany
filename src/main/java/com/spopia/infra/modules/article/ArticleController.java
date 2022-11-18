@@ -23,8 +23,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spopia.infra.modules.code.CodeServiceImpl;
 import com.spopia.infra.modules.game.GameServiceImpl;
-import com.spopia.infra.modules.member.Member;
-import com.spopia.infra.modules.member.MemberVo;
 
 @Controller
 @RequestMapping(value = "/article/")

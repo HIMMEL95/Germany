@@ -116,7 +116,7 @@
                         <div class="col-12 mb-4">
                             <label for="content" class="form-label fw-bold">본문</label>
                             <textarea class="form-control" style="height: 200px;" id="content" name="content" aria-label="content">
-                            	${fn:replace(item.content, br, '<br/>') }
+                            	${item.content }
                             </textarea>
                         </div>
                        <%--  <div class="col-sm-6 mt-3 mt-sm-0">

@@ -97,22 +97,10 @@
 </head>
 
 <body class="sports_home">
-	<form name="form">
-		<input type="hidden" name="name"/>
-		<input type="hidden" name="id"/>
-		<input type="hidden" name="phone"/>
-		<input type="hidden" name="email"/>
-		<input type="hidden" name="gender"/>
-		<input type="hidden" name="dob"/>
-		<input type="hidden" name="snsImg"/>
-		<input type="hidden" name="token"/>
-	</form>
 	<form method="post" id="myForm" name="myForm">
-		<input type="hidden" name="thisPage" value='<c:out value="${mVo.thisPage }" default="1"/>'> 
-		<input type="hidden" name="rowNumToShow" value='<c:out value="${mVo.rowNumToShow }"/>'> 
 		<input type="hidden" name="gSeq" value='<c:out value="${gVo.gSeq }"></c:out>'>
 		<input type="hidden" name="aSeq" value='<c:out value="${aVo.aSeq }"></c:out>'>
-		<input type="hidden" name="seq" value='<c:out value="${sessSeq }"></c:out>'>
+		<input type="hidden" name="seq" value='<c:out value="${sessSeq}"></c:out>'>
 		<!-- 사이드 광고 -->
 		<div id="veta_skin_left" data-veta-preview="p_sports_dpl"></div>
 		<div id="veta_skin_right" data-veta-preview="p_sports_dpl"></div>
@@ -125,7 +113,8 @@
 							<img class="logo" alt="" src="/resources/images/SPOPIA_white.png">
 							<%-- sessSeq : ${sessSeq } 
 							sessName : ${sessName }
-							sessSns : ${sessSns } --%>
+							sessSns : ${sessSns }
+							seq : ${mVo.seq } --%>
 						</a> 
 					</div>
 					<div class="navigation">
@@ -3839,7 +3828,6 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
-	
 		 function menuToggle() {
             const toggleMenu = document.querySelector('.menu');
             toggleMenu.classList.toggle('active')

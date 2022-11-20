@@ -44,13 +44,23 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "sportMain")
-	public String sportMain(Model model, @ModelAttribute("aVo") ArticleVo aVo, @ModelAttribute("gVo") GameVo gVo, @ModelAttribute("mVo") MemberVo mVo, HttpSession httpSession) throws Exception {
+	public String sportMain(Model model, @ModelAttribute("aVo") ArticleVo aVo, @ModelAttribute("gVo") GameVo gVo, Member dto, @ModelAttribute("mVo") MemberVo mVo, HttpSession httpSession) throws Exception {
 		
 		List<Article> aList = aService.mainList(aVo);
 		model.addAttribute("aList", aList);
 		
 		List<Game> gList = gService.mainList(gVo);
 		model.addAttribute("gList", gList);
+		
+		try {
+			String seq = httpSession.getAttribute("sessSeq").toString();
+			mVo.setSeq(seq);
+		} catch (Exception e) {
+		}
+		Member profile = mService.profileOne(mVo);
+		model.addAttribute("profile", profile);
+		
+		System.out.println("seq : " + mVo.getSeq());
 		
 		return "infra/main/xdmin/sport_main";
 	}
@@ -65,8 +75,6 @@ public class MainController {
 		List<Comment> comment = aService.articleComment(cVo);
 		model.addAttribute("comment", comment);
 		
-		String seq = httpSession.getAttribute("sessSeq").toString();
-		mVo.setSeq(seq);
 		Member profile = mService.profileOne(mVo);
 		model.addAttribute("profile", profile);
 		

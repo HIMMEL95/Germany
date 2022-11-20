@@ -13,4 +13,4 @@
 <input type="hidden" name="shValue" value="<c:out value="${vo.shValue}"/>"/>
 
 <input type="hidden" name="aSeq" value="<c:out value="${item.aSeq}"/>"/>
-<input type="hidden" name="mSeq" value="<c:out value="${sessSeq}"/>"/>
+<input type="hidden" name="seq" value="<c:out value="${sessSeq}"/>"/>

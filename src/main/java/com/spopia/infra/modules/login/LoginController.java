@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -116,7 +117,7 @@ public class LoginController {
 	
 	@ResponseBody
 	@RequestMapping(value = "loginCheck")
-	public Map<String, Object> loginCheck(Member dto, HttpSession httpSession) throws Exception {
+	public Map<String, Object> loginCheck(Member dto, @ModelAttribute("vo") MemberVo vo, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
 		dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
@@ -131,7 +132,11 @@ public class LoginController {
 			httpSession.setAttribute("sessEmail", result.getEmail());
 			httpSession.setAttribute("sessUser", result.getUser_div());
 			httpSession.setAttribute("sessSns", result.getSns_type());
-	
+			
+			vo.setSeq(result.getSeq());
+			System.out.println("seq1 : "+result.getSeq());
+			System.out.println("seq2 : "+vo.getSeq());
+			returnMap.put("seq", result.getSeq());
 			returnMap.put("rt", "success");
 		} else {
 			returnMap.put("rt", "fail");

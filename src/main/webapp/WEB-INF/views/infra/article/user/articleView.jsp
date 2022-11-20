@@ -63,7 +63,14 @@
 		                                data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
 		                                <c:choose>
 		                               		<c:when test="${empty sessImg }">
-			                                	<img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar" style="width: 35px;">
+		                               			<c:choose>
+		                               				<c:when test="${empty profile.path }">
+					                                	<img class="avatar-img rounded-circle" src="/resources/images/diano.jpg" alt="avatar" style="width: 35px;">
+	                                				</c:when>
+	                                				<c:otherwise>
+					                                	<img class="avatar-img rounded-circle" src="${profile.path }${profile.uuidName}" alt="avatar" style="width: 35px;">
+	                                				</c:otherwise>
+		                               			</c:choose>
 		                               		</c:when>
 		                               		<c:otherwise>
 			                                    <img class="avatar-img rounded-circle" src="${sessImg }" alt="avatar" style="width: 35px;">		                                		
@@ -522,6 +529,8 @@
 		});
 	</script>
     <script type="text/javascript">
+    
+    alert($("input[name=seq]").val())
     
     	var goUrlLogin = "/userLogin";
     	var goUrlInst = "/articleInsert";

@@ -141,6 +141,7 @@
                                                 </span>
                                             </button>
                                         </div> -->
+                                        <input type="hidden" name="seq" value="${sessSeq }"/>
                                     </div>
                                 </div>
                             </li>
@@ -155,7 +156,6 @@
         </div>
         <form name="form">
 			<input type="hidden" name="gender"/>
-			<input type="hidden" name="naver" value="${sessSeq }"/>
 		</form>
 
         <!-- footer -->
@@ -200,6 +200,7 @@
     <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     <!-- google login e  -->
     <script type="text/javascript">
+    	var form = $("input[name=form]");
     	$("#loginBtn").on("click", function() {
     		var id = $("#id").val();
 			var pwd = $("#pwd").val();
@@ -215,6 +216,9 @@
 						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
 						return false;
 					} else {
+						$("input[name=seq]").val(response.seq)
+						alert($("input[name=seq]").val())
+						form.attr("action", "/sportMain").submit();
 						window.location.href = "/sportMain";
 					}
 				},

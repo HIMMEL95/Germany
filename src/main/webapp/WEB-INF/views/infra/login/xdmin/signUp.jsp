@@ -137,19 +137,19 @@
                         <div class="input-control">
                             <label for="phone">전화번호<span style="color: red;">*</span></label>
                             <input id="phone" name="phone" type="tel" placeholder="010-0000-0000" autocomplete="off" onfocusout="validationUpdt()" oninput="autoHyphen1(this)" maxlength="13">
+                            <input type="hidden" id="phoneCode" value="">
                             <div class="msg" id="phone_msg" name="phone_msg" style="display: none;"></div>
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 mt-4">
                         <div class="row">
                             <div class="col">
-                                <button type="button" class="btn fw-bold text-white certification"
-                                    style="background-color: #03c75a;" id="phone_confirm">인증번호</button>
+                                <button type="button" class="btn fw-bold text-white certification" style="background-color: #03c75a;" onclick="sendSms()" id="phone_confirm">인증요청</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row" hidden>
+                <div class="row certification" style="display: none">
                     <div class="col-6">
                         <div class="input-control">
                             <label for="tel_certification">인증번호</label>
@@ -157,11 +157,10 @@
                             <div class="msg" id="tel_certi_msg" name="tel_certi_msg" style="display: none;"></div>
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 mt-4">
                         <div class="row">
                             <div class="col">
-                                <button type="button" class="btn fw-bold text-white certification"
-                                    style="background-color: #03c75a;">중복확인</button>
+                                <button type="button" class="btn fw-bold text-white certification" onclick="checkSms()" style="background-color: #03c75a;">중복확인</button>
                             </div>
                         </div>
                     </div>
@@ -174,7 +173,7 @@
                             <div class="msg" id="zip_msg" name="zip_msg" style="display: none;"></div>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 mt-4">
                         <div class="row">
                             <div class="col-4">
                                 <button type="button" id="searchBtn" class="btn fw-bold text-white certification"
@@ -706,7 +705,8 @@
 	   	})
 	   	
 	   	$("#phone_confirm").on("click", function() {
-			alert("준비중입니다!!");
+	   		alert("준비 중")
+			/* $(".certification").css("display", ""); */
 		})
     </script>
     <script type="text/javascript">
@@ -742,6 +742,37 @@
 	 		   .replace(/[^0-9]/g, '')
 	 		  .replace(/^(\d{0,4})(\d{0,2})(\d{0,2})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
  		}
+		
+		/* 인증번호 s */
+		sendSms = function() {
+			$.ajax({
+				async: true 
+   				,cache: false
+				,type: 'POST'
+				,url: '/member/checkSms'
+				,data: {
+					phone : $("#phone").val()
+				},
+				success:function(response){
+					$("#phoneCode").val(response.code);
+				},
+				error:function(){
+					alert("ajax  error..!");
+				}
+			});
+			
+		};
+		
+		checkSms = function() {
+			
+			  if($("#phoneCodeSms").val() == $("#phoneCode").val()){
+				  swal("SPOPIA", "인증되었습니다.", "success");
+			  }else{
+				  swal("SPOPIA", "인증번호가 틀립니다.", "error");
+			  }
+			  
+		};	
+		/* 인증번호 e */
     </script>
 </body>
 </html> 

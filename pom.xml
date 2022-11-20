@@ -214,6 +214,14 @@
 		</dependency>
 		<!-- fileupload e 2022.03.30 -->
 		
+		<!-- 메세지 전송 API s -->
+		<dependency>
+		  <groupId>net.nurigo</groupId>
+		  <artifactId>sdk</artifactId>
+		  <version>4.2.4</version>
+		</dependency>
+		<!-- 메세지 전송 API e -->
+		
 		<!-- excel download s 2022.06.21 -->		
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
 		<dependency>

@@ -48,10 +48,10 @@ public class MemberVo extends BaseVo{
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
-    public String getSeq() {
-        return seq;
-    }
-    public void setSeq(String seq) {
-        this.seq = seq;
-    }
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
 }

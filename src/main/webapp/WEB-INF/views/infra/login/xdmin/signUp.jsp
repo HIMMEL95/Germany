@@ -19,6 +19,7 @@
 		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<title>Sign Up</title>
 	<link rel="stylesheet" href="/resources/css/xdmin/login/signUp.css">
+	<script src="/resources/js/xdmin/imageUpload.js"></script>
 	<script defer type="text/javascript" src="/resources/js/xdmin/signValidation.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
@@ -40,45 +41,22 @@
 
     <main>
         <div class="container">
-            <form id="form" name="form" method="post">
-                <img src="/resources/images/SPOPIA1.png">
+            <form id="form" name="form" method="post" autocomplete="off" enctype="multipart/form-data">
+                <img class="logo" src="/resources/images/SPOPIA1.png">
                 <h1>필수 사항</h1>
-                <%-- <div class="row mt-sm-4 ">
-			        <div class="col-sm-12 text-center">
-			      		<c:set var="type" value="1"/>		<!-- #-> -->
-			        	<c:set var="name" value="uploadImgProfile"/>		<!-- #-> -->
-						<c:choose>
-							<c:when test="${ifmmSeq eq 0 }">
-								<img id="<c:out value="${name }"/>Preview" src="/resources/xdmin/image/default_100_100.png" class="rounded-circle mx-auto d-block" width="100" height="100">
-							</c:when>
-							<c:otherwise>
-								<c:choose>
-									<c:when test="${fn:length(listUploaded) eq 0 }">
-										<img id="<c:out value="${name }"/>Preview" src="/resources/xdmin/image/default_100_100.png" class="rounded-circle mx-auto d-block" width="100" height="100">
-									</c:when>
-									<c:otherwise>
-										<c:set var="GetNy" value="0"/>
-										<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
-											<c:if test="${listUploaded.type eq type }">
-									        	<input type="hidden" id="<c:out value="${name }"/>DeleteSeq" name="<c:out value="${name }"/>DeleteSeq" value="<c:out value="${listUploaded.seq }"/>"/>
-									        	<input type="hidden" id="<c:out value="${name }"/>DeletePathFile" name="<c:out value="${name }"/>DeletePathFile" value="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>"/>  
-												<img id="<c:out value="${name }"/>Preview" src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="rounded-circle mx-auto d-block" width="100" height="100">
-												<c:set var="GetNy" value="1"/>		
-											</c:if>
-										</c:forEach>
-										<c:if test="${GetNy eq 0 }">
-											<img id="<c:out value="${name }"/>Preview" src="/resources/xdmin/image/default_100_100.png" class="rounded-circle mx-auto d-block" width="100" height="100">
-										</c:if>
-									</c:otherwise>
-								</c:choose>
-							</c:otherwise>
-						</c:choose>
-						<input type="hidden" id="<c:out value="${name }"/>Type" name="<c:out value="${name }"/>Type" value="<c:out value="${type }"/>"/>
-						<input type="hidden" id="<c:out value="${name }"/>MaxNumber" name="<c:out value="${name }"/>MaxNumber" value="0"/>
-						<label for="<c:out value="${name }"/>" class="form-label input-file-button"><b>+</b></label>
-			 			<input class="form-control form-control-sm" id="<c:out value="${name }"/>" name="<c:out value="${name }"/>" type="file" multiple="multiple" style="display: none;" onChange="upload('<c:out value="${name }"/>', <c:out value="${type }"/>, 1, 1, 0, 0, 3);">
-			        </div>
-			    </div> --%>
+			    <div class="mb-4 text-center" style="margin-top: 2rem;">
+	            	<label class="form-label">프로필 사진</label>
+					<div class="row justify-content-center">
+						<div class="col-3 text-center">
+			    			<label class="form-label imgLabel" for="profileImage"><i class="fa-solid fa-image fa-2x"></i></label>
+			    			<img id="preview-image" class="profile">
+			    			<div>
+								<input style="display: block; margin:auto;" type="file" id="profileImage" name="profileImage" hidden multiple="multiple" onChange="upload('profileImage', 1, 0, 1, 0, 0, 1);">
+								<small style="color: gray;"><i class="fa-solid fa-circle-info"></i> 프로필 이미지는 수정이 불가능하오니 <br>신중하게 선택하시길 바랍니다.</small>
+			    			</div>
+						</div>
+					</div>
+				</div>
                 <div class="row">
                     <div class="col-6">
                         <div class="input-control">
@@ -125,7 +103,7 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="dob">생년월일<span style="color: red;">*</span></label>
-                            <input id="dob" name="dob" class="datepicker" type="text" placeholder="1900-01-01" autocomplete="off" onfocusout="validationUpdt()">
+                            <input id="dob" name="dob" class="datepicker" type="text" placeholder="1900-01-01" autocomplete="off" onfocusout="validationUpdt()" oninput="autoHyphen2(this)" maxlength="10">
                             <div class="msg" id="dob_msg" name="dob_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -158,7 +136,7 @@
                     <div class="col">
                         <div class="input-control">
                             <label for="phone">전화번호<span style="color: red;">*</span></label>
-                            <input id="phone" name="phone" type="tel" placeholder="010-0000-0000" autocomplete="off" onfocusout="validationUpdt()">
+                            <input id="phone" name="phone" type="tel" placeholder="010-0000-0000" autocomplete="off" onfocusout="validationUpdt()" oninput="autoHyphen1(this)" maxlength="13">
                             <div class="msg" id="phone_msg" name="phone_msg" style="display: none;"></div>
                         </div>
                     </div>
@@ -387,9 +365,10 @@
     <script type="text/javascript">
         $('.error').hide();
         validationUpdt = function() {
-            if (!id_regex($('input[name=id]'), $('input[name=id]').val(), "아이디를 입력하세요!", $('#id_msg'))) {
+            /* if (!id_regex($('input[name=id]'), $('input[name=id]').val(), "아이디를 입력하세요!", $('#id_msg'))) {
             	return false;
-            } else if(!name_regex($('input[name=name]'), $('input[name=name]').val(), "이름을 입력하세요!", $('#name_msg'))) {
+            } else  */
+           	if(!name_regex($('input[name=name]'), $('input[name=name]').val(), "이름을 입력하세요!", $('#name_msg'))) {
                 return false;
             } else if(!email_regex($('input[name=email]'), $('input[name=email]').val(), "이메일을 입력하세요!", $('#email_msg'))) {
                 return false;
@@ -500,59 +479,6 @@
         	
         };
         
-        /* function daumPostCode() {
-            new daum.Postcode({
-                oncomplete: function(data) {
-                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-                    // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                    var addr = ''; // 주소 변수
-                    var extraAddr = ''; // 참고항목 변수
-                    //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                        addr = data.roadAddress;
-                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                        addr = data.jibunAddress;
-                    }
-                    // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                    if(data.userSelectedType === 'R'){
-                        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                            extraAddr += data.bname;
-                        }
-                        // 건물명이 있고, 공동주택일 경우 추가한다.
-                        if(data.buildingName !== '' && data.apartment === 'Y'){
-                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                        }
-                        // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                        if(extraAddr !== ''){
-                            extraAddr = ' (' + extraAddr + ')';
-                        }
-                        // 조합된 참고항목을 해당 필드에 넣는다.
-                        document.getElementById("extraAddress").value = extraAddr;
-                    
-                    } else {
-                        document.getElementById("extraAddress").value = '';
-                    }
-                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                    document.getElementById('zip').value = data.zonecode;
-                    document.getElementById("address").value = addr;
-                    // 커서를 상세주소 필드로 이동한다.
-                    document.getElementById("address_detail").focus();
-                    
-        			var geocoder = new daum.maps.services.Geocoder();
-        			
-        			geocoder.addressSearch(addr, function(result, status) {
-        				if(status === daum.maps.services.Status.OK) {
-        					$("#lat").val(result[0].y);
-        					$("#long").val(result[0].x);
-        				}
-        			});
-                }
-            }).open();
-        }; */
-        
         $("#refresh").on("click", function() {
 			$("#zip").val('');
 			$("#address").val('');
@@ -591,7 +517,7 @@
         $("#searchBtn").on("click", function() {
         	daumPostCode();
 		});
-        
+         
         errorValidation = function(input, msg, message) {
         	$(msg).parent().removeClass('success');						
 		 	$(msg).parent().addClass('error');
@@ -782,6 +708,40 @@
 	   	$("#phone_confirm").on("click", function() {
 			alert("준비중입니다!!");
 		})
+    </script>
+    <script type="text/javascript">
+	    function readImage(input) {
+		    // 인풋 태그에 파일이 있는 경우
+		    if(input.files && input.files[0]) {
+		        // 이미지 파일인지 검사 (생략)
+		        // FileReader 인스턴스 생성
+		        const reader = new FileReader()
+		        // 이미지가 로드가 된 경우
+		        reader.onload = e => {
+		            const previewImage = document.getElementById("preview-image")
+		            previewImage.src = e.target.result
+		        }
+		        // reader가 이미지 읽도록 하기
+		        reader.readAsDataURL(input.files[0])
+		    }
+		}
+		// input file에 change 이벤트 부여
+		const inputImage = document.getElementById("profileImage")
+		inputImage.addEventListener("change", e => {
+		    readImage(e.target)
+		})
+		
+		const autoHyphen1 = (target) => {
+			target.value = target.value
+			.replace(/[^0-9]/g, '')
+			.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
+		}
+		
+		const autoHyphen2 = (target) => {
+	 		 target.value = target.value
+	 		   .replace(/[^0-9]/g, '')
+	 		  .replace(/^(\d{0,4})(\d{0,2})(\d{0,2})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
+ 		}
     </script>
 </body>
 </html> 

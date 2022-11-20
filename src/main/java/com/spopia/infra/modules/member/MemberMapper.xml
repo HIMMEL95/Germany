@@ -142,9 +142,24 @@
 		from user u
 			inner join teamUser tu on tu.user_seq = u.seq
 			inner join team t on t.teamSeq = tu.team_seq
+			inner join userUploaded uu on uu.pseq = u.seq
 		where 1=1
 			and u.seq = #{seq}
 			and tu.defaultNY = 0
+	</select>
+
+	<select id="profileOne" resultMap="resultMapObj">
+		select 
+			u.seq
+		    ,u.name
+		    ,u.id
+		    ,u.email
+			,uu.path
+			,uu.uuidName
+		from user u
+			inner join userUploaded uu on uu.pseq = u.seq
+		where 1=1
+			and u.seq = #{seq}
 	</select>
 	
 	<select id="snsSelectOne" resultMap="resultMapObj">

@@ -370,11 +370,6 @@
 	   		});
 	   	})
 	   	
-	   	goList = function(thisPage) {
-			$("input:hidden[name=thisPage]").val(thisPage);
-			form.attr("action", goUrlList).submit();			
-		}
-		
 		var seq = $("input:hidden[name=ccSeq]");
 		
 		$('#btnForm').on("click", function() {
@@ -465,7 +460,18 @@
 						console.log(pageSeqArray);
 					})
 					
-				 	window.history.pushState(null, '', location.href);
+					var state = {'thisPage' : $("input[name=thisPage]").val()};
+					
+				 	window.history.pushState(state, '', goUrlList);
+				 	
+				 	window.onpopstate = function (event) {
+				 		alert($("input[name=thisPage]").val())
+				 		alert(state["thisPage"])
+						alert("location : " + document.location + ", state : " + JSON.stringify(event.state["thisPage"]));
+						$("input:hidden[name=thisPage]").val(JSON.stringify(event.state["thisPage"]));
+					}
+
+				 	/* window.history.pushState(null, '', location.href);
  
 					window.onpopstate = function() {
 						if (pageSeqArray.length > 0) {
@@ -477,7 +483,7 @@
 						} else {
 							window.history.back()
 						}
-					}
+					} */
 					
 					
 					/* window.onpopstate = function(event) {  //뒤로가기 이벤트를 캐치합니다.

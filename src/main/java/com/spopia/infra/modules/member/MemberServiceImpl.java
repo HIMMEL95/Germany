@@ -51,6 +51,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public Member profileOne(MemberVo vo) throws Exception {
+		return dao.profileOne(vo);
+	}
+
+	@Override
 	public Member snsSelectOne(MemberVo vo) throws Exception {
 	    return dao.snsSelectOne(vo);
 	}
@@ -67,7 +72,14 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public int userInst(Member dto) throws Exception {
-		return dao.userInst(dto);
+		try {
+			dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
+			dao.userInst(dto);
+			uploadFiles(dto.getProfileImage(), dto, "userUploaded", 0);
+			return 1;
+		} catch (Exception e) {
+			throw new Exception();
+		}
 	}
 	
 	@Override
@@ -92,7 +104,6 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	public void insert(Member dto) throws Exception {
-	    dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
 		userInst(dto);
 		teamInst(dto);
 	}

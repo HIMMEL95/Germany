@@ -44,7 +44,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "sportMain")
-	public String sportMain(Model model, @ModelAttribute("aVo") ArticleVo aVo, @ModelAttribute("gVo") GameVo gVo, @ModelAttribute("mVo") MemberVo mVo) throws Exception {
+	public String sportMain(Model model, @ModelAttribute("aVo") ArticleVo aVo, @ModelAttribute("gVo") GameVo gVo, @ModelAttribute("mVo") MemberVo mVo, HttpSession httpSession) throws Exception {
 		
 		List<Article> aList = aService.mainList(aVo);
 		model.addAttribute("aList", aList);
@@ -56,7 +56,7 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "articleView")
-	public String articleView(@ModelAttribute("aVo") ArticleVo aVo, Model model, @ModelAttribute("cVo") CommentVo cVo) throws Exception {
+	public String articleView(@ModelAttribute("aVo") ArticleVo aVo, @ModelAttribute("mVo") MemberVo mVo,  Model model, @ModelAttribute("cVo") CommentVo cVo, HttpSession httpSession) throws Exception {
 		
 		Article item = aService.selectOne(aVo);
 		model.addAttribute("item", item);
@@ -65,11 +65,16 @@ public class MainController {
 		List<Comment> comment = aService.articleComment(cVo);
 		model.addAttribute("comment", comment);
 		
+		String seq = httpSession.getAttribute("sessSeq").toString();
+		mVo.setSeq(seq);
+		Member profile = mService.profileOne(mVo);
+		model.addAttribute("profile", profile);
+		
 		return "infra/article/user/articleView";
 	}
 	
 	@RequestMapping(value = "gameView")
-	public String gameView(@ModelAttribute("gVo") GameVo gVo, Model model, @ModelAttribute("cVo") CommentVo cVo) throws Exception {
+	public String gameView(@ModelAttribute("gVo") GameVo gVo, Model model, @ModelAttribute("cVo") CommentVo cVo, @ModelAttribute("mVo") MemberVo mVo, HttpSession httpSession) throws Exception {
 
 		Game item = gService.mainSelectOne(gVo);
 		model.addAttribute("item", item);
@@ -77,6 +82,11 @@ public class MainController {
 		cVo.setParamsPaging(gService.gameCommentCount(cVo));
 		List<Comment> comment = gService.gameComment(cVo);
 		model.addAttribute("comment", comment);
+		
+		String seq = httpSession.getAttribute("sessSeq").toString();
+		mVo.setSeq(seq);
+		Member profile = mService.profileOne(mVo);
+		model.addAttribute("profile", profile);
 		
 		return "infra/game/user/gameView";
 	}

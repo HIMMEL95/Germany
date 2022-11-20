@@ -146,7 +146,14 @@
 			                                <div class="profile" onclick="menuToggle();">
 			                                	<c:choose>
 			                                		<c:when test="${empty sessImg }">
-					                                    <img class="pro_img" src="/resources/images/diano.jpg" width="35">
+			                                			<c:choose>
+			                                				<c:when test="${empty profile.path }">
+							                                    <img class="pro_img" src="/resources/images/diano.jpg" width="35">
+			                                				</c:when>
+			                                				<c:otherwise>
+							                                    <img class="pro_img" src="${profile.path }${profile.uuidName}" width="35">
+			                                				</c:otherwise>
+			                                			</c:choose>
 			                                		</c:when>
 			                                		<c:otherwise>
 					                                    <img class="pro_img" src="${sessImg }" width="35">			                                		
@@ -3856,7 +3863,6 @@
 		
 	</script>
 	<script type="text/javascript">
-		
 		var form = $("#myForm");
 		var goUrlUView = "/member/memberUView";
 		var goUrlXdmin = "/member/memberList";

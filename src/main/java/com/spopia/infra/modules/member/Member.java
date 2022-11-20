@@ -40,7 +40,7 @@ public class Member extends Base {
 	private Integer deleteNY;
 	
 	//image upload
-	private MultipartFile[] memberImage;
+	private MultipartFile[] profileImage;
 	private Integer[] process;
 	private String[] pathFile;
 	private String[] fileSeq;
@@ -90,11 +90,11 @@ public class Member extends Base {
 	public void setSnsImg(String snsImg) {
 		this.snsImg = snsImg;
 	}
-	public MultipartFile[] getMemberImage() {
-		return memberImage;
+	public MultipartFile[] getProfileImage() {
+		return profileImage;
 	}
-	public void setMemberImage(MultipartFile[] memberImage) {
-		this.memberImage = memberImage;
+	public void setProfileImage(MultipartFile[] profileImage) {
+		this.profileImage = profileImage;
 	}
 	public Integer[] getProcess() {
 		return process;
@@ -115,14 +115,13 @@ public class Member extends Base {
 		this.fileSeq = fileSeq;
 	}
 	
-	
-	public String getSeq() {
-        return seq;
-    }
-    public void setSeq(String seq) {
-        this.seq = seq;
-    }
-    public String getName() {
+    public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
+	public String getName() {
         return name;
     }
     public void setName(String name) {

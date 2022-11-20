@@ -11,6 +11,7 @@ public interface MemberService {
 	public List<Member> selectList1() throws Exception;
 	public List<Member> selectList() throws Exception;
 	public Member selectOne(MemberVo vo) throws Exception;
+	public Member profileOne(MemberVo vo) throws Exception;
 	public Member snsSelectOne(MemberVo vo) throws Exception;
 	public int selectOneCount(MemberVo vo) throws Exception;
 	public int userInst(Member dto) throws Exception;

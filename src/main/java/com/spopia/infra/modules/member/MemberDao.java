@@ -38,6 +38,10 @@ public class MemberDao {
 		return sqlSession.selectOne(namespace + ".selectOne", vo);
 	}
 
+	public Member profileOne(MemberVo vo) {
+		return sqlSession.selectOne(namespace + ".profileOne", vo);
+	}
+
 	public Member snsSelectOne(MemberVo vo) {
 	    return sqlSession.selectOne(namespace + ".snsSelectOne", vo);
 	}

@@ -705,8 +705,8 @@
 	   	})
 	   	
 	   	$("#phone_confirm").on("click", function() {
-	   		alert("준비 중")
-			/* $(".certification").css("display", ""); */
+	   		/* alert("준비 중") */
+			$(".certification").css("display", "");
 		})
     </script>
     <script type="text/javascript">

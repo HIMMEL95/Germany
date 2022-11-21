@@ -462,9 +462,8 @@
 					
 					var state = {'thisPage' : $("input[name=thisPage]").val()};
 					
-				 	window.history.pushState(state, '', goUrlList);
-				 	
 				 	window.onpopstate = function (event) {
+				 		alert(goUrlList+pageSeqArray[-1])
 				 		alert($("input[name=thisPage]").val())
 				 		alert(state["thisPage"])
 						alert("location : " + document.location + ", state : " + JSON.stringify(event.state["thisPage"]));

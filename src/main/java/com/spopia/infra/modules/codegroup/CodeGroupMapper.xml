@@ -20,6 +20,27 @@
 	</sql>
 	
 	<select id="selectList" resultMap="resultMapObj">
+			select
+				a.ccgSeq
+				,a.ifcgAnother
+				,a.ifcgName
+				,a.ifcgNameEng
+				,a.ifcgUseNy
+				,a.ifcgOrder
+				,a.ifcgExplanation
+				,a.ifcgDelNy
+				,a.ifcgReferencev1
+				,a.ifcgReferencev2
+				,a.ifcgReferencev3
+				,a.ifcgReferenceI1
+				,a.ifcgReferenceI2
+				,a.ifcgReferenceI3
+				,a.createdAt
+				,a.modifiedAt
+			<include refid="selectCommon" />
+			ORDER BY a.ccgSeq DESC
+	</select>
+	<!-- <select id="selectList" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />
 			select
 				a.ccgSeq
@@ -43,7 +64,7 @@
 			ORDER BY a.ccgSeq DESC
 			<include refid="Base.orderByLimitForMysql" />
 		<include refid="Base.selectListLowerForMysql" />
-	</select>
+	</select> -->
 	
 	<select id="selectList1" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />

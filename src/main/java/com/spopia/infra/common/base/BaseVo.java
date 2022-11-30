@@ -11,6 +11,10 @@ public class BaseVo {
 	private int totalPages;
 	private int startPage;
 	private int endPage;
+	
+	private int startRnumForOracle = 1;                            // 쿼리 시작 row
+    private int endRnumForOracle;                               // 쿼리 끝 row
+    private Integer RNUM;
 
 	private int startRnumForMysql = 0;
 	
@@ -40,6 +44,10 @@ public class BaseVo {
 		if (getEndPage() > getTotalPages()) {
 			setEndPage(getTotalPages());
 		}
+		
+		setEndRnumForOracle((getRowNumToShow() * getThisPage()));
+        setStartRnumForOracle((getEndRnumForOracle() - getRowNumToShow()) + 1);
+        if (getStartRnumForOracle() < 1) setStartRnumForOracle(1);
 		
 		if (thisPage == 1) {
 			setStartRnumForMysql(0);
@@ -104,4 +112,30 @@ public class BaseVo {
 	public void setCheckboxSeqArray(String[] checkboxSeqArray) {
 		this.checkboxSeqArray = checkboxSeqArray;
 	}
+	
+	//oracle s
+	public int getStartRnumForOracle() {
+	    return startRnumForOracle;
+	}
+	
+	public void setStartRnumForOracle(int startRnumForOracle) {
+	    this.startRnumForOracle = startRnumForOracle;
+	}
+	
+	public int getEndRnumForOracle() {
+	    return endRnumForOracle;
+	}
+	
+	public void setEndRnumForOracle(int endRnumForOracle) {
+	    this.endRnumForOracle = endRnumForOracle;
+	}
+	
+	public Integer getRNUM() {
+	    return RNUM;
+	}
+	
+	public void setRNUM(Integer rNUM) {
+	    RNUM = rNUM;
+	}
+	//oracle e
 }

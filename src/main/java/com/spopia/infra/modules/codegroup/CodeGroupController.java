@@ -36,9 +36,10 @@ public class CodeGroupController {
 	@RequestMapping(value = "codeGroupList")
 	public String codeGroupList(Model model, @ModelAttribute("vo") CodeGroupVo vo) throws Exception {
 		
-		setSearchAndPaging(vo);
+        /* setSearchAndPaging(vo); */
 		
-		List<CodeGroup> list = service.selectList(vo);
+        /* List<CodeGroup> list = service.selectList(vo); */
+		List<CodeGroup> list = service.selectListOracle(vo);
 		model.addAttribute("list", list);
 		return "infra/codegroup/xdmin/codeGroupList";
 	}

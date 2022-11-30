@@ -19,6 +19,19 @@
 		limit 99999999999
 	</sql>
 	
+	<sql id="selectListUpperForOracle">
+		SELECT BB.*
+			FROM
+			(SELECT ROWNUM as RNUM, AA.*
+				FROM (
+	</sql>
+	
+	
+	<sql id="selectListLowerForOracle">	
+			) AA
+			WHERE ROWNUM <![CDATA[ < ]]>= #{endRnum} ) BB
+		WHERE BB.RNUM >= #{startRnum}
+	</sql>
 	
 	<sql id="insertRegModColumn">	
 		,regIp

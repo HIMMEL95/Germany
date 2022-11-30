@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface CodeGroupService {
 
+    public List<CodeGroup> selectListOracle(CodeGroupVo vo) throws Exception; 
 	public List<CodeGroup> selectList(CodeGroupVo vo) throws Exception; 
 	public List<CodeGroup> selectList() throws Exception; 
 	public List<CodeGroup> selectList1() throws Exception;

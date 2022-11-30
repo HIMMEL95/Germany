@@ -14,8 +14,13 @@ public class CodeGroupDao {
 	@Inject
 	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
+	@Inject
+	@Resource(name = "sqlSessionOracle")
+	private SqlSession sqlSessionOracle;
 	
 	private static String namespace = "com.spopia.infra.modules.codegroup.CodeGroupMapper";
+	
+	public List<CodeGroup> selectListOracle(CodeGroupVo vo){ return sqlSessionOracle.selectList(namespace + ".selectList", vo); }
 	
 	public List<CodeGroup> selectList(CodeGroupVo vo){ return sqlSession.selectList(namespace + ".selectList", vo); }
 	public List<CodeGroup> selectList(){ return sqlSession.selectList(namespace + ".selectList", ""); }
@@ -46,4 +51,6 @@ public class CodeGroupDao {
 	public int selectOneCount(CodeGroupVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
+	
+	
 } 

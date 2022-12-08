@@ -178,14 +178,12 @@ public class MemberController {
 	        service.naver(dto);
 	        
 	        httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
-	        //session(naver.getSeq(), naver.getId(), naver.getName(), naver.getEmail(), naver.getUser_div(), naver.getSnsImg(), naver.getSns_type(), httpSession);
 	        session(dto, httpSession);
 	        returnMap.put("rt", "success");
 	    } else {
 	        System.out.println("여기는 :  not " + null);
 	        
 	        httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
-	        //session(naverLogin.getSeq(), naverLogin.getId(), naverLogin.getName(), naverLogin.getEmail(), naverLogin.getUser_div(), naverLogin.getSnsImg(), naverLogin.getSns_type(), httpSession);
 	        session(naverLogin, httpSession);
 	        returnMap.put("rt", "success");
 	    }

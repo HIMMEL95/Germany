@@ -216,9 +216,6 @@
 						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
 						return false;
 					} else {
-						$("input[name=seq]").val(response.seq)
-						alert($("input[name=seq]").val())
-						form.attr("action", "/sportMain").submit();
 						window.location.href = "/sportMain";
 					}
 				},
@@ -244,16 +241,11 @@
     	console.log(Kakao.isInitialized()); */
     	
     	$("#kakaoBtn").on("click", function() {
-    		/* Kakao.Auth.authorize({
-   		      redirectUri: 'http://localhost:8080/member/kakaoCallback',
-   		    }); */
-    		
     		Kakao.Auth.login({
    		      success: function (response) {
    		        Kakao.API.request({
    		          url: '/v2/user/me',
    		          success: function (response) {
-   		        	  
    		        	  var accessToken = Kakao.Auth.getAccessToken();
    		        	  Kakao.Auth.setAccessToken(accessToken);
 
@@ -264,14 +256,20 @@
 	          		  } else {
 	          			  $("input[name=gender]").val(6);
          			  } 
-	  	        	  
-	  	        	 /*  $("form[name=form]").attr("action", "/member/kakaoLoginProc").submit(); */
 	  	        	  $.ajax({
 						async: true
 						,cache: false
 						,type:"POST"
 						,url: "/member/kakaoLoginProc"
-						,data: {"name": account.profile.nickname, "snsId": "카카오로그인", "phone": account.profile.phone_number, "email": account.email, "gender": $("input[name=gender]").val(), "dob": account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length), "snsImg": account.profile.thumbnail_image_url}
+						,data: {
+							"name": account.profile.nickname, 
+							"snsId": "카카오로그인", 
+							"phone": account.profile.phone_number, 
+							"email": account.email, 
+							"gender": $("input[name=gender]").val(), 
+							"dob": account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length), 
+							"snsImg": account.profile.thumbnail_image_url
+						}
 						,success : function(response) {
 							if (response.rt == "fail") {
 								alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
@@ -296,14 +294,6 @@
    		    })
 		});
     	/* kakao login e */
-    	
-    	
-    	/* naver login test s */
-   		
-    	/* naver login test e */
-    	
-    	/* google Login s */
-    	/* google Login e */
     </script>
     <script type="text/javascript">
    		var naverLogin = new naver.LoginWithNaverId(
@@ -355,7 +345,15 @@
 				,cache: false
 				,type:"POST"
 				,url: "/member/naverLoginProc"
-				,data: {"name": naverLogin.user.name, "snsId": "네이버로그인", "phone": naverLogin.user.mobile, "email": naverLogin.user.email, "gender": $("input[name=gender]").val(), "dob": naverLogin.user.birthyear+"-"+naverLogin.user.birthday, "snsImg": naverLogin.user.profile_image}
+				,data: {
+					"name": naverLogin.user.name, 
+					"snsId": "네이버로그인", 
+					"phone": naverLogin.user.mobile, 
+					"email": naverLogin.user.email, 
+					"gender": $("input[name=gender]").val(), 
+					"dob": naverLogin.user.birthyear+"-"+naverLogin.user.birthday, 
+					"snsImg": naverLogin.user.profile_image
+				}
 				,success : function(response) {
 					if (response.rt == "fail") {
 						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");

@@ -407,12 +407,10 @@
 		/* select ajax */
 		function setComboBox1(o){
 			var code = o.value;
-			
 			$("option").remove(".select");
 			$("option").remove(".select1");
 			$("option").remove(".select2");
 			$("option").remove(".select3");
-
    			$.ajax({
    				async: true 
    				,cache: false
@@ -422,7 +420,6 @@
    				/* ,data : $("#formLogin").serialize() */
    				,data : { "gAbroadNy" : code }
    				,success: function(response) {
-   					   					
    					<c:set var="listCodeEvent" value="${CodeServiceImpl.selectListCachedCode('5') }" />
 					var arr = new Array();
 					<c:forEach items="${listCodeEvent}" var="listEvent" varStatus="statusEvent">
@@ -447,17 +444,14 @@
    					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
    				}
    			});
-	 
 		}
 
 		function setComboBox2(o){
 			var code = o.value;
 			var abroadNy = $("#gAbroadNy").val();
-			
 			$("option").remove(".select1");
 			$("option").remove(".select2");
 			$("option").remove(".select3");
-
    			$.ajax({
    				async: true 
    				,cache: false
@@ -467,7 +461,6 @@
    				/* ,data : $("#formLogin").serialize() */
    				,data : { "event" : code, "gAbroadNy" : abroadNy }
    				,success: function(response) {
-   					
    					<c:set var="listCodeLeague" value="${CodeServiceImpl.selectListCachedCode('6') }" />
 					var arr = new Array();
 					<c:forEach items="${listCodeLeague}" var="listLeague" varStatus="statusLeague">
@@ -492,16 +485,13 @@
    					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
    				}
    			});
-	 
 		}
 
 		function setComboBox3(o){
 			var code = o.value;
 			var abroadNy = $("#gAbroadNy").val();
 			var event = $("#gEvent").val();
-			
 			$("option").remove(".select3");
-
 			$.ajax({
    				async: true 
    				,cache: false
@@ -511,7 +501,6 @@
    				/* ,data : $("#formLogin").serialize() */
    				,data : { "league" : code, "event" : event, "gAbroadNy" : abroadNy  }
    				,success: function(response) {
-   					
    					<c:set var="listCodeTeam" value="${CodeServiceImpl.selectListCachedCode('7') }" />
 					var arr = new Array();
 					<c:forEach items="${listCodeTeam}" var="listTeam" varStatus="statusTeam">
@@ -537,7 +526,6 @@
    					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
    				}
    			});
-	 
 		}
 
 		function setComboBox4(o){
@@ -545,17 +533,13 @@
 			var abroadNy = $("#gAbroadNy").val();
 			var event = $("#gEvent").val();
 			var league = $("#gLeague").val();
-			
    			$.ajax({
    				async: true 
    				,cache: false
    				,type: "post"
-   				/* ,dataType:"json" */
    				,url: "/game/teamName"
-   				/* ,data : $("#formLogin").serialize() */
    				,data : {"teamName" : code , "league" : league, "event" : event, "gAbroadNy" : abroadNy  }
    				,success: function(response) {
-   					
    					<c:set var="listCodeStadium" value="${CodeServiceImpl.selectListCachedCode('8') }" />
 					var arr = new Array();
 					<c:forEach items="${listCodeStadium}" var="listStadium" varStatus="statusStadium">
@@ -580,7 +564,6 @@
    					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
    				}
    			});
-	 
 		}
     </script>
 </body>

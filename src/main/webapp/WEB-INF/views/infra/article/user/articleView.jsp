@@ -530,7 +530,7 @@
 	</script>
     <script type="text/javascript">
     
-    alert($("input[name=seq]").val())
+    // alert($("input[name=seq]").val())
     
     	var goUrlLogin = "/userLogin";
     	var goUrlInst = "/articleInsert";

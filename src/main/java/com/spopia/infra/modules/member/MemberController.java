@@ -238,7 +238,7 @@ public class MemberController {
 			 System.out.println("난수 : "+ rndNo);
 		 }
 		 
-	 	DefaultMessageService messageService =  NurigoApp.INSTANCE.initialize("NCSHXW8I5XB0QRSG", "5M4GQJ6AGPAW1ZD20EUOMKMRMLKFOQAA", "https://api.solapi.com"); 
+	 	DefaultMessageService messageService =  NurigoApp.INSTANCE.initialize("", "", "https://api.solapi.com"); 
 		// Message 패키지가 중복될 경우 net.nurigo.sdk.message.model.Message로 치환하여 주세요
 		Message message = new Message();
 		message.setFrom("01092709756");
